@@ -494,7 +494,8 @@ namespace XIVSlothCombo.Combos.PvE
                     }
 
                     // Swiftcast Motifs
-                    /*if (HasEffect(All.Buffs.Swiftcast))
+                    if (IsEnabled(CustomComboPreset.PCT_ST_AdvancedMode_SwiftMotifs) &&
+                        HasEffect(All.Buffs.Swiftcast))
                     {
                         if (!gauge.CreatureMotifDrawn && CreatureMotif.LevelChecked() && !HasEffect(Buffs.StarryMuse) && GetTargetHPPercent() > creatureStop)
                             return OriginalHook(CreatureMotif);
@@ -503,7 +504,7 @@ namespace XIVSlothCombo.Combos.PvE
                         if (!gauge.LandscapeMotifDrawn && LandscapeMotif.LevelChecked() && !HasEffect(Buffs.StarryMuse) && GetTargetHPPercent() > landscapeStop)
                             return OriginalHook(LandscapeMotif);
 
-                    }*/
+                    }
 
                     // IsMoving logic
                     if (IsMoving && InCombat())
