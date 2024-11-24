@@ -3,7 +3,9 @@ using Dalamud.Game.ClientState.Objects.SubKinds;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Utility.Raii;
+using Dalamud.Utility;
 using ECommons.DalamudServices;
+using ECommons.ExcelServices;
 using ECommons.GameFunctions;
 using ECommons.GameHelpers;
 using ECommons.ImGuiMethods;
@@ -17,13 +19,12 @@ using System.Linq;
 using XIVSlothCombo.Combos;
 using XIVSlothCombo.CustomComboNS;
 using XIVSlothCombo.Data;
+using XIVSlothCombo.Extensions;
 using XIVSlothCombo.Services;
-using Status = Dalamud.Game.ClientState.Statuses.Status;
 using static XIVSlothCombo.CustomComboNS.Functions.CustomComboFunctions;
 using Action = Lumina.Excel.Sheets.Action;
 using ObjectKind = Dalamud.Game.ClientState.Objects.Enums.ObjectKind;
-using Dalamud.Utility;
-using ECommons.ExcelServices;
+using Status = Dalamud.Game.ClientState.Statuses.Status;
 
 namespace XIVSlothCombo.Window.Tabs
 {
@@ -177,6 +178,7 @@ namespace XIVSlothCombo.Window.Tabs
                         if (debugSpell.Value.UnlockLink.RowId != 0)
                             CustomStyleText($"Quest:", $"{Svc.Data.GetExcelSheet<Quest>().GetRow(debugSpell.Value.UnlockLink.RowId).Name} ({(UIState.Instance()->IsUnlockLinkUnlockedOrQuestCompleted(debugSpell.Value.UnlockLink.RowId) ? "Completed" : "Not Completed")})");
                         CustomStyleText($"Base Recast:", $"{debugSpell.Value.Recast100ms / 10f}s");
+                        CustomStyleText($"Current Cast Time:", ActionManager.GetAdjustedCastTime(ActionType.Action, debugSpell.Value.RowId));
                         CustomStyleText($"Max Charges:", $"{debugSpell.Value.MaxCharges}");
                         CustomStyleText($"Range:", $"{debugSpell.Value.Range}");
                         CustomStyleText($"Effect Range:", $"{debugSpell.Value.EffectRange}");
@@ -219,6 +221,10 @@ namespace XIVSlothCombo.Window.Tabs
                 CustomStyleText("In FATE:", InFATE());
                 CustomStyleText("Time in Combat:", CombatEngageDuration().ToString("mm\\:ss"));
                 CustomStyleText("Party Combat Time:", PartyEngageDuration().ToString("mm\\:ss"));
+                CustomStyleText("Limit Break:", LimitBreakValue);
+                CustomStyleText("LBs Ready:", $"1.{IsLB1Ready} 2.{IsLB2Ready} 3.{IsLB3Ready}");
+                CustomStyleText("LB Level:", LimitBreakLevel);
+                CustomStyleText("LB Action:", LimitBreakAction.ActionName());
                 ImGui.Spacing();
 
                 ImGui.Spacing();
@@ -348,7 +354,7 @@ namespace XIVSlothCombo.Window.Tabs
                 ImGui.Text("Party Info");
                 ImGui.Separator();
                 CustomStyleText("Party ID:", Svc.Party.PartyId);
-                CustomStyleText("Party Size:", Svc.Party.Length);
+                CustomStyleText("Party Size:", GetPartyMembers().Count);
                 if (ImGui.CollapsingHeader("Party Members"))
                 {
                     ImGui.Indent();

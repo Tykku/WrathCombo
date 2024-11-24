@@ -25,6 +25,9 @@ namespace XIVSlothCombo.AutoRotation
         static long LastHealAt = 0;
         static long LastRezAt = 0;
 
+        static bool LockedST = false;
+        static bool LockedAoE = false;
+
         static Func<IBattleChara, bool> RezQuery => x => x.IsDead && CustomComboFunctions.FindEffectOnMember(2648, x) == null && CustomComboFunctions.FindEffectOnMember(148, x) == null && x.IsTargetable() && CustomComboFunctions.TimeSpentDead(x.GameObjectId).TotalSeconds > 2;
 
         internal static void Run()
@@ -36,7 +39,7 @@ namespace XIVSlothCombo.AutoRotation
 
             if (Player.Object.CurrentCastTime > 0) return;
 
-            if (!EzThrottler.Throttle("AutoRotController", 150))
+            if (!EzThrottler.Throttle("AutoRotController", 50))
                 return;
 
             if (cfg.HealerSettings.PreEmptiveHoT && Player.Job is Job.CNJ or Job.WHM or Job.AST)
@@ -53,13 +56,13 @@ namespace XIVSlothCombo.AutoRotation
             var healTarget = Player.Object.GetRole() is CombatRole.Healer ? AutoRotationHelper.GetSingleTarget(cfg.HealerRotationMode) : null;
             var aoeheal = Player.Object.GetRole() is CombatRole.Healer && HealerTargeting.CanAoEHeal();
 
-            if (Player.Object.GetRole() is CombatRole.Healer)
+            if (Player.Object.GetRole() is CombatRole.Healer || (Player.Job is Job.SMN or Job.RDM && cfg.HealerSettings.AutoRezDPSJobs))
             {
-                bool needsHeal = healTarget != null || aoeheal;
+                bool needsHeal = (healTarget != null || aoeheal) && Player.Object.GetRole() is CombatRole.Healer;
 
                 if (!needsHeal)
                 {
-                    if (cfg.HealerSettings.AutoCleanse)
+                    if (cfg.HealerSettings.AutoCleanse && Player.Object.GetRole() is CombatRole.Healer)
                     {
                         CleanseParty();
                         if (CustomComboFunctions.GetPartyMembers().Any((x => CustomComboFunctions.HasCleansableDebuff(x))))
@@ -69,7 +72,9 @@ namespace XIVSlothCombo.AutoRotation
                     if (cfg.HealerSettings.AutoRez)
                     {
                         RezParty();
-                        if (CustomComboFunctions.GetPartyMembers().Any(RezQuery))
+                        bool rdmCheck = Player.Job is Job.RDM && CustomComboFunctions.ActionReady(RDM.Verraise) && ActionManager.GetAdjustedCastTime(ActionType.Action, RDM.Verraise) > 0;
+
+                        if (CustomComboFunctions.GetPartyMembers().Any(RezQuery) && !rdmCheck)
                             return;
                     }
                 }
@@ -82,6 +87,7 @@ namespace XIVSlothCombo.AutoRotation
 
                 var attributes = Presets.Attributes[preset.Key];
                 var action = attributes.AutoAction;
+                if ((action.IsAoE && LockedST) || (!action.IsAoE && LockedAoE)) continue;
                 var gameAct = attributes.ReplaceSkill.ActionIDs.First();
                 var sheetAct = Svc.Data.GetExcelSheet<Action>().GetRow(gameAct);
                 var classToJob = CustomComboFunctions.JobIDs.ClassToJob((byte)Player.Job);
@@ -168,16 +174,17 @@ namespace XIVSlothCombo.AutoRotation
             uint resSpell = Player.Job switch
             {
                 Job.CNJ or Job.WHM => WHM.Raise,
-                Job.SCH => SCH.Resurrection,
+                Job.SCH or Job.SMN => SCH.Resurrection,
                 Job.AST => AST.Ascend,
                 Job.SGE => SGE.Egeiro,
+                Job.RDM => RDM.Verraise,
                 _ => throw new NotImplementedException(),
             };
 
             if (ActionManager.Instance()->QueuedActionId == resSpell)
                 ActionManager.Instance()->QueuedActionId = 0;
 
-            if (Player.Object.CurrentMp >= CustomComboFunctions.GetResourceCost(resSpell))
+            if (Player.Object.CurrentMp >= CustomComboFunctions.GetResourceCost(resSpell) && CustomComboFunctions.ActionReady(resSpell) && ActionManager.Instance()->GetActionStatus(ActionType.Action, resSpell) == 0)
             {
                 var timeSinceLastRez = TimeSpan.FromMilliseconds(ActionWatching.TimeSinceLastSuccessfulCast(resSpell));
                 if ((ActionWatching.TimeSinceLastSuccessfulCast(resSpell) != -1f && timeSinceLastRez.TotalSeconds < 4) || Player.Object.IsCasting())
@@ -185,15 +192,35 @@ namespace XIVSlothCombo.AutoRotation
 
                 if (CustomComboFunctions.GetPartyMembers().Where(RezQuery).FindFirst(x => x is not null, out var member))
                 {
-                    if (CustomComboFunctions.ActionReady(All.Swiftcast))
+                    if (Player.Job is Job.RDM)
                     {
-                        ActionManager.Instance()->UseAction(ActionType.Action, All.Swiftcast);
-                        return;
-                    }
+                        if (CustomComboFunctions.ActionReady(All.Swiftcast) && !CustomComboFunctions.HasEffect(RDM.Buffs.Dualcast))
+                        {
+                            ActionManager.Instance()->UseAction(ActionType.Action, All.Swiftcast);
+                            return;
+                        }
 
-                    if (!CustomComboFunctions.IsMoving || CustomComboFunctions.HasEffect(All.Buffs.Swiftcast))
+                        if (ActionManager.GetAdjustedCastTime(ActionType.Action, resSpell) == 0)
+                        {
+                            ActionManager.Instance()->UseAction(ActionType.Action, resSpell, member.GameObjectId);
+                        }
+
+                    }
+                    else
                     {
-                        ActionManager.Instance()->UseAction(ActionType.Action, resSpell, member.GameObjectId);
+                        if (CustomComboFunctions.ActionReady(All.Swiftcast))
+                        {
+                            if (ActionManager.Instance()->GetActionStatus(ActionType.Action, All.Swiftcast) == 0)
+                            {
+                                ActionManager.Instance()->UseAction(ActionType.Action, All.Swiftcast);
+                                return;
+                            }
+                        }
+
+                        if (!CustomComboFunctions.IsMoving || CustomComboFunctions.HasEffect(All.Buffs.Swiftcast))
+                        {
+                            ActionManager.Instance()->UseAction(ActionType.Action, resSpell, member.GameObjectId);
+                        }
                     }
                 }
             }
@@ -329,6 +356,11 @@ namespace XIVSlothCombo.AutoRotation
                         if (ret)
                             LastHealAt = Environment.TickCount64 + castTime;
 
+                        if (outAct is NIN.Ten or NIN.Chi or NIN.Jin or NIN.TenCombo or NIN.ChiCombo or NIN.JinCombo && ret)
+                            LockedAoE = true;
+                        else
+                            LockedAoE = false;
+
                         return ret;
                     }
                 }
@@ -377,9 +409,9 @@ namespace XIVSlothCombo.AutoRotation
                 if (target is null)
                     return false;
 
-                var inRange = ActionManager.GetActionInRangeOrLoS(outAct, Player.GameObject, target.Struct()) != 562;
                 var canUseTarget = ActionManager.CanUseActionOnTarget(outAct, target.Struct());
                 var canUseSelf = ActionManager.CanUseActionOnTarget(outAct, Player.GameObject);
+                var inRange = CustomComboFunctions.IsInLineOfSight(target) && CustomComboFunctions.InActionRange(outAct, target);
 
                 var canUse = canUseSelf || canUseTarget || areaTargeted;
                 if (canUse && inRange)
@@ -389,6 +421,11 @@ namespace XIVSlothCombo.AutoRotation
                     var ret = ActionManager.Instance()->UseAction(ActionType.Action, outAct, canUseTarget ? target.GameObjectId : Player.Object.GameObjectId);
                     if (mode is HealerRotationMode && ret)
                         LastHealAt = Environment.TickCount64 + castTime;
+
+                    if (outAct is NIN.Ten or NIN.Chi or NIN.Jin or NIN.TenCombo or NIN.ChiCombo or NIN.JinCombo && ret)
+                        LockedST = true;
+                    else
+                        LockedST = false;
 
                     return ret;
                 }

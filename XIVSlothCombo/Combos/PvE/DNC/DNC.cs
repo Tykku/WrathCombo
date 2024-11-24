@@ -43,6 +43,7 @@ namespace XIVSlothCombo.Combos.PvE
             // Other
             Peloton = 7557,
             SaberDance = 16005,
+            ClosedPosition = 16006,
             EnAvant = 16010,
             Devilment = 16011,
             ShieldSamba = 16012,
@@ -80,6 +81,7 @@ namespace XIVSlothCombo.Combos.PvE
                 FourFoldFanDance = 2699,
                 // Other
                 Peloton = 1199,
+                ClosedPosition = 1823, 
                 ShieldSamba = 1826,
                 LastDanceReady = 3867,
                 FinishingMoveReady = 3868,
@@ -286,6 +288,16 @@ namespace XIVSlothCombo.Combos.PvE
 
                 if (!InCombat())
                 {
+                    // Dance Partner
+                    if (IsEnabled(CustomComboPreset.DNC_ST_Adv_Partner) &&
+                        ActionReady(ClosedPosition) &&
+                        !HasEffect(Buffs.ClosedPosition) &&
+                        (GetPartyMembers().Count > 1 || HasCompanionPresent()) &&
+                        !(Service.Configuration.AutoActions[CustomComboPreset.DNC_ST_AdvancedMode] &&
+                          Service.Configuration.RotationConfig.Enabled)) // Disabled in Auto-Rotation
+                        // todo: do not disable for auto-rotation, provide targeting
+                        return ClosedPosition;
+
                     // ST Standard Step (Pre-pull)
                     if (IsEnabled(CustomComboPreset.DNC_ST_Adv_SS_Prepull) &&
                         ActionReady(StandardStep) &&
@@ -635,6 +647,21 @@ namespace XIVSlothCombo.Combos.PvE
                     (IsOffCooldown(Flourish) ||
                      GetCooldownRemainingTime(Flourish) > 5) &&
                     !HasEffect(Buffs.TechnicalFinish);
+                #endregion
+
+                #region Prepull
+
+                // Dance Partner
+                if (!InCombat() &&
+                    IsEnabled(CustomComboPreset.DNC_AoE_Adv_Partner) &&
+                    ActionReady(ClosedPosition) &&
+                    !HasEffect(Buffs.ClosedPosition) &&
+                    (GetPartyMembers().Count > 1 || HasCompanionPresent()) &&
+                    !(Service.Configuration.AutoActions[CustomComboPreset.DNC_AoE_AdvancedMode] &&
+                      Service.Configuration.RotationConfig.Enabled)) // Disabled in Auto-Rotation
+                    // todo: do not disable for auto-rotation, provide targeting
+                    return ClosedPosition;
+
                 #endregion
 
                 #region Dance Fills
