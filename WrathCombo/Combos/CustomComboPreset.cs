@@ -760,8 +760,8 @@ public enum CustomComboPreset
         "Turns Perpetual Ray into Sharpened Knife when target is stunned and in melee range.", BLU.JobID)]
     BLU_PerpetualRayStunCombo = 70014,
 
-    [BlueInactive(BLU.SonicBoom, BLU.SharpenedKnife)]
-    [CustomComboInfo("Sonic Boom Melee", "Turns Sonic Boom into Sharpened Knife when in melee range.", BLU.JobID)]
+    [BlueInactive(BLU.SonicBoom, BLU.SharpenedKnife, BLU.GoblinPunch)]
+    [CustomComboInfo("Sonic Boom Melee", "Turns Sonic Boom into Sharpened Knife or Goblin Punch when in melee range.", BLU.JobID)]
     BLU_MeleeCombo = 70016,
 
     [BlueInactive(BLU.MagicHammer)]
