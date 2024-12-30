@@ -86,7 +86,7 @@ namespace WrathCombo.Combos.PvE
         {
             protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.BLU_BuffedSoT;
 
-            protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+            protected override uint Invoke(uint actionID)
             {
                 if (actionID is SongOfTorment)
                 {
@@ -104,7 +104,7 @@ namespace WrathCombo.Combos.PvE
         {
             protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.BLU_Opener;
 
-            protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+            protected override uint Invoke(uint actionID)
             {
                 if (actionID is MoonFlute)
                 {
@@ -168,7 +168,7 @@ namespace WrathCombo.Combos.PvE
         {
             protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.BLU_FinalSting;
 
-            protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+            protected override uint Invoke(uint actionID)
             {
                 if (actionID is FinalSting)
                 {
@@ -210,7 +210,7 @@ namespace WrathCombo.Combos.PvE
         {
             protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.BLU_Ultravibrate;
 
-            protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+            protected override uint Invoke(uint actionID)
             {
                 if (actionID is Ultravibration)
                 {
@@ -236,7 +236,7 @@ namespace WrathCombo.Combos.PvE
         {
             protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.BLU_DebuffCombo;
 
-            protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+            protected override uint Invoke(uint actionID)
             {
                 if (actionID is Devour or Offguard or BadBreath)
                 {
@@ -258,7 +258,7 @@ namespace WrathCombo.Combos.PvE
         {
             protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.BLU_Addle;
 
-            protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+            protected override uint Invoke(uint actionID)
             {
                 return (actionID is MagicHammer && IsOnCooldown(MagicHammer) && IsOffCooldown(All.Addle) && !TargetHasEffect(All.Debuffs.Addle) && !TargetHasEffect(Debuffs.Conked)) ? All.Addle : actionID;
             }
@@ -269,7 +269,7 @@ namespace WrathCombo.Combos.PvE
             protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.BLU_PrimalCombo;
             internal static bool surpanakhaReady = false;
 
-            protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+            protected override uint Invoke(uint actionID)
             {
                 if (actionID is FeatherRain or Eruption)
                 {
@@ -329,7 +329,7 @@ namespace WrathCombo.Combos.PvE
         {
             protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.BLU_KnightCombo;
 
-            protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+            protected override uint Invoke(uint actionID)
             {
                 if (actionID is WhiteKnightsTour or BlackKnightsTour)
                 {
@@ -347,7 +347,7 @@ namespace WrathCombo.Combos.PvE
         {
             protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.BLU_LightHeadedCombo;
 
-            protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+            protected override uint Invoke(uint actionID)
             {
                 if (actionID is PeripheralSynthesis)
                 {
@@ -365,7 +365,7 @@ namespace WrathCombo.Combos.PvE
         {
             protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.BLU_PerpetualRayStunCombo;
 
-            protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+            protected override uint Invoke(uint actionID)
             {
                 return (actionID is PerpetualRay && (TargetHasEffectAny(Debuffs.Stun) || WasLastAction(PerpetualRay)) && IsSpellActive(SharpenedKnife) && InMeleeRange()) ? SharpenedKnife : actionID;
             }
@@ -375,7 +375,7 @@ namespace WrathCombo.Combos.PvE
         {
             protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.BLU_MeleeCombo;
 
-            protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+            protected override uint Invoke(uint actionID)
             {
                 if (actionID is SonicBoom)
                 {
@@ -391,7 +391,7 @@ namespace WrathCombo.Combos.PvE
         {
             protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.BLU_PeatClean;
 
-            protected override uint Invoke(uint actionID, uint lastComboActionID, float comboTime, byte level)
+            protected override uint Invoke(uint actionID)
             {
                 if (actionID is DeepClean)
                 {
@@ -406,7 +406,7 @@ namespace WrathCombo.Combos.PvE
         {
             protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.BLU_NewMoonFluteOpener;
 
-            protected override uint Invoke(uint actionID, uint lastComboActionID, float comboTime, byte level)
+            protected override uint Invoke(uint actionID)
             {
                 if (actionID is MoonFlute)
                 {
