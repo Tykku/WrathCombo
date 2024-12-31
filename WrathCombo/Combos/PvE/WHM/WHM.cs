@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Game.ClientState.Statuses;
+using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using WrathCombo.Combos.PvE.Content;
 using WrathCombo.CustomComboNS;
 using WrathCombo.Data;
@@ -100,7 +101,7 @@ internal partial class WHM
 
         protected override uint Invoke(uint actionID)
         {
-            return actionID is AfflatusSolace && BloodLilies == 3
+            return actionID is AfflatusSolace && gauge.BloodLily == 3
                 ? AfflatusMisery
                 : actionID;
         }
@@ -112,7 +113,7 @@ internal partial class WHM
 
         protected override uint Invoke(uint actionID)
         {
-            return actionID is AfflatusRapture && BloodLilies == 3
+            return actionID is AfflatusRapture && gauge.BloodLily == 3
                 ? AfflatusMisery
                 : actionID;
         }
