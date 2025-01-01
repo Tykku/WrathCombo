@@ -12,7 +12,6 @@ using System.Collections.Generic;
 using System.Linq;
 using WrathCombo.Combos;
 using WrathCombo.Combos.PvE;
-using WrathCombo.CustomComboNS.Functions;
 using WrathCombo.Data;
 using WrathCombo.Extensions;
 using WrathCombo.Services;
@@ -67,7 +66,7 @@ namespace WrathCombo.AutoRotation
             if (!needsHeal)
                 TimeToHeal = null;
 
-            bool actCheck = autoActions.Any(x => x.Key.Attributes().AutoAction.IsHeal && ActionReady(AutoRotationHelper.InvokeCombo(x.Key, x.Key.Attributes())));
+            bool actCheck = autoActions.Any(x => x.Key.Attributes().AutoAction.IsHeal && ActionReady(AutoRotationHelper.InvokeCombo(x.Key, x.Key.Attributes()!)));
             bool canHeal = TimeToHeal is null ? false : (DateTime.Now - TimeToHeal.Value).TotalSeconds >= cfg.HealerSettings.HealDelay && actCheck;
 
             if (Player.Object.CurrentCastTime > 0) return;
