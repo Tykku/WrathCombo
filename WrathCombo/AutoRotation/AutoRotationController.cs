@@ -30,12 +30,35 @@ namespace WrathCombo.AutoRotation
         static long LastHealAt = 0;
         static long LastRezAt = 0;
 
-        static bool LockedST = false;
-        static bool LockedAoE = false;
+        static bool _lockedST = false;
+        static bool _lockedAoE = false;
 
         static DateTime? TimeToHeal;
 
         static Func<IBattleChara, bool> RezQuery => x => x.IsDead && FindEffectOnMember(2648, x) == null && FindEffectOnMember(148, x) == null && x.IsTargetable && TimeSpentDead(x.GameObjectId).TotalSeconds > 2;
+
+        public static bool LockedST
+        {
+            get => _lockedST; 
+            set
+            {
+                if (_lockedST != value)
+                    Svc.Log.Debug($"Locked ST updated to {value}");
+
+                _lockedST = value;
+            }
+        }
+        public static bool LockedAoE
+        {
+            get => _lockedAoE; 
+            set
+            {
+                if (_lockedAoE != value)
+                    Svc.Log.Debug($"Locked AoE updated to {value}");
+
+                _lockedAoE = value;
+            }
+        }
 
         internal static void Run()
         {
@@ -66,7 +89,8 @@ namespace WrathCombo.AutoRotation
             if (!needsHeal)
                 TimeToHeal = null;
 
-            bool actCheck = autoActions.Any(x => x.Key.Attributes().AutoAction.IsHeal && ActionReady(AutoRotationHelper.InvokeCombo(x.Key, x.Key.Attributes()!)));
+            uint _ = 0;
+            bool actCheck = autoActions.Any(x => x.Key.Attributes().AutoAction.IsHeal && ActionReady(AutoRotationHelper.InvokeCombo(x.Key, x.Key.Attributes()!, ref _)));
             bool canHeal = TimeToHeal is null ? false : (DateTime.Now - TimeToHeal.Value).TotalSeconds >= cfg.HealerSettings.HealDelay && actCheck;
 
             if (Player.Object.CurrentCastTime > 0) return;
@@ -101,7 +125,7 @@ namespace WrathCombo.AutoRotation
                 if (ActionManager.Instance()->GetActionStatus(ActionType.Action, gameAct) == 639) continue;
                 var sheetAct = Svc.Data.GetExcelSheet<Action>().GetRow(gameAct);
 
-                var outAct = OriginalHook(AutoRotationHelper.InvokeCombo(preset.Key, attributes));
+                var outAct = OriginalHook(AutoRotationHelper.InvokeCombo(preset.Key, attributes, ref _));
                 if (!CanQueue(outAct)) continue;
                 if (action.IsHeal)
                 {
@@ -368,7 +392,7 @@ namespace WrathCombo.AutoRotation
             {
                 if (attributes.AutoAction.IsHeal)
                 {
-                    uint outAct = OriginalHook(InvokeCombo(preset, attributes, Player.Object));
+                    uint outAct = OriginalHook(InvokeCombo(preset, attributes, ref gameAct, Player.Object));
                     if (ActionManager.Instance()->GetActionStatus(ActionType.Action, outAct) != 0) return false;
                     if (!ActionReady(outAct))
                         return false;
@@ -379,22 +403,17 @@ namespace WrathCombo.AutoRotation
                         if (IsMoving() && castTime > 0)
                             return false;
 
-                        var ret = ActionManager.Instance()->UseAction(ActionType.Action, outAct);
+                        var ret = ActionManager.Instance()->UseAction(ActionType.Action, Service.IconReplacer.getIconHook.IsEnabled ? gameAct : outAct);
 
                         if (ret)
                             LastHealAt = Environment.TickCount64 + castTime;
-
-                        if (outAct is NIN.Ten or NIN.Chi or NIN.Jin or NIN.TenCombo or NIN.ChiCombo or NIN.JinCombo && ret)
-                            LockedAoE = true;
-                        else
-                            LockedAoE = false;
 
                         return ret;
                     }
                 }
                 else
                 {
-                    uint outAct = OriginalHook(InvokeCombo(preset, attributes, Player.Object));
+                    uint outAct = OriginalHook(InvokeCombo(preset, attributes, ref gameAct, Player.Object));
                     if (!CanQueue(outAct)) return false;
                     if (!ActionReady(outAct))
                         return false;
@@ -410,10 +429,17 @@ namespace WrathCombo.AutoRotation
                         if (IsMoving() && castTime > 0)
                             return false;
 
-                        if (mustTarget)
+                        if (mustTarget || cfg.DPSSettings.AlwaysSelectTarget)
                             Svc.Targets.Target = target;
 
-                        return ActionManager.Instance()->UseAction(ActionType.Action, outAct, (mustTarget && target != null) || switched ? target.GameObjectId : Player.Object.GameObjectId);
+                        var ret = ActionManager.Instance()->UseAction(ActionType.Action, Service.IconReplacer.getIconHook.IsEnabled ? gameAct : outAct, (mustTarget && target != null) || switched ? target.GameObjectId : Player.Object.GameObjectId);
+
+                        if (outAct is NIN.Ten or NIN.Chi or NIN.Jin or NIN.TenCombo or NIN.ChiCombo or NIN.JinCombo && ret)
+                            LockedAoE = true;
+                        else
+                            LockedAoE = false;
+
+                        return ret;
                     }
                 }
                 return false;
@@ -425,14 +451,11 @@ namespace WrathCombo.AutoRotation
                 if (target is null)
                     return false;
 
-                var outAct = OriginalHook(InvokeCombo(preset, attributes, target));
+                var outAct = OriginalHook(InvokeCombo(preset, attributes, ref gameAct, target));
                 if (!CanQueue(outAct))
                 {
                     return false;
                 }
-                var castTime = ActionManager.GetAdjustedCastTime(ActionType.Action, outAct);
-                if (IsMoving() && castTime > 0)
-                    return false;
 
                 bool switched = SwitchOnDChole(attributes, outAct, ref target);
 
@@ -446,12 +469,16 @@ namespace WrathCombo.AutoRotation
 
                 var canUse = canUseSelf || canUseTarget || areaTargeted;
 
-                if (canUse)
+                if (canUse || cfg.DPSSettings.AlwaysSelectTarget)
                     Svc.Targets.Target = target;
+
+                var castTime = ActionManager.GetAdjustedCastTime(ActionType.Action, outAct);
+                if (IsMoving() && castTime > 0)
+                    return false;
 
                 if (canUse && (inRange || areaTargeted))
                 {
-                    var ret = ActionManager.Instance()->UseAction(ActionType.Action, outAct, canUseTarget ? target.GameObjectId : Player.Object.GameObjectId);
+                    var ret = ActionManager.Instance()->UseAction(ActionType.Action, Service.IconReplacer.getIconHook.IsEnabled ? gameAct : outAct, canUseTarget ? target.GameObjectId : Player.Object.GameObjectId);
                     if (mode is HealerRotationMode && ret)
                         LastHealAt = Environment.TickCount64 + castTime;
 
@@ -477,7 +504,7 @@ namespace WrathCombo.AutoRotation
                 return false;
             }
 
-            public static uint InvokeCombo(CustomComboPreset preset, Presets.PresetAttributes attributes, IGameObject? optionalTarget = null)
+            public static uint InvokeCombo(CustomComboPreset preset, Presets.PresetAttributes attributes, ref uint originalAct, IGameObject? optionalTarget = null)
             {
                 var outAct = attributes.ReplaceSkill.ActionIDs.FirstOrDefault();
                 foreach (var actToCheck in attributes.ReplaceSkill.ActionIDs)
@@ -487,12 +514,13 @@ namespace WrathCombo.AutoRotation
                     {
                         if (customCombo.TryInvoke(actToCheck, out var changedAct, optionalTarget))
                         {
+                            originalAct = actToCheck;
                             outAct = changedAct;
                             break;
                         }
                     }
                 }
-
+                
                 return outAct;
             }
         }

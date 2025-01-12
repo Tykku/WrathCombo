@@ -32,7 +32,7 @@ namespace WrathCombo.CustomComboNS
 
         public void ProgressOpener(uint actionId)
         {
-            if (actionId == CurrentOpenerAction)
+            if (actionId == CurrentOpenerAction || (AllowUpgradeSteps.Any(x => x == OpenerStep) && OriginalHook(CurrentOpenerAction) == actionId))
             {
                 OpenerStep++;
                 if (OpenerStep > OpenerActions.Count)
@@ -79,6 +79,7 @@ namespace WrathCombo.CustomComboNS
                         else
                             Svc.Log.Information($"Opener Failed at step {OpenerStep}, {CurrentOpenerAction.ActionName()}");
 
+                        if (AllowReopener)
                         ResetOpener();
                     }
 
@@ -116,6 +117,8 @@ namespace WrathCombo.CustomComboNS
         public virtual List<(int[] Steps, uint NewAction, Func<bool> Condition)> SubstitutionSteps { get; set; } = new();
 
         public virtual List<(int[] Steps, int HoldDelay)> PrepullDelays { get; set; } = new();
+
+        public virtual List<int> AllowUpgradeSteps { get; set; } = new();
 
         private int DelayedStep = 0;
         private DateTime DelayedAt;
@@ -166,7 +169,7 @@ namespace WrathCombo.CustomComboNS
                 if (OpenerStep > 1)
                 {
                     var delay = PrepullDelays.FindFirst(x => x.Steps.Any(y => y == DelayedStep && y == OpenerStep), out var hold);
-                    if ((!delay && InCombat() && ActionWatching.TimeSinceLastAction.TotalSeconds >= 5) || (delay && (DateTime.Now - DelayedAt).TotalSeconds > hold.HoldDelay + 5))
+                    if ((!delay && InCombat() && ActionWatching.TimeSinceLastAction.TotalSeconds >= Service.Configuration.OpenerTimeout) || (delay && (DateTime.Now - DelayedAt).TotalSeconds > hold.HoldDelay + Service.Configuration.OpenerTimeout))
                     {
                         CurrentState = OpenerState.FailedOpener;
                         return false; 
