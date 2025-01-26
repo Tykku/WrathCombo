@@ -15,6 +15,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2b91cb13c3ee4e65bead1091ad44470d372e08/8d/560d3363/WHMGauge.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WrathCombo/Combos/CustomComboPreset.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -62,6 +63,7 @@
       <workItem from="1735841311528" duration="2199000" />
       <workItem from="1736645691973" duration="617000" />
       <workItem from="1737216356451" duration="265000" />
+      <workItem from="1737908325389" duration="828000" />
     </task>
     <servers />
   </component>
