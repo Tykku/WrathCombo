@@ -58,6 +58,14 @@ namespace WrathCombo.Core
 
         public bool PerformanceMode = false;
 
+        public int Throttle = 50;
+
+        public double InterruptDelay  = 0.0f;
+
+        public bool OpenToCurrentJob = false;
+
+        public bool OpenToCurrentJobOnSwitch = false;
+
         #endregion
 
         #region AutoAction Settings
@@ -300,8 +308,11 @@ namespace WrathCombo.Core
                 catch (Exception)
                 {
                     retryCount++;
-                    if (retryCount >= 3)
-                        throw;
+                    if (retryCount < 3) continue;
+
+                    PluginLog.Error("Failed to save configuration after 3 retries.");
+                    _isSaving = false;
+                    return;
                 }
             }
 

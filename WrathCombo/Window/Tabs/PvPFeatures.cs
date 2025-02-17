@@ -18,8 +18,6 @@ namespace WrathCombo.Window.Tabs
 
         internal static new void Draw()
         {
-            PvEFeatures.HasToOpenJob = true;
-
             using (var scrolling = ImRaii.Child("scrolling", new Vector2(ImGui.GetContentRegionAvail().X, ImGui.GetContentRegionAvail().Y), true))
             {
                 var indentwidth = 12f.Scale();
@@ -135,10 +133,10 @@ namespace WrathCombo.Window.Tabs
                         continue;
                     }
 
-                    if (conflictOriginals.Any(x => PresetStorage.IsEnabled(x)))
+                    if (conflictOriginals.Any(PresetStorage.IsEnabled))
                     {
-                        Service.Configuration.EnabledActions.Remove(preset);
-                        Service.Configuration.Save();
+                        if (Service.Configuration.EnabledActions.Remove(preset))
+                            Service.Configuration.Save();
 
                         // Keep removed items in the counter
                         var parent = PresetStorage.GetParent(preset) ?? preset;

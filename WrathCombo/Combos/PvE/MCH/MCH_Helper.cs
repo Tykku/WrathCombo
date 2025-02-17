@@ -1,5 +1,6 @@
 ﻿using Dalamud.Game.ClientState.JobGauge.Types;
 using FFXIVClientStructs.FFXIV.Client.Game;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using WrathCombo.CustomComboNS;
@@ -85,7 +86,7 @@ internal partial class MCH
     internal static bool UseQueen(MCHGauge gauge)
     {
         if (!ActionWatching.HasDoubleWeaved() && !HasEffect(Buffs.Wildfire) &&
-            !JustUsed(OriginalHook(Heatblast)) && LevelChecked(OriginalHook(RookAutoturret)) &&
+            !JustUsed(OriginalHook(Heatblast)) && ActionReady(RookAutoturret) &&
             gauge is { IsRobotActive: false, Battery: >= 50 })
         {
             if ((Config.MCH_ST_Adv_Turret_SubOption == 0 ||
@@ -366,9 +367,9 @@ internal partial class MCH
         ];
         internal override UserData ContentCheckConfig => Config.MCH_Balance_Content;
 
-        public override List<(int[] Steps, int HoldDelay)> PrepullDelays { get; set; } =
+        public override List<(int[] Steps, Func<int> HoldDelay)> PrepullDelays { get; set; } =
         [
-            ([2], 4)
+            ([2], () => 4)
         ];
 
         public override bool HasCooldowns()
@@ -439,9 +440,9 @@ internal partial class MCH
         ];
         internal override UserData ContentCheckConfig => Config.MCH_Balance_Content;
 
-        public override List<(int[] Steps, int HoldDelay)> PrepullDelays { get; set; } =
+        public override List<(int[] Steps, Func<int> HoldDelay)> PrepullDelays { get; set; } =
         [
-            ([2], 4)
+            ([2], () => 4)
         ];
 
         public override List<int> DelayedWeaveSteps { get; set; } =

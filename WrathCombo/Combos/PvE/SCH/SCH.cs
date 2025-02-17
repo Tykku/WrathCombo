@@ -372,20 +372,17 @@ internal static partial class SCH
 
             // Lucid Dreaming
             if (IsEnabled(CustomComboPreset.SCH_AoE_Heal_Lucid)
-                && All.CanUseLucid(actionID, Config.SCH_AoE_Heal_LucidOption, true))
+                && All.CanUseLucid(Config.SCH_AoE_Heal_LucidOption, true))
                 return All.LucidDreaming;
 
+            float averagePartyHP = GetPartyAvgHPPercent();
             for (int i = 0; i < Config.SCH_AoE_Heals_Priority.Count; i++)
             {
                 int index = Config.SCH_AoE_Heals_Priority.IndexOf(i + 1);
                 int config = GetMatchingConfigAoE(index, out uint spell, out bool enabled);
 
-                if (enabled)
-                {
-                    if (GetPartyAvgHPPercent() <= config &&
-                        ActionReady(spell))
-                        return spell;
-                }
+                if (enabled && averagePartyHP <= config && ActionReady(spell))
+                    return spell;
             }
 
             return actionID;

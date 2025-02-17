@@ -251,7 +251,7 @@ internal partial class WHM
                 return All.Esuna;
 
             if (IsEnabled(CustomComboPreset.WHM_STHeals_Lucid) &&
-                All.CanUseLucid(actionID, Config.WHM_STHeals_Lucid))
+                All.CanUseLucid(Config.WHM_STHeals_Lucid))
                 return All.LucidDreaming;
 
             foreach (int prio in Config.WHM_ST_Heals_Priority.Items.OrderBy(x => x))
@@ -324,8 +324,11 @@ internal partial class WHM
 
             if (CanSpellWeave() || IsMoving())
             {
+                if (ActionReady(Glare4))
+                    return OriginalHook(Glare4);
+
                 if (IsEnabled(CustomComboPreset.WHM_AoE_DPS_PresenceOfMind) && ActionReady(PresenceOfMind))
-                    return PresenceOfMind;
+                    return OriginalHook(PresenceOfMind);
 
                 if (IsEnabled(CustomComboPreset.WHM_AoE_DPS_Lucid) && ActionReady(All.LucidDreaming) &&
                     LocalPlayer.CurrentMp <= Config.WHM_AoEDPS_Lucid)

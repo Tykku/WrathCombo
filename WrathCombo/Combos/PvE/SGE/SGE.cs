@@ -215,7 +215,7 @@ internal partial class SGE
 
             // Lucid Dreaming
             if (IsEnabled(CustomComboPreset.SGE_ST_DPS_Lucid) &&
-                All.CanUseLucid(actionID, Config.SGE_ST_DPS_Lucid))
+                All.CanUseLucid(Config.SGE_ST_DPS_Lucid))
                 return All.LucidDreaming;
 
             // Variant
@@ -443,23 +443,15 @@ internal partial class SGE
                 !Gauge.HasAddersgall())
                 return Rhizomata;
 
+            float averagePartyHP = GetPartyAvgHPPercent();
             for (int i = 0; i < Config.SGE_AoE_Heals_Priority.Count; i++)
             {
                 int index = Config.SGE_AoE_Heals_Priority.IndexOf(i + 1);
                 int config = GetMatchingConfigAoE(index, out uint spell, out bool enabled);
 
-                if (enabled)
-                {
-                    if (GetPartyAvgHPPercent() <= config &&
-                        ActionReady(spell))
-                        return spell;
-                }
+                if (enabled && averagePartyHP <= config && ActionReady(spell))
+                    return spell;
             }
-
-            if (IsEnabled(CustomComboPreset.SGE_AoE_Heal_EPrognosis) && LevelChecked(Eukrasia) &&
-                (IsEnabled(CustomComboPreset.SGE_AoE_Heal_EPrognosis_IgnoreShield) ||
-                 FindEffect(Buffs.EukrasianPrognosis) is null))
-                return Eukrasia;
 
             return actionID;
         }

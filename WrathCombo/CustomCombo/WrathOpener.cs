@@ -4,7 +4,10 @@ using ECommons.GameHelpers;
 using ECommons.Logging;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using WrathCombo.Combos.PvE;
 using WrathCombo.Combos.PvE.Enums;
 using WrathCombo.CustomComboNS.Functions;
@@ -23,7 +26,7 @@ namespace WrathCombo.CustomComboNS
 
         private void UpdateOpener(Dalamud.Plugin.Services.IFramework framework)
         {
-            if (!Service.IconReplacer.getIconHook.IsEnabled)
+            if (!Service.ActionReplacer.getActionHook.IsEnabled)
             {
                 uint _ = 0;
                 FullOpener(ref _);
@@ -110,14 +113,20 @@ namespace WrathCombo.CustomComboNS
 
         public virtual List<(int[] Steps, uint NewAction, Func<bool> Condition)> SubstitutionSteps { get; set; } = new();
 
-        public virtual List<(int[] Steps, int HoldDelay)> PrepullDelays { get; set; } = new();
+        public virtual List<(int[] Steps, Func<int> HoldDelay)> PrepullDelays { get; set; } = new();
 
         public virtual List<int> AllowUpgradeSteps { get; set; } = new();
 
         private int DelayedStep = 0;
         private DateTime DelayedAt;
 
-        public uint CurrentOpenerAction { get; set; }
+        public uint CurrentOpenerAction { get; 
+            set 
+            {
+                if (value != All.SavageBlade)
+                    field = value;
+            } 
+        }
         public uint PreviousOpenerAction { get; set; }
 
         public abstract int MinOpenerLevel { get; }
@@ -163,7 +172,7 @@ namespace WrathCombo.CustomComboNS
                 if (OpenerStep > 1)
                 {
                     var delay = PrepullDelays.FindFirst(x => x.Steps.Any(y => y == DelayedStep && y == OpenerStep), out var hold);
-                    if ((!delay && InCombat() && ActionWatching.TimeSinceLastAction.TotalSeconds >= Service.Configuration.OpenerTimeout) || (delay && (DateTime.Now - DelayedAt).TotalSeconds > hold.HoldDelay + Service.Configuration.OpenerTimeout))
+                    if ((!delay && InCombat() && ActionWatching.TimeSinceLastAction.TotalSeconds >= Service.Configuration.OpenerTimeout) || (delay && (DateTime.Now - DelayedAt).TotalSeconds > hold.HoldDelay() + Service.Configuration.OpenerTimeout))
                     {
                         CurrentState = OpenerState.FailedOpener;
                         return false; 
@@ -178,7 +187,7 @@ namespace WrathCombo.CustomComboNS
                     {
                         if (!CanDelayedWeave())
                         {
-                            actionID = 11;
+                            actionID = All.SavageBlade;
                             return true;
                         }
                     }
@@ -202,10 +211,10 @@ namespace WrathCombo.CustomComboNS
                             DelayedStep = OpenerStep;
                         }
 
-                        if ((DateTime.Now - DelayedAt).TotalSeconds < HoldDelay && !PartyInCombat())
+                        if ((DateTime.Now - DelayedAt).TotalSeconds < HoldDelay() && !PartyInCombat())
                         {
                             ActionWatching.TimeLastActionUsed = DateTime.Now; //Hacky workaround for TN jobs
-                            actionID = 11;
+                            actionID = All.SavageBlade;
                             return true;
                         }
                     }
@@ -216,7 +225,8 @@ namespace WrathCombo.CustomComboNS
                         CurrentOpenerAction = OpenerActions[OpenerStep - 1];
                     }
 
-                    while (OpenerStep > 1 && !ActionReady(CurrentOpenerAction) && ActionWatching.TimeSinceLastAction.TotalSeconds > Math.Max(3, GCDTotal))
+                    while (OpenerStep > 1 && !ActionReady(CurrentOpenerAction) &&
+                           ActionWatching.TimeSinceLastAction.TotalSeconds > Math.Max(1.5, GCDTotal))
                     {
                         if (OpenerStep >= OpenerActions.Count)
                             break;

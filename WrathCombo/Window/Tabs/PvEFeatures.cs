@@ -1,10 +1,14 @@
 ﻿using Dalamud.Interface.Textures.TextureWraps;
 using Dalamud.Interface.Utility;
 using Dalamud.Interface.Utility.Raii;
+using ECommons.ExcelServices;
+using ECommons.GameHelpers;
 using ECommons.ImGuiMethods;
 using ImGuiNET;
 using System.Linq;
 using System.Numerics;
+using System.Reflection.Metadata.Ecma335;
+using WrathCombo.Combos.PvE;
 using WrathCombo.Core;
 using WrathCombo.Services;
 using WrathCombo.Window.Functions;
@@ -14,14 +18,12 @@ namespace WrathCombo.Window.Tabs
 {
     internal class PvEFeatures : ConfigWindow
     {
-        //internal static Dictionary<string, bool> showHeader = new Dictionary<string, bool>();
-
-        internal static bool HasToOpenJob = true;
         internal static string OpenJob = string.Empty;
+
         internal static new void Draw()
         {
             //#if !DEBUG
-            if (IconReplacer.ClassLocked())
+            if (ActionReplacer.ClassLocked())
             {
                 ImGui.TextWrapped("Equip your job stone to re-unlock features.");
                 return;
@@ -114,7 +116,7 @@ namespace WrathCombo.Window.Tabs
                             {
                                 if (ImGui.BeginTabItem("Normal"))
                                 {
-                                    DrawHeadingContents(OpenJob, i);
+                                    DrawHeadingContents(OpenJob);
                                     ImGui.EndTabItem();
                                 }
 
@@ -175,7 +177,7 @@ namespace WrathCombo.Window.Tabs
             }
         }
 
-        internal static void DrawHeadingContents(string jobName, int i)
+        internal static void DrawHeadingContents(string jobName)
         {
             if (!Messages.PrintBLUMessage(jobName)) return;
 
@@ -198,14 +200,14 @@ namespace WrathCombo.Window.Tabs
                         continue;
                     }
 
-                    if (conflictOriginals.Any(x => PresetStorage.IsEnabled(x)))
+                    if (conflictOriginals.Any(PresetStorage.IsEnabled))
                     {
-                        Service.Configuration.EnabledActions.Remove(preset);
-                        Service.Configuration.Save();
+                        if (Service.Configuration.EnabledActions.Remove(preset))
+                            Service.Configuration.Save();
 
                         // Keep removed items in the counter
                         var parent = PresetStorage.GetParent(preset) ?? preset;
-                        i += 1 + Presets.AllChildren(presetChildren[parent]);
+                        currentPreset += 1 + Presets.AllChildren(presetChildren[parent]);
                     }
 
                     else
@@ -223,6 +225,27 @@ namespace WrathCombo.Window.Tabs
             }
         }
 
-        internal static string? HeaderToOpen;
+        internal static void OpenToCurrentJob(bool onJobChange)
+        {
+            if ((!onJobChange || !Service.Configuration.OpenToCurrentJobOnSwitch) &&
+                (onJobChange || !Service.Configuration.OpenToCurrentJob ||
+                 !Player.Available)) return;
+
+            if (Player.Job.IsDoh())
+                return;
+
+            if (Player.Job.IsDol())
+            {
+                OpenJob = groupedPresets
+                    .FirstOrDefault(x => x.Value.Any(y => y.Info.JobID == DOL.JobID)).Key;
+                return;
+            }
+
+            OpenJob = groupedPresets
+                .FirstOrDefault(x =>
+                    x.Value.Any(y => y.Info.JobShorthand == Player.Job.ToString()))
+                .Key;
+
+        }
     }
 }
