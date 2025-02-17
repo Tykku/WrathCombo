@@ -47,7 +47,8 @@ internal partial class BLU
         BreathOfMagic = 34567,
         MortalFlame = 34579,
         PeatPelt = 34569,
-        DeepClean = 34570;
+        DeepClean = 34570,
+        GoblinPunch = 34563;
 
     public static class Buffs
     {
@@ -371,7 +372,17 @@ internal partial class BLU
     {
         protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.BLU_MeleeCombo;
 
-        protected override uint Invoke(uint actionID) => (actionID is SonicBoom && GetTargetDistance() <= 3 && IsSpellActive(SharpenedKnife)) ? SharpenedKnife : actionID;
+        protected override uint Invoke(uint actionID)
+        {
+            // Check if actionID is SonicBoom, the target is within a distance of 3, and either SharpenedKnife or GoblinPunch is active
+            if (actionID is SonicBoom && GetTargetDistance() <= 3)
+            {
+                // Return SharpenedKnife if it's active, otherwise return GoblinPunch if it's active
+                return IsSpellActive(SharpenedKnife) ? SharpenedKnife : (IsSpellActive(GoblinPunch) ? GoblinPunch : actionID);
+            }
+
+            return actionID;  // Return the original actionID if conditions are not met
+        }
     }
 
     internal class BLU_PeatClean : CustomCombo

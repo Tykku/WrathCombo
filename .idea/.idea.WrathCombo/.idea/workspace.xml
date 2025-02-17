@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="621e58c7-ff10-441a-8fc4-0fc02c41459b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.WrathCombo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WrathCombo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WrathCombo/Combos/PvE/WHM/WHM_Helper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/Combos/PvE/WHM/WHM_Helper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/Combos/PvE/BLU/BLU.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/Combos/PvE/BLU/BLU.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +19,15 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2b91cb13c3ee4e65bead1091ad44470d372e08/8d/560d3363/WHMGauge.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WrathCombo/Combos/CustomComboPreset.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Plugins/WrathCombo/WrathCombo/Combos/PvE/BLU/BLU.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Plugins/WrathCombo/WrathCombo/Combos/PvE/BLU/BLU.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Plugins/WrathCombo/WrathCombo/Combos/PvE/BLU/BLU.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Plugins/WrathCombo/WrathCombo/Combos/PvE/BLU/BLU.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Plugins/WrathCombo/WrathCombo/Combos/PvE/BLU/BLU.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Plugins/WrathCombo/WrathCombo/Combos/PvE/BLU/BLU.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Plugins/WrathCombo/WrathCombo/Combos/PvE/BLU/BLU.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Plugins/WrathCombo/WrathCombo/Combos/PvE/BLU/BLU.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Plugins/WrathCombo/WrathCombo/Combos/PvE/BLU/BLU.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -67,7 +76,7 @@
       <workItem from="1736645691973" duration="617000" />
       <workItem from="1737216356451" duration="265000" />
       <workItem from="1737908325389" duration="828000" />
-      <workItem from="1739753452334" duration="933000" />
+      <workItem from="1739753452334" duration="2666000" />
     </task>
     <servers />
   </component>
