@@ -1,7 +1,14 @@
-﻿using Dalamud.Game.ClientState.Objects.Enums;
+﻿#region
+
+using System;
+using System.Linq;
+using System.Numerics;
+using System.Text;
+using Dalamud.Game.ClientState.Objects.Enums;
 using Dalamud.Game.ClientState.Objects.SubKinds;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Interface.Colors;
+using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Utility;
 using ECommons.DalamudServices;
@@ -9,31 +16,27 @@ using ECommons.ExcelServices;
 using ECommons.GameFunctions;
 using ECommons.GameHelpers;
 using ECommons.ImGuiMethods;
+using ECommons.Logging;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using ImGuiNET;
 using Lumina.Excel.Sheets;
 using Newtonsoft.Json;
-using System;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using Dalamud.Interface.Components;
-using ECommons.Logging;
 using WrathCombo.AutoRotation;
 using WrathCombo.Core;
 using WrathCombo.CustomComboNS;
 using WrathCombo.Data;
 using WrathCombo.Extensions;
 using WrathCombo.Services;
+using WrathCombo.Services.IPC_Subscriber;
 using WrathCombo.Services.IPC;
 using static WrathCombo.CustomComboNS.Functions.CustomComboFunctions;
 using Action = Lumina.Excel.Sheets.Action;
 using ObjectKind = Dalamud.Game.ClientState.Objects.Enums.ObjectKind;
 using Status = Dalamud.Game.ClientState.Statuses.Status;
-using WrathCombo.Services.IPC_Subscriber;
-using FFXIVClientStructs.FFXIV.Client.Game.Control;
+
+#endregion
 
 namespace WrathCombo.Window.Tabs
 {
@@ -76,11 +79,13 @@ namespace WrathCombo.Window.Tabs
                     var config = JsonConvert.DeserializeObject<PluginConfiguration>(decode);
                     if (config != null)
                     {
+                        DebugConfig = true;
                         _previousConfig = Service.Configuration;
                         Service.Configuration = config;
+                        P.IPC = Provider.InitAsync().Result;
                         AutoRotationController.cfg = null;
+                        UpdateCaches(true, true, false);
                         _debugError = "";
-                        DebugConfig = true;
                     }
                 }
                 catch (Exception ex)
@@ -90,6 +95,7 @@ namespace WrathCombo.Window.Tabs
                         $"Failed to read debug configuration.\n{ex.Message}\n{ex.StackTrace}");
                 }
             }
+
             ImGuiComponents.HelpMarker(
                 "Paste a base64 encoded configuration here to load it into the plugin." +
                 "\nThis comes from a debug file." +
@@ -106,7 +112,10 @@ namespace WrathCombo.Window.Tabs
 
             var LocalPlayer = Svc.ClientState.LocalPlayer;
             var target = Svc.Targets.Target;
-            uint[] statusBlacklist = [360, 361, 362, 363, 364, 365, 366, 367, 368]; // Duration will not be displayed for these status effects
+            uint[] statusBlacklist =
+            [
+                360, 361, 362, 363, 364, 365, 366, 367, 368
+            ]; // Duration will not be displayed for these status effects
 
             // Custom Styling
             static void CustomStyleText(string label, object? value)
@@ -117,6 +126,7 @@ namespace WrathCombo.Window.Tabs
                     ImGui.TextUnformatted(label);
                     ImGui.SameLine(0, 4f);
                 }
+
                 ImGui.PushStyleColor(ImGuiCol.Text, ImGuiColors.DalamudGrey);
                 ImGui.NextColumn();
                 ImGui.TextUnformatted(value?.ToString() ?? "");
@@ -132,13 +142,13 @@ namespace WrathCombo.Window.Tabs
                 {
                     foreach (Status? status in LocalPlayer.StatusList)
                     {
-                        float buffDuration = GetBuffRemainingTime((ushort)status.StatusId, false);
+                        float buffDuration = GetBuffRemainingTime((ushort) status.StatusId, false);
                         string formattedDuration = "";
                         if (buffDuration != 0 && !statusBlacklist.Contains(status.StatusId))
                         {
                             if (buffDuration >= 60)
                             {
-                                int minutes = (int)(buffDuration / 60);
+                                int minutes = (int) (buffDuration / 60);
                                 formattedDuration = $"{minutes}m";
                             }
                             else formattedDuration = $"{buffDuration:F1}s";
@@ -147,11 +157,13 @@ namespace WrathCombo.Window.Tabs
                         // Null Check (Status Name)
                         if (!string.IsNullOrEmpty(ActionWatching.GetStatusName(status.StatusId)))
                         {
-                            CustomStyleText(ActionWatching.GetStatusName(status.StatusId) + ":", $"{status.StatusId} P: {status.Param}, {formattedDuration}");
+                            CustomStyleText(ActionWatching.GetStatusName(status.StatusId) + ":",
+                                $"{status.StatusId} P: {status.Param}, {formattedDuration}");
                         }
                         else CustomStyleText("", status.StatusId);
                     }
                 }
+
                 if (ImGui.CollapsingHeader("Player Info"))
                 {
                     CustomStyleText("Job:",
@@ -278,13 +290,13 @@ namespace WrathCombo.Window.Tabs
                             else CustomStyleText("", status.StatusId);
 
                             // Duration + Blacklist Check
-                            float debuffDuration = GetDebuffRemainingTime((ushort)status.StatusId, false);
+                            float debuffDuration = GetDebuffRemainingTime((ushort) status.StatusId, false);
                             if (debuffDuration != 0 && !statusBlacklist.Contains(status.StatusId))
                             {
                                 string formattedDuration;
                                 if (debuffDuration >= 60)
                                 {
-                                    int minutes = (int)(debuffDuration / 60);
+                                    int minutes = (int) (debuffDuration / 60);
                                     formattedDuration = $"{minutes}m";
                                 }
                                 else formattedDuration = $"{debuffDuration:F1}s";
@@ -293,9 +305,9 @@ namespace WrathCombo.Window.Tabs
                                 CustomStyleText("", $"({formattedDuration})");
                             }
                         }
-
                     }
                 }
+
                 if (ImGui.CollapsingHeader("Target Info"))
                 {
                     CustomStyleText("ObjectId:", target?.GameObjectId);
@@ -326,7 +338,7 @@ namespace WrathCombo.Window.Tabs
                         var enemies = Svc.Objects
                             .Where(x =>
                                 x.ObjectKind == ObjectKind.BattleNpc &&
-                                x is { IsTargetable: true, IsDead: false }).Cast<IBattleNpc>()
+                                x is {IsTargetable: true, IsDead: false}).Cast<IBattleNpc>()
                             .Where(x => x.BattleNpcKind is BattleNpcSubKind.Enemy
                                 or BattleNpcSubKind.BattleNpcPart).ToList();
                         foreach (var enemy in enemies)
@@ -363,7 +375,7 @@ namespace WrathCombo.Window.Tabs
                             {
                                 CustomStyleText("Job:",
                                     member.BattleChara.ClassJob.Value.Abbreviation);
-                                CustomStyleText($"HP:",
+                                CustomStyleText("HP:",
                                     $"{member.CurrentHP}/{member.BattleChara.MaxHp}");
                                 CustomStyleText("MP:",
                                     $"{member.CurrentMP}/{member.BattleChara.MaxMp}");
@@ -382,10 +394,14 @@ namespace WrathCombo.Window.Tabs
 
                 #region Actions
 
-                var actions = Svc.Data.GetExcelSheet<Action>().Where(x => x.ClassJobLevel > 0 && x.ClassJobCategory.RowId != 1 && x.ClassJobCategory.Value.IsJobInCategory(Player.Job)).OrderBy(x => x.ClassJobLevel);
+                var actions = Svc.Data.GetExcelSheet<Action>()
+                    .Where(x => x.ClassJobLevel > 0 && x.ClassJobCategory.RowId != 1 &&
+                                x.ClassJobCategory.Value.IsJobInCategory(Player.Job)).OrderBy(x => x.ClassJobLevel);
                 if (ImGui.CollapsingHeader("Individual Action Info"))
                 {
-                    string prev = _debugSpell == null ? "Select Action" : $"({_debugSpell.Value.RowId}) Lv.{_debugSpell.Value.ClassJobLevel}. {_debugSpell.Value.Name} - {(_debugSpell.Value.IsPvP ? "PvP" : "Normal")}";
+                    string prev = _debugSpell == null
+                        ? "Select Action"
+                        : $"({_debugSpell.Value.RowId}) Lv.{_debugSpell.Value.ClassJobLevel}. {_debugSpell.Value.Name} - {(_debugSpell.Value.IsPvP ? "PvP" : "Normal")}";
                     ImGuiEx.SetNextItemFullWidth();
                     using (var comboBox = ImRaii.Combo("###ActionCombo", prev))
                     {
@@ -398,7 +414,9 @@ namespace WrathCombo.Window.Tabs
 
                             foreach (var act in actions)
                             {
-                                if (ImGui.Selectable($"({act.RowId}) Lv.{act.ClassJobLevel}. {act.Name} - {(act.IsPvP ? "PvP" : "Normal")}", _debugSpell?.RowId == act.RowId))
+                                if (ImGui.Selectable(
+                                        $"({act.RowId}) Lv.{act.ClassJobLevel}. {act.Name} - {(act.IsPvP ? "PvP" : "Normal")}",
+                                        _debugSpell?.RowId == act.RowId))
                                 {
                                     _debugSpell = act;
                                 }
@@ -408,61 +426,81 @@ namespace WrathCombo.Window.Tabs
 
                     if (_debugSpell != null)
                     {
-                        var actionStatus = ActionManager.Instance()->GetActionStatus(ActionType.Action, _debugSpell.Value.RowId);
-                        var icon = Svc.Texture.GetFromGameIcon(new(_debugSpell.Value.Icon)).GetWrapOrEmpty().ImGuiHandle;
+                        var actionStatus =
+                            ActionManager.Instance()->GetActionStatus(ActionType.Action, _debugSpell.Value.RowId);
+                        var icon = Svc.Texture.GetFromGameIcon(new(_debugSpell.Value.Icon)).GetWrapOrEmpty()
+                            .ImGuiHandle;
                         ImGui.Image(icon, new Vector2(60f.Scale(), 60f.Scale()));
                         ImGui.SameLine();
                         ImGui.Image(icon, new Vector2(30f.Scale(), 30f.Scale()));
-                        CustomStyleText($"Action Status:", $"{actionStatus} ({Svc.Data.GetExcelSheet<LogMessage>().GetRow(actionStatus).Text})");
-                        CustomStyleText($"Action Type:", _debugSpell.Value.ActionCategory.Value.Name);
+                        CustomStyleText("Action Status:",
+                            $"{actionStatus} ({Svc.Data.GetExcelSheet<LogMessage>().GetRow(actionStatus).Text})");
+                        CustomStyleText("Action Type:", _debugSpell.Value.ActionCategory.Value.Name);
                         if (_debugSpell.Value.UnlockLink.RowId != 0)
-                            CustomStyleText($"Quest:", $"{Svc.Data.GetExcelSheet<Quest>().GetRow(_debugSpell.Value.UnlockLink.RowId).Name} ({(UIState.Instance()->IsUnlockLinkUnlockedOrQuestCompleted(_debugSpell.Value.UnlockLink.RowId) ? "Completed" : "Not Completed")})");
-                        CustomStyleText($"Base Recast:", $"{_debugSpell.Value.Recast100ms / 10f}s");
+                            CustomStyleText("Quest:",
+                                $"{Svc.Data.GetExcelSheet<Quest>().GetRow(_debugSpell.Value.UnlockLink.RowId).Name} ({(UIState.Instance()->IsUnlockLinkUnlockedOrQuestCompleted(_debugSpell.Value.UnlockLink.RowId) ? "Completed" : "Not Completed")})");
+                        CustomStyleText("Base Recast:", $"{_debugSpell.Value.Recast100ms / 10f}s");
                         CustomStyleText("Original Hook:", OriginalHook(_debugSpell.Value.RowId).ActionName());
-                        CustomStyleText($"Cooldown Total:", $"{ActionManager.Instance()->GetRecastTime(ActionType.Action, _debugSpell.Value.RowId)}");
-                        CustomStyleText($"Current Cooldown:", GetCooldown(_debugSpell.Value.RowId).CooldownRemaining);
-                        CustomStyleText($"Current Cast Time:", ActionManager.GetAdjustedCastTime(ActionType.Action, _debugSpell.Value.RowId));
-                        CustomStyleText($"Max Charges:", $"{_debugSpell.Value.MaxCharges}");
-                        CustomStyleText($"Charges (Level):", $"{GetCooldown(_debugSpell.Value.RowId).MaxCharges}");
-                        CustomStyleText($"Range:", $"{ActionWatching.GetActionRange(_debugSpell.Value.RowId)}");
-                        CustomStyleText($"Effect Range:", $"{_debugSpell.Value.EffectRange}");
-                        CustomStyleText($"Can Target Hostile:", $"{_debugSpell.Value.CanTargetHostile}");
-                        CustomStyleText($"Can Target Self:", $"{_debugSpell.Value.CanTargetSelf}");
-                        CustomStyleText($"Can Target Friendly:", $"{_debugSpell.Value.CanTargetAlly}");
-                        CustomStyleText($"Can Target Party:", $"{_debugSpell.Value.CanTargetParty}");
-                        CustomStyleText($"Can Target Area:", $"{_debugSpell.Value.TargetArea}");
-                        CustomStyleText($"Cast Type:", $"{_debugSpell.Value.CastType}");
+                        CustomStyleText("Cooldown Total:",
+                            $"{ActionManager.Instance()->GetRecastTime(ActionType.Action, _debugSpell.Value.RowId)}");
+                        CustomStyleText("Current Cooldown:", GetCooldown(_debugSpell.Value.RowId).CooldownRemaining);
+                        CustomStyleText("Current Cast Time:",
+                            ActionManager.GetAdjustedCastTime(ActionType.Action, _debugSpell.Value.RowId));
+                        CustomStyleText("Max Charges:", $"{_debugSpell.Value.MaxCharges}");
+                        CustomStyleText("Charges (Level):", $"{GetCooldown(_debugSpell.Value.RowId).MaxCharges}");
+                        CustomStyleText("Range:", $"{ActionWatching.GetActionRange(_debugSpell.Value.RowId)}");
+                        CustomStyleText("Effect Range:", $"{_debugSpell.Value.EffectRange}");
+                        CustomStyleText("Can Target Hostile:", $"{_debugSpell.Value.CanTargetHostile}");
+                        CustomStyleText("Can Target Self:", $"{_debugSpell.Value.CanTargetSelf}");
+                        CustomStyleText("Can Target Friendly:", $"{_debugSpell.Value.CanTargetAlly}");
+                        CustomStyleText("Can Target Party:", $"{_debugSpell.Value.CanTargetParty}");
+                        CustomStyleText("Can Target Area:", $"{_debugSpell.Value.TargetArea}");
+                        CustomStyleText("Cast Type:", $"{_debugSpell.Value.CastType}");
                         CustomStyleText("Can Queue:", $"{CanQueue(_debugSpell.Value.RowId)}");
                         if (_debugSpell.Value.EffectRange > 0)
-                            CustomStyleText($"Targets Hit:", $"{NumberOfEnemiesInRange(_debugSpell.Value.RowId, CurrentTarget)}");
+                            CustomStyleText("Targets Hit:",
+                                $"{NumberOfEnemiesInRange(_debugSpell.Value.RowId, CurrentTarget)}");
 
                         if (ActionWatching.ActionTimestamps.ContainsKey(_debugSpell.Value.RowId))
-                            CustomStyleText($"Time Since Last Use:", $"{(Environment.TickCount64 - ActionWatching.ActionTimestamps[_debugSpell.Value.RowId]) / 1000f:F2}");
+                            CustomStyleText("Time Since Last Use:",
+                                $"{(Environment.TickCount64 - ActionWatching.ActionTimestamps[_debugSpell.Value.RowId]) / 1000f:F2}");
 
                         if (ActionWatching.LastSuccessfulUseTime.ContainsKey(_debugSpell.Value.RowId))
-                            CustomStyleText($"Last Successful Cast:", $"{ActionWatching.TimeSinceLastSuccessfulCast(_debugSpell.Value.RowId) / 1000f:F2}");
+                            CustomStyleText("Last Successful Cast:",
+                                $"{ActionWatching.TimeSinceLastSuccessfulCast(_debugSpell.Value.RowId) / 1000f:F2}");
 
                         if (Svc.Targets.Target != null)
                         {
-                            var inRange = ActionManager.GetActionInRangeOrLoS(_debugSpell.Value.RowId, (GameObject*)LocalPlayer.Address, (GameObject*)Svc.Targets.Target.Address);
-                            CustomStyleText("InRange or LoS:", inRange == 0 ? "In range and in line of sight" : $"{inRange}: {Svc.Data.GetExcelSheet<LogMessage>().GetRow(inRange).Text}");
-                            var canUseOnTarget = ActionManager.CanUseActionOnTarget(_debugSpell.Value.RowId, Svc.Targets.Target.Struct());
-                            CustomStyleText($"Can Use on Target:", canUseOnTarget);
+                            var inRange = ActionManager.GetActionInRangeOrLoS(_debugSpell.Value.RowId,
+                                (GameObject*) LocalPlayer.Address, (GameObject*) Svc.Targets.Target.Address);
+                            CustomStyleText("InRange or LoS:",
+                                inRange == 0
+                                    ? "In range and in line of sight"
+                                    : $"{inRange}: {Svc.Data.GetExcelSheet<LogMessage>().GetRow(inRange).Text}");
+                            var canUseOnTarget = ActionManager.CanUseActionOnTarget(_debugSpell.Value.RowId,
+                                Svc.Targets.Target.Struct());
+                            CustomStyleText("Can Use on Target:", canUseOnTarget);
                         }
-                        var canUseOnSelf = ActionManager.CanUseActionOnTarget(_debugSpell.Value.RowId, Player.GameObject);
-                        CustomStyleText($"Can Use on Self:", canUseOnSelf);
+
+                        var canUseOnSelf =
+                            ActionManager.CanUseActionOnTarget(_debugSpell.Value.RowId, Player.GameObject);
+                        CustomStyleText("Can Use on Self:", canUseOnSelf);
 
                         Util.ShowObject(_debugSpell.Value);
                     }
                 }
+
                 if (ImGui.CollapsingHeader("ActionReady Info"))
                 {
                     foreach (var act in actions)
                     {
-                        var status = ActionManager.Instance()->GetActionStatus(ActionType.Action, act.RowId, checkRecastActive: false, checkCastingActive: false);
-                        CustomStyleText(act.Name.ExtractText(), $"{ActionReady(act.RowId)}, {status} ({Svc.Data.GetExcelSheet<LogMessage>().GetRow(status).Text})");
+                        var status = ActionManager.Instance()->GetActionStatus(ActionType.Action, act.RowId,
+                            checkRecastActive: false, checkCastingActive: false);
+                        CustomStyleText(act.Name.ExtractText(),
+                            $"{ActionReady(act.RowId)}, {status} ({Svc.Data.GetExcelSheet<LogMessage>().GetRow(status).Text})");
                     }
                 }
+
                 if (ImGui.CollapsingHeader("Action Info"))
                 {
                     ImGui.Text("Action Info");
@@ -550,10 +588,11 @@ namespace WrathCombo.Window.Tabs
 
                 #region IPC
 
-                void WrathIPCCallback (int cancellationReason, string extraInfo)
+                void WrathIPCCallback(int cancellationReason, string extraInfo)
                 {
                     _wrathLease = null;
                 }
+
                 if (ImGui.CollapsingHeader("IPC"))
                 {
                     CustomStyleText("Wrath Leased:", _wrathLease is not null);
@@ -564,8 +603,10 @@ namespace WrathCombo.Window.Tabs
                         {
                             _wrathLease = P.IPC.RegisterForLease("WrathCombo", "WrathCombo", WrathIPCCallback);
                         }
+
                         ImGui.Unindent();
                     }
+
                     if (_wrathLease is not null)
                     {
                         CustomStyleText("Lease GUID", $"{_wrathLease}");
@@ -580,17 +621,20 @@ namespace WrathCombo.Window.Tabs
                             P.IPC.ReleaseControl(_wrathLease.Value);
                             _wrathLease = null;
                         }
+
                         ImGui.SameLine();
                         if (ImGui.Button("Set Autorot For Job"))
                         {
                             P.IPC.SetCurrentJobAutoRotationReady(_wrathLease!.Value);
                         }
+
                         ImGui.SameLine();
                         if (ImGui.Button("Set Autorot For WHM"))
                         {
                             P.IPC.Leasing.AddRegistrationForCurrentJob(
                                 _wrathLease!.Value, Job.WHM);
                         }
+
                         ImGui.Unindent();
 
                         ImGui.Dummy(new Vector2(5f));
@@ -601,13 +645,20 @@ namespace WrathCombo.Window.Tabs
                             // https://github.com/ffxivcode/AutoDuty/blob/master/AutoDuty/IPC/IPCSubscriber.cs#L460
                             P.IPC.SetCurrentJobAutoRotationReady(_wrathLease!.Value);
                             P.IPC.SetAutoRotationState(_wrathLease!.Value);
-                            P.IPC.SetAutoRotationConfigState(_wrathLease!.Value, AutoRotationConfigOption.InCombatOnly, false);
-                            P.IPC.SetAutoRotationConfigState(_wrathLease!.Value, AutoRotationConfigOption.AutoRez, true);
-                            P.IPC.SetAutoRotationConfigState(_wrathLease!.Value, AutoRotationConfigOption.AutoRezDPSJobs, true);
-                            P.IPC.SetAutoRotationConfigState(_wrathLease!.Value, AutoRotationConfigOption.IncludeNPCs, true);
-                            P.IPC.SetAutoRotationConfigState(_wrathLease!.Value, AutoRotationConfigOption.DPSRotationMode, DPSRotationMode.Lowest_Current);
-                            P.IPC.SetAutoRotationConfigState(_wrathLease!.Value, AutoRotationConfigOption.HealerRotationMode, HealerRotationMode.Lowest_Current);
+                            P.IPC.SetAutoRotationConfigState(_wrathLease!.Value, AutoRotationConfigOption.InCombatOnly,
+                                false);
+                            P.IPC.SetAutoRotationConfigState(_wrathLease!.Value, AutoRotationConfigOption.AutoRez,
+                                true);
+                            P.IPC.SetAutoRotationConfigState(_wrathLease!.Value,
+                                AutoRotationConfigOption.AutoRezDPSJobs, true);
+                            P.IPC.SetAutoRotationConfigState(_wrathLease!.Value, AutoRotationConfigOption.IncludeNPCs,
+                                true);
+                            P.IPC.SetAutoRotationConfigState(_wrathLease!.Value,
+                                AutoRotationConfigOption.DPSRotationMode, DPSRotationMode.Lowest_Current);
+                            P.IPC.SetAutoRotationConfigState(_wrathLease!.Value,
+                                AutoRotationConfigOption.HealerRotationMode, HealerRotationMode.Lowest_Current);
                         }
+
                         ImGui.SameLine();
                         if (ImGui.Button("Mimic Questionable"))
                         {
@@ -615,6 +666,7 @@ namespace WrathCombo.Window.Tabs
                             P.IPC.SetAutoRotationState(_wrathLease!.Value);
                             P.IPC.SetCurrentJobAutoRotationReady(_wrathLease!.Value);
                         }
+
                         ImGui.Unindent();
                     }
 
@@ -630,6 +682,7 @@ namespace WrathCombo.Window.Tabs
                             _wrathLease = null;
                         }
                     }
+
                     if (P.IPC.Leasing.Registrations.Count > 0)
                     {
                         foreach (var registration in P.IPC.Leasing.Registrations)
@@ -647,31 +700,30 @@ namespace WrathCombo.Window.Tabs
 
                     if (ImGui.CollapsingHeader("OrbwalkerIPC"))
                     {
-                        CustomStyleText($"Plugin Installed & On:", $"{OrbwalkerIPC.IsEnabled}");
+                        CustomStyleText("Plugin Installed & On:", $"{OrbwalkerIPC.IsEnabled}");
                         if (OrbwalkerIPC.IsEnabled)
                         {
-                            CustomStyleText($"Version:", $"{OrbwalkerIPC.InstalledVersion}");
-                            CustomStyleText($"Plugin Enabled:", OrbwalkerIPC.PluginEnabled());
+                            CustomStyleText("Version:", $"{OrbwalkerIPC.InstalledVersion}");
+                            CustomStyleText("Plugin Enabled:", OrbwalkerIPC.PluginEnabled());
 
-                            if (ImGui.Button($"Set Enabled"))
+                            if (ImGui.Button("Set Enabled"))
                             {
                                 OrbwalkerIPC.SetPluginEnabled(!OrbwalkerIPC.PluginEnabled());
                             }
 
-                            CustomStyleText($"Can OrbWalk:", OrbwalkerIPC.CanOrbwalk);
+                            CustomStyleText("Can OrbWalk:", OrbwalkerIPC.CanOrbwalk);
                             var jobs = OrbwalkerIPC.EnabledJobs();
-                            CustomStyleText($"Orbwalking Jobs:", string.Join(", ", jobs));
+                            CustomStyleText("Orbwalking Jobs:", string.Join(", ", jobs));
 
-                            if (ImGui.Button($"Toggle Current Job Enabled"))
+                            if (ImGui.Button("Toggle Current Job Enabled"))
                             {
-                                OrbwalkerIPC.SetEnabledJob((uint)Player.Job, !jobs.Any(x => x == (int)Player.Job));
+                                OrbwalkerIPC.SetEnabledJob((uint) Player.Job, !jobs.Any(x => x == (int) Player.Job));
                             }
                         }
                     }
                 }
 
                 #endregion
-
             }
             else
             {

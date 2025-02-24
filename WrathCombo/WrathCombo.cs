@@ -93,7 +93,7 @@ public sealed partial class WrathCombo : IDalamudPlugin
         }
     }
 
-    private static void UpdateCaches
+    public static void UpdateCaches
         (bool onJobChange, bool onTerritoryChange, bool firstRun)
     {
         TM.DelayNext(1000);

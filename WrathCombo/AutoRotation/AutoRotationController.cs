@@ -38,7 +38,7 @@ namespace WrathCombo.AutoRotation
 
         static DateTime? TimeToHeal;
 
-        static Func<WrathPartyMember, bool> RezQuery => x => x.BattleChara.IsDead && FindEffectOnMember(2648, x.BattleChara) == null && FindEffectOnMember(148, x.BattleChara) == null && x.BattleChara.IsTargetable && TimeSpentDead(x.BattleChara.GameObjectId).TotalSeconds > 2;
+        static Func<WrathPartyMember, bool> RezQuery => x => x.BattleChara.IsDead && FindEffectOnMember(2648, x.BattleChara) == null && FindEffectOnMember(148, x.BattleChara) == null && x.BattleChara.IsTargetable && TimeSpentDead(x.BattleChara.GameObjectId).TotalSeconds > 2 && GetTargetDistance(x.BattleChara) <= 30;
 
         public static bool LockedST
         {
