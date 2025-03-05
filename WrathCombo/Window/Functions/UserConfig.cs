@@ -82,8 +82,7 @@ namespace WrathCombo.Window.Functions
                         ImGui.SameLine();
                         ImGui.PushStyleColor(ImGuiCol.Text, ImGuiColors.HealerGreen);
                         ImGui.PushFont(UiBuilder.IconFont);
-                        ImGui.Dummy(new Vector2(5, 0));
-                        ImGui.SameLine();
+                        ImGuiEx.Spacing(new Vector2(5, 0));
                         ImGui.TextWrapped($"{FontAwesomeIcon.Search.ToIconString()}");
                         ImGui.PopFont();
                         ImGui.PopStyleColor();
@@ -202,8 +201,7 @@ namespace WrathCombo.Window.Functions
                         ImGui.SameLine();
                         ImGui.PushStyleColor(ImGuiCol.Text, ImGuiColors.HealerGreen);
                         ImGui.PushFont(UiBuilder.IconFont);
-                        ImGui.Dummy(new Vector2(5, 0));
-                        ImGui.SameLine();
+                        ImGuiEx.Spacing(new Vector2(5, 0));
                         ImGui.TextWrapped($"{FontAwesomeIcon.Search.ToIconString()}");
                         ImGui.PopFont();
                         ImGui.PopStyleColor();
@@ -298,8 +296,7 @@ namespace WrathCombo.Window.Functions
                         ImGui.SameLine();
                         ImGui.PushStyleColor(ImGuiCol.Text, ImGuiColors.HealerGreen);
                         ImGui.PushFont(UiBuilder.IconFont);
-                        ImGui.Dummy(new Vector2(5, 0));
-                        ImGui.SameLine();
+                        ImGuiEx.Spacing(new Vector2(5, 0));
                         ImGui.TextWrapped($"{FontAwesomeIcon.Search.ToIconString()}");
                         ImGui.PopFont();
                         ImGui.PopStyleColor();
@@ -347,8 +344,7 @@ namespace WrathCombo.Window.Functions
             int output = PluginConfiguration.GetCustomIntValue(config, outputValue);
             ImGui.PushItemWidth(itemWidth);
             ImGui.SameLine();
-            ImGui.Dummy(new Vector2(21, 0));
-            ImGui.SameLine();
+            ImGuiEx.Spacing(new Vector2(21, 0));
             bool enabled = output == outputValue;
 
             if (ImGui.RadioButton($"{checkBoxName}###{config}{outputValue}", enabled))
@@ -391,13 +387,13 @@ namespace WrathCombo.Window.Functions
         {
             if (descriptionColor == new Vector4()) descriptionColor = ImGuiColors.DalamudYellow;
             int output = PluginConfiguration.GetCustomIntValue(config);
+            ImGui.SameLine();
             ImGui.PushItemWidth(itemWidth);
             var labelW = ImGui.CalcTextSize(checkBoxName);
-            var finishPos = ImGui.GetCursorPosX() + labelW.X + ImGui.GetStyle().ItemSpacing.X + ImGui.GetStyle().ItemInnerSpacing.X + ImGui.GetStyle().FramePadding.Length() + ImGui.GetCursorStartPos().X;
-            if (finishPos >= ImGui.GetWindowWidth())
-            {
+            var finishPos = ImGui.GetCursorPosX() + labelW.X + ImGui.GetStyle().ItemSpacing.X;
+            if (finishPos >= ImGui.GetContentRegionMax().X)
                 ImGui.NewLine();
-            }
+            
 
             bool enabled = output == outputValue;
 
@@ -418,8 +414,6 @@ namespace WrathCombo.Window.Functions
             }
 
             DrawResetContextMenu(config, outputValue);
-
-            ImGui.SameLine();
         }
 
         /// <summary>
@@ -487,8 +481,7 @@ namespace WrathCombo.Window.Functions
                 }
 
                 ImGui.SameLine();
-                ImGui.Dummy(new Vector2(3));
-                ImGui.SameLine();
+                ImGuiEx.Spacing(new Vector2(3, 0));
                 if (isConditionalChoice) ImGui.Indent(); //Align checkbox after the + symbol
             }
             if (ImGui.Checkbox($"{checkBoxName}###{config}", ref output))
@@ -535,8 +528,7 @@ namespace WrathCombo.Window.Functions
                 if (choice > 0)
                 {
                     ImGui.SameLine();
-                    ImGui.Dummy(new Vector2(12f, 0));
-                    ImGui.SameLine();
+                    ImGuiEx.Spacing(new Vector2(12, 0));
                 }
 
                 if (ImGui.Checkbox($"{checkBoxName}###{config}{choice}", ref values[choice]))
@@ -564,10 +556,7 @@ namespace WrathCombo.Window.Functions
             {
                 ImGui.Indent();
                 if (descriptionColor == new Vector4()) descriptionColor = ImGuiColors.DalamudWhite;
-                //ImGui.PushItemWidth(itemWidth);
-                //ImGui.SameLine();
-                //ImGui.Dummy(new Vector2(21, 0));
-                //ImGui.SameLine();
+
                 bool[]? values = PluginConfiguration.GetCustomBoolArrayValue(config);
 
                 //If new saved options or amount of choices changed, resize and save
