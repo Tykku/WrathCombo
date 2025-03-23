@@ -1,12 +1,10 @@
 using Dalamud.Game.ClientState.JobGauge.Types;
-using ECommons.DalamudServices;
-using WrathCombo.Combos.PvE.Content;
 using WrathCombo.Core;
 using WrathCombo.CustomComboNS;
 
 namespace WrathCombo.Combos.PvE;
 
-internal partial class SMN
+internal partial class SMN : CasterJob
 {
     internal class SMN_Raise : CustomCombo
     {
@@ -14,13 +12,13 @@ internal partial class SMN
 
         protected override uint Invoke(uint actionID)
         {
-            if (actionID != All.Swiftcast)
+            if (actionID != Role.Swiftcast)
                 return actionID;
 
-            if (HasEffect(All.Buffs.Swiftcast) && IsEnabled(CustomComboPreset.SMN_Variant_Raise) && IsEnabled(Variant.VariantRaise))
-                return Variant.VariantRaise;
+            if (Variant.CanRaise(CustomComboPreset.SMN_Variant_Raise))
+                return Variant.Raise;
 
-            if (IsOnCooldown(All.Swiftcast))
+            if (IsOnCooldown(Role.Swiftcast))
                 return Resurrection;
             return actionID;
         }
@@ -98,14 +96,11 @@ internal partial class SMN
             if (actionID is not (Ruin or Ruin2))
                 return actionID;
 
-            if (IsEnabled(CustomComboPreset.SMN_Variant_Cure) && IsEnabled(Variant.VariantCure) && PlayerHealthPercentageHp() <= GetOptionValue(Config.SMN_VariantCure))
-                return Variant.VariantCure;
+            if (Variant.CanCure(CustomComboPreset.SMN_Variant_Cure, Config.SMN_VariantCure))
+                return Variant.Cure;
 
-            if (IsEnabled(CustomComboPreset.SMN_Variant_Rampart) &&
-                IsEnabled(Variant.VariantRampart) &&
-                IsOffCooldown(Variant.VariantRampart) &&
-                CanSpellWeave())
-                return Variant.VariantRampart;
+            if (Variant.CanRampart(CustomComboPreset.SMN_Variant_Rampart, WeaveTypes.SpellWeave))
+                return Variant.Rampart;
 
             if (NeedToSummon && ActionReady(SummonCarbuncle))
                 return SummonCarbuncle;
@@ -139,8 +134,8 @@ internal partial class SMN
                         return OriginalHook(Fester);
                 }
 
-                if (ActionReady(All.LucidDreaming) && LocalPlayer.CurrentMp <= 4000)
-                    return All.LucidDreaming;
+                if (Role.CanLucidDream(4000))
+                    return Role.LucidDreaming;
             }
 
             if (ActionReady(Aethercharge))
@@ -148,10 +143,10 @@ internal partial class SMN
 
             if (ActionReady(Slipstream) || ActionReady(RubyRite))
             {
-                if (ActionReady(All.Swiftcast))
-                    return All.Swiftcast;
+                if (ActionReady(Role.Swiftcast))
+                    return Role.Swiftcast;
 
-                if (HasEffect(All.Buffs.Swiftcast))
+                if (HasEffect(Role.Buffs.Swiftcast))
                 {
                     if (ActionReady(Slipstream))
                         return OriginalHook(Slipstream);
@@ -166,7 +161,7 @@ internal partial class SMN
                 HasEffect(Buffs.IfritsFavor) || HasEffect(Buffs.CrimsonStrike))
                 return OriginalHook(AstralFlow);
 
-            if (HasEffect(Buffs.FurtherRuin) && ((!HasEffect(All.Buffs.Swiftcast) && IsIfritAttuned && IsMoving()) || (GetCooldownRemainingTime(OriginalHook(Aethercharge)) is < 2.5f and > 0)))
+            if (HasEffect(Buffs.FurtherRuin) && ((!HasEffect(Role.Buffs.Swiftcast) && IsIfritAttuned && IsMoving()) || (GetCooldownRemainingTime(OriginalHook(Aethercharge)) is < 2.5f and > 0)))
                 return Ruin4;
 
             if (IsAttunedAny)
@@ -200,14 +195,11 @@ internal partial class SMN
             if (actionID is not Outburst)
                 return actionID;
 
-            if (IsEnabled(CustomComboPreset.SMN_Variant_Cure) && IsEnabled(Variant.VariantCure) && PlayerHealthPercentageHp() <= GetOptionValue(Config.SMN_VariantCure))
-                return Variant.VariantCure;
+            if (Variant.CanCure(CustomComboPreset.SMN_Variant_Cure, Config.SMN_VariantCure))
+                return Variant.Cure;
 
-            if (IsEnabled(CustomComboPreset.SMN_Variant_Rampart) &&
-                IsEnabled(Variant.VariantRampart) &&
-                IsOffCooldown(Variant.VariantRampart) &&
-                CanSpellWeave())
-                return Variant.VariantRampart;
+            if (Variant.CanRampart(CustomComboPreset.SMN_Variant_Rampart, WeaveTypes.SpellWeave))
+                return Variant.Rampart;
 
             if (NeedToSummon && ActionReady(SummonCarbuncle))
                 return SummonCarbuncle;
@@ -247,8 +239,8 @@ internal partial class SMN
                         return Painflare;
                 }
 
-                if (ActionReady(All.LucidDreaming) && LocalPlayer.CurrentMp <= 4000)
-                    return All.LucidDreaming;
+                if (Role.CanLucidDream(4000))
+                    return Role.LucidDreaming;
             }
 
             if (ActionReady(Aethercharge))
@@ -256,10 +248,10 @@ internal partial class SMN
 
             if (ActionReady(Slipstream) || ActionReady(RubyCata))
             {
-                if (ActionReady(All.Swiftcast))
-                    return All.Swiftcast;
+                if (ActionReady(Role.Swiftcast))
+                    return Role.Swiftcast;
 
-                if (HasEffect(All.Buffs.Swiftcast))
+                if (HasEffect(Role.Buffs.Swiftcast))
                 {
                     if (ActionReady(Slipstream))
                         return OriginalHook(Slipstream);
@@ -274,7 +266,7 @@ internal partial class SMN
                 HasEffect(Buffs.IfritsFavor) || HasEffect(Buffs.CrimsonStrike))
                 return OriginalHook(AstralFlow);
 
-            if (HasEffect(Buffs.FurtherRuin) && ((!HasEffect(All.Buffs.Swiftcast) && IsIfritAttuned && IsMoving()) || (GetCooldownRemainingTime(OriginalHook(Aethercharge)) is < 2.5f and > 0)))
+            if (HasEffect(Buffs.FurtherRuin) && ((!HasEffect(Role.Buffs.Swiftcast) && IsIfritAttuned && IsMoving()) || (GetCooldownRemainingTime(OriginalHook(Aethercharge)) is < 2.5f and > 0)))
                 return Ruin4;
 
             if (IsAttunedAny && ActionReady(PreciousBrilliance))
@@ -323,17 +315,14 @@ internal partial class SMN
 
             DemiAttackCount = CurrentDemiSummon is not DemiSummon.None ? TimesUsedSinceOtherAction(OriginalHook(Aethercharge), [AstralImpulse, UmbralImpulse, FountainOfFire, AstralFlare, UmbralFlare, BrandOfPurgatory]) : 0;
 
-            if (IsEnabled(CustomComboPreset.SMN_Variant_Cure) && IsEnabled(Variant.VariantCure) && PlayerHealthPercentageHp() <= GetOptionValue(Config.SMN_VariantCure))
-                return Variant.VariantCure;
+            if (Variant.CanCure(CustomComboPreset.SMN_Variant_Cure, Config.SMN_VariantCure))
+                return Variant.Cure;
 
             if (IsEnabled(CustomComboPreset.SMN_ST_Advanced_Combo_Balance_Opener) && Opener().FullOpener(ref actionID))
                 return actionID;
 
-            if (IsEnabled(CustomComboPreset.SMN_Variant_Rampart) &&
-                IsEnabled(Variant.VariantRampart) &&
-                IsOffCooldown(Variant.VariantRampart) &&
-                CanSpellWeave())
-                return Variant.VariantRampart;
+            if (Variant.CanRampart(CustomComboPreset.SMN_Variant_Rampart, WeaveTypes.SpellWeave))
+                return Variant.Rampart;
 
             // Emergency priority Demi Nuke to prevent waste if you can't get demi attacks out to satisfy the slider check.
             if (CurrentDemiSummon is not DemiSummon.None && IsEnabled(CustomComboPreset.SMN_ST_Advanced_Combo_DemiSummons_Attacks) && Gauge.SummonTimerRemaining <= 2500)
@@ -343,7 +332,7 @@ internal partial class SMN
                     if (ActionReady(OriginalHook(EnkindleBahamut)))
                         return OriginalHook(EnkindleBahamut);
 
-                    if (ActionReady(AstralFlow))
+                    if (ActionReady(AstralFlow) && ((IsEnabled(CustomComboPreset.SMN_ST_Advanced_Combo_DemiSummons_Rekindle) && CurrentDemiSummon is DemiSummon.Phoenix) || CurrentDemiSummon is not DemiSummon.Phoenix))
                         return OriginalHook(AstralFlow);
                 }
             }
@@ -386,12 +375,12 @@ internal partial class SMN
                     if (ActionReady(OriginalHook(EnkindleBahamut)))
                         return OriginalHook(EnkindleBahamut);
 
-                    if (ActionReady(AstralFlow))
+                    if (ActionReady(AstralFlow) && ((IsEnabled(CustomComboPreset.SMN_ST_Advanced_Combo_DemiSummons_Rekindle) && CurrentDemiSummon is DemiSummon.Phoenix) || CurrentDemiSummon is not DemiSummon.Phoenix))
                         return OriginalHook(AstralFlow);
                 }
 
                 // Lux Solaris
-                if (ActionReady(LuxSolaris) && IsEnabled(CustomComboPreset.SMN_Advanced_Combo_DemiSummons_LuxSolaris) &&
+                if (ActionReady(LuxSolaris) && IsEnabled(CustomComboPreset.SMN_ST_Advanced_Combo_DemiSummons_LuxSolaris) &&
                     (PlayerHealthPercentageHp() < 100 || (GetBuffRemainingTime(Buffs.RefulgentLux) is < 3 and > 0)))
                     return OriginalHook(LuxSolaris);
 
@@ -415,8 +404,8 @@ internal partial class SMN
                 }
 
                 // Lucid Dreaming
-                if (IsEnabled(CustomComboPreset.SMN_ST_Advanced_Combo_Lucid) && ActionReady(All.LucidDreaming) && LocalPlayer.CurrentMp <= lucidThreshold)
-                    return All.LucidDreaming;
+                if (IsEnabled(CustomComboPreset.SMN_ST_Advanced_Combo_Lucid) && Role.CanLucidDream(lucidThreshold))
+                    return Role.LucidDreaming;
             }
 
             // Demi
@@ -425,7 +414,7 @@ internal partial class SMN
 
             //Ruin4 in Egi Phases
             if (IsEnabled(CustomComboPreset.SMN_ST_Advanced_Combo_Ruin4) && ActionReady(Ruin4) &&
-                ((!HasEffect(All.Buffs.Swiftcast) && IsMoving() && ((HasEffect(Buffs.GarudasFavor) && !IsGarudaAttuned) || (IsIfritAttuned && ComboAction is not CrimsonCyclone))) ||
+                ((!HasEffect(Role.Buffs.Swiftcast) && IsMoving() && ((HasEffect(Buffs.GarudasFavor) && !IsGarudaAttuned) || (IsIfritAttuned && ComboAction is not CrimsonCyclone))) ||
                  (GetCooldownRemainingTime(OriginalHook(Aethercharge)) is < 2.5f and > 0)))
                 return Ruin4;
 
@@ -435,25 +424,25 @@ internal partial class SMN
                 // Swiftcast Garuda Feature
                 if (swiftcastPhase is 0 or 1 or 3 && HasEffect(Buffs.GarudasFavor) && GarudaAstralFlow)
                 {
-                    if (CanSpellWeave() && ActionReady(All.Swiftcast))
-                        return All.Swiftcast;
+                    if (Role.CanSwiftcast())
+                        return Role.Swiftcast;
 
-                    if (ActionReady(Slipstream) && HasEffect(All.Buffs.Swiftcast))
+                    if (ActionReady(Slipstream) && HasEffect(Role.Buffs.Swiftcast))
                         return OriginalHook(AstralFlow);
                 }
 
                 // Swiftcast Ifrit Feature
                 if (swiftcastPhase is 2 or 3)
                 {
-                    if (ActionReady(All.Swiftcast) && ActionReady(RubyCata))
-                        return All.Swiftcast;
+                    if (Role.CanSwiftcast(false) && ActionReady(RubyCata))
+                        return Role.Swiftcast;
                 }
             }
 
             // Precious Brilliance priority casting
             if (IsEnabled(CustomComboPreset.SMN_ST_Advanced_Combo_EgiSummons_Attacks) &&
-                ((IsIfritAttuned && ActionReady(RubyCata) && HasEffect(All.Buffs.Swiftcast) && ComboAction is not CrimsonCyclone) ||
-                 (HasEffect(Buffs.GarudasFavor) && !HasEffect(All.Buffs.Swiftcast) && IsMoving())))
+                ((IsIfritAttuned && ActionReady(RubyCata) && HasEffect(Role.Buffs.Swiftcast) && ComboAction is not CrimsonCyclone) ||
+                 (HasEffect(Buffs.GarudasFavor) && !HasEffect(Role.Buffs.Swiftcast) && IsMoving())))
                 return OriginalHook(PreciousBrilliance);
 
             if ((GarudaAstralFlow && HasEffect(Buffs.GarudasFavor)) ||
@@ -522,14 +511,11 @@ internal partial class SMN
 
             DemiAttackCount = CurrentDemiSummon is not DemiSummon.None ? TimesUsedSinceOtherAction(OriginalHook(Aethercharge), [AstralImpulse, UmbralImpulse, FountainOfFire, AstralFlare, UmbralFlare, BrandOfPurgatory]) : 0;
 
-            if (IsEnabled(CustomComboPreset.SMN_Variant_Cure) && IsEnabled(Variant.VariantCure) && PlayerHealthPercentageHp() <= GetOptionValue(Config.SMN_VariantCure))
-                return Variant.VariantCure;
+            if (Variant.CanCure(CustomComboPreset.SMN_Variant_Cure, Config.SMN_VariantCure))
+                return Variant.Cure;
 
-            if (IsEnabled(CustomComboPreset.SMN_Variant_Rampart) &&
-                IsEnabled(Variant.VariantRampart) &&
-                IsOffCooldown(Variant.VariantRampart) &&
-                CanSpellWeave())
-                return Variant.VariantRampart;
+            if (Variant.CanRampart(CustomComboPreset.SMN_Variant_Rampart, WeaveTypes.SpellWeave))
+                return Variant.Rampart;
 
             // Emergency priority Demi Nuke to prevent waste if you can't get demi attacks out to satisfy the slider check.
             if (CurrentDemiSummon is not DemiSummon.None && IsEnabled(CustomComboPreset.SMN_AoE_Advanced_Combo_DemiSummons_Attacks) && Gauge.SummonTimerRemaining <= 2500)
@@ -539,7 +525,7 @@ internal partial class SMN
                     if (ActionReady(OriginalHook(EnkindleBahamut)))
                         return OriginalHook(EnkindleBahamut);
 
-                    if (ActionReady(AstralFlow))
+                    if (ActionReady(AstralFlow) && ((IsEnabled(CustomComboPreset.SMN_AoE_Advanced_Combo_DemiSummons_Rekindle) && CurrentDemiSummon is DemiSummon.Phoenix) || CurrentDemiSummon is not DemiSummon.Phoenix))
                         return OriginalHook(AstralFlow);
                 }
             }
@@ -582,12 +568,12 @@ internal partial class SMN
                     if (ActionReady(OriginalHook(EnkindleBahamut)))
                         return OriginalHook(EnkindleBahamut);
 
-                    if (ActionReady(AstralFlow))
+                    if (ActionReady(AstralFlow) && ((IsEnabled(CustomComboPreset.SMN_AoE_Advanced_Combo_DemiSummons_Rekindle) && CurrentDemiSummon is DemiSummon.Phoenix) || CurrentDemiSummon is not DemiSummon.Phoenix))
                         return OriginalHook(AstralFlow);
                 }
 
                 // Lux Solaris
-                if (ActionReady(LuxSolaris) && IsEnabled(CustomComboPreset.SMN_Advanced_Combo_DemiSummons_LuxSolaris) &&
+                if (ActionReady(LuxSolaris) && IsEnabled(CustomComboPreset.SMN_ST_Advanced_Combo_DemiSummons_LuxSolaris) &&
                     (PlayerHealthPercentageHp() < 100 || (GetBuffRemainingTime(Buffs.RefulgentLux) is < 3 and > 0)))
                     return OriginalHook(LuxSolaris);
 
@@ -611,8 +597,8 @@ internal partial class SMN
                 }
 
                 // Lucid Dreaming
-                if (IsEnabled(CustomComboPreset.SMN_AoE_Advanced_Combo_Lucid) && ActionReady(All.LucidDreaming) && LocalPlayer.CurrentMp <= lucidThreshold)
-                    return All.LucidDreaming;
+                if (IsEnabled(CustomComboPreset.SMN_AoE_Advanced_Combo_Lucid) && Role.CanLucidDream(lucidThreshold))
+                    return Role.LucidDreaming;
             }
 
             // Demi
@@ -621,7 +607,7 @@ internal partial class SMN
 
             //Ruin4 in Egi Phases
             if (IsEnabled(CustomComboPreset.SMN_AoE_Advanced_Combo_Ruin4) && ActionReady(Ruin4) &&
-                ((!HasEffect(All.Buffs.Swiftcast) && IsMoving() && ((HasEffect(Buffs.GarudasFavor) && !IsGarudaAttuned) || (IsIfritAttuned && ComboAction is not CrimsonCyclone))) ||
+                ((!HasEffect(Role.Buffs.Swiftcast) && IsMoving() && ((HasEffect(Buffs.GarudasFavor) && !IsGarudaAttuned) || (IsIfritAttuned && ComboAction is not CrimsonCyclone))) ||
                  (GetCooldownRemainingTime(OriginalHook(Aethercharge)) is < 2.5f and > 0)))
                 return Ruin4;
 
@@ -631,25 +617,25 @@ internal partial class SMN
                 // Swiftcast Garuda Feature
                 if (swiftcastPhase is 0 or 1 or 3 && HasEffect(Buffs.GarudasFavor) && GarudaAstralFlow)
                 {
-                    if (CanSpellWeave() && ActionReady(All.Swiftcast))
-                        return All.Swiftcast;
+                    if (Role.CanSwiftcast())
+                        return Role.Swiftcast;
 
-                    if (ActionReady(Slipstream) && HasEffect(All.Buffs.Swiftcast))
+                    if (ActionReady(Slipstream) && HasEffect(Role.Buffs.Swiftcast))
                         return OriginalHook(AstralFlow);
                 }
 
                 // Swiftcast Ifrit Feature
                 if (swiftcastPhase is 2 or 3)
                 {
-                    if (ActionReady(All.Swiftcast) && ActionReady(RubyRite))
-                        return All.Swiftcast;
+                    if (Role.CanSwiftcast(false) && ActionReady(RubyRite))
+                        return Role.Swiftcast;
                 }
             }
 
             // Precious Brilliance priority casting
             if (IsEnabled(CustomComboPreset.SMN_AoE_Advanced_Combo_EgiSummons_Attacks) &&
-                ((IsIfritAttuned && ActionReady(RubyRite) && HasEffect(All.Buffs.Swiftcast) && ComboAction is not CrimsonCyclone) ||
-                 (HasEffect(Buffs.GarudasFavor) && !HasEffect(All.Buffs.Swiftcast) && IsMoving())))
+                ((IsIfritAttuned && ActionReady(RubyRite) && HasEffect(Role.Buffs.Swiftcast) && ComboAction is not CrimsonCyclone) ||
+                 (HasEffect(Buffs.GarudasFavor) && !HasEffect(Role.Buffs.Swiftcast) && IsMoving())))
                 return OriginalHook(PreciousBrilliance);
 
             if ((GarudaAstralFlow && HasEffect(Buffs.GarudasFavor)) ||
