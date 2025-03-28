@@ -461,16 +461,16 @@ internal partial class VPR : MeleeJob
             if (actionID is not SteelMaw)
                 return actionID;
 
+            // Variant Cure
+            if (Variant.CanCure(CustomComboPreset.VPR_Variant_Cure, Config.VPR_VariantCure))
+                return Variant.Cure;
+
+            // Variant Rampart
+            if (Variant.CanRampart(CustomComboPreset.VPR_Variant_Rampart, WeaveTypes.Weave))
+                return Variant.Rampart;
+
             if (CanWeave())
             {
-                // Variant Cure
-                if (Variant.CanCure(CustomComboPreset.VPR_Variant_Cure, Config.VPR_VariantCure))
-                    return Variant.Cure;
-
-                // Variant Rampart
-                if (Variant.CanRampart(CustomComboPreset.VPR_Variant_Rampart, WeaveTypes.Weave))
-                    return Variant.Rampart;
-
                 // Death Rattle
                 if (LevelChecked(SerpentsTail) && OriginalHook(SerpentsTail) is LastLash)
                     return OriginalHook(SerpentsTail);

@@ -98,8 +98,10 @@ internal partial class MNK
     internal static bool InMasterfulRange()
     {
         if (NumberOfEnemiesInRange(ElixirField, null) >= 1 &&
-            (OriginalHook(MasterfulBlitz) == ElixirField || OriginalHook(MasterfulBlitz) == FlintStrike ||
-             OriginalHook(MasterfulBlitz) == ElixirBurst || OriginalHook(MasterfulBlitz) == RisingPhoenix))
+            (OriginalHook(MasterfulBlitz) == ElixirField || 
+             OriginalHook(MasterfulBlitz) == FlintStrike ||
+             OriginalHook(MasterfulBlitz) == ElixirBurst || 
+             OriginalHook(MasterfulBlitz) == RisingPhoenix))
             return true;
 
         if (NumberOfEnemiesInRange(TornadoKick, CurrentTarget) >= 1 &&
@@ -155,31 +157,15 @@ internal partial class MNK
         ];
 
         internal override UserData ContentCheckConfig => Config.MNK_Balance_Content;
-        public override bool HasCooldowns()
-        {
-            if (GetRemainingCharges(PerfectBalance) < 2)
-                return false;
 
-            if (!IsOffCooldown(Brotherhood))
-                return false;
-
-            if (!IsOffCooldown(RiddleOfFire))
-                return false;
-
-            if (!IsOffCooldown(RiddleOfWind))
-                return false;
-
-            if (Gauge.Nadi != Nadi.None)
-                return false;
-
-            if (Gauge.RaptorFury != 0)
-                return false;
-
-            if (Gauge.CoeurlFury != 0)
-                return false;
-
-            return true;
-        }
+        public override bool HasCooldowns() => 
+            GetRemainingCharges(PerfectBalance) is 2 && 
+            IsOffCooldown(Brotherhood) &&
+            IsOffCooldown(RiddleOfFire) && 
+            IsOffCooldown(RiddleOfWind) &&
+            Gauge.Nadi is Nadi.None && 
+            Gauge.RaptorFury is 0 && 
+            Gauge.CoeurlFury is 0;
     }
 
     internal class MNKOpenerLogicLL : WrathOpener
@@ -211,33 +197,17 @@ internal partial class MNK
             ElixirBurst,
             LeapingOpo
         ];
+
         internal override UserData ContentCheckConfig => Config.MNK_Balance_Content;
 
-        public override bool HasCooldowns()
-        {
-            if (GetRemainingCharges(PerfectBalance) < 2)
-                return false;
-
-            if (!IsOffCooldown(Brotherhood))
-                return false;
-
-            if (!IsOffCooldown(RiddleOfFire))
-                return false;
-
-            if (!IsOffCooldown(RiddleOfWind))
-                return false;
-
-            if (Gauge.Nadi != Nadi.None)
-                return false;
-
-            if (Gauge.RaptorFury != 0)
-                return false;
-
-            if (Gauge.CoeurlFury != 0)
-                return false;
-
-            return true;
-        }
+        public override bool HasCooldowns() =>
+            GetRemainingCharges(PerfectBalance) is 2 &&
+            IsOffCooldown(Brotherhood) &&
+            IsOffCooldown(RiddleOfFire) &&
+            IsOffCooldown(RiddleOfWind) &&
+            Gauge.Nadi is Nadi.None &&
+            Gauge.RaptorFury is 0 && 
+            Gauge.CoeurlFury is 0;
     }
 
     #endregion

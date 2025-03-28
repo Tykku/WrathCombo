@@ -17,6 +17,9 @@ internal partial class MCH : PhysRangedJob
             if (Variant.CanCure(CustomComboPreset.MCH_Variant_Cure, Config.MCH_VariantCure))
                 return Variant.Cure;
 
+            if (Variant.CanRampart(CustomComboPreset.MCH_Variant_Rampart))
+                return Variant.Rampart;
+
             //Reassemble to start before combat
             if (!HasEffect(Buffs.Reassembled) && ActionReady(Reassemble) &&
                 !InCombat() && TargetIsHostile() &&
@@ -33,9 +36,6 @@ internal partial class MCH : PhysRangedJob
             // All weaves
             if (CanWeave())
             {
-                if (Variant.CanRampart(CustomComboPreset.MCH_Variant_Rampart))
-                    return Variant.Rampart;
-
                 if (!ActionWatching.HasDoubleWeaved())
                 {
                     // Wildfire
@@ -161,6 +161,9 @@ internal partial class MCH : PhysRangedJob
             if (Variant.CanCure(CustomComboPreset.MCH_Variant_Cure, Config.MCH_VariantCure))
                 return Variant.Cure;
 
+            if (Variant.CanRampart(CustomComboPreset.MCH_Variant_Rampart))
+                return Variant.Rampart;
+
             // Opener
             if (IsEnabled(CustomComboPreset.MCH_ST_Adv_Opener) && TargetIsHostile())
                 if (Opener().FullOpener(ref actionID))
@@ -183,9 +186,6 @@ internal partial class MCH : PhysRangedJob
             // All weaves
             if (CanWeave())
             {
-                if (Variant.CanRampart(CustomComboPreset.MCH_Variant_Rampart))
-                    return Variant.Rampart;
-
                 if (!ActionWatching.HasDoubleWeaved())
                 {
                     if (IsEnabled(CustomComboPreset.MCH_ST_Adv_QueenOverdrive) &&
@@ -336,6 +336,9 @@ internal partial class MCH : PhysRangedJob
             if (Variant.CanCure(CustomComboPreset.MCH_Variant_Cure, Config.MCH_VariantCure))
                 return Variant.Cure;
 
+            if (Variant.CanRampart(CustomComboPreset.MCH_Variant_Rampart))
+                return Variant.Rampart;
+
             if (HasEffect(Buffs.Flamethrower) || JustUsed(Flamethrower, 10f))
                 return All.SavageBlade;
 
@@ -346,9 +349,6 @@ internal partial class MCH : PhysRangedJob
             // All weaves
             if (CanWeave())
             {
-                if (Variant.CanRampart(CustomComboPreset.MCH_Variant_Rampart))
-                    return Variant.Rampart;
-
                 if (!ActionWatching.HasDoubleWeaved() && !Gauge.IsOverheated)
                 {
                     // BarrelStabilizer
@@ -468,6 +468,9 @@ internal partial class MCH : PhysRangedJob
             if (Variant.CanCure(CustomComboPreset.MCH_Variant_Cure, Config.MCH_VariantCure))
                 return Variant.Cure;
 
+            if (Variant.CanRampart(CustomComboPreset.MCH_Variant_Rampart))
+                return Variant.Rampart;
+
             if (HasEffect(Buffs.Flamethrower) || JustUsed(Flamethrower, 10f))
                 return All.SavageBlade;
 
@@ -478,9 +481,6 @@ internal partial class MCH : PhysRangedJob
             // All weaves
             if (CanWeave())
             {
-                if (Variant.CanRampart(CustomComboPreset.MCH_Variant_Rampart))
-                    return Variant.Rampart;
-
                 if (!ActionWatching.HasDoubleWeaved() && !Gauge.IsOverheated)
                 {
                     // BarrelStabilizer

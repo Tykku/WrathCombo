@@ -34,20 +34,7 @@ internal static class VariantActions
         var _ => 0
     };
 
-    internal static bool CanRampart(CustomComboPreset preset, WeaveTypes weave = WeaveTypes.None) =>
-        ActionReady(VariantRampart) && CheckWeave(weave);
 
-    internal static bool CanSpiritDart(CustomComboPreset preset) =>
-        ActionReady(VariantSpiritDart) && HasBattleTarget() && GetDebuffRemainingTime(Debuffs.SustainedDamage) <= 3;
-
-    internal static bool CanCure(CustomComboPreset preset, int healthpercent) =>
-        ActionReady(VariantCure) && PlayerHealthPercentageHp() <= healthpercent;
-
-    internal static bool CanRaise(CustomComboPreset preset) =>
-        ActionReady(VariantRaise) && HasEffect(MagicRole.Buffs.Swiftcast);
-
-    internal static bool CanUltimatum(CustomComboPreset preset, WeaveTypes weave = WeaveTypes.None) =>
-        ActionReady(VariantUltimatum) && CanCircleAoe(5) > 0 && CheckWeave(weave);
 
     public static class Buffs
     {
@@ -63,6 +50,27 @@ internal static class VariantActions
         internal const ushort
             SustainedDamage = 3359;
     }
+
+    internal static bool CanRampart(CustomComboPreset preset, WeaveTypes weave = WeaveTypes.None) =>
+        IsEnabled(preset) && IsEnabled(VariantRampart) && ActionReady(VariantRampart) &&
+        CheckWeave(weave);
+
+    internal static bool CanSpiritDart(CustomComboPreset preset) =>
+        IsEnabled(preset) && IsEnabled(VariantSpiritDart) && ActionReady(VariantSpiritDart) &&
+        HasBattleTarget() && GetDebuffRemainingTime(Debuffs.SustainedDamage) <= 3;
+
+    internal static bool CanCure(CustomComboPreset preset, int healthpercent) =>
+        IsEnabled(preset) && IsEnabled(VariantCure) && ActionReady(VariantCure) &&
+        PlayerHealthPercentageHp() <= healthpercent;
+
+    internal static bool CanRaise(CustomComboPreset preset) =>
+        IsEnabled(preset) && IsEnabled(VariantRaise) &&
+        ActionReady(VariantRaise) && HasEffect(MagicRole.Buffs.Swiftcast);
+
+    internal static bool CanUltimatum(CustomComboPreset preset, WeaveTypes weave = WeaveTypes.None) => 
+        IsEnabled(preset) && IsEnabled(VariantUltimatum) &&
+        ActionReady(VariantUltimatum) && CanCircleAoe(5) > 0 && CheckWeave(weave);
+
 }
 
 public class VariantTank

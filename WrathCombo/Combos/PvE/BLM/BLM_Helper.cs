@@ -44,10 +44,10 @@ internal partial class BLM
         TraitLevelChecked(Traits.AspectMasteryIII) &&
         IsOffCooldown(Role.Swiftcast);
 
+    internal static float TimeSinceFirestarterBuff => HasEffect(Buffs.Firestarter) ? GetPartyMembers().First().TimeSinceBuffApplied(Buffs.Firestarter) : 0;
+
     internal static bool HasPolyglotStacks() => Gauge.PolyglotStacks > 0;
 
-    internal static float TimeSinceFirestarterBuff => HasEffect(Buffs.Firestarter) ? GetPartyMembers().First().TimeSinceBuffApplied(Buffs.Firestarter) : 0;
-    
     internal static WrathOpener Opener()
     {
         if (Opener1.LevelChecked)
@@ -112,6 +112,8 @@ internal partial class BLM
         return false;
     }
 
+    #region Openers
+
     internal class BLMOpenerMaxLevel1 : WrathOpener
     {
         public override int MinOpenerLevel => 100;
@@ -146,28 +148,18 @@ internal partial class BLM
             Despair,
             FlareStar
         ];
+
         internal override UserData ContentCheckConfig => Config.BLM_ST_Balance_Content;
 
-        public override bool HasCooldowns()
-        {
-            if (GetCooldown(Fire).BaseCooldownTotal > 2.45)
-                return false;
-
-            if (!IsOffCooldown(Manafont))
-                return false;
-
-            if (GetRemainingCharges(Triplecast) < 2)
-                return false;
-
-            if (!IsOffCooldown(Role.Swiftcast))
-                return false;
-
-            if (!IsOffCooldown(Amplifier))
-                return false;
-
-            return true;
-        }
+        public override bool HasCooldowns() =>
+            GetCooldown(Fire).BaseCooldownTotal <= 2.45 &&
+            IsOffCooldown(Manafont) &&
+            GetRemainingCharges(Triplecast) is 2 &&
+            IsOffCooldown(Role.Swiftcast) &&
+            IsOffCooldown(Amplifier);
     }
+
+  #endregion
 
     #region ID's
 

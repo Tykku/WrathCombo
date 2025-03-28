@@ -114,7 +114,7 @@ public sealed partial class WrathCombo : IDalamudPlugin
                 Service.ActionReplacer.UpdateFilteredCombos();
                 WrathOpener.SelectOpener();
                 P.IPCSearch.UpdateActiveJobPresets();
-                P.IPC.Leasing.SuspendLeases(CancellationReason.AllServicesSuspended);
+                P.IPC.Leasing.SuspendLeases(CancellationReason.JobChanged);
             }
 
             if (onTerritoryChange)

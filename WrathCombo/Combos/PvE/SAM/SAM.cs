@@ -96,16 +96,16 @@ internal partial class SAM : MeleeJob
             if (actionID is not (Hakaze or Gyofu))
                 return actionID;
 
+            //Meikyo to start before combat
+            if (!HasEffect(Buffs.MeikyoShisui) && ActionReady(MeikyoShisui) &&
+                !InCombat() && TargetIsHostile())
+                return MeikyoShisui;
+
             if (Variant.CanCure(CustomComboPreset.SAM_Variant_Cure, Config.SAM_VariantCure))
                 return Variant.Cure;
 
             if (Variant.CanRampart(CustomComboPreset.SAM_Variant_Rampart, WeaveTypes.Weave))
                 return Variant.Rampart;
-
-            //Meikyo to start before combat
-            if (!HasEffect(Buffs.MeikyoShisui) && ActionReady(MeikyoShisui) &&
-                !InCombat() && TargetIsHostile())
-                return MeikyoShisui;
 
             if (LevelChecked(Enpi) && !InMeleeRange() && HasBattleTarget())
                 return Enpi;
@@ -275,6 +275,13 @@ internal partial class SAM : MeleeJob
             int shintenTreshhold = Config.SAM_ST_ExecuteThreshold;
             int higanbanaThreshold = Config.SAM_ST_Higanbana_Threshold;
 
+            //Meikyo to start before combat
+            if (IsEnabled(CustomComboPreset.SAM_ST_CDs) &&
+                IsEnabled(CustomComboPreset.SAM_ST_CDs_MeikyoShisui) &&
+                !HasEffect(Buffs.MeikyoShisui) && ActionReady(MeikyoShisui) &&
+                !InCombat() && TargetIsHostile())
+                return MeikyoShisui;
+
             if (Variant.CanCure(CustomComboPreset.SAM_Variant_Cure, Config.SAM_VariantCure))
                 return Variant.Cure;
 
@@ -285,13 +292,6 @@ internal partial class SAM : MeleeJob
             if (IsEnabled(CustomComboPreset.SAM_ST_Opener))
                 if (Opener().FullOpener(ref actionID))
                     return actionID;
-
-            //Meikyo to start before combat
-            if (IsEnabled(CustomComboPreset.SAM_ST_CDs) &&
-                IsEnabled(CustomComboPreset.SAM_ST_CDs_MeikyoShisui) &&
-                !HasEffect(Buffs.MeikyoShisui) && ActionReady(MeikyoShisui) &&
-                !InCombat() && TargetIsHostile())
-                return MeikyoShisui;
 
             if (IsEnabled(CustomComboPreset.SAM_ST_RangedUptime) &&
                 LevelChecked(Enpi) && !InMeleeRange() && HasBattleTarget())
@@ -537,12 +537,12 @@ internal partial class SAM : MeleeJob
             if (Variant.CanCure(CustomComboPreset.SAM_Variant_Cure, Config.SAM_VariantCure))
                 return Variant.Cure;
 
+            if (Variant.CanRampart(CustomComboPreset.SAM_Variant_Rampart))
+                return Variant.Rampart;
+
             //oGCD Features
             if (CanWeave())
             {
-                if (Variant.CanRampart(CustomComboPreset.SAM_Variant_Rampart))
-                    return Variant.Rampart;
-
                 if (OriginalHook(Iaijutsu) is MidareSetsugekka && LevelChecked(Hagakure))
                     return Hagakure;
 
@@ -642,12 +642,12 @@ internal partial class SAM : MeleeJob
             if (Variant.CanCure(CustomComboPreset.SAM_Variant_Cure, Config.SAM_VariantCure))
                 return Variant.Cure;
 
+            if (Variant.CanRampart(CustomComboPreset.SAM_Variant_Rampart))
+                return Variant.Rampart;
+
             //oGCD Features
             if (CanWeave())
             {
-                if (Variant.CanRampart(CustomComboPreset.SAM_Variant_Rampart))
-                    return Variant.Rampart;
-
                 if (IsEnabled(CustomComboPreset.SAM_AoE_Hagakure) &&
                     OriginalHook(Iaijutsu) is MidareSetsugekka && LevelChecked(Hagakure))
                     return Hagakure;

@@ -53,7 +53,7 @@ internal partial class BLM : CasterJob
                     return Paradox;
 
                 if (HasEffect(Buffs.Firestarter) &&
-                    (Gauge.AstralFireStacks < 3))
+                    Gauge.AstralFireStacks < 3)
                     return Fire3;
 
                 if (CurMp < MP.FireI && LevelChecked(Despair) && CurMp >= MP.Despair)
@@ -254,7 +254,7 @@ internal partial class BLM : CasterJob
                     return Paradox;
 
                 if (HasEffect(Buffs.Firestarter) &&
-                    (Gauge.AstralFireStacks < 3))
+                    Gauge.AstralFireStacks < 3)
                     return Fire3;
 
                 if (IsEnabled(CustomComboPreset.BLM_ST_Despair) &&

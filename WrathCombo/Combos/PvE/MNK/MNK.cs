@@ -12,6 +12,14 @@ internal partial class MNK : MeleeJob
             if (actionID is not (Bootshine or LeapingOpo))
                 return actionID;
 
+            //Variant Cure
+            if (Variant.CanCure(CustomComboPreset.MNK_Variant_Cure, Config.MNK_VariantCure))
+                return Variant.Cure;
+
+            //Variant Rampart
+            if (Variant.CanRampart(CustomComboPreset.MNK_Variant_Rampart))
+                return Variant.Rampart;
+
             if (LevelChecked(SteeledMeditation) &&
                 (!InCombat() || !InMeleeRange()) &&
                 Gauge.Chakra < 5 &&
@@ -26,10 +34,6 @@ internal partial class MNK : MeleeJob
                 !HasEffect(Buffs.OpoOpoForm) && !HasEffect(Buffs.RaptorForm) && !HasEffect(Buffs.CoeurlForm))
                 return FormShift;
 
-            //Variant Cure
-            if (Variant.CanCure(CustomComboPreset.MNK_Variant_Cure, Config.MNK_VariantCure))
-                return Variant.Cure;
-
             if (ActionReady(RiddleOfFire) &&
                 !HasEffect(Buffs.FiresRumination) &&
                 CanDelayedWeave() && InBossEncounter())
@@ -38,10 +42,6 @@ internal partial class MNK : MeleeJob
             // OGCDs
             if (CanWeave())
             {
-                //Variant Rampart
-                if (Variant.CanRampart(CustomComboPreset.MNK_Variant_Rampart))
-                    return Variant.Rampart;
-
                 if (ActionReady(Brotherhood) &&
                     InBossEncounter())
                     return Brotherhood;
@@ -142,6 +142,14 @@ internal partial class MNK : MeleeJob
             if (actionID is not (Bootshine or LeapingOpo))
                 return actionID;
 
+            //Variant Cure
+            if (Variant.CanCure(CustomComboPreset.MNK_Variant_Cure, Config.MNK_VariantCure))
+                return Variant.Cure;
+
+            //Variant Rampart
+            if (Variant.CanRampart(CustomComboPreset.MNK_Variant_Rampart))
+                return Variant.Rampart;
+
             if (IsEnabled(CustomComboPreset.MNK_STUseMeditation) &&
                 LevelChecked(SteeledMeditation) &&
                 (!InCombat() || !InMeleeRange()) &&
@@ -168,10 +176,6 @@ internal partial class MNK : MeleeJob
                     return actionID;
                 }
 
-            //Variant Cure
-            if (Variant.CanCure(CustomComboPreset.MNK_Variant_Cure, Config.MNK_VariantCure))
-                return Variant.Cure;
-
             if (IsEnabled(CustomComboPreset.MNK_STUseBuffs) &&
                 IsEnabled(CustomComboPreset.MNK_STUseROF) &&
                 !HasEffect(Buffs.FiresRumination) &&
@@ -184,10 +188,6 @@ internal partial class MNK : MeleeJob
             // OGCDs
             if (CanWeave())
             {
-                //Variant Rampart
-                if (Variant.CanRampart(CustomComboPreset.MNK_Variant_Rampart))
-                    return Variant.Rampart;
-
                 if (IsEnabled(CustomComboPreset.MNK_STUseBuffs))
                 {
                     if (IsEnabled(CustomComboPreset.MNK_STUseBrotherhood) &&
@@ -306,6 +306,14 @@ internal partial class MNK : MeleeJob
             if (actionID is not (ArmOfTheDestroyer or ShadowOfTheDestroyer))
                 return actionID;
 
+            //Variant Cure
+            if (Variant.CanCure(CustomComboPreset.MNK_Variant_Cure, Config.MNK_VariantCure))
+                return Variant.Cure;
+
+            //Variant Rampart
+            if (Variant.CanRampart(CustomComboPreset.MNK_Variant_Rampart))
+                return Variant.Rampart;
+
             if (LevelChecked(InspiritedMeditation) &&
                 (!InCombat() || !InMeleeRange()) &&
                 Gauge.Chakra < 5 &&
@@ -320,10 +328,6 @@ internal partial class MNK : MeleeJob
                 !HasEffect(Buffs.OpoOpoForm) && !HasEffect(Buffs.RaptorForm) && !HasEffect(Buffs.CoeurlForm))
                 return FormShift;
 
-            //Variant Cure
-            if (Variant.CanCure(CustomComboPreset.MNK_Variant_Cure, Config.MNK_VariantCure))
-                return Variant.Cure;
-
             if (ActionReady(RiddleOfFire) &&
                 !HasEffect(Buffs.FiresRumination) &&
                 CanDelayedWeave())
@@ -332,10 +336,6 @@ internal partial class MNK : MeleeJob
             // Buffs
             if (CanWeave())
             {
-                //Variant Rampart
-                if (Variant.CanRampart(CustomComboPreset.MNK_Variant_Rampart))
-                    return Variant.Rampart;
-
                 if (ActionReady(Brotherhood))
                     return Brotherhood;
 
@@ -443,6 +443,14 @@ internal partial class MNK : MeleeJob
             if (actionID is not (ArmOfTheDestroyer or ShadowOfTheDestroyer))
                 return actionID;
 
+            //Variant Cure
+            if (Variant.CanCure(CustomComboPreset.MNK_Variant_Cure, Config.MNK_VariantCure))
+                return Variant.Cure;
+
+            //Variant Rampart
+            if (Variant.CanRampart(CustomComboPreset.MNK_Variant_Rampart))
+                return Variant.Rampart;
+
             if (IsEnabled(CustomComboPreset.MNK_AoEUseMeditation) &&
                 LevelChecked(InspiritedMeditation) &&
                 (!InCombat() || !InMeleeRange()) &&
@@ -459,10 +467,6 @@ internal partial class MNK : MeleeJob
                 !HasEffect(Buffs.OpoOpoForm) && !HasEffect(Buffs.RaptorForm) && !HasEffect(Buffs.CoeurlForm))
                 return FormShift;
 
-            //Variant Cure
-            if (Variant.CanCure(CustomComboPreset.MNK_Variant_Cure, Config.MNK_VariantCure))
-                return Variant.Cure;
-
             if (IsEnabled(CustomComboPreset.MNK_AoEUseBuffs) &&
                 IsEnabled(CustomComboPreset.MNK_AoEUseROF) &&
                 !HasEffect(Buffs.FiresRumination) &&
@@ -474,10 +478,6 @@ internal partial class MNK : MeleeJob
             // Buffs
             if (CanWeave())
             {
-                //Variant Rampart
-                if (Variant.CanRampart(CustomComboPreset.MNK_Variant_Rampart))
-                    return Variant.Rampart;
-
                 if (IsEnabled(CustomComboPreset.MNK_AoEUseBuffs))
                 {
                     if (IsEnabled(CustomComboPreset.MNK_AoEUseBrotherhood) &&
