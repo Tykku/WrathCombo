@@ -766,8 +766,24 @@ public enum CustomComboPreset
     BRD_Adv_Song = 3011,
 
     [ParentCombo(BRD_ST_AdvMode)]
-    [CustomComboInfo("Buffs Option", "Adds buffs onto the Advanced Bard feature.", BRD.JobID)]
+    [CustomComboInfo("Buffs Option", "Adds buffs onto the Advanced Bard feature. \nBuffs have specific timing with each other intended to follow balance. \nDisabling only one can lead to unwanted results", BRD.JobID)]
     BRD_Adv_Buffs = 3017,
+
+    [ParentCombo(BRD_Adv_Buffs)]
+    [CustomComboInfo("Raging Strikes Option", "Adds Raging Strikes", BRD.JobID)]
+    BRD_Adv_Buffs_Raging = 3049,
+
+    [ParentCombo(BRD_Adv_Buffs)]
+    [CustomComboInfo("Battlevoice Option", "Adds Battle Voice", BRD.JobID)]
+    BRD_Adv_Buffs_Battlevoice = 3050,
+
+    [ParentCombo(BRD_Adv_Buffs)]
+        [CustomComboInfo("Radiant Finale Option", "Adds Radiant Finale", BRD.JobID)]
+    BRD_Adv_Buffs_RadiantFinale = 3051,
+
+    [ParentCombo(BRD_Adv_Buffs)]
+    [CustomComboInfo("Barrage Option", "Adds Barrage", BRD.JobID)]
+    BRD_Adv_Buffs_Barrage = 3052,
 
     [ParentCombo(BRD_ST_AdvMode)]
     [CustomComboInfo("Resonant Option", "Adds Resonant Arrow to the Rotation after Barrage.", BRD.JobID)]
@@ -821,8 +837,24 @@ public enum CustomComboPreset
     BRD_AoE_Adv_Songs = 3016,
 
     [ParentCombo(BRD_AoE_AdvMode)]
-    [CustomComboInfo("AoE Buffs Option", "Adds buffs onto the Advance AoE Bard feature.", BRD.JobID)]
+    [CustomComboInfo("AoE Buffs Option", "Adds buffs onto the Advance AoE Bard feature.\nBuffs have specific timing with each other intended to follow balance. \nDisabling only one can lead to unwanted results", BRD.JobID)]
     BRD_AoE_Adv_Buffs = 3032,
+
+    [ParentCombo(BRD_AoE_Adv_Buffs)]
+    [CustomComboInfo("Raging Strikes Option", "Adds Raging Strikes", BRD.JobID)]
+    BRD_AoE_Adv_Buffs_Raging = 3053,
+
+    [ParentCombo(BRD_AoE_Adv_Buffs)]
+    [CustomComboInfo("Battlevoice Option", "Adds Battle Voice", BRD.JobID)]
+    BRD_AoE_Adv_Buffs_Battlevoice = 3054,
+
+    [ParentCombo(BRD_AoE_Adv_Buffs)]
+    [CustomComboInfo("Radiant Finale Option", "Adds Radiant Finale", BRD.JobID)]
+    BRD_AoE_Adv_Buffs_RadiantFinale = 3055,
+
+    [ParentCombo(BRD_AoE_Adv_Buffs)]
+    [CustomComboInfo("Barrage Option", "Adds Barrage", BRD.JobID)]
+    BRD_AoE_Adv_Buffs_Barrage = 3056,
 
     [ParentCombo(BRD_AoE_AdvMode)]
     [CustomComboInfo("oGcd Option",
@@ -1341,14 +1373,14 @@ public enum CustomComboPreset
 
     // StandardStep(or Finishing Move) --> Last Dance
     [ReplaceSkill(DNC.StandardStep, DNC.FinishingMove)]
-    [ConflictingCombos(DNC_DanceStepCombo, DNC_TechnicalStep_Devilment)]
+    [ConflictingCombos(DNC_DanceStepCombo)]
     [CustomComboInfo("Standard Step to Last Dance Feature",
         "Change Standard Step or Finishing Move to Last Dance when available.", DNC.JobID)]
     DNC_StandardStep_LastDance = 4155,
 
     // Technical Step --> Devilment
     [ReplaceSkill(DNC.StandardStep, DNC.FinishingMove)]
-    [ConflictingCombos(DNC_StandardStep_LastDance, DNC_DanceStepCombo)]
+    [ConflictingCombos(DNC_DanceStepCombo)]
     [CustomComboInfo("Technical Step to Devilment Feature", "Change Technical Step to Devilment as soon as possible.",
         DNC.JobID)]
     DNC_TechnicalStep_Devilment = 4160,
@@ -2201,6 +2233,10 @@ public enum CustomComboPreset
     GNB_ST_Overcap = 7018,
 
     [ParentCombo(GNB_ST_Advanced)]
+    [CustomComboInfo("Scuffed Option", "Adds Solid Barrel into the rotation under scuffed conditions:\n- Level 90 or above\n- No Mercy is active\n- Only 1 cartridge available\n- Last combo action was Brutal Shell\n- Gnashing Fang combo is still not active", GNB.JobID)]
+    GNB_ST_Scuffed = 7372,
+
+    [ParentCombo(GNB_ST_Advanced)]
     [CustomComboInfo("Lightning Shot Uptime Option", "Adds Lightning Shot to the main combo when you are out of range.",
         GNB.JobID)]
     GNB_ST_RangedUptime = 7004,
@@ -2449,6 +2485,10 @@ public enum CustomComboPreset
     [ParentCombo(GNB_GF_Features)]
     [CustomComboInfo("Burst Strike Option", "Adds Burst Strike on Gnashing Fang under No Mercy when appropriate.", GNB.JobID)]
     GNB_GF_BurstStrike = 7309,
+
+    [ParentCombo(GNB_GF_Features)]
+    [CustomComboInfo("Scuffed Option", "Adds Solid Barrel to Gnashing Fang under scuffed conditions:\n- Level 90 or above\n- No Mercy is active\n- Only 1 cartridge available\n- Last combo action was Brutal Shell\n- Gnashing Fang combo is still not active", GNB.JobID)]
+    GNB_GF_Scuffed = 7371,
     #endregion
 
     #region No Mercy

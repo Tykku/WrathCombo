@@ -195,7 +195,8 @@ internal partial class GNB : TankJob
                 return Hypervelocity;
             if (IsEnabled(CustomComboPreset.GNB_ST_Advanced_Cooldowns) && IsEnabled(CustomComboPreset.GNB_ST_Continuation) && ShouldUseContinuation())
                 return OriginalHook(Continuation);
-            if (LevelChecked(DoubleDown) && HasNM && GunStep == 0 && ComboAction is BrutalShell && Ammo == 1)
+            if (IsEnabled(CustomComboPreset.GNB_ST_Scuffed) &&
+                LevelChecked(DoubleDown) && HasNM && GunStep == 0 && ComboAction is BrutalShell && Ammo == 1)
                 return SolidBarrel;
             if (IsEnabled(CustomComboPreset.GNB_ST_Advanced_Cooldowns))
             {
@@ -489,7 +490,7 @@ internal partial class GNB : TankJob
                 return Hypervelocity;
             if (IsEnabled(CustomComboPreset.GNB_GF_Continuation) && ShouldUseContinuation())
                 return OriginalHook(Continuation);
-            if (LevelChecked(DoubleDown) && HasNM && GunStep == 0 && ComboAction is BrutalShell && Ammo == 1)
+            if (IsEnabled(CustomComboPreset.GNB_GF_Scuffed) && LevelChecked(DoubleDown) && HasNM && GunStep == 0 && ComboAction is BrutalShell && Ammo == 1)
                 return SolidBarrel;
             if (IsEnabled(CustomComboPreset.GNB_GF_Bloodfest) && ShouldUseBloodfest())
                 return Bloodfest;
