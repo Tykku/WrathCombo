@@ -532,8 +532,18 @@ public enum CustomComboPreset
     BLM_Blizzard_1to3 = 2052,
 
     [ReplaceSkill(BLM.Fire4)]
+    [ConflictingCombos(BLM_Fire_4to3)]
     [CustomComboInfo("Fire & Ice", "Replaces Fire4 with Blizzard4 when in Umbral Ice.", BLM.JobID)]
     BLM_FireandIce = 2057,
+    
+    [ReplaceSkill(BLM.Fire4)]
+    [ConflictingCombos(BLM_FireandIce)]
+    [CustomComboInfo("Fire 4 to 3", "Replaces Fire 4 with Fire 3 when NOT in Astral Fire.", BLM.JobID)]
+    BLM_Fire_4to3 = 2058,
+    
+    [ReplaceSkill(BLM.Blizzard4)]
+    [CustomComboInfo("Blizzard 4 to Despair", "Replaces Blizzard 4 with Despair when in Astral Fire.", BLM.JobID)]
+    BLM_Blizzard_4toDespair = 2059,
 
     [ReplaceSkill(BLM.Transpose)]
     [CustomComboInfo("Umbral Soul/Transpose Feature",
