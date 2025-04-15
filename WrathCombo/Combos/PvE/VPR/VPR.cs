@@ -322,22 +322,6 @@ internal partial class VPR : Melee
 
                 if (ComboAction is HuntersSting or SwiftskinsSting)
                 {
-                    if ((HasStatusEffect(Buffs.FlankstungVenom) || HasStatusEffect(Buffs.HindstungVenom)) &&
-                        LevelChecked(FlanksbaneFang))
-                    {
-                        if (IsEnabled(CustomComboPreset.VPR_TrueNorthDynamic) &&
-                            Role.CanTrueNorth() && !OnTargetsRear() && HasStatusEffect(Buffs.HindstungVenom) &&
-                            CanDelayedWeave())
-                            return Role.TrueNorth;
-
-                        if (IsEnabled(CustomComboPreset.VPR_TrueNorthDynamic) &&
-                            Role.CanTrueNorth() && !OnTargetsFlank() && HasStatusEffect(Buffs.FlankstungVenom) &&
-                            CanDelayedWeave())
-                            return Role.TrueNorth;
-
-                        return OriginalHook(SteelFangs);
-                    }
-
                     if ((HasStatusEffect(Buffs.FlanksbaneVenom) || HasStatusEffect(Buffs.HindsbaneVenom)) &&
                         LevelChecked(HindstingStrike))
                     {
@@ -352,6 +336,22 @@ internal partial class VPR : Melee
                             return Role.TrueNorth;
 
                         return OriginalHook(ReavingFangs);
+                    }
+                    
+                    if ((HasStatusEffect(Buffs.FlankstungVenom) || HasStatusEffect(Buffs.HindstungVenom)) &&
+                        LevelChecked(FlanksbaneFang))
+                    {
+                        if (IsEnabled(CustomComboPreset.VPR_TrueNorthDynamic) &&
+                            Role.CanTrueNorth() && !OnTargetsRear() && HasStatusEffect(Buffs.HindstungVenom) &&
+                            CanDelayedWeave())
+                            return Role.TrueNorth;
+
+                        if (IsEnabled(CustomComboPreset.VPR_TrueNorthDynamic) &&
+                            Role.CanTrueNorth() && !OnTargetsFlank() && HasStatusEffect(Buffs.FlankstungVenom) &&
+                            CanDelayedWeave())
+                            return Role.TrueNorth;
+
+                        return OriginalHook(SteelFangs);
                     }
                 }
 
