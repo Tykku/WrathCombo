@@ -700,12 +700,12 @@ internal partial class PLD : Tank
             float cooldownFightOrFlight2 = GetCooldownRemainingTime(FightOrFlight);
             
             // Circle of Scorn / Spirits Within
-            if (cooldownFightOrFlight2 > 15 && HasStatusEffect(Buffs.Requiescat))
+            if (cooldownFightOrFlight2 > 15 && HasStatusEffect(Buffs.Requiescat) && InMeleeRange())
             {
-                if (ActionReady(CircleOfScorn) && CanWeave(CircleOfScorn))
+                if (ActionReady(CircleOfScorn) && !(WasLastAction(Requiescat)||WasLastAction(Imperator)))
                     return OriginalHook(CircleOfScorn);
 
-                if (ActionReady(SpiritsWithin) && CanWeave(SpiritsWithin))
+                if (ActionReady(SpiritsWithin) && !(WasLastAction(Requiescat)||WasLastAction(Imperator)))
                     return OriginalHook(SpiritsWithin);
             }
             
