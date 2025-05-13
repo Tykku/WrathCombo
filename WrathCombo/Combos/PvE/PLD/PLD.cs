@@ -716,32 +716,29 @@ internal partial class PLD : Tank
     internal class PLD_Requiescat_Confiteor : CustomCombo
     {
         protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.PLD_Requiescat_Options;
-
         protected override uint Invoke(uint actionID)
         {
             if (actionID is not (Requiescat or Imperator))
                 return actionID;
             
             float cooldownFightOrFlight2 = GetCooldownRemainingTime(FightOrFlight);
-
+            
             // Circle of Scorn / Spirits Within
-            if (cooldownFightOrFlight2 > 15 && HasStatusEffect(Buffs.Requiescat))
-                if (cooldownFightOrFlight2 > 15 && HasStatusEffect(Buffs.Requiescat) && InMeleeRange())
-                {
-                    if (ActionReady(CircleOfScorn) && CanWeave(CircleOfScorn))
-                        if (ActionReady(CircleOfScorn) && !(WasLastAction(Requiescat)||WasLastAction(Imperator)))
-                            return OriginalHook(CircleOfScorn);
+            if (cooldownFightOrFlight2 > 15 && HasStatusEffect(Buffs.Requiescat) && InMeleeRange())
+            {
+                if (ActionReady(CircleOfScorn) && !(WasLastAction(Requiescat)||WasLastAction(Imperator)))
+                    return OriginalHook(CircleOfScorn);
 
-                    if (ActionReady(SpiritsWithin) && CanWeave(SpiritsWithin))
-                        if (ActionReady(SpiritsWithin) && !(WasLastAction(Requiescat)||WasLastAction(Imperator)))
-                            return OriginalHook(SpiritsWithin);
-                }
+                if (ActionReady(SpiritsWithin) && !(WasLastAction(Requiescat)||WasLastAction(Imperator)))
+                    return OriginalHook(SpiritsWithin);
+            }
+            
             // Fight or Flight
-            if (Config.PLD_Requiescat_SubOption == 2 && (ActionReady(FightOrFlight) && ActionReady(Requiescat) || !LevelChecked(Requiescat)))
+            if (Config.PLD_Requiescat_SubOption == 2 && ((ActionReady(FightOrFlight) && ActionReady(Requiescat)) || !LevelChecked(Requiescat)))
                 return FightOrFlight;
 
             // Confiteor & Blades
-            if (HasStatusEffect(Buffs.ConfiteorReady) || LevelChecked(BladeOfFaith) && OriginalHook(Confiteor) != Confiteor)
+            if (HasStatusEffect(Buffs.ConfiteorReady) || (LevelChecked(BladeOfFaith) && OriginalHook(Confiteor) != Confiteor))
                 return OriginalHook(Confiteor);
 
             // Pre-Blades
