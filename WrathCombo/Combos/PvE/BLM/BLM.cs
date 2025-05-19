@@ -553,11 +553,6 @@ internal partial class BLM : Caster
                         ActionReady(Fire2) && TraitLevelChecked(Traits.AspectMasteryIII) || !TraitLevelChecked(Traits.UmbralHeart))
                         return OriginalHook(Fire2);
                     
-                    if (ActionReady(Fire2) &&
-                        !TraitLevelChecked(Traits.EnhancedAstralFire) &&
-                        (TraitLevelChecked(Traits.UmbralHeart) && Gauge.UmbralHearts > 1 || !TraitLevelChecked(Traits.UmbralHeart)))
-                        return OriginalHook(Fire2);
-
                     if (IsEnabled(CustomComboPreset.BLM_AoE_Transpose) &&
                         ActionReady(Transpose))
                         return Transpose;
