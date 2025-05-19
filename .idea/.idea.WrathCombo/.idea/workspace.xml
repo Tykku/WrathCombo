@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="64f5b566-0556-4d97-b932-932f220004e3" name="Changes" comment="" />
+    <list default="true" id="64f5b566-0556-4d97-b932-932f220004e3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.WrathCombo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WrathCombo/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/Combos/PvE/VPR/VPR.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/Combos/PvE/VPR/VPR.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/Combos/PvE/VPR/VPR_Helper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/Combos/PvE/VPR/VPR_Helper.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,8 +20,8 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/WrathCombo/Combos/CustomComboPreset.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Plugins/WrathCombo/WrathCombo/Combos/PvE/VPR/VPR.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Plugins/WrathCombo/WrathCombo/Combos/PvE/VPR/VPR.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Plugins/WrathCombo/WrathCombo/Combos/PvE/WHM/WHM_Helper.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Plugins/WrathCombo/WrathCombo/Combos/PvE/WHM/WHM_Helper.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
@@ -59,6 +64,7 @@
       <workItem from="1747503992043" duration="754000" />
       <workItem from="1747506490953" duration="4286000" />
       <workItem from="1747517681200" duration="717000" />
+      <workItem from="1747613666664" duration="2388000" />
     </task>
     <servers />
   </component>
@@ -66,6 +72,17 @@
     <option name="version" value="3" />
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="GitHub.CommitStatus" />
+      </list>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
