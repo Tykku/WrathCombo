@@ -135,8 +135,7 @@ internal partial class VPR : Melee
                 return Role.CanTrueNorth() && CanDelayedWeave()
                     ? Role.TrueNorth
                     : Vicewinder;
-
-            // Uncoiled Fury usage
+            
             // Uncoiled Fury usage
             if (ActionReady(UncoiledFury) &&
                 HasStatusEffect(Buffs.Swiftscaled) && HasStatusEffect(Buffs.HuntersInstinct) &&

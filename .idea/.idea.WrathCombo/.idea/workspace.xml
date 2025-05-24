@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="64f5b566-0556-4d97-b932-932f220004e3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.WrathCombo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WrathCombo/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/Combos/PvE/VPR/VPR.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/Combos/PvE/VPR/VPR.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,6 +74,7 @@
       <workItem from="1747517681200" duration="717000" />
       <workItem from="1747613666664" duration="2630000" />
       <workItem from="1747620511826" duration="3564000" />
+      <workItem from="1748087388671" duration="324000" />
     </task>
     <servers />
   </component>
