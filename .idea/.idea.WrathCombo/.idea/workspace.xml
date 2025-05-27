@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="64f5b566-0556-4d97-b932-932f220004e3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/WrathCombo/Combos/PvE/VPR/VPR.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/Combos/PvE/VPR/VPR.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.WrathCombo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WrathCombo/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,17 +19,8 @@
     <setting file="file://$PROJECT_DIR$/WrathCombo/Combos/CustomComboPreset.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://D:/Plugins/WrathCombo/WrathCombo/Combos/PvE/BLM/BLM.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://D:/Plugins/WrathCombo/WrathCombo/Combos/PvE/BLM/BLM.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Plugins/WrathCombo/WrathCombo/Combos/PvE/BLM/BLM.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Plugins/WrathCombo/WrathCombo/Combos/PvE/BLM/BLM.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Plugins/WrathCombo/WrathCombo/Combos/PvE/BLM/BLM.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Plugins/WrathCombo/WrathCombo/Combos/PvE/BLM/BLM.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Plugins/WrathCombo/WrathCombo/Combos/PvE/BLM/BLM.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Plugins/WrathCombo/WrathCombo/Combos/PvE/BLM/BLM.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Plugins/WrathCombo/WrathCombo/Combos/PvE/BLM/BLM.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Plugins/WrathCombo/WrathCombo/Combos/PvE/BLM/BLM.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Plugins/WrathCombo/WrathCombo/Combos/PvE/BLM/BLM.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Plugins/WrathCombo/WrathCombo/Combos/PvE/BLM/BLM.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Plugins/WrathCombo/WrathCombo/Combos/PvE/BLM/BLM.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Plugins/WrathCombo/WrathCombo/Combos/PvE/VPR/VPR.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Plugins/WrathCombo/WrathCombo/Combos/PvE/VPR/VPR.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
@@ -75,6 +66,9 @@
       <workItem from="1747613666664" duration="2630000" />
       <workItem from="1747620511826" duration="3564000" />
       <workItem from="1748087388671" duration="324000" />
+      <workItem from="1748354676205" duration="349000" />
+      <workItem from="1748355052205" duration="65000" />
+      <workItem from="1748355131700" duration="36000" />
     </task>
     <servers />
   </component>
