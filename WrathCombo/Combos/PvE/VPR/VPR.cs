@@ -21,7 +21,7 @@ internal partial class VPR : Melee
                     if (LevelChecked(SwiftskinsSting) &&
                         (HasHindVenom() || NoSwiftscaled() || NoVenom()))
                         return OriginalHook(ReavingFangs);
-                    
+
                     if (LevelChecked(HuntersSting) && (HasFlankVenom() || NoHuntersInstinct()))
                         return OriginalHook(SteelFangs);
                 }
@@ -135,7 +135,8 @@ internal partial class VPR : Melee
                 return Role.CanTrueNorth() && CanDelayedWeave()
                     ? Role.TrueNorth
                     : Vicewinder;
-            
+
+            // Uncoiled Fury usage
             // Uncoiled Fury usage
             if (ActionReady(UncoiledFury) &&
                 HasStatusEffect(Buffs.Swiftscaled) && HasStatusEffect(Buffs.HuntersInstinct) &&
@@ -160,7 +161,7 @@ internal partial class VPR : Melee
                     if (LevelChecked(SwiftskinsSting) &&
                         (HasHindVenom() || NoSwiftscaled() || NoVenom()))
                         return OriginalHook(ReavingFangs);
-                    
+
                     if (LevelChecked(HuntersSting) && (HasFlankVenom() || NoHuntersInstinct()))
                         return OriginalHook(SteelFangs);
                 }
@@ -340,7 +341,7 @@ internal partial class VPR : Melee
                     if (LevelChecked(SwiftskinsSting) &&
                         (HasHindVenom() || NoSwiftscaled() || NoVenom()))
                         return OriginalHook(ReavingFangs);
-                    
+
                     if (LevelChecked(HuntersSting) && (HasFlankVenom() || NoHuntersInstinct()))
                         return OriginalHook(SteelFangs);
                 }
@@ -356,7 +357,7 @@ internal partial class VPR : Melee
                                 !OnTargetsFlank() && HasStatusEffect(Buffs.FlanksbaneVenom))
                             ? Role.TrueNorth
                             : OriginalHook(ReavingFangs);
-                    
+
                     if ((HasStatusEffect(Buffs.FlankstungVenom) || HasStatusEffect(Buffs.HindstungVenom)) &&
                         LevelChecked(FlanksbaneFang))
                         return IsEnabled(CustomComboPreset.VPR_TrueNorthDynamic) &&
@@ -365,12 +366,11 @@ internal partial class VPR : Melee
                                 !OnTargetsFlank() && HasStatusEffect(Buffs.FlankstungVenom))
                             ? Role.TrueNorth
                             : OriginalHook(SteelFangs);
-                    
                 }
 
                 if (ComboAction is HindstingStrike or HindsbaneFang or FlankstingStrike or FlanksbaneFang)
                     return LevelChecked(ReavingFangs) && HasStatusEffect(Buffs.HonedReavers)
-                            ? OriginalHook(ReavingFangs)
+                        ? OriginalHook(ReavingFangs)
                         : OriginalHook(SteelFangs);
             }
 
