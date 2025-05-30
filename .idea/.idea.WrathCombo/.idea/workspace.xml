@@ -4,7 +4,74 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="64f5b566-0556-4d97-b932-932f220004e3" name="Changes" comment="" />
+    <list default="true" id="64f5b566-0556-4d97-b932-932f220004e3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/WrathCombo/Attributes/RetargetedAttribute.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WrathCombo/Combos/PvE/ALL/HealRetargeting.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WrathCombo/Core/ActionRetargeting.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WrathCombo/CustomCombo/SimpleTarget.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WrathCombo/Extensions/GameObjectExtensions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WrathCombo/Services/PronounService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WrathCombo/Window/MajorChangesWindow.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Retargeting.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/RetargetingExample.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CONTRIBUTING.md" beforeDir="false" afterPath="$PROJECT_DIR$/CONTRIBUTING.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ECommons" beforeDir="false" afterPath="$PROJECT_DIR$/ECommons" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/Attributes/RoleAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/Attributes/RoleAttribute.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/AutoRotation/AutoRotationController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/AutoRotation/AutoRotationController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/Combos/CustomComboPreset.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/Combos/CustomComboPreset.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/Combos/PvE/ALL/ALL.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/Combos/PvE/ALL/ALL.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/Combos/PvE/AST/AST.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/Combos/PvE/AST/AST.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/Combos/PvE/AST/AST_Config.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/Combos/PvE/AST/AST_Config.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/Combos/PvE/AST/AST_Helper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/Combos/PvE/AST/AST_Helper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/Combos/PvE/BLM/BLM.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/Combos/PvE/BLM/BLM.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/Combos/PvE/DNC/DNC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/Combos/PvE/DNC/DNC.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/Combos/PvE/DNC/DNC_Config.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/Combos/PvE/DNC/DNC_Config.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/Combos/PvE/DNC/DNC_Helper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/Combos/PvE/DNC/DNC_Helper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/Combos/PvE/DRK/DRK.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/Combos/PvE/DRK/DRK.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/Combos/PvE/DRK/DRK_Config.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/Combos/PvE/DRK/DRK_Config.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/Combos/PvE/DRK/DRK_Helper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/Combos/PvE/DRK/DRK_Helper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/Combos/PvE/GNB/GNB.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/Combos/PvE/GNB/GNB.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/Combos/PvE/GNB/GNB_Helper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/Combos/PvE/GNB/GNB_Helper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/Combos/PvE/PCT/PCT_Helper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/Combos/PvE/PCT/PCT_Helper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/Combos/PvE/RDM/RDM.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/Combos/PvE/RDM/RDM.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/Combos/PvE/SAM/SAM_Helper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/Combos/PvE/SAM/SAM_Helper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/Combos/PvE/SCH/SCH.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/Combos/PvE/SCH/SCH.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/Combos/PvE/SCH/SCH_Config.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/Combos/PvE/SCH/SCH_Config.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/Combos/PvE/SGE/SGE.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/Combos/PvE/SGE/SGE.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/Combos/PvE/SGE/SGE_Config.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/Combos/PvE/SGE/SGE_Config.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/Combos/PvE/SGE/SGE_Helper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/Combos/PvE/SGE/SGE_Helper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/Combos/PvE/SMN/SMN.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/Combos/PvE/SMN/SMN.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/Combos/PvE/WAR/WAR.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/Combos/PvE/WAR/WAR.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/Combos/PvE/WAR/WAR_Config.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/Combos/PvE/WAR/WAR_Config.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/Combos/PvE/WHM/WHM.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/Combos/PvE/WHM/WHM.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/Combos/PvE/WHM/WHM_Config.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/Combos/PvE/WHM/WHM_Config.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/Combos/PvE/WHM/WHM_Helper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/Combos/PvE/WHM/WHM_Helper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/Core/ActionReplacer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/Core/ActionReplacer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/Core/PluginConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/Core/PluginConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/Core/Presets.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/Core/Presets.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/CustomCombo/CustomCombo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/CustomCombo/CustomCombo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/CustomCombo/Functions/Action.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/CustomCombo/Functions/Action.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/CustomCombo/Functions/Party.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/CustomCombo/Functions/Party.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/CustomCombo/Functions/PlayerCharacter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/CustomCombo/Functions/PlayerCharacter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/CustomCombo/Functions/Target.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/CustomCombo/Functions/Target.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/CustomCombo/WrathOpener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/CustomCombo/WrathOpener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/Data/ActionWatching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/Data/ActionWatching.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/DebugFile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/DebugFile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/Extensions/UIntExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/Extensions/UIntExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/Services/PartyUITargeting.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/Window/Functions/Presets.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/Window/Functions/Presets.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/Window/Functions/UserConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/Window/Functions/UserConfig.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/Window/SettingChangeWindow.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/Window/Tabs/Debug.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/Window/Tabs/Debug.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/Window/Tabs/Settings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/Window/Tabs/Settings.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/Window/TargetHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/Window/TargetHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/WrathCombo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/WrathCombo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WrathCombo/WrathCombo.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/WrathCombo/WrathCombo.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/CODEOWNERS" beforeDir="false" afterPath="$PROJECT_DIR$/docs/CODEOWNERS" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/IPC.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/IPC.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pluginmaster.json" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,10 +82,8 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/WrathCombo/Combos/CustomComboPreset.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Plugins/WrathCombo/WrathCombo/Combos/PvE/BLM/BLM.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Plugins/WrathCombo/WrathCombo/Combos/PvE/BLM/BLM.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Plugins/WrathCombo/WrathCombo/Combos/PvE/VPR/VPR.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Plugins/WrathCombo/WrathCombo/Combos/PvE/VPR/VPR.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Plugins/WrathCombo/WrathCombo/CustomCombo/CustomCombo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Plugins/WrathCombo/WrathCombo/CustomCombo/CustomCombo.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
@@ -28,25 +93,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Wrath-Fixes&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "Merging Wrath-Fixes",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\Tykku\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\Tykku\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\Tykku\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\Tykku\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache",
+      "C:\\Users\\Tykku\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache",
+      "C:\\Users\\Tykku\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -68,6 +133,7 @@
       <workItem from="1748355052205" duration="65000" />
       <workItem from="1748355131700" duration="36000" />
       <workItem from="1748483926122" duration="621000" />
+      <workItem from="1748590149289" duration="90000" />
     </task>
     <servers />
   </component>

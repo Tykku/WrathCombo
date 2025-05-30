@@ -96,13 +96,13 @@ namespace WrathCombo.CustomComboNS
             if (resultingActionID == 0 || actionID == resultingActionID)
                 return false;
 
-            if (Service.Configuration.SuppressQueuedActions && !Svc.ClientState.IsPvP && ActionManager.Instance()->QueuedActionType == ActionType.Action && ActionManager.Instance()->QueuedActionId != actionID)
+            /*if (Service.Configuration.SuppressQueuedActions && !Svc.ClientState.IsPvP && ActionManager.Instance()->QueuedActionType == ActionType.Action && ActionManager.Instance()->QueuedActionId != actionID)
             {
                 // todo: tauren: remember why this condition was in the if below:
                 //      `&& WrathOpener.CurrentOpener?.OpenerStep <= 1`
                 if (resultingActionID != All.SavageBlade)
                     return false;
-            }
+            }*/
             newActionID = resultingActionID;
 
             return true;
