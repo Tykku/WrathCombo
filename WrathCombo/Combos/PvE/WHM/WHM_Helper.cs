@@ -148,17 +148,8 @@ internal partial class WHM
             Glare3,
             Glare3,
             PresenceOfMind,
-            Glare4,
-            Assize,
-            Glare4,
-            Glare4,
             Glare3,
-            Glare3,
-            Glare3,
-            Glare3,
-            Glare3,
-            Glare3,
-            Dia,
+            Assize
         ];
 
         internal override UserData ContentCheckConfig => Config.WHM_Balance_Content;
