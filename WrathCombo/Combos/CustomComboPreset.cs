@@ -901,7 +901,8 @@ public enum CustomComboPreset
     BRD_ST_Wardens = 3047,
 
     [ParentCombo(BRD_ST_Wardens)]
-    [CustomComboInfo("Party Cleanse Option", "Uses Wardens Paeon when someone in the party has a cleansable debuff using the Retargeting Function", BRD.JobID)]
+    [CustomComboInfo("Party Cleanse Option", "Uses Wardens Paeon when someone in the party has a cleansable debuff using the Retargeting Function following party list", BRD.JobID)]
+    [Retargeted]
     BRD_ST_WardensAuto = 3064,
 
     [AutoAction(true, false)]
@@ -974,7 +975,8 @@ public enum CustomComboPreset
     BRD_AoE_Wardens = 3046,
 
     [ParentCombo(BRD_AoE_Wardens)]
-    [CustomComboInfo("Party Cleanse Option", "Uses Wardens Paeon when someone in the party has a cleansable debuff using the Retargeting Function.", BRD.JobID)]
+    [CustomComboInfo("Party Cleanse Option", "Uses Wardens Paeon when someone in the party has a cleansable debuff using the Retargeting Function following party list.", BRD.JobID)]
+    [Retargeted]
     BRD_AoE_WardensAuto = 3063,
 
     #endregion
@@ -6615,6 +6617,11 @@ SMN.JobID)]
     [Retargeted]
     WAR_Bloodwhetting_Targeting_TT = 18121,
 
+    [ReplaceSkill(WAR.Holmgang)]
+    [CustomComboInfo("Retarget Holmgang Feature", "Will Retarget Holmgang to yourself, instead of letting it go on enemies.", WAR.JobID)]
+    [Retargeted]
+    WAR_RetargetHolmgang = 18130,
+
     #region Bozja
     [Bozja]
     [CustomComboInfo("Lost Focus Option", "Use Lost Focus when available.", WAR.JobID)]
@@ -6800,7 +6807,7 @@ SMN.JobID)]
 
     #endregion
 
-    // Last value = 18121
+    // Last value = 18130
 
     #endregion
 
