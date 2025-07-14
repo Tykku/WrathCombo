@@ -1,5 +1,4 @@
-﻿using Dalamud.Game.ClientState.Conditions;
-using Dalamud.Game.ClientState.Objects.Types;
+﻿using Dalamud.Game.ClientState.Objects.Types;
 using ECommons;
 using ECommons.DalamudServices;
 using ECommons.ExcelServices;
@@ -14,13 +13,14 @@ using System.Numerics;
 using WrathCombo.Combos;
 using WrathCombo.Combos.PvE;
 using WrathCombo.CustomComboNS.Functions;
-using WrathCombo.Data;
 using WrathCombo.Extensions;
 using WrathCombo.Services;
 using WrathCombo.Services.IPC_Subscriber;
 using WrathCombo.Window.Functions;
 using static WrathCombo.CustomComboNS.Functions.CustomComboFunctions;
+using static WrathCombo.Data.ActionWatching;
 using Action = Lumina.Excel.Sheets.Action;
+using ActionType = FFXIVClientStructs.FFXIV.Client.Game.ActionType;
 
 #pragma warning disable CS0414 // Field is assigned but its value is never used
 
@@ -44,6 +44,7 @@ namespace WrathCombo.AutoRotation
             x.BattleChara is not null &&
             x.BattleChara.IsDead &&
             x.BattleChara.IsTargetable &&
+            (cfg.HealerSettings.AutoRezOutOfParty || GetPartyMembers().Any(y => y.GameObjectId == x.BattleChara.GameObjectId)) &&
             GetTargetDistance(x.BattleChara) <= QueryRange &&
             !HasStatusEffect(2648, x.BattleChara, true) && // Transcendent Effect
             !HasStatusEffect(148, x.BattleChara, true) && // Raise Effect
@@ -147,7 +148,7 @@ namespace WrathCombo.AutoRotation
                 return;
 
             // Healer cleanse/rez logic
-            if (isHealer || (Player.Job is Job.SMN or Job.RDM && cfg.HealerSettings.AutoRezDPSJobs))
+            if (isHealer || (Player.Job is Job.SMN or Job.RDM && cfg.HealerSettings.AutoRezDPSJobs) || OccultCrescent.IsEnabledAndUsable(CustomComboPreset.Phantom_Chemist_Revive, OccultCrescent.Revive))
             {
                 if (!needsHeal)
                 {
@@ -168,7 +169,7 @@ namespace WrathCombo.AutoRotation
                 return;
 
             // Reset locks if no action for 3 seconds
-            if (ActionWatching.TimeSinceLastAction.TotalSeconds >= 3)
+            if (TimeSinceLastAction.TotalSeconds >= 3)
             {
                 LockedAoE = false;
                 LockedST = false;
@@ -267,7 +268,7 @@ namespace WrathCombo.AutoRotation
                     if (!ActionReady(spell))
                         return;
 
-                    if (ActionManager.CanUseActionOnTarget(spell, Svc.Targets.FocusTarget.Struct()) && !ActionWatching.OutOfRange(spell, Player.Object, Svc.Targets.FocusTarget) && ActionManager.Instance()->GetActionStatus(ActionType.Action, spell) == 0)
+                    if (ActionManager.CanUseActionOnTarget(spell, Svc.Targets.FocusTarget.Struct()) && !OutOfRange(spell, Player.Object, Svc.Targets.FocusTarget) && ActionManager.Instance()->GetActionStatus(ActionType.Action, spell) == 0)
                     {
                         ActionManager.Instance()->UseAction(ActionType.Action, regenSpell, Svc.Targets.FocusTarget.GameObjectId);
                         return;
@@ -278,27 +279,40 @@ namespace WrathCombo.AutoRotation
 
         private static void RezParty()
         {
-            uint resSpell = Player.Job switch
+            if (HasStatusEffect(418)) return;
+            uint resSpell = 
+                OccultCrescent.IsEnabledAndUsable(CustomComboPreset.Phantom_Chemist_Revive, OccultCrescent.Revive) 
+                ? OccultCrescent.Revive 
+                : Player.Job switch
             {
                 Job.CNJ or Job.WHM => WHM.Raise,
                 Job.SCH or Job.SMN => SCH.Resurrection,
                 Job.AST => AST.Ascend,
                 Job.SGE => SGE.Egeiro,
                 Job.RDM => RDM.Verraise,
-                _ => throw new NotImplementedException(),
+                _ => 0,
             };
+
+            if (resSpell == 0)
+                return;
 
             if (ActionManager.Instance()->QueuedActionId == resSpell)
                 ActionManager.Instance()->QueuedActionId = 0;
 
             if (Player.Object.CurrentMp >= GetResourceCost(resSpell) && ActionReady(resSpell))
             {
-                var timeSinceLastRez = TimeSpan.FromMilliseconds(ActionWatching.TimeSinceLastSuccessfulCast(resSpell));
-                if ((ActionWatching.TimeSinceLastSuccessfulCast(resSpell) != -1f && timeSinceLastRez.TotalSeconds < 4) || Player.Object.IsCasting())
+                var timeSinceLastRez = TimeSinceLastSuccessfulCast(resSpell);
+                if ((timeSinceLastRez != -1f && timeSinceLastRez < 4f) || Player.Object.IsCasting())
                     return;
 
-                if (GetPartyMembers().Where(RezQuery).FindFirst(x => x is not null, out var member))
+                if (DeadPeople.Where(RezQuery).FindFirst(x => x is not null, out var member))
                 {
+                    if (resSpell == OccultCrescent.Revive)
+                    {
+                        ActionManager.Instance()->UseAction(ActionType.Action, resSpell, member.BattleChara.GameObjectId);
+                        return;
+                    }
+
                     if (Player.Job is Job.RDM)
                     {
                         if (ActionReady(RoleActions.Magic.Swiftcast) && !HasStatusEffect(RDM.Buffs.Dualcast))
@@ -337,6 +351,7 @@ namespace WrathCombo.AutoRotation
 
         private static void CleanseParty()
         {
+            if (HasStatusEffect(418)) return;
             if (ActionManager.Instance()->QueuedActionId == RoleActions.Healer.Esuna)
                 ActionManager.Instance()->QueuedActionId = 0;
 
@@ -349,6 +364,7 @@ namespace WrathCombo.AutoRotation
 
         private static void UpdateKardiaTarget()
         {
+            if (HasStatusEffect(418)) return;
             if (!LevelChecked(SGE.Kardia)) return;
             if (CombatEngageDuration().TotalSeconds < 3) return;
 
@@ -497,7 +513,7 @@ namespace WrathCombo.AutoRotation
                 {
 
                     var target = !cfg.DPSSettings.AoEIgnoreManual && cfg.DPSRotationMode == DPSRotationMode.Manual ? Svc.Targets.Target : DPSTargeting.BaseSelection.MaxBy(x => NumberOfEnemiesInRange(OriginalHook(gameAct), x, true));
-                    var numEnemies = NumberOfEnemiesInRange(gameAct, target, true);
+                    var numEnemies = NumberOfEnemiesInRange(OriginalHook(gameAct), target, true);
                     if (!_ninjaLockedAoE)
                     {
                         if (cfg.DPSSettings.DPSAoETargets == null || numEnemies < cfg.DPSSettings.DPSAoETargets)
@@ -518,7 +534,7 @@ namespace WrathCombo.AutoRotation
                     if (!ActionReady(outAct))
                         return false;
 
-                    var sheet = Svc.Data.GetExcelSheet<Action>().GetRow(outAct);
+                    var sheet = ActionSheet[outAct];
                     var mustTarget = sheet.CanTargetHostile;
 
                     bool switched = SwitchOnDChole(attributes, outAct, ref target);
@@ -581,7 +597,7 @@ namespace WrathCombo.AutoRotation
                 if (target is null && !canUseSelf)
                     return false;
 
-                var areaTargeted = Svc.Data.GetExcelSheet<Action>().GetRow(outAct).TargetArea;
+                var areaTargeted = ActionSheet[outAct].TargetArea;
                 var canUseTarget = target is not null && ActionManager.CanUseActionOnTarget(outAct, target.Struct());
 
                 var inRange = target is null
@@ -590,9 +606,9 @@ namespace WrathCombo.AutoRotation
                         ? GetTargetDistance(target) <= 20f
                         : InActionRange(outAct, target));
 
-                var canUse = (canUseSelf || canUseTarget || areaTargeted) && (outAct.ActionType() is { } type && (type is ActionType.Ability || type is not ActionType.Ability && RemainingGCD == 0));
+                var canUse = (canUseSelf || canUseTarget || areaTargeted) && outAct.ActionAttackType() is { } type && (type is ActionAttackType.Ability || type is not ActionAttackType.Ability && RemainingGCD == 0);
 
-                if ((canUse || cfg.DPSSettings.AlwaysSelectTarget))
+                if (canUse || cfg.DPSSettings.AlwaysSelectTarget)
                     Svc.Targets.Target = target;
 
                 var castTime = ActionManager.GetAdjustedCastTime(ActionType.Action, outAct);

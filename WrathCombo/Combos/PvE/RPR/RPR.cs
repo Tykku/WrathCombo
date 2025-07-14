@@ -1,6 +1,5 @@
 using WrathCombo.CustomComboNS;
 using static WrathCombo.Combos.PvE.RPR.Config;
-using static WrathCombo.Data.ActionWatching;
 namespace WrathCombo.Combos.PvE;
 
 internal partial class RPR : Melee
@@ -33,7 +32,6 @@ internal partial class RPR : Melee
 
         protected override uint Invoke(uint actionID)
         {
-            // Don't change anything if not basic skill
             if (actionID is not Slice)
                 return actionID;
 
@@ -55,7 +53,7 @@ internal partial class RPR : Melee
                 return OccultCrescent.BestPhantomAction();
 
             //All Weaves
-            if (CanWeave() && !HasDoubleWeaved())
+            if (CanWeave())
             {
                 //Arcane Cirlce
                 if (ActionReady(ArcaneCircle) &&
@@ -81,7 +79,6 @@ internal partial class RPR : Melee
                     if (LevelChecked(Gluttony) &&
                         GetCooldownRemainingTime(Gluttony) <= GCD / 2)
                         return Gluttony;
-
 
                     //Bloodstalk
                     if (LevelChecked(BloodStalk) &&
@@ -145,7 +142,7 @@ internal partial class RPR : Melee
 
                 //Gallows
                 if (HasStatusEffect(Buffs.EnhancedGallows) ||
-                    !HasStatusEffect(Buffs.EnhancedGibbet) && !HasStatusEffect(Buffs.EnhancedGallows))
+                    (!HasStatusEffect(Buffs.EnhancedGibbet) && !HasStatusEffect(Buffs.EnhancedGallows)))
                     return Role.CanTrueNorth() && !OnTargetsRear()
                         ? Role.TrueNorth
                         : OriginalHook(Gallows);
@@ -207,6 +204,11 @@ internal partial class RPR : Melee
 
             int positionalChoice = RPR_Positional;
 
+            //RPR Opener
+            if (IsEnabled(CustomComboPreset.RPR_ST_Opener) &&
+                Opener().FullOpener(ref actionID))
+                return actionID;
+
             //Soulsow
             if (IsEnabled(CustomComboPreset.RPR_ST_SoulSow) &&
                 LevelChecked(Soulsow) &&
@@ -224,22 +226,15 @@ internal partial class RPR : Melee
             if (OccultCrescent.ShouldUsePhantomActions())
                 return OccultCrescent.BestPhantomAction();
 
-
-            //RPR Opener
-            if (IsEnabled(CustomComboPreset.RPR_ST_Opener) &&
-                Opener().FullOpener(ref actionID))
-                return actionID;
-
             //All Weaves
-            if (CanWeave() && !HasDoubleWeaved())
+            if (CanWeave())
             {
                 //Arcane Cirlce
                 if (IsEnabled(CustomComboPreset.RPR_ST_ArcaneCircle) &&
                     ActionReady(ArcaneCircle) &&
                     (LevelChecked(Enshroud) && JustUsed(ShadowOfDeath) ||
                      !LevelChecked(Enshroud)) &&
-                    (RPR_ST_ArcaneCircle_SubOption == 0 ||
-                     RPR_ST_ArcaneCircle_SubOption == 1 && InBossEncounter()))
+                    (RPR_ST_ArcaneCircle_SubOption == 0 || InBossEncounter()))
                     return ArcaneCircle;
 
                 //Enshroud
@@ -279,9 +274,11 @@ internal partial class RPR : Melee
                     //Sacrificium
                     if (IsEnabled(CustomComboPreset.RPR_ST_Sacrificium) &&
                         Lemure <= 4 && HasStatusEffect(Buffs.Oblatio) &&
-                        (GetCooldownRemainingTime(ArcaneCircle) > GCD * 3 && !JustUsed(ArcaneCircle, 2) &&
-                         (RPR_ST_ArcaneCircle_SubOption == 0 || RPR_ST_ArcaneCircle_SubOption == 1 && InBossEncounter()) ||
-                         RPR_ST_ArcaneCircle_SubOption == 1 && !InBossEncounter() && IsOffCooldown(ArcaneCircle)))
+                        ((GetCooldownRemainingTime(ArcaneCircle) > GCD * 3 && !JustUsed(ArcaneCircle, 2) &&
+                          (RPR_ST_ArcaneCircle_SubOption == 0 ||
+                           InBossEncounter() ||
+                           RPR_ST_ArcaneCircle_SubOption == 1 && !InBossEncounter() && IsOffCooldown(ArcaneCircle))) ||
+                         IsNotEnabled(CustomComboPreset.RPR_ST_ArcaneCircle)))
                         return OriginalHook(Gluttony);
 
                     //Lemure's Slice
@@ -311,7 +308,7 @@ internal partial class RPR : Melee
                     LevelChecked(Communio))
                     return Communio;
 
-                return IsEnabled(CustomComboPreset.RPR_ST_RangedFillerHarvestMoon) &&
+                return RPR_ST_RangedFillerHarvestMoon &&
                        HasStatusEffect(Buffs.Soulsow)
                     ? HarvestMoon
                     : Harpe;
@@ -334,13 +331,13 @@ internal partial class RPR : Melee
             {
                 //Gibbet
                 if (HasStatusEffect(Buffs.EnhancedGibbet) ||
-                    positionalChoice is 1 && !HasStatusEffect(Buffs.EnhancedGibbet) &&
-                    !HasStatusEffect(Buffs.EnhancedGallows))
+                    (positionalChoice is 1 && !HasStatusEffect(Buffs.EnhancedGibbet) &&
+                     !HasStatusEffect(Buffs.EnhancedGallows)))
                 {
                     return IsEnabled(CustomComboPreset.RPR_ST_TrueNorthDynamic) &&
-                           (IsEnabled(CustomComboPreset.RPR_ST_TrueNorthDynamic_HoldCharge) &&
-                            GetRemainingCharges(Role.TrueNorth) < 2 ||
-                            IsNotEnabled(CustomComboPreset.RPR_ST_TrueNorthDynamic_HoldCharge)) &&
+                           ((RPR_ST_TrueNorthDynamic_HoldCharge &&
+                             GetRemainingCharges(Role.TrueNorth) < 2) ||
+                            !RPR_ST_TrueNorthDynamic_HoldCharge) &&
                            Role.CanTrueNorth() && !OnTargetsFlank()
                         ? Role.TrueNorth
                         : OriginalHook(Gibbet);
@@ -348,13 +345,13 @@ internal partial class RPR : Melee
 
                 //Gallows
                 if (HasStatusEffect(Buffs.EnhancedGallows) ||
-                    positionalChoice is 0 && !HasStatusEffect(Buffs.EnhancedGibbet) &&
-                    !HasStatusEffect(Buffs.EnhancedGallows))
+                    (positionalChoice is 0 && !HasStatusEffect(Buffs.EnhancedGibbet) &&
+                     !HasStatusEffect(Buffs.EnhancedGallows)))
                 {
                     return IsEnabled(CustomComboPreset.RPR_ST_TrueNorthDynamic) &&
-                           (IsEnabled(CustomComboPreset.RPR_ST_TrueNorthDynamic_HoldCharge) &&
-                            GetRemainingCharges(Role.TrueNorth) < 2 ||
-                            IsNotEnabled(CustomComboPreset.RPR_ST_TrueNorthDynamic_HoldCharge)) &&
+                           ((RPR_ST_TrueNorthDynamic_HoldCharge &&
+                             GetRemainingCharges(Role.TrueNorth) < 2) ||
+                            !RPR_ST_TrueNorthDynamic_HoldCharge) &&
                            Role.CanTrueNorth() && !OnTargetsRear()
                         ? Role.TrueNorth
                         : OriginalHook(Gallows);
@@ -416,7 +413,6 @@ internal partial class RPR : Melee
 
         protected override uint Invoke(uint actionID)
         {
-            // Don't change anything if not basic skill
             if (actionID is not SpinningScythe)
                 return actionID;
 
@@ -434,15 +430,17 @@ internal partial class RPR : Melee
             if (OccultCrescent.ShouldUsePhantomActions())
                 return OccultCrescent.BestPhantomAction();
 
-            if (CanWeave() && !HasDoubleWeaved())
+            if (CanWeave())
             {
                 if (ActionReady(ArcaneCircle))
                     return ArcaneCircle;
 
-                if (!HasStatusEffect(Buffs.SoulReaver) && !HasStatusEffect(Buffs.Enshrouded) &&
+                if (!HasStatusEffect(Buffs.SoulReaver) &&
+                    !HasStatusEffect(Buffs.Enshrouded) &&
                     !HasStatusEffect(Buffs.Executioner) &&
-                    ActionReady(Enshroud) && (Shroud >= 50 || HasStatusEffect(Buffs.IdealHost)) &&
-                    !IsComboExpiring(6))
+                    ActionReady(Enshroud) &&
+                    !IsComboExpiring(6) &&
+                    (Shroud >= 50 || HasStatusEffect(Buffs.IdealHost)))
                     return Enshroud;
 
                 if (LevelChecked(Gluttony) && Soul >= 50 && !HasStatusEffect(Buffs.Enshrouded) &&
@@ -518,7 +516,6 @@ internal partial class RPR : Melee
 
         protected override uint Invoke(uint actionID)
         {
-            // Don't change anything if not basic skill
             if (actionID is not SpinningScythe)
                 return actionID;
 
@@ -537,16 +534,18 @@ internal partial class RPR : Melee
             if (OccultCrescent.ShouldUsePhantomActions())
                 return OccultCrescent.BestPhantomAction();
 
-            if (CanWeave() && !HasDoubleWeaved())
+            if (CanWeave())
             {
                 if (IsEnabled(CustomComboPreset.RPR_AoE_ArcaneCircle) &&
                     ActionReady(ArcaneCircle))
                     return ArcaneCircle;
 
                 if (IsEnabled(CustomComboPreset.RPR_AoE_Enshroud) &&
-                    !HasStatusEffect(Buffs.SoulReaver) && !HasStatusEffect(Buffs.Enshrouded) &&
-                    ActionReady(Enshroud) && (Shroud >= 50 || HasStatusEffect(Buffs.IdealHost)) &&
-                    !IsComboExpiring(6))
+                    !HasStatusEffect(Buffs.SoulReaver) &&
+                    !HasStatusEffect(Buffs.Enshrouded) &&
+                    !IsComboExpiring(6) &&
+                    ActionReady(Enshroud) &&
+                    (Shroud >= 50 || HasStatusEffect(Buffs.IdealHost)))
                     return Enshroud;
 
                 if (IsEnabled(CustomComboPreset.RPR_AoE_Gluttony) &&
@@ -559,8 +558,8 @@ internal partial class RPR : Melee
                     LevelChecked(GrimSwathe) && !HasStatusEffect(Buffs.Enshrouded) &&
                     !HasStatusEffect(Buffs.SoulReaver) && !HasStatusEffect(Buffs.ImmortalSacrifice) &&
                     Soul >= 50 &&
-                    (!LevelChecked(Gluttony) || LevelChecked(Gluttony) &&
-                        (Soul is 100 || GetCooldownRemainingTime(Gluttony) > GCD * 5)))
+                    (!LevelChecked(Gluttony) ||
+                     (LevelChecked(Gluttony) && (Soul is 100 || GetCooldownRemainingTime(Gluttony) > GCD * 5))))
                     return GrimSwathe;
 
                 if (HasStatusEffect(Buffs.Enshrouded))

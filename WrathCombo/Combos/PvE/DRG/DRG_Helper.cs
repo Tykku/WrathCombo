@@ -2,12 +2,10 @@
 using Dalamud.Game.ClientState.Statuses;
 using System.Collections.Frozen;
 using System.Collections.Generic;
-using System.Linq;
 using WrathCombo.CustomComboNS;
 using WrathCombo.CustomComboNS.Functions;
 using static WrathCombo.Combos.PvE.DRG.Config;
 using static WrathCombo.CustomComboNS.Functions.CustomComboFunctions;
-using static WrathCombo.Data.ActionWatching;
 namespace WrathCombo.Combos.PvE;
 
 internal partial class DRG
@@ -19,7 +17,7 @@ internal partial class DRG
 
     internal static bool UseLifeSurge()
     {
-        if (ActionReady(LifeSurge) && CanDRGWeave(LifeSurge) && !HasStatusEffect(Buffs.LifeSurge))
+        if (ActionReady(LifeSurge) && !HasStatusEffect(Buffs.LifeSurge))
         {
             if (LevelChecked(Drakesbane) && LoTDActive &&
                 (HasStatusEffect(Buffs.LanceCharge) || HasStatusEffect(Buffs.BattleLitany)) &&
@@ -42,48 +40,10 @@ internal partial class DRG
 
     #region Animation Locks
 
-    internal static readonly List<uint> FastLocks =
-    [
-        BattleLitany,
-        LanceCharge,
-        LifeSurge,
-        Geirskogul,
-        Nastrond,
-        MirageDive,
-        WyrmwindThrust,
-        RiseOfTheDragon,
-        Starcross,
-        Variant.Rampart,
-        Role.TrueNorth
-    ];
+    internal static bool CanDRGWeave(float weaveTime = BaseAnimationLock, bool forceFirst = false)
 
-    internal static readonly List<uint> MidLocks =
-    [
-        Jump,
-        HighJump,
-        DragonfireDive
-    ];
-
-    internal static uint SlowLock => Stardiver;
-
-    internal static bool CanDRGWeave(uint oGCD)
     {
-        float gcdTimer = GetCooldownRemainingTime(TrueThrust);
-
-        //GCD Ready - No Weave
-        if (IsOffCooldown(TrueThrust))
-            return false;
-
-        if (FastLocks.Any(x => x == oGCD) && gcdTimer >= 0.6f && !HasDoubleWeaved())
-            return true;
-
-        if (MidLocks.Any(x => x == oGCD) && gcdTimer >= 0.8f && !HasDoubleWeaved())
-            return true;
-
-        if (SlowLock == oGCD && gcdTimer >= 1.5f && !HasDoubleWeaved())
-            return true;
-
-        return false;
+        return !HasWeavedAction(Stardiver) && (!forceFirst || !HasWeaved()) && CanWeave(weaveTime);
     }
 
     #endregion

@@ -16,7 +16,7 @@ internal partial class RDM : Caster
             if (actionID is not (Jolt or Jolt2 or Jolt3))
                 return actionID;
             
-            #region Variants
+            #region Special Content
             if (OccultCrescent.ShouldUsePhantomActions())
                 return OccultCrescent.BestPhantomAction();
                 
@@ -29,7 +29,7 @@ internal partial class RDM : Caster
             #endregion
             
             #region OGCDs
-            if (CanSpellWeave() && !ActionWatching.HasDoubleWeaved())
+            if (CanWeave())
             {
                 //Gap Closer
                 if (ActionReady(Corpsacorps) && (HasEnoughManaToStart || CanMagickedSwordplay) && !InMeleeRange()) 
@@ -117,7 +117,7 @@ internal partial class RDM : Caster
             if (actionID is not (Scatter or Impact))
                 return actionID;
             
-            #region Variants
+            #region Special Content
             if (OccultCrescent.ShouldUsePhantomActions())
                 return OccultCrescent.BestPhantomAction();
                 
@@ -129,7 +129,7 @@ internal partial class RDM : Caster
             #endregion
             
             #region OGCDs
-            if (CanSpellWeave() && !ActionWatching.HasDoubleWeaved())  
+            if (CanWeave())
             {
                 //Gap Closer Option
                 if (ActionReady(Corpsacorps) && (HasEnoughManaToStart || CanMagickedSwordplay) && !InMeleeRange()) 
@@ -223,8 +223,7 @@ internal partial class RDM : Caster
                 return actionID;
             #endregion
             
-            #region Variants
-            
+            #region Special Content
             if (OccultCrescent.ShouldUsePhantomActions())
                 return OccultCrescent.BestPhantomAction();
                 
@@ -236,7 +235,7 @@ internal partial class RDM : Caster
             #endregion
 
             #region OGCDs
-            if (CanSpellWeave() && !ActionWatching.HasDoubleWeaved())
+            if (CanWeave())
             {
                 if (IsEnabled(CustomComboPreset.RDM_ST_MeleeCombo_GapCloser) && 
                     ActionReady(Corpsacorps) && (HasEnoughManaToStart || CanMagickedSwordplay) && !InMeleeRange()) 
@@ -334,7 +333,7 @@ internal partial class RDM : Caster
             if (actionID is not (Scatter or Impact))
                 return actionID;
 
-            #region Variants
+            #region Special Content
             if (OccultCrescent.ShouldUsePhantomActions())
                 return OccultCrescent.BestPhantomAction();
                 
@@ -346,7 +345,7 @@ internal partial class RDM : Caster
             #endregion
 
             #region OGCDs
-            if (CanSpellWeave() && !ActionWatching.HasDoubleWeaved())
+            if (CanWeave())
             {
                 if (IsEnabled(CustomComboPreset.RDM_AoE_MeleeCombo_GapCloser) && 
                     ActionReady(Corpsacorps) && (HasEnoughManaToStart || CanMagickedSwordplay) && !InMeleeRange()) 

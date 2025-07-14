@@ -1,7 +1,6 @@
 using System.Linq;
 using WrathCombo.CustomComboNS;
 using static WrathCombo.Combos.PvE.BLM.Config;
-using static WrathCombo.Data.ActionWatching;
 namespace WrathCombo.Combos.PvE;
 
 internal partial class BLM : Caster
@@ -24,7 +23,7 @@ internal partial class BLM : Caster
             if (OccultCrescent.ShouldUsePhantomActions())
                 return OccultCrescent.BestPhantomAction();
 
-            if (CanSpellWeave() && !HasDoubleWeaved())
+            if (CanWeave())
             {
                 if (ActionReady(Amplifier) && !HasMaxPolyglotStacks)
                     return Amplifier;
@@ -69,7 +68,7 @@ internal partial class BLM : Caster
 
             if (LevelChecked(Thunder) && HasStatusEffect(Buffs.Thunderhead) &&
                 CanApplyStatus(CurrentTarget, ThunderList[OriginalHook(Thunder)]) &&
-                (ThunderDebuffST is null && ThunderDebuffAoE is null ||
+                ((ThunderDebuffST is null && ThunderDebuffAoE is null) ||
                  ThunderDebuffST?.RemainingTime <= 3 ||
                  ThunderDebuffAoE?.RemainingTime <= 3) &&
                 GetTargetHPPercent() > 0)
@@ -185,6 +184,11 @@ internal partial class BLM : Caster
             if (actionID is not Fire)
                 return actionID;
 
+            // Opener
+            if (IsEnabled(CustomComboPreset.BLM_ST_Opener) &&
+                Opener().FullOpener(ref actionID))
+                return actionID;
+
             if (Variant.CanCure(CustomComboPreset.BLM_Variant_Cure, BLM_VariantCure))
                 return Variant.Cure;
 
@@ -194,12 +198,7 @@ internal partial class BLM : Caster
             if (OccultCrescent.ShouldUsePhantomActions())
                 return OccultCrescent.BestPhantomAction();
 
-            // Opener
-            if (IsEnabled(CustomComboPreset.BLM_ST_Opener) &&
-                Opener().FullOpener(ref actionID))
-                return actionID;
-
-            if (CanSpellWeave() && !HasDoubleWeaved())
+            if (CanWeave())
             {
                 if (IsEnabled(CustomComboPreset.BLM_ST_Amplifier) &&
                     ActionReady(Amplifier) && !HasMaxPolyglotStacks)
@@ -223,7 +222,8 @@ internal partial class BLM : Caster
 
                     if (IsEnabled(CustomComboPreset.BLM_ST_Triplecast) &&
                         ActionReady(Triplecast) && IsOnCooldown(Role.Swiftcast) &&
-                        !HasStatusEffect(Role.Buffs.Swiftcast) && !HasStatusEffect(Buffs.Triplecast) && !HasStatusEffect(Buffs.LeyLines) &&
+                        !HasStatusEffect(Role.Buffs.Swiftcast) && !HasStatusEffect(Buffs.Triplecast) &&
+                        (BLM_ST_Triplecast_SubOption == 0 || !HasStatusEffect(Buffs.LeyLines)) &&
                         ((BLM_ST_MovementOption[0] && GetRemainingCharges(Triplecast) > BLM_ST_Triplecast_Movement) ||
                          !BLM_ST_MovementOption[0]) && JustUsed(Despair) && !ActionReady(Manafont))
                         return Triplecast;
@@ -247,7 +247,8 @@ internal partial class BLM : Caster
 
                         if (IsEnabled(CustomComboPreset.BLM_ST_Triplecast) &&
                             ActionReady(Triplecast) && IsOnCooldown(Role.Swiftcast) &&
-                            !HasStatusEffect(Role.Buffs.Swiftcast) && !HasStatusEffect(Buffs.Triplecast) && !HasStatusEffect(Buffs.LeyLines) &&
+                            !HasStatusEffect(Role.Buffs.Swiftcast) && !HasStatusEffect(Buffs.Triplecast) &&
+                            (BLM_ST_Triplecast_SubOption == 0 || !HasStatusEffect(Buffs.LeyLines)) &&
                             ((BLM_ST_MovementOption[0] && GetRemainingCharges(Triplecast) > BLM_ST_Triplecast_Movement) ||
                              !BLM_ST_MovementOption[0]) && JustUsed(Despair) && !ActionReady(Manafont))
                             return Triplecast;
@@ -277,7 +278,7 @@ internal partial class BLM : Caster
                 int hpThreshold = BLM_ST_Thunder_SubOption == 1 || !InBossEncounter() ? BLM_ST_ThunderOption : 0;
 
                 if (CanApplyStatus(CurrentTarget, ThunderList[OriginalHook(Thunder)]) &&
-                    (ThunderDebuffST is null && ThunderDebuffAoE is null ||
+                    ((ThunderDebuffST is null && ThunderDebuffAoE is null) ||
                      ThunderDebuffST?.RemainingTime <= refreshTimer ||
                      ThunderDebuffAoE?.RemainingTime <= refreshTimer) &&
                     GetTargetHPPercent() > hpThreshold)
@@ -400,7 +401,7 @@ internal partial class BLM : Caster
             if (OccultCrescent.ShouldUsePhantomActions())
                 return OccultCrescent.BestPhantomAction();
 
-            if (CanSpellWeave() && !HasDoubleWeaved())
+            if (CanWeave())
             {
                 if (ActionReady(Manafont) &&
                     EndOfFirePhase)
@@ -424,7 +425,7 @@ internal partial class BLM : Caster
             if (HasStatusEffect(Buffs.Thunderhead) && LevelChecked(Thunder2) &&
                 GetTargetHPPercent() > 1 &&
                 CanApplyStatus(CurrentTarget, ThunderList[OriginalHook(Thunder2)]) &&
-                (ThunderDebuffAoE is null && ThunderDebuffST is null ||
+                ((ThunderDebuffAoE is null && ThunderDebuffST is null) ||
                  ThunderDebuffAoE?.RemainingTime <= 3 ||
                  ThunderDebuffST?.RemainingTime <= 3) &&
                 (EndOfFirePhase || EndOfIcePhase || EndOfIcePhaseAoEMaxLevel))
@@ -460,7 +461,8 @@ internal partial class BLM : Caster
                     return Transpose;
 
                 if (ActionReady(Freeze))
-                    return LevelChecked(Blizzard4) && HasBattleTarget() && NumberOfEnemiesInRange(Freeze, CurrentTarget) == 2
+                    return LevelChecked(Blizzard4) && HasBattleTarget() &&
+                           NumberOfEnemiesInRange(Freeze, CurrentTarget) == 2
                         ? Blizzard4
                         : Freeze;
 
@@ -491,7 +493,7 @@ internal partial class BLM : Caster
                 return OccultCrescent.BestPhantomAction();
 
 
-            if (CanSpellWeave() && !HasDoubleWeaved())
+            if (CanWeave())
             {
                 if (IsEnabled(CustomComboPreset.BLM_AoE_Manafont) &&
                     ActionReady(Manafont) &&
@@ -521,7 +523,7 @@ internal partial class BLM : Caster
                 HasStatusEffect(Buffs.Thunderhead) && LevelChecked(Thunder2) &&
                 CanApplyStatus(CurrentTarget, ThunderList[OriginalHook(Thunder2)]) &&
                 (GetTargetHPPercent() > BLM_AoE_ThunderHP) &&
-                (ThunderDebuffAoE is null && ThunderDebuffST is null ||
+                ((ThunderDebuffAoE is null && ThunderDebuffST is null) ||
                  ThunderDebuffAoE?.RemainingTime <= 3 ||
                  ThunderDebuffST?.RemainingTime <= 3) &&
                 (EndOfFirePhase || EndOfIcePhase || EndOfIcePhaseAoEMaxLevel))
@@ -559,10 +561,10 @@ internal partial class BLM : Caster
 
             if (IcePhase)
             {
-                if (CurMp == MP.MaxMP || HasMaxUmbralHeartStacks)
+                if (HasMaxUmbralHeartStacks)
                 {
                     if (IsNotEnabled(CustomComboPreset.BLM_AoE_Transpose) &&
-                        ActionReady(Fire2) && (TraitLevelChecked(Traits.AspectMasteryIII) || !TraitLevelChecked(Traits.UmbralHeart)))
+                        CurMp == MP.MaxMP && ActionReady(Fire2) && TraitLevelChecked(Traits.AspectMasteryIII))
                         return OriginalHook(Fire2);
 
                     if (IsEnabled(CustomComboPreset.BLM_AoE_Transpose) &&
@@ -572,7 +574,8 @@ internal partial class BLM : Caster
 
                 if (ActionReady(Freeze))
                     return IsEnabled(CustomComboPreset.BLM_AoE_Blizzard4Sub) &&
-                           LevelChecked(Blizzard4) && HasBattleTarget() && NumberOfEnemiesInRange(Freeze, CurrentTarget) == 2
+                           LevelChecked(Blizzard4) && HasBattleTarget() &&
+                           NumberOfEnemiesInRange(Freeze, CurrentTarget) == 2
                         ? Blizzard4
                         : Freeze;
 
@@ -626,7 +629,7 @@ internal partial class BLM : Caster
 
     internal class BLM_Fire1to3 : CustomCombo
     {
-        protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.BLM_Fire1to3;
+        protected internal override CustomComboPreset Preset => CustomComboPreset.BLM_Fire1to3;
 
         protected override uint Invoke(uint actionID) =>
             actionID is Fire &&
@@ -638,7 +641,7 @@ internal partial class BLM : Caster
 
     internal class BLM_Between_The_LeyLines : CustomCombo
     {
-        protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.BLM_Between_The_LeyLines;
+        protected internal override CustomComboPreset Preset => CustomComboPreset.BLM_Between_The_LeyLines;
 
         protected override uint Invoke(uint actionID) =>
             actionID is LeyLines && HasStatusEffect(Buffs.LeyLines) && LevelChecked(BetweenTheLines)
@@ -648,7 +651,7 @@ internal partial class BLM : Caster
 
     internal class BLM_Aetherial_Manipulation : CustomCombo
     {
-        protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.BLM_Aetherial_Manipulation;
+        protected internal override CustomComboPreset Preset => CustomComboPreset.BLM_Aetherial_Manipulation;
 
         protected override uint Invoke(uint actionID) =>
             actionID is AetherialManipulation && ActionReady(BetweenTheLines) &&
@@ -659,7 +662,7 @@ internal partial class BLM : Caster
 
     internal class BLM_UmbralSoul : CustomCombo
     {
-        protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.BLM_UmbralSoul;
+        protected internal override CustomComboPreset Preset => CustomComboPreset.BLM_UmbralSoul;
 
         protected override uint Invoke(uint actionID) =>
             actionID is Transpose && IcePhase && LevelChecked(UmbralSoul)
@@ -669,7 +672,7 @@ internal partial class BLM : Caster
 
     internal class BLM_TriplecastProtection : CustomCombo
     {
-        protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.BLM_TriplecastProtection;
+        protected internal override CustomComboPreset Preset => CustomComboPreset.BLM_TriplecastProtection;
 
         protected override uint Invoke(uint actionID) =>
             actionID is Triplecast && HasStatusEffect(Buffs.Triplecast) && LevelChecked(Triplecast)
@@ -679,7 +682,7 @@ internal partial class BLM : Caster
 
     internal class BLM_FireandIce : CustomCombo
     {
-        protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.BLM_FireandIce;
+        protected internal override CustomComboPreset Preset => CustomComboPreset.BLM_FireandIce;
 
         protected override uint Invoke(uint actionID)
         {
@@ -705,7 +708,7 @@ internal partial class BLM : Caster
 
     internal class BLM_FireFlarestar : CustomCombo
     {
-        protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.BLM_FireFlarestar;
+        protected internal override CustomComboPreset Preset => CustomComboPreset.BLM_FireFlarestar;
 
         protected override uint Invoke(uint actionID) =>
             actionID is Fire4 && FirePhase && FlarestarReady && LevelChecked(FlareStar) ||
@@ -716,7 +719,7 @@ internal partial class BLM : Caster
 
     internal class BLM_Fire4to3 : CustomCombo
     {
-        protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.BLM_Fire4to3;
+        protected internal override CustomComboPreset Preset => CustomComboPreset.BLM_Fire4to3;
         protected override uint Invoke(uint actionID) =>
             actionID is Fire4 && !(FirePhase && LevelChecked(Fire4))
                 ? Fire3
@@ -725,7 +728,7 @@ internal partial class BLM : Caster
 
     internal class BLM_Blizzard4toDespair : CustomCombo
     {
-        protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.BLM_Blizzard4toDespair;
+        protected internal override CustomComboPreset Preset => CustomComboPreset.BLM_Blizzard4toDespair;
         protected override uint Invoke(uint actionID) =>
             actionID is Blizzard4 && FirePhase && LevelChecked(Despair)
                 ? Despair

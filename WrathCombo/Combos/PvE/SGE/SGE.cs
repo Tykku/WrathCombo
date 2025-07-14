@@ -3,30 +3,30 @@ using System.Linq;
 using WrathCombo.Core;
 using WrathCombo.CustomComboNS;
 using static WrathCombo.Combos.PvE.SGE.Config;
-using static WrathCombo.Data.ActionWatching;
 namespace WrathCombo.Combos.PvE;
 
 internal partial class SGE : Healer
 {
     internal class SGE_ST_DPS : CustomCombo
     {
+        private static uint[] DosisActions => SGE_ST_DPS_Adv
+            ? [Dosis2]
+            : [.. DosisList.Keys];
+
         protected internal override CustomComboPreset Preset => CustomComboPreset.SGE_ST_DPS;
 
         protected override uint Invoke(uint actionID)
         {
-            bool actionFound = actionID is Dosis2 || !SGE_ST_DPS_Adv && DosisList.ContainsKey(actionID);
-            uint[] replacedActions = SGE_ST_DPS_Adv
-                ? [Dosis2]
-                : DosisList.Keys.ToArray();
-
-            if (!actionFound)
+            if (!DosisActions.Contains(actionID))
                 return actionID;
 
             // Kardia Reminder
             if (IsEnabled(CustomComboPreset.SGE_ST_DPS_Kardia) &&
                 LevelChecked(Kardia) &&
-                !HasStatusEffect(Buffs.Kardia))
-                return Kardia;
+                !HasStatusEffect(Buffs.Kardia) &&
+                Target is not null)
+                return Kardia
+                    .Retarget(actionID, Target);
 
             // Opener for SGE
             if (IsEnabled(CustomComboPreset.SGE_ST_DPS_Opener) &&
@@ -41,7 +41,22 @@ internal partial class SGE : Healer
             if (OccultCrescent.ShouldUsePhantomActions())
                 return OccultCrescent.BestPhantomAction();
 
-            if (CanSpellWeave() && !HasDoubleWeaved() && !HasStatusEffect(Buffs.Eukrasia))
+            #region Hidden Feature Raidwide
+
+            if (HiddenKerachole())
+                return Kerachole;
+
+            if (HiddenHolos())
+                return Holos;
+
+            if (HiddenEprognosis())
+                return HasStatusEffect(Buffs.Eukrasia)
+                    ? OriginalHook(Prognosis)
+                    : Eukrasia;
+
+            #endregion
+
+            if (CanWeave() && !HasStatusEffect(Buffs.Eukrasia))
             {
                 if (Variant.CanSpiritDart(CustomComboPreset.SGE_DPS_Variant_SpiritDart))
                     return Variant.SpiritDart;
@@ -55,7 +70,7 @@ internal partial class SGE : Healer
                 if (IsEnabled(CustomComboPreset.SGE_ST_DPS_AddersgallProtect) &&
                     ActionReady(Druochole) && Addersgall >= SGE_ST_DPS_AddersgallProtect)
                     return Druochole
-                        .RetargetIfEnabled(null, replacedActions);
+                        .RetargetIfEnabled(null, DosisActions);
 
                 // Psyche
                 if (IsEnabled(CustomComboPreset.SGE_ST_DPS_Psyche) &&
@@ -77,13 +92,13 @@ internal partial class SGE : Healer
             {
                 if (IsEnabled(CustomComboPreset.SGE_ST_DPS_EDosis) &&
                     LevelChecked(Eukrasia) && InCombat() &&
-                    !JustUsedOn(OriginalHook(EukrasianDosis), CurrentTarget))
+                    !JustUsedOn(DosisList[OriginalHook(Dosis)].Eukrasian, CurrentTarget) &&
+                    CanApplyStatus(CurrentTarget, DosisList[OriginalHook(Dosis)].Debuff))
                 {
-                    float refreshTimer = SGE_ST_DPS_EDosisThreshold;
+                    float refreshTimer = SGE_ST_DPS_EDosisRefresh;
                     int hpThreshold = SGE_ST_DPS_EDosisSubOption == 1 || !InBossEncounter() ? SGE_ST_DPS_EDosisOption : 0;
 
-                    if (CanApplyStatus(CurrentTarget, DosisList[OriginalHook(Dosis)]) &&
-                        GetTargetHPPercent() > hpThreshold &&
+                    if (GetTargetHPPercent() > hpThreshold &&
                         ((DosisDebuff is null && DyskrasiaDebuff is null) ||
                          DosisDebuff?.RemainingTime <= refreshTimer ||
                          DyskrasiaDebuff?.RemainingTime <= refreshTimer))
@@ -96,12 +111,12 @@ internal partial class SGE : Healer
                     ActionReady(Phlegma))
                 {
                     //If not enabled or not high enough level, follow slider
-                    if ((IsNotEnabled(CustomComboPreset.SGE_ST_DPS_Phlegma_Burst) || !LevelChecked(Psyche)) &&
+                    if ((!SGE_ST_DPS_Phlegma_Burst || !LevelChecked(Psyche)) &&
                         GetRemainingCharges(OriginalHook(Phlegma)) > SGE_ST_DPS_Phlegma)
                         return OriginalHook(Phlegma);
 
                     //If enabled and high enough level, burst
-                    if (IsEnabled(CustomComboPreset.SGE_ST_DPS_Phlegma_Burst) &&
+                    if (SGE_ST_DPS_Phlegma_Burst &&
                         ((GetCooldownRemainingTime(Psyche) > 40 && MaxPhlegma) ||
                          IsOffCooldown(Psyche) ||
                          JustUsed(Psyche, 5f)))
@@ -143,7 +158,22 @@ internal partial class SGE : Healer
             if (OccultCrescent.ShouldUsePhantomActions())
                 return OccultCrescent.BestPhantomAction();
 
-            if (CanSpellWeave() && !HasDoubleWeaved())
+            #region Hidden Feature Raidwide
+
+            if (HiddenKerachole())
+                return Kerachole;
+
+            if (HiddenHolos())
+                return Holos;
+
+            if (HiddenEprognosis())
+                return HasStatusEffect(Buffs.Eukrasia)
+                    ? OriginalHook(Prognosis)
+                    : Eukrasia;
+
+            #endregion
+
+            if (CanWeave())
             {
                 // Variant Spirit Dart
                 if (Variant.CanSpiritDart(CustomComboPreset.SGE_DPS_Variant_SpiritDart))
@@ -179,14 +209,14 @@ internal partial class SGE : Healer
             //Eukrasia for DoT
             if (IsEnabled(CustomComboPreset.SGE_AoE_DPS_EDyskrasia) &&
                 IsOffCooldown(Eukrasia) &&
-                !WasLastSpell(EukrasianDyskrasia) && //AoE DoT can be slow to take affect, doesn't apply to target first before others
+                !JustUsedOn(EukrasianDyskrasia, CurrentTarget) && //AoE DoT can be slow to take affect, doesn't apply to target first before others
                 TraitLevelChecked(Traits.OffensiveMagicMasteryII) &&
                 HasBattleTarget() && InActionRange(Dyskrasia) &&
                 CanApplyStatus(CurrentTarget, Debuffs.EukrasianDyskrasia) &&
                 GetTargetHPPercent() > 25 &&
                 ((DyskrasiaDebuff is null && DosisDebuff is null) ||
-                 DyskrasiaDebuff?.RemainingTime <= 3 ||
-                 DosisDebuff?.RemainingTime <= 3))
+                 DyskrasiaDebuff?.RemainingTime <= 4 ||
+                 DosisDebuff?.RemainingTime <= 4))
                 return Eukrasia;
 
             //Phlegma
@@ -205,8 +235,7 @@ internal partial class SGE : Healer
 
             //Pneuma
             if (IsEnabled(CustomComboPreset.SGE_AoE_DPS_Pneuma) &&
-                (SGE_AoE_DPS_Pneuma_SubOption == 0 ||
-                 SGE_AoE_DPS_Pneuma_SubOption == 1 && TargetIsBoss()) &&
+                (SGE_AoE_DPS_Pneuma_SubOption == 0 || TargetIsBoss()) &&
                 ActionReady(Pneuma) && HasBattleTarget() &&
                 InActionRange(Pneuma))
                 return Pneuma;
@@ -225,6 +254,21 @@ internal partial class SGE : Healer
 
             if (actionID is not Diagnosis)
                 return actionID;
+
+            #region Hidden Feature Raidwide
+
+            if (HiddenKerachole())
+                return Kerachole;
+
+            if (HiddenHolos())
+                return Holos;
+
+            if (HiddenEprognosis())
+                return HasStatusEffect(Buffs.Eukrasia)
+                    ? OriginalHook(Prognosis)
+                    : Eukrasia;
+
+            #endregion
 
             if (IsEnabled(CustomComboPreset.SGE_ST_Heal_Esuna) &&
                 ActionReady(Role.Esuna) &&
@@ -279,8 +323,23 @@ internal partial class SGE : Healer
             if (actionID is not Prognosis)
                 return actionID;
 
+            #region Hidden Feature Raidwide
+
+            if (HiddenKerachole())
+                return Kerachole;
+
+            if (HiddenHolos())
+                return Holos;
+
+            if (HiddenEprognosis())
+                return HasStatusEffect(Buffs.Eukrasia)
+                    ? OriginalHook(Prognosis)
+                    : Eukrasia;
+
+            #endregion
+
             //Zoe -> Pneuma like Eukrasia 
-            if (IsEnabled(CustomComboPreset.SGE_AoE_Heal_ZoePneuma) &&
+            if (SGE_AoE_Heal_ZoePneuma &&
                 HasStatusEffect(Buffs.Zoe))
                 return Pneuma;
 
@@ -324,18 +383,13 @@ internal partial class SGE : Healer
                 case Kerachole when IsEnabled(CustomComboPreset.SGE_OverProtect_Kerachole) &&
                                     ActionReady(Kerachole) &&
                                     (HasStatusEffect(Buffs.Kerachole, anyOwner: true) ||
-                                     IsEnabled(CustomComboPreset.SGE_OverProtect_SacredSoil) && HasStatusEffect(SCH.Buffs.SacredSoil, anyOwner: true)) &&
-                                    (HasStatusEffect(Buffs.Kerachole, anyOwner: true) ||
                                      IsEnabled(CustomComboPreset.SGE_OverProtect_SacredSoil) && HasStatusEffect(SCH.Buffs.SacredSoil, anyOwner: true)):
-
                 case Panhaima when IsEnabled(CustomComboPreset.SGE_OverProtect_Panhaima) &&
                                    ActionReady(Panhaima) && HasStatusEffect(Buffs.Panhaima, anyOwner: true):
                     return SCH.SacredSoil;
-
                 case Philosophia when IsEnabled(CustomComboPreset.SGE_OverProtect_Philosophia) &&
                                       ActionReady(Philosophia) && HasStatusEffect(Buffs.Eudaimonia, anyOwner: true):
                     return SCH.Consolation;
-
                 default:
                     return actionID;
             }
@@ -364,7 +418,7 @@ internal partial class SGE : Healer
             if (actionID is not Eukrasia || !HasStatusEffect(Buffs.Eukrasia))
                 return actionID;
 
-            return (int)SGE_Eukrasia_Mode switch
+            return SGE_Eukrasia_Mode.Value switch
             {
                 0 => OriginalHook(Dosis),
                 1 => OriginalHook(Diagnosis),

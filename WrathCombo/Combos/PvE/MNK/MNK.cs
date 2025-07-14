@@ -1,6 +1,5 @@
 using WrathCombo.CustomComboNS;
 using static WrathCombo.Combos.PvE.MNK.Config;
-using static WrathCombo.Data.ActionWatching;
 namespace WrathCombo.Combos.PvE;
 
 internal partial class MNK : Melee
@@ -14,6 +13,23 @@ internal partial class MNK : Melee
             if (actionID is not (Bootshine or LeapingOpo))
                 return actionID;
 
+            if (LevelChecked(SteeledMeditation) &&
+                (!InCombat() || !InMeleeRange()) &&
+                Chakra < 5 &&
+                IsOriginal(MasterfulBlitz) &&
+                !HasStatusEffect(Buffs.RiddleOfFire) &&
+                !HasStatusEffect(Buffs.WindsRumination) &&
+                !HasStatusEffect(Buffs.FiresRumination))
+                return OriginalHook(SteeledMeditation);
+
+            if (LevelChecked(FormShift) && !InCombat() &&
+                !HasStatusEffect(Buffs.FormlessFist) &&
+                !HasStatusEffect(Buffs.PerfectBalance) &&
+                !HasStatusEffect(Buffs.OpoOpoForm) &&
+                !HasStatusEffect(Buffs.RaptorForm) &&
+                !HasStatusEffect(Buffs.CoeurlForm))
+                return FormShift;
+
             //Variant Cure
             if (Variant.CanCure(CustomComboPreset.MNK_Variant_Cure, MNK_VariantCure))
                 return Variant.Cure;
@@ -25,22 +41,8 @@ internal partial class MNK : Melee
             if (OccultCrescent.ShouldUsePhantomActions())
                 return OccultCrescent.BestPhantomAction();
 
-            if (LevelChecked(SteeledMeditation) &&
-                (!InCombat() || !InMeleeRange()) &&
-                Chakra < 5 &&
-                IsOriginal(MasterfulBlitz) &&
-                !HasStatusEffect(Buffs.RiddleOfFire) &&
-                !HasStatusEffect(Buffs.WindsRumination) &&
-                !HasStatusEffect(Buffs.FiresRumination))
-                return OriginalHook(SteeledMeditation);
-
-            if (LevelChecked(FormShift) && !InCombat() &&
-                !HasStatusEffect(Buffs.FormlessFist) && !HasStatusEffect(Buffs.PerfectBalance) &&
-                !HasStatusEffect(Buffs.OpoOpoForm) && !HasStatusEffect(Buffs.RaptorForm) && !HasStatusEffect(Buffs.CoeurlForm))
-                return FormShift;
-
             // OGCDs
-            if (CanWeave() && !HasDoubleWeaved())
+            if (CanWeave())
             {
                 if (UseBrotherhood())
                     return Brotherhood;
@@ -61,7 +63,8 @@ internal partial class MNK : Melee
                     return Role.Bloodbath;
 
                 if (Chakra >= 5 && InCombat() && LevelChecked(SteeledMeditation) &&
-                    !JustUsed(Brotherhood) && !JustUsed(RiddleOfFire))
+                    !JustUsed(Brotherhood) && !JustUsed(RiddleOfFire) &&
+                    InActionRange(OriginalHook(SteeledMeditation)))
                     return OriginalHook(SteeledMeditation);
             }
 
@@ -113,16 +116,13 @@ internal partial class MNK : Melee
             if (actionID is not (Bootshine or LeapingOpo))
                 return actionID;
 
-            //Variant Cure
-            if (Variant.CanCure(CustomComboPreset.MNK_Variant_Cure, MNK_VariantCure))
-                return Variant.Cure;
-
-            //Variant Rampart
-            if (Variant.CanRampart(CustomComboPreset.MNK_Variant_Rampart))
-                return Variant.Rampart;
-
-            if (OccultCrescent.ShouldUsePhantomActions())
-                return OccultCrescent.BestPhantomAction();
+            if (IsEnabled(CustomComboPreset.MNK_STUseOpener) &&
+                Opener().FullOpener(ref actionID))
+                return Opener().OpenerStep >= 9 &&
+                       CanWeave() &&
+                       Chakra >= 5
+                    ? TheForbiddenChakra
+                    : actionID;
 
             if (IsEnabled(CustomComboPreset.MNK_STUseMeditation) &&
                 LevelChecked(SteeledMeditation) &&
@@ -136,39 +136,42 @@ internal partial class MNK : Melee
 
             if (IsEnabled(CustomComboPreset.MNK_STUseFormShift) &&
                 LevelChecked(FormShift) && !InCombat() &&
-                !HasStatusEffect(Buffs.FormlessFist) && !HasStatusEffect(Buffs.PerfectBalance) &&
-                !HasStatusEffect(Buffs.OpoOpoForm) && !HasStatusEffect(Buffs.RaptorForm) && !HasStatusEffect(Buffs.CoeurlForm))
+                !HasStatusEffect(Buffs.FormlessFist) &&
+                !HasStatusEffect(Buffs.PerfectBalance) &&
+                !HasStatusEffect(Buffs.OpoOpoForm) &&
+                !HasStatusEffect(Buffs.RaptorForm) &&
+                !HasStatusEffect(Buffs.CoeurlForm))
                 return FormShift;
 
-            if (IsEnabled(CustomComboPreset.MNK_STUseOpener) &&
-                Opener().FullOpener(ref actionID))
-                return Opener().OpenerStep >= 9 &&
-                       CanWeave() && !HasDoubleWeaved() &&
-                       Chakra >= 5
-                    ? TheForbiddenChakra
-                    : actionID;
+            //Variant Cure
+            if (Variant.CanCure(CustomComboPreset.MNK_Variant_Cure, MNK_VariantCure))
+                return Variant.Cure;
+
+            //Variant Rampart
+            if (Variant.CanRampart(CustomComboPreset.MNK_Variant_Rampart))
+                return Variant.Rampart;
+
+            if (OccultCrescent.ShouldUsePhantomActions())
+                return OccultCrescent.BestPhantomAction();
 
             // OGCDs
-            if (CanWeave() && !HasDoubleWeaved())
+            if (CanWeave() && M6SReady)
             {
                 if (IsEnabled(CustomComboPreset.MNK_STUseBuffs))
                 {
                     if (IsEnabled(CustomComboPreset.MNK_STUseBrotherhood) &&
                         UseBrotherhood() &&
-                        (MNK_ST_Brotherhood_SubOption == 0 ||
-                         MNK_ST_Brotherhood_SubOption == 1 && InBossEncounter()))
+                        (MNK_ST_Brotherhood_SubOption == 0 || InBossEncounter()))
                         return Brotherhood;
 
                     if (IsEnabled(CustomComboPreset.MNK_STUseROF) &&
                         UseRoF() &&
-                        (MNK_ST_RiddleOfFire_SubOption == 0 ||
-                         MNK_ST_RiddleOfFire_SubOption == 1 && InBossEncounter()))
+                        (MNK_ST_RiddleOfFire_SubOption == 0 || InBossEncounter()))
                         return RiddleOfFire;
 
                     if (IsEnabled(CustomComboPreset.MNK_STUseROW) &&
                         UseRoW() &&
-                        (MNK_ST_RiddleOfWind_SubOption == 0 ||
-                         MNK_ST_RiddleOfWind_SubOption == 1 && InBossEncounter()))
+                        (MNK_ST_RiddleOfWind_SubOption == 0 || InBossEncounter()))
                         return RiddleOfWind;
                 }
                 if (IsEnabled(CustomComboPreset.MNK_STUsePerfectBalance) &&
@@ -187,7 +190,8 @@ internal partial class MNK : Melee
                 if (IsEnabled(CustomComboPreset.MNK_STUseTheForbiddenChakra) &&
                     Chakra >= 5 && InCombat() &&
                     LevelChecked(SteeledMeditation) &&
-                    !JustUsed(Brotherhood) && !JustUsed(RiddleOfFire))
+                    !JustUsed(Brotherhood) && !JustUsed(RiddleOfFire) &&
+                    InActionRange(OriginalHook(SteeledMeditation)))
                     return OriginalHook(SteeledMeditation);
             }
 
@@ -245,6 +249,23 @@ internal partial class MNK : Melee
             if (actionID is not (ArmOfTheDestroyer or ShadowOfTheDestroyer))
                 return actionID;
 
+            if (LevelChecked(InspiritedMeditation) &&
+                (!InCombat() || !InMeleeRange()) &&
+                Chakra < 5 &&
+                IsOriginal(MasterfulBlitz) &&
+                !HasStatusEffect(Buffs.RiddleOfFire) &&
+                !HasStatusEffect(Buffs.WindsRumination) &&
+                !HasStatusEffect(Buffs.FiresRumination))
+                return OriginalHook(InspiritedMeditation);
+
+            if (LevelChecked(FormShift) && !InCombat() &&
+                !HasStatusEffect(Buffs.FormlessFist) &&
+                !HasStatusEffect(Buffs.PerfectBalance) &&
+                !HasStatusEffect(Buffs.OpoOpoForm) &&
+                !HasStatusEffect(Buffs.RaptorForm) &&
+                !HasStatusEffect(Buffs.CoeurlForm))
+                return FormShift;
+
             //Variant Cure
             if (Variant.CanCure(CustomComboPreset.MNK_Variant_Cure, MNK_VariantCure))
                 return Variant.Cure;
@@ -256,22 +277,8 @@ internal partial class MNK : Melee
             if (OccultCrescent.ShouldUsePhantomActions())
                 return OccultCrescent.BestPhantomAction();
 
-            if (LevelChecked(InspiritedMeditation) &&
-                (!InCombat() || !InMeleeRange()) &&
-                Chakra < 5 &&
-                IsOriginal(MasterfulBlitz) &&
-                !HasStatusEffect(Buffs.RiddleOfFire) &&
-                !HasStatusEffect(Buffs.WindsRumination) &&
-                !HasStatusEffect(Buffs.FiresRumination))
-                return OriginalHook(InspiritedMeditation);
-
-            if (LevelChecked(FormShift) && !InCombat() &&
-                !HasStatusEffect(Buffs.FormlessFist) && !HasStatusEffect(Buffs.PerfectBalance) &&
-                !HasStatusEffect(Buffs.OpoOpoForm) && !HasStatusEffect(Buffs.RaptorForm) && !HasStatusEffect(Buffs.CoeurlForm))
-                return FormShift;
-
             // OGCD's
-            if (CanWeave() && !HasDoubleWeaved())
+            if (CanWeave())
             {
                 if (UseBrotherhood())
                     return Brotherhood;
@@ -294,7 +301,8 @@ internal partial class MNK : Melee
                 if (Chakra >= 5 &&
                     LevelChecked(InspiritedMeditation) &&
                     HasBattleTarget() && InCombat() &&
-                    !JustUsed(Brotherhood) && !JustUsed(RiddleOfFire))
+                    !JustUsed(Brotherhood) && !JustUsed(RiddleOfFire) &&
+                    InActionRange(OriginalHook(InspiritedMeditation)))
                     return OriginalHook(InspiritedMeditation);
             }
 
@@ -350,17 +358,6 @@ internal partial class MNK : Melee
             if (actionID is not (ArmOfTheDestroyer or ShadowOfTheDestroyer))
                 return actionID;
 
-            //Variant Cure
-            if (Variant.CanCure(CustomComboPreset.MNK_Variant_Cure, MNK_VariantCure))
-                return Variant.Cure;
-
-            //Variant Rampart
-            if (Variant.CanRampart(CustomComboPreset.MNK_Variant_Rampart))
-                return Variant.Rampart;
-
-            if (OccultCrescent.ShouldUsePhantomActions())
-                return OccultCrescent.BestPhantomAction();
-
             if (IsEnabled(CustomComboPreset.MNK_AoEUseMeditation) &&
                 LevelChecked(InspiritedMeditation) &&
                 (!InCombat() || !InMeleeRange()) &&
@@ -373,12 +370,26 @@ internal partial class MNK : Melee
 
             if (IsEnabled(CustomComboPreset.MNK_AoEUseFormShift) &&
                 LevelChecked(FormShift) && !InCombat() &&
-                !HasStatusEffect(Buffs.FormlessFist) && !HasStatusEffect(Buffs.PerfectBalance) &&
-                !HasStatusEffect(Buffs.OpoOpoForm) && !HasStatusEffect(Buffs.RaptorForm) && !HasStatusEffect(Buffs.CoeurlForm))
+                !HasStatusEffect(Buffs.FormlessFist) &&
+                !HasStatusEffect(Buffs.PerfectBalance) &&
+                !HasStatusEffect(Buffs.OpoOpoForm) &&
+                !HasStatusEffect(Buffs.RaptorForm) &&
+                !HasStatusEffect(Buffs.CoeurlForm))
                 return FormShift;
 
+            //Variant Cure
+            if (Variant.CanCure(CustomComboPreset.MNK_Variant_Cure, MNK_VariantCure))
+                return Variant.Cure;
+
+            //Variant Rampart
+            if (Variant.CanRampart(CustomComboPreset.MNK_Variant_Rampart))
+                return Variant.Rampart;
+
+            if (OccultCrescent.ShouldUsePhantomActions())
+                return OccultCrescent.BestPhantomAction();
+
             // OGCD's 
-            if (CanWeave() && !HasDoubleWeaved())
+            if (CanWeave() && M6SReady)
             {
                 if (IsEnabled(CustomComboPreset.MNK_AoEUseBuffs))
                 {
@@ -413,7 +424,8 @@ internal partial class MNK : Melee
                 if (IsEnabled(CustomComboPreset.MNK_AoEUseHowlingFist) &&
                     Chakra >= 5 && HasBattleTarget() && InCombat() &&
                     LevelChecked(InspiritedMeditation) &&
-                    !JustUsed(Brotherhood) && !JustUsed(RiddleOfFire))
+                    !JustUsed(Brotherhood) && !JustUsed(RiddleOfFire) &&
+                    InActionRange(OriginalHook(InspiritedMeditation)))
                     return OriginalHook(InspiritedMeditation);
             }
 
@@ -533,7 +545,9 @@ internal partial class MNK : Melee
         protected internal override CustomComboPreset Preset => CustomComboPreset.MNK_PerfectBalanceProtection;
 
         protected override uint Invoke(uint actionID) =>
-            actionID is PerfectBalance && HasStatusEffect(Buffs.PerfectBalance) && LevelChecked(PerfectBalance)
+            actionID is PerfectBalance &&
+            HasStatusEffect(Buffs.PerfectBalance) &&
+            LevelChecked(PerfectBalance)
                 ? All.SavageBlade
                 : actionID;
     }
