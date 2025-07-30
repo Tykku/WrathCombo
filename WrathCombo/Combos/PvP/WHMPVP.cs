@@ -21,7 +21,8 @@ namespace WrathCombo.Combos.PvP
             Aquaveil = 29227,
             MiracleOfNature = 29228,
             SeraphStrike = 29229,
-            AfflatusPurgation = 29230;
+            AfflatusPurgation = 29230,
+            Glare4 = 41499;
 
         internal class Buffs
         {
@@ -119,6 +120,21 @@ namespace WrathCombo.Combos.PvP
                         return Aquaveil;      
                 }
 
+                return actionID;
+            }
+        }
+
+        internal class WHMPvP_Toshitweaks : CustomCombo
+        {
+            protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.WHMPvP_Toshitweaks;
+
+            protected override uint Invoke(uint actionID)
+            {
+                if (actionID is SeraphStrike)
+                {
+                    if (IsEnabled(CustomComboPreset.WHMPvP_Toshiseraphstrike) && HasStatusEffect(Buffs.SacredSight))
+                        return Glare4;
+                }
                 return actionID;
             }
         }
