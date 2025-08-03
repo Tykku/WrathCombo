@@ -653,13 +653,21 @@ internal partial class BLM : Caster
     }
 
     internal class BLM_Fire4to3 : CustomCombo
+    
     {
         protected internal override CustomComboPreset Preset => CustomComboPreset.BLM_Fire4to3;
+
         protected override uint Invoke(uint actionID) =>
-            actionID is Fire4 && LevelChecked(Fire4) && (IcePhase || AstralFireStacks is 1 || AstralFireStacks is 2 || !InCombat())
-                ? Fire3
-                : actionID;
+            actionID switch
+            {
+                Fire4 when IcePhase && HasStatusEffect(Buffs.Firestarter) => Transpose,
+                Fire4 when (!IcePhase && !FirePhase) || (IcePhase && !HasStatusEffect(Buffs.Firestarter)) || AstralFireStacks is 1 || AstralFireStacks is 2 || !InCombat()=> Fire3,
+                Fire4 when !LevelChecked(Fire4) && HasStatusEffect(Buffs.Firestarter)=> Fire3,
+                Fire4 when !LevelChecked(Fire4) && !HasStatusEffect(Buffs.Firestarter)=> Fire,
+                var _ => actionID
+            };
     }
+
 
     internal class BLM_FireandIce : CustomCombo
     {
