@@ -672,9 +672,11 @@ internal partial class BLM : Caster
             actionID switch
             {
                 Fire4 when IcePhase && HasStatusEffect(Buffs.Firestarter) => Transpose,
-                Fire4 when (!IcePhase && !FirePhase) || (IcePhase && !HasStatusEffect(Buffs.Firestarter)) || AstralFireStacks is 1 || AstralFireStacks is 2 || !InCombat()=> Fire3,
+                Fire4 when (!IcePhase && !FirePhase) || (IcePhase && !HasStatusEffect(Buffs.Firestarter)) || AstralFireStacks is 1 || AstralFireStacks is 2 => Fire3,
                 Fire4 when !LevelChecked(Fire4) && HasStatusEffect(Buffs.Firestarter)=> Fire3,
                 Fire4 when !LevelChecked(Fire4) && !HasStatusEffect(Buffs.Firestarter)=> Fire,
+                Fire4 when LevelChecked(Fire4) && !InCombat() => Fire4,
+                Fire4 when !InCombat() => Fire3,
                 var _ => actionID
             };
     }
