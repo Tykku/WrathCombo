@@ -146,7 +146,7 @@ internal static class PCTPvP
         }
         internal class PCTPvP_Toshitweaks : CustomCombo
         {
-            protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.PCTPvP_Toshitweaks;
+            protected internal override Preset Preset { get; } = Preset.PCTPvP_Toshitweaks;
 
             protected override uint Invoke(uint actionID)
             {
@@ -165,7 +165,7 @@ internal static class PCTPvP
                     if (hasTarget && !PvPCommon.TargetImmuneToDamage())
                     {
                         // Star Prism
-                        if (IsEnabled(CustomComboPreset.PCTPvP_StarPrism))
+                        if (IsEnabled(Preset.PCTPvP_StarPrism))
                         {
                             if (hasStarPrism && (isStarPrismExpiring))
                                 return StarPrism;

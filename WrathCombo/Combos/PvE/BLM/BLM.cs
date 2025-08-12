@@ -712,35 +712,22 @@ internal partial class BLM : Caster
 
     internal class BLM_Fire4to3 : CustomCombo
     {
-        protected internal override CustomComboPreset Preset => CustomComboPreset.BLM_Fire4to3;
+        protected internal override Preset Preset => Preset.BLM_Fire4to3;
 
         protected override uint Invoke(uint actionID) =>
             actionID switch
             {
                 Fire4 when IcePhase && HasStatusEffect(Buffs.Firestarter) => Transpose,
-                Fire4 when (!IcePhase && !FirePhase) || (IcePhase && !HasStatusEffect(Buffs.Firestarter)) || AstralFireStacks is 1 || AstralFireStacks is 2 => Fire3,
-                Fire4 when !LevelChecked(Fire4) && HasStatusEffect(Buffs.Firestarter)=> Fire3,
-                Fire4 when !LevelChecked(Fire4) && !HasStatusEffect(Buffs.Firestarter)=> Fire,
+                Fire4 when (!IcePhase && !FirePhase) || (IcePhase && !HasStatusEffect(Buffs.Firestarter)) ||
+                           AstralFireStacks is 1 || AstralFireStacks is 2 => Fire3,
+                Fire4 when !LevelChecked(Fire4) && HasStatusEffect(Buffs.Firestarter) => Fire3,
+                Fire4 when !LevelChecked(Fire4) && !HasStatusEffect(Buffs.Firestarter) => Fire,
                 Fire4 when LevelChecked(Fire4) && !InCombat() => Fire4,
                 Fire4 when !InCombat() => Fire3,
                 var _ => actionID
             };
-        protected internal override Preset Preset => Preset.BLM_Fire4to3;
-        protected override uint Invoke(uint actionID)
-        {
-            if (actionID is not Fire4)
-                return actionID;
-
-            return LevelChecked(Fire4) &&
-                   (IcePhase ||
-                    AstralFireStacks is 1 ||
-                    AstralFireStacks is 2 ||
-                    !InCombat())
-                ? Fire3
-                : actionID;
-        }
     }
-
+    
     internal class BLM_FireandIce : CustomCombo
     {
         protected internal override Preset Preset => Preset.BLM_FireandIce;
