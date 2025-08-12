@@ -712,12 +712,18 @@ internal partial class BLM : Caster
 
     internal class BLM_Fire4to3 : CustomCombo
     {
+        internal static bool IsEnabledAndUsable(Preset preset, uint action) => IsEnabled(preset) && HasActionEquipped(action) && ActionReady(action);
+
         protected internal override Preset Preset => Preset.BLM_Fire4to3;
 
         protected override uint Invoke(uint actionID) =>
             actionID switch
             {
-                Fire4 when IcePhase && HasStatusEffect(Buffs.Firestarter) => Transpose,
+                Fire4 when IcePhase && HasStatusEffect(Buffs.Firestarter) && CanWeave(maxWeaves:2) => Transpose,
+                Fire4 when IsEnabledAndUsable(Preset.Phantom_Geomancer_BattleBell, BattleBell) &&
+                           GetStatusEffectRemainingTime(Buffs.BattleBell) <= 5  && CanWeave(maxWeaves:2) => BattleBell,
+                Fire4 when IsEnabledAndUsable(Preset.Phantom_Geomancer_RingingRespite, RingingRespite) &&
+                           GetStatusEffectRemainingTime(Buffs.RingingRespite) <= 5 && CanWeave(maxWeaves:2) => RingingRespite,
                 Fire4 when (!IcePhase && !FirePhase) || (IcePhase && !HasStatusEffect(Buffs.Firestarter)) ||
                            AstralFireStacks is 1 || AstralFireStacks is 2 => Fire3,
                 Fire4 when !LevelChecked(Fire4) && HasStatusEffect(Buffs.Firestarter) => Fire3,
@@ -773,7 +779,7 @@ internal partial class BLM : Caster
         protected internal override Preset Preset => Preset.BLM_Blizzard4toDespair;
         protected override uint Invoke(uint actionID)
         {
-            if (actionID is not (Blizzard3 or Blizzard4))
+            if (actionID is not (/*Blizzard3 or */Blizzard4))
                 return actionID;
 
             return BLM_B4toDespair == 0 && FirePhase && LevelChecked(Despair) && CurMp >= 800 ||
