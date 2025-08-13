@@ -16,7 +16,7 @@ internal partial class BLM : Caster
             if (actionID is not Fire)
                 return actionID;
 
-            if (Variant.CanCure(Preset.BLM_Variant_Cure, BLM_VariantCure))
+            if (Content.Variant.CanCure(Preset.BLM_Variant_Cure, BLM_VariantCure))
                 return Variant.Cure;
 
             if (Variant.CanRampart(Preset.BLM_Variant_Rampart))
@@ -712,28 +712,22 @@ internal partial class BLM : Caster
 
     internal class BLM_Fire4to3 : CustomCombo
     {
-        internal static bool IsEnabledAndUsable(Preset preset, uint action) => IsEnabled(preset) && HasActionEquipped(action) && ActionReady(action);
-
         protected internal override Preset Preset => Preset.BLM_Fire4to3;
+        protected override uint Invoke(uint actionID)
+        {
+            if (actionID is not Fire4)
+                return actionID;
 
-        protected override uint Invoke(uint actionID) =>
-            actionID switch
-            {
-                Fire4 when IcePhase && HasStatusEffect(Buffs.Firestarter) => Transpose,
-                Fire4 when IsEnabledAndUsable(Preset.Phantom_Geomancer_BattleBell, BattleBell) &&
-                           GetStatusEffectRemainingTime(Buffs.BattleBell) <= 5  && CanWeave(maxWeaves:2) => BattleBell,
-                Fire4 when IsEnabledAndUsable(Preset.Phantom_Geomancer_RingingRespite, RingingRespite) &&
-                           GetStatusEffectRemainingTime(Buffs.RingingRespite) <= 5 && CanWeave(maxWeaves:2) => RingingRespite,
-                Fire4 when (!IcePhase && !FirePhase) || (IcePhase && !HasStatusEffect(Buffs.Firestarter)) ||
-                           AstralFireStacks is 1 || AstralFireStacks is 2 => Fire3,
-                Fire4 when !LevelChecked(Fire4) && HasStatusEffect(Buffs.Firestarter) => Fire3,
-                Fire4 when !LevelChecked(Fire4) && !HasStatusEffect(Buffs.Firestarter) => Fire,
-                Fire4 when LevelChecked(Fire4) && !InCombat() => Fire4,
-                Fire4 when !InCombat() => Fire3,
-                var _ => actionID
-            };
+            return LevelChecked(Fire4) &&
+                   (IcePhase ||
+                    AstralFireStacks is 1 ||
+                    AstralFireStacks is 2 ||
+                    !InCombat())
+                ? Fire3
+                : actionID;
+        }
     }
-    
+
     internal class BLM_FireandIce : CustomCombo
     {
         protected internal override Preset Preset => Preset.BLM_FireandIce;
@@ -777,17 +771,33 @@ internal partial class BLM : Caster
     internal class BLM_Blizzard4toDespair : CustomCombo
     {
         protected internal override Preset Preset => Preset.BLM_Blizzard4toDespair;
+
         protected override uint Invoke(uint actionID)
         {
-            if (actionID is not (/*Blizzard3 or */Blizzard4))
-                return actionID;
+            if (BLM_B4toDespair == 0)
+            {
+                if (actionID is not Blizzard4)
+                    return actionID;
 
-            return BLM_B4toDespair == 0 && FirePhase && LevelChecked(Despair) && CurMp >= 800 ||
-                   BLM_B4toDespair == 1 && FirePhase && LevelChecked(Despair) && CurMp >= 800
-                ? Despair
-                : actionID;
+                return FirePhase && LevelChecked(Despair) && CurMp >= 800
+                    ? Despair
+                    : actionID;
+            }
+
+            if (BLM_B4toDespair == 1)
+            {
+                if (actionID is not Blizzard3)
+                    return actionID;
+
+                return FirePhase && LevelChecked(Despair) && CurMp >= 800
+                    ? Despair
+                    : actionID;
+            }
+
+            return actionID;
         }
     }
+
 
     internal class BLM_Fire1Despair : CustomCombo
     {
@@ -946,5 +956,57 @@ internal partial class BLM : Caster
                 ? All.SavageBlade
                 : actionID;
         }
+    }
+
+    internal class BLM_Toshi_Fire4 : CustomCombo
+    {
+        internal static bool IsEnabledAndUsable(Preset preset, uint action) => IsEnabled(preset) && HasActionEquipped(action) && ActionReady(action);
+
+        protected internal override Preset Preset => Preset.BLM_Toshi_Fire4;
+
+        protected override uint Invoke(uint actionID) =>
+            actionID switch
+            {
+                Fire4 when IcePhase && HasStatusEffect(Buffs.Firestarter) => Transpose,
+                //Toshi Occult Changes
+                Fire4 when IsEnabledAndUsable(Preset.Phantom_Geomancer_BattleBell, BattleBell) &&
+                           GetStatusEffectRemainingTime(Buffs.BattleBell) <= 5  && CanWeave() => BattleBell,
+                Fire4 when IsEnabledAndUsable(Preset.Phantom_Geomancer_RingingRespite, RingingRespite) &&
+                           GetStatusEffectRemainingTime(Buffs.RingingRespite) <= 5 && CanWeave() => RingingRespite,
+                //Toshi Low-Level Changes
+                Fire4 when !LevelChecked(Blizzard4) && IcePhase && CurMp < 10000 => Blizzard,
+                Fire4 when !LevelChecked(Blizzard4) && FirePhase && CurMp < 1600 && LevelChecked(Blizzard3) => Blizzard3,
+                //Resume Normal Op
+                Fire4 when LevelChecked(Fire3) && ((!IcePhase && !FirePhase) || (IcePhase && !HasStatusEffect(Buffs.Firestarter)) ||
+                                                   AstralFireStacks is 1 || AstralFireStacks is 2) => Fire3,
+                Fire4 when !LevelChecked(Fire4) && HasStatusEffect(Buffs.Firestarter) && LevelChecked(Fire3) => Fire3,
+                Fire4 when !LevelChecked(Fire4) && !HasStatusEffect(Buffs.Firestarter) => Fire,
+                Fire4 when !InCombat() && LevelChecked(Fire4) => Fire4,
+                Fire4 when !InCombat() && LevelChecked(Fire3) => Fire3,
+                Fire4 when !InCombat() && !LevelChecked(Fire3) => Fire,
+                var _ => actionID
+            };
+    }
+    internal class BLM_Toshi_Blizzard4 : CustomCombo
+    {
+        protected internal override Preset Preset => Preset.BLM_Toshi_Blizzard4;
+        protected override uint Invoke(uint actionID) =>
+            actionID switch
+            {
+                Blizzard4 when FirePhase && LevelChecked(Despair) && CurMp >= 800 => Despair,
+                Blizzard4 when !LevelChecked(Blizzard4) => Blizzard,
+                var _ => actionID
+            };
+    }
+    internal class BLM_Toshi_Blizzard3 : CustomCombo
+    {
+        protected internal override Preset Preset => Preset.BLM_Toshi_Blizzard3;
+        protected override uint Invoke(uint actionID) =>
+            actionID switch
+            {
+                Blizzard3 when FirePhase && !LevelChecked(Blizzard3) && CurMp <1600 => Transpose,
+                Blizzard3 when !LevelChecked(Blizzard3) => Blizzard,
+                var _ => actionID
+            };
     }
 }

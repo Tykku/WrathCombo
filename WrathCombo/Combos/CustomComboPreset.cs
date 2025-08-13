@@ -1180,7 +1180,7 @@ public enum Preset
     BLM_Blizzard1to3 = 2052,
 
     [ReplaceSkill(BLM.Fire4)]
-    [ConflictingCombos(BLM_FireandIce)]
+    [ConflictingCombos(BLM_FireandIce, BLM_Toshi_Fire4)]
     [CustomComboInfo("Fire 4 to 3", "Replaces Fire 4 with Fire 3 when not in Astral Fire III or not in combat.", BLM.JobID)]
     BLM_Fire4to3 = 2059,
 
@@ -1190,12 +1190,12 @@ public enum Preset
     BLM_Fire1Despair = 2065,
 
     [ReplaceSkill(BLM.Blizzard4, BLM.Blizzard3)]
-    [ConflictingCombos(BLM_Blizzard1to3, BLM_FreezeBlizzard2)]
+    [ConflictingCombos(BLM_Blizzard1to3, BLM_FreezeBlizzard2, BLM_Toshi_Blizzard4)]
     [CustomComboInfo("Blizzard 3/4 to Despair", "Replaces Blizzard 3/4 with Despair when in Astral Fire.", BLM.JobID)]
     BLM_Blizzard4toDespair = 2060,
     
     [ReplaceSkill(BLM.Fire4, BLM.Flare)]
-    [ConflictingCombos(BLM_Fire4to3)]
+    [ConflictingCombos(BLM_Fire4to3, BLM_Toshi_Fire4)]
     [CustomComboInfo("Fire & Ice", "Replaces Fire4 with Blizzard4 when in Umbral Ice.\nReplaces Flare with Freeze when in Umbral Ice.", BLM.JobID)]
     BLM_FireandIce = 2057,
 
@@ -1205,7 +1205,7 @@ public enum Preset
     BLM_FreezeBlizzard2 = 2064,
 
     [ReplaceSkill(BLM.Fire4, BLM.Flare)]
-    [ConflictingCombos(BLM_Fire4to3, BLM_FireandIce)]
+    [ConflictingCombos(BLM_Fire4to3, BLM_FireandIce, BLM_Toshi_Fire4)]
     [CustomComboInfo(" Fire and Flare to Star", "Replaces Fire4 and Flare to Flarestar when on max stacks.", BLM.JobID)]
     BLM_FireFlarestar = 2058,
 
@@ -1247,11 +1247,28 @@ public enum Preset
     [CustomComboInfo("Aetherial Manipulation Feature", "Replaces Aetherial Manipulation with Between the Lines when you are out of active Ley Lines and standing still.", BLM.JobID)]
     BLM_Aetherial_Manipulation = 2055,
     
+    [CustomComboInfo("Toshi Tweaks", "Collection of tweaks by Toshi.", BLM.JobID)]
+    BLM_Toshi_Tweaks = 2069,
+    
+    [ReplaceSkill(BLM.Fire4)]
+    [ConflictingCombos(BLM_Fire4to3, BLM_FireandIce)]
+    [CustomComboInfo("Toshi's Fire 4 Tweaks", "Collection of Fire 4 Tweaks by Toshi.", BLM.JobID)]
+    BLM_Toshi_Fire4 = 2070,
+    
+    [ReplaceSkill(BLM.Blizzard4)]
+    [ConflictingCombos(BLM_Blizzard4toDespair)]
+    [CustomComboInfo("Toshi's Blizzard 4 Tweaks", "Collection of Blizzard 4 Tweaks by Toshi.", BLM.JobID)]
+    BLM_Toshi_Blizzard4 = 2071,
+    
+    [ReplaceSkill(BLM.Blizzard3)]
+    [ConflictingCombos(BLM_FreezeBlizzard2, BLM_Blizzard1to3, BLM_Blizzard4toDespair)]
+    [CustomComboInfo("Toshi's Blizzard 3 Tweaks", "Collection of Blizzard 3 Tweaks by Toshi.", BLM.JobID)]
+    BLM_Toshi_Blizzard3 = 2072,
     #endregion
 
     // Last value ST = 2117
     //Last Value AoE = 2213
-    //Last Value misc = 2068
+    //Last Value misc = 2072
 
     #endregion
 

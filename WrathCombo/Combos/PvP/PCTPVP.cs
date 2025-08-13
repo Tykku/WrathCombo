@@ -151,13 +151,10 @@ internal static class PCTPvP
             protected override uint Invoke(uint actionID)
             {
                 #region Variables
-                bool isMoving = IsMoving();
                 bool hasTarget = HasTarget();
                 bool hasStarPrism = HasStatusEffect(Buffs.Starstruck);
-                bool hasSubtractivePalette = HasStatusEffect(Buffs.SubtractivePalette);
                 bool hasPortrait = HasStatusEffect(Buffs.MooglePortrait) || HasStatusEffect(Buffs.MadeenPortrait);
                 bool isStarPrismExpiring = HasStatusEffect(Buffs.Starstruck) && GetStatusEffectRemainingTime(Buffs.Starstruck) <= 3;
-                bool isTemperaCoatExpiring = HasStatusEffect(Buffs.TemperaCoat) && GetStatusEffectRemainingTime(Buffs.TemperaCoat) <= 3;
                 bool hasMotifDrawn = HasStatusEffect(Buffs.PomMotif) || HasStatusEffect(Buffs.WingMotif) || HasStatusEffect(Buffs.ClawMotif) || HasStatusEffect(Buffs.MawMotif);
                 #endregion
                 if (actionID is LivingMuse)
