@@ -1250,16 +1250,19 @@ public enum Preset
     [CustomComboInfo("Toshi Tweaks", "Collection of tweaks by Toshi.", BLM.JobID)]
     BLM_Toshi_Tweaks = 2069,
     
+    [ParentCombo(BLM_Toshi_Tweaks)]
     [ReplaceSkill(BLM.Fire4)]
     [ConflictingCombos(BLM_Fire4to3, BLM_FireandIce)]
     [CustomComboInfo("Toshi's Fire 4 Tweaks", "Collection of Fire 4 Tweaks by Toshi.", BLM.JobID)]
     BLM_Toshi_Fire4 = 2070,
-    
+
+    [ParentCombo(BLM_Toshi_Tweaks)]
     [ReplaceSkill(BLM.Blizzard4)]
     [ConflictingCombos(BLM_Blizzard4toDespair)]
     [CustomComboInfo("Toshi's Blizzard 4 Tweaks", "Collection of Blizzard 4 Tweaks by Toshi.", BLM.JobID)]
     BLM_Toshi_Blizzard4 = 2071,
     
+    [ParentCombo(BLM_Toshi_Tweaks)]
     [ReplaceSkill(BLM.Blizzard3)]
     [ConflictingCombos(BLM_FreezeBlizzard2, BLM_Blizzard1to3, BLM_Blizzard4toDespair)]
     [CustomComboInfo("Toshi's Blizzard 3 Tweaks", "Collection of Blizzard 3 Tweaks by Toshi.", BLM.JobID)]
