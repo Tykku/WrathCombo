@@ -719,7 +719,7 @@ internal partial class BLM : Caster
         protected override uint Invoke(uint actionID) =>
             actionID switch
             {
-                Fire4 when IcePhase && HasStatusEffect(Buffs.Firestarter) && CanWeave(maxWeaves:2) => Transpose,
+                Fire4 when IcePhase && HasStatusEffect(Buffs.Firestarter) => Transpose,
                 Fire4 when IsEnabledAndUsable(Preset.Phantom_Geomancer_BattleBell, BattleBell) &&
                            GetStatusEffectRemainingTime(Buffs.BattleBell) <= 5  && CanWeave(maxWeaves:2) => BattleBell,
                 Fire4 when IsEnabledAndUsable(Preset.Phantom_Geomancer_RingingRespite, RingingRespite) &&
