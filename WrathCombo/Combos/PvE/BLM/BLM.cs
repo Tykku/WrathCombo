@@ -974,13 +974,14 @@ internal partial class BLM : Caster
                 Fire4 when IsEnabledAndUsable(Preset.Phantom_Geomancer_RingingRespite, RingingRespite) &&
                            GetStatusEffectRemainingTime(Buffs.RingingRespite) <= 5 && CanWeave() => RingingRespite,
                 //Toshi Low-Level Changes
-                Fire4 when !LevelChecked(Blizzard4) && IcePhase && CurMp < 10000 => Blizzard,
+                Fire4 when !LevelChecked(Fire4)     && FirePhase && CurMp >= 1600 && !HasStatusEffect(Buffs.Firestarter) => Fire,
                 Fire4 when !LevelChecked(Blizzard4) && FirePhase && CurMp < 1600 && LevelChecked(Blizzard3) => Blizzard3,
+                Fire4 when !LevelChecked(Blizzard4) && IcePhase  && CurMp < 10000 => Blizzard,
+                Fire4 when !LevelChecked(Blizzard3) && ((FirePhase && CurMp <1600) || (IcePhase  && CurMp == 10000)) => Transpose,
                 //Resume Normal Op
                 Fire4 when LevelChecked(Fire3) && ((!IcePhase && !FirePhase) || (IcePhase && !HasStatusEffect(Buffs.Firestarter)) ||
                                                    AstralFireStacks is 1 || AstralFireStacks is 2) => Fire3,
                 Fire4 when !LevelChecked(Fire4) && HasStatusEffect(Buffs.Firestarter) && LevelChecked(Fire3) => Fire3,
-                Fire4 when !LevelChecked(Fire4) && !HasStatusEffect(Buffs.Firestarter) => Fire,
                 Fire4 when !InCombat() && LevelChecked(Fire4) => Fire4,
                 Fire4 when !InCombat() && LevelChecked(Fire3) => Fire3,
                 Fire4 when !InCombat() && !LevelChecked(Fire3) => Fire,
