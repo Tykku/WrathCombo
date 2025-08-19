@@ -37,18 +37,16 @@ internal partial class BLM : Caster
 
                 if (EndOfFirePhase)
                 {
-                    if (ActionReady(Manafont))
+                    if (ActionReady(Manafont) && EndOfFirePhase)
                         return Manafont;
 
                     if (ActionReady(Role.Swiftcast) && JustUsed(Despair) &&
-                        !ActionReady(Manafont) && !HasStatusEffect(Buffs.Triplecast) &&
-                        HasBattleTarget())
+                        !ActionReady(Manafont) && !HasStatusEffect(Buffs.Triplecast))
                         return Role.Swiftcast;
 
                     if (ActionReady(Triplecast) && IsOnCooldown(Role.Swiftcast) &&
                         !HasStatusEffect(Role.Buffs.Swiftcast) && !HasStatusEffect(Buffs.Triplecast) &&
-                        HasBattleTarget() && !HasStatusEffect(Buffs.LeyLines) &&
-                        JustUsed(Despair) && !ActionReady(Manafont))
+                        !HasStatusEffect(Buffs.LeyLines) && JustUsed(Despair) && !ActionReady(Manafont))
                         return Triplecast;
 
                     if (ActionReady(Transpose) &&
@@ -680,16 +678,13 @@ internal partial class BLM : Caster
             if (actionID is not (Blizzard or Blizzard3))
                 return actionID;
 
-            return actionID switch
-            {
-                Blizzard when BLM_B1to3 == 0 && LevelChecked(Blizzard3) &&
-                              (FirePhase ||
-                               UmbralIceStacks is 1 ||
-                               UmbralIceStacks is 2) => Blizzard3,
+            if (BLM_B1to3 == 0 && LevelChecked(Blizzard3) && (FirePhase || UmbralIceStacks is 1 || UmbralIceStacks is 2))
+                return Blizzard3;
 
-                Blizzard3 when BLM_B1to3 == 1 && LevelChecked(Blizzard3) && IcePhase && UmbralIceStacks is 3 => OriginalHook(Blizzard),
-                var _ => actionID
-            };
+            if (BLM_B1to3 == 1 && LevelChecked(Blizzard3) && IcePhase && UmbralIceStacks is 3)
+                return OriginalHook(Blizzard);
+
+            return actionID;
         }
     }
 
@@ -702,22 +697,20 @@ internal partial class BLM : Caster
             if (actionID is not (Fire or Fire3))
                 return actionID;
 
-            return actionID switch
-            {
-                Fire when BLM_F1to3 == 0 && LevelChecked(Fire3) &&
-                          (AstralFireStacks is 1 or 2 && HasStatusEffect(Buffs.Firestarter) ||
-                           LevelChecked(Paradox) && !ActiveParadox ||
-                           !InCombat() && LevelChecked(Fire4) ||
-                           IcePhase && !ActiveParadox ||
-                           !LevelChecked(Fire4) &&
-                           HasStatusEffect(Buffs.Firestarter)) && !JustUsed(Fire3) => Fire3,
+            if (BLM_F1to3 == 0 && LevelChecked(Fire3) &&
+                (AstralFireStacks is 1 or 2 && HasStatusEffect(Buffs.Firestarter) ||
+                 LevelChecked(Paradox) && !ActiveParadox ||
+                 !InCombat() && LevelChecked(Fire4) ||
+                 IcePhase && !ActiveParadox ||
+                 !LevelChecked(Fire4) && HasStatusEffect(Buffs.Firestarter)) && !JustUsed(Fire3))
+                return Fire3;
 
-                Fire3 when BLM_F1to3 == 1 && LevelChecked(Fire3) && FirePhase &&
-                           (LevelChecked(Paradox) && ActiveParadox && AstralFireStacks is 3 ||
-                            !LevelChecked(Fire4) && !HasStatusEffect(Buffs.Firestarter)) &&
-                           !JustUsed(OriginalHook(Fire)) => OriginalHook(Fire),
-                var _ => actionID
-            };
+            if (BLM_F1to3 == 1 && LevelChecked(Fire3) && FirePhase &&
+                (LevelChecked(Paradox) && ActiveParadox && AstralFireStacks is 3 ||
+                 !LevelChecked(Fire4) && !HasStatusEffect(Buffs.Firestarter)) && !JustUsed(OriginalHook(Fire)))
+                return OriginalHook(Fire);
+
+            return actionID;
         }
     }
 
@@ -748,14 +741,19 @@ internal partial class BLM : Caster
             if (actionID is not (Fire4 or Flare))
                 return actionID;
 
-            return actionID switch
-            {
-                Fire4 when FirePhase && LevelChecked(Fire4) => Fire4,
-                Fire4 when IcePhase && LevelChecked(Blizzard4) => Blizzard4,
-                Flare when FirePhase && LevelChecked(Flare) => Flare,
-                Flare when IcePhase && LevelChecked(Freeze) => Freeze,
-                var _ => actionID
-            };
+            if (FirePhase && LevelChecked(Fire4))
+                return Fire4;
+
+            if (IcePhase && LevelChecked(Blizzard4))
+                return Blizzard4;
+
+            if (FirePhase && LevelChecked(Flare))
+                return Flare;
+
+            if (IcePhase && LevelChecked(Freeze))
+                return Freeze;
+
+            return actionID;
         }
     }
 
@@ -855,7 +853,7 @@ internal partial class BLM : Caster
             if (actionID is not Amplifier)
                 return actionID;
 
-            return BLM_AmplifierXenoCD && IsOnCooldown(Amplifier) || HasMaxPolyglotStacks
+            return HasMaxPolyglotStacks
                 ? Xenoglossy
                 : actionID;
         }
@@ -869,8 +867,7 @@ internal partial class BLM : Caster
             if (actionID is not Xenoglossy)
                 return actionID;
 
-            return ThunderDebuffST is null && ThunderDebuffAoE is null ||
-                   ThunderDebuffST?.RemainingTime < 3
+            return ThunderDebuffST.RemainingTime <= 3
                 ? OriginalHook(Thunder)
                 : actionID;
         }
@@ -884,8 +881,7 @@ internal partial class BLM : Caster
             if (actionID is not Foul)
                 return actionID;
 
-            return ThunderDebuffST is null && ThunderDebuffAoE is null ||
-                   ThunderDebuffAoE?.RemainingTime < 3
+            return ThunderDebuffAoE.RemainingTime <= 3
                 ? OriginalHook(Thunder2)
                 : actionID;
         }
@@ -950,5 +946,58 @@ internal partial class BLM : Caster
                 ? All.SavageBlade
                 : actionID;
         }
+    }
+
+    internal class BLM_Toshi_Fire4 : CustomCombo
+    {
+        internal static bool IsEnabledAndUsable(Preset preset, uint action) => IsEnabled(preset) && HasActionEquipped(action) && ActionReady(action);
+
+        protected internal override Preset Preset => Preset.BLM_Toshi_Fire4;
+
+        protected override uint Invoke(uint actionID) =>
+            actionID switch
+            {
+                Fire4 when IcePhase && HasStatusEffect(Buffs.Firestarter) => Transpose,
+                //Toshi Occult Changes
+                Fire4 when IsEnabledAndUsable(Preset.Phantom_Geomancer_BattleBell, BattleBell) &&
+                           GetStatusEffectRemainingTime(Buffs.BattleBell) <= 5  && CanWeave() => BattleBell,
+                Fire4 when IsEnabledAndUsable(Preset.Phantom_Geomancer_RingingRespite, RingingRespite) &&
+                           GetStatusEffectRemainingTime(Buffs.RingingRespite) <= 5 && CanWeave() => RingingRespite,
+                //Toshi Low-Level Changes
+                Fire4 when !LevelChecked(Fire4)     && FirePhase && CurMp >= 1600 && !HasStatusEffect(Buffs.Firestarter) => Fire,
+                Fire4 when !LevelChecked(Blizzard4) && FirePhase && CurMp < 1600 && LevelChecked(Blizzard3) => Blizzard3,
+                Fire4 when !LevelChecked(Blizzard4) && IcePhase  && CurMp < 10000 => Blizzard,
+                Fire4 when !LevelChecked(Blizzard3) && ((FirePhase && CurMp <1600) || (IcePhase  && CurMp == 10000)) => Transpose,
+                //Resume Normal Op
+                Fire4 when LevelChecked(Fire3) && ((!IcePhase && !FirePhase) || (IcePhase && !HasStatusEffect(Buffs.Firestarter)) ||
+                                                   AstralFireStacks is 1 || AstralFireStacks is 2) => Fire3,
+                Fire4 when !LevelChecked(Fire4) && HasStatusEffect(Buffs.Firestarter) && LevelChecked(Fire3) => Fire3,
+                Fire4 when !InCombat() && LevelChecked(Fire4) => Fire4,
+                Fire4 when !InCombat() && LevelChecked(Fire3) => Fire3,
+                Fire4 when !InCombat() && !LevelChecked(Fire3) => Fire,
+                var _ => actionID
+            };
+    }
+    internal class BLM_Toshi_Blizzard4 : CustomCombo
+    {
+        protected internal override Preset Preset => Preset.BLM_Toshi_Blizzard4;
+        protected override uint Invoke(uint actionID) =>
+            actionID switch
+            {
+                Blizzard4 when FirePhase && LevelChecked(Despair) && CurMp >= 800 => Despair,
+                Blizzard4 when !LevelChecked(Blizzard4) => Blizzard,
+                var _ => actionID
+            };
+    }
+    internal class BLM_Toshi_Blizzard3 : CustomCombo
+    {
+        protected internal override Preset Preset => Preset.BLM_Toshi_Blizzard3;
+        protected override uint Invoke(uint actionID) =>
+            actionID switch
+            {
+                Blizzard3 when FirePhase && !LevelChecked(Blizzard3) && CurMp <1600 => Transpose,
+                Blizzard3 when !LevelChecked(Blizzard3) => Blizzard,
+                var _ => actionID
+            };
     }
 }

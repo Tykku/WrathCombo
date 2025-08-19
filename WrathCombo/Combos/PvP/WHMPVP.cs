@@ -11,15 +11,16 @@ internal static class WHMPvP
 
     internal class Role : PvPHealer;
 
-    public const uint
-        Glare = 29223,
-        Cure2 = 29224,
-        Cure3 = 29225,
-        AfflatusMisery = 29226,
-        Aquaveil = 29227,
-        MiracleOfNature = 29228,
-        SeraphStrike = 29229,
-        AfflatusPurgation = 29230;
+        public const uint
+            Glare = 29223,
+            Cure2 = 29224,
+            Cure3 = 29225,
+            AfflatusMisery = 29226,
+            Aquaveil = 29227,
+            MiracleOfNature = 29228,
+            SeraphStrike = 29229,
+            AfflatusPurgation = 29230,
+            Glare4 = 41499;
 
     internal class Buffs
     {
@@ -117,7 +118,22 @@ internal static class WHMPvP
                     return Aquaveil;      
             }
 
-            return actionID;
+                return actionID;
+            }
+        }
+
+        internal class WHMPvP_Toshitweaks : CustomCombo
+        {
+            protected internal override Preset Preset { get; } = Preset.WHMPvP_Toshitweaks;
+
+            protected override uint Invoke(uint actionID)
+            {
+                if (actionID is SeraphStrike)
+                {
+                    if (IsEnabled(Preset.WHMPvP_Toshiseraphstrike) && HasStatusEffect(Buffs.SacredSight))
+                        return Glare4;
+                }
+                return actionID;
+            }
         }
     }
-}
