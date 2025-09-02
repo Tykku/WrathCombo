@@ -9081,8 +9081,18 @@ public enum Preset
     [PvPCustomCombo]
     [CustomComboInfo("Phantom Dart Option", "Uses Phantom Dart (if selected) when available at or below set health threshold.", Job.PCT)]
     PCTPvP_PhantomDart = 140009,
+    
+    [PvPCustomCombo]
+    [CustomComboInfo("Toshi Tweaks", "Random collection of tweaks by Toshi", Job.PCT)]
+    PCTPvP_Toshitweaks = 140010,
+    
+    [ParentCombo(PCTPvP_Toshitweaks)]
+    [PvPCustomCombo]
+    [ReplaceSkill(PCTPvP.LivingMuse)]
+    [CustomComboInfo("1 Button Motifs", "Replaces Living Muse with 1 button Motifs", Job.PCT)]
+    PCTPvP_Toshimotifs = 140011,
 
-    // Last value = 140009
+    // Last value = 140011
 
     #endregion
 
@@ -9595,8 +9605,18 @@ public enum Preset
     [ParentCombo(WHMPvP_Heals)]
     [CustomComboInfo("Aquaveil Option", "Adds Aquaviel to Cure II when available.", Job.WHM)]
     WHMPvP_Aquaveil = 129007,
+    
+    [PvPCustomCombo]
+    [CustomComboInfo("Toshi Tweaks", "Random collection of tweaks by Toshi", Job.WHM)]
+    WHMPvP_Toshitweaks = 129011,
+        
+    [PvPCustomCombo]
+    [ParentCombo(WHMPvP_Toshitweaks)]
+    [ReplaceSkill(WHMPvP.SeraphStrike)]
+    [CustomComboInfo("Seraph Strike Option", "Replaces Seraph Strike with Glare 4", Job.WHM)]
+    WHMPvP_Toshiseraphstrike = 129012,
 
-    // Last value = 129010
+    // Last value = 129012
 
     #endregion
 
