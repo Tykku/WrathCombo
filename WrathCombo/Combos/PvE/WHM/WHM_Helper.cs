@@ -3,9 +3,12 @@ using Dalamud.Game.ClientState.JobGauge.Types;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Game.ClientState.Statuses;
 using System.Collections.Generic;
+using ECommons.GameFunctions;
 using WrathCombo.CustomComboNS;
 using WrathCombo.CustomComboNS.Functions;
 using WrathCombo.Data;
+using WrathCombo.Extensions;
+using TS = System.TimeSpan;
 using static WrathCombo.Combos.PvE.WHM.Config;
 using static WrathCombo.CustomComboNS.Functions.CustomComboFunctions;
 
@@ -74,6 +77,7 @@ internal partial class WHM
                        GetTargetHPPercent(healTarget,
                            WHM_STHeals_IncludeShields);
         float refreshTime = WHM_STHeals_RegenTimer;
+        bool tankCheck = healTarget.IsInParty() && healTarget.GetRole() is CombatRole.Tank;
         Status? regenHoT = GetStatusEffect(Buffs.Regen, healTarget);
         Status? BenisonShield = GetStatusEffect(Buffs.DivineBenison, healTarget);
 
@@ -87,6 +91,8 @@ internal partial class WHM
             case 1:
                 action = Tetragrammaton;
                 enabled = IsEnabled(Preset.WHM_STHeals_Tetragrammaton) &&
+                          (!WHM_STHeals_TetraBalance || 
+                           GetRemainingCharges(Tetragrammaton) >= GetRemainingCharges(DivineBenison)) &&
                           (!WHM_STHeals_TetraWeave || CanWeave());
                 return WHM_STHeals_TetraHP;
             case 2:
@@ -95,18 +101,21 @@ internal partial class WHM
                           BenisonShield == null &&
                           GetRemainingCharges(DivineBenison) >
                           WHM_STHeals_BenisonCharges &&
+                          (!WHM_STHeals_BenisonBalance || 
+                           GetRemainingCharges(DivineBenison) >= GetRemainingCharges(Tetragrammaton)) &&
                           (!WHM_STHeals_BenisonWeave || CanWeave());
                 return WHM_STHeals_BenisonHP;
             case 3:
                 action = Aquaveil;
                 enabled = IsEnabled(Preset.WHM_STHeals_Aquaveil) &&
+                          (tankCheck || !IsInParty() || !WHM_STHeals_AquaveilOptions[2]) &&
                           (!WHM_STHeals_AquaveilOptions[1] || !InBossEncounter()) &&
                           (!WHM_STHeals_AquaveilOptions[0] || CanWeave());
                 return WHM_STHeals_AquaveilHP;
             case 4:
                 action = AfflatusSolace;
                 enabled = IsEnabled(Preset.WHM_STHeals_Solace) &&
-                          CanLily;
+                          CanLily && !BloodLilyReady;
                 return WHM_STHeals_SolaceHP;
             case 5:
                 action = Regen;
@@ -127,6 +136,7 @@ internal partial class WHM
             case 7:
                 action = Asylum;
                 enabled = IsEnabled(Preset.WHM_STHeals_Asylum) &&
+                          TimeStoodStill >= TS.FromSeconds(3) &&
                           (!WHM_STHeals_AsylumOptions[1] ||
                            !InBossEncounter()) &&
                           (!WHM_STHeals_AsylumOptions[0] || CanWeave());
@@ -136,6 +146,7 @@ internal partial class WHM
                 enabled =
                     IsEnabled(Preset.WHM_STHeals_LiturgyOfTheBell) &&
                     !HasStatusEffect(Buffs.LiturgyOfTheBell) &&
+                    TimeStoodStill >= TS.FromSeconds(3) &&
                     (!WHM_STHeals_LiturgyOfTheBellOptions[1] ||
                      !InBossEncounter()) &&
                     (!WHM_STHeals_LiturgyOfTheBellOptions[0] || CanWeave());
@@ -219,7 +230,7 @@ internal partial class WHM
             case 6:
                 action = AfflatusRapture;
                 enabled = IsEnabled(Preset.WHM_AoEHeals_Rapture) &&
-                          CanLily;
+                          CanLily && !BloodLilyReady;
                 return WHM_AoEHeals_RaptureHP;
 
             case 7:
@@ -286,7 +297,7 @@ internal partial class WHM
     internal static WHMGauge gauge = GetJobGauge<WHMGauge>();
     internal static bool CanLily => gauge.Lily > 0;
     internal static bool FullLily => gauge.Lily == 3;
-    internal static bool AlmostFullLily => gauge is { Lily: 2, LilyTimer: >= 8000 };
+    internal static bool AlmostFullLily => gauge is { Lily: 2, LilyTimer: >= 12000 };
     internal static bool BloodLilyReady => gauge.BloodLily == 3;
 
     #endregion
@@ -408,5 +419,11 @@ internal partial class WHM
             Dia = 1871;
     }
 
+    public static class Traits
+    {
+        public const ushort
+            EnhancedDivineBenison = 490,
+            EnhancedTetragrammaton = 625;
+    }
     #endregion
 }

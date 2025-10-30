@@ -5,8 +5,10 @@ using ECommons.ExcelServices;
 using ECommons.ImGuiMethods;
 using ECommons.Logging;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using ECommons;
 using WrathCombo.Core;
 using WrathCombo.Extensions;
 using WrathCombo.Services;
@@ -14,19 +16,13 @@ using WrathCombo.Window.Functions;
 
 namespace WrathCombo.Window.Tabs;
 
-internal class PvPFeatures : ConfigWindow
+internal class PvPFeatures : FeaturesWindow
 {
-    internal static Job? OpenJob = null;
-    internal static int ColCount = 1;
-
     internal static new void Draw()
     {
-        using (var scrolling = ImRaii.Child("scrolling", new Vector2(ImGui.GetContentRegionAvail().X, ImGui.GetContentRegionAvail().Y), true))
+        using (ImRaii.Child("scrolling", new Vector2(ImGui.GetContentRegionAvail().X, ImGui.GetContentRegionAvail().Y), true))
         {
-            var indentwidth = 12f.Scale();
-            var indentwidth2 = indentwidth + 42f.Scale();
-
-            if (OpenJob is null)
+            if (OpenPvPJob is null)
             {
                 ImGuiEx.LineCentered("pvpDesc", () =>
                 {
@@ -65,19 +61,29 @@ internal class PvPFeatures : ConfigWindow
                         string header = string.IsNullOrEmpty(abbreviation) ? jobName : $"{jobName} - {abbreviation}";
                         var id = groupedPresets[job].First().Info.Job;
                         IDalamudTextureWrap? icon = Icons.GetJobIcon(id);
+                        ImGuiEx.Spacing(new Vector2(0, 2f.Scale()));
                         using (var disabled = ImRaii.Disabled(DisabledJobsPVP.Any(x => x == id)))
                         {
-                            if (ImGui.Selectable($"###{header}", OpenJob == job, ImGuiSelectableFlags.None,
-                                icon == null ? new Vector2(0, 32).Scale() : new Vector2(0, icon.Size.Y / 2f).Scale()))
+                            if (ImGui.Selectable($"###{header}", OpenPvPJob == job, ImGuiSelectableFlags.None, new Vector2(0, IconMaxSize)))
                             {
-                                OpenJob = job;
+                                OpenPvPJob = job;
                             }
-                            ImGui.SameLine(indentwidth);
+                            ImGui.SameLine(IndentWidth);
                             if (icon != null)
                             {
-                                ImGui.Image(icon.Handle, new Vector2(icon.Size.X, icon.Size.Y).Scale() / 2f);
-                                ImGui.SameLine(indentwidth2);
+                                var scale = Math.Min(IconMaxSize / icon.Size.X, IconMaxSize / icon.Size.Y);
+                                var imgSize = new Vector2(icon.Size.X * scale, icon.Size.Y * scale);
+                                var padSize = (IconMaxSize - imgSize.X) / 2f;
+                                if (padSize > 0)
+                                    ImGui.SetCursorPosX(ImGui.GetCursorPosX() + padSize);
+                                ImGui.Image(icon.Handle, imgSize);
                             }
+                            else
+                            {
+                                ImGui.Dummy(new Vector2(IconMaxSize, IconMaxSize));
+                            }
+                            ImGui.SameLine(LargerIndentWidth);
+                            ImGuiEx.Spacing(new Vector2(0, VerticalCenteringPadding));
                             ImGui.Text($"{header} {(disabled ? "(Disabled due to update)" : "")}");
                         }
 
@@ -87,47 +93,34 @@ internal class PvPFeatures : ConfigWindow
             }
             else
             {
-                var id = groupedPresets[OpenJob.Value].First().Info.Job;
-                IDalamudTextureWrap? icon = Icons.GetJobIcon(id);
+                var id = groupedPresets[OpenPvPJob.Value].First().Info.Job;
 
-                using (var headingTab = ImRaii.Child("PvPHeadingTab", new Vector2(ImGui.GetContentRegionAvail().X, icon is null ? 24f.Scale() : (icon.Size.Y / 2f).Scale() + 4f)))
+                DrawHeader(id, true);
+                DrawSearchBar();
+                ImGuiEx.Spacing(new Vector2(0, 10));
+                
+                using var content = ImRaii.Child("PvPContent", Vector2.Zero);
+                if (!content)
+                    return;
+
+                CurrentPreset = 1;
+
+                try
                 {
-                    if (ImGui.Button("Back", new Vector2(0, 24f.Scale())))
+                    if (ImGui.BeginTabBar($"subTab{OpenPvPJob.Value.Name()}", ImGuiTabBarFlags.Reorderable | ImGuiTabBarFlags.AutoSelectNewTabs))
                     {
-                        OpenJob = null;
-                        return;
-                    }
-                    ImGui.SameLine();
-                    ImGuiEx.LineCentered(() =>
-                    {
-                        if (icon != null)
+                        if (ImGui.BeginTabItem("Normal"))
                         {
-                            ImGui.Image(icon.Handle, new Vector2(icon.Size.X, icon.Size.Y).Scale() / 2f);
-                            ImGui.SameLine();
+                            DrawHeadingContents(OpenPvPJob.Value);
+                            ImGui.EndTabItem();
                         }
-                        ImGuiEx.Text($"{OpenJob.Value.Name()}");
-                    });
 
+                        ImGui.EndTabBar();
+                    }
                 }
-
-                using (var contents = ImRaii.Child("Contents", new Vector2(0)))
+                catch (Exception e)
                 {
-                    currentPreset = 1;
-                    try
-                    {
-                        if (ImGui.BeginTabBar($"subTab{OpenJob.Value.Name()}", ImGuiTabBarFlags.Reorderable | ImGuiTabBarFlags.AutoSelectNewTabs))
-                        {
-                            if (ImGui.BeginTabItem("Normal"))
-                            {
-                                DrawHeadingContents(OpenJob.Value);
-                                ImGui.EndTabItem();
-                            }
-
-                            ImGui.EndTabBar();
-                        }
-                    }
-                    catch { }
-
+                    PluginLog.Error($"Error while drawing Job's PvP UI:\n{e.ToStringFull()}");
                 }
             }
 
@@ -138,14 +131,17 @@ internal class PvPFeatures : ConfigWindow
     {
         foreach (var (preset, info) in groupedPresets[job].Where(x => PresetStorage.IsPvP(x.Preset)))
         {
-            InfoBox presetBox = new() { Color = Colors.Grey, BorderThickness = 1f.Scale(), ContentsOffset = 8f.Scale(), ContentsAction = () => { Presets.DrawPreset(preset, info); } };
+            InfoBox presetBox = new() { ContentsOffset = 5f.Scale(), ContentsAction = () => { Presets.DrawPreset(preset, info); } };
+            
+            if (IsSearching && !PvEFeatures.PresetMatchesSearch(preset))
+                continue;
 
-            if (Service.Configuration.HideConflictedCombos)
+            if (Service.Configuration.HideConflictedCombos && !IsSearching)
             {
                 var conflictOriginals = PresetStorage.GetConflicts(preset); // Presets that are contained within a ConflictedAttribute
                 var conflictsSource = PresetStorage.GetAllConflicts();      // Presets with the ConflictedAttribute
 
-                if (!conflictsSource.Where(x => x == preset).Any() || conflictOriginals.Length == 0)
+                if (conflictsSource.All(x => x != preset) || conflictOriginals.Length == 0)
                 {
                     presetBox.Draw();
                     ImGuiEx.Spacing(new Vector2(0, 12));
@@ -166,13 +162,12 @@ internal class PvPFeatures : ConfigWindow
 
                     // Keep removed items in the counter
                     var parent = PresetStorage.GetParent(preset) ?? preset;
-                    currentPreset += 1 + Presets.AllChildren(presetChildren[parent]);
+                    CurrentPreset += 1 + Presets.AllChildren(presetChildren[parent]);
                 }
 
                 else
                 {
                     presetBox.Draw();
-                    continue;
                 }
             }
 
@@ -180,6 +175,40 @@ internal class PvPFeatures : ConfigWindow
             {
                 presetBox.Draw();
                 ImGuiEx.Spacing(new Vector2(0, 12));
+            }
+        }
+        
+        // Search for children if nothing was found at the root
+        if (CurrentPreset == 1 && IsSearching)
+        {
+            List<Preset> alreadyShown = [];
+            foreach (var preset in PresetStorage.AllPresets!.Where(x =>
+                         PresetStorage.IsPvP(x) &&
+                         x.Attributes().CustomComboInfo.Job == job))
+            {
+                var attributes = preset.Attributes();
+                
+                if (!PvEFeatures.PresetMatchesSearch(preset))
+                    continue;
+                // Don't show things that were already shown under another preset
+                if (alreadyShown.Any(y => y == attributes.Parent) ||
+                    alreadyShown.Any(y => y == attributes.GrandParent) ||
+                    alreadyShown.Any(y => y == attributes.GreatGrandParent))
+                    continue;
+                
+                var info = attributes.CustomComboInfo;
+                InfoBox presetBox = new() { ContentsOffset = 5f.Scale(), ContentsAction = () => { Presets.DrawPreset(preset, info!); } };
+                presetBox.Draw();
+                ImGuiEx.Spacing(new Vector2(0, 12));
+                alreadyShown.Add(preset);
+            }
+
+            // Show error message if still nothing was found
+            if (CurrentPreset == 1) {
+                ImGuiEx.LineCentered(() =>
+                {
+                    ImGui.TextUnformatted("Nothing matched your search.");
+                });
             }
         }
     }

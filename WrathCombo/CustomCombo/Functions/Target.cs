@@ -38,7 +38,8 @@ internal abstract partial class CustomComboFunctions
         if ((optionalTarget ?? CurrentTarget) is not IBattleChara chara)
             return false;
 
-        return ActionWatching.BNPCSheet.TryGetValue(chara.DataId, out var charaSheet) && charaSheet.Rank is 2 or 6;
+        return chara.NameId == 541 //541	striking dummy	0	striking dummies	0	0	1	0	0
+            || ActionWatching.BossesBaseIds.Contains(chara.BaseId);
     }
 
     /// <summary> Checks if an object is quest-related. Defaults to CurrentTarget unless specified. </summary>
@@ -70,7 +71,7 @@ internal abstract partial class CustomComboFunctions
         if ((optionalTarget ?? CurrentTarget) is not IBattleChara chara || HasStatusEffect(3808, chara, true))
             return false;
 
-        return ActionWatching.BNPCSheet.TryGetValue(chara.DataId, out var charaSheet) && !charaSheet.IsOmnidirectional;
+        return ActionWatching.BNPCSheet.TryGetValue(chara.BaseId, out var charaSheet) && !charaSheet.IsOmnidirectional;
     }
 
     /// <summary>
@@ -108,6 +109,9 @@ internal abstract partial class CustomComboFunctions
     ///     As a float representation of a percentage, value should be between
     ///     0.0f (0%) and 1.0f (100%).
     /// </param>
+    /// <param name="optionalTarget">
+    ///     A target to use other than <see cref="CurrentTarget"/>.
+    /// </param>
     /// <returns>
     ///     Bool indicating whether they can be interrupted or not.<br/>
     ///     (and if the cast time is over the percentage specified)
@@ -118,6 +122,60 @@ internal abstract partial class CustomComboFunctions
             return false;
 
         float minThreshold = Math.Clamp(minCastPercent ?? (float)Service.Configuration.InterruptDelay, 0f, 1f);
+
+        return chara.CurrentCastTime >= chara.TotalCastTime * minThreshold;
+    }
+
+    /// <summary>
+    ///     Checks if a (non-boss) enemy is casting and is available for stuns.<br/>
+    ///     Optionally, limit by percentage of cast time.<br/>
+    ///     Defaults to CurrentTarget unless specified.<br/>
+    ///     Similar to <see cref="CanInterruptEnemy"/>, but also checks the
+    ///     <see cref="ICDTracker">Internal Cooldown Tracker</see> for Stuns.
+    /// </summary>
+    /// <param name="minCastPercent">
+    ///     The minimum percentage of the cast time completed required.<br/>
+    ///     Default is 0%.<br/>
+    ///     As a float representation of a percentage, value should be between
+    ///     0.0f (0%) and 1.0f (100%).
+    /// </param>
+    /// <param name="optionalTarget">
+    ///     A target to use other than <see cref="CurrentTarget"/>.
+    /// </param>
+    /// <returns>
+    ///     Bool indicating whether they can be stunned to interrupt or not.<br/>
+    ///     (and if the cast time is over the percentage specified, plus if the
+    ///     target is probably stunnable, plus if another interrupt/stun was not
+    ///     recently used)
+    /// </returns>
+    public static bool CanStunToInterruptEnemy(float? minCastPercent = null,
+        IGameObject? optionalTarget = null)
+    {
+        var target = optionalTarget ?? CurrentTarget;
+
+        // Bail if the target is not casting (and is a valid target)
+        if (target is not IBattleChara { IsCasting: true } chara)
+            return false;
+
+        // Bail if it fails the Internal Cooldown tracker for Stuns
+        if (!(ICDTracker.StatusIsExpired(All.Debuffs.Stun,
+                  CurrentTarget.GameObjectId) ||
+              ICDTracker.NumberOfTimesApplied(All.Debuffs.Stun,
+                  CurrentTarget.GameObjectId) < 3))
+            return false;
+
+        // Bail if the target is a boss
+        if (TargetIsBoss(target))
+            return false;
+        
+        // Bail if another form of interrupt was recently used
+        if (JustUsedOn(RoleActions.Melee.LegSweep, target) ||
+            JustUsedOn(RoleActions.Tank.Interject, target) ||
+            JustUsedOn(RoleActions.Tank.LowBlow, target) ||
+            JustUsedOn(PLD.ShieldBash, target))
+            return false;
+
+        var minThreshold = Math.Clamp(minCastPercent ?? (float)Service.Configuration.InterruptDelay, 0f, 1f);
 
         return chara.CurrentCastTime >= chara.TotalCastTime * minThreshold;
     }
@@ -326,6 +384,92 @@ internal abstract partial class CustomComboFunctions
         return !Framework.Instance()->BGCollisionModule->RaycastMaterialFilter(&hit, &sourcePos, &direction, distance, 1, flags);
     }
 
+    /// <summary>
+    ///     Checks if an object is over the ground
+    /// </summary>
+    internal static unsafe bool IsOverGround(IGameObject? obj)
+    {
+        if (obj is null) return false;
+
+        var targetPos = obj.Position;
+        var down = new Vector3(0, -1, 0);
+        RaycastHit hit;
+        var flags = stackalloc int[] { 0x4000, 0, 0x4000, 0 };
+        
+        return Framework.Instance()->BGCollisionModule->RaycastMaterialFilter(&hit, &targetPos, &down, 5, 1, flags);
+    }
+
+    /// <summary>
+    ///     Checks if a point is over the ground.<br/>
+    ///     (and gives the ground point if it is)
+    /// </summary>
+    private static unsafe bool IsOverGround
+        (Vector3 pointToCheck, out Vector3 groundPoint)
+    {
+        var down = new Vector3(0, -1, 0);
+        RaycastHit hit;
+        var flags = stackalloc int[] { 0x4000, 0, 0x4000, 0 };
+        
+        var result = Framework.Instance()->BGCollisionModule->RaycastMaterialFilter(&hit, &pointToCheck, &down, 5, 1, flags);
+        groundPoint = hit.Point;
+        return result;
+    }
+
+    /// <summary>
+    ///     Tries to find the nearest point to the object that is in a line
+    ///     between the player and the object, and is over the ground.
+    /// </summary>
+    /// <param name="obj">
+    ///     The object to start searching from.
+    /// </param>
+    /// <param name="nearestGroundPoint">
+    ///     The found nearest point.
+    /// </param>
+    /// <param name="maxRange">
+    ///     The maximum range from the the player.<br/>
+    ///     Starts the search closer to the player than just the object's position.
+    /// </param>
+    /// <returns>
+    ///     If a suitable point was found.
+    /// </returns>
+    internal static bool TryGetNearestGroundPointWithinRange
+    (IGameObject? obj,
+        out Vector3? nearestGroundPoint,
+        float maxRange = 30f)
+    {
+        nearestGroundPoint = null;
+
+        // Fail out if we can't find positions
+        if (LocalPlayer is not { } player || obj is null) return false;
+
+        // (search 2y up, to avoid the line crossing the ground itself)
+        var source = obj.Position with { Y = obj.Position.Y + 2f };
+        var target = player.Position with { Y = obj.Position.Y + 2f };
+        var direction = Vector3.Normalize(target - source); // The line to walk
+        var distance = Vector3.Distance(source, target); // The length of that line
+
+        // If the player and object are too close, return the player position
+        if (distance <= 0.5f)
+            return (nearestGroundPoint = player.Position) != null;
+
+        // Start closer to the player if the object is outside of maximum range
+        var start = MathF.Max(0f, distance - maxRange) + 0.1f;
+
+        // Walks from the object towards the player in 0.5 yalms increments
+        for (var i = start; i <= distance; i += 0.5f)
+        {
+            var point = source + direction * i;
+            // Skip if not a suitable point
+            if (!IsOverGround(point, out var groundPoint)) continue;
+
+            nearestGroundPoint = groundPoint;
+            return true;
+        }
+
+        // Fail out if no suitable point was found
+        return false;
+    }
+
     #endregion
 
     #region Positional Checks
@@ -503,7 +647,7 @@ internal abstract partial class CustomComboFunctions
                    (!checkInvincible ||
                     !TargetIsInvincible(o)) &&
                    (!checkIgnoredList ||
-                    !Service.Configuration.IgnoredNPCs.ContainsKey(o.DataId));
+                    !Service.Configuration.IgnoredNPCs.ContainsKey(o.BaseId));
         }
     }
 

@@ -528,19 +528,19 @@ public partial class WrathCombo
             return;
         }
 
-        if (Service.Configuration.IgnoredNPCs.Any(x => x.Key == target.DataId))
+        if (Service.Configuration.IgnoredNPCs.Any(x => x.Key == target.BaseId))
         {
             DuoLog.Error(
-                $"{target.Name} (ID: {target.DataId}) is already on the ignored list");
+                $"{target.Name} (ID: {target.BaseId}) is already on the ignored list");
             return;
         }
 
-        if (Service.Configuration.IgnoredNPCs.All(x => x.Key != target.DataId))
+        if (Service.Configuration.IgnoredNPCs.All(x => x.Key != target.BaseId))
         {
-            Service.Configuration.IgnoredNPCs.Add(target.DataId, target.GetNameId());
+            Service.Configuration.IgnoredNPCs.Add(target.BaseId, target.GetNameId());
 
             DuoLog.Information(
-                $"Successfully added {target.Name} (ID: {target.DataId}) to ignored list");
+                $"Successfully added {target.Name} (ID: {target.BaseId}) to ignored list");
         }
     }
 
@@ -684,10 +684,12 @@ public partial class WrathCombo
     ///         </item>
     ///     </list>
     /// </remarks>
-    private void HandleOpenCommand
+    internal void HandleOpenCommand
         (string[]? argument = null, OpenWindow? tab = null, bool? forceOpen = null)
     {
         argument ??= [""];
+
+        ConfigWindow.ClearAnySearches();
 
         // Toggle the window state
         ConfigWindow.IsOpen = !ConfigWindow.IsOpen;
@@ -730,7 +732,7 @@ public partial class WrathCombo
         {
             ConfigWindow.IsOpen = true;
             ConfigWindow.OpenWindow = OpenWindow.PvE;
-            PvEFeatures.OpenJob = job.GetJob();
+            FeaturesWindow.OpenJob = job.GetJob();
         } 
         else
         {

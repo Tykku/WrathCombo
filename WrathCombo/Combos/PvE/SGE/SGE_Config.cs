@@ -13,6 +13,7 @@ internal partial class SGE
         {
             switch (preset)
             {
+
                 #region DPS
 
                 case Preset.SGE_ST_DPS_Opener:
@@ -160,6 +161,9 @@ internal partial class SGE
                     DrawSliderInt(0, 100, SGE_ST_Heal_Taurochole,
                         "Start using when below HP %. Set to 100 to disable this check.");
 
+                    DrawAdditionalBoolChoice(SGE_ST_Heal_Taurochole_TankOnly,
+                        "Tank Only", "Will only use on tanks.");
+
                     DrawPriorityInput(SGE_ST_Heals_Priority,
                         12, 3, $"{Taurochole.ActionName()} Priority: ");
                     break;
@@ -169,6 +173,8 @@ internal partial class SGE
                         "Start using when below HP %. Set to 100 to disable this check.");
                     DrawAdditionalBoolChoice(SGE_ST_Heal_HaimaBossOption,
                         "Not on Bosses", "Will not use on ST in Boss encounters.");
+                    DrawAdditionalBoolChoice(SGE_ST_Heal_Haima_TankOnly,
+                        "Tank Only", "Will only use on tanks.");
                     DrawPriorityInput(SGE_ST_Heals_Priority,
                         12, 4, $"{Haima.ActionName()} Priority: ");
                     break;
@@ -178,6 +184,8 @@ internal partial class SGE
                         "Start using when below HP %. Set to 100 to disable this check.");
                     DrawAdditionalBoolChoice(SGE_ST_Heal_KrasisBossOption,
                         "Not on Bosses", "Will not use on ST in Boss encounters.");
+                    DrawAdditionalBoolChoice(SGE_ST_Heal_Krasis_TankOnly,
+                        "Tank Only", "Will only use on tanks.");
                     DrawPriorityInput(SGE_ST_Heals_Priority,
                         12, 5, $"{Krasis.ActionName()} Priority: ");
                     break;
@@ -380,6 +388,7 @@ internal partial class SGE
                     break;
 
                     #endregion
+
             }
         }
 
@@ -427,6 +436,9 @@ internal partial class SGE
             SGE_ST_Heal_HolosBossOption = new("SGE_ST_Heal_HolosBossOption"),
             SGE_ST_Heal_HaimaBossOption = new("SGE_ST_Heal_HaimaBossOption"),
             SGE_ST_Heal_KrasisBossOption = new("SGE_ST_Heal_KrasisBossOption"),
+            SGE_ST_Heal_Haima_TankOnly = new("SGE_ST_Heal_Haima_TankOnly"),
+            SGE_ST_Heal_Krasis_TankOnly = new("SGE_ST_Heal_Krasis_TankOnly"),
+            SGE_ST_Heal_Taurochole_TankOnly = new("SGE_ST_Heal_Taurochole_TankOnly"),
             SGE_AoE_Heal_KeracholeTrait = new("SGE_AoE_Heal_KeracholeTrait"),
             SGE_AoE_Heal_ZoePneuma = new("SGE_AoE_Heal_ZoePneuma");
 
@@ -460,8 +472,8 @@ internal partial class SGE
             SGE_Mit_AoE_PrognosisOption = new("SGE_Mit_AoE_PrognosisOption");
 
         public static UserIntArray
-            SGE_ST_Heals_Priority = new("SGE_ST_Heals_Priority"),
-            SGE_AoE_Heals_Priority = new("SGE_AoE_Heals_Priority");
+            SGE_ST_Heals_Priority = new("SGE_ST_Heals_Priority", [3, 11, 10, 6, 7, 8, 9, 12, 1, 2, 4, 5]),
+            SGE_AoE_Heals_Priority = new("SGE_AoE_Heals_Priority", [1, 7, 2, 3, 5, 8, 4, 6, 9]);
 
         public static UserBoolArray
             SGE_ST_Heal_EDiagnosisOpts = new("SGE_ST_Heal_EDiagnosisOpts"),
@@ -472,5 +484,6 @@ internal partial class SGE
         #endregion
 
         #endregion
+
     }
 }
