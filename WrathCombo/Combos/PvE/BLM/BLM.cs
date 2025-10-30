@@ -908,10 +908,10 @@ internal partial class BLM : Caster
                 Fire4 when IsEnabledAndUsable(Preset.Phantom_Geomancer_RingingRespite, RingingRespite) &&
                            GetStatusEffectRemainingTime(Buffs.RingingRespite) <= 5 && CanWeave() => RingingRespite,
                 //Toshi Low-Level Changes
-                Fire4 when !LevelChecked(Fire4)     && FirePhase && CurMp >= 1600 && !HasStatusEffect(Buffs.Firestarter) => Fire,
-                Fire4 when !LevelChecked(Blizzard4) && FirePhase && CurMp < 1600 && LevelChecked(Blizzard3) => Blizzard3,
-                Fire4 when !LevelChecked(Blizzard4) && IcePhase  && CurMp < 10000 => Blizzard,
-                Fire4 when !LevelChecked(Blizzard3) && ((FirePhase && CurMp <1600) || (IcePhase  && CurMp == 10000)) => Transpose,
+                Fire4 when !LevelChecked(Fire4)     && FirePhase && MP.Cur >= 1600 && !HasStatusEffect(Buffs.Firestarter) => Fire,
+                Fire4 when !LevelChecked(Blizzard4) && FirePhase && MP.Cur < 1600 && LevelChecked(Blizzard3) => Blizzard3,
+                Fire4 when !LevelChecked(Blizzard4) && IcePhase  && MP.Cur < 10000 => Blizzard,
+                Fire4 when !LevelChecked(Blizzard3) && ((FirePhase && MP.Cur <1600) || (IcePhase  && MP.Cur == 10000)) => Transpose,
                 //Resume Normal Op
                 Fire4 when LevelChecked(Fire3) && ((!IcePhase && !FirePhase) || (IcePhase && !HasStatusEffect(Buffs.Firestarter)) ||
                                                    AstralFireStacks is 1 || AstralFireStacks is 2) => Fire3,
@@ -928,7 +928,7 @@ internal partial class BLM : Caster
         protected override uint Invoke(uint actionID) =>
             actionID switch
             {
-                Blizzard4 when FirePhase && LevelChecked(Despair) && CurMp >= 800 => Despair,
+                Blizzard4 when FirePhase && LevelChecked(Despair) && MP.Cur >= 800 => Despair,
                 Blizzard4 when !LevelChecked(Blizzard4) => Blizzard,
                 var _ => actionID
             };
@@ -939,7 +939,7 @@ internal partial class BLM : Caster
         protected override uint Invoke(uint actionID) =>
             actionID switch
             {
-                Blizzard3 when FirePhase && !LevelChecked(Blizzard3) && CurMp <1600 => Transpose,
+                Blizzard3 when FirePhase && !LevelChecked(Blizzard3) && MP.Cur <1600 => Transpose,
                 Blizzard3 when !LevelChecked(Blizzard3) => Blizzard,
                 var _ => actionID
             };
