@@ -915,6 +915,7 @@ internal partial class BLM : Caster
                 //Resume Normal Op
                 Fire4 when LevelChecked(Fire3) && ((!IcePhase && !FirePhase) || (IcePhase && !HasStatusEffect(Buffs.Firestarter)) ||
                                                    AstralFireStacks is 1 || AstralFireStacks is 2) => Fire3,
+                /*Fire4 when CanUseThunder() => Thunder,*/
                 Fire4 when !LevelChecked(Fire4) && HasStatusEffect(Buffs.Firestarter) && LevelChecked(Fire3) => Fire3,
                 Fire4 when !InCombat() && LevelChecked(Fire4) => Fire4,
                 Fire4 when !InCombat() && LevelChecked(Fire3) => Fire3,
