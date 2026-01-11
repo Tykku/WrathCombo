@@ -659,8 +659,11 @@ internal unsafe static class AutoRotationController
                 LockedST = false;
 
                 uint outAct = OriginalHook(InvokeCombo(preset, attributes, ref gameAct, Player.Object));
-                if (ActionManager.Instance()->GetActionStatus(ActionType.Action, outAct) != 0) return false;
                 if (!ActionReady(outAct))
+                    return false;
+
+                var canQueue = outAct.ActionAttackType() is { } type && (type is ActionAttackType.Ability || type is not ActionAttackType.Ability && RemainingGCD <= cfg.QueueWindow);
+                if (!canQueue)
                     return false;
 
                 if (HealerTargeting.CanAoEHeal(outAct))
@@ -709,12 +712,12 @@ internal unsafe static class AutoRotationController
                     return false;
                 }
 
-                if (ActionManager.Instance()->GetActionStatus(ActionType.Action, outAct) != 0)
+                var canQueue = outAct.ActionAttackType() is { } type && (type is ActionAttackType.Ability || type is not ActionAttackType.Ability && RemainingGCD <= cfg.QueueWindow);
+                if (!canQueue)
                 {
                     OverrideTarget = null;
                     return false;
                 }
-
                 var sheet = ActionSheet[outAct];
                 var mustTarget = sheet.CanTargetHostile;
 
@@ -807,7 +810,7 @@ internal unsafe static class AutoRotationController
             var acRangeCheck = ActionManager.GetActionInRangeOrLoS(outAct, player.GameObject(), target is null ? player.GameObject() : target.Struct());
             var inRange = acRangeCheck is 0 or 565 || canUseSelf;
 
-            var canUse = (canUseSelf || canUseTarget || areaTargeted) && outAct.ActionAttackType() is { } type && (type is ActionAttackType.Ability || type is not ActionAttackType.Ability && RemainingGCD <= 0.3);
+            var canUse = (canUseSelf || canUseTarget || areaTargeted) && outAct.ActionAttackType() is { } type && (type is ActionAttackType.Ability || type is not ActionAttackType.Ability && RemainingGCD <= cfg.QueueWindow);
             var isHeal = attributes.AutoAction!.IsHeal;
 
             if ((!isHeal && cfg.DPSSettings.DPSAlwaysHardTarget && mode is not DPSRotationMode.Manual) || (isHeal && cfg.HealerSettings.HealerAlwaysHardTarget && mode is not HealerRotationMode.Manual))

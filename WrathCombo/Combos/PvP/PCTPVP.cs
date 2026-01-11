@@ -88,8 +88,8 @@ internal static class PCTPvP
             // Tempera Coat / Tempera Grassa
             if (IsEnabled(Preset.PCTPvP_TemperaCoat))
             {
-                if ((IsOffCooldown(TemperaCoat) &&
-                     InCombat() && PlayerHealthPercentageHp() < PCTPvP_TemperaHP) || isTemperaCoatExpiring)
+                if (IsOffCooldown(TemperaCoat) &&
+                    InCombat() && PlayerHealthPercentageHp() < PCTPvP_TemperaHP || isTemperaCoatExpiring)
                     return OriginalHook(TemperaCoat);
             }
             if (hasTarget && !PvPCommon.TargetImmuneToDamage())
@@ -128,30 +128,31 @@ internal static class PCTPvP
             }
             return actionID;
         }
-        internal class PCTPvP_Toshitweaks : CustomCombo
+        internal class PCTPvP_OneButtonMotifs : CustomCombo
         {
-            protected internal override Preset Preset { get; } = Preset.PCTPvP_Toshitweaks;
+            protected internal override Preset Preset => Preset.PCTPvP_OneButtonMotifs;
 
             protected override uint Invoke(uint actionID)
             {
                 #region Variables
+                
                 bool hasTarget = HasTarget();
                 bool hasStarPrism = HasStatusEffect(Buffs.Starstruck);
                 bool hasPortrait = HasStatusEffect(Buffs.MooglePortrait) || HasStatusEffect(Buffs.MadeenPortrait);
                 bool isStarPrismExpiring = HasStatusEffect(Buffs.Starstruck) && GetStatusEffectRemainingTime(Buffs.Starstruck) <= 3;
                 bool hasMotifDrawn = HasStatusEffect(Buffs.PomMotif) || HasStatusEffect(Buffs.WingMotif) || HasStatusEffect(Buffs.ClawMotif) || HasStatusEffect(Buffs.MawMotif);
+                
                 #endregion
+                
                 if (actionID is LivingMuse)
                 {
                     if (hasTarget && !PvPCommon.TargetImmuneToDamage())
                     {
                         // Star Prism
-                        if (IsEnabled(Preset.PCTPvP_StarPrism))
-                        {
-                            if (hasStarPrism && (isStarPrismExpiring))
-                                return StarPrism;
-                        }
-                        
+                        if (IsEnabled(Preset.PCTPvP_StarPrismOneButtonMotifs) && 
+                            hasStarPrism && isStarPrismExpiring)
+                            return StarPrism;
+
                         // Moogle / Madeen Portrait
                         if (hasPortrait)
                             return OriginalHook(MogOfTheAges);
@@ -165,6 +166,7 @@ internal static class PCTPvP
                     if (!hasMotifDrawn)
                         return OriginalHook(CreatureMotif);
                 }
+                
                 return actionID;
             }
         }

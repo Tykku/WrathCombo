@@ -1327,6 +1327,10 @@ public enum Preset
     [ParentCombo(AST_ST_Heals)]
     [CustomComboInfo("Lady Option", "Adds Lady of Crowns, if the card is drawn.", Job.AST)]
     AST_ST_Heals_SoloLady = 1070,
+    
+    [ParentCombo(AST_ST_Heals)]
+    [CustomComboInfo("Neutral Sect Option", "Adds Neutral Sect/Sun Sign.", Job.AST)]
+    AST_ST_Heals_NeutralSect = 1097,
 
     [AutoAction(true, true)]
     [ReplaceSkill(AST.Helios, AST.AspectedHelios, AST.HeliosConjuction)]
@@ -1487,7 +1491,7 @@ public enum Preset
     AST_Retargets_EarthlyStar = 1093,
     #endregion
 
-    // Last value = 1095
+    // Last value = 1097
 
     #endregion
 
@@ -9273,14 +9277,14 @@ public enum Preset
     PCTPvP_PhantomDart = 140009,
     
     [PvPCustomCombo]
-    [CustomComboInfo("Toshi Tweaks", "Random collection of tweaks by Toshi", Job.PCT)]
-    PCTPvP_Toshitweaks = 140010,
-    
-    [ParentCombo(PCTPvP_Toshitweaks)]
-    [PvPCustomCombo]
     [ReplaceSkill(PCTPvP.LivingMuse)]
-    [CustomComboInfo("1 Button Motifs", "Replaces Living Muse with 1 button Motifs", Job.PCT)]
-    PCTPvP_Toshimotifs = 140011,
+    [CustomComboInfo("One Button Motifs", "Replaces Living Muse with One button Motifs", Job.PCT)]
+    PCTPvP_OneButtonMotifs = 140010,
+
+    [PvPCustomCombo]
+    [ParentCombo(PCTPvP_OneButtonMotifs)]
+    [CustomComboInfo("Star Prism Option", "Adds Star Prism.", Job.PCT)]
+    PCTPvP_StarPrismOneButtonMotifs = 140011,
 
     // Last value = 140011
 
@@ -9797,16 +9801,11 @@ public enum Preset
     WHMPvP_Aquaveil = 129007,
     
     [PvPCustomCombo]
-    [CustomComboInfo("Toshi Tweaks", "Random collection of tweaks by Toshi", Job.WHM)]
-    WHMPvP_Toshitweaks = 129011,
-        
-    [PvPCustomCombo]
-    [ParentCombo(WHMPvP_Toshitweaks)]
     [ReplaceSkill(WHMPvP.SeraphStrike)]
-    [CustomComboInfo("Seraph Strike Option", "Replaces Seraph Strike with Glare 4", Job.WHM)]
-    WHMPvP_Toshiseraphstrike = 129012,
+    [CustomComboInfo("Seraph Strike to Glare 4", "Replaces Seraph Strike with Glare 4", Job.WHM)]
+    WHMPvP_Seraphstrike = 129011,
 
-    // Last value = 129012
+    // Last value = 129011
 
     #endregion
 

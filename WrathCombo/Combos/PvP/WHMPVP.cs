@@ -157,15 +157,15 @@ internal static class WHMPvP
                 : actionID;
         }
 
-        internal class WHMPvP_Toshitweaks : CustomCombo
+        internal class WHMPvP_Seraphstrike : CustomCombo
         {
-            protected internal override Preset Preset { get; } = Preset.WHMPvP_Toshitweaks;
+            protected internal override Preset Preset => Preset.WHMPvP_Seraphstrike;
 
             protected override uint Invoke(uint actionID)
             {
                 if (actionID is SeraphStrike)
                 {
-                    if (IsEnabled(Preset.WHMPvP_Toshiseraphstrike) && HasStatusEffect(Buffs.SacredSight))
+                    if (IsEnabled(Preset.WHMPvP_Seraphstrike) && HasStatusEffect(Buffs.SacredSight))
                         return Glare4;
                 }
 
