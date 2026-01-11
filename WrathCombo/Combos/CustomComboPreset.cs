@@ -2111,10 +2111,27 @@ public enum Preset
     [CustomComboInfo("One Button Songs Feature",
         "Add Mage's Ballad and Army's Paeon to Wanderer's Minuet depending on cooldowns.", Job.BRD)]
     BRD_OneButtonSongs = 3014,
+    
+    [ReplaceSkill(BRD.VenomousBite, BRD.CausticBite)]
+    [CustomComboInfo("One Button Dots Feature", "Replaces Venomous Bite/Caustic Bite with Windbite/Stormbite if target is missing that DoT.", Job.BRD)]
+    BRD_OneButtonDots = 3004,
+
+    [ParentCombo(BRD_OneButtonDots)]
+    [CustomComboInfo("Iron Jaws Reapply Feature", "If both DoTs are applied, returns Iron Jaws if able to be used.", Job.BRD)]
+    BRD_OneButtonDots_IronJaws = 3071,
+
+    [Retargeted]
+    [ParentCombo(BRD_OneButtonDots)]
+    [CustomComboInfo("Multi-Target Feature", "Will apply DoTs to as many targets you're in combat with as possible.", Job.BRD)]
+    BRD_OneButtonDots_Retargeted = 3072,
+
+    [ParentCombo(BRD_OneButtonDots_Retargeted)]
+    [CustomComboInfo("Savage Blade Lockout Feature", "If nothing is left to DoT or refresh within 5s, lockout with Savage Blade", Job.BRD)]
+    BRD_OneButtonDots_SavageBlade = 3073,
 
     #endregion
 
-    // Last value = 3069
+    // Last value = 3073
 
     #endregion
 
@@ -3474,6 +3491,10 @@ public enum Preset
     [ParentCombo(GNB_Mitigation_NonBoss)]
     [CustomComboInfo("Superbolide Option", "Adds Superbolide when 5 or more targets", Job.GNB)]
     GNB_Mitigation_NonBoss_Superbolide = 7706,
+    
+    [ParentCombo(GNB_Mitigation_NonBoss)]
+    [CustomComboInfo("Superbolide Emergency Option", "Adds Superbolide when in emergency health situation. \nWill likely be on coodown if using above setting as reccomended.", Job.GNB)]
+    GNB_Mitigation_NonBoss_SuperBolideEmergency = 7721,
     
     [ParentCombo(GNB_Mitigation_NonBoss)]
     [CustomComboInfo("Arm's Length Option", "Adds Arm's Length when 5 or more targets", Job.GNB)]
