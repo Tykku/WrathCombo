@@ -94,7 +94,9 @@ internal partial class BRD : PhysicalRanged
                     return Role.HeadGraze;
 
                 if (ActionReady(RainOfDeath) && UsePooledBloodRain())
-                    return OriginalHook(RainOfDeath);
+                    return NumberOfEnemiesInRange(RainOfDeath) >= 2 
+                        ? OriginalHook(RainOfDeath)
+                        : OriginalHook(Bloodletter);
 
                 if (!LevelChecked(RainOfDeath) && !(WasLastAction(Bloodletter) && BloodletterCharges > 0))
                     return OriginalHook(Bloodletter);
@@ -132,7 +134,9 @@ internal partial class BRD : PhysicalRanged
                 return OriginalHook(RadiantEncore);
 
             if (HasStatusEffect(Buffs.HawksEye) && ActionReady(WideVolley))
-                return OriginalHook(WideVolley);
+                return NumberOfEnemiesInRange(OriginalHook(WideVolley)) >= 2
+                    ? OriginalHook(WideVolley)
+                    : OriginalHook(StraightShot);
 
             #region Multidot Management
 
@@ -424,7 +428,9 @@ internal partial class BRD : PhysicalRanged
 
                 if (ActionReady(RainOfDeath) &&
                     (IsEnabled(Preset.BRD_AoE_Pooling) && UsePooledBloodRain() || !IsEnabled(Preset.BRD_AoE_Pooling)))
-                    return OriginalHook(RainOfDeath);
+                    return NumberOfEnemiesInRange(RainOfDeath) >= 2
+                        ? OriginalHook(RainOfDeath)
+                        : OriginalHook(Bloodletter);
 
                 if (!LevelChecked(RainOfDeath) && !WasLastAction(Bloodletter) && BloodletterCharges > 0)
                     return OriginalHook(Bloodletter);
@@ -474,7 +480,9 @@ internal partial class BRD : PhysicalRanged
             }
 
             if (HasStatusEffect(Buffs.HawksEye) && ActionReady(WideVolley))
-                return OriginalHook(WideVolley);
+                return NumberOfEnemiesInRange(OriginalHook(WideVolley)) >= 2
+                    ? OriginalHook(WideVolley)
+                    : OriginalHook(StraightShot);
 
             #region Multidot Management
             if (IsEnabled(Preset.BRD_AoE_Adv_Multidot))
