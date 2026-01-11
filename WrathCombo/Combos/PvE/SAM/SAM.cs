@@ -34,7 +34,7 @@ internal partial class SAM : Melee
                     return Ikishoten;
 
                 //Senei Feature
-                if (Kenki >= SAMKenki.Senei)
+                if (Kenki >= 25)
                 {
                     if (CanSenei())
                         return Senei;
@@ -237,7 +237,7 @@ internal partial class SAM : Melee
                 {
                     //Senei feature
                     if (IsEnabled(Preset.SAM_ST_CDs_Senei)
-                        && Kenki >= SAMKenki.Senei)
+                        && Kenki >= 25)
                     {
                         if (CanSenei())
                             return Senei;

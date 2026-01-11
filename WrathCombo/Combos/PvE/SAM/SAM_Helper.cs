@@ -96,21 +96,6 @@ internal partial class SAM
 
     #endregion
 
-    #region Rescourses
-
-    private static class SAMKenki
-    {
-        internal static int Zanshin => GetResourceCost(SAM.Zanshin);
-
-        internal static int Senei => GetResourceCost(SAM.Senei);
-
-        internal static int Shinten => GetResourceCost(SAM.Shinten);
-
-        internal static int Gyoten => GetResourceCost(SAM.Gyoten);
-    }
-
-    #endregion
-
     #region Higanbana
 
     private static bool CanUseHiganbana()
@@ -279,7 +264,7 @@ internal partial class SAM
 
     //TODO Buffcheck
     private static bool CanZanshin() =>
-        ActionReady(Zanshin) && Kenki >= SAMKenki.Zanshin &&
+        ActionReady(Zanshin) &&
         InActionRange(Zanshin) && HasStatusEffect(Buffs.ZanshinReady) &&
         (JustUsed(Senei, 20f) || GetStatusEffectRemainingTime(Buffs.ZanshinReady) <= 8);
 
@@ -288,7 +273,7 @@ internal partial class SAM
         int shintenTreshhold = SAM_ST_ExecuteThreshold;
         float gcd = GetCooldown(OriginalHook(Hakaze)).CooldownTotal;
 
-        if (ActionReady(Shinten) && Kenki >= SAMKenki.Shinten && InActionRange(Shinten))
+        if (ActionReady(Shinten) && InActionRange(Shinten))
         {
             if (GetTargetHPPercent() < shintenTreshhold)
                 return true;
@@ -587,8 +572,8 @@ internal partial class SAM
 
         public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
         [
-            ([18, 23], () => Kenki < SAMKenki.Shinten),
-            ([20, 25], () => Kenki < SAMKenki.Gyoten || IsOnCooldown(Gyoten) || SAM_Opener_IncludeGyoten == 1)
+            ([18, 23], () => !ActionReady(Shinten)),
+            ([20, 25], () => !ActionReady(Gyoten) || SAM_Opener_IncludeGyoten == 1)
         ];
 
         public override Preset Preset => Preset.SAM_ST_Opener;
