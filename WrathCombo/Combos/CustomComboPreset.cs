@@ -5046,6 +5046,10 @@ public enum Preset
     PLD_Mitigation_NonBoss_HallowedGround = 11091,
     
     [ParentCombo(PLD_Mitigation_NonBoss)]
+    [CustomComboInfo("Hallowed Ground Emergency Option", "Adds Hallowed Ground when in emergency health situation. \nWill likely be on coodown if using above setting as reccomended.", Job.PLD)]
+    PLD_Mitigation_NonBoss_HallowedGroundEmergency = 11104,
+    
+    [ParentCombo(PLD_Mitigation_NonBoss)]
     [CustomComboInfo("Arm's Length Option", "Adds Arm's Length when 5 or more targets", Job.PLD)]
     PLD_Mitigation_NonBoss_ArmsLength = 11092,
     
