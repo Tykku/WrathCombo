@@ -180,7 +180,8 @@ internal partial class MCH : PhysicalRanged
                         !HasStatusEffect(Buffs.FullMetalMachinist))
                         return BarrelStabilizer;
 
-                    if (Battery is 100)
+                    if (ActionReady(RookAutoturret) &&
+                        Battery is 100)
                         return OriginalHook(RookAutoturret);
 
                     if (ActionReady(Reassemble) && !HasStatusEffect(Buffs.Wildfire) &&

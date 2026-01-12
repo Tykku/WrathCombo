@@ -186,7 +186,7 @@ internal partial class VPR
                     GetTargetHPPercent() > hpThresholdUsageST)
                 {
                     //Use whenever
-                    if (SerpentOffering >= 50 && TargetIsBoss() &&
+                    if (TargetIsBoss() &&
                         GetTargetHPPercent() < hpThresholdDontSaveST)
                         return true;
 
@@ -205,12 +205,11 @@ internal partial class VPR
                         return true;
 
                     //non-boss encounters
-                    if (!InBossEncounter() && SerpentOffering >= 50)
+                    if (!InBossEncounter())
                         return true;
 
                     //Lower lvl
-                    if (SerpentOffering >= 50 &&
-                        WasLastWeaponskill(FourthGeneration) && !LevelChecked(Ouroboros))
+                    if (WasLastWeaponskill(FourthGeneration) && !LevelChecked(Ouroboros))
                         return true;
                 }
                 break;

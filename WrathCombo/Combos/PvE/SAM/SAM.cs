@@ -34,16 +34,13 @@ internal partial class SAM : Melee
                     return Ikishoten;
 
                 //Senei Feature
-                if (Kenki >= 25)
-                {
-                    if (CanSenei())
-                        return Senei;
+                if (CanSenei())
+                    return Senei;
 
-                    //Guren if no Senei
-                    if (!LevelChecked(Senei) &&
-                        ActionReady(Guren) && InActionRange(Guren))
-                        return Guren;
-                }
+                //Guren if no Senei
+                if (!LevelChecked(Senei) &&
+                    ActionReady(Guren) && InActionRange(Guren))
+                    return Guren;
 
                 //Zanshin Usage
                 if (CanZanshin())
@@ -60,7 +57,6 @@ internal partial class SAM : Melee
                 if (Role.CanFeint() &&
                     GroupDamageIncoming())
                     return Role.Feint;
-
 
                 //Auto Third Eye
                 if (CanUseThirdEye)
@@ -139,10 +135,10 @@ internal partial class SAM : Melee
                     };
                 }
 
-                if (ActionReady(Zanshin) && HasStatusEffect(Buffs.ZanshinReady) && Kenki >= 50)
+                if (ActionReady(Zanshin) && HasStatusEffect(Buffs.ZanshinReady))
                     return Zanshin;
 
-                if (ActionReady(Guren) && Kenki >= 25)
+                if (ActionReady(Guren))
                     return Guren;
 
                 if (ActionReady(Shoha) && MeditationStacks is 3)
@@ -241,8 +237,7 @@ internal partial class SAM : Melee
                 if (IsEnabled(Preset.SAM_ST_Damage))
                 {
                     //Senei feature
-                    if (IsEnabled(Preset.SAM_ST_CDs_Senei)
-                        && Kenki >= 25)
+                    if (IsEnabled(Preset.SAM_ST_CDs_Senei))
                     {
                         if (CanSenei())
                             return Senei;
@@ -381,11 +376,11 @@ internal partial class SAM : Melee
                 if (IsEnabled(Preset.SAM_AoE_Damage))
                 {
                     if (IsEnabled(Preset.SAM_AoE_Zanshin) &&
-                        ActionReady(Zanshin) && HasStatusEffect(Buffs.ZanshinReady) && Kenki >= 50)
+                        ActionReady(Zanshin) && HasStatusEffect(Buffs.ZanshinReady))
                         return Zanshin;
 
                     if (IsEnabled(Preset.SAM_AoE_Guren) &&
-                        ActionReady(Guren) && Kenki >= 25)
+                        ActionReady(Guren))
                         return Guren;
 
                     if (IsEnabled(Preset.SAM_AoE_Shoha) &&

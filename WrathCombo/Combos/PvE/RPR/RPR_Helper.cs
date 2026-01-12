@@ -25,7 +25,7 @@ internal partial class RPR
 
     private static bool CanEnshroud()
     {
-        if (LevelChecked(Enshroud) && (Shroud >= 50 || HasStatusEffect(Buffs.IdealHost)) &&
+        if ((ActionReady(Enshroud) || HasStatusEffect(Buffs.IdealHost)) &&
             !HasStatusEffect(Buffs.SoulReaver) && !HasStatusEffect(Buffs.Executioner) && HasBattleTarget() &&
             !HasStatusEffect(Buffs.PerfectioParata) && !HasStatusEffect(Buffs.Enshrouded))
         {

@@ -17,8 +17,8 @@ internal partial class MCH
         switch (onAoE)
         {
             case false when
-                (Heat >= 50 || HasStatusEffect(Buffs.Hypercharged)) &&
-                !IsComboExpiring(6) && ActionReady(Hypercharge) &&
+                (ActionReady(Hypercharge) || HasStatusEffect(Buffs.Hypercharged)) &&
+                !IsComboExpiring(6) && 
                 !JustUsed(BarrelStabilizer) &&
                 DrillCD && AirAnchorCD && ChainSawCD &&
                 !HasStatusEffect(Buffs.ExcavatorReady) &&
@@ -29,8 +29,8 @@ internal partial class MCH
                  !LevelChecked(Wildfire)):
 
             case true when
-                (Heat >= 50 || HasStatusEffect(Buffs.Hypercharged)) && LevelChecked(Hypercharge) &&
-                LevelChecked(AutoCrossbow) &&
+                (ActionReady(Hypercharge) || HasStatusEffect(Buffs.Hypercharged)) &&
+                ActionReady(AutoCrossbow) &&
                 (LevelChecked(BioBlaster) && GetCooldownRemainingTime(BioBlaster) > 10 ||
                  !LevelChecked(BioBlaster)) &&
                 (LevelChecked(Flamethrower) && GetCooldownRemainingTime(Flamethrower) > 10 ||
@@ -49,7 +49,7 @@ internal partial class MCH
     {
         if (!HasStatusEffect(Buffs.Wildfire) &&
             ActionReady(RookAutoturret) &&
-            !RobotActive && Battery >= 50)
+            !RobotActive)
         {
             if (LevelChecked(Wildfire))
             {
