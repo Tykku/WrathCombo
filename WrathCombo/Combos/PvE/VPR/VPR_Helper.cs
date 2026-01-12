@@ -363,7 +363,7 @@ internal partial class VPR
                 (!OnTargetsFlank() ||
                  !TargetNeedsPositionals() ||
                  !HasStatusEffect(Buffs.Swiftscaled) ||
-                 IsEmpowermentExpiring(6)) ||
+                 VPR_VicewinderBuffPrio && GetStatusEffectRemainingTime(Buffs.Swiftscaled) < GCD * 6) ||
                 HuntersCoilReady)
             {
                 actionId = SwiftskinsCoil;
@@ -375,7 +375,7 @@ internal partial class VPR
                 (!OnTargetsRear() ||
                  !TargetNeedsPositionals() ||
                  !HasStatusEffect(Buffs.HuntersInstinct) ||
-                 IsEmpowermentExpiring(6)) ||
+                 VPR_VicewinderBuffPrio && GetStatusEffectRemainingTime(Buffs.HuntersInstinct) < GCD * 6) ||
                 SwiftskinsCoilReady)
             {
                 actionId = HuntersCoil;

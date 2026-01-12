@@ -58,13 +58,18 @@ internal partial class VPR
                         $"{Role.TrueNorth.ActionName()} Option", "Adds True North when available.\n Respects the manual TN charge.");
                     break;
 
+                case Preset.VPR_ST_VicewinderCombo:
+                    DrawAdditionalBoolChoice(VPR_VicewinderBuffPrio,
+                        "Buff Prio Option", "Forces HuntersCoil or SwiftskinsCoil if buff needs to be reapplied before burst.");
+                    break;
+
                 case Preset.VPR_TrueNorthDynamic:
                     DrawSliderInt(0, 1, VPR_ManualTN,
                         "How many charges to keep for manual usage.");
 
                     DrawAdditionalBoolChoice(VPR_ST_TrueNorthDynamic_HoldCharge,
                         "Hold True North for Vicewinder Option", "Will hold the last charge of True North for use with Vicewinder, even when out of position for normal GCD.\n" +
-                                                                 "If Above Slider is set to 1, it will NOT use the remaining charge for Gluttony, but for manual use.");
+                                                                 "If Above Slider is set to 1, it will NOT use the remaining charge for Vicewinder, but for manual use.");
                     break;
 
                 case Preset.VPR_ST_ComboHeals:
@@ -162,7 +167,8 @@ internal partial class VPR
             VPR_ST_RangedUptimeUncoiledFury = new("VPR_ST_RangedUptimeUncoiledFury"),
             VPR_TrueNortVicewinder = new("VPR_TrueNortVicewinder"),
             VPR_Slither_FieldMouseover = new("VPR_Slither_FieldMouseover"),
-            VPR_ST_TrueNorthDynamic_HoldCharge = new("VPR_ST_TrueNorthDynamic_HoldCharge");
+            VPR_ST_TrueNorthDynamic_HoldCharge = new("VPR_ST_TrueNorthDynamic_HoldCharge"),
+            VPR_VicewinderBuffPrio = new("VPR_VicewinderBuffPrio");
 
         #endregion
     }
