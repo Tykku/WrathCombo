@@ -166,6 +166,10 @@ internal partial class VPR
         !HasStatusEffect(Buffs.PoisedForTwinblood) &&
         !HasStatusEffect(Buffs.PoisedForTwinfang);
 
+    private static bool HasBothBuffs =>
+        HasStatusEffect(Buffs.Swiftscaled) &&
+        HasStatusEffect(Buffs.HuntersInstinct);
+
     #endregion
 
     #region Reawaken
@@ -354,14 +358,14 @@ internal partial class VPR
 
     private static bool CanVicewinderCombo(ref uint actionId)
     {
-        if (ActionReady(Vicewinder) && InActionRange(Vicewinder) &&
+        if ((VicewinderReady || SwiftskinsCoilReady || HuntersCoilReady) &&
+            LevelChecked(Vicewinder) && InActionRange(Vicewinder) &&
             !HasStatusEffect(Buffs.Reawakened))
         {
             // Swiftskin's Coil (Rear)
             if (VicewinderReady &&
-                (!OnTargetsFlank() ||
-                 !TargetNeedsPositionals() ||
-                 !HasStatusEffect(Buffs.Swiftscaled) ||
+                (!HasStatusEffect(Buffs.Swiftscaled) ||
+                 HasBothBuffs && (!OnTargetsFlank() || !TargetNeedsPositionals()) ||
                  VPR_VicewinderBuffPrio && GetStatusEffectRemainingTime(Buffs.Swiftscaled) < GCD * 6) ||
                 HuntersCoilReady)
             {
@@ -371,9 +375,8 @@ internal partial class VPR
 
             // Hunter's Coil (Flank)
             if (VicewinderReady &&
-                (!OnTargetsRear() ||
-                 !TargetNeedsPositionals() ||
-                 !HasStatusEffect(Buffs.HuntersInstinct) ||
+                (!HasStatusEffect(Buffs.HuntersInstinct) ||
+                 HasBothBuffs && (!OnTargetsRear() || !TargetNeedsPositionals()) ||
                  VPR_VicewinderBuffPrio && GetStatusEffectRemainingTime(Buffs.HuntersInstinct) < GCD * 6) ||
                 SwiftskinsCoilReady)
             {

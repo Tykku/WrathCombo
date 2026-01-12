@@ -60,7 +60,7 @@ internal partial class VPR
 
                 case Preset.VPR_ST_VicewinderCombo:
                     DrawAdditionalBoolChoice(VPR_VicewinderBuffPrio,
-                        "Buff Prio Option", "Forces HuntersCoil or SwiftskinsCoil if buff needs to be reapplied before burst.");
+                        "Buff Prio Option", "Forces HuntersCoil or SwiftskinsCoil if buff needs to be reapplied.");
                     break;
 
                 case Preset.VPR_TrueNorthDynamic:
