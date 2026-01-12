@@ -38,6 +38,9 @@ internal partial class VPR
                         if ((HasStatusEffect(Buffs.FlanksbaneVenom) || HasStatusEffect(Buffs.HindsbaneVenom)) &&
                             LevelChecked(HindstingStrike))
                             return useTrueNorth &&
+                                   (VPR_ST_TrueNorthDynamic_HoldCharge &&
+                                    GetRemainingCharges(Role.TrueNorth) is 2 ||
+                                    !VPR_ST_TrueNorthDynamic_HoldCharge) &&
                                    GetRemainingCharges(Role.TrueNorth) > TnCharges &&
                                    Role.CanTrueNorth() &&
                                    (!OnTargetsRear() && HasStatusEffect(Buffs.HindsbaneVenom) ||
@@ -48,6 +51,9 @@ internal partial class VPR
                         if ((HasStatusEffect(Buffs.FlankstungVenom) || HasStatusEffect(Buffs.HindstungVenom)) &&
                             LevelChecked(FlanksbaneFang))
                             return useTrueNorth &&
+                                   (VPR_ST_TrueNorthDynamic_HoldCharge &&
+                                    GetRemainingCharges(Role.TrueNorth) is 2 ||
+                                    !VPR_ST_TrueNorthDynamic_HoldCharge) &&
                                    GetRemainingCharges(Role.TrueNorth) > TnCharges &&
                                    Role.CanTrueNorth() &&
                                    (!OnTargetsRear() && HasStatusEffect(Buffs.HindstungVenom) ||
