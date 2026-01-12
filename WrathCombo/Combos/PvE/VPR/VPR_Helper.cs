@@ -358,18 +358,6 @@ internal partial class VPR
             LevelChecked(Vicewinder) && InActionRange(Vicewinder) &&
             !HasStatusEffect(Buffs.Reawakened))
         {
-            // Swiftskin's Coil
-            if (VicewinderReady &&
-                (!OnTargetsFlank() ||
-                 !TargetNeedsPositionals() ||
-                 !HasStatusEffect(Buffs.Swiftscaled) ||
-                 VPR_VicewinderBuffPrio && GetStatusEffectRemainingTime(Buffs.Swiftscaled) < GCD * 6) ||
-                HuntersCoilReady)
-            {
-                actionId = SwiftskinsCoil;
-                return true;
-            }
-
             // Hunter's Coil
             if (VicewinderReady &&
                 (!OnTargetsRear() ||
@@ -379,6 +367,18 @@ internal partial class VPR
                 SwiftskinsCoilReady)
             {
                 actionId = HuntersCoil;
+                return true;
+            }
+            
+            // Swiftskin's Coil
+            if (VicewinderReady &&
+                (!OnTargetsFlank() ||
+                 !TargetNeedsPositionals() ||
+                 !HasStatusEffect(Buffs.Swiftscaled) ||
+                 VPR_VicewinderBuffPrio && GetStatusEffectRemainingTime(Buffs.Swiftscaled) < GCD * 6) ||
+                HuntersCoilReady)
+            {
+                actionId = SwiftskinsCoil;
                 return true;
             }
         }
