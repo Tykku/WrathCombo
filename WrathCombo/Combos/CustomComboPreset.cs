@@ -7556,12 +7556,22 @@ public enum Preset
     #region Miscellaneous
 
     [ReplaceSkill(VPR.Vicewinder)]
+    [ConflictingCombos(VPR_VicewinderProtection)]
     [CustomComboInfo("Vicewinder - Coils", "Replaces Vicewinder with Hunter's/Swiftskin's Coils.\nWill automatically swap depending on your position.", Job.VPR)]
     VPR_VicewinderCoils = 30200,
 
+    [ParentCombo(VPR_VicewinderCoils)]
+    [CustomComboInfo("Include Twin Combo Actions", "Adds Twinfang and Twinblood to the button.", Job.VPR)]
+    VPR_VicewinderCoils_oGCDs = 30206,
+
     [ReplaceSkill(VPR.Vicepit)]
+    [ConflictingCombos(VPR_VicewinderProtection)]
     [CustomComboInfo("Vicepit - Dens", "Replaces Vicepit with Hunter's/Swiftskin's Dens.", Job.VPR)]
     VPR_VicepitDens = 30201,
+
+    [ParentCombo(VPR_VicepitDens)]
+    [CustomComboInfo("Include Twin Combo Actions", "Adds Twinfang and Twinblood to the button.", Job.VPR)]
+    VPR_VicepitDens_oGCDs = 30207,
 
     [ReplaceSkill(VPR.UncoiledFury)]
     [CustomComboInfo("Uncoiled - Twins", "Replaces Uncoiled Fury with Uncoiled Twinfang and Uncoiled Twinblood.", Job.VPR)]
@@ -7579,15 +7589,7 @@ public enum Preset
     [ReplaceSkill(VPR.SerpentsTail)]
     [CustomComboInfo("Combined Combo Ability Feature", "Combines Serpent's Tail, Twinfang, and Twinblood to one button.", Job.VPR)]
     VPR_TwinTails = 30205,
-
-    [ParentCombo(VPR_VicewinderCoils)]
-    [CustomComboInfo("Include Twin Combo Actions", "Adds Twinfang and Twinblood to the button.", Job.VPR)]
-    VPR_VicewinderCoils_oGCDs = 30206,
-
-    [ParentCombo(VPR_VicepitDens)]
-    [CustomComboInfo("Include Twin Combo Actions", "Adds Twinfang and Twinblood to the button.", Job.VPR)]
-    VPR_VicepitDens_oGCDs = 30207,
-
+    
     [ReplaceSkill(VPR.SteelFangs, VPR.ReavingFangs, VPR.HuntersCoil, VPR.SwiftskinsCoil)]
     [ConflictingCombos(VPR_ST_SimpleMode, VPR_ST_AdvancedMode, VPR_SerpentsTail, VPR_ReawakenLegacy, VPR_ST_BasicCombo)]
     [CustomComboInfo("Legacy Buttons", "Replaces Generations with the Legacys.", Job.VPR)]
@@ -7597,11 +7599,16 @@ public enum Preset
     [ConflictingCombos(VPR_ST_SimpleMode, VPR_AoE_SimpleMode, VPR_ST_AdvancedMode, VPR_AoE_AdvancedMode, VPR_Legacies, VPR_ST_BasicCombo)]
     [CustomComboInfo("Serpents Tail", "Replaces basic combo with Death Rattle or Last Lash when applicable.", Job.VPR)]
     VPR_SerpentsTail = 30210,
+    
+    [ReplaceSkill(VPR.Vicewinder, VPR.Vicepit)]
+    [ConflictingCombos(VPR_VicepitDens, VPR_VicewinderCoils)]
+    [CustomComboInfo("Perfect Balance Protection", "Replaces Perfect Balance with Savage Blade when you already have Perfect Balance active.", Job.VPR)]
+    VPR_VicewinderProtection = 30212,
 
     #endregion
     //ST 30016
     //AoE 30115
-    //Misc 30211
+    //Misc 30212
 
     #endregion
 

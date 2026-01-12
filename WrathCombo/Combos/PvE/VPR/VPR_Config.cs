@@ -62,7 +62,7 @@ internal partial class VPR
                     DrawSliderInt(0, 1, VPR_ManualTN,
                         "How many charges to keep for manual usage.");
                     break;
-                
+
                 case Preset.VPR_ST_ComboHeals:
                     DrawSliderInt(0, 100, VPR_ST_SecondWind_Threshold,
                         $"{Role.SecondWind.ActionName()} HP percentage threshold");
