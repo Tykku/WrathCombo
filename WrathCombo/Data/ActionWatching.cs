@@ -356,15 +356,24 @@ public static class ActionWatching
 
     private static unsafe bool CanQueueActionDetour(ActionManager* actionManager, uint actionType, uint actionID)
     {
-        var original = CanQueueAction.Original(actionManager, actionType, actionID);
-        if (!Service.Configuration.QueueAdjust)
-            return actionType != 1 || actionID.ActionAttackType() is ActionAttackType.Ability ? true : RemainingGCD <= 0.5;
+        float threshold = Service.Configuration.QueueAdjust ? Service.Configuration.QueueAdjustThreshold : 0.5f;
 
-        float threshold = Service.Configuration.QueueAdjustThreshold;
-        if (RemainingGCD < threshold)
-            return true;
+        return GetRemainingActionRecast(actionManager, actionType, actionID) is { } remaining && remaining <= threshold;
 
-        return false;
+        unsafe float? GetRemainingActionRecast(ActionManager* actionManager, uint actionType, uint actionID)
+        {
+            var recastGroupDetail = actionManager->GetRecastGroupDetail(actionManager->GetRecastGroup((int)actionType, actionID));
+            if (recastGroupDetail == null) return null;
+
+            var additionalRecastGroupDetail = actionManager->GetRecastGroupDetail(actionManager->GetAdditionalRecastGroup((ActionType)actionType, actionID));
+            var additionalRecastRemaining = additionalRecastGroupDetail != null && additionalRecastGroupDetail->IsActive ? additionalRecastGroupDetail->Total - additionalRecastGroupDetail->Elapsed : 0;
+
+            if (!recastGroupDetail->IsActive) return additionalRecastRemaining;
+
+            var charges = GetMaxCharges(actionID);
+            var recastRemaining = recastGroupDetail->Total / charges - recastGroupDetail->Elapsed;
+            return recastRemaining > additionalRecastRemaining ? recastRemaining : additionalRecastRemaining;
+        }
     }
 
     /// <summary> Gets the amount of GCDs used since combat started. </summary>
