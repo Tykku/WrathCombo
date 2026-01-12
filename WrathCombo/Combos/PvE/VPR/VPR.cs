@@ -50,18 +50,13 @@ internal partial class VPR : Melee
                 if (InCombat() &&
                     !MaxCoils && ActionReady(SerpentsIre))
                     return SerpentsIre;
-
-                if (Role.CanFeint() &&
-                    GroupDamageIncoming())
-                    return Role.Feint;
-
+                
                 // healing
                 if (Role.CanSecondWind(40))
                     return Role.SecondWind;
 
                 if (Role.CanBloodBath(30))
                     return Role.Bloodbath;
-
 
                 if (RoleActions.Melee.CanLegSweep())
                     return Role.LegSweep;
@@ -635,7 +630,7 @@ internal partial class VPR : Melee
 
         protected override uint Invoke(uint actionID)
         {
-            if (actionID is not Vicewinder or Vicepit)
+            if (actionID is not (Vicewinder or Vicepit))
                 return actionID;
 
             return (VicewinderReady || HuntersCoilReady || SwiftskinsCoilReady ||
