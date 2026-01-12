@@ -354,23 +354,10 @@ internal partial class VPR
 
     private static bool CanVicewinderCombo(ref uint actionId)
     {
-        if ((VicewinderReady || SwiftskinsCoilReady || HuntersCoilReady) &&
-            LevelChecked(Vicewinder) && InActionRange(Vicewinder) &&
+        if (ActionReady(Vicewinder) && InActionRange(Vicewinder) &&
             !HasStatusEffect(Buffs.Reawakened))
         {
-            // Hunter's Coil
-            if (VicewinderReady &&
-                (!OnTargetsRear() ||
-                 !TargetNeedsPositionals() ||
-                 !HasStatusEffect(Buffs.HuntersInstinct) ||
-                 VPR_VicewinderBuffPrio && GetStatusEffectRemainingTime(Buffs.HuntersInstinct) < GCD * 6) ||
-                SwiftskinsCoilReady)
-            {
-                actionId = HuntersCoil;
-                return true;
-            }
-            
-            // Swiftskin's Coil
+            // Swiftskin's Coil (Rear)
             if (VicewinderReady &&
                 (!OnTargetsFlank() ||
                  !TargetNeedsPositionals() ||
@@ -379,6 +366,18 @@ internal partial class VPR
                 HuntersCoilReady)
             {
                 actionId = SwiftskinsCoil;
+                return true;
+            }
+
+            // Hunter's Coil (Flank)
+            if (VicewinderReady &&
+                (!OnTargetsRear() ||
+                 !TargetNeedsPositionals() ||
+                 !HasStatusEffect(Buffs.HuntersInstinct) ||
+                 VPR_VicewinderBuffPrio && GetStatusEffectRemainingTime(Buffs.HuntersInstinct) < GCD * 6) ||
+                SwiftskinsCoilReady)
+            {
+                actionId = HuntersCoil;
                 return true;
             }
         }
