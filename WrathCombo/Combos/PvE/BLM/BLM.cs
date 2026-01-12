@@ -65,6 +65,9 @@ internal partial class BLM : Caster
                 if (ActionReady(Manaward) &&
                     PlayerHealthPercentageHp() < 40 && GroupDamageIncoming())
                     return Manaward;
+
+                if (Role.CanAddle() && GroupDamageIncoming())
+                    return Role.Addle;
             }
 
             if (IsMoving() && !LevelChecked(Triplecast) &&

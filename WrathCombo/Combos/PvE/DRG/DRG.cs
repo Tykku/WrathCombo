@@ -74,6 +74,10 @@ internal partial class DRG : Melee
                         LoTDActive)
                         return Nastrond;
 
+                    if (Role.CanFeint() &&
+                        GroupDamageIncoming())
+                        return Role.Feint;
+
                     if (Role.CanSecondWind(25))
                         return Role.SecondWind;
 

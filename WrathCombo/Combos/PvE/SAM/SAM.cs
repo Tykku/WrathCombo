@@ -57,6 +57,11 @@ internal partial class SAM : Melee
                 if (CanShinten())
                     return Shinten;
 
+                if (Role.CanFeint() &&
+                    GroupDamageIncoming())
+                    return Role.Feint;
+
+
                 //Auto Third Eye
                 if (CanUseThirdEye)
                     return OriginalHook(ThirdEye);

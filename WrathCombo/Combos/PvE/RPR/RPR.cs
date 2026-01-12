@@ -70,6 +70,11 @@ internal partial class RPR : Melee
                         return OriginalHook(BloodStalk);
                 }
 
+                //Auto Feint
+                if (Role.CanFeint() &&
+                    GroupDamageIncoming())
+                    return Role.Feint;
+
                 //Auto Arcane Crest
                 if (CanUseArcaneCrest)
                     return ArcaneCrest;

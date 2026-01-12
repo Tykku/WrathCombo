@@ -87,6 +87,12 @@ internal partial class MCH : PhysicalRanged
                             return OriginalHook(Ricochet);
                     }
 
+                    if (ActionReady(Dismantle) &&
+                        !HasStatusEffect(Debuffs.Dismantled, CurrentTarget, true) &&
+                        CanApplyStatus(CurrentTarget, Debuffs.Dismantled) &&
+                        GroupDamageIncoming())
+                        return Dismantle;
+
                     // Healing
                     if (Role.CanSecondWind(40))
                         return Role.SecondWind;

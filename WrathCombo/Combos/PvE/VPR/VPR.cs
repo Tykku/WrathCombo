@@ -50,7 +50,11 @@ internal partial class VPR : Melee
                 if (InCombat() &&
                     !MaxCoils && ActionReady(SerpentsIre))
                     return SerpentsIre;
-                
+
+                if (Role.CanFeint() &&
+                    GroupDamageIncoming())
+                    return Role.Feint;
+
                 // healing
                 if (Role.CanSecondWind(40))
                     return Role.SecondWind;
