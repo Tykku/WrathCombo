@@ -354,6 +354,8 @@ public static class ActionWatching
         }
     }
 
+    public unsafe static bool CanQueueCS(uint actionId) => CanQueueActionDetour(ActionManager.Instance(), 1, actionId);
+
     private static unsafe bool CanQueueActionDetour(ActionManager* actionManager, uint actionType, uint actionID)
     {
         float threshold = Service.Configuration.QueueAdjust ? Service.Configuration.QueueAdjustThreshold : 0.5f;
@@ -454,6 +456,9 @@ public static class ActionWatching
                     return ActionManager.Instance()->UseActionLocation
                         (actionType, replacedWith, location: &location);
                 }
+
+                if (Service.Configuration.OverwriteQueue && actionManager->QueuedActionId != 0 && CanQueueCS(actionId))
+                    actionManager->QueuedActionId = actionId;
 
                 //Important to pass actionId here and not replaced.
                 var hookResult = changed ? UseActionHook.Original(actionManager, actionType, actionId, targetId, extraParam, mode, comboRouteId, outOptAreaTargeted) :
