@@ -536,9 +536,9 @@ internal partial class SAM
             Kasha,
             Ikishoten,
             Yukikaze,
-            TendoSetsugekka,
+            TendoSetsugekka, //8
             Senei,
-            TendoKaeshiSetsugekka,
+            TendoKaeshiSetsugekka, //10
             MeikyoShisui,
             Gekko,
             Zanshin,
@@ -553,9 +553,9 @@ internal partial class SAM
             Gyofu,
             Yukikaze,
             Shinten, //23
-            TendoSetsugekka,
+            TendoSetsugekka, //24
             Gyoten, //25
-            TendoKaeshiSetsugekka
+            TendoKaeshiSetsugekka //26
         ];
 
         internal override UserData ContentCheckConfig => SAM_Balance_Content;
@@ -573,7 +573,9 @@ internal partial class SAM
         public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
         [
             ([18, 23], () => !ActionReady(Shinten)),
-            ([20, 25], () => !ActionReady(Gyoten) || SAM_Opener_IncludeGyoten == 1)
+            ([20, 25], () => !ActionReady(Gyoten) || SAM_Opener_IncludeGyoten == 1),
+            ([8, 24], () => SenCount is not 3),
+            ([10, 26], () => !HasStatusEffect(Buffs.TsubameReady))
         ];
 
         public override Preset Preset => Preset.SAM_ST_Opener;
