@@ -6648,6 +6648,10 @@ public enum Preset
     [ReplaceSkill(SAM.Senei)]
     [CustomComboInfo("Senei - Guren Feature", "Hissatsu: Senei becomes Hissatsu : Guren when synched below lvl 72.", Job.SAM)]
     SAM_SeneiGuren = 15215,
+    
+    [ReplaceSkill(SAM.OgiNamikiri)]
+    [CustomComboInfo("Ogi Namikiri - Shoha Feature", "Ogi Namikiri becomes Shoha when u have 3 meditation stacks.", Job.SAM)]
+    SAM_OgiShoha = 15258,
 
     #endregion
 
@@ -6662,7 +6666,7 @@ public enum Preset
 
     // Last Value ST = 15027
     // Last Value AoE = 15113
-    // Last Value Misc = 15257
+    // Last Value Misc = 15258
     // Last Value Hidden = 153010
     #endregion
 

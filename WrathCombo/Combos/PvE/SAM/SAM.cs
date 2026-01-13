@@ -846,4 +846,19 @@ internal partial class SAM : Melee
                 : actionID;
         }
     }
+
+    internal class SAM_OgiShoha : CustomCombo
+    {
+        protected internal override Preset Preset => Preset.SAM_OgiShoha;
+
+        protected override uint Invoke(uint actionID)
+        {
+            if (actionID is not OgiNamikiri)
+                return actionID;
+
+            return LevelChecked(Shoha) && MeditationStacks is 3
+                ? Shoha
+                : actionID;
+        }
+    }
 }
