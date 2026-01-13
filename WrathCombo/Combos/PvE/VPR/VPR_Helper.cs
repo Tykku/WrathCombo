@@ -317,7 +317,7 @@ internal partial class VPR
 
     #endregion
 
-    #region Vicewinder & Uncoied Fury Combo
+    #region Vicewinder & Uncoiled Fury Combo
 
     private static bool CanUseVicewinder =>
         ActionReady(Vicewinder) && InActionRange(Vicewinder) && InCombat() &&
@@ -461,7 +461,7 @@ internal partial class VPR
 
         public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
         [
-            ([21, 22, 23, 24, 25, 26, 30, 31, 32], () => VPR_Opener_ExcludeUF)
+            ([21, 22, 23, 24, 25, 26, 30, 31, 32], () => VPR_Opener_ExcludeUF || !HasCharges(UncoiledFury))
         ];
 
         internal override UserData ContentCheckConfig => VPR_Balance_Content;
