@@ -369,7 +369,7 @@ internal partial class SAM
         if ((simpleMode || IsEnabled(Preset.SAM_ST_Shinten)) &&
             ActionReady(Shinten) && InActionRange(Shinten) &&
             GetCooldownRemainingTime(Senei) >= GCD * 5 &&
-            GetCooldownRemainingTime(Ikishoten) >= GCD * 5)
+            !JustUsed(Ikishoten))
             return Shinten;
 
         return actionId;
