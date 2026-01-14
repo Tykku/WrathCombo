@@ -170,6 +170,10 @@ internal partial class VPR
         HasStatusEffect(Buffs.Swiftscaled) &&
         HasStatusEffect(Buffs.HuntersInstinct);
 
+    private static int HPThresholdSerpentsIre =>
+        VPR_ST_SerpentsIreBossOption == 1 ||
+        !InBossEncounter() ? VPR_ST_SerpentsIreHPOption : 0;
+
     #endregion
 
     #region Reawaken

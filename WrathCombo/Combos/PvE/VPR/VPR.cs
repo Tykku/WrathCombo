@@ -247,7 +247,7 @@ internal partial class VPR : Melee
                 //Serpents Ire
                 if (IsEnabled(Preset.VPR_ST_SerpentsIre) && InCombat() &&
                     !MaxCoils && ActionReady(SerpentsIre) &&
-                    (VPR_ST_SerpentsIre_SubOption == 0 || InBossEncounter()))
+                    GetTargetHPPercent() > HPThresholdSerpentsIre)
                     return SerpentsIre;
 
                 if (IsEnabled(Preset.VPR_ST_Feint) &&

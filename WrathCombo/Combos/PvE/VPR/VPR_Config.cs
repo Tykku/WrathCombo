@@ -1,3 +1,4 @@
+using Dalamud.Interface.Colors;
 using WrathCombo.CustomComboNS.Functions;
 using WrathCombo.Extensions;
 using static WrathCombo.Window.Functions.UserConfig;
@@ -19,11 +20,21 @@ internal partial class VPR
                     break;
 
                 case Preset.VPR_ST_SerpentsIre:
-                    DrawHorizontalRadioButton(VPR_ST_SerpentsIre_SubOption,
-                        "All content", $"Uses {SerpentsIre.ActionName()} regardless of content.", 0);
+                    DrawSliderInt(0, 50, VPR_ST_SerpentsIreHPOption,
+                        "Stop using at Enemy HP %. Set to Zero to disable this check.");
 
-                    DrawHorizontalRadioButton(VPR_ST_SerpentsIre_SubOption,
-                        "Boss encounters Only", $"Only uses  {SerpentsIre.ActionName()} when in Boss encounters.", 1);
+                    ImGui.Indent();
+
+                    ImGui.TextColored(ImGuiColors.DalamudYellow,
+                        "Select what kind of enemies the HP check should be applied to:");
+
+                    DrawHorizontalRadioButton(VPR_ST_SerpentsIreBossOption,
+                        "Non-Bosses", "Only applies the HP check above to non-bosses.", 0);
+
+                    DrawHorizontalRadioButton(VPR_ST_SerpentsIreBossOption,
+                        "All Enemies", "Applies the HP check above to all enemies.", 1);
+
+                    ImGui.Unindent();
                     break;
 
                 case Preset.VPR_ST_Reawaken:
@@ -142,13 +153,14 @@ internal partial class VPR
 
         public static UserInt
             VPR_Balance_Content = new("VPR_Balance_Content", 1),
-            VPR_ST_SerpentsIre_SubOption = new("VPR_ST_SerpentsIre_SubOption", 1),
             VPR_ST_UncoiledFury_HoldCharges = new("VPR_ST_UncoiledFury_HoldCharges", 1),
             VPR_ST_UncoiledFury_Threshold = new("VPR_ST_UncoiledFury_Threshold", 1),
             VPR_ST_ReawakenBossOption = new("VPR_ST_ReawakenBossOption"),
             VPR_ST_ReawakenBossAddsOption = new("VPR_ST_ReawakenBossAddsOption", 10),
             VPR_ST_ReawakenTrashOption = new("VPR_ST_ReawakenTrashOption", 25),
             VPR_ST_ReAwaken_Threshold = new("VPR_ST_ReAwaken_Threshold", 5),
+            VPR_ST_SerpentsIreHPOption = new("VPR_ST_SerpentsIreHPOption", 10),
+            VPR_ST_SerpentsIreBossOption = new("VPR_ST_SerpentsIreBossOption"),
             VPR_ManualTN = new("VPR_ManualTN"),
             VPR_ST_SecondWind_Threshold = new("VPR_ST_SecondWindThreshold", 40),
             VPR_ST_Bloodbath_Threshold = new("VPR_ST_BloodbathThreshold", 30),
