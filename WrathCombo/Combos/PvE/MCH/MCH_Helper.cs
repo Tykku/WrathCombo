@@ -18,10 +18,10 @@ internal partial class MCH
         {
             case false when
                 (ActionReady(Hypercharge) || HasStatusEffect(Buffs.Hypercharged)) &&
-                !IsComboExpiring(6) && 
-                !JustUsed(BarrelStabilizer) &&
+                !IsComboExpiring(6) &&
                 DrillCD && AirAnchorCD && ChainSawCD &&
                 !HasStatusEffect(Buffs.ExcavatorReady) &&
+                !HasStatusEffect(Buffs.FullMetalMachinist) &&
                 (ActionReady(Wildfire) ||
                  MCH_ST_WildfireBossOption == 1 && !TargetIsBoss() ||
                  GetCooldownRemainingTime(Wildfire) > GCD * 15 ||

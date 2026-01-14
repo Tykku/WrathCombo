@@ -52,30 +52,19 @@ internal partial class MCH
                     break;
 
                 case Preset.MCH_ST_Adv_Stabilizer:
-                    DrawHorizontalRadioButton(MCH_ST_BarrelStabilizerBossOption,
-                        "All content", $"Use {BarrelStabilizer.ActionName()} regardless of content.", 0);
+                    DrawSliderInt(0, 50, MCH_ST_BarrelStabilizerHPOption,
+                        "Stop using at Enemy HP %. Set to Zero to disable this check.");
 
-                    DrawHorizontalRadioButton(MCH_ST_BarrelStabilizerBossOption,
-                        "Bosses Only", $"Only use {BarrelStabilizer.ActionName()} when the targeted enemy is a boss.", 1);
+                    ImGui.Indent();
 
-                    if (MCH_ST_BarrelStabilizerBossOption == 0)
-                    {
-                        DrawSliderInt(0, 50, MCH_ST_BarrelStabilizerHPOption,
-                            "Stop using at Enemy HP %. Set to Zero to disable this check.");
+                    ImGui.TextColored(ImGuiColors.DalamudYellow,
+                        "Select what kind of enemies the HP check should be applied to:");
 
-                        ImGui.Indent();
+                    DrawHorizontalRadioButton(MCH_ST_BarrelStabilizerHPBossOption,
+                        "Non-Bosses", "Only apply the HP check above to non-bosses.", 0);
 
-                        ImGui.TextColored(ImGuiColors.DalamudYellow,
-                            "Select what kind of enemies the HP check should be applied to:");
-
-                        DrawHorizontalRadioButton(MCH_ST_BarrelStabilizerHPBossOption,
-                            "Non-Bosses", "Only apply the HP check above to non-bosses.", 0);
-
-                        DrawHorizontalRadioButton(MCH_ST_BarrelStabilizerHPBossOption,
-                            "All Enemies", "Apply the HP check above to all enemies.", 1);
-
-                        ImGui.Unindent();
-                    }
+                    DrawHorizontalRadioButton(MCH_ST_BarrelStabilizerHPBossOption,
+                        "All Enemies", "Apply the HP check above to all enemies.", 1);
                     break;
 
                 case Preset.MCH_ST_Adv_Hypercharge:
