@@ -70,6 +70,9 @@ internal partial class NIN : Melee
 
                 if (CanTrickST && CombatEngageDuration().TotalSeconds > 5)
                     return OriginalHook(TrickAttack);
+                
+                if (Role.CanFeint() && GroupDamageIncoming() && CanWeave())
+                    return Role.Feint;
             }
             #endregion
 

@@ -59,6 +59,14 @@ internal partial class RDM : Caster
 
                 if (CanSwiftcast || CanSwiftcastMovement)
                     return Role.Swiftcast;
+                
+                if (Role.CanAddle() && GroupDamageIncoming())
+                    return Role.Addle;
+
+                if (NumberOfAlliesInRange(MagickBarrier) >= GetPartyMembers().Count * .75 &&
+                    !HasStatusEffect(Buffs.MagickBarrier, anyOwner: true) && !JustUsed(Role.Addle, 6) &&
+                    ActionReady(MagickBarrier) && GroupDamageIncoming())
+                    return MagickBarrier;
             }
             #endregion
 
