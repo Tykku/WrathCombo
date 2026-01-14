@@ -10,6 +10,18 @@ namespace WrathCombo.Combos.PvE;
 
 internal partial class DRG
 {
+    #region Burst skills
+
+    //Wyrmwind Thrust Feature
+    private static bool CanWyrmwind =>
+        ActionReady(WyrmwindThrust) &
+        FirstmindsFocus is 2 &&
+        (LoTDActive ||
+         HasStatusEffect(Buffs.DraconianFire) ||
+         NumberOfEnemiesInRange(WyrmwindThrust, CurrentTarget) >= 2);
+
+    #endregion
+
     #region Basic Combo
 
     private static uint BasicCombo(uint actionId, bool useTrueNorth = false)

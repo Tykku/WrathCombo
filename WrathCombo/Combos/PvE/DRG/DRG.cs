@@ -48,9 +48,7 @@ internal partial class DRG : Melee
                         return MirageDive;
 
                     //Wyrmwind Thrust Feature
-                    if (ActionReady(WyrmwindThrust) &&
-                        FirstmindsFocus is 2 &&
-                        (LoTDActive || HasStatusEffect(Buffs.DraconianFire)))
+                    if (CanWyrmwind)
                         return WyrmwindThrust;
 
                     //Geirskogul Feature
@@ -151,9 +149,7 @@ internal partial class DRG : Melee
                         return LifeSurge;
 
                     //Wyrmwind Thrust Feature
-                    if (ActionReady(WyrmwindThrust) &&
-                        FirstmindsFocus is 2 &&
-                        (LoTDActive || HasStatusEffect(Buffs.DraconianFire)))
+                    if (CanWyrmwind)
                         return WyrmwindThrust;
 
                     //Geirskogul Feature
@@ -304,9 +300,7 @@ internal partial class DRG : Melee
 
                         //Wyrmwind Thrust Feature
                         if (IsEnabled(Preset.DRG_ST_Wyrmwind) &&
-                            ActionReady(WyrmwindThrust) &&
-                            FirstmindsFocus is 2 &&
-                            (LoTDActive || HasStatusEffect(Buffs.DraconianFire)))
+                            CanWyrmwind)
                             return WyrmwindThrust;
 
                         //Geirskogul Feature
@@ -459,9 +453,7 @@ internal partial class DRG : Melee
 
                         //Wyrmwind Thrust Feature
                         if (IsEnabled(Preset.DRG_AoE_Wyrmwind) &&
-                            ActionReady(WyrmwindThrust) &&
-                            FirstmindsFocus is 2 &&
-                            (LoTDActive || HasStatusEffect(Buffs.DraconianFire)))
+                            CanWyrmwind)
                             return WyrmwindThrust;
 
                         //Geirskogul Feature
