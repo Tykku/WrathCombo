@@ -39,12 +39,7 @@ internal partial class DRG : Melee
                         return LifeSurge;
 
                     //Mirage Feature
-                    if (ActionReady(MirageDive) &&
-                        HasStatusEffect(Buffs.DiveReady) &&
-                        OriginalHook(Jump) is MirageDive &&
-                        (LoTDActive ||
-                         GetStatusEffectRemainingTime(Buffs.DiveReady) <= 1.2f &&
-                         GetCooldownRemainingTime(Geirskogul) > 3))
+                    if (CanMirageDive)
                         return MirageDive;
 
                     //Wyrmwind Thrust Feature
@@ -167,12 +162,7 @@ internal partial class DRG : Melee
                         HasStatusEffect(Buffs.DragonsFlight))
                         return RiseOfTheDragon;
 
-                    if (ActionReady(MirageDive) &&
-                        HasStatusEffect(Buffs.DiveReady) &&
-                        OriginalHook(Jump) is MirageDive &&
-                        (LoTDActive ||
-                         GetStatusEffectRemainingTime(Buffs.DiveReady) <= 1.2f &&
-                         GetCooldownRemainingTime(Geirskogul) > 3))
+                    if (CanMirageDive)
                         return MirageDive;
 
                     //Nastrond Feature
@@ -476,12 +466,7 @@ internal partial class DRG : Melee
 
                         //Mirage Feature
                         if (IsEnabled(Preset.DRG_AoE_Mirage) &&
-                            ActionReady(MirageDive) &&
-                            HasStatusEffect(Buffs.DiveReady) &&
-                            OriginalHook(Jump) is MirageDive &&
-                            (LoTDActive ||
-                             GetStatusEffectRemainingTime(Buffs.DiveReady) <= 1.2f &&
-                             GetCooldownRemainingTime(Geirskogul) > 3))
+                            CanMirageDive)
                             return MirageDive;
 
                         //Nastrond Feature

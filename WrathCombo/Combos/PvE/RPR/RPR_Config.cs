@@ -12,19 +12,6 @@ internal partial class RPR
             switch (preset)
             {
                 case Preset.RPR_ST_Opener:
-
-                    if (DrawHorizontalRadioButton(RPR_Opener_StartChoice,
-                        "Normal Opener", $"Starts opener with {Harpe.ActionName()}", 0))
-                    {
-                        if (!CustomComboFunctions.InCombat())
-                            Opener().OpenerStep = 1;
-                    }
-
-                    DrawHorizontalRadioButton(RPR_Opener_StartChoice,
-                        "Early Opener", $"Starts opener with {ShadowOfDeath.ActionName()} instead, skipping {Harpe.ActionName()}", 1);
-
-                    ImGui.Spacing();
-
                     DrawBossOnlyChoice(RPR_Balance_Content);
                     break;
 
@@ -117,7 +104,6 @@ internal partial class RPR
 
         public static UserInt
             RPR_Positional = new("RPR_Positional"),
-            RPR_Opener_StartChoice = new("RPR_Opener_StartChoice"),
             RPR_Balance_Content = new("RPR_Balance_Content", 1),
             RPR_SoDRefreshRange = new("RPR_SoDRefreshRange", 6),
             RPR_SoDRefreshRangeBasicCombo = new("RPR_SoDRefreshRangeBasicCombo", 6),

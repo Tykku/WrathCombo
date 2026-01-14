@@ -10,18 +10,6 @@ namespace WrathCombo.Combos.PvE;
 
 internal partial class DRG
 {
-    #region Burst skills
-
-    //Wyrmwind Thrust Feature
-    private static bool CanWyrmwind =>
-        ActionReady(WyrmwindThrust) &
-        FirstmindsFocus is 2 &&
-        (LoTDActive ||
-         HasStatusEffect(Buffs.DraconianFire) ||
-         NumberOfEnemiesInRange(WyrmwindThrust, CurrentTarget) >= 2);
-
-    #endregion
-
     #region Basic Combo
 
     private static uint BasicCombo(uint actionId, bool useTrueNorth = false)
@@ -100,6 +88,24 @@ internal partial class DRG
 
     private static bool CanDRGWeave(float weaveTime = BaseAnimationLock, bool forceFirst = false) =>
         !HasWeavedAction(Stardiver) && (!forceFirst || !HasWeaved()) && CanWeave(weaveTime);
+
+    #endregion
+    #region Burst skills
+
+    private static bool CanWyrmwind =>
+        ActionReady(WyrmwindThrust) &
+        FirstmindsFocus is 2 &&
+        (LoTDActive ||
+         HasStatusEffect(Buffs.DraconianFire) ||
+         NumberOfEnemiesInRange(WyrmwindThrust, CurrentTarget) >= 2);
+
+    private static bool CanMirageDive =>
+        ActionReady(MirageDive) &&
+        HasStatusEffect(Buffs.DiveReady) &&
+        OriginalHook(Jump) is MirageDive &&
+        (LoTDActive ||
+         GetStatusEffectRemainingTime(Buffs.DiveReady) <= 1.2f &&
+         GetCooldownRemainingTime(Geirskogul) > 3);
 
     #endregion
 

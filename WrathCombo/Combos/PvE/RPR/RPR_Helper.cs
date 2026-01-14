@@ -180,7 +180,7 @@ internal partial class RPR
 
         public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
         [
-            ([1], () => RPR_Opener_StartChoice == 1)
+            ([1], () => InMeleeRange())
         ];
 
         public override List<(int[], uint, Func<bool>)> SubstitutionSteps { get; set; } =
@@ -231,7 +231,7 @@ internal partial class RPR
 
         public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
         [
-            ([1], () => RPR_Opener_StartChoice == 1)
+            ([1], () => InMeleeRange())
         ];
         public override Preset Preset => Preset.RPR_ST_Opener;
         public override List<(int[], uint, Func<bool>)> SubstitutionSteps { get; set; } =
@@ -255,8 +255,6 @@ internal partial class RPR
     #region Gauge
 
     private static RPRGauge Gauge => GetJobGauge<RPRGauge>();
-
-    private static byte Shroud => Gauge.Shroud;
 
     private static byte Soul => Gauge.Soul;
 
