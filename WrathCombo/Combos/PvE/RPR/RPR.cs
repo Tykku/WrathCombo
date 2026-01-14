@@ -298,9 +298,9 @@ internal partial class RPR : Melee
                 //Arcane Cirlce
                 if (IsEnabled(Preset.RPR_ST_ArcaneCircle) &&
                     ActionReady(ArcaneCircle) &&
+                    GetTargetHPPercent() > HPThresholdArcaneCircle &&
                     (LevelChecked(Enshroud) && JustUsed(ShadowOfDeath) ||
-                     !LevelChecked(Enshroud)) &&
-                    (RPR_ST_ArcaneCircleBossOption == 0 || InBossEncounter()))
+                     !LevelChecked(Enshroud)))
                     return ArcaneCircle;
 
                 //Enshroud

@@ -1,3 +1,4 @@
+using Dalamud.Interface.Colors;
 using WrathCombo.CustomComboNS.Functions;
 using WrathCombo.Extensions;
 using static WrathCombo.Window.Functions.UserConfig;
@@ -16,11 +17,21 @@ internal partial class RPR
                     break;
 
                 case Preset.RPR_ST_ArcaneCircle:
-                    DrawHorizontalRadioButton(RPR_ST_ArcaneCircleBossOption,
-                        "All content", $"Uses {ArcaneCircle.ActionName()} regardless of content.", 0);
+                    DrawSliderInt(0, 50, RPR_ST_ArcaneCircleHPOption,
+                        "Stop using at Enemy HP %. Set to Zero to disable this check.");
+
+                    ImGui.Indent();
+
+                    ImGui.TextColored(ImGuiColors.DalamudYellow,
+                        "Select what kind of enemies the HP check should be applied to:");
 
                     DrawHorizontalRadioButton(RPR_ST_ArcaneCircleBossOption,
-                        "Boss encounters Only", $"Only uses {ArcaneCircle.ActionName()} when in Boss encounters.", 1);
+                        "Non-Bosses", "Only applies the HP check above to non-bosses.", 0);
+
+                    DrawHorizontalRadioButton(RPR_ST_ArcaneCircleBossOption,
+                        "All Enemies", "Applies the HP check above to all enemies.", 1);
+
+                    ImGui.Unindent();
                     break;
 
                 case Preset.RPR_ST_AdvancedMode:
@@ -105,11 +116,12 @@ internal partial class RPR
         public static UserInt
             RPR_Positional = new("RPR_Positional"),
             RPR_Balance_Content = new("RPR_Balance_Content", 1),
+            RPR_ST_ArcaneCircleHPOption = new("RPR_ST_ArcaneCircleHPOption", 10),
+            RPR_ST_ArcaneCircleBossOption = new("RPR_ST_ArcaneCircleBossOption"),
             RPR_SoDRefreshRange = new("RPR_SoDRefreshRange", 6),
             RPR_SoDRefreshRangeBasicCombo = new("RPR_SoDRefreshRangeBasicCombo", 6),
             RPR_SoDHPThreshold = new("RPR_SoDThreshold"),
             RPR_ManualTN = new("RPR_ManualTN"),
-            RPR_ST_ArcaneCircleBossOption = new("RPR_ST_ArcaneCircle_SubOption", 1),
             RPR_STSecondWindHPThreshold = new("RPR_STSecondWindThreshold", 40),
             RPR_STBloodbathHPThreshold = new("RPR_STBloodbathThreshold", 30),
             RPR_WoDHPThreshold = new("RPR_WoDThreshold", 40),

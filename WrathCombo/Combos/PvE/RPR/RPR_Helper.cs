@@ -19,6 +19,10 @@ internal partial class RPR
         (GroupDamageIncoming(3f) ||
          !IsInParty() && IsPlayerTargeted());
 
+    private static int HPThresholdArcaneCircle =>
+        RPR_ST_ArcaneCircleBossOption == 1 ||
+        !InBossEncounter() ? RPR_ST_ArcaneCircleHPOption : 0;
+
     #endregion
 
     #region Enshroud
