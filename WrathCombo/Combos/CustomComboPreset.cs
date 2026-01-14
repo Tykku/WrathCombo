@@ -6407,15 +6407,16 @@ public enum Preset
     SAM_ST_CDs_Shoha = 15019,
 
     [ParentCombo(SAM_ST_Damage)]
+    [CustomComboInfo("Shinten Option", "Adds Shinten to the rotation.\nWill pool kenki for burst.", Job.SAM)]
+    SAM_ST_Shinten = 15008,
+
+
+    [ParentCombo(SAM_ST_Damage)]
     [CustomComboInfo("Ranged Uptime Feature", "Adds Enpi to the rotation when you are out of range.\nWill use Ogi or Iaijutsu when possible and enabled.", Job.SAM)]
     SAM_ST_RangedUptime = 15097,
 
     #endregion
-
-    [ParentCombo(SAM_ST_AdvancedMode)]
-    [CustomComboInfo("Shinten Option", "Adds Shinten to the rotation.\nWill pool kenki for burst.", Job.SAM)]
-    SAM_ST_Shinten = 15008,
-
+    
     [ParentCombo(SAM_ST_AdvancedMode)]
     [CustomComboInfo("True North Feature", "Adds True North when you are not in the correct position for the enhanced potency bonus.", Job.SAM)]
     SAM_ST_TrueNorth = 15099,

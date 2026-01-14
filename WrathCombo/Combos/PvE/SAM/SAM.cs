@@ -33,6 +33,9 @@ internal partial class SAM : Melee
                 if (CanIkishoten())
                     return Ikishoten;
 
+                if (GetTargetHPPercent() < ShintenTreshhold)
+                    return ExecuteKenkiSpender(actionID, true);
+
                 //Senei Feature
                 if (CanSenei())
                     return Senei;
@@ -237,6 +240,9 @@ internal partial class SAM : Melee
 
                 if (IsEnabled(Preset.SAM_ST_Damage))
                 {
+                    if (GetTargetHPPercent() < ShintenTreshhold)
+                        return ExecuteKenkiSpender(actionID);
+
                     //Senei feature
                     if (IsEnabled(Preset.SAM_ST_CDs_Senei))
                     {
@@ -258,11 +264,11 @@ internal partial class SAM : Melee
                     if (IsEnabled(Preset.SAM_ST_CDs_Shoha) &&
                         CanShoha())
                         return Shoha;
-                }
 
-                if (IsEnabled(Preset.SAM_ST_Shinten) &&
-                    CanShinten())
-                    return Shinten;
+                    if (IsEnabled(Preset.SAM_ST_Shinten) &&
+                        CanShinten())
+                        return Shinten;
+                }
 
                 if (IsEnabled(Preset.SAM_ST_Feint) &&
                     Role.CanFeint() &&

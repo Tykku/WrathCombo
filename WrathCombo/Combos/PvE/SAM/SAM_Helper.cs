@@ -150,14 +150,18 @@ internal partial class SAM
         !IsMoving() && TimeStoodStill > TimeSpan.FromSeconds(SAM_ST_MeditateTimeStill) &&
         InCombat() && !HasBattleTarget();
 
+    private static int ShintenTreshhold =>
+        IsNotEnabled(Preset.SAM_ST_SimpleMode) ? SAM_ST_ExecuteThreshold : 1;
+
+    private static float GCD =>
+        GetAdjustedRecastTime(ActionType.Action, Hakaze) / 100f;
+
     #endregion
 
     #region Meikyo
 
     private static bool CanMeikyo()
     {
-        float gcd = GetAdjustedRecastTime(ActionType.Action, Hakaze) / 100f;
-
         if (ActionReady(MeikyoShisui) &&
             !HasStatusEffect(Buffs.Tendo) &&
             !HasStatusEffect(Buffs.MeikyoShisui) &&
@@ -185,7 +189,7 @@ internal partial class SAM
 
                     // Pre 94
                     case false when
-                        GetCooldownRemainingTime(Senei) <= gcd ||
+                        GetCooldownRemainingTime(Senei) <= GCD ||
                         GetCooldownRemainingTime(Senei) is > 50 and < 65:
                         return true;
                 }
@@ -277,12 +281,11 @@ internal partial class SAM
 
     private static bool CanShinten()
     {
-        int shintenTreshhold = SAM_ST_ExecuteThreshold;
         float gcd = GetCooldown(OriginalHook(Hakaze)).CooldownTotal;
 
         if (ActionReady(Shinten) && InActionRange(Shinten))
         {
-            if (GetTargetHPPercent() < shintenTreshhold)
+            if (GetTargetHPPercent() < ShintenTreshhold)
                 return true;
 
             if (Kenki is 100 && ComboAction == OriginalHook(Gyofu) ||
@@ -351,6 +354,25 @@ internal partial class SAM
                 return true;
         }
         return false;
+    }
+
+    private static uint ExecuteKenkiSpender(uint actionId, bool simpleMode = false)
+    {
+        if ((simpleMode || IsEnabled(Preset.SAM_ST_CDs_Zanshin)) &&
+            ActionReady(Zanshin) && HasStatusEffect(Buffs.ZanshinReady))
+            return Zanshin;
+
+        if ((simpleMode || IsEnabled(Preset.SAM_ST_CDs_Senei)) &&
+            ActionReady(Senei) && InActionRange(Senei))
+            return Senei;
+
+        if ((simpleMode || IsEnabled(Preset.SAM_ST_Shinten)) &&
+            ActionReady(Shinten) && InActionRange(Shinten) &&
+            GetCooldownRemainingTime(Senei) >= GCD * 5 &&
+            GetCooldownRemainingTime(Ikishoten) >= GCD * 5)
+            return Shinten;
+
+        return actionId;
     }
 
     #endregion
