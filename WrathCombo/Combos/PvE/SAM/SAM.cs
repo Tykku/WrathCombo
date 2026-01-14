@@ -204,7 +204,7 @@ internal partial class SAM : Melee
 
             // Opener for SAM
             if (IsEnabled(Preset.SAM_ST_Opener) &&
-                Opener().FullOpener(ref actionID) && 
+                Opener().FullOpener(ref actionID) &&
                 HasBattleTarget())
                 return actionID;
 
