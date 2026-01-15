@@ -55,13 +55,13 @@ internal partial class MCH : PhysicalRanged
                 if (!IsOverheated)
                 {
                     // BarrelStabilizer
-                    if (ActionReady(BarrelStabilizer) && 
+                    if (ActionReady(BarrelStabilizer) &&
                         TargetIsBoss() &&
                         DrillCD && AirAnchorCD && ChainSawCD &&
                         GetCooldownRemainingTime(Wildfire) <= GCD &&
                         !HasStatusEffect(Buffs.FullMetalMachinist))
                         return BarrelStabilizer;
-                    
+
                     // Queen
                     if (CanQueen())
                         return OriginalHook(RookAutoturret);
@@ -332,7 +332,8 @@ internal partial class MCH : PhysicalRanged
                     // BarrelStabilizer
                     if (IsEnabled(Preset.MCH_ST_Adv_Stabilizer) &&
                         ActionReady(BarrelStabilizer) &&
-                        GetTargetHPPercent() > HPThresholdBarrelStabilizer &&
+                        (MCH_ST_BarrelStabilizerBossOption == 0 && GetTargetHPPercent() > HPThresholdBarrelStabilizer ||
+                         TargetIsBoss()) &&
                         DrillCD && AirAnchorCD && ChainSawCD &&
                         GetCooldownRemainingTime(Wildfire) <= GCD &&
                         !HasStatusEffect(Buffs.FullMetalMachinist))
