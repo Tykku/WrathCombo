@@ -77,7 +77,7 @@ public partial class Provider
                 arcOption.DPSAlwaysHardTarget => arcD.DPSAlwaysHardTarget,
                 arcOption.HealerAlwaysHardTarget  => arcH.HealerAlwaysHardTarget ,
                 arcOption.BypassQuest => arc.BypassQuest,
-                arcOption.BypassFate => arc.BypassFATE,
+                arcOption.BypassFATE => arc.BypassFATE,
                 _ => throw new ArgumentOutOfRangeException(
                     nameof(passedOption), passedOption, null),
             };
