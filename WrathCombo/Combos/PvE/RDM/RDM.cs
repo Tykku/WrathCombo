@@ -319,7 +319,8 @@ internal partial class RDM : Caster
             #endregion
 
             #region GCD Casts
-            if (IsEnabled(Preset.RDM_ST_ThunderAero) && CanInstantCast)
+            
+            if (IsEnabled(Preset.RDM_ST_ThunderAero) && (CanInstantCast || !InCombat() && RDM_ST_ThunderAero_Pull))
                 return UseInstantCastST(actionID);
 
             if (CanGrandImpact)
