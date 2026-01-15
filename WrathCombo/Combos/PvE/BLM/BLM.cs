@@ -683,6 +683,20 @@ internal partial class BLM : Caster
         }
     }
 
+    internal class BLM_F1toF4 : CustomCombo
+    {
+        protected internal override Preset Preset => Preset.BLM_F1toF4;
+        protected override uint Invoke(uint actionID)
+        {
+            if (actionID is not Fire)
+                return actionID;
+
+            return ActionReady(Fire4) && !ActiveParadox
+                ? Fire4
+                : actionID;
+        }
+    }
+
     internal class BLM_Fire4 : CustomCombo
     {
         protected internal override Preset Preset => Preset.BLM_Fire4;
@@ -754,6 +768,20 @@ internal partial class BLM : Caster
 
                 var _ => actionID
             };
+        }
+    }
+
+    internal class BLM_B1toB4 : CustomCombo
+    {
+        protected internal override Preset Preset => Preset.BLM_B1toB4;
+        protected override uint Invoke(uint actionID)
+        {
+            if (actionID is not Blizzard)
+                return actionID;
+
+            return ActionReady(Blizzard4) && !ActiveParadox
+                ? Blizzard4
+                : actionID;
         }
     }
 

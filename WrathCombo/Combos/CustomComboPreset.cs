@@ -1519,7 +1519,7 @@ public enum Preset
 
     [AutoAction(false, false)]
     [ReplaceSkill(BLM.Fire)]
-    [ConflictingCombos(BLM_ST_SimpleMode, BLM_Fire1and3)]
+    [ConflictingCombos(BLM_ST_SimpleMode, BLM_Fire1and3, BLM_F1toF4)]
     [CustomComboInfo("Advanced Mode - Single Target", "Replaces Fire with a full one-button single target rotation.\nThese features are ideal if you want to customize the rotation.", Job.BLM)]
     [AdvancedCombo]
     BLM_ST_AdvancedMode = 2100,
@@ -1649,9 +1649,14 @@ public enum Preset
     BLM_TriplecastProtection = 2056,
 
     [ReplaceSkill(BLM.Fire, BLM.Fire3)]
-    [ConflictingCombos(BLM_ST_AdvancedMode, BLM_ST_SimpleMode)]
+    [ConflictingCombos(BLM_ST_AdvancedMode, BLM_ST_SimpleMode, BLM_F1toF4)]
     [CustomComboInfo("Fire I/III Feature", "Replaces Fire I or Fire III with the options below.", Job.BLM)]
     BLM_Fire1and3 = 2054,
+
+    [ReplaceSkill(BLM.Fire)]
+    [ConflictingCombos(BLM_ST_AdvancedMode, BLM_ST_SimpleMode, BLM_Fire1and3)]
+    [CustomComboInfo("Fire I to Fire IV Feature", "Replaces Fire I with Fire IV when available.", Job.BLM)]
+    BLM_F1toF4 = 2070,
 
     [ReplaceSkill(BLM.Fire4)]
     [CustomComboInfo("Fire IV Feature", "Replaces Fire IV with the options below.", Job.BLM)]
@@ -1662,8 +1667,14 @@ public enum Preset
     BLM_Flare = 2069,
 
     [ReplaceSkill(BLM.Blizzard, BLM.Blizzard3)]
+    [ConflictingCombos(BLM_B1toB4)]
     [CustomComboInfo("Blizzard I/III Feature", "Replaces Blizzard I or Blizzard III with the options below.", Job.BLM)]
     BLM_Blizzard1and3 = 2052,
+
+    [ReplaceSkill(BLM.Blizzard)]
+    [ConflictingCombos(BLM_Blizzard1and3)]
+    [CustomComboInfo("Blizzard I to Blizzard IV Feature", "Replaces Blizzard I with Blizzard IV when available.", Job.BLM)]
+    BLM_B1toB4 = 2071,
 
     [ReplaceSkill(BLM.Blizzard4)]
     [CustomComboInfo("Blizzard IV to Despair", "Replaces Blizzard IV with Despair when in Astral Fire.", Job.BLM)]
@@ -1710,7 +1721,7 @@ public enum Preset
 
     // Last value ST = 2117
     //Last Value AoE = 2213
-    //Last Value misc = 2069
+    //Last Value misc = 2071
 
     #endregion
 
