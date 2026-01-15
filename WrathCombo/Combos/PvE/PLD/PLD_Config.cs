@@ -88,6 +88,9 @@ internal partial class PLD
 
                 case Preset.PLD_ST_AdvancedMode_BalanceOpener:
                     DrawBossOnlyChoice(PLD_Balance_Content);
+                    ImGui.NewLine();
+                    DrawHorizontalRadioButton(PLD_ST_AdvancedMode_BalanceOpener_Intervene, "Use Gap Closers", "Does not skip Intervene in the Opener.", 0);
+                    DrawHorizontalRadioButton(PLD_ST_AdvancedMode_BalanceOpener_Intervene, "Skip Gap Closers", "Skips Intervene in the Opener.", 1);
                     break;
 
                 // Fight or Flight
@@ -344,6 +347,7 @@ internal partial class PLD
             
             //ST
             PLD_Balance_Content = new("PLD_Balance_Content", 1),
+            PLD_ST_AdvancedMode_BalanceOpener_Intervene = new("PLD_ST_AdvancedMode_BalanceOpener_Intervene"),
             PLD_ST_Intervene_Charges = new("PLD_ST_Intervene_Charges"),
             PLD_ST_Intervene_Movement = new("PLD_ST_Intervene_Movement"),
             PLD_ST_Intervene_Distance = new("PLD_ST_Intervene_Distance", 3),
