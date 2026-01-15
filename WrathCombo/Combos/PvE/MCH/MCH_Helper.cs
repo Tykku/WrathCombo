@@ -110,7 +110,8 @@ internal partial class MCH
     {
         uint remainingCharges = GetRemainingCharges(Reassemble);
 
-        if (HasStatusEffect(Buffs.Reassembled) || !HasBattleTarget() || !InActionRange(Drill))
+        if (HasStatusEffect(Buffs.Reassembled) || !HasBattleTarget() ||
+            !InActionRange(Drill) || JustUsed(Reassemble))
             return false;
 
         if (remainingCharges == 0)
