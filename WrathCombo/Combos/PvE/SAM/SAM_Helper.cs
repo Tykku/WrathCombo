@@ -165,6 +165,7 @@ internal partial class SAM
         if (ActionReady(MeikyoShisui) &&
             !HasStatusEffect(Buffs.Tendo) &&
             !HasStatusEffect(Buffs.MeikyoShisui) &&
+            !JustUsed(MeikyoShisui) &&
             TargetIsBoss() && GetTargetHPPercent() < SAM_ST_MeikyoExecuteThreshold &&
             JustUsed(Yukikaze, 2f) || JustUsed(Gekko, 2f) || JustUsed(Kasha, 2f))
             return true;
@@ -172,6 +173,7 @@ internal partial class SAM
         if (ActionReady(MeikyoShisui) &&
             !HasStatusEffect(Buffs.Tendo) &&
             !HasStatusEffect(Buffs.MeikyoShisui) &&
+            !JustUsed(MeikyoShisui) &&
             (JustUsed(Yukikaze, 2f) || HasSetsu && (JustUsed(Gekko, 2f) || JustUsed(Kasha, 2f))))
         {
             if (InBossEncounter())

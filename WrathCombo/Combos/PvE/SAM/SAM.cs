@@ -124,6 +124,7 @@ internal partial class SAM : Melee
 
                 if (ActionReady(MeikyoShisui) &&
                     !HasStatusEffect(Buffs.MeikyoShisui) &&
+                    !JustUsed(MeikyoShisui) &&
                     ComboTimer is 0)
                     return MeikyoShisui;
 
@@ -216,7 +217,8 @@ internal partial class SAM : Melee
                 IsEnabled(Preset.SAM_ST_CDs_MeikyoShisui) &&
                 ActionReady(MeikyoShisui) &&
                 !HasStatusEffect(Buffs.MeikyoShisui) &&
-                !InCombat() && HasBattleTarget())
+                !InCombat() && HasBattleTarget() &&
+                !JustUsed(MeikyoShisui))
                 return MeikyoShisui;
 
             if (ContentSpecificActions.TryGet(out uint contentAction))
@@ -346,7 +348,8 @@ internal partial class SAM : Melee
                 IsEnabled(Preset.SAM_AoE_MeikyoShisui) &&
                 ActionReady(MeikyoShisui) &&
                 !HasStatusEffect(Buffs.MeikyoShisui) &&
-                !InCombat() && HasBattleTarget())
+                !InCombat() && HasBattleTarget() &&
+                !JustUsed(MeikyoShisui))
                 return MeikyoShisui;
 
             if (ContentSpecificActions.TryGet(out uint contentAction))
@@ -364,6 +367,7 @@ internal partial class SAM : Melee
                     if (IsEnabled(Preset.SAM_AoE_MeikyoShisui) &&
                         ActionReady(MeikyoShisui) &&
                         !HasStatusEffect(Buffs.MeikyoShisui) &&
+                        !JustUsed(MeikyoShisui) &&
                         ComboTimer is 0)
                         return MeikyoShisui;
 

@@ -63,7 +63,7 @@ internal partial class MNK
             case false when
                 ActionReady(PerfectBalance) && !HasStatusEffect(Buffs.PerfectBalance) &&
                 !HasStatusEffect(Buffs.FormlessFist) && IsOriginal(MasterfulBlitz) &&
-                HasBattleTarget():
+                HasBattleTarget() && !JustUsed(PerfectBalance):
             {
                 // Odd window
                 if ((JustUsed(OriginalHook(Bootshine), GCD * 3) || JustUsed(DragonKick, GCD * 3)) &&
@@ -89,7 +89,7 @@ internal partial class MNK
             }
 
             case true when
-                ActionReady(PerfectBalance) && !HasStatusEffect(Buffs.PerfectBalance) &&
+                ActionReady(PerfectBalance) && !HasStatusEffect(Buffs.PerfectBalance) && !JustUsed(PerfectBalance) &&
                 !HasStatusEffect(Buffs.FormlessFist) && targetCheck && IsOriginal(MasterfulBlitz) &&
                 GetTargetHPPercent() >= MNK_AoE_PerfectBalanceHPThreshold:
             {
