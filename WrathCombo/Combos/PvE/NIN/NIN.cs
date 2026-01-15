@@ -826,10 +826,10 @@ internal partial class NIN : Melee
 
         protected override uint Invoke(uint actionID)
         {
-            if (!MudraSigns.Any(x => x == actionID) || (!InMudra && !Rabbitting))
+            if (!MudraSigns.Any(x => x == actionID))
                 return actionID;
 
-            if (Rabbitting)
+            if (OriginalHook(Ninjutsu) == Rabbit)
                 return Rabbit;
 
             switch (actionID)
