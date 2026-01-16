@@ -410,7 +410,8 @@ internal partial class MNK
     //Brotherhood
     private static bool CanBrotherhood() =>
         ActionReady(Brotherhood) &&
-        ActionReady(RiddleOfFire);
+        ActionReady(RiddleOfFire) &&
+        (InBossEncounter() || TimeStoodStill.Seconds >= 2);
 
     //RoW
     private static bool CanRoW() =>
