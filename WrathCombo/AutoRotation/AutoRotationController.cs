@@ -23,7 +23,6 @@ using WrathCombo.Extensions;
 using WrathCombo.Services;
 using WrathCombo.Services.IPC_Subscriber;
 using WrathCombo.Window.Functions;
-using WrathCombo.Window.Tabs;
 using static WrathCombo.CustomComboNS.Functions.CustomComboFunctions;
 using static WrathCombo.Data.ActionWatching;
 using ActionType = FFXIVClientStructs.FFXIV.Client.Game.ActionType;
@@ -677,11 +676,19 @@ internal unsafe static class AutoRotationController
             }
             else
             {
-                var target = !cfg.DPSSettings.AoEIgnoreManual && cfg.DPSRotationMode == DPSRotationMode.Manual ? Svc.Targets.Target : DPSTargeting.BaseSelection.MaxBy(x => NumberOfEnemiesInRange(OriginalHook(gameAct), x, true));
+                var target = !cfg.DPSSettings.AoEIgnoreManual && cfg.DPSRotationMode == DPSRotationMode.Manual ?
+                    Svc.Targets.Target : DPSTargeting.BaseSelection.MaxBy(x => NumberOfEnemiesInRange(OriginalHook(gameAct), x, true));
+
                 if (!NIN.InMudra)
                 {
-                    var numEnemies = NumberOfEnemiesInRange(OriginalHook(gameAct), target, true);
-                    if (cfg.DPSSettings.DPSAoETargets == null || numEnemies < cfg.DPSSettings.DPSAoETargets)
+                    var st = GetSingleTarget(mode);
+                    var maxHit = NumberOfEnemiesInRange(OriginalHook(gameAct), target, true);
+                    var singleTargetModeTarget = NumberOfEnemiesInRange(OriginalHook(gameAct), st, true);
+
+                    if (singleTargetModeTarget >= maxHit)
+                        target = st;
+
+                    if (cfg.DPSSettings.DPSAoETargets == null || maxHit < cfg.DPSSettings.DPSAoETargets)
                     {
                         LockedAoE = false;
                         return false;
