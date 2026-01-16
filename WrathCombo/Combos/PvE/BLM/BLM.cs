@@ -691,7 +691,7 @@ internal partial class BLM : Caster
             if (actionID is not Fire)
                 return actionID;
 
-            return ActionReady(Fire4) && !ActiveParadox
+            return ActionReady(Fire4) && !IcePhase
                 ? Fire4
                 : actionID;
         }
@@ -779,7 +779,7 @@ internal partial class BLM : Caster
             if (actionID is not Blizzard)
                 return actionID;
 
-            return ActionReady(Blizzard4) && !ActiveParadox
+            return ActionReady(Blizzard4) && !FirePhase 
                 ? Blizzard4
                 : actionID;
         }
