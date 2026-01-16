@@ -1,4 +1,5 @@
 using Dalamud.Game.ClientState.Objects.Types;
+using ECommons.DalamudServices;
 using ECommons.GameFunctions;
 using System.Linq;
 using WrathCombo.Core;
@@ -58,11 +59,11 @@ internal partial class SGE : Healer
                     return Soteria;
             }
            
-            var dotAction = OriginalHook(Dosis);;
-            EukrasianDosisList.TryGetValue(dotAction, out ushort dotDebuffID);
-            var target = SimpleTarget.DottableEnemy(dotAction, dotDebuffID, 0, 3, 2);
-            
-            if (target is not null && CanApplyStatus(target, dotDebuffID) && !JustUsedOn(dotAction, target))
+            var dotAction = OriginalHook(Dosis);
+            DosisList.TryGetValue(dotAction, out var debuff);
+            var target = SimpleTarget.DottableEnemy(dotAction, debuff.Debuff, 0, 3, 2);
+
+            if (target is not null && CanApplyStatus(target, debuff.Debuff) && !JustUsedOn(dotAction, target))
                 return HasStatusEffect(Buffs.Eukrasia)
                     ? dotAction.Retarget(DosisActions.ToArray(), target)
                     : Eukrasia;
