@@ -337,7 +337,8 @@ internal partial class SAM
             return true;
 
         if (ActionReady(OgiNamikiri) && InActionRange(OriginalHook(OgiNamikiri)) &&
-            HasStatusEffect(Buffs.OgiNamikiriReady) && NumberOfGcdsUsed >= 5)
+            HasStatusEffect(Buffs.OgiNamikiriReady) && NumberOfGcdsUsed >= 5 &&
+            (!SAM_ST_CDs_OgiNamikiri_Movement || !IsMoving() || simpleMode && !IsMoving()))
         {
             if (GetStatusEffectRemainingTime(Buffs.OgiNamikiriReady) <= 8)
                 return true;
@@ -604,7 +605,7 @@ internal partial class SAM
         [
             ([18, 23], () => !ActionReady(Shinten)),
             ([20, 25], () => !ActionReady(Gyoten) || SAM_Opener_IncludeGyoten == 1),
-           // ([7, 24], () => SenCount is 1 or 2),
+            // ([7, 24], () => SenCount is 1 or 2),
             ([9, 26], () => !HasStatusEffect(Buffs.TsubameReady))
         ];
 
