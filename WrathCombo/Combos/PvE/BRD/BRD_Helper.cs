@@ -70,16 +70,6 @@ internal partial class BRD
     // Charge Tracking
     internal static uint RainOfDeathCharges => LevelChecked(RainOfDeath) ? GetRemainingCharges(RainOfDeath) : 0;
     internal static uint BloodletterCharges => GetRemainingCharges(Bloodletter);
-
-    internal static bool TheBossSheetLies(IGameObject? optionalTarget = null)
-    {
-        if ((optionalTarget ?? CurrentTarget) is not IBattleChara chara)
-            return false;
-
-        return chara.BaseId is 
-            19169 or //M9S Fatal Flail
-            19170;   //M9S Deadly Doornail
-    }
     #endregion
 
     #region Functions
@@ -157,7 +147,7 @@ internal partial class BRD
         {
             if (InBossEncounter())
             {
-                return TargetIsBoss() && !TheBossSheetLies() ? BRD_ST_DPS_DotBossOption : BRD_ST_DPS_DotBossAddsOption;
+                return TargetIsBoss() ? BRD_ST_DPS_DotBossOption : BRD_ST_DPS_DotBossAddsOption;
             }
             return BRD_ST_DPS_DotTrashOption;
         }
@@ -165,7 +155,7 @@ internal partial class BRD
         {
             if (InBossEncounter())
             {
-                return TargetIsBoss() && !TheBossSheetLies() ? BRD_AoE_Adv_MultidotBossOption : BRD_AoE_Adv_MultidotBossAddsOption;
+                return TargetIsBoss() ? BRD_AoE_Adv_MultidotBossOption : BRD_AoE_Adv_MultidotBossAddsOption;
             }
             return BRD_AoE_Adv_MultidotTrashOption;
         }
