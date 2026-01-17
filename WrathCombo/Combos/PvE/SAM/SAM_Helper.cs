@@ -167,7 +167,7 @@ internal partial class SAM
             !HasStatusEffect(Buffs.MeikyoShisui) &&
             !JustUsed(MeikyoShisui) &&
             TargetIsBoss() && GetTargetHPPercent() < SAM_ST_MeikyoExecuteThreshold &&
-            JustUsed(Yukikaze, 2f) || JustUsed(Gekko, 2f) || JustUsed(Kasha, 2f))
+            (JustUsed(Yukikaze, 2f) || JustUsed(Gekko, 2f) || JustUsed(Kasha, 2f)))
             return true;
 
         if (ActionReady(MeikyoShisui) &&
@@ -604,9 +604,9 @@ internal partial class SAM
         public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
         [
             ([18, 23], () => !ActionReady(Shinten)),
-            ([20, 25], () => !ActionReady(Gyoten) || SAM_Opener_IncludeGyoten == 1),
+            ([20, 25], () => !ActionReady(Gyoten) || SAM_Opener_IncludeGyoten == 1)
             // ([7, 24], () => SenCount is 1 or 2),
-            ([9, 26], () => !HasStatusEffect(Buffs.TsubameReady))
+            // ([9, 26], () => !HasStatusEffect(Buffs.TsubameReady))
         ];
 
         public override Preset Preset => Preset.SAM_ST_Opener;
