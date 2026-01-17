@@ -608,9 +608,15 @@ internal partial class DNC : PhysicalRanged
                     if (!LevelChecked(TechnicalStep) && Gauge.Feathers > 0)
                         return FanDance1;
                 }
+                if (ActionReady(ShieldSamba) && GroupDamageIncoming() && 
+                    NumberOfAlliesInRange(ShieldSamba) >= GetPartyMembers().Count * .75 &&
+                    !HasAnyStatusEffects ([BRD.Buffs.Troubadour, Buffs.ShieldSamba, MCH.Buffs.Tactician], anyOwner: true))
+                    return ShieldSamba;
 
                 // ST Panic Heals
-
+                if (ActionReady(CuringWaltz) && PlayerHealthPercentageHp() < 40)
+                    return CuringWaltz;
+                
                 if (Role.CanSecondWind(40))
                     return Role.SecondWind;
             }
