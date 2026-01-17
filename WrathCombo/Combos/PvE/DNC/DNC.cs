@@ -384,15 +384,15 @@ internal partial class DNC : PhysicalRanged
                 return Tillana;
 
             // ST Saber Dance
-            if ((IsEnabled(Preset.DNC_ST_Adv_SaberDance) &&
-                ActionReady(SaberDance) &&
-                Gauge.Esprit >=
-                DNC_ST_Adv_SaberThreshold) || // Above esprit threshold use
-                (HasStatusEffect(Buffs.TechnicalFinish) &&
-                 Gauge.Esprit >= 50 && // Burst
-                (GetCooldownRemainingTime(TechnicalStep) > 5 ||
-                 IsOffCooldown(TechnicalStep)))) // Tech is up
+            if(
+                (IsEnabled(Preset.DNC_ST_Adv_SaberDance)
+                && ActionReady(SaberDance)      
+                && Gauge.Esprit >= 50 //it's not like we can use it otherwise
+                && (Gauge.Esprit >= DNC_ST_Adv_SaberThreshold || HasStatusEffect(Buffs.TechnicalFinish) || JustUsed(16196) || HasStatusEffect(49)) 
+                ))
+            {
                 return SaberDance;
+            }
 
             // ST combos and burst attacks
             if (LevelChecked(Fountain) &&
