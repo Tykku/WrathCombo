@@ -566,9 +566,9 @@ internal partial class SAM
             Kasha,
             Ikishoten,
             Yukikaze,
-            TendoSetsugekka, //8
+            TendoSetsugekka, //7
             Senei,
-            TendoKaeshiSetsugekka, //10
+            TendoKaeshiSetsugekka, //9
             MeikyoShisui,
             Gekko,
             Zanshin,
@@ -604,8 +604,8 @@ internal partial class SAM
         [
             ([18, 23], () => !ActionReady(Shinten)),
             ([20, 25], () => !ActionReady(Gyoten) || SAM_Opener_IncludeGyoten == 1),
-            ([8, 24], () => SenCount is not 3),
-            ([10, 26], () => !HasStatusEffect(Buffs.TsubameReady))
+            ([7, 24], () => SenCount is not 3),
+            ([9, 26], () => !HasStatusEffect(Buffs.TsubameReady))
         ];
 
         public override Preset Preset => Preset.SAM_ST_Opener;
