@@ -80,7 +80,7 @@ internal partial class SAM : Melee
                 return OriginalHook(TsubameGaeshi);
 
             //Ogi Namikiri feature
-            if (!IsMoving() && CanOgi(true))
+            if (CanOgi(true))
                 return OriginalHook(OgiNamikiri);
 
             // Iaijutsu feature
