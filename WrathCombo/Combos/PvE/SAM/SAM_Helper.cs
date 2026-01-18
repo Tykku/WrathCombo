@@ -605,7 +605,8 @@ internal partial class SAM
         public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
         [
             ([18, 23], () => !ActionReady(Shinten)),
-            ([20, 25], () => !ActionReady(Gyoten) || SAM_Opener_IncludeGyoten == 1),
+            ([20], () => !ActionReady(Gyoten) || (int)SAM_Opener_IncludeGyoten is 1 or 2),
+            ([25], () => !ActionReady(Gyoten) || (int)SAM_Opener_IncludeGyoten is 1 or 3),
             ([7, 24], () => SenCount is not 3 && !(SenCount is 2 && JustUsed(Yukikaze))),
             ([9, 26], () => !HasStatusEffect(Buffs.TsubameReady) && !JustUsed(TendoSetsugekka)),
         ];

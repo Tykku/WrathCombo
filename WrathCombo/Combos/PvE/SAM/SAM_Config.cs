@@ -20,10 +20,16 @@ internal partial class SAM
                         $"Delay from first {MeikyoShisui.ActionName()} to next step. (seconds)\nDelay is enforced by replacing your button with Savage Blade.");
 
                     DrawHorizontalRadioButton(SAM_Opener_IncludeGyoten,
-                        $"Include {Gyoten.ActionName()}", $"Include {Gyoten.ActionName()}", 0);
+                        $"Include 2x {Gyoten.ActionName()}", $"Includes both usages of {Gyoten.ActionName()}", 0);
 
                     DrawHorizontalRadioButton(SAM_Opener_IncludeGyoten,
-                        $"Skip {Gyoten.ActionName()}", $"Skip {Gyoten.ActionName()} in the opener.", 1);
+                        "Skip Both", $"Skips both usages of {Gyoten.ActionName()} in the opener.", 1);
+
+                    DrawHorizontalRadioButton(SAM_Opener_IncludeGyoten,
+                        "Skip First", $"Skips first usage of {Gyoten.ActionName()} in the opener, keeps the second.", 2);
+
+                    DrawHorizontalRadioButton(SAM_Opener_IncludeGyoten,
+                        "Skip Second", $"Skips second usage of {Gyoten.ActionName()} in the opener, keeps the first.", 3);
                     break;
 
                 case Preset.SAM_ST_CDs_UseHiganbana:
