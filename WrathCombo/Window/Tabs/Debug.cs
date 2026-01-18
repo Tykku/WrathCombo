@@ -1346,6 +1346,7 @@ internal class Debug : ConfigWindow, IDisposable
 
     private static void DisableDebugConfig()
     {
+        _debugConfig = string.Empty;
         DebugConfig = false;
         Service.Configuration =
             _previousConfig ??
