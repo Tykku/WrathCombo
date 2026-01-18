@@ -117,7 +117,7 @@ internal partial class DRG
 
     private static uint OutsideOfMelee(uint actionId, bool simpleMode = false)
     {
-        if (simpleMode || IsEnabled(Preset.DRG_ST_CDs))
+        if (simpleMode || IsEnabled(Preset.DRG_ST_CDs) && InCombat())
         {
             //Mirage Feature
             if ((simpleMode || IsEnabled(Preset.DRG_ST_Mirage)) &&
