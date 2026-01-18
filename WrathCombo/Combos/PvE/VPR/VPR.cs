@@ -91,10 +91,9 @@ internal partial class VPR : Melee
                 return UncoiledFury;
 
             //Ranged
-            if (ActionReady(WrithingSnap) && !InMeleeRange() && HasBattleTarget())
-                return HasRattlingCoilStacks
-                    ? UncoiledFury
-                    : WrithingSnap;
+            if (ActionReady(WrithingSnap) &&
+                !InMeleeRange() && HasBattleTarget())
+                return WrithingSnap;
 
             //Reawaken combo / 1-2-3 (4-5-6) Combo
             return HasStatusEffect(Buffs.Reawakened)
@@ -301,16 +300,10 @@ internal partial class VPR : Melee
                 return UncoiledFury;
 
             //Ranged
-            if (!InMeleeRange() && HasBattleTarget())
-            {
-                if (IsEnabled(Preset.VPR_ST_UFRangedUptime) &&
-                    ActionReady(UncoiledFury) && HasRattlingCoilStacks)
-                    return UncoiledFury;
-
-                if (IsEnabled(Preset.VPR_ST_RangedUptime) &&
-                    ActionReady(WrithingSnap))
-                    return WrithingSnap;
-            }
+            if (!InMeleeRange() && HasBattleTarget() &&
+                IsEnabled(Preset.VPR_ST_RangedUptime) &&
+                ActionReady(WrithingSnap))
+                return WrithingSnap;
 
             //Reawaken combo / 1-2-3 (4-5-6) Combo
             return IsEnabled(Preset.VPR_ST_GenerationCombo) &&

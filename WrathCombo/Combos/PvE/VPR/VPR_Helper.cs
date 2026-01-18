@@ -339,18 +339,23 @@ internal partial class VPR
 
         switch (isAoE)
         {
+            //ST normal rotation
             case false when !IsComboExpiring(2) && !IsVenomExpiring(2) && !IsHoningExpiring(2) &&
                             ActionReady(UncoiledFury) && HasStatusEffect(Buffs.Swiftscaled) && HasStatusEffect(Buffs.HuntersInstinct) &&
                             (RattlingCoilStacks > ufHoldChargesST || GetTargetHPPercent() < ufHPThresholdST && HasRattlingCoilStacks) &&
-                            !UsedVicewinder && !UsedHuntersCoil && !UsedSwiftskinsCoil && NoSTComboWeaves &&
+                            !UsedVicewinder && !UsedHuntersCoil && !UsedSwiftskinsCoil && NoSTComboWeaves && InActionRange(UncoiledFury) &&
                             !HasStatusEffect(Buffs.Reawakened) && !HasStatusEffect(Buffs.ReadyToReawaken) &&
                             !WasLastWeaponskill(Ouroboros) && !IsEmpowermentExpiring(3):
 
+            //ST Range uptime    
+            case false when ActionReady(UncoiledFury) && HasRattlingCoilStacks && !InMeleeRange():
+
+            //AoE rotation    
             case true when ActionReady(UncoiledFury) &&
                            (RattlingCoilStacks > ufHoldChargesAoE ||
                             GetTargetHPPercent() < ufHPThresholdAoE && HasRattlingCoilStacks) &&
                            HasStatusEffect(Buffs.Swiftscaled) && HasStatusEffect(Buffs.HuntersInstinct) &&
-                           !UsedVicepit && !UsedHuntersDen && !UsedSwiftskinsDen &&
+                           !UsedVicepit && !UsedHuntersDen && !UsedSwiftskinsDen && InActionRange(UncoiledFury) &&
                            !HasStatusEffect(Buffs.Reawakened) && NoAoEComboWeaves &&
                            !WasLastWeaponskill(JaggedMaw) && !WasLastWeaponskill(BloodiedMaw) && !WasLastAbility(SerpentsIre):
                 return true;

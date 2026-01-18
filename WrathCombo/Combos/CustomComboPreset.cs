@@ -7483,12 +7483,8 @@ public enum Preset
     VPR_ST_StunInterupt = 30096,
 
     [ParentCombo(VPR_ST_AdvancedMode)]
-    [CustomComboInfo("Ranged Uptime Option", "Adds Writhing Snap to the rotation when you are out of melee range.", Job.VPR)]
+    [CustomComboInfo("Ranged Uptime Option", "Adds Writhing Snap to the rotation when you are out of melee range.\nWill prioritise other abilities when in range.", Job.VPR)]
     VPR_ST_RangedUptime = 30095,
-
-    [ParentCombo(VPR_ST_AdvancedMode)]
-    [CustomComboInfo("Uncoiled Fury Uptime Option", "Adds Uncoiled Fury to the rotation when you are out of melee range and have Rattling Coil charges.", Job.VPR)]
-    VPR_ST_UFRangedUptime = 30093,
     
     [ParentCombo(VPR_ST_AdvancedMode)]
     [CustomComboInfo("Combo Heals Option", "Adds Bloodbath and Second Wind to the rotation.", Job.VPR)]
