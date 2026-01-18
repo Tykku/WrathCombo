@@ -6,13 +6,11 @@ using Dalamud.Interface.Windowing;
 using Dalamud.Networking.Http;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
-using Dalamud.Utility;
 using ECommons;
 using ECommons.Automation.LegacyTaskManager;
 using ECommons.DalamudServices;
 using ECommons.ExcelServices;
 using ECommons.GameHelpers;
-using ECommons.Logging;
 using Newtonsoft.Json.Linq;
 using PunishLib;
 using System;
@@ -23,7 +21,6 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using WrathCombo.API.Enum;
-using WrathCombo.Attributes;
 using WrathCombo.AutoRotation;
 using WrathCombo.Core;
 using WrathCombo.CustomComboNS;
@@ -376,7 +373,7 @@ public sealed partial class WrathCombo : IDalamudPlugin
     {
         try
         {
-            var basicMessage = $"Welcome to WrathCombo v{this.GetType().Assembly
+            var basicMessage = $"Welcome to WrathCombo v{GetType().Assembly
                 .GetName().Version}!";
             using var motd =
                 httpClient.GetAsync("https://raw.githubusercontent.com/PunishXIV/WrathCombo/main/res/motd.txt").Result;
@@ -435,7 +432,7 @@ public sealed partial class WrathCombo : IDalamudPlugin
         ActionWatching.Dispose();
         CustomComboFunctions.TimerDispose();
         IPC.Dispose();
-        MoveHook?.Dispose();
+        MoveHook.Dispose();
 
         ConflictingPluginsChecks.Dispose();
         AllStaticIPCSubscriptions.Dispose();
