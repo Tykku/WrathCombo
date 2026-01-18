@@ -229,6 +229,7 @@ public sealed partial class WrathCombo : IDalamudPlugin
             TimeSpan.FromSeconds(60));
 
 #if DEBUG
+        VfxManager.Logging  = true;
         ConfigWindow.IsOpen = true;
         Svc.Framework.RunOnTick(() =>
         {
