@@ -435,9 +435,13 @@ public static class ActionWatching
                 if (changed)
                     targetId = changedTargetId;
 
+                // Clear any dodgy leftover targets
+                if (!Svc.Objects.Any(x => x.GameObjectId == actionManager->QueuedTargetId.Id))
+                    actionManager->QueuedTargetId = 0;
+
                 // However, if we have a queued target ID assume that's what we want and not whatever current retargeting is. TODO: Setting?
-                if (actionManager->QueuedTargetId != 0)
-                    targetId = actionManager->QueuedTargetId;
+                if (actionManager->QueuedTargetId.Id != 0)
+                    targetId = actionManager->QueuedTargetId.Id;
 
                 var areaTargeted = ActionSheet[replacedWith].TargetArea;
                 var targetObject = targetId.GetObject();
