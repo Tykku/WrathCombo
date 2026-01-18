@@ -174,19 +174,23 @@ internal partial class SAM
             !HasStatusEffect(Buffs.Tendo) &&
             !HasStatusEffect(Buffs.MeikyoShisui) &&
             !JustUsed(MeikyoShisui) &&
-            (JustUsed(Yukikaze, 2f) || HasSetsu && (JustUsed(Gekko, 2f) || JustUsed(Kasha, 2f))))
+            (JustUsed(Yukikaze, 2f) ||
+             HasSetsu && (JustUsed(Gekko, 2f) ||
+                          JustUsed(Kasha, 2f) ||
+                          JustUsed(KaeshiSetsugekka, 2f) && SenCount is 3)))
         {
             if (InBossEncounter())
             {
                 switch (EnhancedSenei)
                 {
-                    case true when GetRemainingCharges(MeikyoShisui) is 1 && JustUsed(MeikyoShisui, 10f) && JustUsed(Senei, 10f):
+                    case true when GetRemainingCharges(MeikyoShisui) >= 1 && JustUsed(KaeshiNamikiri, 10f) &&
+                                   GetCooldownChargeRemainingTime(MeikyoShisui) is >= 35 and <= 43:
 
                     case true when SenCount is 0 && GetCooldownRemainingTime(Senei) <= 14 && JustUsed(MidareSetsugekka, 5f) ||
-                                   SenCount is 0 && GetCooldownRemainingTime(Senei) <= 10 && JustUsed(Higanbana, 5f) ||
-                                   SenCount is 1 && GetCooldownRemainingTime(Senei) <= 8 ||
-                                   SenCount is 2 && GetCooldownRemainingTime(Senei) <= 6 ||
-                                   SenCount is 3 && GetCooldownRemainingTime(Senei) <= 4:
+                                   SenCount is 0 && GetCooldownRemainingTime(Senei) <= 11 && JustUsed(Higanbana, 5f) ||
+                                   SenCount is 1 && GetCooldownRemainingTime(Senei) <= 9 ||
+                                   SenCount is 2 && GetCooldownRemainingTime(Senei) <= 7 ||
+                                   SenCount is 3 && GetCooldownRemainingTime(Senei) <= 5:
 
                     // Pre 94
                     case false when
