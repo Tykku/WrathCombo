@@ -605,8 +605,8 @@ internal partial class SAM
         [
             ([18, 23], () => !ActionReady(Shinten)),
             ([20, 25], () => !ActionReady(Gyoten) || SAM_Opener_IncludeGyoten == 1)
-            // ([7, 24], () => SenCount is 1 or 2),
-            // ([9, 26], () => !HasStatusEffect(Buffs.TsubameReady))
+            //  ([7, 24], () => OriginalHook(Iaijutsu) is not TendoSetsugekka),
+            // ([9, 26], () => !HasStatusEffect(Buffs.TsubameReady) || !JustUsed(TendoSetsugekka))
         ];
 
         public override Preset Preset => Preset.SAM_ST_Opener;
