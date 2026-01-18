@@ -6420,8 +6420,7 @@ public enum Preset
     [ParentCombo(SAM_ST_Damage)]
     [CustomComboInfo("Shinten Option", "Adds Shinten to the rotation.\nWill pool kenki for burst.", Job.SAM)]
     SAM_ST_Shinten = 15008,
-
-
+    
     [ParentCombo(SAM_ST_Damage)]
     [CustomComboInfo("Ranged Uptime Feature", "Adds Enpi to the rotation when you are out of range.\nWill use Ogi or Iaijutsu when possible and enabled.", Job.SAM)]
     SAM_ST_RangedUptime = 15097,

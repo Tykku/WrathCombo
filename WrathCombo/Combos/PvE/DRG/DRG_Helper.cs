@@ -115,46 +115,54 @@ internal partial class DRG
                 !burstEnabled);
     }
 
-    private static uint OutsideOfMeleeNoWeave(uint actionId, bool simpleMode = false)
+    private static uint OutsideOfMelee(uint actionId, bool simpleMode = false)
     {
-        //Mirage Feature
-        if ((simpleMode || IsEnabled(Preset.DRG_ST_Mirage)) &&
-            ActionReady(MirageDive) &&
-            HasStatusEffect(Buffs.DiveReady) &&
-            InActionRange(MirageDive))
-            return MirageDive;
+        if (simpleMode || IsEnabled(Preset.DRG_ST_CDs))
+        {
+            //Mirage Feature
+            if ((simpleMode || IsEnabled(Preset.DRG_ST_Mirage)) &&
+                ActionReady(MirageDive) &&
+                HasStatusEffect(Buffs.DiveReady) &&
+                InActionRange(MirageDive))
+                return MirageDive;
 
-        //Wyrmwind Thrust Feature
-        if ((simpleMode || IsEnabled(Preset.DRG_ST_Wyrmwind)) &&
-            CanWyrmwind)
-            return WyrmwindThrust;
+            //Wyrmwind Thrust Feature
+            if ((simpleMode || IsEnabled(Preset.DRG_ST_Wyrmwind)) &&
+                CanWyrmwind)
+                return WyrmwindThrust;
 
-        //Geirskogul Feature
-        if ((simpleMode || IsEnabled(Preset.DRG_ST_Geirskogul)) &&
-            ActionReady(Geirskogul) &&
-            !LoTDActive && InActionRange(Geirskogul))
-            return Geirskogul;
+            //Geirskogul Feature
+            if ((simpleMode || IsEnabled(Preset.DRG_ST_Geirskogul)) &&
+                ActionReady(Geirskogul) &&
+                !LoTDActive && InActionRange(Geirskogul))
+                return Geirskogul;
 
-        //Starcross Feature
-        if ((simpleMode || IsEnabled(Preset.DRG_ST_Starcross)) &&
-            ActionReady(Starcross) &&
-            HasStatusEffect(Buffs.StarcrossReady) &&
-            InActionRange(Starcross))
-            return Starcross;
+            //Starcross Feature
+            if ((simpleMode || IsEnabled(Preset.DRG_ST_Starcross)) &&
+                ActionReady(Starcross) &&
+                HasStatusEffect(Buffs.StarcrossReady) &&
+                InActionRange(Starcross))
+                return Starcross;
 
-        //Rise of the Dragon Feature
-        if ((simpleMode || IsEnabled(Preset.DRG_ST_Dives_RiseOfTheDragon)) &&
-            ActionReady(RiseOfTheDragon) &&
-            HasStatusEffect(Buffs.DragonsFlight) &&
-            InActionRange(RiseOfTheDragon))
-            return RiseOfTheDragon;
+            //Rise of the Dragon Feature
+            if ((simpleMode || IsEnabled(Preset.DRG_ST_Dives_RiseOfTheDragon)) &&
+                ActionReady(RiseOfTheDragon) &&
+                HasStatusEffect(Buffs.DragonsFlight) &&
+                InActionRange(RiseOfTheDragon))
+                return RiseOfTheDragon;
 
-        //Nastrond Feature
-        if ((simpleMode || IsEnabled(Preset.DRG_ST_Nastrond)) &&
-            ActionReady(Nastrond) &&
-            HasStatusEffect(Buffs.NastrondReady) &&
-            LoTDActive && InActionRange(Nastrond))
-            return Nastrond;
+            //Nastrond Feature
+            if ((simpleMode || IsEnabled(Preset.DRG_ST_Nastrond)) &&
+                ActionReady(Nastrond) &&
+                HasStatusEffect(Buffs.NastrondReady) &&
+                LoTDActive && InActionRange(Nastrond))
+                return Nastrond;
+        }
+
+        // Piercing Talon Uptime Option
+        if ((simpleMode || IsEnabled(Preset.DRG_ST_RangedUptime)) &&
+            ActionReady(PiercingTalon))
+            return PiercingTalon;
 
         return actionId;
     }

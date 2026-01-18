@@ -17,11 +17,6 @@ internal partial class DRG : Melee
             if (ContentSpecificActions.TryGet(out uint contentAction))
                 return contentAction;
 
-            // Piercing Talon Uptime Option
-            if (ActionReady(PiercingTalon) &&
-                !InMeleeRange() && HasBattleTarget())
-                return PiercingTalon;
-
             if (HasStatusEffect(Buffs.PowerSurge) || !LevelChecked(Disembowel))
             {
                 if (CanDRGWeave())
@@ -109,12 +104,11 @@ internal partial class DRG : Melee
                     !HasStatusEffect(Buffs.StarcrossReady) &&
                     LoTDActive && InMeleeRange())
                     return Stardiver;
-
-                if (!InMeleeRange())
-                    return OutsideOfMeleeNoWeave(actionID, true);
             }
 
-            return BasicCombo(actionID, true);
+            return !InMeleeRange() && HasBattleTarget()
+                ? OutsideOfMelee(actionID, true)
+                : BasicCombo(actionID, true);
         }
     }
 
@@ -216,6 +210,11 @@ internal partial class DRG : Melee
                     return Stardiver;
             }
 
+            // Piercing Talon Uptime Option
+            if (ActionReady(PiercingTalon) &&
+                !InActionRange(DoomSpike) && HasBattleTarget() && !CanDRGWeave())
+                return PiercingTalon;
+
             if (ComboTimer > 0)
             {
                 if (!LevelChecked(SonicThrust))
@@ -259,12 +258,6 @@ internal partial class DRG : Melee
 
             if (ContentSpecificActions.TryGet(out uint contentAction))
                 return contentAction;
-
-            // Piercing Talon Uptime Option
-            if (IsEnabled(Preset.DRG_ST_RangedUptime) &&
-                ActionReady(PiercingTalon) &&
-                !InMeleeRange() && HasBattleTarget())
-                return PiercingTalon;
 
             if (HasStatusEffect(Buffs.PowerSurge) || !LevelChecked(Disembowel))
             {
@@ -396,14 +389,13 @@ internal partial class DRG : Melee
                         LoTDActive &&
                         !HasStatusEffect(Buffs.StarcrossReady))
                         return Stardiver;
-
-                    if (!InMeleeRange())
-                        return OutsideOfMeleeNoWeave(actionID);
                 }
             }
 
             //1-2-3 Combo
-            return BasicCombo(actionID, IsEnabled(Preset.DRG_TrueNorthDynamic));
+            return !InMeleeRange() && HasBattleTarget()
+                ? OutsideOfMelee(actionID)
+                : BasicCombo(actionID, IsEnabled(Preset.DRG_TrueNorthDynamic));
         }
     }
 
@@ -418,13 +410,6 @@ internal partial class DRG : Melee
 
             if (ContentSpecificActions.TryGet(out uint contentAction))
                 return contentAction;
-
-            // Piercing Talon Uptime Option
-            if (IsEnabled(Preset.DRG_AoE_RangedUptime) &&
-                ActionReady(PiercingTalon) &&
-                !InActionRange(DoomSpike) && HasBattleTarget() &&
-                !CanDRGWeave())
-                return PiercingTalon;
 
             if (HasStatusEffect(Buffs.PowerSurge))
             {
@@ -555,6 +540,13 @@ internal partial class DRG : Melee
                         return Stardiver;
                 }
             }
+
+            // Piercing Talon Uptime Option
+            if (IsEnabled(Preset.DRG_AoE_RangedUptime) &&
+                ActionReady(PiercingTalon) &&
+                !InActionRange(DoomSpike) && HasBattleTarget() &&
+                !CanDRGWeave())
+                return PiercingTalon;
 
             if (ComboTimer > 0)
             {
