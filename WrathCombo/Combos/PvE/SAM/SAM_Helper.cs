@@ -2,7 +2,6 @@
 using Dalamud.Game.ClientState.JobGauge.Types;
 using System;
 using System.Collections.Generic;
-using ECommons.Logging;
 using WrathCombo.CustomComboNS;
 using WrathCombo.CustomComboNS.Functions;
 using static FFXIVClientStructs.FFXIV.Client.Game.ActionManager;
@@ -574,7 +573,7 @@ internal partial class SAM
             MeikyoShisui,
             Gekko,
             Zanshin,
-            Higanbana,
+            Higanbana, //13
             OgiNamikiri,
             Shoha,
             KaeshiNamikiri,
@@ -609,6 +608,7 @@ internal partial class SAM
             ([25], () => !ActionReady(Gyoten) || (int)SAM_Opener_IncludeGyoten is 1 or 3),
             ([7, 24], () => SenCount is not 3 && !(SenCount is 2 && JustUsed(Yukikaze))),
             ([9, 26], () => !HasStatusEffect(Buffs.TsubameReady) && !JustUsed(TendoSetsugekka)),
+            ([13], () => SenCount is not 1 && !(SenCount is 2 && JustUsed(Gekko)))
         ];
 
         public override Preset Preset => Preset.SAM_ST_Opener;

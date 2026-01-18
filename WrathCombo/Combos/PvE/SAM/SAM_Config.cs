@@ -1,5 +1,5 @@
-using System.Numerics;
 using ECommons.ImGuiMethods;
+using System.Numerics;
 using WrathCombo.CustomComboNS.Functions;
 using WrathCombo.Extensions;
 using WrathCombo.Window.Functions;
@@ -22,8 +22,8 @@ internal partial class SAM
                     ImGuiEx.Spacing(new Vector2(0, 10));
 
                     DrawSliderInt(0, 13, SAM_Opener_PrePullDelay,
-                        $"Seconds to delay from first {MeikyoShisui.ActionName()} to next step (hover for details)", itemWidth: 75f.Scale
-                        ());
+                        $"Seconds to delay from first {MeikyoShisui.ActionName()} to next step (hover for details)", 75f.Scale());
+
                     if (ImGui.IsItemHovered())
                         ImGui.SetTooltip("Delay is enforced by replacing your button with Savage Blade.");
 
