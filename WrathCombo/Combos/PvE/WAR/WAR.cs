@@ -419,6 +419,32 @@ internal partial class WAR
     }
 
     #endregion
+    
+    internal class WAR_RetargetOnslaught : CustomCombo
+    {
+        protected internal override Preset Preset => Preset.WAR_RetargetOnslaught;
+
+        protected override uint Invoke(uint actionID)
+        {
+            if (actionID is not Onslaught)
+                return actionID;
+            
+            IGameObject? target =
+                // Mouseover
+                SimpleTarget.Stack.MouseOver.IfHostile()
+                    .IfWithinRange(Onslaught.ActionRange()) ??
+
+                // Nearest Enemy to Mouseover
+                SimpleTarget.NearestEnemyToTarget(SimpleTarget.Stack.MouseOver,
+                    Onslaught.ActionRange()) ??
+    
+                CurrentTarget.IfHostile().IfWithinRange(Onslaught.ActionRange());
+            
+            return target != null
+                ? actionID.Retarget(target)
+                : actionID;
+        }
+    }
 
     #region MyRegion
 

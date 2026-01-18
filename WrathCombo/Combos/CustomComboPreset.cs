@@ -3061,9 +3061,14 @@ public enum Preset
     [ParentCombo(DRK_Retarget_Oblation)]
     [CustomComboInfo("Prevent Double Oblations", "Will change Oblation to Savage Blade when your target already has Oblation on them.", Job.DRK)]
     DRK_Retarget_Oblation_DoubleProtection = 5134,
+    
+    [ReplaceSkill(DRK.Shadowstride)]
+    [CustomComboInfo("Mouseover Shadowstride Option", "Will retarget Shadowstride to you mouseover target (If Hostile) or the nearest hostile target to your mouseover target (If friendly).", Job.DRK)]
+    [Retargeted(DRK.Shadowstride)]
+    DRK_RetargetShadowstride = 5135,
 
     #endregion
-    // Last value = 5134
+    // Last value = 5135
 
     #endregion
     // Last value = 5134
@@ -3766,10 +3771,15 @@ public enum Preset
     [Retargeted(GNB.HeartOfCorundum, GNB.HeartOfStone)]
     GNB_RetargetHeartofStone_TT = 7090,
     #endregion
+    
+    [ReplaceSkill(GNB.Trajectory)]
+    [CustomComboInfo("Mouseover Trajectory Option", "Will retarget Trajectory to you mouseover target (If Hostile) or the nearest hostile target to your mouseover target (If friendly).", Job.GNB)]
+    [Retargeted(GNB.Trajectory)]
+    GNB_RetargetTrajectory = 7091,
 
     #endregion
 
-    // Last Value = 7090
+    // Last Value = 7091
     #endregion
 
     #region MACHINIST
@@ -7995,6 +8005,11 @@ public enum Preset
     [CustomComboInfo("Include Target's Target", "If your target's target is not you, will Retarget Nascent Flash onto them.\n(if you're not top aggro, and not mousing over or hard targeting an ally)", Job.WAR)]
     [Retargeted]
     WAR_RawIntuition_Targeting_TT = 18121,
+    
+    [ReplaceSkill(WAR.Onslaught)]
+    [CustomComboInfo("Mouseover Onslaught Option", "Will retarget Onslaught to you mouseover target (If Hostile) or the nearest hostile target to your mouseover target (If friendly).", Job.WAR)]
+    [Retargeted(WAR.Onslaught)]
+    WAR_RetargetOnslaught = 18152,
 
     [ReplaceSkill(WAR.Holmgang)]
     [CustomComboInfo("Retarget Holmgang Feature", "Will Retarget Holmgang to yourself, instead of letting it go on enemies.", Job.WAR)]
@@ -8030,7 +8045,7 @@ public enum Preset
     #endregion
 
     #endregion
-    // Last value = 18145
+    // Last value = 18152
     #endregion
 
     #region WHITE MAGE
