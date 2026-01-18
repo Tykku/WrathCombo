@@ -93,7 +93,7 @@ internal unsafe static class AutoRotationController
                || Player.Mounted
                || !EzThrottler.Throttle("Autorot", cfg.Throttler)
                || (cfg.DPSSettings.UnTargetAndDisableForPenalty && PlayerHasActionPenalty())
-               || (Service.Configuration.OverwriteQueue && ActionManager.Instance()->QueuedActionId > 0);
+               || (ActionManager.Instance()->QueuedActionId > 0);
     }
 
     private static bool IsOccupied()
