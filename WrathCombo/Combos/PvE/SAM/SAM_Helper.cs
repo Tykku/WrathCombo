@@ -2,6 +2,7 @@
 using Dalamud.Game.ClientState.JobGauge.Types;
 using System;
 using System.Collections.Generic;
+using ECommons.Logging;
 using WrathCombo.CustomComboNS;
 using WrathCombo.CustomComboNS.Functions;
 using static FFXIVClientStructs.FFXIV.Client.Game.ActionManager;
@@ -604,9 +605,9 @@ internal partial class SAM
         public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
         [
             ([18, 23], () => !ActionReady(Shinten)),
-            ([20, 25], () => !ActionReady(Gyoten) || SAM_Opener_IncludeGyoten == 1)
-            //  ([7, 24], () => OriginalHook(Iaijutsu) is not TendoSetsugekka),
-            // ([9, 26], () => !HasStatusEffect(Buffs.TsubameReady) || !JustUsed(TendoSetsugekka))
+            ([20, 25], () => !ActionReady(Gyoten) || SAM_Opener_IncludeGyoten == 1),
+            ([7, 24], () => SenCount is not 3 && !(SenCount is 2 && JustUsed(Yukikaze))),
+            ([9, 26], () => !HasStatusEffect(Buffs.TsubameReady) && !JustUsed(TendoSetsugekka)),
         ];
 
         public override Preset Preset => Preset.SAM_ST_Opener;
