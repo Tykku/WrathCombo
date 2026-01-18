@@ -259,11 +259,12 @@ internal partial class SAM
         ActionReady(Senei) && NumberOfGcdsUsed >= 4 &&
         InActionRange(Senei) &&
         (LevelChecked(TendoKaeshiSetsugekka) &&
-         (SenCount is 3 && HasStatusEffect(Buffs.Tendo) || JustUsed(TendoSetsugekka, 15f)) ||
+         (SenCount is 3 && HasStatusEffect(Buffs.Tendo) ||
+          JustUsed(TendoSetsugekka, 15f)) ||
          !LevelChecked(TendoKaeshiSetsugekka));
 
     private static bool CanTsubame() =>
-        LevelChecked(TsubameGaeshi) && ActionReady(TsubameGaeshi) &&
+        ActionReady(TsubameGaeshi) &&
         (HasStatusEffect(Buffs.TendoKaeshiSetsugekkaReady) ||
          HasStatusEffect(Buffs.TsubameReady)) &&
         (SenCount is 3 ||
@@ -271,18 +272,21 @@ internal partial class SAM
          GetStatusEffectRemainingTime(Buffs.TsubameReady) < 5);
 
     private static bool CanShoha() =>
-        ActionReady(Shoha) && MeditationStacks is 3 &&
+        ActionReady(Shoha) &&
+        MeditationStacks is 3 &&
         InActionRange(Shoha) &&
-        (MeditationStacks is 3 && SenCount is 3 ||
-         MeditationStacks is 3 && HasStatusEffect(Buffs.OgiNamikiriReady) ||
+        (SenCount is 3 ||
+         HasStatusEffect(Buffs.OgiNamikiriReady) ||
          EnhancedSenei && JustUsed(Senei, 20f) ||
          !EnhancedSenei && JustUsed(KaeshiSetsugekka, 10f));
 
     //TODO Buffcheck
     private static bool CanZanshin() =>
         ActionReady(Zanshin) &&
-        InActionRange(Zanshin) && HasStatusEffect(Buffs.ZanshinReady) &&
-        (JustUsed(Senei, 20f) || GetStatusEffectRemainingTime(Buffs.ZanshinReady) <= 8);
+        InActionRange(Zanshin) &&
+        HasStatusEffect(Buffs.ZanshinReady) &&
+        (JustUsed(Senei, 20f) ||
+         GetStatusEffectRemainingTime(Buffs.ZanshinReady) <= 8);
 
     private static bool CanShinten()
     {
