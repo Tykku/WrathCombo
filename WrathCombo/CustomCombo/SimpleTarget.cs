@@ -342,11 +342,13 @@ internal static class SimpleTarget
             .OrderBy(x => GetTargetDistance(x))
             .FirstOrDefault();
     
-    public static IGameObject? NearestEnemyTargetToMouseover=>
+    public static IGameObject? NearestEnemyToTarget
+        (IGameObject? target, float maximumRangeFromPlayer = 35f) =>
         Svc.Objects
             .OfType<IBattleChara>()
-            .Where(x => x.IsHostile() && x.IsTargetable && x.IsWithinRange(20) && x.IsNotInvincible())
-            .OrderBy(x => GetTargetDistance(x, Stack.MouseOver))
+            .Where(x => x.IsHostile() && x.IsTargetable && x.IsNotInvincible() &&
+                        x.IsWithinRange(maximumRangeFromPlayer))
+            .OrderBy(x => GetTargetDistance(x, target ?? CurrentTarget))
             .FirstOrDefault();
 
     public static IGameObject? LowestHPEnemy =>

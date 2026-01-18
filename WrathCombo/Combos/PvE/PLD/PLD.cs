@@ -850,15 +850,21 @@ internal partial class PLD : Tank
         {
             if (actionID is not Intervene)
                 return actionID;
+            
+            IGameObject? target =
+                // Mouseover
+                SimpleTarget.Stack.MouseOver.IfHostile()
+                    .IfWithinRange(Intervene.ActionRange()) ??
 
-            IGameObject? target = SimpleTarget.Stack.MouseOver;
+                // Nearest Enemy to Mouseover
+                SimpleTarget.NearestEnemyToTarget(SimpleTarget.Stack.MouseOver,
+                    Intervene.ActionRange()) ??
+    
+                CurrentTarget.IfHostile().IfWithinRange(Intervene.ActionRange());
             
-            if (InActionRange(Intervene, target) && !TargetIsFriendly(target))
-                return Intervene.Retarget(SimpleTarget.ModelMouseOverTarget); //Hostile Mouseover retarget option
-            
-            return target is null
-                ? actionID //hard target default
-                : Intervene.Retarget(SimpleTarget.NearestEnemyTargetToMouseover);
+            return target != null
+                ? actionID.Retarget(target)
+                : actionID;
         }
     }
 
