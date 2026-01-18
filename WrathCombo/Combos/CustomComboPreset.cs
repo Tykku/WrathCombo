@@ -5233,6 +5233,11 @@ public enum Preset
     [CustomComboInfo("Low HP% Cover Option", "Will Cover the Lowest Health (by percentage) Party member when they fall below set threshold", Job.PLD)]
     [Retargeted(PLD.Cover)]
     PLD_RetargetCover_LowHP = 11077,
+    
+    [ReplaceSkill(PLD.Intervene)]
+    [CustomComboInfo("Mouseover Intervene Option", "Will retarget intervene to you mouseover target (If Hostile) or the nearest hostile target to your mouseover target (If friendly).", Job.PLD)]
+    [Retargeted(PLD.Intervene)]
+    PLD_RetargetIntervene = 11105,
 
     #endregion
 
