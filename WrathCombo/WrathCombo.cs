@@ -219,9 +219,7 @@ public sealed partial class WrathCombo : IDalamudPlugin
 
         Svc.Framework.Update += OnFrameworkUpdate;
         Svc.ClientState.TerritoryChanged += ClientState_TerritoryChanged;
-        
-        PresetStorage.HandleDuplicatePresets();
-        PresetStorage.HandleCurrentConflicts();
+
         CustomComboFunctions.TimerSetup();
 
         // Starts Retarget list cleaning process after a delay
