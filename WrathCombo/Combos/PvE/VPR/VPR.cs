@@ -15,7 +15,6 @@ internal partial class VPR : Melee
             if (actionID is not SteelFangs)
                 return actionID;
 
-
             if (ContentSpecificActions.TryGet(out uint contentAction))
                 return contentAction;
 
@@ -66,12 +65,6 @@ internal partial class VPR : Melee
                     return Role.LegSweep;
             }
 
-            //Ranged
-            if (LevelChecked(WrithingSnap) && !InMeleeRange() && HasBattleTarget())
-                return HasRattlingCoilStacks
-                    ? UncoiledFury
-                    : WrithingSnap;
-
             //Vicewinder Combo
             if (CanVicewinderCombo(ref actionID))
                 return actionID;
@@ -96,6 +89,12 @@ internal partial class VPR : Melee
             // Uncoiled Fury
             if (CanUseUncoiledFury())
                 return UncoiledFury;
+
+            //Ranged
+            if (ActionReady(WrithingSnap) && !InMeleeRange() && HasBattleTarget())
+                return HasRattlingCoilStacks
+                    ? UncoiledFury
+                    : WrithingSnap;
 
             //Reawaken combo / 1-2-3 (4-5-6) Combo
             return HasStatusEffect(Buffs.Reawakened)
@@ -270,14 +269,6 @@ internal partial class VPR : Melee
                     return Role.LegSweep;
             }
 
-            //Ranged
-            if (IsEnabled(Preset.VPR_ST_RangedUptime) &&
-                LevelChecked(WrithingSnap) && !InMeleeRange() && HasBattleTarget())
-                return VPR_ST_RangedUptimeUncoiledFury &&
-                       HasRattlingCoilStacks
-                    ? UncoiledFury
-                    : WrithingSnap;
-
             //Vicewinder Combo
             if (IsEnabled(Preset.VPR_ST_VicewinderCombo) &&
                 CanVicewinderCombo(ref actionID))
@@ -308,6 +299,18 @@ internal partial class VPR : Melee
             if (IsEnabled(Preset.VPR_ST_UncoiledFury) &&
                 CanUseUncoiledFury())
                 return UncoiledFury;
+
+            //Ranged
+            if (!InMeleeRange() && HasBattleTarget())
+            {
+                if (IsEnabled(Preset.VPR_ST_UFRangedUptime) &&
+                    ActionReady(UncoiledFury) && HasRattlingCoilStacks)
+                    return UncoiledFury;
+
+                if (IsEnabled(Preset.VPR_ST_RangedUptime) &&
+                    ActionReady(WrithingSnap))
+                    return WrithingSnap;
+            }
 
             //Reawaken combo / 1-2-3 (4-5-6) Combo
             return IsEnabled(Preset.VPR_ST_GenerationCombo) &&
