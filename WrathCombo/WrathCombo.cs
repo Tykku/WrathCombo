@@ -289,7 +289,6 @@ public sealed partial class WrathCombo : IDalamudPlugin
             Configuration.ProcessSaveQueue();
 
             PresetStorage.HandleDuplicatePresets();
-            PresetStorage.HandleCurrentConflicts();
 
             //Hacky workaround to ensure it's always running
             CustomComboFunctions.IsMoving();
@@ -305,6 +304,8 @@ public sealed partial class WrathCombo : IDalamudPlugin
             #region Checks and Updates that require the Player
 
             JobID = Player.Job;
+
+            PresetStorage.HandleCurrentConflicts();
 
             BlueMageService.PopulateBLUSpells();
             TargetHelper.Draw();
