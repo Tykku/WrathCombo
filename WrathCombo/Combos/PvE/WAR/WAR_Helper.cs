@@ -419,7 +419,7 @@ internal partial class WAR : Tank
         if (IsEnabled(Preset.WAR_Mitigation_Boss_Equilibrium) && 
             ActionReady(Equilibrium) &&
             (PlayerHealthPercentageHp() <= equilibriumEmergencyThreshold || 
-            PlayerHealthPercentageHp() <= equilibriumTankbusterThreshold && HasIncomingTankBusterEffect()))
+            (PlayerHealthPercentageHp() <= equilibriumTankbusterThreshold && HasIncomingTankBusterEffect())))
         {
             actionID = Equilibrium;
             return true;

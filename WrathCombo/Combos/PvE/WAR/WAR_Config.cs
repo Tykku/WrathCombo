@@ -403,6 +403,10 @@ internal partial class WAR
                         "If you don't use those Features for your personal mitigation, you may not want to enable this.");
                     ImGui.Unindent();
                     break;
+                
+                case Preset.WAR_ArmsLengthLockout:
+                    DrawSliderInt(0, 5, WAR_ArmsLengthLockout_Time, "Time (In Seconds) remaining on Inner Strength to Lock out Arm's Length until.");
+                    break;
 
                     #endregion
             }
@@ -421,7 +425,7 @@ internal partial class WAR
             WAR_Mitigation_NonBoss_Holmgang_Health = new("WAR_Mitigation_NonBoss_Holmgang_Health", 20),
             WAR_Mitigation_Boss_RawIntuition_Health = new("WAR_Mitigation_Boss_RawIntuition_Health", 99),
             WAR_Mitigation_Boss_Equilibrium_Health = new("WAR_Mitigation_Boss_Equilibrium_Health", 30),
-            WAR_Mitigation_Boss_Tankbuster_Equilibrium_Health = new("WAR_Mitigation_Boss_Tankbuster_Equilibrium_Health", 80),   
+            WAR_Mitigation_Boss_Tankbuster_Equilibrium_Health = new("WAR_Mitigation_Boss_Tankbuster_Equilibrium_Health", 80),
             WAR_Infuriate_Charges = new("WAR_Infuriate_Charges"),
             WAR_Infuriate_Range = new("WAR_Infuriate_Range"),
             WAR_SurgingRefreshRange = new("WAR_SurgingRefreshRange", 10),
@@ -462,8 +466,7 @@ internal partial class WAR
             WAR_Mit_ShakeItOff_PartyRequirement = new("WAR_Mit_ShakeItOff_PartyRequirement", (int)PartyRequirement.Yes),
             WAR_Mit_ArmsLength_Boss = new("WAR_Mit_ArmsLength_Boss", (int)BossAvoidance.On),
             WAR_Mit_ArmsLength_EnemyCount = new("WAR_Mit_ArmsLength_EnemyCount"),
-            WAR_Bozja_LostCure_Health = new("WAR_Bozja_LostCure_Health", 50),
-            WAR_Bozja_LostReraise_Health = new("WAR_Bozja_LostReraise_Health", 10);
+            WAR_ArmsLengthLockout_Time = new("WAR_ArmsLengthLockout_Time", 3);
 
         public static UserFloat
             WAR_Mitigation_NonBoss_MitigationThreshold = new("WAR_Mitigation_NonBoss_MitigationThreshold", 20f),

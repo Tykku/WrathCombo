@@ -8010,6 +8010,10 @@ public enum Preset
     [CustomComboInfo("Mouseover Onslaught Option", "Will retarget Onslaught to your field or UI mouseover target (If Hostile) or the nearest hostile target to your mouseover target (If friendly).", Job.WAR)]
     [Retargeted(WAR.Onslaught)]
     WAR_RetargetOnslaught = 18152,
+    
+    [ReplaceSkill(7548)]
+    [CustomComboInfo("Arm's Length Protect Option", "Will Lock out Arm's Length in boss encounters when Warrior already has Knockback immunity from Inner Release.", Job.WAR)]
+    WAR_ArmsLengthLockout = 18153,
 
     [ReplaceSkill(WAR.Holmgang)]
     [CustomComboInfo("Retarget Holmgang Feature", "Will Retarget Holmgang to yourself, instead of letting it go on enemies.", Job.WAR)]
@@ -8045,7 +8049,7 @@ public enum Preset
     #endregion
 
     #endregion
-    // Last value = 18152
+    // Last value = 18153
     #endregion
 
     #region WHITE MAGE

@@ -420,6 +420,23 @@ internal partial class WAR
 
     #endregion
     
+    internal class WAR_ArmsLengthLockout : CustomCombo
+    {
+        protected internal override Preset Preset => Preset.WAR_ArmsLengthLockout;
+
+        protected override uint Invoke(uint actionID)
+        {
+            if (actionID != Role.ArmsLength)
+                return actionID;
+
+            return InBossEncounter() && 
+                   (GetPossessedStatusRemainingTime(Buffs.InnerStrength) > WAR_ArmsLengthLockout_Time || 
+                    JustUsed(InnerRelease))
+                ? All.SavageBlade
+                : actionID;
+        }
+    }
+    
     internal class WAR_RetargetOnslaught : CustomCombo
     {
         protected internal override Preset Preset => Preset.WAR_RetargetOnslaught;
@@ -478,6 +495,8 @@ internal partial class WAR
             (ComboTimer > 0 && ComboAction == Maim && LevelChecked(StormsEye)) ? StormsEye :
             HeavySwing;
     }
+    
+    
     
     internal class WAR_AoE_BasicCombo : CustomCombo
     {
