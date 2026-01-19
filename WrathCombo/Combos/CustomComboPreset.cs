@@ -3063,7 +3063,7 @@ public enum Preset
     DRK_Retarget_Oblation_DoubleProtection = 5134,
     
     [ReplaceSkill(DRK.Shadowstride)]
-    [CustomComboInfo("Mouseover Shadowstride Option", "Will retarget Shadowstride to you mouseover target (If Hostile) or the nearest hostile target to your mouseover target (If friendly).", Job.DRK)]
+    [CustomComboInfo("Mouseover Shadowstride Option", "Will retarget Shadowstride to your field or UI mouseover target (If Hostile) or the nearest hostile target to your mouseover target (If friendly).", Job.DRK)]
     [Retargeted(DRK.Shadowstride)]
     DRK_RetargetShadowstride = 5135,
 
@@ -3773,7 +3773,7 @@ public enum Preset
     #endregion
     
     [ReplaceSkill(GNB.Trajectory)]
-    [CustomComboInfo("Mouseover Trajectory Option", "Will retarget Trajectory to you mouseover target (If Hostile) or the nearest hostile target to your mouseover target (If friendly).", Job.GNB)]
+    [CustomComboInfo("Mouseover Trajectory Option", "Will retarget Trajectory to your field or UI mouseover target (If Hostile) or the nearest hostile target to your mouseover target (If friendly).", Job.GNB)]
     [Retargeted(GNB.Trajectory)]
     GNB_RetargetTrajectory = 7091,
 
@@ -5245,13 +5245,13 @@ public enum Preset
     PLD_RetargetCover_LowHP = 11077,
     
     [ReplaceSkill(PLD.Intervene)]
-    [CustomComboInfo("Mouseover Intervene Option", "Will retarget intervene to you mouseover target (If Hostile) or the nearest hostile target to your mouseover target (If friendly).", Job.PLD)]
+    [CustomComboInfo("Mouseover Intervene Option", "Will retarget intervene to your field or UI mouseover target (If Hostile) or the nearest hostile target to your mouseover target (If friendly).", Job.PLD)]
     [Retargeted(PLD.Intervene)]
     PLD_RetargetIntervene = 11105,
 
     #endregion
 
-    //// Last value = 11099
+    //// Last value = 11105
 
     #endregion
 
@@ -8007,7 +8007,7 @@ public enum Preset
     WAR_RawIntuition_Targeting_TT = 18121,
     
     [ReplaceSkill(WAR.Onslaught)]
-    [CustomComboInfo("Mouseover Onslaught Option", "Will retarget Onslaught to you mouseover target (If Hostile) or the nearest hostile target to your mouseover target (If friendly).", Job.WAR)]
+    [CustomComboInfo("Mouseover Onslaught Option", "Will retarget Onslaught to your field or UI mouseover target (If Hostile) or the nearest hostile target to your mouseover target (If friendly).", Job.WAR)]
     [Retargeted(WAR.Onslaught)]
     WAR_RetargetOnslaught = 18152,
 
