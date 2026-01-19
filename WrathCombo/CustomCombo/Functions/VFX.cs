@@ -35,6 +35,7 @@ internal abstract partial class CustomComboFunctions
         "vfx/lockon/eff/m0742trg_b1t1",                 // M7 Abominable Blink
         "vfx/lockon/eff/x6r9_tank_lockonae",            // M9 Hardcore Large TB
         "vfx/lockon/eff/target_ae_s5f",                 // The Tower at Paradigm's Breach
+        "vfx/lockon/eff/sharelaser2tank"                // Found in VFXEditor, unknown source
     ], StringComparer.OrdinalIgnoreCase);
 
     // List of Multi-Hit Shared Damage Effect Paths
@@ -52,6 +53,7 @@ internal abstract partial class CustomComboFunctions
     private static readonly FrozenSet<string> SharedDmgPaths = FrozenSet.ToFrozenSet([
         "vfx/lockon/eff/coshare",
         "vfx/lockon/eff/share_laser",
+        "vfx/lockon/eff/share_1",
         "vfx/lockon/eff/com_share",
         "vfx/lockon/eff/d1084_share_24m_s6_0k2",        // San d'Oria The Second Walk
         // Won't work till Static VFX tracking is added
