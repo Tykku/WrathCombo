@@ -143,19 +143,22 @@ internal partial class BRD
         {
             return ActionReady(IronJaws) && HasStatusEffect(Buffs.RagingStrikes) && PurpleRemaining < 35 && BlueRemaining < 35;
         }
-        internal static int computeHpThreshold()
+        internal static int ComputeHpThreshold(IGameObject? x)
         {
+            if (x is null)
+                return 0;
+            
             if (InBossEncounter())
             {
-                return TargetIsBoss() ? BRD_ST_DPS_DotBossOption : BRD_ST_DPS_DotBossAddsOption;
+                return x.IsBoss() ? BRD_ST_DPS_DotBossOption : BRD_ST_DPS_DotBossAddsOption;
             }
             return BRD_ST_DPS_DotTrashOption;
         }
-        internal static int computeAoEDoTHpThreshold()
+        internal static int ComputeAoEDoTHpThreshold(IGameObject? x)
         {
             if (InBossEncounter())
             {
-                return TargetIsBoss() ? BRD_AoE_Adv_MultidotBossOption : BRD_AoE_Adv_MultidotBossAddsOption;
+                return x.IsBoss() ? BRD_AoE_Adv_MultidotBossOption : BRD_AoE_Adv_MultidotBossAddsOption;
             }
             return BRD_AoE_Adv_MultidotTrashOption;
         }

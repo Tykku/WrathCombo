@@ -411,6 +411,14 @@ internal static class SimpleTarget
         ushort dotDebuff,
         int minHPPercent = 10,
         float reapplyThreshold = 1,
+        int maxNumberOfEnemiesInRange = 3) => DottableEnemy(dotAction, dotDebuff, _ => minHPPercent, reapplyThreshold, maxNumberOfEnemiesInRange);
+    
+
+    public static IGameObject? DottableEnemy
+    (uint dotAction,
+        ushort dotDebuff,
+        Func<IGameObject?, int> minHPPercent,
+        float reapplyThreshold = 1,
         int maxNumberOfEnemiesInRange = 3)
     {
         var range = dotAction.ActionRange();
@@ -428,7 +436,7 @@ internal static class SimpleTarget
 
         return nearbyEnemies
             .Where(x => x.CanUseOn(dotAction) &&
-                        (float)x.CurrentHp / x.MaxHp * 100f > minHPPercent &&
+                        (float)x.CurrentHp / x.MaxHp * 100f > minHPPercent(x) &&
                         !JustUsedOn(dotAction, x) &&
                         IsInLineOfSight(x) &&
                         GetStatusEffectRemainingTime
@@ -469,6 +477,15 @@ internal static class SimpleTarget
         ushort dotDebuff2,
         int minHPPercent = 10,
         float minTime = 1,
+        int maxNumberOfEnemiesInRange = 3) => BardRefreshableEnemy(refreshAction, dotDebuff1, dotDebuff2, _ => minHPPercent, minTime, maxNumberOfEnemiesInRange);
+    
+    
+    public static IGameObject? BardRefreshableEnemy
+    (uint refreshAction,
+        ushort dotDebuff1,
+        ushort dotDebuff2,
+        Func<IGameObject?, int> minHPPercent,
+        float minTime = 1,
         int maxNumberOfEnemiesInRange = 3)
     {
         var range = refreshAction.ActionRange();
@@ -486,7 +503,7 @@ internal static class SimpleTarget
 
         return nearbyEnemies
             .Where(x => x.CanUseOn(refreshAction) &&
-                        (float)x.CurrentHp / x.MaxHp * 100f > minHPPercent &&
+                        (float)x.CurrentHp / x.MaxHp * 100f > minHPPercent(x) &&
                         IsInLineOfSight(x) &&
                         !JustUsedOn(refreshAction, x) &&
                         HasStatusEffect(dotDebuff1, x) &&
