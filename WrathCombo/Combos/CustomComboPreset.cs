@@ -2851,7 +2851,7 @@ public enum Preset
     
     [ParentCombo(DRK_Mitigation)]
     [CustomComboInfo("Non Boss Encounter Mitigation", "Adds Mitigation to the combos when not in a boss encounter. Will not overlap separate options unless stated. " +
-                                                      "/nWill not use mitigation in the first 15 seconds of a pull unless you are not moving.", Job.DRK)]
+                                                      "\nWill not use mitigation in the first 15 seconds of a pull unless you are not moving.", Job.DRK)]
     DRK_Mitigation_NonBoss = 5301,
     
     [ParentCombo(DRK_Mitigation_NonBoss)]
@@ -3468,7 +3468,7 @@ public enum Preset
     
     [ParentCombo(GNB_Mitigation)]
     [CustomComboInfo("Non Boss Encounter Mitigation", "Adds Mitigation to the combos when not in a boss encounter. Will not overlap separate options unless stated." +
-                                                      "/nWill not use mitigation in the first 15 seconds of a pull unless you are not moving.", Job.GNB)]
+                                                      "\nWill not use mitigation in the first 15 seconds of a pull unless you are not moving.", Job.GNB)]
     GNB_Mitigation_NonBoss = 7701,
     
     [ParentCombo(GNB_Mitigation_NonBoss)]
@@ -5031,7 +5031,7 @@ public enum Preset
     
     [ParentCombo(PLD_Mitigation)]
     [CustomComboInfo("Non Boss Encounter Mitigation", "Adds Mitigation to the combos when not in a boss encounter. Will not overlap separate options unless stated." +
-                                                      "/nWill not use mitigation in the first 15 seconds of a pull unless you are not moving.", Job.PLD)]
+                                                      "\nWill not use mitigation in the first 15 seconds of a pull unless you are not moving.", Job.PLD)]
     PLD_Mitigation_NonBoss = 11087,
     
     [ParentCombo(PLD_Mitigation_NonBoss)]
@@ -7794,7 +7794,7 @@ public enum Preset
     
     [ParentCombo(WAR_Mitigation)]
     [CustomComboInfo("Non Boss Encounter Mitigation", "Adds Mitigation to the combos when not in a boss encounter. Will not overlap separate options unless stated." +
-                                                      "/nWill not use mitigation in the first 15 seconds of a pull unless you are not moving.", Job.WAR)]
+                                                      "\nWill not use mitigation in the first 15 seconds of a pull unless you are not moving.", Job.WAR)]
     WAR_Mitigation_NonBoss = 18132,
     
     [ParentCombo(WAR_Mitigation_NonBoss)]
