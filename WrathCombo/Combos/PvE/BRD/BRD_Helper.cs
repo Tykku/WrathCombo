@@ -199,8 +199,12 @@ internal partial class BRD
             {
                 if (SongNone) // No song, use wanderer first
                    return true;
-                    
-                if (SongArmy && (CanWeaveDelayed || !BardHasTarget) && (SongTimerInSeconds <= 12 || gauge.Repertoire == 4)) //Transition to wanderer as soon as it is ready
+                
+                var canTransition =  IsEnabled(Preset.BRD_Hidden_Song_Extension) 
+                    ? SongTimerInSeconds <= 3 
+                    : SongTimerInSeconds <= 12 || gauge.Repertoire == 4;
+                
+                if (SongArmy && (CanWeaveDelayed || !BardHasTarget) && canTransition) //Transition to wanderer as soon as it is ready
                     return true;
             }
             return false;

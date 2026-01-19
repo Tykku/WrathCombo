@@ -2122,8 +2122,13 @@ public enum Preset
     BRD_OneButtonDots_SavageBlade = 3073,
 
     #endregion
+    #region Hidden
+    [CustomComboInfo("Hidden Extended Army's Paeon", "Will extend your Army's Paeon to 3 seconds left on it's timer. For longer burst holds without dropping songs.", Job.BRD)]
+    [Hidden]
+    BRD_Hidden_Song_Extension = 3074,
+    #endregion
 
-    // Last value = 3073
+    // Last value = 3074
 
     #endregion
 
