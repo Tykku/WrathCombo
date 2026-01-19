@@ -34,7 +34,7 @@ internal partial class DRG : Melee
                         return LifeSurge;
 
                     //Mirage Feature
-                    if (CanMirageDive())
+                    if (CanMirageDive)
                         return MirageDive;
 
                     //Geirskogul Feature
@@ -286,7 +286,7 @@ internal partial class DRG : Melee
 
                         //Mirage Feature
                         if (IsEnabled(Preset.DRG_ST_Mirage) &&
-                            CanMirageDive())
+                            CanMirageDive)
                             return MirageDive;
 
                         //Geirskogul Feature

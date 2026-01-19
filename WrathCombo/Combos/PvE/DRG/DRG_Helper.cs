@@ -101,21 +101,17 @@ internal partial class DRG
          NumberOfEnemiesInRange(WyrmwindThrust, CurrentTarget) >= 2) &&
         InActionRange(WyrmwindThrust);
 
-    private static bool CanMirageDive()
-    {
-        bool burstEnabled = IsEnabled(Preset.DRG_ST_SimpleMode) || DRG_ST_DoubleMirage;
+    private static bool CanMirageDive =>
+        ActionReady(MirageDive) &&
+        HasStatusEffect(Buffs.DiveReady) &&
+        OriginalHook(Jump) is MirageDive &&
+        InActionRange(MirageDive) &&
+        (IsEnabled(Preset.DRG_ST_SimpleMode) ||
+         LoTDActive ||
+         GetStatusEffectRemainingTime(Buffs.DiveReady) <= 1.2f && GetCooldownRemainingTime(Geirskogul) > 3 ||
+         !DRG_ST_DoubleMirage);
 
-        return ActionReady(MirageDive) &&
-               HasStatusEffect(Buffs.DiveReady) &&
-               OriginalHook(Jump) is MirageDive &&
-               InActionRange(MirageDive) &&
-               (burstEnabled && (LoTDActive ||
-                                 GetStatusEffectRemainingTime(Buffs.DiveReady) <= 1.2f &&
-                                 GetCooldownRemainingTime(Geirskogul) > 3) ||
-                !burstEnabled);
-    }
-
-    private static uint OutsideOfMelee(uint actionId, bool simpleMode = false)
+        private static uint OutsideOfMelee(uint actionId, bool simpleMode = false)
     {
         if (simpleMode || IsEnabled(Preset.DRG_ST_CDs) && InCombat())
         {
@@ -128,14 +124,9 @@ internal partial class DRG
 
             //Wyrmwind Thrust Feature
             if ((simpleMode || IsEnabled(Preset.DRG_ST_Wyrmwind)) &&
-                CanWyrmwind)
+                ActionReady(WyrmwindThrust) &
+                FirstmindsFocus is 2)
                 return WyrmwindThrust;
-
-            //Geirskogul Feature
-            if ((simpleMode || IsEnabled(Preset.DRG_ST_Geirskogul)) &&
-                ActionReady(Geirskogul) &&
-                !LoTDActive && InActionRange(Geirskogul))
-                return Geirskogul;
 
             //Starcross Feature
             if ((simpleMode || IsEnabled(Preset.DRG_ST_Starcross)) &&
@@ -150,6 +141,12 @@ internal partial class DRG
                 HasStatusEffect(Buffs.DragonsFlight) &&
                 InActionRange(RiseOfTheDragon))
                 return RiseOfTheDragon;
+
+            //Geirskogul Feature
+            if ((simpleMode || IsEnabled(Preset.DRG_ST_Geirskogul)) &&
+                ActionReady(Geirskogul) &&
+                !LoTDActive && InActionRange(Geirskogul))
+                return Geirskogul;
 
             //Nastrond Feature
             if ((simpleMode || IsEnabled(Preset.DRG_ST_Nastrond)) &&
