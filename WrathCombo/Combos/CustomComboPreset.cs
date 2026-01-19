@@ -8011,7 +8011,7 @@ public enum Preset
     [Retargeted(WAR.Onslaught)]
     WAR_RetargetOnslaught = 18152,
     
-    [ReplaceSkill(7548)]
+    [ReplaceSkill(RoleActions.Physical.ArmsLength)]
     [CustomComboInfo("Double Anti-Knockback Protection", "Will lock out Arm's Length in boss encounters when you already have knockback immunity from Inner Release.", Job.WAR)]
     WAR_ArmsLengthLockout = 18153,
 
