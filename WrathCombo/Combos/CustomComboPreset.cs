@@ -8012,7 +8012,7 @@ public enum Preset
     WAR_RetargetOnslaught = 18152,
     
     [ReplaceSkill(7548)]
-    [CustomComboInfo("Arm's Length Protect Option", "Will Lock out Arm's Length in boss encounters when Warrior already has Knockback immunity from Inner Release.", Job.WAR)]
+    [CustomComboInfo("Double Anti-Knockback Protection", "Will lock out Arm's Length in boss encounters when you already have knockback immunity from Inner Release.", Job.WAR)]
     WAR_ArmsLengthLockout = 18153,
 
     [ReplaceSkill(WAR.Holmgang)]
