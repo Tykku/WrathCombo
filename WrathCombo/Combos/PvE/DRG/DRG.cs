@@ -34,7 +34,6 @@ internal partial class DRG : Melee
                     if (CanLifeSurge())
                         return LifeSurge;
 
-
                     if (InActionRange(actionID))
                     {
                         //Mirage Feature
@@ -81,7 +80,6 @@ internal partial class DRG : Melee
                     if (RoleActions.Melee.CanLegSweep())
                         return Role.LegSweep;
                 }
-
 
                 if (CanDRGWeave(0.8f))
                 {
@@ -276,7 +274,7 @@ internal partial class DRG : Melee
                             return LifeSurge;
                     }
 
-                    if (IsEnabled(Preset.DRG_ST_Damage))
+                    if (IsEnabled(Preset.DRG_ST_Damage) && InActionRange(actionID))
                     {
                         //Mirage Feature
                         if (IsEnabled(Preset.DRG_ST_Mirage) &&
@@ -296,23 +294,20 @@ internal partial class DRG : Melee
                         //Starcross Feature
                         if (IsEnabled(Preset.DRG_ST_Starcross) &&
                             ActionReady(Starcross) &&
-                            HasStatusEffect(Buffs.StarcrossReady) &&
-                            InActionRange(Starcross))
+                            HasStatusEffect(Buffs.StarcrossReady))
                             return Starcross;
 
                         //Rise of the Dragon Feature
                         if (IsEnabled(Preset.DRG_ST_RiseOfTheDragon) &&
                             ActionReady(RiseOfTheDragon) &&
-                            HasStatusEffect(Buffs.DragonsFlight) &&
-                            InActionRange(RiseOfTheDragon))
+                            HasStatusEffect(Buffs.DragonsFlight))
                             return RiseOfTheDragon;
 
                         //Nastrond Feature
                         if (IsEnabled(Preset.DRG_ST_Nastrond) &&
                             ActionReady(Nastrond) &&
                             HasStatusEffect(Buffs.NastrondReady) &&
-                            LoTDActive &&
-                            InActionRange(Nastrond))
+                            LoTDActive)
                             return Nastrond;
                     }
 
