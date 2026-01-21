@@ -346,6 +346,8 @@ public static class ActionWatching
 #endif
             }
             SendActionHook!.Original(targetObjectId, actionType, actionId, sequence, a5, a6, a7, a8, a9);
+
+            Service.ActionReplacer.EnableActionReplacingIfRequired();
         }
         catch (Exception ex)
         {
@@ -423,6 +425,9 @@ public static class ActionWatching
         {
             if (actionType is ActionType.Action)
             {
+                if (mode == ActionManager.UseActionMode.Queue) // This is so we can remove queue suppression
+                    Service.ActionReplacer.DisableActionReplacingIfRequired(); // It gets re-enabled at the end of sending. 
+
                 var original = actionId; //Save the original action, do not modify
                 var originalTargetId = targetId; //Save the original target, do not modify
                 var changedTargetId = targetId; //This will get modified and used elsewhere
