@@ -282,7 +282,7 @@ internal abstract partial class CustomComboFunctions
         var animationLock = ActionManager.Instance()->AnimationLock;
 
         return WeaveActions.Count < weaveLimit &&                                    // Multi-weave Check
-               animationLock <= BaseActionQueue &&                                   // Animation Threshold
+               animationLock <= BaseAnimationLock &&                                   // Animation Threshold
                remainingCast <= BaseActionQueue &&                                   // Casting Threshold
                RemainingGCD > (remainingCast + estimatedWeaveTime + animationLock);  // Window End Threshold
     }

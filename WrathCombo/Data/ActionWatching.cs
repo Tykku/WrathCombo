@@ -351,6 +351,7 @@ public static class ActionWatching
         }
         catch (Exception ex)
         {
+            Service.ActionReplacer.EnableActionReplacingIfRequired();
             Svc.Log.Error(ex, "SendActionDetour");
             SendActionHook!.Original(targetObjectId, actionType, actionId, sequence, a5, a6, a7, a8, a9);
         }
