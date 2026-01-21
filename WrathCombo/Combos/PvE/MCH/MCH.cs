@@ -42,6 +42,10 @@ internal partial class MCH : PhysicalRanged
                     !HasStatusEffect(Buffs.Wildfire))
                     return Wildfire;
 
+                // Hypercharge
+                if (CanHypercharge())
+                    return Hypercharge;
+
                 // Gauss Round and Ricochet during HC
                 if (JustUsed(OriginalHook(Heatblast), 1f) && !HasWeaved())
                 {
@@ -58,7 +62,7 @@ internal partial class MCH : PhysicalRanged
                     if (ActionReady(BarrelStabilizer) &&
                         TargetIsBoss() &&
                         DrillCD && AirAnchorCD && ChainSawCD &&
-                        GetCooldownRemainingTime(Wildfire) <= GCD &&
+                        GetCooldownRemainingTime(Wildfire) <= 20 &&
                         !HasStatusEffect(Buffs.FullMetalMachinist))
                         return BarrelStabilizer;
 
@@ -69,10 +73,6 @@ internal partial class MCH : PhysicalRanged
                     // Reassemble
                     if (CanReassemble())
                         return Reassemble;
-
-                    // Hypercharge
-                    if (CanHypercharge())
-                        return Hypercharge;
 
                     // Gauss Round and Ricochet outside HC
                     if (JustUsed(OriginalHook(AirAnchor), 2f) ||
@@ -307,6 +307,12 @@ internal partial class MCH : PhysicalRanged
                     !HasStatusEffect(Buffs.Wildfire))
                     return Wildfire;
 
+                // Hypercharge
+                if (IsEnabled(Preset.MCH_ST_Adv_Hypercharge) &&
+                    GetTargetHPPercent() > HPThresholdHypercharge &&
+                    CanHypercharge())
+                    return Hypercharge;
+
                 // Gauss Round and Ricochet during HC
                 if (IsEnabled(Preset.MCH_ST_Adv_GaussRicochet) &&
                     JustUsed(OriginalHook(Heatblast), 1f) && !HasWeaved())
@@ -335,7 +341,7 @@ internal partial class MCH : PhysicalRanged
                         (MCH_ST_BarrelStabilizerBossOption == 0 && GetTargetHPPercent() > HPThresholdBarrelStabilizer ||
                          TargetIsBoss()) &&
                         DrillCD && AirAnchorCD && ChainSawCD &&
-                        GetCooldownRemainingTime(Wildfire) <= GCD &&
+                        GetCooldownRemainingTime(Wildfire) <= 20 &&
                         !HasStatusEffect(Buffs.FullMetalMachinist))
                         return BarrelStabilizer;
 
@@ -343,12 +349,6 @@ internal partial class MCH : PhysicalRanged
                     if (IsEnabled(Preset.MCH_ST_Adv_TurretQueen) &&
                         CanQueen())
                         return OriginalHook(RookAutoturret);
-
-                    // Hypercharge
-                    if (IsEnabled(Preset.MCH_ST_Adv_Hypercharge) &&
-                        GetTargetHPPercent() > HPThresholdHypercharge &&
-                        CanHypercharge())
-                        return Hypercharge;
 
                     // Gauss Round and Ricochet outside HC
                     if (IsEnabled(Preset.MCH_ST_Adv_GaussRicochet) &&

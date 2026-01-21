@@ -18,7 +18,7 @@ internal partial class MCH
         {
             case false when
                 (ActionReady(Hypercharge) || HasStatusEffect(Buffs.Hypercharged)) &&
-                !IsComboExpiring(6) &&
+                !IsComboExpiring(6) && !IsOverheated &&
                 DrillCD && AirAnchorCD && ChainSawCD &&
                 !HasStatusEffect(Buffs.ExcavatorReady) &&
                 !HasStatusEffect(Buffs.FullMetalMachinist) &&
