@@ -103,9 +103,25 @@ internal abstract partial class CustomComboFunctions
         var hostile = actSheet.CanTargetHostile;
         var actionRange = GetActionRange(actionId);
 
-        //Covers self-use and self-area targeted actions
+        // Covers self-use and self-area targeted actions
         if (actionRange == 0)
-            return true;
+        {
+            var effectRange = GetActionEffectRange(actionId);
+
+            if (effectRange == 0) //Range 0, EffectRange 0 = Purely self use so won't impact a target
+                return true;
+
+            // Try and make sure to only call action range on stuff that *can* hit something else, whether it be friendly or hostile
+            // since stuff like Leylines technically falls into this area. Don't really want to make an exception list
+            return actSheet.CastType switch
+            {
+                1 => true,
+                2 => TargetInSelfCircle(optionalTarget, effectRange),
+                3 => TargetInCone(optionalTarget, effectRange), //Weirdly only BLU will meet this condition
+                4 => TargetInLine(optionalTarget, effectRange, actSheet.XAxisModifier),
+                _ => false
+            };
+        }
 
         // If we don't have a target and the action cannot be used on ourselves, we're not in range clearly
         if (optionalTarget is null && !selfUse)
@@ -137,6 +153,9 @@ internal abstract partial class CustomComboFunctions
 
         if (GetTargetDistance(optionalTarget) > actionRange)
             return false;
+
+        // At this point the only thing left to even consider is if they're outside the action range, would the target still get hit by the effect range once placed
+        // However, that's probably going a bit too far so we'll just consider it as in range as long as the action range is good
 
         return true;
     }
@@ -474,4 +493,6 @@ internal abstract partial class CustomComboFunctions
 
         return 0;
     }
+
+    public static bool ActionIsFriendly(uint actionId) => ActionSheet.TryGetValue(actionId, out var s) && s.Unknown4 == 2;
 }

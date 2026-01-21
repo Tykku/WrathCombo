@@ -41,7 +41,7 @@ internal abstract partial class CustomComboFunctions
 
     /// <summary> Checks if an object is dead. Defaults to CurrentTarget unless specified. </summary>
     internal static bool TargetIsDead(IGameObject? optionalTarget = null) => (optionalTarget ?? CurrentTarget) is IBattleChara chara && chara.IsDead;
-    
+
     /// Enemies that are definitely not bosses, but should be considered as such.
     private static readonly uint[] EnemiesThatShouldBeConsideredBosses =
     [
@@ -246,7 +246,7 @@ internal abstract partial class CustomComboFunctions
 
     /// <summary> Gets an object's current HP. Defaults to CurrentTarget unless specified. </summary>
     public static uint GetTargetCurrentHP(IGameObject? optionalTarget = null) => (optionalTarget ?? CurrentTarget) is IBattleChara chara ? chara.CurrentHp : 0;
-    
+
     /// <summary> Gets the average HP percentage of all enemies within a specified range. </summary>
     public static float GetAvgEnemyHPPercentInRange(float range)
     {
@@ -293,7 +293,7 @@ internal abstract partial class CustomComboFunctions
             return false;
 
         var distance = GetTargetDistance(chara);
-        var height   = GetTargetHeightDifference(optionalTarget);
+        var height = GetTargetHeightDifference(optionalTarget);
         var largest = Math.Max(distance, height);
 
         return largest <= range;
@@ -717,6 +717,48 @@ internal abstract partial class CustomComboFunctions
                    (!checkIgnoredList ||
                     !Service.Configuration.IgnoredNPCs.ContainsKey(o.BaseId));
         }
+    }
+
+    public static bool TargetInSelfCircle(IGameObject? target, float size)
+    {
+        if (target is null)
+            return false;
+
+        return Svc.Objects.Any(o => o.GameObjectId == target.GameObjectId && PointInCircle(o.Position - LocalPlayer.Position, size + o.HitboxRadius));
+    }
+
+    public static bool TargetInTargetedCircle(IGameObject? target, float size)
+    {
+        if (target is null)
+            return false;
+
+        return Svc.Objects.Any(o => o.GameObjectId == target.GameObjectId && PointInCircle(o.Position - target.Position, size + o.HitboxRadius));
+    }
+
+    public static bool TargetInCone(IGameObject? target, float size)
+    {
+        if (target is null)
+            return false;
+
+        return Svc.Objects.Any(o =>
+                 o.GameObjectId == target.GameObjectId &&
+                 GetTargetDistance(o) <= size &&
+                 PointInCone(o.Position - LocalPlayer.Position,
+                     PositionalMath.GetDirection(LocalPlayer.Position, target.Position),
+                     45f));
+    }
+
+    public static bool TargetInLine(IGameObject? target, float size, float width)
+    {
+        if (target is null)
+            return false;
+
+        return Svc.Objects.Any(o =>
+                o.GameObjectId == target.GameObjectId &&
+                GetTargetDistance(o) <= size &&
+                HitboxInRect(o,
+                    PositionalMath.GetRotation(LocalPlayer.Position, target.Position),
+                    size * 0.5f, width * 0.5f));
     }
 
     #region Shape Helpers
