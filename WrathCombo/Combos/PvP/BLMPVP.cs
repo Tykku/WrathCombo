@@ -217,7 +217,7 @@ internal static class BLMPvP
                         return Role.PhantomDart;
 
                     // Burst (Offensive)
-                    if (IsEnabled(Preset.BLMPvP_Burst) && IsOffCooldown(Burst) && GetTargetDistance() <= 6)
+                    if (IsEnabled(Preset.BLMPvP_Burst) && IsOffCooldown(Burst) && InActionRange(Burst))
                         return OriginalHook(Burst);
 
                     // Flare Star / Frost Star

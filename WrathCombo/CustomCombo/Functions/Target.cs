@@ -724,6 +724,9 @@ internal abstract partial class CustomComboFunctions
         if (target is null)
             return false;
 
+        if (!IsInLineOfSight(target))
+            return false;
+
         return Svc.Objects.Any(o => o.GameObjectId == target.GameObjectId && PointInCircle(o.Position - LocalPlayer.Position, size + o.HitboxRadius));
     }
 
@@ -740,6 +743,9 @@ internal abstract partial class CustomComboFunctions
         if (target is null)
             return false;
 
+        if (!IsInLineOfSight(target))
+            return false;
+
         return Svc.Objects.Any(o =>
                  o.GameObjectId == target.GameObjectId &&
                  GetTargetDistance(o) <= size &&
@@ -751,6 +757,9 @@ internal abstract partial class CustomComboFunctions
     public static bool TargetInLine(IGameObject? target, float size, float width)
     {
         if (target is null)
+            return false;
+
+        if (!IsInLineOfSight(target))
             return false;
 
         return Svc.Objects.Any(o =>
