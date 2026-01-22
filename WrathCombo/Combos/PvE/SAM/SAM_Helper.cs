@@ -101,14 +101,13 @@ internal partial class SAM
     private static bool CanUseHiganbana()
     {
         int hpThreshold = IsNotEnabled(Preset.SAM_ST_SimpleMode) ? ComputeHpThresholdHiganbana() : 0;
-        double dotRefresh = IsNotEnabled(Preset.SAM_ST_SimpleMode) ? SAM_ST_HiganbanaRefresh : 15;
         float dotRemaining = GetStatusEffectRemainingTime(Debuffs.Higanbana, CurrentTarget);
 
         return ActionReady(Higanbana) && SenCount is 1 &&
                CanApplyStatus(CurrentTarget, Debuffs.Higanbana) &&
                HasBattleTarget() &&
                GetTargetHPPercent() > hpThreshold &&
-               dotRemaining <= dotRefresh &&
+               dotRemaining <= DotRefresh &&
                HasStatusEffect(Buffs.Fuka) && HasStatusEffect(Buffs.Fugetsu) &&
                (EnhancedSenei && (JustUsed(Senei, 35f) || JustUsed(Ikishoten, 35f) || !HasStatusEffect(Debuffs.Higanbana, CurrentTarget)) ||
                 !EnhancedSenei);
@@ -155,6 +154,9 @@ internal partial class SAM
 
     private static float GCD =>
         GetAdjustedRecastTime(ActionType.Action, Hakaze) / 100f;
+
+    private static double DotRefresh =>
+        IsNotEnabled(Preset.SAM_ST_SimpleMode) ? SAM_ST_HiganbanaRefresh : 15;
 
     #endregion
 
@@ -276,9 +278,10 @@ internal partial class SAM
         MeditationStacks is 3 &&
         InActionRange(Shoha) &&
         (SenCount is 3 ||
+         SenCount is 1 && GetStatusEffectRemainingTime(Debuffs.Higanbana, CurrentTarget) < DotRefresh ||
          HasStatusEffect(Buffs.OgiNamikiriReady) ||
-         EnhancedSenei && JustUsed(Senei, 20f) ||
-         !EnhancedSenei && JustUsed(KaeshiSetsugekka, 10f));
+         EnhancedSenei && JustUsed(Senei, 30f) ||
+         !EnhancedSenei && JustUsed(KaeshiSetsugekka, 20f));
 
     //TODO Buffcheck
     private static bool CanZanshin() =>
