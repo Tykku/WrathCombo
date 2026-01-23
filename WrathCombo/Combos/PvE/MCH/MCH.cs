@@ -1,4 +1,3 @@
-using Dalamud.Game.ClientState.Statuses;
 using System;
 using WrathCombo.CustomComboNS;
 using static WrathCombo.Combos.PvE.MCH.Config;
@@ -104,11 +103,7 @@ internal partial class MCH : PhysicalRanged
             }
 
             // Full Metal Field
-            if (HasStatusEffect(Buffs.FullMetalMachinist, out IStatus? fullMetal) &&
-                !IsOverheated &&
-                (ActionReady(Wildfire) ||
-                 GetCooldownRemainingTime(Wildfire) > 90 ||
-                 fullMetal.RemainingTime <= 6))
+            if (CanUseFullMetalField)
                 return FullMetalField;
 
             //Tools
@@ -392,11 +387,7 @@ internal partial class MCH : PhysicalRanged
 
             // Full Metal Field
             if (IsEnabled(Preset.MCH_ST_Adv_Stabilizer_FullMetalField) &&
-                HasStatusEffect(Buffs.FullMetalMachinist, out IStatus? fullMetal) &&
-                !IsOverheated &&
-                (ActionReady(Wildfire) ||
-                 GetCooldownRemainingTime(Wildfire) > 90 ||
-                 fullMetal.RemainingTime <= 6))
+                CanUseFullMetalField)
                 return FullMetalField;
 
             //Tools
