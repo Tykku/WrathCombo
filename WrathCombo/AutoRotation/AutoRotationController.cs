@@ -664,7 +664,7 @@ internal unsafe static class AutoRotationController
                     var targetId = player.GameObjectId;
                     var changed = CheckForChangedTarget(gameAct, ref targetId, out var replacedWith);
                     WouldLikeToGroundTarget = ActionSheet[outAct].TargetArea;
-                    var ret = ActionManager.Instance()->UseAction(ActionType.Action, outAct, targetId);
+                    var ret = ActionManager.Instance()->UseAction(ActionType.Action, gameAct, targetId);
                     WouldLikeToGroundTarget = false;
                     Service.ActionReplacer.EnableActionReplacingIfRequired();
 
@@ -747,7 +747,7 @@ internal unsafe static class AutoRotationController
                     var targetId = (targetsHostile && target != null) || switched ? target.GameObjectId : canUseSelf ? player.GameObjectId : 0xE000_0000;
                     var changed = CheckForChangedTarget(gameAct, ref targetId, out var replacedWith);
                     WouldLikeToGroundTarget = areaTargeted;
-                    var ret = ActionManager.Instance()->UseAction(ActionType.Action, outAct, targetId);
+                    var ret = ActionManager.Instance()->UseAction(ActionType.Action, gameAct, targetId);
                     WouldLikeToGroundTarget = false;
                     Service.ActionReplacer.EnableActionReplacingIfRequired();
                     OverrideTarget = null;
@@ -824,7 +824,7 @@ internal unsafe static class AutoRotationController
                 var targetId = canUseTarget || areaTargeted ? target.GameObjectId : canUseSelf ? player.GameObjectId : 0xE000_0000;
                 var changed = CheckForChangedTarget(gameAct, ref targetId, out var replacedWith);
                 WouldLikeToGroundTarget = ActionSheet[outAct].TargetArea;
-                var ret = ActionManager.Instance()->UseAction(ActionType.Action, outAct, targetId);
+                var ret = ActionManager.Instance()->UseAction(ActionType.Action, gameAct, targetId);
                 WouldLikeToGroundTarget = false;
                 Service.ActionReplacer.EnableActionReplacingIfRequired();
                 OverrideTarget = null;
