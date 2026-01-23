@@ -475,11 +475,11 @@ public static class ActionWatching
                         (actionType, replacedWith, location: &location);
                 }
 
-                if (Service.Configuration.OverwriteQueue && actionManager->QueuedActionId != 0 && CanQueueCS(actionId))
-                    actionManager->QueuedActionId = actionId;
+                if (Service.Configuration.OverwriteQueue && actionManager->QueuedActionId != 0 && CanQueueCS(replacedWith))
+                    actionManager->QueuedActionId = replacedWith;
 
                 // Determine if the action will queue according to user settings
-                bool willQueue = CanQueueCS(actionId) && RemainingGCD > 0;
+                bool willQueue = CanQueueCS(replacedWith) && RemainingGCD > 0;
 
                 // If the action is going to queue, and we've retargeted, update the queued target to match the retargeted target at time of queue
                 if (willQueue && changed)
@@ -492,9 +492,9 @@ public static class ActionWatching
                 }
 
                 Svc.Log.Verbose($"[QueuedTargetUpdate] A:{actionManager->QueuedActionId.ActionName()} Q:{Svc.Objects.SearchById(actionManager->QueuedTargetId)?.Name} T:{Svc.Objects.SearchById(targetId)?.Name} M:{mode} W:{willQueue}");
-                //Important to pass actionId here and not replaced.
-                var hookResult = changed ? UseActionHook.Original(actionManager, actionType, actionId, targetId, extraParam, mode, comboRouteId, outOptAreaTargeted) :
-                    UseActionHook.Original(actionManager, actionType, actionId, originalTargetId, extraParam, mode, comboRouteId, outOptAreaTargeted);
+
+                var hookResult = changed ? UseActionHook.Original(actionManager, actionType, replacedWith, targetId, extraParam, mode, comboRouteId, outOptAreaTargeted) :
+                    UseActionHook.Original(actionManager, actionType, replacedWith, originalTargetId, extraParam, mode, comboRouteId, outOptAreaTargeted);
 
                 // Fallback if the Retargeted ground action couldn't be placed smartly
                 if (changed && areaTargeted)
