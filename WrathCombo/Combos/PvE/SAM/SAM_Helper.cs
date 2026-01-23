@@ -261,7 +261,7 @@ internal partial class SAM
         ActionReady(Senei) && NumberOfGcdsUsed >= 4 &&
         InActionRange(Senei) &&
         (LevelChecked(TendoKaeshiSetsugekka) &&
-         (SenCount is 3 && HasStatusEffect(Buffs.Tendo) ||
+         (SenCount >= 2 && HasStatusEffect(Buffs.Tendo) ||
           JustUsed(TendoSetsugekka, 15f)) ||
          !LevelChecked(TendoKaeshiSetsugekka));
 
