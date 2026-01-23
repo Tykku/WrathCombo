@@ -151,7 +151,7 @@ internal abstract partial class CustomComboFunctions
         // For the purpose of this, it's mainly range we need to consider as even if the target is within the radius of the placed object, we can only place as far as the range
         // Also, this would have to be managed via retargeting for actually placing elsewhere not on top of the player
 
-        if (GetTargetDistance(optionalTarget) > actionRange && IsInLineOfSight(optionalTarget))
+        if (GetTargetDistance(optionalTarget) > actionRange || !IsInLineOfSight(optionalTarget))
             return false;
 
         // At this point the only thing left to even consider is if they're outside the action range, would the target still get hit by the effect range once placed
