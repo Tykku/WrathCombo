@@ -445,7 +445,7 @@ internal partial class VPR
             UncoiledTwinfang, //25
             UncoiledTwinblood, //26
             HindstingStrike, //27
-            DeathRattle,
+            DeathRattle, //28
             Vicewinder,
             UncoiledFury, //30
             UncoiledTwinfang, //31
@@ -470,9 +470,9 @@ internal partial class VPR
 
         public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
         [
-            ([21, 22, 23, 24, 25, 26, 30, 31, 32], () => VPR_Opener_ExcludeUF || !HasCharges(UncoiledFury)),
+            ([21, 22, 23, 24, 25, 26, 30, 31, 32], () => VPR_Opener_ExcludeUF || !HasCharges(RattlingCoil)),
             ([27], () => ComboAction is not SwiftskinsSting),
-            ([28], () => !DeathRattleWeave)
+            ([28], () => !DeathRattleWeave && !JustUsed(HindstingStrike))
         ];
 
         internal override UserData ContentCheckConfig => VPR_Balance_Content;

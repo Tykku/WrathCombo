@@ -7429,7 +7429,7 @@ public enum Preset
     VPR_ST_AdvancedMode = 30001,
 
     [ParentCombo(VPR_ST_AdvancedMode)]
-    [CustomComboInfo("Balance Opener (Level 100)", "Adds the Balance opener at level 100.\n Does not check positional choice.\n Always does Hunter's Coil first (FLANK)", Job.VPR)]
+    [CustomComboInfo("Balance Opener (Level 100)", "Adds the Balance opener at level 100.\n First Vicewinder is ALWAYS FLANK FIRST.", Job.VPR)]
     VPR_ST_Opener = 30002,
 
     [ParentCombo(VPR_ST_AdvancedMode)]
