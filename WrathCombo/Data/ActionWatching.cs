@@ -462,6 +462,7 @@ public static class ActionWatching
                 if ((changed && areaTargeted) || AutoRotationController.WouldLikeToGroundTarget)
                 {
                     var location = Player.Position;
+                    replacedWith = Service.ActionReplacer.LastActionInvokeFor.TryGetValue(actionId, out var replacedGT) ? replacedGT : replacedWith;
 
                     if (IsOverGround(targetObject) &&
                         Vector3.Distance(Player.Position, targetObject.Position) <= replacedWith.ActionRange()) // not GetTargetDistance or something, as hitboxes should not count here
