@@ -347,6 +347,7 @@ public static class ActionWatching
             }
             SendActionHook!.Original(targetObjectId, actionType, actionId, sequence, a5, a6, a7, a8, a9);
 
+            OverrideTarget = null;
             Service.ActionReplacer.EnableActionReplacingIfRequired();
         }
         catch (Exception ex)
@@ -500,23 +501,6 @@ public static class ActionWatching
                 if (changed && areaTargeted)
                     ActionManager.Instance()->AreaTargetingExecuteAtObject =
                         targetId;
-
-                // This really only works if no other plugin is forcing these values to be any different than vanilla for whatever reason
-                // Hookresult should only return true when an action is actually used, or when it gets queued
-                // So part 2 just makes sure it's returning true only when it's not being queued
-                var success = hookResult && !(mode == ActionManager.UseActionMode.None && actionManager->QueuedActionId > 0);
-
-                //if (success)
-                //{
-                //    if (NIN.MudraSigns.Contains(modifiedAction))
-                //    {
-                //        Svc.Log.Debug($"Mudra used: {modifiedAction.ActionName()}");
-                //        NIN.InMudra = true;
-                //    }
-                //    var castTime = ActionManager.GetAdjustedCastTime(actionType, modifiedAction);
-                //    LastAction = modifiedAction;
-                //    TimeLastActionUsed = DateTime.Now;
-                //}
 
                 return hookResult;
             }
