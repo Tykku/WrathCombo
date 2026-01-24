@@ -5,6 +5,7 @@ using System.Collections.Concurrent;
 using System.Collections.Frozen;
 using System.Collections.Generic;
 using System.Linq;
+using WrathCombo.Extensions;
 using Status = Dalamud.Game.ClientState.Statuses.IStatus; // conflicts with structs if not defined
 namespace WrathCombo.Data;
 
@@ -33,12 +34,10 @@ internal partial class CustomComboCache : IDisposable
         if (obj is not IBattleChara chara)
             return statusCache[key] = null;
 
-        var statuses = chara.StatusList ?? null;
-        if (statuses == null)
-        {
-            Svc.Log.Warning("[GetStatus] Somehow a status list is null. Called on a null actor?");
+        var statuses = chara.SafeStatusList;
+
+        if (statuses is null)
             return statusCache[key] = null;
-        }
 
         foreach (var status in statuses)
         {
@@ -209,12 +208,10 @@ internal class StatusCache
         if (gameObject is not IBattleChara chara)
             return false;
 
-        var statuses = chara.StatusList ?? null;
-        if (statuses == null)
-        {
-            Svc.Log.Warning("[HasStatusInCacheList] Somehow a status list is null. Called on a null actor?");
+        var statuses = chara.SafeStatusList;
+
+        if (statuses is null)
             return false;
-        }
 
         var targetStatuses = statuses.Select(s => s.StatusId).ToHashSet();
         return statusList.Count switch
