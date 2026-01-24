@@ -359,7 +359,14 @@ public static class GameObjectExtensions
             {
                 try
                 {
-                    if (obj is IBattleChara battleChara)
+                    var safeObj = obj.Address.GetObject();
+                    if (safeObj is null)
+                    {
+                        PluginLog.Verbose("[ObjectSafety] Would have failed " +
+                                          "accessing any member, object gone");
+                        return null;
+                    }
+                    if (safeObj is IBattleChara battleChara)
                         return battleChara.StatusList;
                 }
                 catch
