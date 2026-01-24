@@ -9,6 +9,7 @@ using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
 using System;
 using System.Linq;
+using Dalamud.Game.ClientState.Statuses;
 using WrathCombo.CustomComboNS;
 using WrathCombo.CustomComboNS.Functions;
 using static WrathCombo.CustomComboNS.Functions.CustomComboFunctions;
@@ -317,6 +318,29 @@ public static class GameObjectExtensions
             obj != null && obj is IBattleChara c && c.Struct()->InCombat;
 
         // `IsHostile` already exists, and works the exact same as we would write here
+
+        #endregion
+
+        #region Safe Access to Members
+
+        public StatusList? SafeStatusList
+        {
+            get
+            {
+                try
+                {
+                    if (obj is IBattleChara battleChara)
+                    {
+                        return battleChara.StatusList;
+                    }
+                }
+                catch
+                {
+                    // ignored
+                }
+                return null;
+            }
+        }
 
         #endregion
     }
