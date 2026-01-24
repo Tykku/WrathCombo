@@ -33,7 +33,13 @@ internal partial class CustomComboCache : IDisposable
         if (obj is not IBattleChara chara)
             return statusCache[key] = null;
 
-        var statuses = chara.StatusList;
+        var statuses = chara.StatusList ?? null;
+        if (statuses == null)
+        {
+            Svc.Log.Warning("[GetStatus] Somehow a status list is null. Called on a null actor?");
+            return statusCache[key] = null;
+        }
+
         foreach (var status in statuses)
         {
             if (status.StatusId == InvalidStatusID)
@@ -203,7 +209,13 @@ internal class StatusCache
         if (gameObject is not IBattleChara chara)
             return false;
 
-        var statuses = chara.StatusList;
+        var statuses = chara.StatusList ?? null;
+        if (statuses == null)
+        {
+            Svc.Log.Warning("[HasStatusInCacheList] Somehow a status list is null. Called on a null actor?");
+            return false;
+        }
+
         var targetStatuses = statuses.Select(s => s.StatusId).ToHashSet();
         return statusList.Count switch
         {

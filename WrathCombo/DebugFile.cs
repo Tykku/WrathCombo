@@ -694,7 +694,13 @@ public static class DebugFile
     private static void AddStatusEffects()
     {
         var playerID = Player.Object.GameObjectId;
-        var statusEffects = Player.Object.StatusList;
+        var statusEffects = Player.Object.StatusList ?? null;
+
+        if (statusEffects == null)
+        {
+            Svc.Log.Warning("[AddStatusEffects] Somehow a status list is null. Called on a null player?");
+            return;
+        }
 
         var statusEffectsCount = 0;
         foreach (var _ in statusEffects)
