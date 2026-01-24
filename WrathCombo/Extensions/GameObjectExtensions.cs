@@ -322,6 +322,30 @@ public static class GameObjectExtensions
         #endregion
 
         #region Safe Access to Members
+        
+        public ulong? SafeGameObjectId
+        {
+            get
+            {
+                try
+                {
+                    var safeObj = obj.Address.GetObject();
+                    if (safeObj is null)
+                        return null;
+
+                    var id = safeObj.GameObjectId;
+                    if (id is 0)
+                        return null;
+
+                    return id;
+                }
+                catch
+                {
+                    // ignored
+                }
+                return null;
+            }
+        }
 
         public StatusList? SafeStatusList
         {
@@ -381,6 +405,16 @@ public static class GameObjectExtensions
     /// <returns>An IGameObject if found in the object table; otherwise, null.</returns>
     public static IGameObject? GetObject(this ulong? id) =>
         id == null ? null : GetObjectFrom((ulong)id);
+    
+    /// <summary>
+    ///     Converts a GameObject pointer to an IGameObject from the object table.<br />
+    ///     Primarily for safely accessing object members, since the address is
+    ///     always set.
+    /// </summary>
+    /// <param name="address">The GameObject pointer to convert.</param>
+    /// <returns>An IGameObject if found in the object table; otherwise, null.</returns>
+    public static IGameObject? GetObject(this IntPtr address) =>
+        address != IntPtr.Zero ? Svc.Objects.FirstOrDefault(x => x.Address == address) : null;
 
     #endregion
 }
