@@ -141,7 +141,7 @@ internal abstract partial class CustomComboFunctions
                 .Select(vfx => vfx.TargetID.GetObject())
                 .OfType<IBattleChara>()
                 // Multi-hit can be on anyone (only 1 per alliance), regular only on party members or NPCs,
-                .Where(chara => PlaybackClosest || MH || chara.IsInParty() || chara is IBattleNpc)
+                .Where(chara => MH || chara.IsInParty() || chara is IBattleNpc || PlaybackClosest)
                 // Prioritize party members first, then by distance
                 .OrderBy(chara => chara.IsInParty() ? 0 : 1)
                 .ThenBy(chara => GetTargetDistance(chara))
