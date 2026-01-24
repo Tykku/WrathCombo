@@ -663,7 +663,7 @@ internal unsafe static class AutoRotationController
                     var targetId = player.GameObjectId;
                     var changed = CheckForChangedTarget(gameAct, ref targetId, out var replacedWith);
                     WouldLikeToGroundTarget = ActionSheet[outAct].TargetArea;
-                    var ret = ActionManager.Instance()->UseAction(ActionType.Action, gameAct, targetId);
+                    var ret = ActionManager.Instance()->UseAction(ActionType.Action, Service.Configuration.ActionChanging ? gameAct : outAct, targetId);
                     WouldLikeToGroundTarget = false;
 
                     return true;
@@ -744,7 +744,7 @@ internal unsafe static class AutoRotationController
                     var targetId = (targetsHostile && target != null) || switched ? target.GameObjectId : canUseSelf ? player.GameObjectId : 0xE000_0000;
                     var changed = CheckForChangedTarget(gameAct, ref targetId, out var replacedWith);
                     WouldLikeToGroundTarget = areaTargeted;
-                    var ret = ActionManager.Instance()->UseAction(ActionType.Action, gameAct, targetId);
+                    var ret = ActionManager.Instance()->UseAction(ActionType.Action, Service.Configuration.ActionChanging ? gameAct : outAct, targetId);
                     WouldLikeToGroundTarget = false;
                     if (NIN.MudraSigns.Contains(outAct))
                         _lockedAoE = true;
@@ -818,7 +818,7 @@ internal unsafe static class AutoRotationController
                 var targetId = canUseTarget || areaTargeted ? target.GameObjectId : canUseSelf ? player.GameObjectId : 0xE000_0000;
                 var changed = CheckForChangedTarget(gameAct, ref targetId, out var replacedWith);
                 WouldLikeToGroundTarget = ActionSheet[outAct].TargetArea;
-                var ret = ActionManager.Instance()->UseAction(ActionType.Action, gameAct, targetId);
+                var ret = ActionManager.Instance()->UseAction(ActionType.Action, Service.Configuration.ActionChanging ? gameAct : outAct, targetId);
                 WouldLikeToGroundTarget = false;
 
                 if (NIN.MudraSigns.Contains(outAct))
