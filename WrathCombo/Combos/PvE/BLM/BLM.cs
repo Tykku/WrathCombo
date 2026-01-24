@@ -144,6 +144,10 @@ internal partial class BLM : Caster
                      !LevelChecked(Despair)))
                     return FireSpam;
 
+                if (ActionReady(Flare) &&
+                    !LevelChecked(Fire4) && MP.Cur <= 800)
+                    return Flare;
+
                 if (ActionReady(Despair))
                     return Despair;
 
@@ -448,6 +452,10 @@ internal partial class BLM : Caster
                     (LevelChecked(Despair) && MP.Cur - MP.FireI >= 800 ||
                      !LevelChecked(Despair)))
                     return FireSpam;
+
+                if (ActionReady(Flare) &&
+                    !LevelChecked(Fire4) && MP.Cur <= 800)
+                    return Flare;
 
                 if (IsEnabled(Preset.BLM_ST_Despair) &&
                     ActionReady(Despair))
