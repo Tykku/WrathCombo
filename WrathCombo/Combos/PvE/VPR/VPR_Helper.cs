@@ -188,8 +188,8 @@ internal partial class VPR
         {
             case false:
             {
-                if (ActionReady(Reawaken) && !HasStatusEffect(Buffs.Reawakened) && InActionRange(Reawaken) &&
-                    NoSTComboWeaves && HasBattleTarget() &&
+                if (ActionReady(Reawaken) && !HasStatusEffect(Buffs.Reawakened) &&
+                    InActionRange(Reawaken) && NoSTComboWeaves && HasBattleTarget() &&
                     !IsEmpowermentExpiring(6) && !IsComboExpiring(6) &&
                     GetTargetHPPercent() > hpThresholdUsageST)
                 {
@@ -199,13 +199,12 @@ internal partial class VPR
                         return true;
 
                     //2min burst
-                    if (!JustUsed(SerpentsIre, 2.2f) && HasStatusEffect(Buffs.ReadyToReawaken) ||
-                        WasLastWeaponskill(Ouroboros) && SerpentOffering >= 50 && IreCD >= 50)
+                    if (!JustUsed(SerpentsIre, GCD) && HasStatusEffect(Buffs.ReadyToReawaken) ||
+                        JustUsed(Ouroboros, GCD) && IreCD >= 90)
                         return true;
 
                     //1min
-                    if (SerpentOffering is >= 50 and <= 80 &&
-                        IreCD is >= 50 and <= 62)
+                    if (IreCD is >= 50 and <= 62)
                         return true;
 
                     //overcap protection
@@ -217,7 +216,7 @@ internal partial class VPR
                         return true;
 
                     //Lower lvl
-                    if (WasLastWeaponskill(FourthGeneration) && !LevelChecked(Ouroboros))
+                    if (!LevelChecked(Ouroboros) && JustUsed(FourthGeneration))
                         return true;
                 }
                 break;
@@ -345,7 +344,7 @@ internal partial class VPR
                             (RattlingCoilStacks > ufHoldChargesST || GetTargetHPPercent() < ufHPThresholdST && HasRattlingCoilStacks) &&
                             !UsedVicewinder && !UsedHuntersCoil && !UsedSwiftskinsCoil && NoSTComboWeaves && InActionRange(UncoiledFury) &&
                             !HasStatusEffect(Buffs.Reawakened) && !HasStatusEffect(Buffs.ReadyToReawaken) &&
-                            !WasLastWeaponskill(Ouroboros) && !IsEmpowermentExpiring(3):
+                            !JustUsed(Ouroboros) && !IsEmpowermentExpiring(3):
 
             //ST Range uptime    
             case false when ActionReady(UncoiledFury) && HasRattlingCoilStacks && !InMeleeRange():
@@ -357,7 +356,7 @@ internal partial class VPR
                            HasStatusEffect(Buffs.Swiftscaled) && HasStatusEffect(Buffs.HuntersInstinct) &&
                            !UsedVicepit && !UsedHuntersDen && !UsedSwiftskinsDen && InActionRange(UncoiledFury) &&
                            !HasStatusEffect(Buffs.Reawakened) && NoAoEComboWeaves &&
-                           !WasLastWeaponskill(JaggedMaw) && !WasLastWeaponskill(BloodiedMaw) && !WasLastAbility(SerpentsIre):
+                           !JustUsed(JaggedMaw, GCD) && !JustUsed(BloodiedMaw, GCD) && !JustUsed(SerpentsIre, GCD):
                 return true;
 
             default:
