@@ -398,6 +398,11 @@ internal abstract partial class CustomComboFunctions
                     if (HasStatusEffect(4545)) return targetID != 18579; // Delta
                 }
                 return false;
+            
+            case 1323: //M10S
+                // 19287 Red Hot
+                // 19288 Deep Blue
+                return targetID is 19287 or 19288 && GetTargetCurrentHP(target) <= 1;
 
             default:
                 // General invincibility check
