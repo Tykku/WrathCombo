@@ -10,6 +10,7 @@ using FFXIVClientStructs.FFXIV.Client.Game.Object;
 using System;
 using System.Linq;
 using Dalamud.Game.ClientState.Statuses;
+using ECommons.Logging;
 using WrathCombo.CustomComboNS;
 using WrathCombo.CustomComboNS.Functions;
 using static WrathCombo.CustomComboNS.Functions.CustomComboFunctions;
@@ -331,7 +332,11 @@ public static class GameObjectExtensions
                 {
                     var safeObj = obj.Address.GetObject();
                     if (safeObj is null)
+                    {
+                        PluginLog.Verbose("[ObjectSafety] Would have failed " +
+                                          "accessing any member, object gone");
                         return null;
+                    }
 
                     var id = safeObj.GameObjectId;
                     if (id is 0)
@@ -341,7 +346,8 @@ public static class GameObjectExtensions
                 }
                 catch
                 {
-                    // ignored
+                    PluginLog.Verbose("[ObjectSafety] Would have failed " +
+                                      "doing SafeGameObjectId");
                 }
                 return null;
             }
@@ -354,13 +360,12 @@ public static class GameObjectExtensions
                 try
                 {
                     if (obj is IBattleChara battleChara)
-                    {
                         return battleChara.StatusList;
-                    }
                 }
                 catch
                 {
-                    // ignored
+                    PluginLog.Verbose("[ObjectSafety] Would have failed " +
+                                      "doing SafeStatusList");
                 }
                 return null;
             }
