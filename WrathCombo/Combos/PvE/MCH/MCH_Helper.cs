@@ -10,18 +10,6 @@ namespace WrathCombo.Combos.PvE;
 
 internal partial class MCH
 {
-    #region Misc
-
-    private static bool CanUseFullMetalField =>
-        HasStatusEffect(Buffs.FullMetalMachinist) &&
-        !IsOverheated &&
-        (ActionReady(Wildfire) ||
-         GetCooldownRemainingTime(Wildfire) > 90 ||
-         GetCooldownRemainingTime(Wildfire) <= GCD ||
-         GetStatusEffectRemainingTime(Buffs.FullMetalMachinist) <= 6);
-
-    #endregion
-
     #region Hypercharge
 
     private static bool CanHypercharge(bool onAoE = false)
@@ -62,7 +50,8 @@ internal partial class MCH
     {
         if (!HasStatusEffect(Buffs.Wildfire) &&
             ActionReady(RookAutoturret) &&
-            !RobotActive)
+            !RobotActive &&
+            GetTargetHPPercent() > HPThresholdQueen)
         {
             if (LevelChecked(Wildfire))
             {
@@ -94,6 +83,21 @@ internal partial class MCH
 
         return false;
     }
+
+    #endregion
+    #region Misc
+
+    private static bool CanUseFullMetalField =>
+        HasStatusEffect(Buffs.FullMetalMachinist) &&
+        !IsOverheated &&
+        (ActionReady(Wildfire) ||
+         GetCooldownRemainingTime(Wildfire) > 90 ||
+         GetCooldownRemainingTime(Wildfire) <= GCD ||
+         GetStatusEffectRemainingTime(Buffs.FullMetalMachinist) <= 6);
+
+    private static int HPThresholdQueen =>
+        MCH_ST_QueenBossOption == 1 ||
+        !InBossEncounter() ? MCH_ST_QueenHPOption : 0;
 
     #endregion
 

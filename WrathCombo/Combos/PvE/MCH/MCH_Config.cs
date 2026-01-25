@@ -99,6 +99,23 @@ internal partial class MCH
                 case Preset.MCH_ST_Adv_TurretQueen:
                     DrawSliderInt(50, 100, MCH_ST_TurretUsage,
                         $"Use {AutomatonQueen.ActionName()} at this battery threshold outside of Boss encounter.");
+
+                    DrawSliderInt(0, 50, MCH_ST_QueenHPOption,
+                        "Stop using at Enemy HP %. Set to Zero to disable this check.");
+
+                    ImGui.Indent();
+
+                    ImGui.TextColored(ImGuiColors.DalamudYellow,
+                        "Select what kind of enemies the HP check should be applied to:");
+
+                    DrawHorizontalRadioButton(MCH_ST_QueenBossOption,
+                        "Non-Bosses", "Only applies the HP check above to non-bosses.", 0);
+
+                    DrawHorizontalRadioButton(MCH_ST_QueenBossOption,
+                        "All Enemies", "Applies the HP check above to all enemies.", 1);
+
+
+                    ImGui.Unindent();
                     break;
 
                 case Preset.MCH_ST_Adv_GaussRicochet:
@@ -261,6 +278,8 @@ internal partial class MCH
             MCH_ST_ReassembleHPOption = new("MCH_ST_ReassembleHPOption", 10),
             MCH_ST_ToolsBossOption = new("MCH_ST_ToolsBossOption"),
             MCH_ST_ToolsHPOption = new("MCH_ST_ToolsHPOption", 10),
+            MCH_ST_QueenHPOption = new("MCH_ST_QueenHPOption", 10),
+            MCH_ST_QueenBossOption = new("MCH_ST_QueenBossOption"),
             MCH_ST_TurretUsage = new("MCH_ST_TurretUsage", 100),
             MCH_ST_ReassemblePool = new("MCH_ST_ReassemblePool"),
             MCH_ST_GaussRicoPool = new("MCH_ST_GaussRicoPool"),
