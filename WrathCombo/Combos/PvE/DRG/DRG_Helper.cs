@@ -173,7 +173,7 @@ internal partial class DRG
         {
             case false:
             {
-                if (simpleMode || IsEnabled(Preset.DRG_ST_Damage) && InCombat() && InActionRange(actionId))
+                if (simpleMode || IsEnabled(Preset.DRG_ST_Damage) && InCombat())
                 {
                     //Mirage Feature
                     if ((simpleMode || IsEnabled(Preset.DRG_ST_Mirage)) &&
@@ -219,7 +219,7 @@ internal partial class DRG
 
             case true:
             {
-                if (simpleMode || IsEnabled(Preset.DRG_AoE_Damage) && InCombat() && InActionRange(actionId))
+                if (simpleMode || IsEnabled(Preset.DRG_AoE_Damage) && InCombat())
                 {
                     //Mirage Feature
                     if ((simpleMode || IsEnabled(Preset.DRG_AoE_Mirage)) &&
