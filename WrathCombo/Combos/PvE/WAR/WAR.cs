@@ -110,7 +110,7 @@ internal partial class WAR
             if (IsEnabled(Preset.WAR_ST_BalanceOpener) && Opener().FullOpener(ref action))
                 return action;
             if (IsEnabled(Preset.WAR_ST_RangedUptime) && ShouldUseTomahawk)
-                return CanPRend(WAR_ST_PrimalRend_Distance, WAR_ST_PrimalRend_Movement == 1 || (WAR_ST_PrimalRend_Movement == 0 && !IsMoving())) ? PrimalRend : CanWeave() && CanOnslaught(WAR_ST_Onslaught_Charges, WAR_ST_Onslaught_Distance, WAR_ST_Onslaught_Movement == 1 || (WAR_ST_Onslaught_Movement == 0 && !IsMoving())) ? Onslaught : Tomahawk;
+                return ShouldUsePrimalRend(WAR_ST_PrimalRend_Distance, WAR_ST_PrimalRend_Movement == 1 || (WAR_ST_PrimalRend_Movement == 0 && !IsMoving())) ? PrimalRend : CanWeave() && ShouldUseOnslaught(WAR_ST_Onslaught_Charges, WAR_ST_Onslaught_Distance, WAR_ST_Onslaught_Movement == 1 || (WAR_ST_Onslaught_Movement == 0 && !IsMoving())) ? Onslaught : Tomahawk;
             if (IsEnabled(Preset.WAR_ST_InnerRelease) && ShouldUseInnerRelease(WAR_ST_IRStop))
                 return OriginalHook(Berserk);
             if (IsEnabled(Preset.WAR_ST_Infuriate) && ShouldUseInfuriate(WAR_ST_Infuriate_Gauge, WAR_ST_Infuriate_Charges))
@@ -230,7 +230,12 @@ internal partial class WAR
             #region Rotation
 
             if (IsEnabled(Preset.WAR_AoE_RangedUptime) && ShouldUseTomahawk)
-                return CanPRend(WAR_AoE_PrimalRend_Distance, WAR_AoE_PrimalRend_Movement == 1 || (WAR_AoE_PrimalRend_Movement == 0 && !IsMoving())) ? PrimalRend : CanWeave() && CanOnslaught(WAR_AoE_Onslaught_Charges, WAR_AoE_Onslaught_Distance, WAR_AoE_Onslaught_Movement == 1 || (WAR_AoE_Onslaught_Movement == 0 && !IsMoving())) ? Onslaught : Tomahawk;
+                return ShouldUsePrimalRend(WAR_AoE_PrimalRend_Distance, WAR_AoE_PrimalRend_Movement == 1 || (WAR_AoE_PrimalRend_Movement == 0 && !IsMoving())) 
+                    ? PrimalRend 
+                    : CanWeave() && ShouldUseOnslaught(WAR_AoE_Onslaught_Charges, WAR_AoE_Onslaught_Distance, WAR_AoE_Onslaught_Movement == 1 || (WAR_AoE_Onslaught_Movement == 0 && !IsMoving())) 
+                        ? Onslaught 
+                        : Tomahawk;
+            
             if (IsEnabled(Preset.WAR_AoE_InnerRelease) && ShouldUseInnerRelease(WAR_AoE_IRStop))
                 return OriginalHook(Berserk);
             if (IsEnabled(Preset.WAR_AoE_Infuriate) && ShouldUseInfuriate(WAR_AoE_Infuriate_Gauge, WAR_AoE_Infuriate_Charges))
@@ -420,6 +425,7 @@ internal partial class WAR
 
     #endregion
     
+    #region Double Knockback Resist Protection
     internal class WAR_ArmsLengthLockout : CustomCombo
     {
         protected internal override Preset Preset => Preset.WAR_ArmsLengthLockout;
@@ -436,7 +442,9 @@ internal partial class WAR
                 : actionID;
         }
     }
+    #endregion
     
+    #region Onslaught Retargeting
     internal class WAR_RetargetOnslaught : CustomCombo
     {
         protected internal override Preset Preset => Preset.WAR_RetargetOnslaught;
@@ -463,7 +471,9 @@ internal partial class WAR
         }
     }
 
-    #region MyRegion
+    #endregion
+    
+    #region Holmgang Retargeting
 
     internal class WAR_RetargetHolmgang : CustomCombo
     {
