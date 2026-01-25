@@ -335,9 +335,11 @@ internal partial class VPR
         int ufHoldChargesAoE = IsNotEnabled(Preset.VPR_AoE_SimpleMode) ? VPR_AoE_UncoiledFury_HoldCharges : 1;
         int ufHPThresholdAoE = IsNotEnabled(Preset.VPR_AoE_SimpleMode) ? VPR_AoE_UncoiledFury_Threshold : 1;
 
-
         switch (isAoE)
         {
+            //ST Range uptime    
+            case false when ActionReady(UncoiledFury) && HasRattlingCoilStacks && !InMeleeRange() && HasBattleTarget():
+
             //ST normal rotation
             case false when !IsComboExpiring(2) && !IsVenomExpiring(2) && !IsHoningExpiring(2) &&
                             ActionReady(UncoiledFury) && HasStatusEffect(Buffs.Swiftscaled) && HasStatusEffect(Buffs.HuntersInstinct) &&
@@ -345,9 +347,6 @@ internal partial class VPR
                             !UsedVicewinder && !UsedHuntersCoil && !UsedSwiftskinsCoil && NoSTComboWeaves && InActionRange(UncoiledFury) &&
                             !HasStatusEffect(Buffs.Reawakened) && !HasStatusEffect(Buffs.ReadyToReawaken) &&
                             !JustUsed(Ouroboros) && !IsEmpowermentExpiring(3):
-
-            //ST Range uptime    
-            case false when ActionReady(UncoiledFury) && HasRattlingCoilStacks && !InMeleeRange():
 
             //AoE rotation    
             case true when ActionReady(UncoiledFury) &&
