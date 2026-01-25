@@ -254,7 +254,9 @@ internal unsafe static class AutoRotationController
                 continue;
 
             uint gameAct = attributes.ReplaceSkill!.ActionIDs.First();
-            if (!LevelChecked(gameAct))
+            var status = ActionManager.Instance()->GetActionStatus(ActionType.Action, gameAct, checkCastingActive: false, checkRecastActive: false);
+
+            if (!LevelChecked(gameAct) || status == 581)
                 continue;
 
             if (action.IsHeal)
