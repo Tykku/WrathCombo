@@ -341,21 +341,18 @@ internal partial class VPR
             case false when ActionReady(UncoiledFury) && HasRattlingCoilStacks && !InMeleeRange() && HasBattleTarget():
 
             //ST normal rotation
-            case false when !IsComboExpiring(2) && !IsVenomExpiring(2) && !IsHoningExpiring(2) &&
-                            ActionReady(UncoiledFury) && HasStatusEffect(Buffs.Swiftscaled) && HasStatusEffect(Buffs.HuntersInstinct) &&
-                            (RattlingCoilStacks > ufHoldChargesST || GetTargetHPPercent() < ufHPThresholdST && HasRattlingCoilStacks) &&
-                            !UsedVicewinder && !UsedHuntersCoil && !UsedSwiftskinsCoil && NoSTComboWeaves && InActionRange(UncoiledFury) &&
-                            !HasStatusEffect(Buffs.Reawakened) && !HasStatusEffect(Buffs.ReadyToReawaken) &&
-                            !JustUsed(Ouroboros) && !IsEmpowermentExpiring(3):
+            case false when ActionReady(UncoiledFury) && InActionRange(UncoiledFury) &&
+                            HasBothBuffs && !UsedVicewinder && !UsedHuntersCoil && !UsedSwiftskinsCoil && NoSTComboWeaves &&
+                            !HasStatusEffect(Buffs.Reawakened) && !HasStatusEffect(Buffs.ReadyToReawaken) && !JustUsed(Ouroboros) &&
+                            !IsComboExpiring(2) && !IsVenomExpiring(2) && !IsHoningExpiring(2) && !IsEmpowermentExpiring(3) &&
+                            (RattlingCoilStacks > ufHoldChargesST || GetTargetHPPercent() < ufHPThresholdST && HasRattlingCoilStacks):
 
-            //AoE rotation    
-            case true when ActionReady(UncoiledFury) &&
-                           (RattlingCoilStacks > ufHoldChargesAoE ||
-                            GetTargetHPPercent() < ufHPThresholdAoE && HasRattlingCoilStacks) &&
-                           HasStatusEffect(Buffs.Swiftscaled) && HasStatusEffect(Buffs.HuntersInstinct) &&
-                           !UsedVicepit && !UsedHuntersDen && !UsedSwiftskinsDen && InActionRange(UncoiledFury) &&
-                           !HasStatusEffect(Buffs.Reawakened) && NoAoEComboWeaves &&
-                           !JustUsed(JaggedMaw, GCD) && !JustUsed(BloodiedMaw, GCD) && !JustUsed(SerpentsIre, GCD):
+            //AoE rotation 
+            case true when ActionReady(UncoiledFury) && InActionRange(UncoiledFury) &&
+                           HasBothBuffs && !UsedVicepit && !UsedHuntersDen && !UsedSwiftskinsDen && NoAoEComboWeaves &&
+                           !HasStatusEffect(Buffs.Reawakened) && !HasStatusEffect(Buffs.ReadyToReawaken) && !JustUsed(Ouroboros) &&
+                           !JustUsed(JaggedMaw, GCD) && !JustUsed(BloodiedMaw, GCD) && !JustUsed(SerpentsIre, GCD) &&
+                           (RattlingCoilStacks > ufHoldChargesAoE || GetTargetHPPercent() < ufHPThresholdAoE && HasRattlingCoilStacks):
                 return true;
 
             default:
