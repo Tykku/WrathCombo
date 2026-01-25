@@ -188,25 +188,29 @@ internal partial class DRG
                     //Starcross Feature
                     if ((simpleMode || IsEnabled(Preset.DRG_ST_Starcross)) &&
                         ActionReady(Starcross) &&
-                        HasStatusEffect(Buffs.StarcrossReady))
+                        HasStatusEffect(Buffs.StarcrossReady) &&
+                        InActionRange(Starcross))
                         return Starcross;
 
                     //Rise of the Dragon Feature
                     if ((simpleMode || IsEnabled(Preset.DRG_ST_RiseOfTheDragon)) &&
                         ActionReady(RiseOfTheDragon) &&
-                        HasStatusEffect(Buffs.DragonsFlight))
+                        HasStatusEffect(Buffs.DragonsFlight) &&
+                        InActionRange(RiseOfTheDragon))
                         return RiseOfTheDragon;
 
                     //Geirskogul Feature
                     if ((simpleMode || IsEnabled(Preset.DRG_ST_Geirskogul)) &&
-                        CanUseGeirskogul())
+                        CanUseGeirskogul() &&
+                        InActionRange(Geirskogul))
                         return Geirskogul;
 
                     //Nastrond Feature
                     if ((simpleMode || IsEnabled(Preset.DRG_ST_Nastrond)) &&
                         ActionReady(Nastrond) &&
                         HasStatusEffect(Buffs.NastrondReady) &&
-                        LoTDActive)
+                        LoTDActive &&
+                        InActionRange(Nastrond))
                         return Nastrond;
 
                     // Piercing Talon Uptime Option
@@ -224,7 +228,8 @@ internal partial class DRG
                     //Mirage Feature
                     if ((simpleMode || IsEnabled(Preset.DRG_AoE_Mirage)) &&
                         ActionReady(MirageDive) &&
-                        HasStatusEffect(Buffs.DiveReady))
+                        HasStatusEffect(Buffs.DiveReady) &&
+                        InActionRange(MirageDive))
                         return MirageDive;
 
                     //Wyrmwind Thrust Feature
@@ -235,26 +240,30 @@ internal partial class DRG
                     //Starcross Feature
                     if ((simpleMode || IsEnabled(Preset.DRG_AoE_Starcross)) &&
                         ActionReady(Starcross) &&
-                        HasStatusEffect(Buffs.StarcrossReady))
+                        HasStatusEffect(Buffs.StarcrossReady) &&
+                        InActionRange(Starcross))
                         return Starcross;
 
                     //Rise of the Dragon Feature
                     if ((simpleMode || IsEnabled(Preset.DRG_AoE_RiseOfTheDragon)) &&
                         ActionReady(RiseOfTheDragon) &&
-                        HasStatusEffect(Buffs.DragonsFlight))
+                        HasStatusEffect(Buffs.DragonsFlight) &&
+                        InActionRange(RiseOfTheDragon))
                         return RiseOfTheDragon;
 
                     //Geirskogul Feature
                     if ((simpleMode || IsEnabled(Preset.DRG_AoE_Geirskogul)) &&
                         ActionReady(Geirskogul) &&
-                        !LoTDActive)
+                        !LoTDActive &&
+                        InActionRange(Geirskogul))
                         return Geirskogul;
 
                     //Nastrond Feature
                     if ((simpleMode || IsEnabled(Preset.DRG_AoE_Nastrond)) &&
                         ActionReady(Nastrond) &&
                         HasStatusEffect(Buffs.NastrondReady) &&
-                        LoTDActive)
+                        LoTDActive &&
+                        InActionRange(Nastrond))
                         return Nastrond;
 
                     // Piercing Talon Uptime Option
