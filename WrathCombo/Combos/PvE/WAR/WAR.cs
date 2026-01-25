@@ -85,10 +85,6 @@ internal partial class WAR
             #region Stuns
 
             if (IsEnabled(Preset.WAR_ST_Interrupt)
-                && HiddenFeaturesData.NonBlockingIsEnabledWith( // Only interrupt circle adds in 7
-                    Preset.WAR_Hid_R7SCircleCastOnly,
-                    () => HiddenFeaturesData.Content.InR7S,
-                    () => HiddenFeaturesData.Targeting.R7SCircleCastingAdd)
                 && Role.CanInterject())
                 return Role.Interject;
             if (IsEnabled(Preset.WAR_ST_Stun)
@@ -202,19 +198,9 @@ internal partial class WAR
             if (ContentSpecificActions.TryGet(out uint contentAction))
                 return contentAction;
 
-            // If the Burst Holding for the Squirrels in 6 is enabled, check that
-            // we are either not targeting a squirrel or the fight is after 275s
-            bool r6SReady = !HiddenFeaturesData.IsEnabledWith(
-                Preset.WAR_Hid_R6SHoldSquirrelBurst,
-                () => HiddenFeaturesData.Targeting.R6SSquirrel &&
-                      CombatEngageDuration().TotalSeconds < 275);
-
             if (IsEnabled(Preset.WAR_AoE_Interrupt) && Role.CanInterject())
                 return Role.Interject;
-            if (IsEnabled(Preset.WAR_AoE_Stun) && Role.CanLowBlow() && HiddenFeaturesData.NonBlockingIsEnabledWith( // Only stun the jabber, if in 6
-                Preset.WAR_Hid_R6SStunJabberOnly,
-                () => HiddenFeaturesData.Content.InR6S,
-                () => HiddenFeaturesData.Targeting.R6SJabber))
+            if (IsEnabled(Preset.WAR_AoE_Stun) && Role.CanLowBlow())
                 return Role.LowBlow;
             
             if (WAR_AoE_Advanced_MitsOptions != 1 || P.UIHelper.PresetControlled(Preset)?.enabled == true)
@@ -224,8 +210,6 @@ internal partial class WAR
                         ? action.Retarget(Overpower, SimpleTarget.Self)
                         : action;
             }
-
-            if (!r6SReady) return AOECombo;
 
             #region Rotation
 
