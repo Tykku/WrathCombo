@@ -85,6 +85,7 @@ internal partial class MCH
     }
 
     #endregion
+
     #region Misc
 
     private static bool CanUseFullMetalField =>
