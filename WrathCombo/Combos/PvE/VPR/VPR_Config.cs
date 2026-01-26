@@ -164,7 +164,7 @@ internal partial class VPR
         #region Variables
 
         public static UserInt
-            
+
             //ST
             VPR_Balance_Content = new("VPR_Balance_Content", 1),
             VPR_ST_UncoiledFuryHoldCharges = new("VPR_ST_UncoiledFuryHoldCharges", 1),
