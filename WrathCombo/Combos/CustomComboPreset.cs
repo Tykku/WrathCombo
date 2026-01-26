@@ -6466,7 +6466,8 @@ public enum Preset
     SAM_ST_Feint = 15095,
 
     [ParentCombo(SAM_ST_AdvancedMode)]
-    [CustomComboInfo("Third Eye Raidwide Option", "Adds Third Eye when Raidwide is detected casting.", Job.SAM)]
+    [CustomComboInfo("Third Eye Raidwide Option", "Adds Third Eye when Raidwide is detected casting. " +
+                                                  "\nWhen Solo, uses on cd.", Job.SAM)]
     SAM_ST_ThirdEye = 15094,
 
     [ParentCombo(SAM_ST_AdvancedMode)]
