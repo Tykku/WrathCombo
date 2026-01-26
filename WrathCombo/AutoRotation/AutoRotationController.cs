@@ -46,7 +46,7 @@ internal unsafe static class AutoRotationController
     const float QueryRange = 30f;
 
     public static bool WouldLikeToGroundTarget;
-
+    public static bool PausedForError;
     static Func<WrathPartyMember, bool> RezQuery => x =>
         x.BattleChara is not null &&
         x.BattleChara.IsDead &&
@@ -93,7 +93,8 @@ internal unsafe static class AutoRotationController
                || Player.Mounted
                || !EzThrottler.Throttle("Autorot", cfg.Throttler)
                || (cfg.DPSSettings.UnTargetAndDisableForPenalty && PlayerHasActionPenalty())
-               || (ActionManager.Instance()->QueuedActionId > 0);
+               || (ActionManager.Instance()->QueuedActionId > 0)
+               || PausedForError;
     }
 
     private static bool IsOccupied()

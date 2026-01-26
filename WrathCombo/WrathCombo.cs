@@ -34,6 +34,7 @@ using WrathCombo.Window;
 using WrathCombo.Window.Tabs;
 using WrathCombo.Services.ActionRequestIPC;
 using GenericHelpers = ECommons.GenericHelpers;
+using Lumina.Excel.Sheets;
 
 namespace WrathCombo;
 
@@ -216,6 +217,7 @@ public sealed partial class WrathCombo : IDalamudPlugin
 
         Svc.Framework.Update += OnFrameworkUpdate;
         Svc.ClientState.TerritoryChanged += ClientState_TerritoryChanged;
+        Svc.Toasts.ErrorToast += OnErrorToast;
 
         CustomComboFunctions.TimerSetup();
 
@@ -233,6 +235,16 @@ public sealed partial class WrathCombo : IDalamudPlugin
                 HandleOpenCommand([""], forceOpen:true);
         });
 #endif
+    }
+
+    private void OnErrorToast(ref SeString message, ref bool isHandled)
+    {
+        var txt = message.TextValue;
+        if (Svc.Data.GetExcelSheet<LogMessage>().TryGetFirst(x => x.Text == txt, out var row))
+        {
+            if (row.RowId == 2288) //Aetherial Interference
+                AutoRotationController.PausedForError = true;
+        }
     }
 
     private void RemoveNullAutos()

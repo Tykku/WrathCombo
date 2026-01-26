@@ -97,6 +97,7 @@ internal abstract partial class CustomComboFunctions
         else if (!GetPartyMembers().Any(x => x.BattleChara is not null && x.BattleChara.Struct()->InCombat))
         {
             partyInCombat = false;
+            AutoRotation.AutoRotationController.PausedForError = false;
         }
     }
 
