@@ -142,7 +142,8 @@ internal partial class VPR : Melee
                         return OriginalHook(Twinblood);
 
                     //Serpents Ire usage
-                    if (!MaxCoils && ActionReady(SerpentsIre))
+                    if (!MaxCoils && ActionReady(SerpentsIre) &&
+                        GetTargetHPPercent() > 25)
                         return SerpentsIre;
                 }
 
@@ -257,10 +258,10 @@ internal partial class VPR : Melee
                 // healing
                 if (IsEnabled(Preset.VPR_ST_ComboHeals))
                 {
-                    if (Role.CanSecondWind(VPR_ST_SecondWind_Threshold))
+                    if (Role.CanSecondWind(VPR_ST_SecondWindHPThreshold))
                         return Role.SecondWind;
 
-                    if (Role.CanBloodBath(VPR_ST_Bloodbath_Threshold))
+                    if (Role.CanBloodBath(VPR_ST_BloodbathHPThreshold))
                         return Role.Bloodbath;
                 }
 
@@ -289,7 +290,7 @@ internal partial class VPR : Melee
             //Vicewinder
             if (IsEnabled(Preset.VPR_ST_Vicewinder) &&
                 CanUseVicewinder)
-                return VPR_TrueNortVicewinder &&
+                return VPR_TrueNorthVicewinder &&
                        GetRemainingCharges(Role.TrueNorth) > TnCharges &&
                        Role.CanTrueNorth()
                     ? Role.TrueNorth
@@ -352,27 +353,28 @@ internal partial class VPR : Melee
                     if (IsEnabled(Preset.VPR_AoE_VicepitWeaves))
                     {
                         if (HasStatusEffect(Buffs.FellhuntersVenom) &&
-                            (InActionRange(TwinfangThresh) || VPR_AoE_VicepitCombo_SubOption == 1))
+                            (InActionRange(TwinfangThresh) || VPR_AoE_VicepitComboRangeCheck == 1))
                             return OriginalHook(Twinfang);
 
                         if (HasStatusEffect(Buffs.FellskinsVenom) &&
-                            (InActionRange(TwinbloodThresh) || VPR_AoE_VicepitCombo_SubOption == 1))
+                            (InActionRange(TwinbloodThresh) || VPR_AoE_VicepitComboRangeCheck == 1))
                             return OriginalHook(Twinblood);
                     }
 
                     //Serpents Ire usage
                     if (IsEnabled(Preset.VPR_AoE_SerpentsIre) &&
-                        !MaxCoils && ActionReady(SerpentsIre))
+                        !MaxCoils && ActionReady(SerpentsIre) &&
+                        GetTargetHPPercent() > VPR_AoE_SerpentsIreHPThreshold)
                         return SerpentsIre;
                 }
 
                 // healing
                 if (IsEnabled(Preset.VPR_AoE_ComboHeals))
                 {
-                    if (Role.CanSecondWind(VPR_AoE_SecondWind_Threshold))
+                    if (Role.CanSecondWind(VPR_AoE_SecondWindHPThreshold))
                         return Role.SecondWind;
 
-                    if (Role.CanBloodBath(VPR_AoE_Bloodbath_Threshold))
+                    if (Role.CanBloodBath(VPR_AoE_BloodbathHPThreshold))
                         return Role.Bloodbath;
                 }
 
@@ -386,18 +388,18 @@ internal partial class VPR : Melee
                 !HasStatusEffect(Buffs.Reawakened))
             {
                 if (UsedSwiftskinsDen &&
-                    (InActionRange(HuntersDen) || VPR_AoE_VicepitCombo_SubOption == 1))
+                    (InActionRange(HuntersDen) || VPR_AoE_VicepitComboRangeCheck == 1))
                     return HuntersDen;
 
                 if (UsedVicepit &&
-                    (InActionRange(SwiftskinsDen) || VPR_AoE_VicepitCombo_SubOption == 1))
+                    (InActionRange(SwiftskinsDen) || VPR_AoE_VicepitComboRangeCheck == 1))
                     return SwiftskinsDen;
             }
 
             //Reawakend Usage
             if (IsEnabled(Preset.VPR_AoE_Reawaken) &&
                 CanReawaken(true) &&
-                (InActionRange(Reawaken) || VPR_AoE_Reawaken_SubOption == 1))
+                (InActionRange(Reawaken) || VPR_AoE_ReawakenRangecheck == 1))
                 return Reawaken;
 
             //Overcap protection
@@ -409,7 +411,7 @@ internal partial class VPR : Melee
             //Vicepit Usage
             if (IsEnabled(Preset.VPR_AoE_Vicepit) &&
                 ActionReady(Vicepit) && !HasStatusEffect(Buffs.Reawakened) &&
-                (InActionRange(Vicepit) || VPR_AoE_Vicepit_SubOption == 1) &&
+                (InActionRange(Vicepit) || VPR_AoE_VicepitRangeCheck == 1) &&
                 (IreCD >= GCD * 4 || !LevelChecked(SerpentsIre)))
                 return Vicepit;
 

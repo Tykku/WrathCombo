@@ -38,9 +38,9 @@ internal partial class VPR
                         if ((HasStatusEffect(Buffs.FlanksbaneVenom) || HasStatusEffect(Buffs.HindsbaneVenom)) &&
                             LevelChecked(HindstingStrike))
                             return useTrueNorth &&
-                                   (VPR_ST_TrueNorthDynamic_HoldCharge &&
+                                   (VPR_ST_TrueNorthDynamicHoldCharge &&
                                     GetRemainingCharges(Role.TrueNorth) is 2 ||
-                                    !VPR_ST_TrueNorthDynamic_HoldCharge) &&
+                                    !VPR_ST_TrueNorthDynamicHoldCharge) &&
                                    GetRemainingCharges(Role.TrueNorth) > TnCharges &&
                                    Role.CanTrueNorth() &&
                                    (!OnTargetsRear() && HasStatusEffect(Buffs.HindsbaneVenom) ||
@@ -51,9 +51,9 @@ internal partial class VPR
                         if ((HasStatusEffect(Buffs.FlankstungVenom) || HasStatusEffect(Buffs.HindstungVenom)) &&
                             LevelChecked(FlanksbaneFang))
                             return useTrueNorth &&
-                                   (VPR_ST_TrueNorthDynamic_HoldCharge &&
+                                   (VPR_ST_TrueNorthDynamicHoldCharge &&
                                     GetRemainingCharges(Role.TrueNorth) is 2 ||
-                                    !VPR_ST_TrueNorthDynamic_HoldCharge) &&
+                                    !VPR_ST_TrueNorthDynamicHoldCharge) &&
                                    GetRemainingCharges(Role.TrueNorth) > TnCharges &&
                                    Role.CanTrueNorth() &&
                                    (!OnTargetsRear() && HasStatusEffect(Buffs.HindstungVenom) ||
@@ -181,8 +181,8 @@ internal partial class VPR
     private static bool CanReawaken(bool isAoE = false)
     {
         int hpThresholdUsageST = IsNotEnabled(Preset.VPR_ST_SimpleMode) ? ComputeHpThresholdReawaken() : 0;
-        int hpThresholdDontSaveST = IsNotEnabled(Preset.VPR_ST_SimpleMode) ? VPR_ST_ReAwaken_Threshold : 5;
-        int hpThresholdUsageAoE = IsNotEnabled(Preset.VPR_AoE_SimpleMode) ? VPR_AoE_Reawaken_Usage : 40;
+        int hpThresholdDontSaveST = IsNotEnabled(Preset.VPR_ST_SimpleMode) ? VPR_ST_ReAwakenAlwaysUse : 5;
+        int hpThresholdUsageAoE = IsNotEnabled(Preset.VPR_AoE_SimpleMode) ? VPR_AoE_ReawakenHPThreshold : 40;
 
         switch (isAoE)
         {
@@ -330,10 +330,10 @@ internal partial class VPR
 
     private static bool CanUseUncoiledFury(bool isAoE = false)
     {
-        int ufHoldChargesST = IsNotEnabled(Preset.VPR_ST_SimpleMode) ? VPR_ST_UncoiledFury_HoldCharges : 1;
-        int ufHPThresholdST = IsNotEnabled(Preset.VPR_ST_SimpleMode) ? VPR_ST_UncoiledFury_Threshold : 1;
-        int ufHoldChargesAoE = IsNotEnabled(Preset.VPR_AoE_SimpleMode) ? VPR_AoE_UncoiledFury_HoldCharges : 1;
-        int ufHPThresholdAoE = IsNotEnabled(Preset.VPR_AoE_SimpleMode) ? VPR_AoE_UncoiledFury_Threshold : 1;
+        int ufHoldChargesST = IsNotEnabled(Preset.VPR_ST_SimpleMode) ? VPR_ST_UncoiledFuryHoldCharges : 1;
+        int ufHPThresholdST = IsNotEnabled(Preset.VPR_ST_SimpleMode) ? VPR_ST_UncoiledFuryAlwaysUse : 1;
+        int ufHoldChargesAoE = IsNotEnabled(Preset.VPR_AoE_SimpleMode) ? VPR_AoE_UncoiledFuryHoldCharges : 1;
+        int ufHPThresholdAoE = IsNotEnabled(Preset.VPR_AoE_SimpleMode) ? VPR_AoE_UncoiledFuryAlwaysUse : 1;
 
         switch (isAoE)
         {
