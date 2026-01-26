@@ -11,6 +11,8 @@ internal partial class BLM
         {
             switch (preset)
             {
+                #region ST
+
                 case Preset.BLM_ST_Opener:
                     DrawHorizontalRadioButton(BLM_SelectedOpener,
                         "Standard opener", "Uses Standard opener",
@@ -133,6 +135,10 @@ internal partial class BLM
                         $"{Manaward.ActionName()} HP percentage threshold");
                     break;
 
+                #endregion
+
+                #region AoE
+
                 case Preset.BLM_AoE_LeyLines:
 
                     DrawHorizontalRadioButton(BLM_AoE_LeyLinesMovement,
@@ -172,6 +178,9 @@ internal partial class BLM
                         "Add Field Mouseover", "Adds Field mouseover targetting.");
                     break;
 
+                #endregion
+
+                #region Misc
 
                 case Preset.BLM_Fire1and3:
                     DrawRadioButton(BLM_F1to3,
@@ -225,12 +234,16 @@ internal partial class BLM
                     DrawAdditionalBoolChoice(BLM_AmplifierXenoCD,
                         "Show Xenoglossy when Amplifier is on cooldown", "Makes it so that Xenoglossy also shows when Amplifier is on cooldown.");
                     break;
+
+                #endregion
             }
         }
 
         #region Variables
 
         public static UserInt
+
+            //ST
             BLM_SelectedOpener = new("BLM_SelectedOpener"),
             BLM_Balance_Content = new("BLM_Balance_Content", 1),
             BLM_ST_LeyLinesCharges = new("BLM_ST_LeyLinesCharges", 1),
@@ -238,19 +251,23 @@ internal partial class BLM
             BLM_ST_LeyLinesHPOption = new("BLM_ST_LeyLinesOption", 25),
             BLM_ST_LeyLinesBossOption = new("BLM_ST_LeyLinesSubOption"),
             BLM_ST_ThunderBossOption = new("BLM_ST_ThunderBossOption"),
-            BLM_ST_ThunderBossAddsOption = new("BLM_ST_ThunderBossAddsOption", 50),
-            BLM_ST_ThunderTrashOption = new("BLM_ST_ThunderTrashOption", 50),
+            BLM_ST_ThunderBossAddsOption = new("BLM_ST_ThunderBossAddsOption", 10),
+            BLM_ST_ThunderTrashOption = new("BLM_ST_ThunderTrashOption", 25),
             BLM_ST_Triplecast_WhenToUse = new("BLM_ST_Triplecast_WhenToUse", 1),
             BLM_ST_ThunderRefresh = new("BLM_ST_ThunderUptime_Threshold", 5),
             BLM_ST_Triplecast_MovementCharges = new("BLM_ST_Triplecast_MovementCharges", 1),
             BLM_ST_Polyglot_Movement = new("BLM_ST_Polyglot_Movement", 1),
             BLM_ST_Polyglot_Save = new("BLM_ST_Polyglot_Save"),
             BLM_ST_Manaward_Threshold = new("BLM_ST_Manaward_Threshold", 40),
+
+            //AoE
             BLM_AoE_Triplecast_HoldCharges = new("BLM_AoE_Triplecast_HoldCharges"),
             BLM_AoE_LeyLinesCharges = new("BLM_AoE_LeyLinesCharges"),
             BLM_AoE_LeyLinesMovement = new("BLM_AoE_LeyLinesMovement"),
-            BLM_AoE_LeyLinesOption = new("BLM_AoE_LeyLinesOption", 40),
-            BLM_AoE_ThunderHP = new("BLM_AoE_ThunderHP", 40),
+            BLM_AoE_LeyLinesOption = new("BLM_AoE_LeyLinesOption", 25),
+            BLM_AoE_ThunderHP = new("BLM_AoE_ThunderHP", 25),
+
+            //Misc
             BLM_B1to3 = new("BLM_B1to3"),
             BLM_F1to3 = new("BLM_F1to3"),
             BLM_Fire4_FireAndIce = new("BLM_Fire4_FireAndIce");
