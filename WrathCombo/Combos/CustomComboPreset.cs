@@ -4045,7 +4045,7 @@ public enum Preset
 
     [AutoAction(false, false)]
     [ReplaceSkill(MNK.Bootshine, MNK.LeapingOpo)]
-    [ConflictingCombos(MNK_ST_BeastChakras, MNK_ST_AdvancedMode)]
+    [ConflictingCombos(MNK_Basic_BeastChakras, MNK_ST_AdvancedMode)]
     [CustomComboInfo("Simple Mode - Single Target", "Replaces Bootshine with a full one-button single target rotation.\nThis is the ideal option for newcomers to the job.", Job.MNK)]
     [SimpleCombo]
     MNK_ST_SimpleMode = 9004,
@@ -4063,7 +4063,7 @@ public enum Preset
 
     [AutoAction(false, false)]
     [ReplaceSkill(MNK.Bootshine, MNK.LeapingOpo)]
-    [ConflictingCombos(MNK_ST_BeastChakras, MNK_ST_SimpleMode)]
+    [ConflictingCombos(MNK_Basic_BeastChakras, MNK_ST_SimpleMode)]
     [CustomComboInfo("Advanced Mode - Single Target", "Replaces Bootshine with a full one-button single target rotation.\nThese features are ideal if you want to customize the rotation.", Job.MNK)]
     [AdvancedCombo]
     MNK_ST_AdvancedMode = 9005,
@@ -4209,7 +4209,7 @@ public enum Preset
 
     [ConflictingCombos(MNK_ST_AdvancedMode, MNK_ST_SimpleMode)]
     [CustomComboInfo("Beast Chakra Handlers", "Merge single target GCDs which share the same beast chakra", Job.MNK)]
-    MNK_ST_BeastChakras = 9019,
+    MNK_Basic_BeastChakras = 9019,
 
     #endregion
 

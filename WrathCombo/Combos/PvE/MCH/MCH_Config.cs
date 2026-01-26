@@ -249,6 +249,8 @@ internal partial class MCH
 
                 #endregion
 
+                #region Misc
+
                 case Preset.MCH_GaussRoundRicochet:
                     DrawHorizontalRadioButton(MCH_GaussRico,
                         $"Change {GaussRound.ActionName()} / {DoubleCheck.ActionName()}", $"Changes to {Ricochet.ActionName()} / {CheckMate.ActionName()} depending on charges and what was used last", 0);
@@ -256,6 +258,8 @@ internal partial class MCH
                     DrawHorizontalRadioButton(MCH_GaussRico,
                         $"Change {Ricochet.ActionName()} / {CheckMate.ActionName()}", $"Changes to {GaussRound.ActionName()} / {DoubleCheck.ActionName()} depending on charges and what was used last", 1);
                     break;
+
+                #endregion
             }
         }
 
