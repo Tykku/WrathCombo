@@ -7,6 +7,7 @@ using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using WrathCombo.AutoRotation;
 namespace WrathCombo.CustomComboNS.Functions;
 
 internal abstract partial class CustomComboFunctions
@@ -97,7 +98,6 @@ internal abstract partial class CustomComboFunctions
         else if (!GetPartyMembers().Any(x => x.BattleChara is not null && x.BattleChara.Struct()->InCombat))
         {
             partyInCombat = false;
-            AutoRotation.AutoRotationController.PausedForError = false;
         }
     }
 
@@ -112,7 +112,10 @@ internal abstract partial class CustomComboFunctions
     internal static void OnCombat(ConditionFlag flag, bool value)
     {
         if (flag == ConditionFlag.InCombat && value)
+        {
             combatStart = DateTime.Now;
+            AutoRotationController.PausedForError = false;
+        }
     }
 
     public static unsafe float CountdownRemaining => MathF.Max(0, AgentCountDownSettingDialog.Instance()->TimeRemaining);
