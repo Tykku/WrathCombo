@@ -182,7 +182,7 @@ internal partial class VPR : Melee
 
             //Vicepit Usage
             if (ActionReady(Vicepit) && !HasStatusEffect(Buffs.Reawakened) &&
-                InActionRange(Vicepit) &&
+                InActionRange(Vicepit) && !JustUsed(Vicepit) &&
                 (IreCD >= GCD * 4 || !LevelChecked(SerpentsIre)))
                 return Vicepit;
 
@@ -411,6 +411,7 @@ internal partial class VPR : Melee
             //Vicepit Usage
             if (IsEnabled(Preset.VPR_AoE_Vicepit) &&
                 ActionReady(Vicepit) && !HasStatusEffect(Buffs.Reawakened) &&
+                !JustUsed(Vicepit) &&
                 (InActionRange(Vicepit) || VPR_AoE_VicepitRangeCheck == 1) &&
                 (IreCD >= GCD * 4 || !LevelChecked(SerpentsIre)))
                 return Vicepit;
