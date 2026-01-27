@@ -237,7 +237,7 @@ internal partial class VPR
         #region Pre Ouroboros
 
         if (!TraitLevelChecked(Traits.EnhancedSerpentsLineage) &&
-            NoSTComboWeaves && !NoAoEComboWeaves)
+            NoSTComboWeaves && NoAoEComboWeaves)
         {
             return AnguineTribute switch
             {
@@ -254,7 +254,7 @@ internal partial class VPR
         #region With Ouroboros
 
         if (TraitLevelChecked(Traits.EnhancedSerpentsLineage) &&
-            NoSTComboWeaves && !NoAoEComboWeaves)
+            NoSTComboWeaves && NoAoEComboWeaves)
         {
             return AnguineTribute switch
             {
