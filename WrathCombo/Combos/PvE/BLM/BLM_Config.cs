@@ -121,11 +121,9 @@ internal partial class BLM
 
                     DrawSliderInt(0, 100, BLM_ST_ThunderTrashOption,
                         "Non boss encounter. Stop using at Enemy HP %.");
-
-                    ImGui.Indent();
+                    
                     DrawSliderInt(0, 5, BLM_ST_ThunderRefresh,
                         "Seconds remaining before reapplying the DoT. Set to Zero to disable this check.");
-                    ImGui.Unindent();
                     break;
 
                 case Preset.BLM_ST_Manaward:
