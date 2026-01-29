@@ -62,7 +62,7 @@ internal partial class WAR : Tank
             FellCleave,
             Onslaught, //11
             FellCleave,
-            Onslaught,
+            Onslaught, //13
             FellCleave,
             PrimalWrath,
             Infuriate,
@@ -81,7 +81,7 @@ internal partial class WAR : Tank
 
         public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
         [
-            ([9, 11], () => !HasCharges(Onslaught))
+            ([9, 11, 13], () => !HasCharges(Onslaught) || WAR_ST_BalanceOpener_GapcloserChoice == 0)
         ];
         public override Preset Preset => Preset.WAR_ST_BalanceOpener;
         internal override UserData ContentCheckConfig => WAR_BalanceOpener_Content;
