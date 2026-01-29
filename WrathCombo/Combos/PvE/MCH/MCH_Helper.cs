@@ -19,6 +19,7 @@ internal partial class MCH
             case false when
                 (ActionReady(Hypercharge) || HasStatusEffect(Buffs.Hypercharged)) &&
                 !IsComboExpiring(6) && !IsOverheated &&
+                LevelChecked(Heatblast) &&
                 DrillCD && AirAnchorCD && ChainSawCD &&
                 !HasStatusEffect(Buffs.ExcavatorReady) &&
                 !HasStatusEffect(Buffs.FullMetalMachinist) &&
@@ -31,9 +32,9 @@ internal partial class MCH
 
             case true when
                 (ActionReady(Hypercharge) || HasStatusEffect(Buffs.Hypercharged)) &&
-                ActionReady(AutoCrossbow) &&
+                LevelChecked(AutoCrossbow) &&
                 (LevelChecked(BioBlaster) && GetCooldownRemainingTime(BioBlaster) > 10 ||
-                 !LevelChecked(BioBlaster)) &&
+                 !LevelChecked(BioBlaster) || IsNotEnabled(Preset.MCH_AoE_Adv_Tools)) &&
                 (LevelChecked(Flamethrower) && GetCooldownRemainingTime(Flamethrower) > 10 ||
                  !LevelChecked(Flamethrower) || IsNotEnabled(Preset.MCH_AoE_Adv_FlameThrower)):
                 return true;
