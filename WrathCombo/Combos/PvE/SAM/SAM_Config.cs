@@ -182,6 +182,15 @@ internal partial class SAM
                     break;
 
                 #endregion
+
+                #region Misc
+
+                case Preset.SAM_OgiShoha:
+                    DrawAdditionalBoolChoice(SAM_OgiShohaZanshin,
+                        "Add Zanshin", "Add Zanshin when you ready.");
+                    break;
+
+                #endregion
             }
         }
 
@@ -227,7 +236,8 @@ internal partial class SAM
             SAM_ST_CDs_Guren = new("SAM_ST_CDs_Guren"),
             SAM_ST_CDs_OgiNamikiri_Movement = new("SAM_ST_CDs_OgiNamikiri_Movement"),
             SAM_Oka_KenkiOvercap = new("SAM_Oka_KenkiOvercap"),
-            SAM_Mangetsu_KenkiOvercap = new("SAM_Mangetsu_KenkiOvercap");
+            SAM_Mangetsu_KenkiOvercap = new("SAM_Mangetsu_KenkiOvercap"),
+            SAM_OgiShohaZanshin = new("SAM_OgiShohaZanshin");
 
         public static UserFloat
             SAM_ST_MeditateTimeStill = new("SAM_ST_MeditateTimeStill", 2.5f);
