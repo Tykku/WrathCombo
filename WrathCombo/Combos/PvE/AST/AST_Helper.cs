@@ -309,7 +309,7 @@ internal partial class AST
                             2 => SimpleTarget.UIMouseOverTarget,
                             3 => SimpleTarget.Stack.MouseOver,
                             4 => SimpleTarget.FocusTarget,
-                            _ => SimpleTarget.UIMouseOverTarget,
+                            _ => null,
                         };
                     var battleTargetOverride = targetOverride as IBattleChara;
                     var focusSatisfiedOrSkipped =
