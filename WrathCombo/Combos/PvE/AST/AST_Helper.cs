@@ -312,10 +312,12 @@ internal partial class AST
                             _ => null,
                         };
                     var battleTargetOverride = targetOverride as IBattleChara;
+
                     var focusSatisfiedOrSkipped =
                         (int)AST_QuickTarget_Override != 4 ||
                         ((card is CardType.Balance && IsMeleeOrTank(battleTargetOverride.ClassJob.Value)) ||
                          (card is CardType.Spear && IsRangedOrHealer(battleTargetOverride.ClassJob.Value)));
+
                     if (targetOverride is IBattleChara &&
                         !targetOverride.IsDead &&
                         targetOverride.IsFriendly() &&
