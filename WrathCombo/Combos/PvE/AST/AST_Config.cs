@@ -405,6 +405,7 @@ internal partial class AST
                     DrawRadioButton(AST_QuickTarget_Override, "Hard Target Override", "Overrides selection with hard target, if you have one that is in range and does not have damage down or rez sickness.", 1, descriptionAsTooltip: true);
                     DrawRadioButton(AST_QuickTarget_Override, "UI MouseOver Override", "Overrides selection with UI MouseOver target, if you have one that is in range and does not have damage down or rez sickness.", 2, descriptionAsTooltip: true);
                     DrawRadioButton(AST_QuickTarget_Override, "Any MouseOver Override", "Overrides selection with UI or Nameplate or Model MouseOver target (in that order), if you have one that is in range and does not have damage down or rez sickness.", 3, descriptionAsTooltip: true);
+                    DrawRadioButton(AST_QuickTarget_Override, "Focus Target Override (when correct role)", "Overrides selection with your Focus Target, if they are within range and do not have damage down or rez sickness, and are melee for Balance or ranged for Spear (including supports).", 4, descriptionAsTooltip: true);
                     break;
                 
                 case Preset.AST_Retargets_EarthlyStar:
