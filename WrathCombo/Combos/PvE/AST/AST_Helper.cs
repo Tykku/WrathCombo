@@ -298,31 +298,38 @@ internal partial class AST
             var card = Gauge.DrawnCards[0];
 
             // Check if we have a target overriding any searching
-            if (AST_QuickTarget_Override != 0)
+            try
             {
-                var targetOverride =
-                    (int)AST_QuickTarget_Override switch
-                    {
-                        1 => SimpleTarget.HardTarget,
-                        2 => SimpleTarget.UIMouseOverTarget,
-                        3 => SimpleTarget.Stack.MouseOver,
-                        4 => SimpleTarget.FocusTarget,
-                        _ => SimpleTarget.UIMouseOverTarget,
-                    };
-                var battleTargetOverride = targetOverride as IBattleChara;
-                var focusSatisfiedOrSkipped =
-                    (int)AST_QuickTarget_Override != 4 ||
-                    ((card is CardType.Balance && IsMeleeOrTank(battleTargetOverride.ClassJob.Value)) ||
-                      (card is CardType.Spear && IsRangedOrHealer(battleTargetOverride.ClassJob.Value)));
-                if (targetOverride is IBattleChara &&
-                    !targetOverride.IsDead &&
-                    targetOverride.IsFriendly() &&
-                    InCardRange(targetOverride) &&
-                    targetOverride.IsInParty() &&
-                    DamageDownFree(targetOverride) &&
-                    SicknessFree(targetOverride) &&
-                    focusSatisfiedOrSkipped)
-                    return field = targetOverride;
+                if (AST_QuickTarget_Override != 0)
+                {
+                    var targetOverride =
+                        (int)AST_QuickTarget_Override switch
+                        {
+                            1 => SimpleTarget.HardTarget,
+                            2 => SimpleTarget.UIMouseOverTarget,
+                            3 => SimpleTarget.Stack.MouseOver,
+                            4 => SimpleTarget.FocusTarget,
+                            _ => SimpleTarget.UIMouseOverTarget,
+                        };
+                    var battleTargetOverride = targetOverride as IBattleChara;
+                    var focusSatisfiedOrSkipped =
+                        (int)AST_QuickTarget_Override != 4 ||
+                        ((card is CardType.Balance && IsMeleeOrTank(battleTargetOverride.ClassJob.Value)) ||
+                         (card is CardType.Spear && IsRangedOrHealer(battleTargetOverride.ClassJob.Value)));
+                    if (targetOverride is IBattleChara &&
+                        !targetOverride.IsDead &&
+                        targetOverride.IsFriendly() &&
+                        InCardRange(targetOverride) &&
+                        targetOverride.IsInParty() &&
+                        DamageDownFree(targetOverride) &&
+                        SicknessFree(targetOverride) &&
+                        focusSatisfiedOrSkipped)
+                        return field = targetOverride;
+                }
+            }
+            catch
+            {
+                // Ignore errored target overrides
             }
 
             var party = GetPartyMembers(false)
