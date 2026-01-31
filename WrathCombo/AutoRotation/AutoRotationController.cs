@@ -31,7 +31,7 @@ using ActionType = FFXIVClientStructs.FFXIV.Client.Game.ActionType;
 
 namespace WrathCombo.AutoRotation;
 
-internal unsafe static class AutoRotationController
+internal unsafe class AutoRotationController
 {
     public static AutoRotationConfigIPCWrapper? cfg;
 
@@ -47,6 +47,23 @@ internal unsafe static class AutoRotationController
 
     public static bool WouldLikeToGroundTarget;
     public static bool PausedForError;
+
+    public AutoRotationController()
+    {
+        OnPartyCombatChanged += ResetError;
+    }
+
+    public void Dispose()
+    {
+        OnPartyCombatChanged -= ResetError;
+    }
+
+    private void ResetError(bool state)
+    {
+        if (!state)
+            PausedForError = false;
+    }
+
     static Func<WrathPartyMember, bool> RezQuery => x =>
         x.BattleChara is not null &&
         x.BattleChara.IsDead &&

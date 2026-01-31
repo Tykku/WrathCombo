@@ -182,6 +182,7 @@ public sealed partial class WrathCombo : IDalamudPlugin
 
         Service.ComboCache = new CustomComboCache();
         Service.ActionReplacer = new ActionReplacer();
+        Service.AutoRotationController = new AutoRotationController();
         ActionRetargeting = new ActionRetargeting();
         ActionWatching.Enable();
         IPC = Provider.Init();
@@ -441,6 +442,7 @@ public sealed partial class WrathCombo : IDalamudPlugin
 
         Service.ActionReplacer.Dispose();
         Service.ComboCache.Dispose();
+        Service.AutoRotationController.Dispose();
         ActionWatching.Dispose();
         CustomComboFunctions.TimerDispose();
         IPC.Dispose();
