@@ -1,6 +1,7 @@
 #region
 using System.Linq;
 using ECommons.GameFunctions;
+using WrathCombo.AutoRotation;
 using WrathCombo.Core;
 using WrathCombo.CustomComboNS;
 using WrathCombo.Data;
@@ -383,7 +384,7 @@ internal partial class WHM : Healer
             if (ContentSpecificActions.TryGet(out var contentAction, healing: true))
                 return contentAction;
             
-            var healTarget = OptionalTarget ?? SimpleTarget.Stack.AllyToHeal;
+            var healTarget = AutoRotationController.AutorotHealTarget ?? SimpleTarget.Stack.AllyToHeal;
             
             if (ActionReady(Benediction) && 
                 GetTargetHPPercent(healTarget) <= 20)
@@ -447,7 +448,7 @@ internal partial class WHM : Healer
             if (actionID is not Medica1)
                 return actionID;
 
-            var healTarget = OptionalTarget ?? SimpleTarget.Stack.AllyToHeal;
+            var healTarget = AutoRotationController.AutorotHealTarget ?? SimpleTarget.Stack.AllyToHeal;
 
             if (ActionReady(Assize))
                 return Assize;
@@ -512,7 +513,7 @@ internal partial class WHM : Healer
 
             #region Variables
 
-            var healTarget = OptionalTarget ?? SimpleTarget.Stack.AllyToHeal;
+            var healTarget = AutoRotationController.AutorotHealTarget ?? SimpleTarget.Stack.AllyToHeal;
 
             var canThinAir = LevelChecked(ThinAir) &&
                              !HasStatusEffect(Buffs.ThinAir) &&
@@ -596,7 +597,7 @@ internal partial class WHM : Healer
                 return actionID;
 
             #region Variables
-            var healTarget = OptionalTarget ?? SimpleTarget.Stack.AllyToHeal;
+            var healTarget = AutoRotationController.AutorotHealTarget ?? SimpleTarget.Stack.AllyToHeal;
             var canThinAir = LevelChecked(ThinAir) &&
                              !HasStatusEffect(Buffs.ThinAir) &&
                              GetRemainingCharges(ThinAir) >

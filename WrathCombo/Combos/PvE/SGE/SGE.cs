@@ -2,6 +2,7 @@ using Dalamud.Game.ClientState.Objects.Types;
 using ECommons.DalamudServices;
 using ECommons.GameFunctions;
 using System.Linq;
+using WrathCombo.AutoRotation;
 using WrathCombo.Core;
 using WrathCombo.CustomComboNS;
 using WrathCombo.Extensions;
@@ -424,7 +425,7 @@ internal partial class SGE : Healer
 
         protected override uint Invoke(uint actionID)
         {
-            IGameObject? healTarget = OptionalTarget ?? SimpleTarget.Stack.AllyToHeal;
+            IGameObject? healTarget = AutoRotationController.AutorotHealTarget ?? SimpleTarget.Stack.AllyToHeal;
 
             if (actionID is not Diagnosis)
                 return actionID;
@@ -559,7 +560,7 @@ internal partial class SGE : Healer
 
         protected override uint Invoke(uint actionID)
         {
-            IGameObject? healTarget = OptionalTarget ?? SimpleTarget.Stack.AllyToHeal;
+            IGameObject? healTarget = AutoRotationController.AutorotHealTarget ?? SimpleTarget.Stack.AllyToHeal;
 
             if (actionID is not Diagnosis)
                 return actionID;

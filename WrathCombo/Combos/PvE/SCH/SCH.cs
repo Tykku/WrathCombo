@@ -1,6 +1,7 @@
 using Dalamud.Game.ClientState.Objects.Types;
 using ECommons.GameFunctions;
 using System.Linq;
+using WrathCombo.AutoRotation;
 using WrathCombo.Core;
 using WrathCombo.CustomComboNS;
 using WrathCombo.Data;
@@ -132,7 +133,7 @@ internal partial class SCH : Healer
                 return actionID;
             
             #region Variables
-            var healTarget = OptionalTarget ?? SimpleTarget.Stack.AllyToHeal;
+            var healTarget = AutoRotationController.AutorotHealTarget ?? SimpleTarget.Stack.AllyToHeal;
             #endregion
             
             if (EndAetherpact)
@@ -442,7 +443,7 @@ internal partial class SCH : Healer
                 return actionID;
 
             #region Variables
-            var healTarget = OptionalTarget ?? SimpleTarget.Stack.AllyToHeal;
+            var healTarget = AutoRotationController.AutorotHealTarget ?? SimpleTarget.Stack.AllyToHeal;
             #endregion
 
             #region Priority Cleansing

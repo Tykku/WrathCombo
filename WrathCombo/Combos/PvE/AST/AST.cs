@@ -8,6 +8,7 @@ using WrathCombo.Extensions;
 using static WrathCombo.Combos.PvE.AST.Config;
 using EZ = ECommons.Throttlers.EzThrottler;
 using TS = System.TimeSpan;
+using WrathCombo.AutoRotation;
 namespace WrathCombo.Combos.PvE;
 
 internal partial class AST : Healer
@@ -484,7 +485,7 @@ internal partial class AST : Healer
             if (ActionReady(OriginalHook(AstralDraw)) && HasNoDPSCard)
                 return OriginalHook(AstralDraw);
             
-            IGameObject? healTarget = OptionalTarget ?? SimpleTarget.Stack.AllyToHeal;
+            IGameObject? healTarget = AutoRotationController.AutorotHealTarget ?? SimpleTarget.Stack.AllyToHeal;
             
             bool cleansableTarget =
                 HealRetargeting.RetargetSettingOn && SimpleTarget.Stack.AllyToEsuna is not null ||
@@ -613,7 +614,7 @@ internal partial class AST : Healer
 
             #endregion
             
-            IGameObject? healTarget = OptionalTarget ?? SimpleTarget.Stack.AllyToHeal;
+            IGameObject? healTarget = AutoRotationController.AutorotHealTarget ?? SimpleTarget.Stack.AllyToHeal;
             
             bool cleansableTarget =
                 HealRetargeting.RetargetSettingOn && SimpleTarget.Stack.AllyToEsuna is not null ||

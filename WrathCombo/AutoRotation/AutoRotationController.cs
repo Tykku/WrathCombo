@@ -49,6 +49,8 @@ internal unsafe class AutoRotationController
     public static bool WouldLikeToGroundTarget;
     public static bool PausedForError;
 
+    public static IGameObject? AutorotHealTarget;
+
     public AutoRotationController()
     {
         OnPartyCombatChanged += ResetError;
@@ -653,6 +655,7 @@ internal unsafe class AutoRotationController
                     HealerRotationMode.Lowest_Current => HealerTargeting.GetLowestCurrent(),
                     _ => HealerTargeting.ManualTarget(),
                 };
+                AutorotHealTarget = target;
                 return target;
             }
 
