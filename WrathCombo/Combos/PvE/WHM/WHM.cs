@@ -563,7 +563,7 @@ internal partial class WHM : Healer
             for (var i = 0; i < WHM_ST_Heals_Priority.Count; i++)
             {
                 var index = WHM_ST_Heals_Priority.IndexOf(i + 1);
-                var config = GetMatchingConfigST(index, OptionalTarget,
+                var config = GetMatchingConfigST(index, healTarget,
                     out var spell, out var enabled);
 
                 if (enabled)
@@ -626,7 +626,7 @@ internal partial class WHM : Healer
             for (var i = 0; i < WHM_AoE_Heals_Priority.Count; i++)
             {
                 var index = WHM_AoE_Heals_Priority.IndexOf(i + 1);
-                var config = GetMatchingConfigAoE(index, OptionalTarget,
+                var config = GetMatchingConfigAoE(index, healTarget,
                     out var spell, out var enabled);
 
                 if (enabled && GetPartyAvgHPPercent() <= config &&

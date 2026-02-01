@@ -1,15 +1,11 @@
 ﻿using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Utility;
-using ECommons.DalamudServices;
 using ECommons.ExcelServices;
 using ECommons.GameHelpers;
-using ECommons.Throttlers;
-using FFXIVClientStructs.FFXIV.Client.Game;
 using System.Collections.Generic;
 using WrathCombo.Attributes;
 using WrathCombo.Combos.PvE;
 using WrathCombo.CustomComboNS.Functions;
-using WrathCombo.Services;
 using WrathCombo.Services.ActionRequestIPC;
 using ECommonsJob = ECommons.ExcelServices.Job;
 
@@ -90,9 +86,10 @@ internal abstract partial class CustomCombo : CustomComboFunctions
 
         if (targetOverride != null)
             OptionalTarget = targetOverride;
+
         uint resultingActionID = Invoke(actionID);
-        if (OptionalTarget != null && EzThrottler.Throttle($"OptionalReset{this.Preset}", Service.Configuration.Throttle + 50))
-            OptionalTarget = null;
+
+        OptionalTarget = null;
 
         var presetException = _presetsAllowedToReturnUnchanged
             .TryGetValue(Preset, out var actionException);

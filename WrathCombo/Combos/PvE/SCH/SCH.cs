@@ -493,7 +493,7 @@ internal partial class SCH : Healer
             for (int i = 0; i < SCH_ST_Heals_Priority.Count; i++)
             {
                 int index = SCH_ST_Heals_Priority.IndexOf(i + 1);
-                int config = GetMatchingConfigST(index, OptionalTarget, out uint spell, out bool enabled);
+                int config = GetMatchingConfigST(index, healTarget, out uint spell, out bool enabled);
 
                 if (enabled)
                 {

@@ -629,7 +629,7 @@ internal partial class AST : Healer
             for (int i = 0; i < AST_ST_SimpleHeals_Priority.Count; i++)
             {
                 int index = AST_ST_SimpleHeals_Priority.IndexOf(i + 1);
-                int config = GetMatchingConfigST(index, OptionalTarget, out uint spell, out bool enabled);
+                int config = GetMatchingConfigST(index, healTarget, out uint spell, out bool enabled);
 
                 if (enabled)
                 {
