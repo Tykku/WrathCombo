@@ -484,9 +484,8 @@ internal partial class AST : Healer
 
             if (ActionReady(OriginalHook(AstralDraw)) && HasNoDPSCard)
                 return OriginalHook(AstralDraw);
-            
-            IGameObject? healTarget = AutoRotationController.AutorotHealTarget ?? (HealRetargeting.RetargetSettingOn ? SimpleTarget.Stack.AllyToHeal : CurrentTarget.IsFriendly() ? CurrentTarget : SimpleTarget.Self);
-            
+
+            IGameObject? healTarget = SimpleTarget.Stack.OneButtonHealLogic;
             bool cleansableTarget =
                 HealRetargeting.RetargetSettingOn && SimpleTarget.Stack.AllyToEsuna is not null ||
                 HasCleansableDebuff(healTarget);
@@ -614,7 +613,7 @@ internal partial class AST : Healer
 
             #endregion
             
-            IGameObject? healTarget = AutoRotationController.AutorotHealTarget ?? (HealRetargeting.RetargetSettingOn ? SimpleTarget.Stack.AllyToHeal : CurrentTarget.IsFriendly() ? CurrentTarget : SimpleTarget.Self);
+            IGameObject? healTarget = SimpleTarget.Stack.OneButtonHealLogic;
             
             bool cleansableTarget =
                 HealRetargeting.RetargetSettingOn && SimpleTarget.Stack.AllyToEsuna is not null ||

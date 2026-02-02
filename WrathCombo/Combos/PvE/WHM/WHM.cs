@@ -384,7 +384,7 @@ internal partial class WHM : Healer
             if (ContentSpecificActions.TryGet(out var contentAction, healing: true))
                 return contentAction;
             
-            var healTarget = AutoRotationController.AutorotHealTarget ?? (HealRetargeting.RetargetSettingOn ? SimpleTarget.Stack.AllyToHeal : CurrentTarget.IsFriendly() ? CurrentTarget : SimpleTarget.Self);
+            var healTarget = SimpleTarget.Stack.OneButtonHealLogic;
             
             if (ActionReady(Benediction) && 
                 GetTargetHPPercent(healTarget) <= 20)
@@ -448,7 +448,7 @@ internal partial class WHM : Healer
             if (actionID is not Medica1)
                 return actionID;
 
-            var healTarget = AutoRotationController.AutorotHealTarget ?? (HealRetargeting.RetargetSettingOn ? SimpleTarget.Stack.AllyToHeal : CurrentTarget.IsFriendly() ? CurrentTarget : SimpleTarget.Self);
+            var healTarget = SimpleTarget.Stack.OneButtonHealLogic;
 
             if (ActionReady(Assize))
                 return Assize;
@@ -513,7 +513,7 @@ internal partial class WHM : Healer
 
             #region Variables
 
-            var healTarget = AutoRotationController.AutorotHealTarget ?? (HealRetargeting.RetargetSettingOn ? SimpleTarget.Stack.AllyToHeal : CurrentTarget.IsFriendly() ? CurrentTarget : SimpleTarget.Self);
+            var healTarget = SimpleTarget.Stack.OneButtonHealLogic;
 
             var canThinAir = LevelChecked(ThinAir) &&
                              !HasStatusEffect(Buffs.ThinAir) &&
@@ -597,7 +597,7 @@ internal partial class WHM : Healer
                 return actionID;
 
             #region Variables
-            var healTarget = AutoRotationController.AutorotHealTarget ?? (HealRetargeting.RetargetSettingOn ? SimpleTarget.Stack.AllyToHeal : CurrentTarget.IsFriendly() ? CurrentTarget : SimpleTarget.Self);
+            var healTarget = SimpleTarget.Stack.OneButtonHealLogic;
             var canThinAir = LevelChecked(ThinAir) &&
                              !HasStatusEffect(Buffs.ThinAir) &&
                              GetRemainingCharges(ThinAir) >
