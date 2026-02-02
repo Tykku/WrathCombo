@@ -425,7 +425,7 @@ internal partial class SGE : Healer
 
         protected override uint Invoke(uint actionID)
         {
-            IGameObject? healTarget = AutoRotationController.AutorotHealTarget ?? SimpleTarget.Stack.AllyToHeal;
+            IGameObject? healTarget = AutoRotationController.AutorotHealTarget ?? (HealRetargeting.RetargetSettingOn ? SimpleTarget.Stack.AllyToHeal : CurrentTarget.IsFriendly() ? CurrentTarget : SimpleTarget.Self);
 
             if (actionID is not Diagnosis)
                 return actionID;
@@ -560,7 +560,7 @@ internal partial class SGE : Healer
 
         protected override uint Invoke(uint actionID)
         {
-            IGameObject? healTarget = AutoRotationController.AutorotHealTarget ?? SimpleTarget.Stack.AllyToHeal;
+            IGameObject? healTarget = AutoRotationController.AutorotHealTarget ?? (HealRetargeting.RetargetSettingOn ? SimpleTarget.Stack.AllyToHeal : CurrentTarget.IsFriendly() ? CurrentTarget : SimpleTarget.Self);
 
             if (actionID is not Diagnosis)
                 return actionID;

@@ -133,7 +133,7 @@ internal partial class SCH : Healer
                 return actionID;
             
             #region Variables
-            var healTarget = AutoRotationController.AutorotHealTarget ?? SimpleTarget.Stack.AllyToHeal;
+            var healTarget = AutoRotationController.AutorotHealTarget ?? (HealRetargeting.RetargetSettingOn ? SimpleTarget.Stack.AllyToHeal : CurrentTarget.IsFriendly() ? CurrentTarget : SimpleTarget.Self);
             #endregion
             
             if (EndAetherpact)
@@ -443,7 +443,7 @@ internal partial class SCH : Healer
                 return actionID;
 
             #region Variables
-            var healTarget = AutoRotationController.AutorotHealTarget ?? SimpleTarget.Stack.AllyToHeal;
+            var healTarget = AutoRotationController.AutorotHealTarget ?? (HealRetargeting.RetargetSettingOn ? SimpleTarget.Stack.AllyToHeal : CurrentTarget.IsFriendly() ? CurrentTarget : SimpleTarget.Self);
             #endregion
 
             #region Priority Cleansing
