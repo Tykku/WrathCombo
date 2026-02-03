@@ -244,7 +244,9 @@ internal partial class RDM : Caster
                 if (IsEnabled(Preset.RDM_ST_Fleche) && ActionReady(Fleche))
                     return Fleche;
 
-                if (IsEnabled(Preset.RDM_ST_Engagement) && CanEngagement && (IsNotEnabled(Preset.RDM_ST_Engagement_Pooling) || PoolEngagement))
+                if (IsEnabled(Preset.RDM_ST_Engagement) && CanEngagement && 
+                    (IsNotEnabled(Preset.RDM_ST_Engagement_Pooling) || PoolEngagement) &&
+                    (IsNotEnabled(Preset.RDM_ST_Engagement_Saving) || SaveEngagement))
                     return Engagement;
 
                 if (IsEnabled(Preset.RDM_ST_Corpsacorps) && CanCorps &&
@@ -379,7 +381,9 @@ internal partial class RDM : Caster
                 if (IsEnabled(Preset.RDM_AoE_Fleche) && ActionReady(Fleche))
                     return Fleche;
 
-                if (IsEnabled(Preset.RDM_AoE_Engagement) && CanEngagement && (IsNotEnabled(Preset.RDM_AoE_Engagement_Pooling) || PoolEngagement))
+                if (IsEnabled(Preset.RDM_AoE_Engagement) && CanEngagement && 
+                    (IsNotEnabled(Preset.RDM_AoE_Engagement_Pooling) || PoolEngagement) &&
+                    (IsNotEnabled(Preset.RDM_AoE_Engagement_Saving) || SaveEngagement))
                     return Engagement;
 
                 if (IsEnabled(Preset.RDM_AoE_Corpsacorps) && CanCorps &&

@@ -5657,6 +5657,10 @@ public enum Preset
     [ParentCombo(RDM_ST_Engagement)]
     [CustomComboInfo("Engagement Pooling Option", "Prevents overcap but pools at least one charge for burst window.", Job.RDM)]
     RDM_ST_Engagement_Pooling = 13018,
+    
+    [ParentCombo(RDM_ST_Engagement)]
+    [CustomComboInfo("Engagement Holding Option", "Will hold one charge for manual displacement usage.", Job.RDM)]
+    RDM_ST_Engagement_Saving = 13028,
 
     [ParentCombo(RDM_ST_DPS)]
     [CustomComboInfo("Corps-a-corps Option", "Add Corps-a-corps when available for DPS. \nWill retain a charge for gap-closing.", Job.RDM)]
@@ -5695,7 +5699,7 @@ public enum Preset
     [CustomComboInfo("Vercure Solo Option", "Adds Vercure on self when solo or in a party with no healers.", Job.RDM)]
     RDM_ST_VerCure = 13026,
 
-    //Last Used 13027
+    //Last Used 13028
     #endregion
 
     #region AoE DPS
@@ -5761,6 +5765,10 @@ public enum Preset
     [ParentCombo(RDM_AoE_Engagement)]
     [CustomComboInfo("Engagement Pooling Option", "Prevents overcap but pools at least one charge for burst window.", Job.RDM)]
     RDM_AoE_Engagement_Pooling = 13215,
+    
+    [ParentCombo(RDM_AoE_Engagement)]
+    [CustomComboInfo("Engagement Saving Option", "Will hold one charge for manual displacement usage.", Job.RDM)]
+    RDM_AoE_Engagement_Saving = 13223,
 
     [ParentCombo(RDM_AoE_DPS)]
     [CustomComboInfo("Corps-a-corps Option", "Add Corps-a-corps when available for DPS. \nWill retain a charge for gap-closing.", Job.RDM)]
@@ -5791,7 +5799,7 @@ public enum Preset
     [CustomComboInfo("Vercure Solo Option", "Adds Vercure on self when solo or in a party with no healers.", Job.RDM)]
     RDM_AoE_VerCure = 13222,
 
-    //Last Used 13222
+    //Last Used 13223
 
     #endregion
 
