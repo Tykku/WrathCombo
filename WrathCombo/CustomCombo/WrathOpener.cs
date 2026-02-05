@@ -346,6 +346,22 @@ public abstract class WrathOpener
         }
     }
 
+    public static string OpenerStatus()
+    {
+        if (CurrentOpener is null || CurrentOpener == Dummy || !CurrentOpener.Enabled)
+            return "No valid opener active.";
+
+        return CurrentOpener?.CurrentState switch
+        {
+            OpenerState.OpenerNotReady => $"Opener Not Ready Yet",
+            OpenerState.OpenerReady => "Opener Ready to Start",
+            OpenerState.InOpener => "Opener In Progress",
+            OpenerState.OpenerFinished => "Opener Finished",
+            OpenerState.FailedOpener => "Opener Failed",
+            _ => "Unknown"
+        };
+    }
+
     public static WrathOpener Dummy = new DummyOpener();
 }
 
