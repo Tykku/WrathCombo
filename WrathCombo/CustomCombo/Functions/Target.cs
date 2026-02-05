@@ -705,6 +705,9 @@ internal abstract partial class CustomComboFunctions
 
         bool IsValidTarget(IGameObject o)
         {
+            if (!IsInLineOfSight(o))
+                return false;
+
             if (!enemies)
                 return o is IBattleChara &&
                        o.IsTargetable &&
