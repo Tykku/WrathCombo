@@ -1501,7 +1501,7 @@ public enum Preset
 
     [AutoAction(false, false)]
     [ReplaceSkill(BLM.Fire)]
-    [ConflictingCombos(BLM_ST_AdvancedMode, BLM_Fire1and3)]
+    [ConflictingCombos(BLM_ST_AdvancedMode, BLM_Fire1and3, BLM_F1toF4)]
     [CustomComboInfo("Simple Mode - Single Target", "Replaces Fire with a full one-button single target rotation.\nThis is the ideal option for newcomers to the job.", Job.BLM)]
     [SimpleCombo]
     BLM_ST_SimpleMode = 2001,
@@ -4081,7 +4081,7 @@ public enum Preset
     MNK_STUseFormShift = 9017,
 
     [ParentCombo(MNK_ST_AdvancedMode)]
-    [CustomComboInfo("Opener Option", "Adds the selected Balance opener at lvl 90/100.", Job.MNK)]
+    [CustomComboInfo("Opener Option", "Adds the selected Balance opener at lvl 90/100.\nOnly works when there is a countdown going.", Job.MNK)]
     MNK_STUseOpener = 9006,
 
     [ParentCombo(MNK_ST_AdvancedMode)]
