@@ -5630,8 +5630,8 @@ public enum Preset
     [CustomComboInfo("Embolden Option", "Add Embolden when Available.", Job.RDM)]
     RDM_ST_Embolden = 13010,
 
-    [ParentCombo(RDM_ST_Embolden)]
-    [CustomComboInfo("Use Manafication", "Add Manafication before embolden for burst.", Job.RDM)]
+    [ParentCombo(RDM_ST_DPS)]
+    [CustomComboInfo("Use Manafication", "Add Manafication before Embolden for burst.", Job.RDM)]
     RDM_ST_Manafication = 13011,
 
     [ParentCombo(RDM_ST_DPS)]
@@ -5738,8 +5738,8 @@ public enum Preset
     [CustomComboInfo("Embolden Option", "Add Embolden when Available.", Job.RDM)]
     RDM_AoE_Embolden = 13207,
 
-    [ParentCombo(RDM_AoE_Embolden)]
-    [CustomComboInfo("Use Manafication", "Add Manafication before embolden for burst.", Job.RDM)]
+    [ParentCombo(RDM_AoE_DPS)]
+    [CustomComboInfo("Use Manafication", "Add Manafication before Embolden for burst.", Job.RDM)]
     RDM_AoE_Manafication = 13208,
 
     [ParentCombo(RDM_AoE_DPS)]
