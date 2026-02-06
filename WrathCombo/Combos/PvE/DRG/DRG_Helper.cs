@@ -173,49 +173,53 @@ internal partial class DRG
         {
             case false:
             {
-                if (simpleMode || IsEnabled(Preset.DRG_ST_Damage) && InCombat())
+                if (simpleMode || IsEnabled(Preset.DRG_ST_Damage))
                 {
-                    //Mirage Feature
-                    if ((simpleMode || IsEnabled(Preset.DRG_ST_Mirage)) &&
-                        CanMirageDive)
-                        return MirageDive;
+                    if (InCombat())
+                    {
+                        //Mirage Feature
+                        if ((simpleMode || IsEnabled(Preset.DRG_ST_Mirage)) &&
+                            CanMirageDive)
+                            return MirageDive;
 
-                    //Wyrmwind Thrust Feature
-                    if ((simpleMode || IsEnabled(Preset.DRG_ST_Wyrmwind)) &&
-                        CanUseWyrmwind)
-                        return WyrmwindThrust;
+                        //Wyrmwind Thrust Feature
+                        if ((simpleMode || IsEnabled(Preset.DRG_ST_Wyrmwind)) &&
+                            CanUseWyrmwind)
+                            return WyrmwindThrust;
 
-                    //Starcross Feature
-                    if ((simpleMode || IsEnabled(Preset.DRG_ST_Starcross)) &&
-                        ActionReady(Starcross) &&
-                        HasStatusEffect(Buffs.StarcrossReady) &&
-                        InActionRange(Starcross))
-                        return Starcross;
+                        //Starcross Feature
+                        if ((simpleMode || IsEnabled(Preset.DRG_ST_Starcross)) &&
+                            ActionReady(Starcross) &&
+                            HasStatusEffect(Buffs.StarcrossReady) &&
+                            InActionRange(Starcross))
+                            return Starcross;
 
-                    //Rise of the Dragon Feature
-                    if ((simpleMode || IsEnabled(Preset.DRG_ST_RiseOfTheDragon)) &&
-                        ActionReady(RiseOfTheDragon) &&
-                        HasStatusEffect(Buffs.DragonsFlight) &&
-                        InActionRange(RiseOfTheDragon))
-                        return RiseOfTheDragon;
+                        //Rise of the Dragon Feature
+                        if ((simpleMode || IsEnabled(Preset.DRG_ST_RiseOfTheDragon)) &&
+                            ActionReady(RiseOfTheDragon) &&
+                            HasStatusEffect(Buffs.DragonsFlight) &&
+                            InActionRange(RiseOfTheDragon))
+                            return RiseOfTheDragon;
 
-                    //Geirskogul Feature
-                    if ((simpleMode || IsEnabled(Preset.DRG_ST_Geirskogul)) &&
-                        CanUseGeirskogul() &&
-                        InActionRange(Geirskogul))
-                        return Geirskogul;
+                        //Geirskogul Feature
+                        if ((simpleMode || IsEnabled(Preset.DRG_ST_Geirskogul)) &&
+                            CanUseGeirskogul() &&
+                            InActionRange(Geirskogul))
+                            return Geirskogul;
 
-                    //Nastrond Feature
-                    if ((simpleMode || IsEnabled(Preset.DRG_ST_Nastrond)) &&
-                        ActionReady(Nastrond) &&
-                        HasStatusEffect(Buffs.NastrondReady) &&
-                        LoTDActive &&
-                        InActionRange(Nastrond))
-                        return Nastrond;
+                        //Nastrond Feature
+                        if ((simpleMode || IsEnabled(Preset.DRG_ST_Nastrond)) &&
+                            ActionReady(Nastrond) &&
+                            HasStatusEffect(Buffs.NastrondReady) &&
+                            LoTDActive &&
+                            InActionRange(Nastrond))
+                            return Nastrond;
+                    }
 
                     // Piercing Talon Uptime Option
                     if ((simpleMode || IsEnabled(Preset.DRG_ST_RangedUptime)) &&
-                        ActionReady(PiercingTalon))
+                        ActionReady(PiercingTalon) &&
+                        (InCombat() || !InCombat()))
                         return PiercingTalon;
                 }
                 break;
@@ -223,52 +227,56 @@ internal partial class DRG
 
             case true:
             {
-                if (simpleMode || IsEnabled(Preset.DRG_AoE_Damage) && InCombat())
+                if (simpleMode || IsEnabled(Preset.DRG_AoE_Damage))
                 {
-                    //Mirage Feature
-                    if ((simpleMode || IsEnabled(Preset.DRG_AoE_Mirage)) &&
-                        ActionReady(MirageDive) &&
-                        HasStatusEffect(Buffs.DiveReady) &&
-                        InActionRange(MirageDive))
-                        return MirageDive;
+                    if (InCombat())
+                    {
+                        //Mirage Feature
+                        if ((simpleMode || IsEnabled(Preset.DRG_AoE_Mirage)) &&
+                            ActionReady(MirageDive) &&
+                            HasStatusEffect(Buffs.DiveReady) &&
+                            InActionRange(MirageDive))
+                            return MirageDive;
 
-                    //Wyrmwind Thrust Feature
-                    if ((simpleMode || IsEnabled(Preset.DRG_AoE_Wyrmwind)) &&
-                        CanUseWyrmwind)
-                        return WyrmwindThrust;
+                        //Wyrmwind Thrust Feature
+                        if ((simpleMode || IsEnabled(Preset.DRG_AoE_Wyrmwind)) &&
+                            CanUseWyrmwind)
+                            return WyrmwindThrust;
 
-                    //Starcross Feature
-                    if ((simpleMode || IsEnabled(Preset.DRG_AoE_Starcross)) &&
-                        ActionReady(Starcross) &&
-                        HasStatusEffect(Buffs.StarcrossReady) &&
-                        InActionRange(Starcross))
-                        return Starcross;
+                        //Starcross Feature
+                        if ((simpleMode || IsEnabled(Preset.DRG_AoE_Starcross)) &&
+                            ActionReady(Starcross) &&
+                            HasStatusEffect(Buffs.StarcrossReady) &&
+                            InActionRange(Starcross))
+                            return Starcross;
 
-                    //Rise of the Dragon Feature
-                    if ((simpleMode || IsEnabled(Preset.DRG_AoE_RiseOfTheDragon)) &&
-                        ActionReady(RiseOfTheDragon) &&
-                        HasStatusEffect(Buffs.DragonsFlight) &&
-                        InActionRange(RiseOfTheDragon))
-                        return RiseOfTheDragon;
+                        //Rise of the Dragon Feature
+                        if ((simpleMode || IsEnabled(Preset.DRG_AoE_RiseOfTheDragon)) &&
+                            ActionReady(RiseOfTheDragon) &&
+                            HasStatusEffect(Buffs.DragonsFlight) &&
+                            InActionRange(RiseOfTheDragon))
+                            return RiseOfTheDragon;
 
-                    //Geirskogul Feature
-                    if ((simpleMode || IsEnabled(Preset.DRG_AoE_Geirskogul)) &&
-                        ActionReady(Geirskogul) &&
-                        !LoTDActive &&
-                        InActionRange(Geirskogul))
-                        return Geirskogul;
+                        //Geirskogul Feature
+                        if ((simpleMode || IsEnabled(Preset.DRG_AoE_Geirskogul)) &&
+                            ActionReady(Geirskogul) &&
+                            !LoTDActive &&
+                            InActionRange(Geirskogul))
+                            return Geirskogul;
 
-                    //Nastrond Feature
-                    if ((simpleMode || IsEnabled(Preset.DRG_AoE_Nastrond)) &&
-                        ActionReady(Nastrond) &&
-                        HasStatusEffect(Buffs.NastrondReady) &&
-                        LoTDActive &&
-                        InActionRange(Nastrond))
-                        return Nastrond;
+                        //Nastrond Feature
+                        if ((simpleMode || IsEnabled(Preset.DRG_AoE_Nastrond)) &&
+                            ActionReady(Nastrond) &&
+                            HasStatusEffect(Buffs.NastrondReady) &&
+                            LoTDActive &&
+                            InActionRange(Nastrond))
+                            return Nastrond;
+                    }
 
                     // Piercing Talon Uptime Option
                     if ((simpleMode || IsEnabled(Preset.DRG_AoE_RangedUptime)) &&
-                        ActionReady(PiercingTalon) && !CanDRGWeave())
+                        ActionReady(PiercingTalon) && !CanDRGWeave() &&
+                        (InCombat() || !InCombat()))
                         return PiercingTalon;
                 }
                 break;
