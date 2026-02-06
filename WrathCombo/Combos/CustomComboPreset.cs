@@ -4081,7 +4081,7 @@ public enum Preset
     MNK_STUseFormShift = 9017,
 
     [ParentCombo(MNK_ST_AdvancedMode)]
-    [CustomComboInfo("Opener Option", "Adds the selected Balance opener at lvl 90/100.\nOnly works when there is a countdown going.", Job.MNK)]
+    [CustomComboInfo("Opener Option", "Adds the selected Balance opener at lvl 90/100.", Job.MNK)]
     MNK_STUseOpener = 9006,
 
     [ParentCombo(MNK_ST_AdvancedMode)]
