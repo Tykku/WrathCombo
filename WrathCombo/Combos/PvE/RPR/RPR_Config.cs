@@ -13,7 +13,7 @@ internal partial class RPR
             switch (preset)
             {
                 #region ST
-                
+
                 case Preset.RPR_ST_Opener:
                     DrawBossOnlyChoice(RPR_Balance_Content);
                     break;
@@ -68,9 +68,9 @@ internal partial class RPR
                     DrawSliderInt(0, 100, RPR_STBloodbathHPThreshold,
                         $"{Role.Bloodbath.ActionName()} HP percentage threshold");
                     break;
-                
+
                 #endregion
-                
+
                 #region AoE
 
                 case Preset.RPR_AoE_WoD:
@@ -82,7 +82,7 @@ internal partial class RPR
                     DrawSliderInt(0, 100, RPR_AoE_ArcaneCircleHPThreshold,
                         $"Stop Using {ArcaneCircle.ActionName()} When Target HP% is at or Below (Set to 0 to Disable This Check)");
                     break;
-                
+
                 case Preset.RPR_AoE_ComboHeals:
                     DrawSliderInt(0, 100, RPR_AoESecondWindHPThreshold,
                         $"{Role.SecondWind.ActionName()} HP percentage threshold");
@@ -90,11 +90,11 @@ internal partial class RPR
                     DrawSliderInt(0, 100, RPR_AoEBloodbathHPThreshold,
                         $"{Role.Bloodbath.ActionName()} HP percentage threshold");
                     break;
-                
+
                 #endregion
-                
+
                 #region Misc
-                
+
                 case Preset.RPR_ST_BasicCombo_SoD:
                     DrawSliderInt(0, 10, RPR_SoDRefreshRangeBasicCombo,
                         $"Seconds remaining before refreshing {ShadowOfDeath.ActionName()}.");
@@ -118,7 +118,7 @@ internal partial class RPR
                     DrawHorizontalMultiChoice(RPR_SoulsowOptions,
                         $"{BloodStalk.ActionName()}", $"Adds {Soulsow.ActionName()} to {BloodStalk.ActionName()}.", 5, 4);
                     break;
-                
+
                 #endregion
             }
         }
@@ -146,7 +146,7 @@ internal partial class RPR
 
             //Misc
             RPR_SoDRefreshRangeBasicCombo = new("RPR_SoDRefreshRangeBasicCombo", 6);
-        
+
         public static UserBool
             RPR_ST_TrueNorthDynamicHoldCharge = new("RPR_ST_TrueNorthDynamicHoldCharge");
 
