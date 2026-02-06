@@ -803,7 +803,7 @@ internal partial class RPR : Melee
                     actionID is SpinningScythe && soulSowOptions[2] ||
                     actionID is ShadowOfDeath && soulSowOptions[3] ||
                     actionID is BloodStalk && soulSowOptions[4]) && !InCombat() ||
-                   IsEnabled(Preset.RPR_Soulsow_Combat) && actionID is Harpe && !HasBattleTarget()
+                   IsEnabled(Preset.RPR_Soulsow_Combat) && actionID is Harpe && !HasBattleTarget() && soulsowReady
                 ? Soulsow
                 : actionID;
         }
