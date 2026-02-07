@@ -145,7 +145,7 @@ internal partial class SCH : Healer
             
             if (ActionReady(Role.Esuna) && GetTargetHPPercent(healTarget) >= 40 &&
                 cleansableTarget)
-                return Role.Esuna.RetargetIfEnabled(healTarget, Physick);
+                return Role.Esuna.RetargetIfEnabled(Physick);
             
             if (ActionReady(Aetherflow) && !HasAetherflow &&
                 InCombat())
@@ -163,21 +163,21 @@ internal partial class SCH : Healer
             
             if (ActionReady(Excogitation) &&
                 GetTargetHPPercent(healTarget) <= 50)
-                return Excogitation.RetargetIfEnabled(healTarget, Physick);
+                return Excogitation.RetargetIfEnabled(Physick);
             
             if (ActionReady(Lustrate) &&
                 GetTargetHPPercent(healTarget) <= 50)
-                return Lustrate.RetargetIfEnabled(healTarget, Physick);
+                return Lustrate.RetargetIfEnabled(Physick);
             
             if (ActionReady(SacredSoil) && !InBossEncounter() &&
                 TimeStoodStill >= TS.FromSeconds(5))
                 return SacredSoil.Retarget(Physick, SimpleTarget.Self);
             
             if (ActionReady(Protraction) && (healTarget.IsInParty() && healTarget.Role is CombatRole.Tank || !IsInParty())) 
-                return Protraction.RetargetIfEnabled(healTarget, Physick);
+                return Protraction.RetargetIfEnabled(Physick);
             
             if (Gauge.FairyGauge >= 50 && IsOriginal(Aetherpact) && !FairyBusy && ActionReady(Aetherpact))
-                return Aetherpact.RetargetIfEnabled(healTarget, Physick);
+                return Aetherpact.RetargetIfEnabled(Physick);
 
             if (!InBossEncounter() && HasPetPresent() && !FairyBusy)
             {
@@ -203,9 +203,9 @@ internal partial class SCH : Healer
             if (ActionReady(OriginalHook(Adloquium)))
                 return ActionReady(OriginalHook(EmergencyTactics)) && (HasStatusEffect(Buffs.Galvanize, healTarget, true) || !HasStatusEffect(Buffs.EmergencyTactics))
                     ? OriginalHook(EmergencyTactics)
-                    : OriginalHook(Adloquium).RetargetIfEnabled(healTarget, Physick);
+                    : OriginalHook(Adloquium).RetargetIfEnabled(Physick);
             
-            return actionID.RetargetIfEnabled(healTarget);
+            return actionID.RetargetIfEnabled(null);
         }
     }
     
@@ -456,7 +456,7 @@ internal partial class SCH : Healer
                 ActionReady(Role.Esuna) && cleansableTarget &&
                 GetTargetHPPercent(healTarget, SCH_ST_Heal_IncludeShields) >= SCH_ST_Heal_EsunaOption)
                 return Role.Esuna
-                    .RetargetIfEnabled(healTarget, Physick);
+                    .RetargetIfEnabled(Physick);
 
             #endregion
 
@@ -506,11 +506,11 @@ internal partial class SCH : Healer
 
                     if (GetTargetHPPercent(healTarget, SCH_ST_Heal_IncludeShields) <= config &&
                         ActionReady(spell))
-                        return spell.RetargetIfEnabled(healTarget, Physick);
+                        return spell.RetargetIfEnabled(Physick);
                 }
             }
             return actionID
-                .RetargetIfEnabled(healTarget, Physick);
+                .RetargetIfEnabled(Physick);
         }
     }
     

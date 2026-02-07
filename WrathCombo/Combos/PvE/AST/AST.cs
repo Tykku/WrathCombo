@@ -493,16 +493,16 @@ internal partial class AST : Healer
             if (ActionReady(Role.Esuna) &&
                 GetTargetHPPercent(healTarget) >= 40 &&
                 cleansableTarget)
-                return Role.Esuna.RetargetIfEnabled(healTarget, Benefic);
+                return Role.Esuna.RetargetIfEnabled(Benefic);
             
             if (CanWeave() && Role.CanLucidDream(6500))
                 return Role.LucidDreaming;
             
             if (ActionReady(EssentialDignity) && GetTargetHPPercent(healTarget) <= 30)
-                return EssentialDignity.RetargetIfEnabled(healTarget, Benefic);
+                return EssentialDignity.RetargetIfEnabled(Benefic);
             
             if (ActionReady(Exaltation) && (healTarget.IsInParty() && healTarget.Role is CombatRole.Tank || !IsInParty()))
-                return Exaltation.RetargetIfEnabled(healTarget, Benefic);
+                return Exaltation.RetargetIfEnabled(Benefic);
 
             if (!InBossEncounter())
             {
@@ -522,24 +522,24 @@ internal partial class AST : Healer
             if (ActionReady(AspectedBenefic) &&
                 (!HasStatusEffect(Buffs.AspectedBenefic, healTarget) ||
                  !HasStatusEffect(Buffs.NeutralSectShield, healTarget) && HasStatusEffect(Buffs.NeutralSect)))
-                return OriginalHook(AspectedBenefic).RetargetIfEnabled(healTarget, Benefic);
+                return OriginalHook(AspectedBenefic).RetargetIfEnabled(Benefic);
             
             if ((HasArrow || HasBole) && 
                 (healTarget.IsInParty() && healTarget.Role is CombatRole.Tank || !IsInParty())) 
-                return OriginalHook(Play2).RetargetIfEnabled(healTarget, Benefic);
+                return OriginalHook(Play2).RetargetIfEnabled(Benefic);
             
             if (HasEwer || HasSpire) 
-                return OriginalHook(Play3).RetargetIfEnabled(healTarget, Benefic);
+                return OriginalHook(Play3).RetargetIfEnabled(Benefic);
             
             if (ActionReady(CelestialIntersection) && !HasStatusEffect(Buffs.Intersection) && GetRemainingCharges(EssentialDignity) <= GetRemainingCharges(CelestialIntersection))
-                return CelestialIntersection.RetargetIfEnabled(healTarget, Benefic);
+                return CelestialIntersection.RetargetIfEnabled(Benefic);
             
             if (ActionReady(EssentialDignity))
-                return EssentialDignity.RetargetIfEnabled(healTarget, Benefic);
+                return EssentialDignity.RetargetIfEnabled(Benefic);
 
             return !LevelChecked(Benefic2)
-                ? actionID.RetargetIfEnabled(healTarget)
-                : Benefic2.RetargetIfEnabled(healTarget, Benefic);
+                ? actionID.RetargetIfEnabled(null)
+                : Benefic2.RetargetIfEnabled(Benefic);
         }
     }
     
@@ -623,7 +623,7 @@ internal partial class AST : Healer
                 ActionReady(Role.Esuna) &&
                 GetTargetHPPercent(healTarget, AST_ST_SimpleHeals_IncludeShields) >= AST_ST_SimpleHeals_Esuna &&
                 cleansableTarget)
-                return Role.Esuna.RetargetIfEnabled(healTarget, Benefic);
+                return Role.Esuna.RetargetIfEnabled(Benefic);
             
             //Priority List
             for (int i = 0; i < AST_ST_SimpleHeals_Priority.Count; i++)
@@ -635,12 +635,12 @@ internal partial class AST : Healer
                 {
                     if (GetTargetHPPercent(healTarget, AST_ST_SimpleHeals_IncludeShields) <= config &&
                         ActionReady(spell))
-                        return spell.RetargetIfEnabled(healTarget, Benefic);
+                        return spell.RetargetIfEnabled(Benefic);
                 }
             }
             return !LevelChecked(Benefic2) ?
-                actionID.RetargetIfEnabled(healTarget, Benefic):
-                Benefic2.RetargetIfEnabled(healTarget, Benefic);
+                actionID.RetargetIfEnabled(Benefic) :
+                Benefic2.RetargetIfEnabled(Benefic);
         }
     }
     
