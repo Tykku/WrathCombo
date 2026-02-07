@@ -446,6 +446,7 @@ public sealed partial class WrathCombo : IDalamudPlugin
 
         ws.RemoveAllWindows();
         Svc.DtrBar.Remove("Wrath Combo");
+        Svc.DtrBar.Remove("Wrath Combo Opener");
         Configuration.ConfigChanged -= DebugFile.LoggingConfigChanges;
         Svc.Framework.Update -= OnFrameworkUpdate;
         Svc.ClientState.TerritoryChanged -= ClientState_TerritoryChanged;
