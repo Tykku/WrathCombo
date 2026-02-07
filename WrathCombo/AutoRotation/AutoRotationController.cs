@@ -36,7 +36,6 @@ internal unsafe class AutoRotationController
     public static AutoRotationConfigIPCWrapper? cfg;
 
     public static long HealThrottle = 0;
-    static long LastRezAt = 0;
 
     static bool _lockedST = false;
     static bool _lockedAoE = false;
