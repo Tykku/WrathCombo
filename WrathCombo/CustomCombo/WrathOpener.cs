@@ -148,6 +148,9 @@ public abstract class WrathOpener
 
     public unsafe bool FullOpener(ref uint actionID)
     {
+        if (IsOccupied())
+            return false;
+
         if (CurrentOpener != this)
             SelectOpener();
 
