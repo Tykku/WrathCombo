@@ -1026,6 +1026,7 @@ internal unsafe class AutoRotationController
                     .Where(x => x.BattleChara is not null &&
                                 !x.BattleChara.IsDead &&
                                 x.BattleChara.IsTargetable &&
+                                !x.IsOutOfPartyNPC &&
                                 (outAct == 0
                                     ? GetTargetDistance(x.BattleChara) <= 20f
                                     : InActionRange(outAct, x.BattleChara)) &&
