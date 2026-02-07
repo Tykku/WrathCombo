@@ -1501,7 +1501,7 @@ public enum Preset
 
     [AutoAction(false, false)]
     [ReplaceSkill(BLM.Fire)]
-    [ConflictingCombos(BLM_ST_AdvancedMode, BLM_Fire1and3)]
+    [ConflictingCombos(BLM_ST_AdvancedMode, BLM_Fire1and3, BLM_F1toF4)]
     [CustomComboInfo("Simple Mode - Single Target", "Replaces Fire with a full one-button single target rotation.\nThis is the ideal option for newcomers to the job.", Job.BLM)]
     [SimpleCombo]
     BLM_ST_SimpleMode = 2001,

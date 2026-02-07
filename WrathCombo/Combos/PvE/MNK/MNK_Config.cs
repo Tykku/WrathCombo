@@ -16,12 +16,17 @@ internal partial class MNK
 
                 case Preset.MNK_STUseOpener:
                     DrawHorizontalRadioButton(MNK_SelectedOpener,
-                        "Double Lunar", "Uses Lunar/Lunar opener",
-                        0);
+                        "Double Lunar", "Uses Lunar/Lunar opener.", 0);
 
                     DrawHorizontalRadioButton(MNK_SelectedOpener,
-                        "Solar Lunar", "Uses Solar/Lunar opener",
-                        1);
+                        "Solar Lunar", "Uses Solar/Lunar opener.", 1);
+                    ImGui.NewLine();
+
+                    DrawHorizontalRadioButton(MNK_OpenerCountdown,
+                        "Only with countdown", "Only use the opener when a countdown is active.", 0);
+
+                    DrawHorizontalRadioButton(MNK_OpenerCountdown,
+                        "Always", "Always use opener.", 1);
 
                     ImGui.NewLine();
                     DrawBossOnlyChoice(MNK_Balance_Content);
@@ -130,6 +135,7 @@ internal partial class MNK
 
             //ST
             MNK_SelectedOpener = new("MNK_SelectedOpener"),
+            MNK_OpenerCountdown = new("MNK_OpenerCountdown"),
             MNK_Balance_Content = new("MNK_Balance_Content", 1),
             MNK_ST_BuffsBossOption = new("MNK_ST_BuffsBossOption"),
             MNK_ST_BuffsHPThreshold = new("MNK_ST_BuffsHPThreshold", 25),
