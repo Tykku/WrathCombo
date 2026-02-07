@@ -218,8 +218,7 @@ internal partial class DRG
 
                     // Piercing Talon Uptime Option
                     if ((simpleMode || IsEnabled(Preset.DRG_ST_RangedUptime)) &&
-                        ActionReady(PiercingTalon) &&
-                        (InCombat() || !InCombat()))
+                        ActionReady(PiercingTalon))
                         return PiercingTalon;
                 }
                 break;
@@ -275,8 +274,7 @@ internal partial class DRG
 
                     // Piercing Talon Uptime Option
                     if ((simpleMode || IsEnabled(Preset.DRG_AoE_RangedUptime)) &&
-                        ActionReady(PiercingTalon) && !CanDRGWeave() &&
-                        (InCombat() || !InCombat()))
+                        ActionReady(PiercingTalon) && !CanDRGWeave())
                         return PiercingTalon;
                 }
                 break;
