@@ -524,6 +524,11 @@ internal partial class AST
         public override Preset Preset => Preset.AST_ST_DPS_Opener;
 
         internal override UserData? ContentCheckConfig => AST_ST_DPS_Balance_Content;
+        
+        public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
+        [
+            ([1], () => AST_ST_DPS_Opener_SkipStar == 1)
+        ];
 
         public override bool HasCooldowns()
         {

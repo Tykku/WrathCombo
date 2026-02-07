@@ -92,7 +92,7 @@ internal partial class AST : Healer
                 ? SimpleTarget.DottableEnemy(dotAction, dotDebuffID, 0, 30, 99)
                 : SimpleTarget.DottableEnemy(dotAction, dotDebuffID, 0, 3, 2);
             
-            if (target is not null && CanApplyStatus(target, dotDebuffID) && !JustUsedOn(dotAction, target) && PartyInCombat())
+            if (target is not null && ActionReady(dotAction) && CanApplyStatus(target, dotDebuffID) && !JustUsedOn(dotAction, target) && PartyInCombat())
                 return dotAction.Retarget(replacedActions, target);
 
             return actionID;
@@ -337,7 +337,7 @@ internal partial class AST : Healer
                     return OriginalHook(Combust);
                 
                 //2 target Dotting System to maintain dots on 2 enemies. Works with the same sliders and one target
-                if (target is not null && CanApplyStatus(target, dotDebuffID) && !JustUsedOn(dotAction, target) && AST_ST_DPS_CombustUptime_TwoTarget)
+                if (target is not null && ActionReady(dotAction) && CanApplyStatus(target, dotDebuffID) && !JustUsedOn(dotAction, target) && AST_ST_DPS_CombustUptime_TwoTarget)
                     return dotAction.Retarget(replacedActions, target);
             }
 
@@ -691,11 +691,6 @@ internal partial class AST : Healer
                 if (enabled && averagePartyHP <= config && ActionReady(spell))
                     return spell;
             }
-
-            //Hot Check for if you are in Aspected Helios Mode
-            IStatus? hotCheck = HeliosConjuction.LevelChecked() ? GetStatusEffect(Buffs.HeliosConjunction) : GetStatusEffect(Buffs.AspectedHelios);
-            if (!nonAspectedMode && hotCheck is not null && hotCheck.RemainingTime > GetActionCastTime(OriginalHook(AspectedHelios)) + 1f)
-                return Helios;
 
             return
                 actionID;

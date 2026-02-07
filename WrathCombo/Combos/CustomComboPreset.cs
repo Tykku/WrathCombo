@@ -3504,7 +3504,7 @@ public enum Preset
     GNB_Mitigation_NonBoss_ArmsLength = 7707,
     
     [ParentCombo(GNB_Mitigation_NonBoss)]
-    [CustomComboInfo("Reprisal Option", "Adds Reprisal when 5 or more targets. Will overlap with others.", Job.GNB)]
+    [CustomComboInfo("Reprisal Option", "Adds Reprisal when 5 or more targets.", Job.GNB)]
     GNB_Mitigation_NonBoss_Reprisal= 7708,
     
     [ParentCombo(GNB_Mitigation_NonBoss)]
@@ -5063,7 +5063,7 @@ public enum Preset
     PLD_Mitigation_NonBoss_ArmsLength = 11092,
     
     [ParentCombo(PLD_Mitigation_NonBoss)]
-    [CustomComboInfo("Reprisal Option", "Adds Reprisal when 5 or more targets. Will overlap with others.", Job.PLD)]
+    [CustomComboInfo("Reprisal Option", "Adds Reprisal when 5 or more targets.", Job.PLD)]
     PLD_Mitigation_NonBoss_Reprisal= 11099,
     
     [ParentCombo(PLD_Mitigation_NonBoss)]
@@ -5630,8 +5630,8 @@ public enum Preset
     [CustomComboInfo("Embolden Option", "Add Embolden when Available.", Job.RDM)]
     RDM_ST_Embolden = 13010,
 
-    [ParentCombo(RDM_ST_Embolden)]
-    [CustomComboInfo("Use Manafication", "Add Manafication before embolden for burst.", Job.RDM)]
+    [ParentCombo(RDM_ST_DPS)]
+    [CustomComboInfo("Use Manafication", "Add Manafication before Embolden for burst.", Job.RDM)]
     RDM_ST_Manafication = 13011,
 
     [ParentCombo(RDM_ST_DPS)]
@@ -5657,6 +5657,10 @@ public enum Preset
     [ParentCombo(RDM_ST_Engagement)]
     [CustomComboInfo("Engagement Pooling Option", "Prevents overcap but pools at least one charge for burst window.", Job.RDM)]
     RDM_ST_Engagement_Pooling = 13018,
+    
+    [ParentCombo(RDM_ST_Engagement)]
+    [CustomComboInfo("Engagement Holding Option", "Will hold one charge for manual displacement usage.", Job.RDM)]
+    RDM_ST_Engagement_Saving = 13028,
 
     [ParentCombo(RDM_ST_DPS)]
     [CustomComboInfo("Corps-a-corps Option", "Add Corps-a-corps when available for DPS. \nWill retain a charge for gap-closing.", Job.RDM)]
@@ -5695,7 +5699,7 @@ public enum Preset
     [CustomComboInfo("Vercure Solo Option", "Adds Vercure on self when solo or in a party with no healers.", Job.RDM)]
     RDM_ST_VerCure = 13026,
 
-    //Last Used 13027
+    //Last Used 13028
     #endregion
 
     #region AoE DPS
@@ -5734,8 +5738,8 @@ public enum Preset
     [CustomComboInfo("Embolden Option", "Add Embolden when Available.", Job.RDM)]
     RDM_AoE_Embolden = 13207,
 
-    [ParentCombo(RDM_AoE_Embolden)]
-    [CustomComboInfo("Use Manafication", "Add Manafication before embolden for burst.", Job.RDM)]
+    [ParentCombo(RDM_AoE_DPS)]
+    [CustomComboInfo("Use Manafication", "Add Manafication before Embolden for burst.", Job.RDM)]
     RDM_AoE_Manafication = 13208,
 
     [ParentCombo(RDM_AoE_DPS)]
@@ -5761,6 +5765,10 @@ public enum Preset
     [ParentCombo(RDM_AoE_Engagement)]
     [CustomComboInfo("Engagement Pooling Option", "Prevents overcap but pools at least one charge for burst window.", Job.RDM)]
     RDM_AoE_Engagement_Pooling = 13215,
+    
+    [ParentCombo(RDM_AoE_Engagement)]
+    [CustomComboInfo("Engagement Saving Option", "Will hold one charge for manual displacement usage.", Job.RDM)]
+    RDM_AoE_Engagement_Saving = 13223,
 
     [ParentCombo(RDM_AoE_DPS)]
     [CustomComboInfo("Corps-a-corps Option", "Add Corps-a-corps when available for DPS. \nWill retain a charge for gap-closing.", Job.RDM)]
@@ -5791,7 +5799,7 @@ public enum Preset
     [CustomComboInfo("Vercure Solo Option", "Adds Vercure on self when solo or in a party with no healers.", Job.RDM)]
     RDM_AoE_VerCure = 13222,
 
-    //Last Used 13222
+    //Last Used 13223
 
     #endregion
 

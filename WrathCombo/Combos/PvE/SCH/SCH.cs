@@ -59,7 +59,7 @@ internal partial class SCH : Healer
             BioList.TryGetValue(dotAction, out var dotDebuffID);
             var target = SimpleTarget.DottableEnemy(dotAction, dotDebuffID, 0, 3, 2);
             
-            if (target is not null && CanApplyStatus(target, dotDebuffID) && !JustUsedOn(dotAction, target) && PartyInCombat())
+            if (target is not null && ActionReady(dotAction) && CanApplyStatus(target, dotDebuffID) && !JustUsedOn(dotAction, target) && PartyInCombat())
                 return dotAction.Retarget(BroilList.ToArray(), target);
 
             //Ruin 2 Movement
@@ -346,7 +346,7 @@ internal partial class SCH : Healer
                     return OriginalHook(Bio);
                 
                 //2 target Dotting System to maintain dots on 2 enemies. Works with the same sliders and one target
-                if (target is not null && CanApplyStatus(target, dotDebuffID) && !JustUsedOn(dotAction, target) && SCH_ST_ADV_DPS_Bio_TwoTarget)
+                if (target is not null && ActionReady(dotAction) && CanApplyStatus(target, dotDebuffID) && !JustUsedOn(dotAction, target) && SCH_ST_ADV_DPS_Bio_TwoTarget)
                     return dotAction.Retarget(replacedActions, target);
             }
 

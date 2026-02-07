@@ -68,7 +68,7 @@ internal partial class WHM : Healer
                 ? SimpleTarget.DottableEnemy(dotAction, dotDebuffID, 0, 30, 99) //if moving and dont have other mobile gcds
                 : SimpleTarget.DottableEnemy(dotAction, dotDebuffID, 0, 3, 2); 
             
-            if (target is not null && CanApplyStatus(target, dotDebuffID) && !JustUsedOn(dotAction, target))
+            if (target is not null && ActionReady(dotAction) && CanApplyStatus(target, dotDebuffID) && !JustUsedOn(dotAction, target) && LevelChecked(Aero))
                 return dotAction.Retarget(StoneGlareList.ToArray(), target);
             
             // Blood Lily Spend
@@ -234,7 +234,7 @@ internal partial class WHM : Healer
                     return OriginalHook(Aero);
                 
                 //2 target Dotting System to maintain dots on 2 enemies. Works with the same sliders and one target
-                if (target is not null && CanApplyStatus(target, dotDebuffID) && !JustUsedOn(dotAction, target) && WHM_ST_MainCombo_DoT_TwoTarget)
+                if (target is not null && ActionReady(dotAction) && CanApplyStatus(target, dotDebuffID) && !JustUsedOn(dotAction, target) && WHM_ST_MainCombo_DoT_TwoTarget)
                     return dotAction.Retarget(replacedAction, target);
             }
             
