@@ -538,7 +538,7 @@ internal partial class AST : Healer
                 return EssentialDignity.RetargetIfEnabled(Benefic);
 
             return !LevelChecked(Benefic2)
-                ? actionID.RetargetIfEnabled(null)
+                ? actionID.RetargetIfEnabled()
                 : Benefic2.RetargetIfEnabled(Benefic);
         }
     }

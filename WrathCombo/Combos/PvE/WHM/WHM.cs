@@ -583,7 +583,7 @@ internal partial class WHM : Healer
                     ? ThinAir
                     : Cure2.RetargetIfEnabled(Cure);
 
-            return Cure.RetargetIfEnabled(null);
+            return Cure.RetargetIfEnabled();
         }
     }
 
