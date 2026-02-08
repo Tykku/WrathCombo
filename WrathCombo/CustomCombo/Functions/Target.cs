@@ -454,36 +454,11 @@ internal abstract partial class CustomComboFunctions
         return !Framework.Instance()->BGCollisionModule->RaycastMaterialFilter(&hit, &sourcePos, &direction, distance, 1, flags);
     }
 
-    /// <summary>
-    ///     Checks if an object is over the ground
-    /// </summary>
-    internal static unsafe bool IsOverGround(IGameObject? obj)
-    {
-        if (obj is null) return false;
+    #region LoS Caching
 
-        var targetPos = obj.Position;
-        var down = new Vector3(0, -1, 0);
-        RaycastHit hit;
-        var flags = stackalloc int[] { 0x4000, 0, 0x4000, 0 };
+    
 
-        return Framework.Instance()->BGCollisionModule->RaycastMaterialFilter(&hit, &targetPos, &down, 5, 1, flags);
-    }
-
-    /// <summary>
-    ///     Checks if a point is over the ground.<br/>
-    ///     (and gives the ground point if it is)
-    /// </summary>
-    private static unsafe bool IsOverGround
-        (Vector3 pointToCheck, out Vector3 groundPoint)
-    {
-        var down = new Vector3(0, -1, 0);
-        RaycastHit hit;
-        var flags = stackalloc int[] { 0x4000, 0, 0x4000, 0 };
-
-        var result = Framework.Instance()->BGCollisionModule->RaycastMaterialFilter(&hit, &pointToCheck, &down, 5, 1, flags);
-        groundPoint = hit.Point;
-        return result;
-    }
+    #endregion
 
     /// <summary>
     ///     Tries to find the nearest point to the object that is in a line
@@ -496,7 +471,7 @@ internal abstract partial class CustomComboFunctions
     ///     The found nearest point.
     /// </param>
     /// <param name="maxRange">
-    ///     The maximum range from the the player.<br/>
+    ///     The maximum range from the player.<br/>
     ///     Starts the search closer to the player than just the object's position.
     /// </param>
     /// <returns>
@@ -539,6 +514,41 @@ internal abstract partial class CustomComboFunctions
         // Fail out if no suitable point was found
         return false;
     }
+
+    #region Ground-Point Helpers
+
+    /// <summary>
+    ///     Checks if an object is over the ground
+    /// </summary>
+    internal static unsafe bool IsOverGround(IGameObject? obj)
+    {
+        if (obj is null) return false;
+
+        var        targetPos = obj.Position;
+        var        down      = new Vector3(0, -1, 0);
+        RaycastHit hit;
+        var        flags = stackalloc int[] { 0x4000, 0, 0x4000, 0 };
+
+        return Framework.Instance()->BGCollisionModule->RaycastMaterialFilter(&hit, &targetPos, &down, 5, 1, flags);
+    }
+
+    /// <summary>
+    ///     Checks if a point is over the ground.<br/>
+    ///     (and gives the ground point if it is)
+    /// </summary>
+    private static unsafe bool IsOverGround
+        (Vector3 pointToCheck, out Vector3 groundPoint)
+    {
+        var        down = new Vector3(0, -1, 0);
+        RaycastHit hit;
+        var        flags = stackalloc int[] { 0x4000, 0, 0x4000, 0 };
+
+        var result = Framework.Instance()->BGCollisionModule->RaycastMaterialFilter(&hit, &pointToCheck, &down, 5, 1, flags);
+        groundPoint = hit.Point;
+        return result;
+    }
+
+    #endregion
 
     #endregion
 
