@@ -784,14 +784,12 @@ internal abstract partial class CustomComboFunctions
 
         bool IsValidTarget(IGameObject o)
         {
-            if (!IsInLineOfSight(o))
-                return false;
-
             if (!enemies)
                 return o is IBattleChara &&
                        o.IsTargetable &&
                        o.IsWithinRange(60f) &&
-                       o.IsFriendly();
+                       o.IsFriendly() &&
+                       IsInLineOfSight(o);
 
             return o is { ObjectKind: ObjectKind.BattleNpc, IsTargetable: true } &&
                    o.IsWithinRange(60f) &&
@@ -799,7 +797,8 @@ internal abstract partial class CustomComboFunctions
                    (!checkInvincible ||
                     !TargetIsInvincible(o)) &&
                    (!checkIgnoredList ||
-                    !Service.Configuration.IgnoredNPCs.ContainsKey(o.BaseId));
+                    !Service.Configuration.IgnoredNPCs.ContainsKey(o.BaseId)) &&
+                   IsInLineOfSight(o);
         }
     }
 
