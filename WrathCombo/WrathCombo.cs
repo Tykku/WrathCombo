@@ -132,6 +132,7 @@ public sealed partial class WrathCombo : IDalamudPlugin
         WrathOpener.CurrentOpener?.ResetOpener(); //Clears opener values, just in case
         ActionRequestIPCProvider.ResetAllBlacklist();
         ActionRequestIPCProvider.ResetAllRequests();
+        CustomComboFunctions.CleanupExpiredLineOfSightCache();
         TM.DelayNext(1000);
         TM.Enqueue(() =>
         {
@@ -328,7 +329,10 @@ public sealed partial class WrathCombo : IDalamudPlugin
             AutoRotationController.Run();
 
             if (Player.IsDead)
+            {
                 ActionRetargeting.Retargets.Clear();
+                CustomComboFunctions.CleanupExpiredLineOfSightCache();
+            }
 
             #endregion
 
