@@ -13,6 +13,7 @@ internal partial class PCT
         public static UserInt
             CombinedAetherhueChoices = new("CombinedAetherhueChoices", 0),
             PCT_ST_AdvancedMode_LucidOption = new("PCT_ST_AdvancedMode_LucidOption", 6500),
+            PCT_ST_AdvancedMode_HolyinWhiteOption = new("PCT_ST_AdvancedMode_HolyinWhiteOption", 2),
             PCT_AoE_AdvancedMode_HolyinWhiteOption = new("PCT_AoE_AdvancedMode_HolyinWhiteOption", 2),
             PCT_AoE_AdvancedMode_LucidOption = new("PCT_AoE_AdvancedMode_LucidOption", 6500),
             PCT_AoE_AdvancedMode_ScenicMuse_Threshold = new("PCT_AoE_AdvancedMode_ScenicMuse_Threshold", 20),
@@ -96,6 +97,11 @@ internal partial class PCT
 
                 case Preset.PCT_ST_AdvancedMode_WeaponMotif:
                     DrawSliderInt(0, 10, PCT_ST_WeaponStop, "Health % to stop Drawing Motif");
+                    break;
+                
+                case Preset.PCT_ST_AdvancedMode_HolyinWhite:
+                    DrawSliderInt(0, 5, PCT_ST_AdvancedMode_HolyinWhiteOption,
+                        "How many charges to keep ready? (0 = Use all)");
                     break;
 
                 #endregion

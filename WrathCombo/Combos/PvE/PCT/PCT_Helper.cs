@@ -14,9 +14,10 @@ namespace WrathCombo.Combos.PvE;
 internal partial class PCT
 {
     #region Variables
-    // Gauge Stuff
+    [Flags] private enum RotationMode 
+    { simpleST = 1 << 0, advancedST = 1 << 1, simpleAoE = 1 << 2, advancedAoE = 1 << 3 }
+    
     internal static PCTGauge gauge = GetJobGauge<PCTGauge>();
-    //Useful Bools
     internal static bool ScenicMuseReady => gauge.LandscapeMotifDrawn && ActionReady(ScenicMuse);
     internal static bool LivingMuseReady => ActionReady(LivingMuse) && gauge.CreatureMotifDrawn;
     internal static bool SteelMuseReady => ActionReady(SteelMuse) && !HasStatusEffect(Buffs.HammerTime) && gauge.WeaponMotifDrawn;
@@ -30,82 +31,477 @@ internal partial class PCT
                                              gauge.PalleteGauge == 100 && HasStatusEffect(Buffs.Aetherhues2)|| 
                                              gauge.PalleteGauge >= 50 && ScenicCD < 3 );
     internal static bool HasPaint => gauge.Paint > 0;
-    //Buff Tracking
     internal static float ScenicCD => GetCooldownRemainingTime(StarryMuse);
     internal static float SteelCD => GetCooldownRemainingTime(StrikingMuse);
     #endregion
-
-    #region Functions
     
-    #region Hyper Phantasia
-    internal static bool HyperPhantasiaMovementPaint()
-    //Increase priority for using casts as soon as possible to avoid losing DPS and ensure all abilities fit within buff windows
-    //previously, there were situations where Wrath prioritized using Hammer Combo over casts during hyperphantasia, which would prevent us from generating Rainbow Bright in time when movement is required
-    //so, if we have Hyperphantasia stacks and Inspiration is active from standing in PCT LeyLines, we burn it all down
+    #region Rotation
+    #region OGCD Spells
+    private static bool TryOGCDSpells(RotationMode rotationFlags, ref uint actionID)
     {
-        if (GetStatusEffectStacks(Buffs.Hyperphantasia) > 0 && HasStatusEffect(Buffs.Inspiration) && HasPaint)
+        #region Enables
+        bool subtractivePaletteEnabled =
+            IsEnabled(Preset.PCT_ST_AdvancedMode_StarPrism) && rotationFlags.HasFlag(RotationMode.advancedST) ||
+            IsEnabled(Preset.PCT_AoE_AdvancedMode_StarPrism) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
+            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+        
+        bool scenicMuseEnabled = 
+            IsEnabled(Preset.PCT_ST_AdvancedMode_ScenicMuse) && rotationFlags.HasFlag(RotationMode.advancedST) ||
+            IsEnabled(Preset.PCT_AoE_AdvancedMode_ScenicMuse) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
+            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+        
+        bool livingMuseEnabled =
+            IsEnabled(Preset.PCT_ST_AdvancedMode_RainbowDrip) && rotationFlags.HasFlag(RotationMode.advancedST) ||
+            IsEnabled(Preset.PCT_AoE_AdvancedMode_RainbowDrip) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
+            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+        
+        bool steelMuseEnabled =
+            IsEnabled(Preset.PCT_ST_AdvancedMode_CometinBlack) && rotationFlags.HasFlag(RotationMode.advancedST) ||
+            IsEnabled(Preset.PCT_AoE_AdvancedMode_CometinBlack) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
+            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+        
+        bool portraitEnabled =
+            IsEnabled(Preset.PCT_ST_AdvancedMode_HammerStampCombo) && rotationFlags.HasFlag(RotationMode.advancedST) ||
+            IsEnabled(Preset.PCT_AoE_AdvancedMode_HammerStampCombo) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
+            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+        
+        bool LucidDreamingEnabled =
+            IsEnabled(Preset.PCT_ST_AdvancedMode_HammerStampCombo) && rotationFlags.HasFlag(RotationMode.advancedST) ||
+            IsEnabled(Preset.PCT_AoE_AdvancedMode_HammerStampCombo) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
+            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+        
+        #endregion
+        
+        #region Configs
+        
+        int scenicThresholdST = PCT_ST_AdvancedMode_ScenicMuse_SubOption == 1 || !InBossEncounter() ? PCT_ST_AdvancedMode_ScenicMuse_Threshold : 0;
+        int scenicThresholdAoE = PCT_AoE_AdvancedMode_ScenicMuse_SubOption == 1 || !InBossEncounter() ? PCT_AoE_AdvancedMode_ScenicMuse_Threshold : 0;
+        int scenicStop = 
+            rotationFlags.HasFlag(RotationMode.advancedST) ? scenicThresholdST : 
+            rotationFlags.HasFlag(RotationMode.advancedAoE) ? scenicThresholdAoE : 
+            0;
+        
+        bool scenicMovementPrevention =
+            rotationFlags.HasFlag(RotationMode.advancedST) ? PCT_ST_AdvancedMode_ScenicMuse_MovementOption : 
+            rotationFlags.HasFlag(RotationMode.advancedAoE) ? PCT_AoE_AdvancedMode_ScenicMuse_MovementOption : 
+            false;
+        
+        int lucidThreshold = 
+            rotationFlags.HasFlag(RotationMode.advancedST) ? PCT_ST_AdvancedMode_LucidOption : 
+            rotationFlags.HasFlag(RotationMode.advancedAoE) ? PCT_AoE_AdvancedMode_LucidOption : 
+            6500;
+        
+        #endregion
+        
+        if (InCombat() && HasBattleTarget())
         {
-            if ((IsEnabled(Preset.PCT_ST_AdvancedMode_MovementOption_HolyInWhite) || IsEnabled(Preset.PCT_ST_SimpleMode)) 
-                && HolyInWhite.LevelChecked())
+            // SubtractivePalette
+            if (subtractivePaletteEnabled && CanWeave() && PaletteReady)
+            {
+                actionID = SubtractivePalette;
                 return true;
-            if ((IsEnabled(Preset.PCT_ST_AdvancedMode_MovementOption_CometinBlack) || IsEnabled(Preset.PCT_ST_SimpleMode)) 
-                && CometinBlack.LevelChecked())
+            }
+
+            // ScenicMuse
+            if (scenicMuseEnabled && ScenicMuseReady && CanDelayedWeave() && GetTargetHPPercent() > scenicStop &&
+                (!IsMoving() || !scenicMovementPrevention))
+            {
+                actionID = OriginalHook(ScenicMuse);
                 return true;
+            }
+
+            // LivingMuse
+            if (livingMuseEnabled && LivingMuseReady && CanWeave() && !JustUsed(StarryMuse) &&
+                (!PortraitReady || GetRemainingCharges(LivingMuse) == GetMaxCharges(LivingMuse)) &&
+                (!LevelChecked(ScenicMuse) || ScenicCD > GetCooldownChargeRemainingTime(LivingMuse) ||
+                 !scenicMuseEnabled))
+            {
+                actionID = OriginalHook(LivingMuse);
+                return true;
+            }
+
+            // SteelMuse
+            if (steelMuseEnabled && SteelMuseReady && CanWeave() &&
+                (SteelCD < ScenicCD || GetRemainingCharges(SteelMuse) == GetMaxCharges(SteelMuse) ||
+                 !LevelChecked(ScenicMuse)))
+            {
+                actionID = OriginalHook(SteelMuse);
+                return true;
+            }
+
+            // Portrait Mog or Madeen
+            if (portraitEnabled && PortraitReady && CanWeave() && IsOffCooldown(OriginalHook(MogoftheAges)) &&
+                !JustUsed(StarryMuse) &&
+                (ScenicCD >= 60 || !LevelChecked(ScenicMuse) || !scenicMuseEnabled))
+            {
+                actionID = OriginalHook(MogoftheAges);
+                return true;
+            }
+        }
+        //LucidDreaming
+        if (LucidDreamingEnabled && Role.CanLucidDream(lucidThreshold))
+        {
+            actionID = Role.LucidDreaming;
+            return true;
         }
         return false;
     }
-    
     #endregion
     
-    #region Standard Burst Window
-    internal static uint BurstWindowStandard(uint actionId)
+    #region Mitigation
+    private static bool TryMitigation(RotationMode rotationFlags, ref uint actionID)
     {
-        if (CanWeave())
-        {
-            if (ActionReady(SubtractivePalette) && 
-                !HasStatusEffect(Buffs.SubtractivePalette) && 
-                !HasStatusEffect(Buffs.MonochromeTones) &&
-                (HasStatusEffect(Buffs.SubtractiveSpectrum) || gauge.PalleteGauge >= 50))
-                return SubtractivePalette;
-            
-            if (SteelMuseReady && HasCharges(SteelMuse))
-                return OriginalHook(SteelMuse);
-               
-            if (PortraitReady && IsOffCooldown(OriginalHook(MogoftheAges)) && !JustUsed(StarryMuse))
-                return OriginalHook(MogoftheAges);
+        #region Enables
+        bool addleEnabled =
+            IsEnabled(Preset.PCT_ST_AdvancedMode_Addle) && rotationFlags.HasFlag(RotationMode.advancedST) ||
+            rotationFlags.HasFlag(RotationMode.simpleST);
+        
+        bool tempuraEnabled =
+            IsEnabled(Preset.PCT_ST_AdvancedMode_Tempura) && rotationFlags.HasFlag(RotationMode.advancedST) ||
+            rotationFlags.HasFlag(RotationMode.simpleST);
+        
+        #endregion
 
-            if (LivingMuseReady && !PortraitReady && !JustUsed(StarryMuse))
-                return OriginalHook(LivingMuse);
+        if (addleEnabled && Role.CanAddle() && CanWeave() && GroupDamageIncoming() && HasBattleTarget())
+        {
+            actionID = Role.Addle;
+            return true;
         }
-        
-        if (HasStatusEffect(Buffs.RainbowBright)) //Use as soon as 5 stacks are spent
-            return RainbowDrip;
-        
-        if (ActionReady(OriginalHook(HammerStamp)) && 
-            !HasStatusEffect(Buffs.Hyperphantasia) && //wait until after HP are gone to burn hammers
-            GetStatusEffectRemainingTime(Buffs.StarryMuse) < 18) //before 92 dont burn hammers first
-            return OriginalHook(HammerStamp);
-    
-        if (HasStatusEffect(Buffs.Starstruck) && 
-            (GetStatusEffectRemainingTime(Buffs.StarryMuse) < 18 || //Normal use
-             !HasStatusEffect(Buffs.SubtractivePalette))) //Simple opening, but time to weave a sub palette
-            return StarPrism;
-        
-        if (HyperPhantasiaMovementPaint() && IsMoving()) //in case you need to move to burn HP
-            return HasStatusEffect(Buffs.MonochromeTones) ? OriginalHook(CometinBlack) : OriginalHook(HolyInWhite);
-        
-        if (CometinBlack.LevelChecked() && GetStatusEffectRemainingTime(Buffs.StarryMuse) < 18 &&
-            HasStatusEffect(Buffs.MonochromeTones) && HasPaint)
-            return OriginalHook(CometinBlack);
-                
-        return HasStatusEffect(Buffs.SubtractivePalette) ? OriginalHook(BlizzardinCyan) : actionId;
+
+        if (tempuraEnabled && CanWeave() && GroupDamageIncoming() && !JustUsed(Role.Addle, 6))
+        {
+            if (LevelChecked(TempuraCoat) && IsOffCooldown(TempuraCoat))
+            {
+                actionID = TempuraCoat;
+                return true;
+            }
+                    
+            if (LevelChecked(TempuraGrassa) && IsInParty() &&
+                NumberOfAlliesInRange(TempuraGrassa) >= GetPartyMembers().Count * .75 &&
+                HasStatusEffect(Buffs.TempuraCoat))
+            {
+                actionID = TempuraGrassa;
+                return true;
+            }
+        }
+        return false;
     }
     #endregion
     
+    #region Movement
+
+    private static bool TryMovementOption(RotationMode rotationFlags, ref uint actionID)
+    {
+        #region Enables
+
+        bool movementEnabled =
+            IsEnabled(Preset.PCT_ST_AdvancedMode_MovementFeature) && rotationFlags.HasFlag(RotationMode.advancedST) ||
+            IsEnabled(Preset.PCT_AoE_AdvancedMode_MovementFeature) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
+            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+
+        bool rainbowDripEnabled =
+            IsEnabled(Preset.PCT_ST_AdvancedMode_RainbowDrip) && rotationFlags.HasFlag(RotationMode.advancedST) ||
+            IsEnabled(Preset.PCT_AoE_AdvancedMode_RainbowDrip) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
+            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+
+        bool hammerStampEnabled =
+            IsEnabled(Preset.PCT_ST_AdvancedMode_MovementOption_HammerStampCombo) &&
+            rotationFlags.HasFlag(RotationMode.advancedST) ||
+            IsEnabled(Preset.PCT_AoE_AdvancedMode_MovementOption_HammerStampCombo) &&
+            rotationFlags.HasFlag(RotationMode.advancedAoE) ||
+            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+
+        bool cometinBlackEnabled =
+            IsEnabled(Preset.PCT_ST_AdvancedMode_MovementOption_CometinBlack) &&
+            rotationFlags.HasFlag(RotationMode.advancedST) ||
+            IsEnabled(Preset.PCT_AoE_AdvancedMode_MovementOption_CometinBlack) &&
+            rotationFlags.HasFlag(RotationMode.advancedAoE) ||
+            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+
+        bool holyInWhiteEnabled =
+            IsEnabled(Preset.PCT_ST_AdvancedMode_MovementOption_HolyInWhite) &&
+            rotationFlags.HasFlag(RotationMode.advancedST) ||
+            IsEnabled(Preset.PCT_AoE_AdvancedMode_MovementOption_HolyInWhite) &&
+            rotationFlags.HasFlag(RotationMode.advancedAoE) ||
+            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+
+        bool swiftcastEnabled =
+            IsEnabled(Preset.PCT_ST_AdvancedMode_SwiftcastOption) && rotationFlags.HasFlag(RotationMode.advancedST) ||
+            IsEnabled(Preset.PCT_AoE_AdvancedMode_SwiftcastOption) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
+            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+
+        #endregion
+
+        if (!movementEnabled || !IsMoving() || !InCombat()) return false;
+        
+        if (rainbowDripEnabled && HasStatusEffect(Buffs.RainbowBright))
+        {
+            actionID = OriginalHook(RainbowDrip);
+            return true;
+        }
+
+        if (hammerStampEnabled && LevelChecked(HammerStamp) && HasStatusEffect(Buffs.HammerTime) &&
+            !HasStatusEffect(Buffs.Hyperphantasia))
+        {
+            actionID = OriginalHook(HammerStamp);
+            return true;
+        }
+
+        if (cometinBlackEnabled && HasStatusEffect(Buffs.MonochromeTones) && HasPaint)
+        {
+            actionID = OriginalHook(CometinBlack);
+            return true;
+        }
+
+        if (holyInWhiteEnabled && HasPaint)
+        {
+            actionID = OriginalHook(HolyInWhite);
+            return true;
+        }
+
+        if (swiftcastEnabled && ActionReady(Role.Swiftcast) &&
+            (CreatureMotifReady || WeaponMotifReady || LandscapeMotifReady))
+        {
+            actionID = Role.Swiftcast;
+            return true;
+        }
+        
+        return false;
+        
+    }
+    #endregion
+    
+    #region GCD Spells
+    private static bool TryGCDSpells(RotationMode rotationFlags, ref uint actionID)
+    {
+        #region Enables
+        bool starPrismEnabled =
+            IsEnabled(Preset.PCT_ST_AdvancedMode_StarPrism) && rotationFlags.HasFlag(RotationMode.advancedST) ||
+            IsEnabled(Preset.PCT_AoE_AdvancedMode_StarPrism) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
+            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+        
+        bool rainbowDripEnabled =
+            IsEnabled(Preset.PCT_ST_AdvancedMode_RainbowDrip) && rotationFlags.HasFlag(RotationMode.advancedST) ||
+            IsEnabled(Preset.PCT_AoE_AdvancedMode_RainbowDrip) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
+            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+        
+        bool cometInBlackEnabled =
+            IsEnabled(Preset.PCT_ST_AdvancedMode_CometinBlack) && rotationFlags.HasFlag(RotationMode.advancedST) ||
+            IsEnabled(Preset.PCT_AoE_AdvancedMode_CometinBlack) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
+            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+        
+        bool hammerStampComboEnabled =
+            IsEnabled(Preset.PCT_ST_AdvancedMode_HammerStampCombo) && rotationFlags.HasFlag(RotationMode.advancedST) ||
+            IsEnabled(Preset.PCT_AoE_AdvancedMode_HammerStampCombo) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
+            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+        
+        bool scenicMuseEnabled = 
+            IsEnabled(Preset.PCT_ST_AdvancedMode_ScenicMuse) && rotationFlags.HasFlag(RotationMode.advancedST) ||
+            IsEnabled(Preset.PCT_AoE_AdvancedMode_ScenicMuse) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
+            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+        
+        #endregion
+        
+        //Star Prism
+        if (starPrismEnabled && HasStatusEffect(Buffs.Starstruck) && !JustUsed(StarryMuse))
+        {
+            actionID = StarPrism;
+            return true;
+        }
+
+        //Rainbow Drip
+        if (rainbowDripEnabled && HasStatusEffect(Buffs.RainbowBright))
+        {
+            actionID = RainbowDrip;
+            return true;
+        }
+       
+        //Comet in Black
+        if (cometInBlackEnabled && HasStatusEffect(Buffs.MonochromeTones) && HasPaint && !JustUsed(StarryMuse) &&
+            (!HasStatusEffect(Buffs.StarryMuse) || HasStatusEffect(Buffs.Hyperphantasia)) &&
+            (ScenicCD > 10 || !LevelChecked(ScenicMuse) || !scenicMuseEnabled))
+        {
+            actionID = OriginalHook(CometinBlack);
+            return true;
+        }
+        
+        //Hammer Stamp Combo
+        if (hammerStampComboEnabled && ActionReady(OriginalHook(HammerStamp)) &&
+            !HasStatusEffect(Buffs.Hyperphantasia) &&
+            (ScenicCD > 10 || !LevelChecked(ScenicMuse) || IsNotEnabled(Preset.PCT_ST_AdvancedMode_ScenicMuse)))
+        {
+            actionID = OriginalHook(HammerStamp);
+            return true;
+        }
+        
+        return false;
+    }
+    #endregion
+    
+    #region Motifs
+    private static bool TryDrawMotif(RotationMode rotationFlags, ref uint actionID)
+    {
+        #region Enables
+        bool motifsEnabled = 
+            IsEnabled(Preset.PCT_ST_AdvancedMode_MotifFeature) && rotationFlags.HasFlag(RotationMode.advancedST) ||
+            IsEnabled(Preset.PCT_AoE_AdvancedMode_MotifFeature) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
+            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+            
+        bool prepullEnabled =
+            IsEnabled(Preset.PCT_ST_AdvancedMode_PrePullMotifs) && rotationFlags.HasFlag(RotationMode.advancedST) ||
+            IsEnabled(Preset.PCT_AoE_AdvancedMode_PrePullMotifs) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
+            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+        
+        bool noTargetEnabled =
+            IsEnabled(Preset.PCT_ST_AdvancedMode_NoTargetMotifs) && rotationFlags.HasFlag(RotationMode.advancedST) ||
+            IsEnabled(Preset.PCT_AoE_AdvancedMode_NoTargetMotifs) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
+            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+        
+        bool swiftcastEnabled =
+            IsEnabled(Preset.PCT_ST_AdvancedMode_SwiftMotifs) && rotationFlags.HasFlag(RotationMode.advancedST) ||
+            IsEnabled(Preset.PCT_AoE_AdvancedMode_SwiftMotifs) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
+            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+        
+        bool creatureEnabled =
+            IsEnabled(Preset.PCT_ST_AdvancedMode_CreatureMotif) && rotationFlags.HasFlag(RotationMode.advancedST) ||
+            IsEnabled(Preset.PCT_AoE_AdvancedMode_CreatureMotif) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
+            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+        
+        bool weaponEnabled =
+            IsEnabled(Preset.PCT_ST_AdvancedMode_WeaponMotif) && rotationFlags.HasFlag(RotationMode.advancedST) ||
+            IsEnabled(Preset.PCT_AoE_AdvancedMode_WeaponMotif) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
+            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+        
+        bool landscapeEnabled =
+            IsEnabled(Preset.PCT_ST_AdvancedMode_LandscapeMotif) && rotationFlags.HasFlag(RotationMode.advancedST) ||
+            IsEnabled(Preset.PCT_AoE_AdvancedMode_LandscapeMotif) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
+            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+        
+        
+        #endregion
+        
+        #region Configs
+        
+        int creatureStop = 
+                rotationFlags.HasFlag(RotationMode.advancedST) ? PCT_ST_CreatureStop : 
+                rotationFlags.HasFlag(RotationMode.advancedAoE) ? PCT_AoE_CreatureStop : 
+                0;
+        bool creatureHealthCheck = GetTargetHPPercent() > creatureStop;
+        bool hasLivingMuseCharges = HasCharges(LivingMuse) || GetCooldownChargeRemainingTime(LivingMuse) <= 8;
+        
+        int weaponStop = 
+            rotationFlags.HasFlag(RotationMode.advancedST) ? PCT_ST_WeaponStop : 
+            rotationFlags.HasFlag(RotationMode.advancedAoE) ? PCT_AoE_WeaponStop : 
+            0;
+        bool weaponHealthCheck = GetTargetHPPercent() > weaponStop;
+        bool hasSteelMuseCharges = HasCharges(SteelMuse) || GetCooldownChargeRemainingTime(SteelMuse) <= 8;
+        
+        int landscapeStop = 
+            rotationFlags.HasFlag(RotationMode.advancedST) ? PCT_ST_LandscapeStop : 
+            rotationFlags.HasFlag(RotationMode.advancedAoE) ? PCT_AoE_LandscapeStop : 
+            0;
+        bool landscapeHealthCheck = GetTargetHPPercent() > landscapeStop;
+        
+        #endregion
+        
+        if (motifsEnabled)
+        {
+            if (creatureEnabled && CreatureMotifReady &&
+                (prepullEnabled && !InCombat() ||
+                 noTargetEnabled && InCombat() && CurrentTarget == null ||
+                 swiftcastEnabled && HasStatusEffect(Role.Buffs.Swiftcast) && creatureHealthCheck ||
+                 LevelChecked(ScenicMuse) && GetCooldownRemainingTime(ScenicMuse) <= 20 &&
+                 creatureHealthCheck || //Burst Prep
+                 hasLivingMuseCharges && creatureHealthCheck)) //Standard Use
+            {
+                actionID = OriginalHook(CreatureMotif);
+                return true;
+            }
+
+            if (weaponEnabled && WeaponMotifReady &&
+                (prepullEnabled && !InCombat() ||
+                 noTargetEnabled && InCombat() && CurrentTarget == null ||
+                 swiftcastEnabled && HasStatusEffect(Role.Buffs.Swiftcast) && weaponHealthCheck ||
+                 LevelChecked(ScenicMuse) && GetCooldownRemainingTime(ScenicMuse) <= 20 && weaponHealthCheck ||
+                 hasSteelMuseCharges && weaponHealthCheck))
+            {
+                actionID = OriginalHook(WeaponMotif);
+                return true;
+            }
+
+            if (landscapeEnabled && LandscapeMotifReady &&
+                (prepullEnabled && !InCombat() ||
+                 noTargetEnabled && InCombat() && CurrentTarget == null ||
+                 swiftcastEnabled && HasStatusEffect(Role.Buffs.Swiftcast) && landscapeHealthCheck ||
+                 LevelChecked(ScenicMuse) && GetCooldownRemainingTime(ScenicMuse) <= 20 && landscapeHealthCheck))
+            {
+                actionID = OriginalHook(LandscapeMotif);
+                return true;
+            }
+        }
+        return false;
+    }
+    #endregion
+    
+    #region SubCombos and Holy in White
+    private static bool TryCombos(RotationMode rotationFlags, ref uint actionID)
+    {
+        #region Enables
+        bool subComboEnabled = 
+            IsEnabled(Preset.PCT_ST_AdvancedMode_BlizzardInCyan) && rotationFlags.HasFlag(RotationMode.advancedST) ||
+            IsEnabled(Preset.PCT_AoE_AdvancedMode_BlizzardInCyan) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
+            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+            
+        bool holyInWhiteEnabled =
+            IsEnabled(Preset.PCT_ST_AdvancedMode_HolyinWhite) && rotationFlags.HasFlag(RotationMode.advancedST) ||
+            IsEnabled(Preset.PCT_AoE_AdvancedMode_HolyinWhite) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
+            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+        #endregion
+        
+        #region Configs
+        int holdPaintCharges =
+                rotationFlags.HasFlag(RotationMode.advancedST) 
+                    ? PCT_ST_AdvancedMode_HolyinWhiteOption
+                    : rotationFlags.HasFlag(RotationMode.advancedAoE)
+                        ? PCT_AoE_AdvancedMode_HolyinWhiteOption
+                        : 2;
+        #endregion
+
+        if (rotationFlags.HasFlag(RotationMode.advancedST) || rotationFlags.HasFlag(RotationMode.simpleST))
+        {
+            if (subComboEnabled && HasStatusEffect(Buffs.SubtractivePalette))
+            {
+                actionID = OriginalHook(BlizzardinCyan);
+                return true;
+            }
+            if (holyInWhiteEnabled && !HasStatusEffect(Buffs.MonochromeTones) && gauge.Paint > holdPaintCharges && NumberOfEnemiesInRange(HolyInWhite) > 1)
+            {
+                actionID = OriginalHook(HolyInWhite);
+                return true;
+            }
+            return false;
+        }
+        
+        if (rotationFlags.HasFlag(RotationMode.advancedAoE) || rotationFlags.HasFlag(RotationMode.simpleAoE))
+        {
+            if (subComboEnabled && HasStatusEffect(Buffs.SubtractivePalette))
+            {
+                actionID = OriginalHook(BlizzardIIinCyan);
+                return true;
+            }
+
+            if (holyInWhiteEnabled && !HasStatusEffect(Buffs.MonochromeTones) && gauge.Paint > holdPaintCharges)
+            {
+                actionID = OriginalHook(HolyInWhite);
+                return true;
+            }
+        }
+        return false;
+    }
+    #endregion
     #endregion
 
     #region ID's
-
     public const uint
         BlizzardinCyan = 34653,
         StoneinYellow = 34654,
@@ -170,7 +566,6 @@ internal partial class PCT
     {
 
     }
-
     #endregion
 
     #region Openers
