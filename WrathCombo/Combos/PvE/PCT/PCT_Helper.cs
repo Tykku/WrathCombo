@@ -18,24 +18,17 @@ internal partial class PCT
     { simpleST = 1 << 0, advancedST = 1 << 1, simpleAoE = 1 << 2, advancedAoE = 1 << 3 }
     
     internal static PCTGauge gauge = GetJobGauge<PCTGauge>();
-    internal static bool ScenicMuseReady => gauge.LandscapeMotifDrawn && ActionReady(ScenicMuse);
-    internal static bool LivingMuseReady => ActionReady(LivingMuse) && gauge.CreatureMotifDrawn;
-    internal static bool SteelMuseReady => ActionReady(SteelMuse) && !HasStatusEffect(Buffs.HammerTime) && gauge.WeaponMotifDrawn;
-    internal static bool PortraitReady => ActionReady(MogoftheAges) && (gauge.MooglePortraitReady || gauge.MadeenPortraitReady);
+    internal static bool HasPaint => gauge.Paint > 0;
     internal static bool CreatureMotifReady => !gauge.CreatureMotifDrawn && LevelChecked(CreatureMotif) && !HasStatusEffect(Buffs.StarryMuse);
     internal static bool WeaponMotifReady => !gauge.WeaponMotifDrawn && LevelChecked(WeaponMotif) && !HasStatusEffect(Buffs.StarryMuse) && !HasStatusEffect(Buffs.HammerTime);
     internal static bool LandscapeMotifReady => !gauge.LandscapeMotifDrawn && LevelChecked(LandscapeMotif) && !HasStatusEffect(Buffs.StarryMuse);
-    internal static bool PaletteReady => SubtractivePalette.LevelChecked() && !HasStatusEffect(Buffs.SubtractivePalette) && !HasStatusEffect(Buffs.MonochromeTones) && 
-                                            (HasStatusEffect(Buffs.SubtractiveSpectrum) || 
-                                             gauge.PalleteGauge >= 50 && ScenicCD > 35 || 
-                                             gauge.PalleteGauge == 100 && HasStatusEffect(Buffs.Aetherhues2)|| 
-                                             gauge.PalleteGauge >= 50 && ScenicCD < 3 );
-    internal static bool HasPaint => gauge.Paint > 0;
     internal static float ScenicCD => GetCooldownRemainingTime(StarryMuse);
     internal static float SteelCD => GetCooldownRemainingTime(StrikingMuse);
+    
     #endregion
     
     #region Rotation
+    
     #region OGCD Spells
     private static bool TryOGCDSpells(RotationMode rotationFlags, ref uint actionID)
     {
@@ -74,65 +67,76 @@ internal partial class PCT
         
         #region Configs
         
-        int scenicThresholdST = PCT_ST_AdvancedMode_ScenicMuse_SubOption == 1 || !InBossEncounter() ? PCT_ST_AdvancedMode_ScenicMuse_Threshold : 0;
-        int scenicThresholdAoE = PCT_AoE_AdvancedMode_ScenicMuse_SubOption == 1 || !InBossEncounter() ? PCT_AoE_AdvancedMode_ScenicMuse_Threshold : 0;
+        int scenicThresholdST = PCT_ST_AdvancedMode_ScenicMuse_SubOption == 1 || !InBossEncounter() ? PCT_ST_AdvancedMode_ScenicMuse_Threshold : 0; //Boss Check
+        int scenicThresholdAoE = PCT_AoE_AdvancedMode_ScenicMuse_SubOption == 1 || !InBossEncounter() ? PCT_AoE_AdvancedMode_ScenicMuse_Threshold : 0; //Boss Check
         int scenicStop = 
-            rotationFlags.HasFlag(RotationMode.advancedST) ? scenicThresholdST : 
-            rotationFlags.HasFlag(RotationMode.advancedAoE) ? scenicThresholdAoE : 
-            0;
+            rotationFlags.HasFlag(RotationMode.advancedST) ? scenicThresholdST : //Advanced ST Hold 
+            rotationFlags.HasFlag(RotationMode.advancedAoE) ? scenicThresholdAoE : //Advanced AoE Hold
+            0; //Simple Mode Dont Hold
         
         bool scenicMovementPrevention =
-            rotationFlags.HasFlag(RotationMode.advancedST) ? PCT_ST_AdvancedMode_ScenicMuse_MovementOption : 
-            rotationFlags.HasFlag(RotationMode.advancedAoE) ? PCT_AoE_AdvancedMode_ScenicMuse_MovementOption : 
-            false;
+            rotationFlags.HasFlag(RotationMode.advancedST) ? PCT_ST_AdvancedMode_ScenicMuse_MovementOption : //Advanced ST Lockout Starry when moving
+            rotationFlags.HasFlag(RotationMode.advancedAoE) ? PCT_AoE_AdvancedMode_ScenicMuse_MovementOption : //Advanced AoE Lockout Starry when moving
+            false; //Simple Mode Dont Lockout
         
         int lucidThreshold = 
-            rotationFlags.HasFlag(RotationMode.advancedST) ? PCT_ST_AdvancedMode_LucidOption : 
-            rotationFlags.HasFlag(RotationMode.advancedAoE) ? PCT_AoE_AdvancedMode_LucidOption : 
-            6500;
+            rotationFlags.HasFlag(RotationMode.advancedST) ? PCT_ST_AdvancedMode_LucidOption : //Advanced ST Lucid Threshold Config
+            rotationFlags.HasFlag(RotationMode.advancedAoE) ? PCT_AoE_AdvancedMode_LucidOption : //Advanced AoE Lucid Threshold Config
+            6500; //Simple Mode Lucid Threshold
+        
+        bool scenicMuseReady = ActionReady(ScenicMuse) && gauge.LandscapeMotifDrawn; 
+        bool livingMuseReady = ActionReady(LivingMuse) && gauge.CreatureMotifDrawn;
+        bool steelMuseReady = ActionReady(SteelMuse)  && gauge.WeaponMotifDrawn && !HasStatusEffect(Buffs.HammerTime);
+        bool portraitReady = ActionReady(MogoftheAges) && (gauge.MooglePortraitReady || gauge.MadeenPortraitReady); //Check for either portrait being ready
+        bool paletteReady = LevelChecked(SubtractivePalette) && 
+                            !HasStatusEffect(Buffs.SubtractivePalette) && !HasStatusEffect(Buffs.MonochromeTones) && //Don't overwrite self of comet in black
+                                         (HasStatusEffect(Buffs.SubtractiveSpectrum) || //Free use from Starry Muse
+                                          gauge.PalleteGauge >= 50 && ScenicCD > 35 || //Use freely before pooling
+                                          gauge.PalleteGauge == 100 && HasStatusEffect(Buffs.Aetherhues2)||  //Pool but don't overcap
+                                          gauge.PalleteGauge >= 50 && ScenicCD < 3 && scenicMuseEnabled); //Use As it is time to start buff window
         
         #endregion
         
         if (InCombat() && HasBattleTarget())
         {
             // SubtractivePalette
-            if (subtractivePaletteEnabled && CanWeave() && PaletteReady)
+            if (subtractivePaletteEnabled && CanWeave() && paletteReady)
             {
                 actionID = SubtractivePalette;
                 return true;
             }
 
             // ScenicMuse
-            if (scenicMuseEnabled && ScenicMuseReady && CanDelayedWeave() && GetTargetHPPercent() > scenicStop &&
-                (!IsMoving() || !scenicMovementPrevention))
+            if (scenicMuseEnabled && scenicMuseReady && CanDelayedWeave() && 
+                GetTargetHPPercent() > scenicStop && //Threshold Check
+                (!IsMoving() || !scenicMovementPrevention)) //Movement Prevention
             {
                 actionID = OriginalHook(ScenicMuse);
                 return true;
             }
 
             // LivingMuse
-            if (livingMuseEnabled && LivingMuseReady && CanWeave() && !JustUsed(StarryMuse) &&
-                (!PortraitReady || GetRemainingCharges(LivingMuse) == GetMaxCharges(LivingMuse)) &&
-                (!LevelChecked(ScenicMuse) || ScenicCD > GetCooldownChargeRemainingTime(LivingMuse) ||
-                 !scenicMuseEnabled))
+            if (livingMuseEnabled && livingMuseReady && CanWeave() && 
+                !JustUsed(StarryMuse) && //Buff propagation issue prevention
+                (!portraitReady || GetRemainingCharges(LivingMuse) == GetMaxCharges(LivingMuse)) && //Overcap Prevention
+                (!LevelChecked(ScenicMuse) || ScenicCD > GetCooldownChargeRemainingTime(LivingMuse) || !scenicMuseEnabled)) //Hold for Buffs
             {
                 actionID = OriginalHook(LivingMuse);
                 return true;
             }
 
             // SteelMuse
-            if (steelMuseEnabled && SteelMuseReady && CanWeave() &&
-                (SteelCD < ScenicCD || GetRemainingCharges(SteelMuse) == GetMaxCharges(SteelMuse) ||
-                 !LevelChecked(ScenicMuse)))
+            if (steelMuseEnabled && steelMuseReady && CanWeave() &&
+                (SteelCD < ScenicCD || GetRemainingCharges(SteelMuse) == GetMaxCharges(SteelMuse) || !LevelChecked(ScenicMuse))) //Hold for Buffs
             {
                 actionID = OriginalHook(SteelMuse);
                 return true;
             }
 
             // Portrait Mog or Madeen
-            if (portraitEnabled && PortraitReady && CanWeave() && IsOffCooldown(OriginalHook(MogoftheAges)) &&
-                !JustUsed(StarryMuse) &&
-                (ScenicCD >= 60 || !LevelChecked(ScenicMuse) || !scenicMuseEnabled))
+            if (portraitEnabled && portraitReady && CanWeave() && IsOffCooldown(OriginalHook(MogoftheAges)) &&
+                !JustUsed(StarryMuse) && //Buff propagation issue prevention
+                (ScenicCD >= 60 || !LevelChecked(ScenicMuse) || !scenicMuseEnabled)) //Hold for Buffs
             {
                 actionID = OriginalHook(MogoftheAges);
                 return true;
@@ -177,7 +181,7 @@ internal partial class PCT
             }
                     
             if (LevelChecked(TempuraGrassa) && IsInParty() &&
-                NumberOfAlliesInRange(TempuraGrassa) >= GetPartyMembers().Count * .75 &&
+                NumberOfAlliesInRange(TempuraGrassa) >= GetPartyMembers().Count * .75 && //75% of group in range for Spreading your Tempura
                 HasStatusEffect(Buffs.TempuraCoat))
             {
                 actionID = TempuraGrassa;
@@ -203,26 +207,25 @@ internal partial class PCT
             IsEnabled(Preset.PCT_ST_AdvancedMode_RainbowDrip) && rotationFlags.HasFlag(RotationMode.advancedST) ||
             IsEnabled(Preset.PCT_AoE_AdvancedMode_RainbowDrip) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
             rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
-
-        bool hammerStampEnabled =
-            IsEnabled(Preset.PCT_ST_AdvancedMode_MovementOption_HammerStampCombo) &&
-            rotationFlags.HasFlag(RotationMode.advancedST) ||
-            IsEnabled(Preset.PCT_AoE_AdvancedMode_MovementOption_HammerStampCombo) &&
-            rotationFlags.HasFlag(RotationMode.advancedAoE) ||
+        
+        bool starPrismEnabled =
+            IsEnabled(Preset.PCT_ST_AdvancedMode_StarPrism) && rotationFlags.HasFlag(RotationMode.advancedST) ||
+            IsEnabled(Preset.PCT_AoE_AdvancedMode_StarPrism) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
             rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
 
-        bool cometinBlackEnabled =
-            IsEnabled(Preset.PCT_ST_AdvancedMode_MovementOption_CometinBlack) &&
-            rotationFlags.HasFlag(RotationMode.advancedST) ||
-            IsEnabled(Preset.PCT_AoE_AdvancedMode_MovementOption_CometinBlack) &&
-            rotationFlags.HasFlag(RotationMode.advancedAoE) ||
+        bool hammerStampEnabled =
+            IsEnabled(Preset.PCT_ST_AdvancedMode_MovementOption_HammerStampCombo) && rotationFlags.HasFlag(RotationMode.advancedST) ||
+            IsEnabled(Preset.PCT_AoE_AdvancedMode_MovementOption_HammerStampCombo) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
+            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+
+        bool cometInBlackEnabled =
+            IsEnabled(Preset.PCT_ST_AdvancedMode_MovementOption_CometinBlack) && rotationFlags.HasFlag(RotationMode.advancedST) ||
+            IsEnabled(Preset.PCT_AoE_AdvancedMode_MovementOption_CometinBlack) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
             rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
 
         bool holyInWhiteEnabled =
-            IsEnabled(Preset.PCT_ST_AdvancedMode_MovementOption_HolyInWhite) &&
-            rotationFlags.HasFlag(RotationMode.advancedST) ||
-            IsEnabled(Preset.PCT_AoE_AdvancedMode_MovementOption_HolyInWhite) &&
-            rotationFlags.HasFlag(RotationMode.advancedAoE) ||
+            IsEnabled(Preset.PCT_ST_AdvancedMode_MovementOption_HolyInWhite) && rotationFlags.HasFlag(RotationMode.advancedST) ||
+            IsEnabled(Preset.PCT_AoE_AdvancedMode_MovementOption_HolyInWhite) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
             rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
 
         bool swiftcastEnabled =
@@ -232,28 +235,34 @@ internal partial class PCT
 
         #endregion
 
-        if (!movementEnabled || !IsMoving() || !InCombat()) return false;
+        if (!movementEnabled || !IsMoving() || !InCombat()) return false; //Quick Bailout
         
-        if (rainbowDripEnabled && HasStatusEffect(Buffs.RainbowBright))
+        if (rainbowDripEnabled && HasStatusEffect(Buffs.RainbowBright)) //Needs to be here in case you are moving in back half of Burst window
         {
             actionID = OriginalHook(RainbowDrip);
             return true;
         }
 
-        if (hammerStampEnabled && LevelChecked(HammerStamp) && HasStatusEffect(Buffs.HammerTime) &&
+        if (hammerStampEnabled && LevelChecked(HammerStamp) && HasStatusEffect(Buffs.HammerTime) && //Move with hammer as long as you dont have Hyperfantasia stacks to spend
             !HasStatusEffect(Buffs.Hyperphantasia))
         {
             actionID = OriginalHook(HammerStamp);
             return true;
         }
+        
+        if (starPrismEnabled && HasStatusEffect(Buffs.Starstruck)) //Move with Starstruck, will spend Hyper Fantasia
+        {
+            actionID = StarPrism;
+            return true;
+        }
 
-        if (cometinBlackEnabled && HasStatusEffect(Buffs.MonochromeTones) && HasPaint)
+        if (cometInBlackEnabled && HasStatusEffect(Buffs.MonochromeTones) && HasPaint) //Move with Comet, will spend Hyper Fantasia
         {
             actionID = OriginalHook(CometinBlack);
             return true;
         }
 
-        if (holyInWhiteEnabled && HasPaint)
+        if (holyInWhiteEnabled && HasPaint) //Move with Holy, will spend Hyper Fantasia though not ideal. Sit still kids
         {
             actionID = OriginalHook(HolyInWhite);
             return true;
@@ -303,23 +312,25 @@ internal partial class PCT
         #endregion
         
         //Star Prism
-        if (starPrismEnabled && HasStatusEffect(Buffs.Starstruck) && !JustUsed(StarryMuse))
+        if (starPrismEnabled && HasStatusEffect(Buffs.Starstruck) && 
+            !JustUsed(StarryMuse)) //Buff propagation issue prevention
         {
             actionID = StarPrism;
             return true;
         }
 
         //Rainbow Drip
-        if (rainbowDripEnabled && HasStatusEffect(Buffs.RainbowBright))
+        if (rainbowDripEnabled && HasStatusEffect(Buffs.RainbowBright)) 
         {
             actionID = RainbowDrip;
             return true;
         }
        
         //Comet in Black
-        if (cometInBlackEnabled && HasStatusEffect(Buffs.MonochromeTones) && HasPaint && !JustUsed(StarryMuse) &&
-            (!HasStatusEffect(Buffs.StarryMuse) || HasStatusEffect(Buffs.Hyperphantasia)) &&
-            (ScenicCD > 10 || !LevelChecked(ScenicMuse) || !scenicMuseEnabled))
+        if (cometInBlackEnabled && HasStatusEffect(Buffs.MonochromeTones) && HasPaint && 
+            !JustUsed(StarryMuse) && //Buff propagation issue prevention
+            (!HasStatusEffect(Buffs.StarryMuse) || HasStatusEffect(Buffs.Hyperphantasia)) && //Only use for hyperfantasia in the window
+            (ScenicCD > 10 || !LevelChecked(ScenicMuse) || !scenicMuseEnabled)) //Hold for Buffs if close
         {
             actionID = OriginalHook(CometinBlack);
             return true;
@@ -327,8 +338,8 @@ internal partial class PCT
         
         //Hammer Stamp Combo
         if (hammerStampComboEnabled && ActionReady(OriginalHook(HammerStamp)) &&
-            !HasStatusEffect(Buffs.Hyperphantasia) &&
-            (ScenicCD > 10 || !LevelChecked(ScenicMuse) || IsNotEnabled(Preset.PCT_ST_AdvancedMode_ScenicMuse)))
+            !HasStatusEffect(Buffs.Hyperphantasia) && //Dont use until hyperfantasia is spent
+            (ScenicCD > 10 || !LevelChecked(ScenicMuse) || IsNotEnabled(Preset.PCT_ST_AdvancedMode_ScenicMuse))) //Hold for Buffs if close
         {
             actionID = OriginalHook(HammerStamp);
             return true;
@@ -407,11 +418,10 @@ internal partial class PCT
         if (motifsEnabled)
         {
             if (creatureEnabled && CreatureMotifReady &&
-                (prepullEnabled && !InCombat() ||
-                 noTargetEnabled && InCombat() && CurrentTarget == null ||
-                 swiftcastEnabled && HasStatusEffect(Role.Buffs.Swiftcast) && creatureHealthCheck ||
-                 LevelChecked(ScenicMuse) && GetCooldownRemainingTime(ScenicMuse) <= 20 &&
-                 creatureHealthCheck || //Burst Prep
+                (prepullEnabled && !InCombat() || //Prepull Motifs
+                 noTargetEnabled && InCombat() && CurrentTarget == null || //Downtime Motifs
+                 swiftcastEnabled && HasStatusEffect(Role.Buffs.Swiftcast) && creatureHealthCheck || //Swiftcast Motifs
+                 LevelChecked(ScenicMuse) && GetCooldownRemainingTime(ScenicMuse) <= 20 && creatureHealthCheck || //Burst Prep
                  hasLivingMuseCharges && creatureHealthCheck)) //Standard Use
             {
                 actionID = OriginalHook(CreatureMotif);
@@ -419,21 +429,21 @@ internal partial class PCT
             }
 
             if (weaponEnabled && WeaponMotifReady &&
-                (prepullEnabled && !InCombat() ||
-                 noTargetEnabled && InCombat() && CurrentTarget == null ||
-                 swiftcastEnabled && HasStatusEffect(Role.Buffs.Swiftcast) && weaponHealthCheck ||
-                 LevelChecked(ScenicMuse) && GetCooldownRemainingTime(ScenicMuse) <= 20 && weaponHealthCheck ||
-                 hasSteelMuseCharges && weaponHealthCheck))
+                (prepullEnabled && !InCombat() || //Prepull Motifs
+                 noTargetEnabled && InCombat() && CurrentTarget == null || //Downtime Motifs
+                 swiftcastEnabled && HasStatusEffect(Role.Buffs.Swiftcast) && weaponHealthCheck || //Swiftcast Motifs
+                 LevelChecked(ScenicMuse) && GetCooldownRemainingTime(ScenicMuse) <= 20 && weaponHealthCheck || //Burst Prep
+                 hasSteelMuseCharges && weaponHealthCheck)) //Standard Use
             {
                 actionID = OriginalHook(WeaponMotif);
                 return true;
             }
 
             if (landscapeEnabled && LandscapeMotifReady &&
-                (prepullEnabled && !InCombat() ||
-                 noTargetEnabled && InCombat() && CurrentTarget == null ||
-                 swiftcastEnabled && HasStatusEffect(Role.Buffs.Swiftcast) && landscapeHealthCheck ||
-                 LevelChecked(ScenicMuse) && GetCooldownRemainingTime(ScenicMuse) <= 20 && landscapeHealthCheck))
+                (prepullEnabled && !InCombat() || //Prepull Motifs
+                 noTargetEnabled && InCombat() && CurrentTarget == null || //Downtime Motifs
+                 swiftcastEnabled && HasStatusEffect(Role.Buffs.Swiftcast) && landscapeHealthCheck || //Swiftcast Motifs
+                 LevelChecked(ScenicMuse) && GetCooldownRemainingTime(ScenicMuse) <= 20 && landscapeHealthCheck)) //Standard Use is Burst prep
             {
                 actionID = OriginalHook(LandscapeMotif);
                 return true;
@@ -474,7 +484,9 @@ internal partial class PCT
                 actionID = OriginalHook(BlizzardinCyan);
                 return true;
             }
-            if (holyInWhiteEnabled && !HasStatusEffect(Buffs.MonochromeTones) && gauge.Paint > holdPaintCharges && NumberOfEnemiesInRange(HolyInWhite) > 1)
+            if (holyInWhiteEnabled && !HasStatusEffect(Buffs.MonochromeTones) && 
+                gauge.Paint > holdPaintCharges && //Charge retention check
+                NumberOfEnemiesInRange(HolyInWhite) > 1) //Only use on 2 or more targets for a gain
             {
                 actionID = OriginalHook(HolyInWhite);
                 return true;
@@ -490,7 +502,8 @@ internal partial class PCT
                 return true;
             }
 
-            if (holyInWhiteEnabled && !HasStatusEffect(Buffs.MonochromeTones) && gauge.Paint > holdPaintCharges)
+            if (holyInWhiteEnabled && !HasStatusEffect(Buffs.MonochromeTones) && 
+                gauge.Paint > holdPaintCharges) //Charge retention check
             {
                 actionID = OriginalHook(HolyInWhite);
                 return true;
@@ -499,6 +512,7 @@ internal partial class PCT
         return false;
     }
     #endregion
+    
     #endregion
 
     #region ID's

@@ -111,10 +111,6 @@ internal partial class PCT : Caster
             if (TryOGCDSpells(RotationMode.simpleAoE, ref actionID))
                 return actionID;
             
-            //Mitigation
-            if (TryMitigation(RotationMode.simpleAoE, ref actionID))
-                return actionID;
-            
             //Movement Options
             if (TryMovementOption(RotationMode.simpleAoE, ref actionID))
                 return actionID;
@@ -148,10 +144,6 @@ internal partial class PCT : Caster
             
             //OGCD Spells
             if (TryOGCDSpells(RotationMode.advancedAoE, ref actionID))
-                return actionID;
-            
-            //Mitigation
-            if (TryMitigation(RotationMode.advancedAoE, ref actionID))
                 return actionID;
             
             //Movement Options
