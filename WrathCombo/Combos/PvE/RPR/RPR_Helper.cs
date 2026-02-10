@@ -63,7 +63,7 @@ internal partial class RPR
             !HasStatusEffect(Buffs.Executioner) && !HasStatusEffect(Buffs.PerfectioParata) &&
             !HasStatusEffect(Buffs.ImmortalSacrifice) && !IsComboExpiring(3) &&
             CanApplyStatus(CurrentTarget, Debuffs.DeathsDesign) &&
-            !JustUsed(ShadowOfDeath))
+            !JustUsed(ShadowOfDeath) && InActionRange(ShadowOfDeath))
         {
             if ((IsNotEnabled(Preset.RPR_ST_SimpleMode) && RPR_ST_ArcaneCircleBossOption == 1 && !InBossEncounter() ||
                  IsEnabled(Preset.RPR_ST_SimpleMode) && !InBossEncounter()) &&

@@ -138,7 +138,7 @@ internal partial class RPR : Melee
 
             //Soul Slice
             if (Soul <= 50 && ActionReady(SoulSlice) &&
-                !IsComboExpiring(3) &&
+                !IsComboExpiring(3) && InActionRange(SoulSlice) &&
                 !HasStatusEffect(Buffs.Enshrouded) && !HasStatusEffect(Buffs.SoulReaver) &&
                 !HasStatusEffect(Buffs.IdealHost) && !HasStatusEffect(Buffs.Executioner) &&
                 !HasStatusEffect(Buffs.PerfectioParata) && !HasStatusEffect(Buffs.ImmortalSacrifice))
@@ -211,7 +211,8 @@ internal partial class RPR : Melee
             if (LevelChecked(WhorlOfDeath) &&
                 CanApplyStatus(CurrentTarget, Debuffs.DeathsDesign) &&
                 GetStatusEffectRemainingTime(Debuffs.DeathsDesign, CurrentTarget) < 6 &&
-                !HasStatusEffect(Buffs.SoulReaver) && !HasStatusEffect(Buffs.Executioner))
+                !HasStatusEffect(Buffs.SoulReaver) && !HasStatusEffect(Buffs.Executioner) &&
+                InActionRange(WhorlOfDeath))
                 return WhorlOfDeath;
 
             if (HasStatusEffect(Buffs.PerfectioParata) &&
@@ -240,7 +241,7 @@ internal partial class RPR : Melee
 
             if (!HasStatusEffect(Buffs.Enshrouded) && !HasStatusEffect(Buffs.SoulReaver) &&
                 !HasStatusEffect(Buffs.Executioner) && !HasStatusEffect(Buffs.PerfectioParata) &&
-                ActionReady(SoulScythe) && Soul <= 50)
+                ActionReady(SoulScythe) && Soul <= 50 && InActionRange(SoulScythe))
                 return SoulScythe;
 
             return BasicCombo(actionID, true);
@@ -439,6 +440,7 @@ internal partial class RPR : Melee
             //Soul Slice
             if (IsEnabled(Preset.RPR_ST_SoulSlice) &&
                 Soul <= 50 && ActionReady(SoulSlice) &&
+                InActionRange(SoulSlice) &&
                 !IsComboExpiring(3) &&
                 !HasStatusEffect(Buffs.Enshrouded) && !HasStatusEffect(Buffs.SoulReaver) &&
                 !HasStatusEffect(Buffs.IdealHost) && !HasStatusEffect(Buffs.Executioner) &&
@@ -530,7 +532,7 @@ internal partial class RPR : Melee
                 return OriginalHook(Communio);
 
             if (IsEnabled(Preset.RPR_AoE_WoD) &&
-                ActionReady(WhorlOfDeath) &&
+                ActionReady(WhorlOfDeath) && InActionRange(WhorlOfDeath) &&
                 CanApplyStatus(CurrentTarget, Debuffs.DeathsDesign) &&
                 GetStatusEffectRemainingTime(Debuffs.DeathsDesign, CurrentTarget) < 6 &&
                 !HasStatusEffect(Buffs.SoulReaver) &&
@@ -545,7 +547,8 @@ internal partial class RPR : Melee
 
             if (IsEnabled(Preset.RPR_AoE_Guillotine) &&
                 (HasStatusEffect(Buffs.SoulReaver) || HasStatusEffect(Buffs.Executioner)) &&
-                !HasStatusEffect(Buffs.Enshrouded) && LevelChecked(Guillotine))
+                !HasStatusEffect(Buffs.Enshrouded) && LevelChecked(Guillotine) &&
+                InActionRange(Guillotine))
                 return OriginalHook(Guillotine);
 
             if (HasStatusEffect(Buffs.Enshrouded))
@@ -563,7 +566,8 @@ internal partial class RPR : Melee
             if (IsEnabled(Preset.RPR_AoE_SoulScythe) &&
                 !HasStatusEffect(Buffs.Enshrouded) && !HasStatusEffect(Buffs.SoulReaver) &&
                 !HasStatusEffect(Buffs.Executioner) && !HasStatusEffect(Buffs.PerfectioParata) &&
-                ActionReady(SoulScythe) && Soul <= 50)
+                ActionReady(SoulScythe) && Soul <= 50 &&
+                InActionRange(SoulScythe))
                 return SoulScythe;
 
             return BasicCombo(actionID, true);
