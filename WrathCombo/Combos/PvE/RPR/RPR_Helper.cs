@@ -97,6 +97,69 @@ internal partial class RPR
     }
 
     #endregion
+
+    #region Ranged Attack
+
+    private static uint RangedAttack(uint actionId, bool simpleMode = false)
+    {
+        //Harvest Moon
+        if ((simpleMode || IsEnabled(Preset.RPR_ST_RangedFillerHarvestMoon)) &&
+            ActionReady(HarvestMoon) && HasStatusEffect(Buffs.Soulsow))
+            return HarvestMoon;
+
+        //Ranged Attacks
+        if ((simpleMode || IsEnabled(Preset.RPR_ST_RangedFiller)) &&
+            ActionReady(Harpe))
+        {
+            //Communio
+            if (HasStatusEffect(Buffs.Enshrouded) && Lemure is 1 &&
+                LevelChecked(Communio))
+                return Communio;
+
+            if (HasStatusEffect(Buffs.EnhancedHarpe) || !IsMoving())
+                return Harpe;
+        }
+
+        return actionId;
+    }
+
+    #endregion
+
+    #region Basic Combo
+
+    private static uint BasicCombo(uint actionId, bool isAoE = false)
+    {
+        switch (isAoE)
+        {
+            case false:
+            {
+                if (ComboTimer > 0)
+                {
+                    if (ComboAction == OriginalHook(Slice) && LevelChecked(WaxingSlice))
+                        return OriginalHook(WaxingSlice);
+
+                    if (ComboAction == OriginalHook(WaxingSlice) && LevelChecked(InfernalSlice))
+                        return OriginalHook(InfernalSlice);
+                }
+                break;
+            }
+
+            case true:
+            {
+                if (ComboTimer > 0)
+                {
+                    if (ComboAction == OriginalHook(SpinningScythe) && LevelChecked(NightmareScythe))
+                        return OriginalHook(NightmareScythe);
+                }
+                break;
+            }
+        }
+
+        return actionId;
+    }
+
+    #endregion
+
     #region Misc
 
     //Auto Arcane Crest
