@@ -53,6 +53,11 @@ internal partial class PCT
             IsEnabled(Preset.PCT_AoE_AdvancedMode_CometinBlack) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
             rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
         
+        bool hammerStampMovementEnabled =
+            IsEnabled(Preset.PCT_ST_AdvancedMode_MovementOption_HammerStampCombo) && rotationFlags.HasFlag(RotationMode.advancedST) ||
+            IsEnabled(Preset.PCT_AoE_AdvancedMode_MovementOption_HammerStampCombo) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
+            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+        
         bool portraitEnabled =
             IsEnabled(Preset.PCT_ST_AdvancedMode_HammerStampCombo) && rotationFlags.HasFlag(RotationMode.advancedST) ||
             IsEnabled(Preset.PCT_AoE_AdvancedMode_HammerStampCombo) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
@@ -66,7 +71,6 @@ internal partial class PCT
         #endregion
         
         #region Configs
-        
         int scenicThresholdST = PCT_ST_AdvancedMode_ScenicMuse_SubOption == 1 || !InBossEncounter() ? PCT_ST_AdvancedMode_ScenicMuse_Threshold : 0; //Boss Check
         int scenicThresholdAoE = PCT_AoE_AdvancedMode_ScenicMuse_SubOption == 1 || !InBossEncounter() ? PCT_AoE_AdvancedMode_ScenicMuse_Threshold : 0; //Boss Check
         int scenicStop = 
@@ -84,6 +88,11 @@ internal partial class PCT
             rotationFlags.HasFlag(RotationMode.advancedAoE) ? PCT_AoE_AdvancedMode_LucidOption : //Advanced AoE Lucid Threshold Config
             6500; //Simple Mode Lucid Threshold
         
+        int burnBossThreshold = 
+            rotationFlags.HasFlag(RotationMode.advancedST) ? PCT_ST_AdvancedMode_BurnBoss : //Advanced ST Lucid Threshold Config
+            rotationFlags.HasFlag(RotationMode.advancedAoE) ? PCT_AoE_AdvancedMode_BurnBoss : //Advanced AoE Lucid Threshold Config
+            0; //Simple Mode Lucid Threshold
+        
         bool scenicMuseReady = ActionReady(ScenicMuse) && gauge.LandscapeMotifDrawn; 
         bool livingMuseReady = ActionReady(LivingMuse) && gauge.CreatureMotifDrawn;
         bool steelMuseReady = ActionReady(SteelMuse)  && gauge.WeaponMotifDrawn && !HasStatusEffect(Buffs.HammerTime);
@@ -94,7 +103,10 @@ internal partial class PCT
                                           gauge.PalleteGauge >= 50 && ScenicCD > 35 || //Use freely before pooling
                                           gauge.PalleteGauge == 100 && HasStatusEffect(Buffs.Aetherhues2)||  //Pool but don't overcap
                                           gauge.PalleteGauge >= 50 && ScenicCD < 3 && scenicMuseEnabled); //Use As it is time to start buff window
-        
+
+        bool almostCappedOrCappedSteelMuse = GetRemainingCharges(SteelMuse) == GetMaxCharges(SteelMuse) ||
+            GetRemainingCharges(SteelMuse) == GetMaxCharges(SteelMuse) - 1 && GetCooldownChargeRemainingTime(SteelMuse) < 3;
+       
         #endregion
         
         if (InCombat() && HasBattleTarget())
@@ -119,15 +131,24 @@ internal partial class PCT
             if (livingMuseEnabled && livingMuseReady && CanWeave() && 
                 !JustUsed(StarryMuse) && //Buff propagation issue prevention
                 (!portraitReady || GetRemainingCharges(LivingMuse) == GetMaxCharges(LivingMuse)) && //Overcap Prevention
-                (!LevelChecked(ScenicMuse) || ScenicCD > GetCooldownChargeRemainingTime(LivingMuse) || !scenicMuseEnabled)) //Hold for Buffs
+                (TargetIsBoss() && GetTargetHPPercent() < burnBossThreshold || //Burn Boss Threshold
+                 !LevelChecked(ScenicMuse) || //Low Level no Scenic
+                 ScenicCD > GetCooldownChargeRemainingTime(LivingMuse) || // Hold for buffs
+                 !scenicMuseEnabled)) //Dont Hold for Buffs
             {
                 actionID = OriginalHook(LivingMuse);
                 return true;
             }
 
             // SteelMuse
-            if (steelMuseEnabled && steelMuseReady && CanWeave() &&
-                (SteelCD < ScenicCD || GetRemainingCharges(SteelMuse) == GetMaxCharges(SteelMuse) || !LevelChecked(ScenicMuse))) //Hold for Buffs
+            if (steelMuseEnabled && steelMuseReady && 
+                (TargetIsBoss() && GetTargetHPPercent() < burnBossThreshold || //Burn Boss Threshold
+                 HasStatusEffect(Buffs.StarryMuse) && CanWeave() || //Use in burst if you need to
+                 hammerStampMovementEnabled && IsMoving() && ScenicCD >= 30  || //Use When Moving but not if itll get in way of burst
+                 !hammerStampMovementEnabled && ScenicCD > SteelCD && ScenicCD >= 40|| //
+                 almostCappedOrCappedSteelMuse && CanWeave() || //Use because Capped
+                 ScenicCD < 40 && SteelCD < 40 && ScenicCD > SteelCD || //Use charge before the burst prep
+                 !LevelChecked(ScenicMuse) && CanWeave())) //Low Level no Scenic
             {
                 actionID = OriginalHook(SteelMuse);
                 return true;
@@ -136,7 +157,10 @@ internal partial class PCT
             // Portrait Mog or Madeen
             if (portraitEnabled && portraitReady && CanWeave() && IsOffCooldown(OriginalHook(MogoftheAges)) &&
                 !JustUsed(StarryMuse) && //Buff propagation issue prevention
-                (ScenicCD >= 60 || !LevelChecked(ScenicMuse) || !scenicMuseEnabled)) //Hold for Buffs
+                (TargetIsBoss() && GetTargetHPPercent() < burnBossThreshold || //Burn Boss Threshold
+                 ScenicCD >= 60 || //wait for scenic
+                 !LevelChecked(ScenicMuse) || //Low Level no Scenic
+                 !scenicMuseEnabled)) //Hold for Buffs
             {
                 actionID = OriginalHook(MogoftheAges);
                 return true;
@@ -243,8 +267,8 @@ internal partial class PCT
             return true;
         }
 
-        if (hammerStampEnabled && LevelChecked(HammerStamp) && HasStatusEffect(Buffs.HammerTime) && //Move with hammer as long as you dont have Hyperfantasia stacks to spend
-            !HasStatusEffect(Buffs.Hyperphantasia))
+        if (hammerStampEnabled && LevelChecked(HammerStamp) && !HasStatusEffect(Buffs.Hyperphantasia) &&
+            HasStatusEffect(Buffs.HammerTime))
         {
             actionID = OriginalHook(HammerStamp);
             return true;
@@ -262,18 +286,20 @@ internal partial class PCT
             return true;
         }
 
+        if (swiftcastEnabled && ActionReady(Role.Swiftcast) && !HasStatusEffect(Buffs.StarryMuse) &&
+            (CreatureMotifReady || WeaponMotifReady || LandscapeMotifReady))
+        {
+            actionID = Role.Swiftcast;
+            return true;
+        }
+        
         if (holyInWhiteEnabled && HasPaint) //Move with Holy, will spend Hyper Fantasia though not ideal. Sit still kids
         {
             actionID = OriginalHook(HolyInWhite);
             return true;
         }
 
-        if (swiftcastEnabled && ActionReady(Role.Swiftcast) &&
-            (CreatureMotifReady || WeaponMotifReady || LandscapeMotifReady))
-        {
-            actionID = Role.Swiftcast;
-            return true;
-        }
+        
         
         return false;
         
@@ -311,6 +337,18 @@ internal partial class PCT
         
         #endregion
         
+        #region Configs
+        float TimeRemainingToUseHammer= 
+            rotationFlags.HasFlag(RotationMode.advancedST) ? PCT_ST_AdvancedMode_HammerStampCombo_Timing : //Advanced ST Hold 
+            rotationFlags.HasFlag(RotationMode.advancedAoE) ? PCT_AoE_AdvancedMode_HammerStampCombo_Timing : //Advanced AoE Hold
+            30; //Simple Mode Dont Hold
+        
+        int burnBossThreshold = 
+            rotationFlags.HasFlag(RotationMode.advancedST) ? PCT_ST_AdvancedMode_BurnBoss : //Advanced ST Lucid Threshold Config
+            rotationFlags.HasFlag(RotationMode.advancedAoE) ? PCT_AoE_AdvancedMode_BurnBoss : //Advanced AoE Lucid Threshold Config
+            0; //Simple Mode Lucid Threshold
+        #endregion
+        
         //Star Prism
         if (starPrismEnabled && HasStatusEffect(Buffs.Starstruck) && 
             !JustUsed(StarryMuse)) //Buff propagation issue prevention
@@ -339,7 +377,11 @@ internal partial class PCT
         //Hammer Stamp Combo
         if (hammerStampComboEnabled && ActionReady(OriginalHook(HammerStamp)) &&
             !HasStatusEffect(Buffs.Hyperphantasia) && //Dont use until hyperfantasia is spent
-            (ScenicCD > 10 || !LevelChecked(ScenicMuse) || IsNotEnabled(Preset.PCT_ST_AdvancedMode_ScenicMuse))) //Hold for Buffs if close
+            ScenicCD >= 10 && 
+            (TargetIsBoss() && GetTargetHPPercent() < burnBossThreshold || //Burn Boss Threshold
+             HasStatusEffect(Buffs.StarryMuse) || //Use in window
+             GetStatusEffectRemainingTime(Buffs.HammerTime) <= TimeRemainingToUseHammer || //Use when time is almost up on Hammer time
+             ScenicCD <= 30)) //But dont hold so long you mess with burst prep
         {
             actionID = OriginalHook(HammerStamp);
             return true;
@@ -421,7 +463,7 @@ internal partial class PCT
                 (prepullEnabled && !InCombat() || //Prepull Motifs
                  noTargetEnabled && InCombat() && CurrentTarget == null || //Downtime Motifs
                  swiftcastEnabled && HasStatusEffect(Role.Buffs.Swiftcast) && creatureHealthCheck || //Swiftcast Motifs
-                 LevelChecked(ScenicMuse) && GetCooldownRemainingTime(ScenicMuse) <= 20 && creatureHealthCheck || //Burst Prep
+                 LevelChecked(ScenicMuse) && ScenicCD <= 20 && creatureHealthCheck || //Burst Prep
                  hasLivingMuseCharges && creatureHealthCheck)) //Standard Use
             {
                 actionID = OriginalHook(CreatureMotif);
@@ -432,7 +474,7 @@ internal partial class PCT
                 (prepullEnabled && !InCombat() || //Prepull Motifs
                  noTargetEnabled && InCombat() && CurrentTarget == null || //Downtime Motifs
                  swiftcastEnabled && HasStatusEffect(Role.Buffs.Swiftcast) && weaponHealthCheck || //Swiftcast Motifs
-                 LevelChecked(ScenicMuse) && GetCooldownRemainingTime(ScenicMuse) <= 20 && weaponHealthCheck || //Burst Prep
+                 LevelChecked(ScenicMuse) && ScenicCD <= 20 && weaponHealthCheck || //Burst Prep
                  hasSteelMuseCharges && weaponHealthCheck)) //Standard Use
             {
                 actionID = OriginalHook(WeaponMotif);
@@ -443,7 +485,7 @@ internal partial class PCT
                 (prepullEnabled && !InCombat() || //Prepull Motifs
                  noTargetEnabled && InCombat() && CurrentTarget == null || //Downtime Motifs
                  swiftcastEnabled && HasStatusEffect(Role.Buffs.Swiftcast) && landscapeHealthCheck || //Swiftcast Motifs
-                 LevelChecked(ScenicMuse) && GetCooldownRemainingTime(ScenicMuse) <= 20 && landscapeHealthCheck)) //Standard Use is Burst prep
+                 LevelChecked(ScenicMuse) && ScenicCD <= 20 && landscapeHealthCheck)) //Standard Use is Burst prep
             {
                 actionID = OriginalHook(LandscapeMotif);
                 return true;
@@ -650,6 +692,10 @@ internal partial class PCT
         ];
         internal override UserData? ContentCheckConfig => PCT_Balance_Content;
         public override Preset Preset => Preset.PCT_ST_Advanced_Openers;
+        public override List<int> DelayedWeaveSteps { get; set; } =
+        [
+            5
+        ];
         public override List<(int[] Steps, uint NewAction, Func<bool> Condition)> SubstitutionSteps { get; set; } =
 [
             ([8, 9, 10], BlizzardinCyan, () => OriginalHook(BlizzardinCyan) == BlizzardinCyan),
@@ -714,6 +760,10 @@ internal partial class PCT
             ClawedMuse
         ];
         internal override UserData? ContentCheckConfig => PCT_Balance_Content;
+        public override List<int> DelayedWeaveSteps { get; set; } =
+        [
+            6
+        ];
 
         public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } = [([18], () => !HasStatusEffect(Buffs.RainbowBright))];
 
