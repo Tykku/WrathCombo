@@ -188,6 +188,7 @@ public sealed partial class WrathCombo : IDalamudPlugin
         ActionRetargeting = new ActionRetargeting();
         ActionWatching.Enable();
         IPC = Provider.Init();
+        PingPluginIPC.Init();
         ConflictingPluginsChecks.Begin();
 
         ConfigWindow = new ConfigWindow();
