@@ -320,6 +320,8 @@ internal partial class BLM
         { HighThunder2, Debuffs.HighThunder2 }
     }.ToFrozenDictionary();
 
+    private static float GCD = GetCooldown(OriginalHook(Fire)).CooldownTotal;
+
     #endregion
 
     #region ID's

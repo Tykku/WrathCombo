@@ -33,15 +33,18 @@ internal partial class BLM : Caster
                     if (ActionReady(Manafont))
                         return Manafont;
 
+                    if (JustUsed(Paradox) && HasStatusEffect(Buffs.Firestarter))
+                        return Fire3;
+
                     if (ActionReady(Role.Swiftcast) && JustUsed(Despair) &&
-                        !ActionReady(Manafont) && !HasStatusEffect(Buffs.Triplecast) &&
+                        GetCooldownRemainingTime(Manafont) > GCD && !HasStatusEffect(Buffs.Triplecast) &&
                         InActionRange(Fire) && HasBattleTarget())
                         return Role.Swiftcast;
 
                     if (ActionReady(Triplecast) && IsOnCooldown(Role.Swiftcast) &&
                         !HasStatusEffect(Role.Buffs.Swiftcast) && !HasStatusEffect(Buffs.Triplecast) &&
                         InActionRange(Fire) && HasBattleTarget() && !HasStatusEffect(Buffs.LeyLines) &&
-                        JustUsed(Despair) && !ActionReady(Manafont) && !JustUsed(Triplecast))
+                        JustUsed(Despair) && GetCooldownRemainingTime(Manafont) > GCD * 3 && !JustUsed(Triplecast))
                         return Triplecast;
 
                     if (ActionReady(Transpose) &&
@@ -260,7 +263,7 @@ internal partial class BLM : Caster
 
                 if (!HasStatusEffect(Buffs.Triplecast) && ActionReady(Triplecast) &&
                     HasBattleTarget() && InActionRange(Fire2) &&
-                    HasMaxUmbralHeartStacks && !ActionReady(Manafont) &&
+                    HasMaxUmbralHeartStacks && GetCooldownRemainingTime(Manafont) > GCD * 3 &&
                     !JustUsed(Triplecast))
                     return Triplecast;
 
@@ -331,10 +334,14 @@ internal partial class BLM : Caster
                         ActionReady(Manafont))
                         return Manafont;
 
+                    if (JustUsed(Paradox) && HasStatusEffect(Buffs.Firestarter))
+                        return Fire3;
+
+
                     if (IsEnabled(Preset.BLM_ST_Swiftcast) &&
                         ActionReady(Role.Swiftcast) && JustUsed(Despair) &&
                         HasBattleTarget() && InActionRange(Fire) &&
-                        !ActionReady(Manafont) &&
+                        GetCooldownRemainingTime(Manafont) > GCD &&
                         !HasStatusEffect(Buffs.Triplecast))
                         return Role.Swiftcast;
 
@@ -344,7 +351,7 @@ internal partial class BLM : Caster
                         !HasStatusEffect(Role.Buffs.Swiftcast) && !HasStatusEffect(Buffs.Triplecast) &&
                         (BLM_ST_Triplecast_WhenToUse == 0 || !HasStatusEffect(Buffs.LeyLines)) &&
                         (BLM_ST_MovementOption[0] && GetRemainingCharges(Triplecast) > BLM_ST_TriplecastMovementCharges ||
-                         !BLM_ST_MovementOption[0]) && JustUsed(Despair) && !ActionReady(Manafont))
+                         !BLM_ST_MovementOption[0]) && JustUsed(Despair) && GetCooldownRemainingTime(Manafont) > GCD * 3)
                         return Triplecast;
 
                     if (IsEnabled(Preset.BLM_ST_Transpose) &&
@@ -375,7 +382,7 @@ internal partial class BLM : Caster
                             !HasStatusEffect(Role.Buffs.Swiftcast) && !HasStatusEffect(Buffs.Triplecast) &&
                             (BLM_ST_Triplecast_WhenToUse == 0 || !HasStatusEffect(Buffs.LeyLines)) &&
                             (BLM_ST_MovementOption[0] && GetRemainingCharges(Triplecast) > BLM_ST_TriplecastMovementCharges ||
-                             !BLM_ST_MovementOption[0]) && JustUsed(Despair) && !ActionReady(Manafont))
+                             !BLM_ST_MovementOption[0]) && JustUsed(Despair) && GetCooldownRemainingTime(Manafont) > GCD * 3)
                             return Triplecast;
                     }
                 }
@@ -585,7 +592,7 @@ internal partial class BLM : Caster
                     !HasStatusEffect(Buffs.Triplecast) && ActionReady(Triplecast) &&
                     HasBattleTarget() && InActionRange(Fire2) && !JustUsed(Triplecast) &&
                     GetRemainingCharges(Triplecast) > BLM_AoE_TriplecastHoldCharges &&
-                    HasMaxUmbralHeartStacks && !ActionReady(Manafont))
+                    HasMaxUmbralHeartStacks && GetCooldownRemainingTime(Manafont) > GCD * 3)
                     return Triplecast;
 
                 if (ActionReady(Flare))
