@@ -32,10 +32,7 @@ internal partial class BLM : Caster
                 {
                     if (ActionReady(Manafont))
                         return Manafont;
-
-                    if (JustUsed(Paradox) && HasStatusEffect(Buffs.Firestarter))
-                        return Fire3;
-
+                    
                     if (ActionReady(Role.Swiftcast) && JustUsed(Despair) &&
                         GetCooldownRemainingTime(Manafont) > GCD && !HasStatusEffect(Buffs.Triplecast) &&
                         InActionRange(Fire) && HasBattleTarget())
@@ -333,11 +330,7 @@ internal partial class BLM : Caster
                     if (IsEnabled(Preset.BLM_ST_Manafont) &&
                         ActionReady(Manafont))
                         return Manafont;
-
-                    if (JustUsed(Paradox) && HasStatusEffect(Buffs.Firestarter))
-                        return Fire3;
-
-
+                    
                     if (IsEnabled(Preset.BLM_ST_Swiftcast) &&
                         ActionReady(Role.Swiftcast) && JustUsed(Despair) &&
                         HasBattleTarget() && InActionRange(Fire) &&
