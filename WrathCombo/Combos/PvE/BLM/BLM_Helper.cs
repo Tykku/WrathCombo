@@ -46,7 +46,8 @@ internal partial class BLM
     private static bool CanFire3 =>
         LevelChecked(Fire3) &&
         (LevelChecked(Paradox) && HasStatusEffect(Buffs.Firestarter) &&
-         (AstralFireStacks < 3 || GetCooldownRemainingTime(Manafont) <= GCD * 3 && ActiveParadox) ||
+         (AstralFireStacks < 3 || 
+          GetCooldownRemainingTime(Manafont) <= GCD * 3 && ActiveParadox) ||
          !LevelChecked(Fire4) && TimeSinceFirestarterBuff >= GCD * 3);
 
     private static bool CanFireParadox =>
@@ -55,6 +56,7 @@ internal partial class BLM
         (LevelChecked(FlareStar) && (JustUsed(Transpose) ||
                                      AstralFireStacks is 3 && AstralSoulStacks >= 3) ||
          GetCooldownRemainingTime(Manafont) <= GCD * 2 ||
+         JustUsed(Despair) && IsOnCooldown(Manafont) ||
          !LevelChecked(FlareStar) && ActionReady(Despair));
 
     private static bool EndOfFirePhase =>
