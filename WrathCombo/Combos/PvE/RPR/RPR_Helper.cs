@@ -116,7 +116,8 @@ internal partial class RPR
                 LevelChecked(Communio))
                 return Communio;
 
-            if (HasStatusEffect(Buffs.EnhancedHarpe) || !IsMoving())
+            if (RPR_ST_EnhancedHarpe && HasStatusEffect(Buffs.EnhancedHarpe) ||
+                (!RPR_ST_EnhancedHarpe || simpleMode) && (!IsMoving() || HasStatusEffect(Buffs.EnhancedHarpe)))
                 return Harpe;
         }
 
