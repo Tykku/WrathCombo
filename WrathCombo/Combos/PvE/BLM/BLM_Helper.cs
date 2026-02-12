@@ -54,7 +54,7 @@ internal partial class BLM
         ActiveParadox &&
         !HasStatusEffect(Buffs.Firestarter) &&
         (LevelChecked(FlareStar) && (JustUsed(Transpose) ||
-                                     AstralFireStacks is 3 && MP.Cur < 1300) ||
+                                     AstralFireStacks is 3 && JustUsed(FlareStar, 5f) && MP.Cur >= 1600) ||
          GetCooldownRemainingTime(Manafont) <= GCD * 2 ||
          !LevelChecked(FlareStar) && ActionReady(Despair));
 
