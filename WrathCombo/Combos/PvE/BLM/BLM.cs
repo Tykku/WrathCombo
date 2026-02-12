@@ -32,7 +32,7 @@ internal partial class BLM : Caster
                 {
                     if (ActionReady(Manafont))
                         return Manafont;
-                    
+
                     if (ActionReady(Role.Swiftcast) && JustUsed(Despair) &&
                         GetCooldownRemainingTime(Manafont) > GCD && !HasStatusEffect(Buffs.Triplecast) &&
                         InActionRange(Fire) && HasBattleTarget())
@@ -124,16 +124,10 @@ internal partial class BLM : Caster
                         ? Xenoglossy
                         : Foul;
 
-                if ((LevelChecked(Paradox) && HasStatusEffect(Buffs.Firestarter) ||
-                     TimeSinceFirestarterBuff >= 2) && AstralFireStacks < 3 ||
-                    !LevelChecked(Fire4) && TimeSinceFirestarterBuff >= 2 && LevelChecked(Fire3))
+                if (CanFire3)
                     return Fire3;
 
-                if (ActiveParadox &&
-                    MP.Cur > 1600 &&
-                    (AstralFireStacks < 3 ||
-                     JustUsed(FlareStar, 5) ||
-                     !LevelChecked(FlareStar) && ActionReady(Despair)))
+                if (CanFireParadox)
                     return Paradox;
 
                 if (CanFlarestar)
@@ -330,7 +324,7 @@ internal partial class BLM : Caster
                     if (IsEnabled(Preset.BLM_ST_Manafont) &&
                         ActionReady(Manafont))
                         return Manafont;
-                    
+
                     if (IsEnabled(Preset.BLM_ST_Swiftcast) &&
                         ActionReady(Role.Swiftcast) && JustUsed(Despair) &&
                         HasBattleTarget() && InActionRange(Fire) &&
@@ -432,16 +426,10 @@ internal partial class BLM : Caster
                         ? Xenoglossy
                         : Foul;
 
-                if ((LevelChecked(Paradox) && HasStatusEffect(Buffs.Firestarter) ||
-                     TimeSinceFirestarterBuff >= 2) && AstralFireStacks < 3 ||
-                    !LevelChecked(Fire4) && TimeSinceFirestarterBuff >= 2 && LevelChecked(Fire3))
+                if (CanFire3)
                     return Fire3;
 
-                if (ActiveParadox &&
-                    MP.Cur > 1600 &&
-                    (AstralFireStacks < 3 ||
-                     JustUsed(FlareStar, 5) ||
-                     !LevelChecked(FlareStar) && ActionReady(Despair)))
+                if (CanFireParadox)
                     return Paradox;
 
                 if (IsEnabled(Preset.BLM_ST_FlareStar) &&

@@ -18,39 +18,8 @@ internal partial class BLM
         TraitLevelChecked(Traits.EnhancedPolyglotII) ? 3 :
         TraitLevelChecked(Traits.EnhancedPolyglot) ? 2 : 1;
 
-    private static bool EndOfFirePhase =>
-        FirePhase && !ActionReady(Despair) && !ActionReady(FireSpam) && !ActionReady(FlareStar);
-
-    private static bool EndOfIcePhaseAoE =>
-        IcePhase && HasMaxUmbralHeartStacks && TraitLevelChecked(Traits.EnhancedAstralFire);
-
-    private static bool CanFlarestar =>
-        LevelChecked(FlareStar) && AstralSoulStacks is 6;
-
-    private static IStatus? ThunderDebuffST =>
-        GetStatusEffect(ThunderList[OriginalHook(Thunder)], CurrentTarget);
-
-    private static IStatus? ThunderDebuffAoE =>
-        GetStatusEffect(ThunderList[OriginalHook(Thunder2)], CurrentTarget);
-
-    private static float TimeSinceFirestarterBuff =>
-        HasStatusEffect(Buffs.Firestarter) ? GetPartyMembers().First().TimeSinceBuffApplied(Buffs.Firestarter) : 0;
-
     private static bool HasMaxPolyglotStacks =>
         PolyglotStacks == MaxPolyglot;
-
-    private static uint FireSpam =>
-        ActionReady(Fire4)
-            ? Fire4
-            : Fire;
-
-    private static uint BlizzardSpam =>
-        ActionReady(Blizzard4)
-            ? Blizzard4
-            : Blizzard;
-
-    private static bool HasMaxUmbralHeartStacks =>
-        UmbralHearts is 3;
 
     private static int HPThresholdLeylines =>
         BLM_ST_LeyLinesBossOption == 1 || !InBossEncounter()
@@ -61,7 +30,60 @@ internal partial class BLM
 
     #endregion
 
+    #region Fire Phase
+
+    private static bool CanFlarestar =>
+        LevelChecked(FlareStar) && AstralSoulStacks is 6;
+
+    private static float TimeSinceFirestarterBuff =>
+        HasStatusEffect(Buffs.Firestarter) ? GetPartyMembers().First().TimeSinceBuffApplied(Buffs.Firestarter) : 0;
+
+    private static uint FireSpam =>
+        ActionReady(Fire4)
+            ? Fire4
+            : Fire;
+
+    private static bool CanFire3 =>
+        LevelChecked(Fire3) &&
+        (LevelChecked(Paradox) && HasStatusEffect(Buffs.Firestarter) &&
+         (AstralFireStacks < 3 || GetCooldownRemainingTime(Manafont) <= GCD * 3 && ActiveParadox) ||
+         !LevelChecked(Fire4) && TimeSinceFirestarterBuff >= GCD * 3);
+
+    private static bool CanFireParadox =>
+        ActiveParadox &&
+        !HasStatusEffect(Buffs.Firestarter) &&
+        (LevelChecked(FlareStar) && (JustUsed(Transpose) ||
+                                     AstralFireStacks is 3 && AstralSoulStacks >= 3) ||
+         GetCooldownRemainingTime(Manafont) <= GCD * 2 ||
+         !LevelChecked(FlareStar) && ActionReady(Despair));
+
+    private static bool EndOfFirePhase =>
+        FirePhase && !ActionReady(Despair) && !ActionReady(FireSpam) && !ActionReady(FlareStar);
+
+    #endregion
+
+    #region Ice Phase
+
+    private static uint BlizzardSpam =>
+        ActionReady(Blizzard4)
+            ? Blizzard4
+            : Blizzard;
+
+    private static bool HasMaxUmbralHeartStacks =>
+        UmbralHearts is 3;
+
+    private static bool EndOfIcePhaseAoE =>
+        IcePhase && HasMaxUmbralHeartStacks && TraitLevelChecked(Traits.EnhancedAstralFire);
+
+    #endregion
+
     #region Thunder
+
+    private static IStatus? ThunderDebuffST =>
+        GetStatusEffect(ThunderList[OriginalHook(Thunder)], CurrentTarget);
+
+    private static IStatus? ThunderDebuffAoE =>
+        GetStatusEffect(ThunderList[OriginalHook(Thunder2)], CurrentTarget);
 
     internal static bool CanUseThunder()
     {
