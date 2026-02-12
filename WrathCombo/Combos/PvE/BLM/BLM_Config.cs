@@ -61,37 +61,37 @@ internal partial class BLM
                         $"Use {Triplecast.ActionName()}", "Use triplecast when you don't have swiftcast active.", 6, 0);
 
                     DrawPriorityInput(BLM_ST_MovementPriority,
-                        5, 0, $"{Triplecast.ActionName()} Priority: ");
+                        6, 0, $"{Triplecast.ActionName()} Priority: ");
 
                     DrawHorizontalMultiChoice(BLM_ST_MovementOption,
                         $"Use {Paradox.ActionName()}", "Use Paradox when in AF 3.", 6, 1);
 
                     DrawPriorityInput(BLM_ST_MovementPriority,
-                        5, 1, $"{Paradox.ActionName()} Priority: ");
+                        6, 1, $"{Paradox.ActionName()} Priority: ");
 
                     DrawHorizontalMultiChoice(BLM_ST_MovementOption,
                         $"Use {Role.Swiftcast.ActionName()}", "Use swiftcast when you don't have Triplecast.", 6, 2);
 
                     DrawPriorityInput(BLM_ST_MovementPriority,
-                        5, 2, $"{Role.Swiftcast.ActionName()} Priority: ");
+                        6, 2, $"{Role.Swiftcast.ActionName()} Priority: ");
 
                     DrawHorizontalMultiChoice(BLM_ST_MovementOption,
                         $"Use {Foul.ActionName()} / {Xenoglossy.ActionName()}", "Use Foul/Xenoglossy.", 6, 3);
 
                     DrawPriorityInput(BLM_ST_MovementPriority,
-                        5, 3, $"{Xenoglossy.ActionName()} Priority: ");
+                        6, 3, $"{Xenoglossy.ActionName()} Priority: ");
 
                     DrawHorizontalMultiChoice(BLM_ST_MovementOption,
-                        $"Use {Scathe.ActionName()}", "Use Scathe.", 6, 4);
+                        $"Use {Fire3.ActionName()}", "Use Fire III when you have firestarter proc.", 6, 4);
 
                     DrawPriorityInput(BLM_ST_MovementPriority,
-                        5, 4, $"{Scathe.ActionName()} Priority: ");
+                        6, 4, $"{Fire3.ActionName()} Priority: ");
 
                     DrawHorizontalMultiChoice(BLM_ST_MovementOption,
-                        $"Use {Fire3.ActionName()}", "Use Fire III when you have firestarter proc.", 6, 5);
+                        $"Use {Scathe.ActionName()}", "Use Scathe.", 6, 5);
 
                     DrawPriorityInput(BLM_ST_MovementPriority,
-                        6, 5, $"{Fire3.ActionName()} Priority: ");
+                        6, 5, $"{Scathe.ActionName()} Priority: ");
                     break;
 
                 case Preset.BLM_ST_UsePolyglot:
