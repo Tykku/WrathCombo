@@ -58,34 +58,37 @@ internal partial class BLM
 
                 case Preset.BLM_ST_Movement:
                     DrawHorizontalMultiChoice(BLM_ST_MovementOption,
-                        $"Use {Triplecast.ActionName()}", "", 5, 0);
+                        $"Use {Triplecast.ActionName()}", "", 6, 0);
 
                     DrawPriorityInput(BLM_ST_MovementPriority,
                         5, 0, $"{Triplecast.ActionName()} Priority: ");
 
                     DrawHorizontalMultiChoice(BLM_ST_MovementOption,
-                        $"Use {Paradox.ActionName()}", "", 5, 1);
+                        $"Use {Paradox.ActionName()}", "", 6, 1);
 
                     DrawPriorityInput(BLM_ST_MovementPriority,
                         5, 1, $"{Paradox.ActionName()} Priority: ");
 
                     DrawHorizontalMultiChoice(BLM_ST_MovementOption,
-                        $"Use {Role.Swiftcast.ActionName()}", "", 5, 2);
+                        $"Use {Role.Swiftcast.ActionName()}", "", 6, 2);
 
                     DrawPriorityInput(BLM_ST_MovementPriority,
                         5, 2, $"{Role.Swiftcast.ActionName()} Priority: ");
 
                     DrawHorizontalMultiChoice(BLM_ST_MovementOption,
-                        $"Use {Foul.ActionName()} / {Xenoglossy.ActionName()}", "", 5, 3);
+                        $"Use {Foul.ActionName()} / {Xenoglossy.ActionName()}", "", 6, 3);
 
                     DrawPriorityInput(BLM_ST_MovementPriority,
                         5, 3, $"{Xenoglossy.ActionName()} Priority: ");
 
                     DrawHorizontalMultiChoice(BLM_ST_MovementOption,
-                        $"Use {Scathe.ActionName()}", "", 5, 4);
+                        $"Use {Scathe.ActionName()}", "", 6, 4);
+
+                    DrawHorizontalMultiChoice(BLM_ST_MovementOption,
+                        $"Use {Fire3.ActionName()}", "", 6, 5);
 
                     DrawPriorityInput(BLM_ST_MovementPriority,
-                        5, 4, $"{Scathe.ActionName()} Priority: ");
+                        6, 5, $"{Scathe.ActionName()} Priority: ");
                     break;
 
                 case Preset.BLM_ST_UsePolyglot:
