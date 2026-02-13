@@ -14,9 +14,6 @@ namespace WrathCombo.Combos.PvE;
 internal partial class PCT
 {
     #region Variables
-    [Flags] private enum RotationMode 
-    { simpleST = 1 << 0, advancedST = 1 << 1, simpleAoE = 1 << 2, advancedAoE = 1 << 3 }
-    
     internal static PCTGauge gauge = GetJobGauge<PCTGauge>();
     internal static bool HasPaint => gauge.Paint > 0;
     internal static bool CreatureMotifReady => !gauge.CreatureMotifDrawn && LevelChecked(CreatureMotif) && !HasStatusEffect(Buffs.StarryMuse);
@@ -24,49 +21,75 @@ internal partial class PCT
     internal static bool LandscapeMotifReady => !gauge.LandscapeMotifDrawn && LevelChecked(LandscapeMotif) && !HasStatusEffect(Buffs.StarryMuse);
     internal static float ScenicCD => GetCooldownRemainingTime(StarryMuse);
     internal static float SteelCD => GetCooldownRemainingTime(StrikingMuse);
-    
     #endregion
     
     #region Rotation
     
+    #region Flag Stuff
+    [Flags]
+    private enum Combo
+    {
+        // Target-type for combo
+        ST = 1 << 0, // 1
+        AoE = 1 << 1, // 2
+
+        // Complexity of combo
+        Adv = 1 << 2, // 4
+        Simple = 1 << 3, // 8
+        Basic = 1 << 4, // 16
+    }
+    
+    /// <summary>
+    ///     Checks whether a given preset is enabled, and the flags match it.
+    /// </summary>
+    private static bool IsSTEnabled(Combo flags, Preset preset) =>
+        flags.HasFlag(Combo.ST) && IsEnabled(preset);
+
+    /// <summary>
+    ///     Checks whether a given preset is enabled, and the flags match it.
+    /// </summary>
+    private static bool IsAoEEnabled(Combo flags, Preset preset) =>
+        flags.HasFlag(Combo.AoE) && IsEnabled(preset);
+    #endregion
+    
     #region OGCD Spells
-    private static bool TryOGCDSpells(RotationMode rotationFlags, ref uint actionID)
+    private static bool TryOGCDSpells(Combo flags, ref uint actionID)
     {
         #region Enables
         bool subtractivePaletteEnabled =
-            IsEnabled(Preset.PCT_ST_AdvancedMode_StarPrism) && rotationFlags.HasFlag(RotationMode.advancedST) ||
-            IsEnabled(Preset.PCT_AoE_AdvancedMode_StarPrism) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
-            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+             flags.HasFlag(Combo.Simple) ||
+             IsSTEnabled(flags, Preset.PCT_ST_AdvancedMode_SubtractivePalette) ||
+             IsAoEEnabled(flags, Preset.PCT_AoE_AdvancedMode_SubtractivePalette);
         
         bool scenicMuseEnabled = 
-            IsEnabled(Preset.PCT_ST_AdvancedMode_ScenicMuse) && rotationFlags.HasFlag(RotationMode.advancedST) ||
-            IsEnabled(Preset.PCT_AoE_AdvancedMode_ScenicMuse) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
-            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+            flags.HasFlag(Combo.Simple) ||
+            IsSTEnabled(flags, Preset.PCT_ST_AdvancedMode_ScenicMuse) ||
+            IsAoEEnabled(flags, Preset.PCT_AoE_AdvancedMode_ScenicMuse);
         
         bool livingMuseEnabled =
-            IsEnabled(Preset.PCT_ST_AdvancedMode_RainbowDrip) && rotationFlags.HasFlag(RotationMode.advancedST) ||
-            IsEnabled(Preset.PCT_AoE_AdvancedMode_RainbowDrip) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
-            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+            flags.HasFlag(Combo.Simple) ||
+            IsSTEnabled(flags, Preset.PCT_ST_AdvancedMode_LivingMuse) ||
+            IsAoEEnabled(flags, Preset.PCT_AoE_AdvancedMode_LivingMuse);
         
         bool steelMuseEnabled =
-            IsEnabled(Preset.PCT_ST_AdvancedMode_CometinBlack) && rotationFlags.HasFlag(RotationMode.advancedST) ||
-            IsEnabled(Preset.PCT_AoE_AdvancedMode_CometinBlack) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
-            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+            flags.HasFlag(Combo.Simple) ||
+            IsSTEnabled(flags, Preset.PCT_ST_AdvancedMode_SteelMuse) ||
+            IsAoEEnabled(flags, Preset.PCT_AoE_AdvancedMode_SteelMuse);
         
         bool hammerStampMovementEnabled =
-            IsEnabled(Preset.PCT_ST_AdvancedMode_MovementOption_HammerStampCombo) && rotationFlags.HasFlag(RotationMode.advancedST) ||
-            IsEnabled(Preset.PCT_AoE_AdvancedMode_MovementOption_HammerStampCombo) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
-            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+            flags.HasFlag(Combo.Simple) ||
+            IsSTEnabled(flags, Preset.PCT_ST_AdvancedMode_MovementOption_HammerStampCombo) ||
+            IsAoEEnabled(flags, Preset.PCT_AoE_AdvancedMode_MovementOption_HammerStampCombo);
         
         bool portraitEnabled =
-            IsEnabled(Preset.PCT_ST_AdvancedMode_HammerStampCombo) && rotationFlags.HasFlag(RotationMode.advancedST) ||
-            IsEnabled(Preset.PCT_AoE_AdvancedMode_HammerStampCombo) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
-            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+            flags.HasFlag(Combo.Simple) ||
+            IsSTEnabled(flags, Preset.PCT_ST_AdvancedMode_MogOfTheAges) ||
+            IsAoEEnabled(flags, Preset.PCT_AoE_AdvancedMode_MogOfTheAges);
         
         bool LucidDreamingEnabled =
-            IsEnabled(Preset.PCT_ST_AdvancedMode_HammerStampCombo) && rotationFlags.HasFlag(RotationMode.advancedST) ||
-            IsEnabled(Preset.PCT_AoE_AdvancedMode_HammerStampCombo) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
-            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+            flags.HasFlag(Combo.Simple) ||
+            IsSTEnabled(flags, Preset.PCT_ST_AdvancedMode_LucidDreaming) ||
+            IsAoEEnabled(flags, Preset.PCT_AoE_AdvancedMode_LucidDreaming);
         
         #endregion
         
@@ -74,24 +97,20 @@ internal partial class PCT
         int scenicThresholdST = PCT_ST_AdvancedMode_ScenicMuse_SubOption == 1 || !InBossEncounter() ? PCT_ST_AdvancedMode_ScenicMuse_Threshold : 0; //Boss Check
         int scenicThresholdAoE = PCT_AoE_AdvancedMode_ScenicMuse_SubOption == 1 || !InBossEncounter() ? PCT_AoE_AdvancedMode_ScenicMuse_Threshold : 0; //Boss Check
         int scenicStop = 
-            rotationFlags.HasFlag(RotationMode.advancedST) ? scenicThresholdST : //Advanced ST Hold 
-            rotationFlags.HasFlag(RotationMode.advancedAoE) ? scenicThresholdAoE : //Advanced AoE Hold
-            0; //Simple Mode Dont Hold
+            flags.HasFlag(Combo.Simple) ? 0 : 
+            flags.HasFlag(Combo.ST) ? scenicThresholdST : scenicThresholdAoE;
         
-        bool scenicMovementPrevention =
-            rotationFlags.HasFlag(RotationMode.advancedST) ? PCT_ST_AdvancedMode_ScenicMuse_MovementOption : //Advanced ST Lockout Starry when moving
-            rotationFlags.HasFlag(RotationMode.advancedAoE) ? PCT_AoE_AdvancedMode_ScenicMuse_MovementOption : //Advanced AoE Lockout Starry when moving
-            false; //Simple Mode Dont Lockout
+        bool scenicMovementPrevention = 
+            flags.HasFlag(Combo.Simple) ? false : 
+            flags.HasFlag(Combo.ST) ? PCT_ST_AdvancedMode_ScenicMuse_MovementOption : PCT_AoE_AdvancedMode_ScenicMuse_MovementOption;
         
         int lucidThreshold = 
-            rotationFlags.HasFlag(RotationMode.advancedST) ? PCT_ST_AdvancedMode_LucidOption : //Advanced ST Lucid Threshold Config
-            rotationFlags.HasFlag(RotationMode.advancedAoE) ? PCT_AoE_AdvancedMode_LucidOption : //Advanced AoE Lucid Threshold Config
-            6500; //Simple Mode Lucid Threshold
+            flags.HasFlag(Combo.Simple) ? 6500 : 
+            flags.HasFlag(Combo.ST) ? PCT_ST_AdvancedMode_LucidOption : PCT_AoE_AdvancedMode_LucidOption;
         
         int burnBossThreshold = 
-            rotationFlags.HasFlag(RotationMode.advancedST) ? PCT_ST_AdvancedMode_BurnBoss : //Advanced ST Lucid Threshold Config
-            rotationFlags.HasFlag(RotationMode.advancedAoE) ? PCT_AoE_AdvancedMode_BurnBoss : //Advanced AoE Lucid Threshold Config
-            0; //Simple Mode Lucid Threshold
+            flags.HasFlag(Combo.Simple) ? 0 : 
+            flags.HasFlag(Combo.ST) ? PCT_ST_AdvancedMode_BurnBoss : PCT_AoE_AdvancedMode_BurnBoss;
         
         bool scenicMuseReady = ActionReady(ScenicMuse) && gauge.LandscapeMotifDrawn; 
         bool livingMuseReady = ActionReady(LivingMuse) && gauge.CreatureMotifDrawn;
@@ -177,17 +196,14 @@ internal partial class PCT
     #endregion
     
     #region Mitigation
-    private static bool TryMitigation(RotationMode rotationFlags, ref uint actionID)
+    private static bool TryMitigation(Combo flags, ref uint actionID)
     {
         #region Enables
         bool addleEnabled =
-            IsEnabled(Preset.PCT_ST_AdvancedMode_Addle) && rotationFlags.HasFlag(RotationMode.advancedST) ||
-            rotationFlags.HasFlag(RotationMode.simpleST);
-        
+            flags.HasFlag(Combo.Simple) || IsSTEnabled(flags, Preset.PCT_ST_AdvancedMode_Addle);
+
         bool tempuraEnabled =
-            IsEnabled(Preset.PCT_ST_AdvancedMode_Tempura) && rotationFlags.HasFlag(RotationMode.advancedST) ||
-            rotationFlags.HasFlag(RotationMode.simpleST);
-        
+            flags.HasFlag(Combo.Simple) || IsSTEnabled(flags, Preset.PCT_ST_AdvancedMode_Tempura);
         #endregion
 
         if (addleEnabled && Role.CanAddle() && CanWeave() && GroupDamageIncoming() && HasBattleTarget())
@@ -218,44 +234,43 @@ internal partial class PCT
     
     #region Movement
 
-    private static bool TryMovementOption(RotationMode rotationFlags, ref uint actionID)
+    private static bool TryMovementOption(Combo flags, ref uint actionID)
     {
         #region Enables
-
         bool movementEnabled =
-            IsEnabled(Preset.PCT_ST_AdvancedMode_MovementFeature) && rotationFlags.HasFlag(RotationMode.advancedST) ||
-            IsEnabled(Preset.PCT_AoE_AdvancedMode_MovementFeature) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
-            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+            flags.HasFlag(Combo.Simple) ||
+            IsSTEnabled(flags, Preset.PCT_ST_AdvancedMode_MovementFeature) ||
+            IsAoEEnabled(flags, Preset.PCT_AoE_AdvancedMode_MovementFeature);
 
         bool rainbowDripEnabled =
-            IsEnabled(Preset.PCT_ST_AdvancedMode_RainbowDrip) && rotationFlags.HasFlag(RotationMode.advancedST) ||
-            IsEnabled(Preset.PCT_AoE_AdvancedMode_RainbowDrip) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
-            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+            flags.HasFlag(Combo.Simple) ||
+            IsSTEnabled(flags, Preset.PCT_ST_AdvancedMode_RainbowDrip) ||
+            IsAoEEnabled(flags, Preset.PCT_AoE_AdvancedMode_RainbowDrip);
         
         bool starPrismEnabled =
-            IsEnabled(Preset.PCT_ST_AdvancedMode_StarPrism) && rotationFlags.HasFlag(RotationMode.advancedST) ||
-            IsEnabled(Preset.PCT_AoE_AdvancedMode_StarPrism) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
-            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
-
+            flags.HasFlag(Combo.Simple) ||
+            IsSTEnabled(flags, Preset.PCT_ST_AdvancedMode_StarPrism) ||
+            IsAoEEnabled(flags, Preset.PCT_AoE_AdvancedMode_StarPrism);
+            
         bool hammerStampEnabled =
-            IsEnabled(Preset.PCT_ST_AdvancedMode_MovementOption_HammerStampCombo) && rotationFlags.HasFlag(RotationMode.advancedST) ||
-            IsEnabled(Preset.PCT_AoE_AdvancedMode_MovementOption_HammerStampCombo) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
-            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
-
+            flags.HasFlag(Combo.Simple) ||
+            IsSTEnabled(flags, Preset.PCT_ST_AdvancedMode_MovementOption_HammerStampCombo) ||
+            IsAoEEnabled(flags, Preset.PCT_AoE_AdvancedMode_MovementOption_HammerStampCombo);
+            
         bool cometInBlackEnabled =
-            IsEnabled(Preset.PCT_ST_AdvancedMode_MovementOption_CometinBlack) && rotationFlags.HasFlag(RotationMode.advancedST) ||
-            IsEnabled(Preset.PCT_AoE_AdvancedMode_MovementOption_CometinBlack) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
-            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
-
+            flags.HasFlag(Combo.Simple) ||
+            IsSTEnabled(flags, Preset.PCT_ST_AdvancedMode_MovementOption_CometinBlack) ||
+            IsAoEEnabled(flags, Preset.PCT_AoE_AdvancedMode_MovementOption_CometinBlack);
+            
         bool holyInWhiteEnabled =
-            IsEnabled(Preset.PCT_ST_AdvancedMode_MovementOption_HolyInWhite) && rotationFlags.HasFlag(RotationMode.advancedST) ||
-            IsEnabled(Preset.PCT_AoE_AdvancedMode_MovementOption_HolyInWhite) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
-            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+            flags.HasFlag(Combo.Simple) ||
+            IsSTEnabled(flags, Preset.PCT_ST_AdvancedMode_MovementOption_HolyInWhite) ||
+            IsAoEEnabled(flags, Preset.PCT_AoE_AdvancedMode_MovementOption_HolyInWhite);
 
         bool swiftcastEnabled =
-            IsEnabled(Preset.PCT_ST_AdvancedMode_SwiftcastOption) && rotationFlags.HasFlag(RotationMode.advancedST) ||
-            IsEnabled(Preset.PCT_AoE_AdvancedMode_SwiftcastOption) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
-            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+            flags.HasFlag(Combo.Simple) ||
+            IsSTEnabled(flags, Preset.PCT_ST_AdvancedMode_SwiftcastOption) ||
+            IsAoEEnabled(flags, Preset.PCT_AoE_AdvancedMode_SwiftcastOption);
 
         #endregion
 
@@ -298,55 +313,49 @@ internal partial class PCT
             actionID = OriginalHook(HolyInWhite);
             return true;
         }
-
-        
-        
         return false;
-        
     }
     #endregion
     
     #region GCD Spells
-    private static bool TryGCDSpells(RotationMode rotationFlags, ref uint actionID)
+    private static bool TryGCDSpells(Combo flags, ref uint actionID)
     {
         #region Enables
         bool starPrismEnabled =
-            IsEnabled(Preset.PCT_ST_AdvancedMode_StarPrism) && rotationFlags.HasFlag(RotationMode.advancedST) ||
-            IsEnabled(Preset.PCT_AoE_AdvancedMode_StarPrism) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
-            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+            flags.HasFlag(Combo.Simple) ||
+            IsSTEnabled(flags, Preset.PCT_ST_AdvancedMode_StarPrism) ||
+            IsAoEEnabled(flags, Preset.PCT_AoE_AdvancedMode_StarPrism);
         
         bool rainbowDripEnabled =
-            IsEnabled(Preset.PCT_ST_AdvancedMode_RainbowDrip) && rotationFlags.HasFlag(RotationMode.advancedST) ||
-            IsEnabled(Preset.PCT_AoE_AdvancedMode_RainbowDrip) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
-            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+            flags.HasFlag(Combo.Simple) ||
+            IsSTEnabled(flags, Preset.PCT_ST_AdvancedMode_RainbowDrip) ||
+            IsAoEEnabled(flags, Preset.PCT_AoE_AdvancedMode_RainbowDrip);
         
         bool cometInBlackEnabled =
-            IsEnabled(Preset.PCT_ST_AdvancedMode_CometinBlack) && rotationFlags.HasFlag(RotationMode.advancedST) ||
-            IsEnabled(Preset.PCT_AoE_AdvancedMode_CometinBlack) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
-            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+            flags.HasFlag(Combo.Simple) ||
+            IsSTEnabled(flags, Preset.PCT_ST_AdvancedMode_CometinBlack) ||
+            IsAoEEnabled(flags, Preset.PCT_AoE_AdvancedMode_CometinBlack);
         
         bool hammerStampComboEnabled =
-            IsEnabled(Preset.PCT_ST_AdvancedMode_HammerStampCombo) && rotationFlags.HasFlag(RotationMode.advancedST) ||
-            IsEnabled(Preset.PCT_AoE_AdvancedMode_HammerStampCombo) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
-            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+            flags.HasFlag(Combo.Simple) ||
+            IsSTEnabled(flags, Preset.PCT_ST_AdvancedMode_HammerStampCombo) ||
+            IsAoEEnabled(flags, Preset.PCT_AoE_AdvancedMode_HammerStampCombo);
         
         bool scenicMuseEnabled = 
-            IsEnabled(Preset.PCT_ST_AdvancedMode_ScenicMuse) && rotationFlags.HasFlag(RotationMode.advancedST) ||
-            IsEnabled(Preset.PCT_AoE_AdvancedMode_ScenicMuse) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
-            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
-        
+            flags.HasFlag(Combo.Simple) ||
+            IsSTEnabled(flags, Preset.PCT_ST_AdvancedMode_ScenicMuse) ||
+            IsAoEEnabled(flags, Preset.PCT_AoE_AdvancedMode_ScenicMuse);
         #endregion
         
         #region Configs
         float TimeRemainingToUseHammer= 
-            rotationFlags.HasFlag(RotationMode.advancedST) ? PCT_ST_AdvancedMode_HammerStampCombo_Timing : //Advanced ST Hold 
-            rotationFlags.HasFlag(RotationMode.advancedAoE) ? PCT_AoE_AdvancedMode_HammerStampCombo_Timing : //Advanced AoE Hold
-            30; //Simple Mode Dont Hold
+            flags.HasFlag(Combo.Simple) ? 30 : 
+            flags.HasFlag(Combo.ST) ? PCT_ST_AdvancedMode_HammerStampCombo_Timing : PCT_AoE_AdvancedMode_HammerStampCombo_Timing;
         
         int burnBossThreshold = 
-            rotationFlags.HasFlag(RotationMode.advancedST) ? PCT_ST_AdvancedMode_BurnBoss : //Advanced ST Lucid Threshold Config
-            rotationFlags.HasFlag(RotationMode.advancedAoE) ? PCT_AoE_AdvancedMode_BurnBoss : //Advanced AoE Lucid Threshold Config
-            0; //Simple Mode Lucid Threshold
+            flags.HasFlag(Combo.Simple) ? 0 : 
+            flags.HasFlag(Combo.ST) ? PCT_ST_AdvancedMode_BurnBoss : PCT_AoE_AdvancedMode_BurnBoss;
+            
         #endregion
         
         //Star Prism
@@ -392,67 +401,66 @@ internal partial class PCT
     #endregion
     
     #region Motifs
-    private static bool TryDrawMotif(RotationMode rotationFlags, ref uint actionID)
+    private static bool TryDrawMotif(Combo flags, ref uint actionID)
     {
         #region Enables
         bool motifsEnabled = 
-            IsEnabled(Preset.PCT_ST_AdvancedMode_MotifFeature) && rotationFlags.HasFlag(RotationMode.advancedST) ||
-            IsEnabled(Preset.PCT_AoE_AdvancedMode_MotifFeature) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
-            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+            flags.HasFlag(Combo.Simple) ||
+            IsSTEnabled(flags, Preset.PCT_ST_AdvancedMode_MotifFeature) ||
+            IsAoEEnabled(flags, Preset.PCT_AoE_AdvancedMode_MotifFeature);
             
         bool prepullEnabled =
-            IsEnabled(Preset.PCT_ST_AdvancedMode_PrePullMotifs) && rotationFlags.HasFlag(RotationMode.advancedST) ||
-            IsEnabled(Preset.PCT_AoE_AdvancedMode_PrePullMotifs) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
-            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+            flags.HasFlag(Combo.Simple) ||
+            IsSTEnabled(flags, Preset.PCT_ST_AdvancedMode_PrePullMotifs) ||
+            IsAoEEnabled(flags, Preset.PCT_AoE_AdvancedMode_PrePullMotifs);
         
         bool noTargetEnabled =
-            IsEnabled(Preset.PCT_ST_AdvancedMode_NoTargetMotifs) && rotationFlags.HasFlag(RotationMode.advancedST) ||
-            IsEnabled(Preset.PCT_AoE_AdvancedMode_NoTargetMotifs) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
-            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+            flags.HasFlag(Combo.Simple) ||
+            IsSTEnabled(flags, Preset.PCT_ST_AdvancedMode_NoTargetMotifs) ||
+            IsAoEEnabled(flags, Preset.PCT_AoE_AdvancedMode_NoTargetMotifs);
         
         bool swiftcastEnabled =
-            IsEnabled(Preset.PCT_ST_AdvancedMode_SwiftMotifs) && rotationFlags.HasFlag(RotationMode.advancedST) ||
-            IsEnabled(Preset.PCT_AoE_AdvancedMode_SwiftMotifs) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
-            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+            flags.HasFlag(Combo.Simple) ||
+            IsSTEnabled(flags, Preset.PCT_ST_AdvancedMode_SwiftMotifs) ||
+            IsAoEEnabled(flags, Preset.PCT_AoE_AdvancedMode_SwiftMotifs);
         
         bool creatureEnabled =
-            IsEnabled(Preset.PCT_ST_AdvancedMode_CreatureMotif) && rotationFlags.HasFlag(RotationMode.advancedST) ||
-            IsEnabled(Preset.PCT_AoE_AdvancedMode_CreatureMotif) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
-            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+            flags.HasFlag(Combo.Simple) ||
+            IsSTEnabled(flags, Preset.PCT_ST_AdvancedMode_CreatureMotif) ||
+            IsAoEEnabled(flags, Preset.PCT_AoE_AdvancedMode_CreatureMotif);
         
         bool weaponEnabled =
-            IsEnabled(Preset.PCT_ST_AdvancedMode_WeaponMotif) && rotationFlags.HasFlag(RotationMode.advancedST) ||
-            IsEnabled(Preset.PCT_AoE_AdvancedMode_WeaponMotif) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
-            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+            flags.HasFlag(Combo.Simple) ||
+            IsSTEnabled(flags, Preset.PCT_ST_AdvancedMode_WeaponMotif) ||
+            IsAoEEnabled(flags, Preset.PCT_AoE_AdvancedMode_WeaponMotif);
         
         bool landscapeEnabled =
-            IsEnabled(Preset.PCT_ST_AdvancedMode_LandscapeMotif) && rotationFlags.HasFlag(RotationMode.advancedST) ||
-            IsEnabled(Preset.PCT_AoE_AdvancedMode_LandscapeMotif) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
-            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
-        
+            flags.HasFlag(Combo.Simple) ||
+            IsSTEnabled(flags, Preset.PCT_ST_AdvancedMode_LandscapeMotif) ||
+            IsAoEEnabled(flags, Preset.PCT_AoE_AdvancedMode_LandscapeMotif);
         
         #endregion
         
         #region Configs
         
         int creatureStop = 
-                rotationFlags.HasFlag(RotationMode.advancedST) ? PCT_ST_CreatureStop : 
-                rotationFlags.HasFlag(RotationMode.advancedAoE) ? PCT_AoE_CreatureStop : 
-                0;
+            flags.HasFlag(Combo.Simple) ? 0 : 
+            flags.HasFlag(Combo.ST) ? PCT_ST_CreatureStop : PCT_AoE_CreatureStop;
+            
         bool creatureHealthCheck = GetTargetHPPercent() > creatureStop;
         bool hasLivingMuseCharges = HasCharges(LivingMuse) || GetCooldownChargeRemainingTime(LivingMuse) <= 8;
         
         int weaponStop = 
-            rotationFlags.HasFlag(RotationMode.advancedST) ? PCT_ST_WeaponStop : 
-            rotationFlags.HasFlag(RotationMode.advancedAoE) ? PCT_AoE_WeaponStop : 
-            0;
+            flags.HasFlag(Combo.Simple) ? 0 : 
+            flags.HasFlag(Combo.ST) ? PCT_ST_WeaponStop : PCT_AoE_WeaponStop;
+            
         bool weaponHealthCheck = GetTargetHPPercent() > weaponStop;
         bool hasSteelMuseCharges = HasCharges(SteelMuse) || GetCooldownChargeRemainingTime(SteelMuse) <= 8;
         
         int landscapeStop = 
-            rotationFlags.HasFlag(RotationMode.advancedST) ? PCT_ST_LandscapeStop : 
-            rotationFlags.HasFlag(RotationMode.advancedAoE) ? PCT_AoE_LandscapeStop : 
-            0;
+            flags.HasFlag(Combo.Simple) ? 0 : 
+            flags.HasFlag(Combo.ST) ? PCT_ST_LandscapeStop : PCT_AoE_LandscapeStop;
+            
         bool landscapeHealthCheck = GetTargetHPPercent() > landscapeStop;
         
         #endregion
@@ -496,30 +504,28 @@ internal partial class PCT
     #endregion
     
     #region SubCombos and Holy in White
-    private static bool TryCombos(RotationMode rotationFlags, ref uint actionID)
+    private static bool TryCombos(Combo flags, ref uint actionID)
     {
         #region Enables
         bool subComboEnabled = 
-            IsEnabled(Preset.PCT_ST_AdvancedMode_BlizzardInCyan) && rotationFlags.HasFlag(RotationMode.advancedST) ||
-            IsEnabled(Preset.PCT_AoE_AdvancedMode_BlizzardInCyan) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
-            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+            flags.HasFlag(Combo.Simple) ||
+            IsSTEnabled(flags, Preset.PCT_ST_AdvancedMode_BlizzardInCyan) ||
+            IsAoEEnabled(flags, Preset.PCT_AoE_AdvancedMode_BlizzardInCyan);
             
         bool holyInWhiteEnabled =
-            IsEnabled(Preset.PCT_ST_AdvancedMode_HolyinWhite) && rotationFlags.HasFlag(RotationMode.advancedST) ||
-            IsEnabled(Preset.PCT_AoE_AdvancedMode_HolyinWhite) && rotationFlags.HasFlag(RotationMode.advancedAoE) ||
-            rotationFlags.HasFlag(RotationMode.simpleST) || rotationFlags.HasFlag(RotationMode.simpleAoE);
+            flags.HasFlag(Combo.Simple) ||
+            IsSTEnabled(flags, Preset.PCT_ST_AdvancedMode_HolyinWhite) ||
+            IsAoEEnabled(flags, Preset.PCT_AoE_AdvancedMode_HolyinWhite);
         #endregion
         
         #region Configs
         int holdPaintCharges =
-                rotationFlags.HasFlag(RotationMode.advancedST) 
-                    ? PCT_ST_AdvancedMode_HolyinWhiteOption
-                    : rotationFlags.HasFlag(RotationMode.advancedAoE)
-                        ? PCT_AoE_AdvancedMode_HolyinWhiteOption
-                        : 2;
+            flags.HasFlag(Combo.Simple) ? 2 : 
+            flags.HasFlag(Combo.ST) ? PCT_ST_AdvancedMode_HolyinWhiteOption : PCT_AoE_AdvancedMode_HolyinWhiteOption;
+                
         #endregion
 
-        if (rotationFlags.HasFlag(RotationMode.advancedST) || rotationFlags.HasFlag(RotationMode.simpleST))
+        if (flags.HasFlag(Combo.ST))
         {
             if (subComboEnabled && HasStatusEffect(Buffs.SubtractivePalette))
             {
@@ -536,7 +542,7 @@ internal partial class PCT
             return false;
         }
         
-        if (rotationFlags.HasFlag(RotationMode.advancedAoE) || rotationFlags.HasFlag(RotationMode.simpleAoE))
+        if (flags.HasFlag(Combo.AoE))
         {
             if (subComboEnabled && HasStatusEffect(Buffs.SubtractivePalette))
             {

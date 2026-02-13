@@ -14,33 +14,36 @@ internal partial class PCT : Caster
         {
             if (actionID is not FireInRed)
                 return actionID;
+            
 
             // Special Content
             if (ContentSpecificActions.TryGet(out var contentAction))
                 return contentAction;
             
+            const Combo comboFlags = Combo.ST | Combo.Simple;
+            
             //OGCD Spells
-            if (TryOGCDSpells(RotationMode.simpleST, ref actionID))
+            if (TryOGCDSpells(comboFlags, ref actionID))
                 return actionID;
             
             //Mitigation
-            if (TryMitigation(RotationMode.simpleST, ref actionID))
+            if (TryMitigation(comboFlags, ref actionID))
                 return actionID;
             
             //Movement Options
-            if (TryMovementOption(RotationMode.simpleST, ref actionID))
+            if (TryMovementOption(comboFlags, ref actionID))
                 return actionID;
             
             //GCD Spells
-            if (TryGCDSpells(RotationMode.simpleST, ref actionID))
+            if (TryGCDSpells(comboFlags, ref actionID))
                 return actionID;
             
             //Motifs
-            if (TryDrawMotif(RotationMode.simpleST, ref actionID))
+            if (TryDrawMotif(comboFlags, ref actionID))
                 return actionID;
             
             //SubCombo
-            if (TryCombos(RotationMode.simpleST, ref actionID))
+            if (TryCombos(comboFlags, ref actionID))
                 return actionID;
             else
                 return actionID;
@@ -64,28 +67,30 @@ internal partial class PCT : Caster
             if (ContentSpecificActions.TryGet(out var contentAction))
                 return contentAction;
             
+            const Combo comboFlags = Combo.ST | Combo.Adv;
+            
             //OGCD Spells
-            if (TryOGCDSpells(RotationMode.advancedST, ref actionID))
+            if (TryOGCDSpells(comboFlags, ref actionID))
                 return actionID;
             
             //Mitigation
-            if (TryMitigation(RotationMode.advancedST, ref actionID))
+            if (TryMitigation(comboFlags, ref actionID))
                 return actionID;
             
             //Movement Options
-            if (TryMovementOption(RotationMode.advancedST, ref actionID))
+            if (TryMovementOption(comboFlags, ref actionID))
                 return actionID;
             
             //GCD Spells
-            if (TryGCDSpells(RotationMode.advancedST, ref actionID))
+            if (TryGCDSpells(comboFlags, ref actionID))
                 return actionID;
             
             //Motifs
-            if (TryDrawMotif(RotationMode.advancedST, ref actionID))
+            if (TryDrawMotif(comboFlags, ref actionID))
                 return actionID;
             
             //SubCombo
-            if (TryCombos(RotationMode.advancedST, ref actionID))
+            if (TryCombos(comboFlags, ref actionID))
                 return actionID;
             else
                 return actionID;
@@ -107,24 +112,26 @@ internal partial class PCT : Caster
             if (ContentSpecificActions.TryGet(out var contentAction))
                 return contentAction;
             
+            const Combo comboFlags = Combo.AoE | Combo.Simple;
+            
             //OGCD Spells
-            if (TryOGCDSpells(RotationMode.simpleAoE, ref actionID))
+            if (TryOGCDSpells(comboFlags, ref actionID))
                 return actionID;
             
             //Movement Options
-            if (TryMovementOption(RotationMode.simpleAoE, ref actionID))
+            if (TryMovementOption(comboFlags, ref actionID))
                 return actionID;
             
             //GCD Spells
-            if (TryGCDSpells(RotationMode.simpleAoE, ref actionID))
+            if (TryGCDSpells(comboFlags, ref actionID))
                 return actionID;
             
             //Motifs
-            if (TryDrawMotif(RotationMode.simpleAoE, ref actionID))
+            if (TryDrawMotif(comboFlags, ref actionID))
                 return actionID;
             
             //SubCombo
-            if (TryCombos(RotationMode.simpleAoE, ref actionID))
+            if (TryCombos(comboFlags, ref actionID))
                 return actionID;
             else
                 return actionID;
@@ -142,24 +149,26 @@ internal partial class PCT : Caster
             if (ContentSpecificActions.TryGet(out var contentAction))
                 return contentAction;
             
+            const Combo comboFlags = Combo.AoE | Combo.Adv;
+            
             //OGCD Spells
-            if (TryOGCDSpells(RotationMode.advancedAoE, ref actionID))
+            if (TryOGCDSpells(comboFlags, ref actionID))
                 return actionID;
             
             //Movement Options
-            if (TryMovementOption(RotationMode.advancedAoE, ref actionID))
+            if (TryMovementOption(comboFlags, ref actionID))
                 return actionID;
             
             //GCD Spells
-            if (TryGCDSpells(RotationMode.advancedAoE, ref actionID))
+            if (TryGCDSpells(comboFlags, ref actionID))
                 return actionID;
             
             //Motifs
-            if (TryDrawMotif(RotationMode.advancedAoE, ref actionID))
+            if (TryDrawMotif(comboFlags, ref actionID))
                 return actionID;
             
             //SubCombo
-            if (TryCombos(RotationMode.advancedAoE, ref actionID))
+            if (TryCombos(comboFlags, ref actionID))
                 return actionID;
             else
                 return actionID;
