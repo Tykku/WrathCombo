@@ -130,7 +130,7 @@ internal partial class BLM
                     DrawSliderInt(0, 100, BLM_ST_ThunderTrashOption,
                         "Non boss encounter. Stop using at Enemy HP %.");
 
-                    DrawSliderInt(0, 5, BLM_ST_ThunderRefresh,
+                    DrawRoundedSliderFloat(0, 5, BLM_ST_ThunderRefresh,
                         "Seconds remaining before reapplying the DoT. Set to Zero to disable this check.");
                     break;
 
@@ -258,7 +258,6 @@ internal partial class BLM
             BLM_ST_ThunderBossAddsOption = new("BLM_ST_ThunderBossAddsOption", 10),
             BLM_ST_ThunderTrashOption = new("BLM_ST_ThunderTrashOption", 25),
             BLM_ST_Triplecast_WhenToUse = new("BLM_ST_Triplecast_WhenToUse", 1),
-            BLM_ST_ThunderRefresh = new("BLM_ST_ThunderUptime_Threshold", 5),
             BLM_ST_TriplecastMovementCharges = new("BLM_ST_TriplecastMovementCharges", 1),
             BLM_ST_PolyglotMovement = new("BLM_ST_PolyglotMovement", 1),
             BLM_ST_PolyglotSaveUsage = new("BLM_ST_PolyglotSaveUsage"),
@@ -278,7 +277,8 @@ internal partial class BLM
 
         public static UserFloat
             BLM_ST_LeyLinesTimeStill = new("BLM_ST_LeyLinesTimeStill", 2.5f),
-            BLM_AoE_LeyLinesTimeStill = new("BLM_AoE_LeyLinesTimeStill", 2.5f);
+            BLM_AoE_LeyLinesTimeStill = new("BLM_AoE_LeyLinesTimeStill", 2.5f),
+            BLM_ST_ThunderRefresh = new("BLM_ST_ThunderUptime_Threshold", 2.5f);
 
         public static UserBool
             BLM_AM_FieldMouseover = new("BLM_AM_FieldMouseover"),

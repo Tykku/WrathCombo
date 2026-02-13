@@ -91,7 +91,7 @@ internal partial class BLM
         uint dotAction = OriginalHook(Thunder);
         int hpThreshold = IsNotEnabled(Preset.BLM_ST_SimpleMode) ? ComputeHpThreshold() : 0;
         ThunderList.TryGetValue(dotAction, out ushort dotDebuffID);
-        int dotRefresh = IsNotEnabled(Preset.BLM_ST_SimpleMode) ? BLM_ST_ThunderRefresh : 5;
+        float dotRefresh = IsNotEnabled(Preset.BLM_ST_SimpleMode) ? BLM_ST_ThunderRefresh : 5;
         float dotRemaining = GetStatusEffectRemainingTime(dotDebuffID, CurrentTarget);
 
         return ActionReady(dotAction) &&
