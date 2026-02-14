@@ -4581,16 +4581,16 @@ public enum Preset
     PCT_ST_Advanced_Openers = 20006,
 
     [ParentCombo(PCT_ST_AdvancedMode)]
-    [CustomComboInfo("Optimal Burst Window Feature", "Uses an optimized rotation for standard burst window", Job.PCT)]
-    PCT_ST_AdvancedMode_Burst_Phase = 20010,
-
-    [ParentCombo(PCT_ST_AdvancedMode)]
     [CustomComboInfo("Subtractive Palette Feature", "Adds Subtractive Palette to the combo.", Job.PCT)]
     PCT_ST_AdvancedMode_SubtractivePalette = 20025,
 
     [ParentCombo(PCT_ST_AdvancedMode)]
     [CustomComboInfo("Blizzard in Cyan Option", "Adds Blizzard in Cyan to the combo.", Job.PCT)]
     PCT_ST_AdvancedMode_BlizzardInCyan = 20033,
+    
+    [ParentCombo(PCT_ST_AdvancedMode)]
+    [CustomComboInfo("Holy in White Option", "Adds Holy in White to the combo when it will strike 2 targets.", Job.PCT)]
+    PCT_ST_AdvancedMode_HolyinWhite = 20072,
 
     [ParentCombo(PCT_ST_AdvancedMode)]
     [CustomComboInfo("Comet in Black Option", "Adds Comet in Black to the combo.", Job.PCT)]
@@ -4675,7 +4675,7 @@ public enum Preset
 
     [ParentCombo(PCT_ST_AdvancedMode_MovementFeature)]
     [CustomComboInfo("Swiftcast Option ", "Adds Swiftcast to the combo while moving.", Job.PCT)]
-    PCT_ST_AdvancedMode_SwitfcastOption = 20032,
+    PCT_ST_AdvancedMode_SwiftcastOption = 20032,
 
     [ParentCombo(PCT_ST_AdvancedMode)]
     [CustomComboInfo("Addle Raidwide Option", "Adds Addle when Raidwide is detected casting.", Job.PCT)]
@@ -4793,7 +4793,7 @@ public enum Preset
 
     [ParentCombo(PCT_AoE_AdvancedMode_MovementFeature)]
     [CustomComboInfo("Swiftcast Option ", "Adds Swiftcast to the combo while moving.", Job.PCT)]
-    PCT_AoE_AdvancedMode_SwitfcastOption = 20065,
+    PCT_AoE_AdvancedMode_SwiftcastOption = 20065,
 
     #endregion
 
@@ -4814,6 +4814,7 @@ public enum Preset
     CombinedPaint = 20004,
 
     #endregion
+    // Last used: 20072
 
     #endregion
 
