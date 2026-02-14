@@ -16,6 +16,9 @@ internal abstract partial class CustomComboFunctions
 {
     private const StringComparison Lower = StringComparison.OrdinalIgnoreCase;
 
+    private static readonly StringComparer Lowerer =
+        StringComparer.FromComparison(Lower);
+
     /// <summary>
     /// Text Comparison for Tank Buster VFX Paths
     /// </summary>
@@ -62,9 +65,12 @@ internal abstract partial class CustomComboFunctions
         "vfx/monster/gimmick4/eff/z5r1_b4_g09c0c"       // Aglaia, Nald'thal
     ], StringComparer.OrdinalIgnoreCase);
 
-    //private static readonly FrozenSet<ushort> NoObjectStackDuties = FrozenSet.ToFrozenSet<ushort>([
-    //    1194 // The Skydeep Cenote
-    //]);
+    /* Associated logic removed. See commit: 844dcef4
+    private static readonly FrozenSet<ushort> NoObjectStackDuties = FrozenSet
+        .ToFrozenSet<ushort>([
+        1194 // The Skydeep Cenote
+    ]);
+    */
 
     /// <summary>
     /// Checks for incoming shared damage effects and retrieves relevant information.
@@ -75,14 +81,13 @@ internal abstract partial class CustomComboFunctions
     /// Party members are prioritized when multiple valid effects are found, and the closest party member is selected.
     /// PartyMember will be null if no party member is affected (alliance / NPC helper).
     /// </remarks>
-    /// <param name="distance">Distance to the effect</param>
     /// <param name="isMultiHit">Returns true if the effect will do multiple hits</param>
-    /// <param name="partyMember">Returns an IBattleChara if the effect is on a party member</param>
-    /// <returns></returns>
-    public static bool CheckForSharedDamageEffect(out float distance, out bool isMultiHit, out IBattleChara? partyMember)
+    /// <param name="partyMember">Returns a Game Object if the effect is on a party member.</param>
+    /// <param name="maxDistance">Maximum distance to the effect</param>
+    public static bool CheckForSharedDamageEffect(out bool isMultiHit,
+        out IGameObject? partyMember, float maxDistance = 30f)
     {
         partyMember = null;
-        distance = float.MaxValue;
         isMultiHit = false;
 
         bool MH = false; //holder for isMultiHit
@@ -115,9 +120,7 @@ internal abstract partial class CustomComboFunctions
 
         #if DEBUG
         if (EzThrottler.Throttle("DebugSharedDamageEffectVFX1", 5000))
-        {
             Svc.Log.Debug($"Found Incoming Shared Damage Effects {AoEEffects.Count}");
-        }
 		#endif
 
         // Expected Outcome from the LINQ:
@@ -128,10 +131,10 @@ internal abstract partial class CustomComboFunctions
         // Regular share on other alliance, Ignored
         // Regular share on NPC, That marker
 
-        IBattleChara? bestTarget = null;
+        IGameObject? bestTarget;
 
         if (AoEEffects.Count == 1) // Most battles are singular, skip LINQ if so
-            bestTarget = AoEEffects[0].TargetID.GetObject() as IBattleChara;
+            bestTarget = AoEEffects[0].TargetID.GetObject();
         else
         {
             #if DEBUG
@@ -141,7 +144,8 @@ internal abstract partial class CustomComboFunctions
                 .Select(vfx => vfx.TargetID.GetObject())
                 .OfType<IBattleChara>()
                 // Multi-hit can be on anyone (only 1 per alliance), regular only on party members or NPCs,
-                .Where(chara => MH || chara.IsInParty() || chara is IBattleNpc || PlaybackClosest)
+                .Where(chara => chara.IsWithinRange(maxDistance) &&
+                                (MH || chara.IsInParty() || chara is IBattleNpc || PlaybackClosest))
                 // Prioritize party members first, then by distance
                 .OrderBy(chara => chara.IsInParty() ? 0 : 1)
                 .ThenBy(chara => GetTargetDistance(chara))
@@ -160,7 +164,6 @@ internal abstract partial class CustomComboFunctions
         //return only party member object (Don't want to illegally dash to Alliance or NPCs)
         isMultiHit = MH;
         partyMember = bestTarget.IsInParty() ? bestTarget : null;
-        distance = GetTargetDistance(bestTarget);
         return true;
     }
 
