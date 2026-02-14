@@ -162,24 +162,6 @@ internal abstract partial class CustomComboFunctions
         partyMember = bestTarget.IsInParty() ? bestTarget : null;
         distance = GetTargetDistance(bestTarget);
         return true;
-
-        // Flan: Saving this here for later in case I figure out how to handle no-object shared damage effects properly.
-        // Don't want to remember what I wrote here otherwise.
-        //else //Not in the object list, all players stack on a tower, not checking at all times.
-        //if (NoObjectStackDuties.Contains(Svc.ClientState.TerritoryType) &&
-        //    InBossEncounter())
-        //{
-        //    AoEEffects = VfxManager.TrackedEffects.FilterToNoTarget();
-        //    sharedVfx = AoEEffects.FirstOrDefault(IsMultiHitSharedDamageEffectPath);
-        //    if (sharedVfx.VfxID != 0) isMultiHit = true;
-        //    else sharedVfx = AoEEffects.FirstOrDefault(IsShareDamageEffectPath);
-
-        //    //Quick and dirty
-        //    distance = Vector3.Distance(LocalPlayer.Position, sharedVfx.Placement.Position);
-        //    return true;
-        //}
-
-        //return false;
     }
 
     /// <summary>
