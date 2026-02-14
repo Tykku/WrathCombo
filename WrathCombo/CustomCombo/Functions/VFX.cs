@@ -61,7 +61,7 @@ internal abstract partial class CustomComboFunctions
             { "vfx/lockon/eff/z6r2b3_8sec_lockon_c0a1", [] }, // Kam'lanaut Princely
             { "vfx/lockon/eff/m0742trg_b1t1", [] },           // M7 Abominable Blink
             { "vfx/lockon/eff/x6r9_tank_lockonae", [] },      // M9 Hardcore Big
-            { "vfx/lockon/eff/target_ae_s5f", [] },           // YorHa 3
+            { "vfx/lockon/eff/target_ae_s5f", [779] },        // YorHa 3 (also matches some spread markers)
             { "vfx/lockon/eff/sharelaser2tank", [] },         // Unknown source
         }.ToFrozenDictionary(Lowerer);
 
