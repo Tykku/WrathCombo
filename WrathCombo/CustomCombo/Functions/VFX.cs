@@ -22,9 +22,11 @@ internal abstract partial class CustomComboFunctions
     private static uint? CurrentCFC => Content.ContentFinderConditionRowId;
 
     /// <summary>
-    /// Determines whether a VFX path matches any entry for the current content.
+    /// Determines whether a VFX path matches any list of VFX paths.<br/>
+    /// Also checks that (if the path is restricted to certain duties) the current
+    /// duty matches one of those specified.
     /// </summary>
-    private static bool MatchesPathForContent(
+    private static bool CheckPath(
         FrozenDictionary<string, uint[]> paths, string vfxPath)
     {
         foreach (var entry in paths)
@@ -48,7 +50,7 @@ internal abstract partial class CustomComboFunctions
     /// <param name="vfx">The VFX to check the Path of</param>
     /// <returns>Bool if vfx path matches</returns>
     public static bool IsTankBusterEffectPath(VfxInfo vfx) =>
-        MatchesPathForContent(TankbusterPaths, vfx.Path);
+        CheckPath(TankbusterPaths, vfx.Path);
 
     private static readonly FrozenDictionary<string, uint[]> TankbusterPaths =
         new Dictionary<string, uint[]>
@@ -127,8 +129,7 @@ internal abstract partial class CustomComboFunctions
 
         // First: Get all valid multi-hit effects
         List<VfxInfo> multiHitEffects = vfxEffects
-            .Where(v => v.VfxID != 0 &&
-                        MatchesPathForContent(MHSharedDmgPaths, v.Path))
+            .Where(v => v.VfxID != 0 && CheckPath(MHSharedDmgPaths, v.Path))
             .ToList();
 
         // If any multi-hit found → use that list (priority), else look for regular shared damage effects
@@ -140,8 +141,7 @@ internal abstract partial class CustomComboFunctions
         }
         else
             AoEEffects = vfxEffects
-                .Where(v => v.VfxID != 0 &&
-                            MatchesPathForContent(SharedDmgPaths, v.Path))
+                .Where(v => v.VfxID != 0 && CheckPath(SharedDmgPaths, v.Path))
                 .ToList();
 
         if (AoEEffects.Count == 0)
