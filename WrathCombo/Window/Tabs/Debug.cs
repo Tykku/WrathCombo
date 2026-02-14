@@ -957,14 +957,14 @@ internal class Debug : ConfigWindow, IDisposable
         {
             ImGui.Indent();
 
-            CustomStyleText($"Shared Damage Effect On", CheckForSharedDamageEffect(out float distance, out bool multihit, out var poorsap) ? $"{poorsap?.Name} {distance:F1}y Multi-Hit {multihit}" : "");
+            CustomStyleText($"Shared Damage Effect On", CheckForSharedDamageEffect(out bool multihit, out var poorsap, 45) ? $"{poorsap?.Name} {GetTargetDistance(poorsap):F1}y Multi-Hit {multihit}" : "");
             CustomStyleText($"Tankbuster Detected On", $"{(TryGetTankBusterTarget(out var tankBusterTarget) ? tankBusterTarget?.Name : "")}");
 
             if (ImGui.CollapsingHeader("Friendly Target VFX"))
             {
                 ImGuiEx.TextWrapped($"Mainly to be used with ARR and real party members since they don't actually get added to the party for some reason.");
                 ImGui.Separator();
-                foreach (var obj in Svc.Objects.Where(x => x is IGameObject && x.IsFriendly()))
+                foreach (var obj in Svc.Objects.Where(x => x.IsFriendly()))
                 {
                     ImGui.Text($"{obj.Name} ({obj.GameObjectId})");
                     DrawVFXTree(obj);
@@ -972,7 +972,7 @@ internal class Debug : ConfigWindow, IDisposable
             }
             if (ImGui.CollapsingHeader("Hostile Target VFX"))
             {
-                foreach (var obj in Svc.Objects.Where(x => x is IGameObject && x.IsHostile()))
+                foreach (var obj in Svc.Objects.Where(x => x.IsHostile()))
                 {
                     ImGui.Text($"{obj.Name} ({obj.GameObjectId})");
                     DrawVFXTree(obj);
