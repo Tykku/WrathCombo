@@ -19,51 +19,78 @@ internal abstract partial class CustomComboFunctions
     private static readonly StringComparer Lowerer =
         StringComparer.FromComparison(Lower);
 
+    private static uint? CurrentCFC => Content.ContentFinderConditionRowId;
+
+    /// <summary>
+    /// Determines whether a VFX path matches any entry for the current content.
+    /// </summary>
+    private static bool MatchesPathForContent(
+        FrozenDictionary<string, uint[]> paths, string vfxPath)
+    {
+        foreach (var entry in paths)
+        {
+            if (!vfxPath.StartsWith(entry.Key, Lower))
+                continue;
+
+            if (entry.Value.Length == 0)
+                return true;
+
+            if (CurrentCFC is { } cfc && entry.Value.Contains(cfc))
+                return true;
+        }
+
+        return false;
+    }
+
     /// <summary>
     /// Text Comparison for Tank Buster VFX Paths
     /// </summary>
     /// <param name="vfx">The VFX to check the Path of</param>
     /// <returns>Bool if vfx path matches</returns>
-    public static bool IsTankBusterEffectPath(VfxInfo vfx)
-    {
-        return TankbusterPaths.Any(x => vfx.Path.StartsWith(x, Lower));
-    }
+    public static bool IsTankBusterEffectPath(VfxInfo vfx) =>
+        MatchesPathForContent(TankbusterPaths, vfx.Path);
 
-    private static readonly FrozenSet<string> TankbusterPaths = FrozenSet.ToFrozenSet<string>([
-        "vfx/lockon/eff/tank",                          // Generic TB check
-        "vfx/lockon/eff/x6fe_fan100_50_0t1",            // Necron Blue Shockwave - Cone Tankbuster
-        "vfx/common/eff/mon_eisyo03t",                  // M10 Deep Impact AoE TB (also generic?)
-        "vfx/lockon/eff/m0676trg_tw_d0t1p",             // M10 Hot Impact shared TB
-        "vfx/lockon/eff/m0676trg_tw_s6_d0t1p",          // M11 Raw Steel
-        "vfx/lockon/eff/z6r2b3_8sec_lockon_c0a1",       // Kam'lanaut Princely Blow
-        "vfx/lockon/eff/m0742trg_b1t1",                 // M7 Abominable Blink
-        "vfx/lockon/eff/x6r9_tank_lockonae",            // M9 Hardcore Large TB
-        "vfx/lockon/eff/target_ae_s5f",                 // The Tower at Paradigm's Breach
-        "vfx/lockon/eff/sharelaser2tank"                // Found in VFXEditor, unknown source
-    ], StringComparer.OrdinalIgnoreCase);
+    private static readonly FrozenDictionary<string, uint[]> TankbusterPaths =
+        new Dictionary<string, uint[]>
+        {
+            { "vfx/lockon/eff/tank", [] },                    // Generic TB check
+            { "vfx/lockon/eff/x6fe_fan100_50_0t1", [] },      // Necron Blue Shock
+            { "vfx/common/eff/mon_eisyo03t", [] },            // M10 Deep Impact
+            { "vfx/lockon/eff/m0676trg_tw_d0t1p", [] },       // M10 Hot Impact
+            { "vfx/lockon/eff/m0676trg_tw_s6_d0t1p", [] },    // M11 Raw Stee
+            { "vfx/lockon/eff/z6r2b3_8sec_lockon_c0a1", [] }, // Kam'lanaut Princely
+            { "vfx/lockon/eff/m0742trg_b1t1", [] },           // M7 Abominable Blink
+            { "vfx/lockon/eff/x6r9_tank_lockonae", [] },      // M9 Hardcore Big
+            { "vfx/lockon/eff/target_ae_s5f", [] },           // YorHa 3
+            { "vfx/lockon/eff/sharelaser2tank", [] },         // Unknown source
+        }.ToFrozenDictionary(Lowerer);
 
     // List of Multi-Hit Shared Damage Effect Paths
-    private static readonly FrozenSet<string> MHSharedDmgPaths = FrozenSet.ToFrozenSet([
-        "vfx/lockon/eff/com_share4a1",
-        "vfx/lockon/eff/com_share5a1",
-        "vfx/lockon/eff/com_share6m7s_1v",
-        "vfx/lockon/eff/com_share8s_0v",
-        "vfx/lockon/eff/share_laser_5s_c0w",            // Line
-        "vfx/lockon/eff/share_laser_8s_c0g",            // Line
-        "vfx/lockon/eff/m0922trg_t2w"                   // Some Lightning based effect, presume specific raid?
-    ], StringComparer.OrdinalIgnoreCase);
+    private static readonly FrozenDictionary<string, uint[]> MHSharedDmgPaths =
+        new Dictionary<string, uint[]>
+        {
+            { "vfx/lockon/eff/com_share4a1", [] },
+            { "vfx/lockon/eff/com_share5a1", [] },
+            { "vfx/lockon/eff/com_share6m7s_1v", [] },
+            { "vfx/lockon/eff/com_share8s_0v", [] },
+            { "vfx/lockon/eff/share_laser_5s_c0w", [] }, // Line
+            { "vfx/lockon/eff/share_laser_8s_c0g", [] }, // Line
+            { "vfx/lockon/eff/m0922trg_t2w", [] },       // Some Lightning thing
+        }.ToFrozenDictionary(Lowerer);
 
     // List of Regular Shared Damage Effect Paths
-    private static readonly FrozenSet<string> SharedDmgPaths = FrozenSet.ToFrozenSet([
-        "vfx/lockon/eff/coshare",
-        "vfx/lockon/eff/share_laser",
-        "vfx/lockon/eff/share_1",
-        "vfx/lockon/eff/com_share",
-        "vfx/lockon/eff/d1084_share_24m_s6_0k2",        // San d'Oria The Second Walk
-        "vfx/monster/gimmick2/eff/z3o7_b1_g06c0t",      // Puppet's Bunker, Superior Flight Unit.
-        "vfx/monster/gimmick3/eff/n4r1_b2_g06x",        // Vanguard, Protector
-        "vfx/monster/gimmick4/eff/z5r1_b4_g09c0c"       // Aglaia, Nald'thal
-    ], StringComparer.OrdinalIgnoreCase);
+    private static readonly FrozenDictionary<string, uint[]> SharedDmgPaths =
+        new Dictionary<string, uint[]>
+        {
+            { "vfx/lockon/eff/coshare", [] },
+            { "vfx/lockon/eff/share_laser", [] },
+            { "vfx/lockon/eff/share_1", [] },
+            { "vfx/lockon/eff/com_share", [] },
+            { "vfx/lockon/eff/d1084_share_24m_s6_0k2", [] },   // San d'Oria 2nd Walk
+            { "vfx/monster/gimmick2/eff/z3o7_b1_g06c0t", [] }, // YorHa 2, Flight
+            { "vfx/monster/gimmick3/eff/n4r1_b2_g06x", [] },   // Vanguard, Protector
+            { "vfx/monster/gimmick4/eff/z5r1_b4_g09c0c", [] }, // Aglaia, Nald'thal
+        }.ToFrozenDictionary(Lowerer);
 
     /* Associated logic removed. See commit: 844dcef4
     private static readonly FrozenSet<ushort> NoObjectStackDuties = FrozenSet
@@ -99,8 +126,10 @@ internal abstract partial class CustomComboFunctions
             return false;
 
         // First: Get all valid multi-hit effects
-        List<VfxInfo> multiHitEffects = [.. vfxEffects.Where(v =>
-            v.VfxID != 0 && MHSharedDmgPaths.Any(p => v.Path.StartsWith(p, Lower)))];
+        List<VfxInfo> multiHitEffects = vfxEffects
+            .Where(v => v.VfxID != 0 &&
+                        MatchesPathForContent(MHSharedDmgPaths, v.Path))
+            .ToList();
 
         // If any multi-hit found → use that list (priority), else look for regular shared damage effects
         List<VfxInfo> AoEEffects;
@@ -110,10 +139,10 @@ internal abstract partial class CustomComboFunctions
             MH = true;
         }
         else
-        {
-            AoEEffects = [.. vfxEffects.Where(v =>
-                v.VfxID != 0 && SharedDmgPaths.Any(p => v.Path.StartsWith(p, Lower)))];
-        }
+            AoEEffects = vfxEffects
+                .Where(v => v.VfxID != 0 &&
+                            MatchesPathForContent(SharedDmgPaths, v.Path))
+                .ToList();
 
         if (AoEEffects.Count == 0)
             return false;
