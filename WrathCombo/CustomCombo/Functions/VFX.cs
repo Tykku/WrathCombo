@@ -35,7 +35,7 @@ internal abstract partial class CustomComboFunctions
         "vfx/lockon/eff/z6r2b3_8sec_lockon_c0a1",       // Kam'lanaut Princely Blow
         "vfx/lockon/eff/m0742trg_b1t1",                 // M7 Abominable Blink
         "vfx/lockon/eff/x6r9_tank_lockonae",            // M9 Hardcore Large TB
-        //"vfx/lockon/eff/target_ae_s5f", // The Tower at Paradigm's Breach (Removed as it is clashing with several aoe effects)
+        "vfx/lockon/eff/target_ae_s5f",                 // The Tower at Paradigm's Breach
         "vfx/lockon/eff/sharelaser2tank"                // Found in VFXEditor, unknown source
     ], StringComparer.OrdinalIgnoreCase);
 
