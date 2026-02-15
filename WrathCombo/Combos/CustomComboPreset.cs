@@ -7211,8 +7211,10 @@ public enum Preset
     SMN_ST_Advanced_Combo_EgiSummons_Attacks = 17004,
 
     [ParentCombo(SMN_ST_Advanced_Combo_EgiSummons_Attacks)]
-    [CustomComboInfo("Use Ruin III instead of Emerald Ruin III when standing still between the levels of 54 and 72",
-        "Replaces Emerald Ruin III with Ruin III in the rotation when standing still and Ruin Mastery III is not active.",
+    [CustomComboInfo("Emerald Ruin III to Ruin III Option",
+        "Replaces Emerald Ruin III with Ruin III in the rotation when standing still and Ruin Mastery III is not active (54-72)." +
+        "\nIt is best, when using this, to set your Garuda to call last during those levels or it will not do other summons until you spend all garuda charges. " +
+        "\nIntended Mainly for 70 Ultimates where it would matter. (Not worth it for average use)",
         Job.SMN)]
     SMN_ST_Ruin3_Emerald_Ruin3 = 17067,
 
