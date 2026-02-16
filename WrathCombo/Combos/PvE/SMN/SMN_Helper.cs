@@ -594,9 +594,15 @@ internal partial class SMN
         
         bool IfritAstralFlowStrike = 
             flags.HasFlag(Combo.Simple) || (flags.HasFlag(Combo.ST) ? SMN_ST_Egi_AstralFlow[3] : SMN_AoE_Egi_AstralFlow[3]);
+
+        float simpleSTCrimsonCycloneMeleeDistance = 
+            SMN_ST_Simple_Combo_Gapclose == 0 ? 3 : 25; //simple st safe mode 3y otherwise 25y
+        float simpleAoECrimsonCycloneMeleeDistance = 
+            SMN_AoE_Simple_Combo_Gapclose == 0 ? 3 : 25; //simple aoe safe mode 3y otherwise 25y
         
         float crimsonCycloneMeleeDistance= 
-            flags.HasFlag(Combo.Simple) ? 3: 
+            flags.HasFlag(Combo.Simple) && flags.HasFlag(Combo.ST) ? simpleSTCrimsonCycloneMeleeDistance: 
+            flags.HasFlag(Combo.Simple) && flags.HasFlag(Combo.AoE) ? simpleAoECrimsonCycloneMeleeDistance: 
             flags.HasFlag(Combo.ST) ? SMN_ST_CrimsonCycloneMeleeDistance : SMN_AoE_CrimsonCycloneMeleeDistance;
         
         int swiftcastPhase = 
