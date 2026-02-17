@@ -627,10 +627,10 @@ public enum Preset
     [CustomComboInfo("Occult Resuscitation", "Adds Occult Resuscitation into the rotation.", Job.ADV)]
     Phantom_Freelancer_OccultResuscitation = 110001,
 
-    [OccultCrescent]
-    [ParentCombo(Phantom_Freelancer)]
-    [CustomComboInfo("Occult Treasuresight", "Adds Occult Treasuresight into the rotation.", Job.ADV)]
-    Phantom_Freelancer_OccultTreasuresight = 110002,
+    //[OccultCrescent]
+    //[ParentCombo(Phantom_Freelancer)]
+    //[CustomComboInfo("Occult Treasuresight", "Adds Occult Treasuresight into the rotation.", Job.ADV)]
+    //Phantom_Freelancer_OccultTreasuresight = 110002,
 
     [OccultCrescent(OccultCrescent.JobIDs.Knight)]
     [CustomComboInfo("Knight Job Actions", "Enable this to add Knight-specific actions into the rotation.", Job.ADV)]
@@ -699,10 +699,10 @@ public enum Preset
     [CustomComboInfo("Vigilance", "Adds Vigilance into the rotation.", Job.ADV)]
     Phantom_Thief_Vigilance = 110016,
 
-    [OccultCrescent]
-    [ParentCombo(Phantom_Thief)]
-    [CustomComboInfo("Trap Detection", "Adds Trap Detection into the rotation.", Job.ADV)]
-    Phantom_Thief_TrapDetection = 110017,
+    //[OccultCrescent]
+    //[ParentCombo(Phantom_Thief)]
+    //[CustomComboInfo("Trap Detection", "Adds Trap Detection into the rotation.", Job.ADV)]
+    //Phantom_Thief_TrapDetection = 110017,
 
     [OccultCrescent]
     [ParentCombo(Phantom_Thief)]
@@ -756,15 +756,15 @@ public enum Preset
     [CustomComboInfo("Phantom Aim", "Adds Phantom Aim into the rotation.", Job.ADV)]
     Phantom_Ranger_PhantomAim = 110023,
 
-    [OccultCrescent]
-    [ParentCombo(Phantom_Ranger)]
-    [CustomComboInfo("Occult Featherfoot", "Adds Occult Featherfoot into the rotation.", Job.ADV)]
-    Phantom_Ranger_OccultFeatherfoot = 110024,
+    //[OccultCrescent]
+    //[ParentCombo(Phantom_Ranger)]
+    //[CustomComboInfo("Occult Featherfoot", "Adds Occult Featherfoot into the rotation.", Job.ADV)]
+    //Phantom_Ranger_OccultFeatherfoot = 110024,
 
-    [OccultCrescent]
-    [ParentCombo(Phantom_Ranger)]
-    [CustomComboInfo("Occult Falcon", "Adds Occult Falcon into the rotation.", Job.ADV)]
-    Phantom_Ranger_OccultFalcon = 110025,
+    //[OccultCrescent]
+    //[ParentCombo(Phantom_Ranger)]
+    //[CustomComboInfo("Occult Falcon", "Adds Occult Falcon into the rotation.", Job.ADV)]
+    //Phantom_Ranger_OccultFalcon = 110025,
 
     [OccultCrescent]
     [ParentCombo(Phantom_Ranger)]
@@ -882,25 +882,25 @@ public enum Preset
     [CustomComboInfo("Starfall", "Adds Starfall into the rotation.", Job.ADV)]
     Phantom_Oracle_Starfall = 110048,
 
-    [OccultCrescent]
-    [ParentCombo(Phantom_Oracle)]
-    [CustomComboInfo("Recuperation", "Adds Recuperation into the rotation.", Job.ADV)]
-    Phantom_Oracle_Recuperation = 110049,
+    //[OccultCrescent]
+    //[ParentCombo(Phantom_Oracle)]
+    //[CustomComboInfo("Recuperation", "Adds Recuperation into the rotation.", Job.ADV)]
+    //Phantom_Oracle_Recuperation = 110049,
 
-    [OccultCrescent]
-    [ParentCombo(Phantom_Oracle)]
-    [CustomComboInfo("Phantom Doom", "Adds Phantom Doom into the rotation.", Job.ADV)]
-    Phantom_Oracle_PhantomDoom = 110050,
+    //[OccultCrescent]
+    //[ParentCombo(Phantom_Oracle)]
+    //[CustomComboInfo("Phantom Doom", "Adds Phantom Doom into the rotation.", Job.ADV)]
+    //Phantom_Oracle_PhantomDoom = 110050,
 
-    [OccultCrescent]
-    [ParentCombo(Phantom_Oracle)]
-    [CustomComboInfo("Phantom Rejuvenation", "Adds Phantom Rejuvenation into the rotation.", Job.ADV)]
-    Phantom_Oracle_PhantomRejuvenation = 110051,
+    //[OccultCrescent]
+    //[ParentCombo(Phantom_Oracle)]
+    //[CustomComboInfo("Phantom Rejuvenation", "Adds Phantom Rejuvenation into the rotation.", Job.ADV)]
+    //Phantom_Oracle_PhantomRejuvenation = 110051,
 
-    [OccultCrescent]
-    [ParentCombo(Phantom_Oracle)]
-    [CustomComboInfo("Invulnerability", "Adds Invulnerability into the rotation.", Job.ADV)]
-    Phantom_Oracle_Invulnerability = 110052,
+    //[OccultCrescent]
+    //[ParentCombo(Phantom_Oracle)]
+    //[CustomComboInfo("Invulnerability", "Adds Invulnerability into the rotation.", Job.ADV)]
+    //Phantom_Oracle_Invulnerability = 110052,
 
     [OccultCrescent(OccultCrescent.JobIDs.Cannoneer)]
     [CustomComboInfo("Cannoneer Job Actions", "Enable this to add Cannoneer-specific actions into the rotation.", Job.ADV)]
