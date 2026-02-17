@@ -402,8 +402,8 @@ internal partial class MNK
         IsOriginal(MasterfulBlitz) &&
         !JustUsed(RiddleOfFire, 5f) &&
         InActionRange(FiresReply) &&
-        (JustUsed(OriginalHook(Bootshine)) ||
-         JustUsed(DragonKick) ||
+        (JustUsed(OriginalHook(Bootshine), GCD) ||
+         JustUsed(DragonKick, GCD) ||
          GetStatusEffectRemainingTime(Buffs.FiresRumination) < GCD * 2 ||
          !InMeleeRange());
 
