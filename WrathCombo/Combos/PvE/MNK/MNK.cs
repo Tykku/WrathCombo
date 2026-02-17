@@ -187,14 +187,15 @@ internal partial class MNK : Melee
             // OGCDs
             if (CanWeave() && InCombat())
             {
-                if (IsEnabled(Preset.MNK_STUseBuffs) &&
-                    GetTargetHPPercent() > HPThresholdBuffs)
+                if (IsEnabled(Preset.MNK_STUseBuffs))
                 {
                     if (IsEnabled(Preset.MNK_STUseBrotherhood) &&
+                        GetTargetHPPercent() > HPThresholdBH &&
                         CanBrotherhood())
                         return Brotherhood;
 
                     if (IsEnabled(Preset.MNK_STUseROF) &&
+                        GetTargetHPPercent() > HPThresholdRoF &&
                         CanRoF())
                         return RiddleOfFire;
                 }
@@ -205,7 +206,7 @@ internal partial class MNK : Melee
 
                 if (IsEnabled(Preset.MNK_STUseBuffs) &&
                     IsEnabled(Preset.MNK_STUseROW) &&
-                    GetTargetHPPercent() > HPThresholdBuffs &&
+                    GetTargetHPPercent() > HPThresholdRoW &&
                     CanRoW())
                     return RiddleOfWind;
 

@@ -257,9 +257,17 @@ internal partial class MNK
     private static float GCD =>
         GetCooldown(OriginalHook(Bootshine)).CooldownTotal;
 
-    private static int HPThresholdBuffs =>
-        MNK_ST_BuffsBossOption == 1 ||
-        !InBossEncounter() ? MNK_ST_BuffsHPThreshold : 0;
+    private static int HPThresholdBH =>
+        MNK_ST_BHBossOption == 1 ||
+        !InBossEncounter() ? MNK_ST_BHHPThreshold : 0;
+
+    private static int HPThresholdRoF =>
+        MNK_ST_RoFBossOption == 1 ||
+        !InBossEncounter() ? MNK_ST_RoFHPThreshold : 0;
+
+    private static int HPThresholdRoW =>
+        MNK_ST_RoWBossOption == 1 ||
+        !InBossEncounter() ? MNK_ST_RoWHPThreshold : 0;
 
     private static bool CanMantra() =>
         ActionReady(Mantra) &&
@@ -400,7 +408,6 @@ internal partial class MNK
         !HasStatusEffect(Buffs.FormlessFist) &&
         !HasStatusEffect(Buffs.PerfectBalance) &&
         IsOriginal(MasterfulBlitz) &&
-        !JustUsed(RiddleOfFire, 5f) &&
         InActionRange(FiresReply) &&
         (JustUsed(OriginalHook(Bootshine), GCD) ||
          JustUsed(DragonKick, GCD) ||
