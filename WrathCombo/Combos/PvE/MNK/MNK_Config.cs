@@ -154,13 +154,13 @@ internal partial class MNK
 
                 case Preset.MNK_Basic_BeastChakras:
                     DrawHorizontalMultiChoice(MNK_BasicCombo,
-                        "Opo-opo Option", "Replace Bootshine / Leaping Opo with Dragon Kick.", 3, 0);
+                        "Opo-opo Option", "Replace Dragon Kick with Bootshine / Leaping Opo.", 3, 0);
 
                     DrawHorizontalMultiChoice(MNK_BasicCombo,
-                        "Raptor Option", "Replace True Strike/Rising Raptor with Twin Snakes.", 3, 1);
+                        "Raptor Option", "Replace Twin Snakes with True Strike/Rising Raptor.", 3, 1);
 
                     DrawHorizontalMultiChoice(MNK_BasicCombo,
-                        "Coeurl Option", "Replace Snap Punch/Pouncing Coeurl with Demolish.", 3, 2);
+                        "Coeurl Option", "Replace Demolish with Snap Punch/Pouncing Coeurl.", 3, 2);
                     break;
 
                   #endregion
