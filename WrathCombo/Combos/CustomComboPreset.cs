@@ -1717,11 +1717,35 @@ public enum Preset
     [CustomComboInfo("Aetherial Manipulation Feature", "Replaces Aetherial Manipulation with Between the Lines when you are out of active Ley Lines and standing still.", Job.BLM)]
     BLM_Aetherial_Manipulation = 2055,
     
+    [CustomComboInfo("Toshi Tweaks", "Collection of tweaks by Toshi.", Job.BLM)]
+    BLM_Toshi_Tweaks = 2072,
+    
+    [ParentCombo(BLM_Toshi_Tweaks)]
+    [ReplaceSkill(BLM.Fire4)]
+    [ConflictingCombos(BLM_Fire4)]
+    [CustomComboInfo("Toshi's Fire 4 Tweaks", "Collection of Fire 4 Tweaks by Toshi.", Job.BLM)]
+    BLM_Toshi_Fire4 = 2073,
+
+    [ParentCombo(BLM_Toshi_Tweaks)]
+    [ReplaceSkill(BLM.Blizzard4)]
+    [ConflictingCombos(BLM_Blizzard4toDespair)]
+    [CustomComboInfo("Toshi's Blizzard 4 Tweaks", "Collection of Blizzard 4 Tweaks by Toshi.", Job.BLM)]
+    BLM_Toshi_Blizzard4 = 2074,
+    
+    [ParentCombo(BLM_Toshi_Tweaks)]
+    [ReplaceSkill(BLM.Blizzard3)]
+    [CustomComboInfo("Toshi's Blizzard 3 Tweaks", "Collection of Blizzard 3 Tweaks by Toshi.", Job.BLM)]
+    BLM_Toshi_Blizzard3 = 2075,
+    
+    [ParentCombo(BLM_Toshi_Tweaks)]
+    [ReplaceSkill(BLM.Xenoglossy)]
+    [CustomComboInfo("Toshi's Xenoglossy  Tweaks", "Collection of Xenoglossy Tweaks by Toshi.", Job.BLM)]
+    BLM_Toshi_Xeno = 2076,
     #endregion
 
     // Last value ST = 2117
     //Last Value AoE = 2213
-    //Last Value misc = 2071
+    //Last Value misc = 2076
 
     #endregion
 
