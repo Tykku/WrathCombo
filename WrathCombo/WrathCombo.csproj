@@ -72,7 +72,7 @@
 
     <!-- Dalamud Packaging -->
     <ItemGroup>
-        <PackageReference Include="DalamudPackager" Version="14.0.1" />
+        <PackageReference Include="DalamudPackager" Version="14.0.2" />
     </ItemGroup>
 
     <!-- Dependencies -->
