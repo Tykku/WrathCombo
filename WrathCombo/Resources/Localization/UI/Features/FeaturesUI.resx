@@ -175,4 +175,16 @@ affecting this action will Conflict and may cause issues.</value>
   <data name="Warning_EquipJobStone" xml:space="preserve">
     <value>Equip your job stone to re-unlock features.</value>
   </data>
+  <data name="Button_Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="Checkbox_searchDescriptionText" xml:space="preserve">
+    <value>Descriptions</value>
+  </data>
+  <data name="Search_searchHintText" xml:space="preserve">
+    <value>Option name, ID, Internal Name, Description, etc</value>
+  </data>
+  <data name="Label_searchLabelText" xml:space="preserve">
+    <value>Search:</value>
+  </data>
 </root>

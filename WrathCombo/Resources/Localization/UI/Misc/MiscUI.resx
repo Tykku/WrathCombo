@@ -150,4 +150,10 @@
   <data name="Variant Dungeons" xml:space="preserve">
     <value>Variant Dungeons</value>
   </data>
+  <data name="Or" xml:space="preserve">
+    <value>Or</value>
+  </data>
+  <data name="Raise" xml:space="preserve">
+    <value>Raise</value>
+  </data>
 </root>

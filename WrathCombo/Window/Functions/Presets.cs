@@ -355,9 +355,9 @@ internal class Presets : ConfigWindow
 
     public static void DrawRetargetedSymbolForSettingsPage() =>
         DrawRetargetedAttribute(
-            firstLine: SettingsUI.Hover_Retargetting1,
-            secondLine: SettingsUI.Hover_Retargetting2,
-            thirdLine: SettingsUI.Hover_Retargetting3);
+            firstLine: SettingsUI.HelpText_Retargetting1,
+            secondLine: SettingsUI.HelpText_Retargetting2,
+            thirdLine: SettingsUI.HelpText_Retargetting3);
 
 
     private static void DrawRetargetedAttribute
