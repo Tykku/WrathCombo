@@ -4206,7 +4206,12 @@ public enum Preset
     #endregion
 
     #region Basic Combo
-
+    
+    [ReplaceSkill(MNK.SnapPunch, MNK.PouncingCoeurl)]
+    [BasicCombo]
+    [CustomComboInfo("Basic Combo", "Replace Snap Punch with its combo chain.", Job.MNK)]
+    MNK_ST_BasicCombo = 9046,
+    
     [CustomComboInfo("Beast Chakra Handlers", "Merge single target GCDs which share the same beast chakra", Job.MNK)]
     MNK_Basic_BeastChakras = 9019,
 
@@ -4246,7 +4251,7 @@ public enum Preset
     
     #endregion
 
-    // Last value = 9045
+    // Last value = 9046
     // Hidden = 9300
 
     #endregion
@@ -8009,6 +8014,16 @@ public enum Preset
     [ReplaceSkill(WAR.NascentFlash)]
     [CustomComboInfo("Nascent Flash Feature", "Replace Nascent Flash with Raw intuition when level synced below 76.", Job.WAR)]
     WAR_NascentFlash = 18017,
+    
+    [ParentCombo(WAR_NascentFlash)]
+    [CustomComboInfo("Include MouseOver Target", "If mousing over an ally in the UI, will Retarget Nascent Flash onto them.", Job.WAR)]
+    [Retargeted]
+    WAR_NascentFlash_MO = 18154,
+
+    [ParentCombo(WAR_NascentFlash)]
+    [CustomComboInfo("Include Target's Target", "If your target's target is not you or in your party, will Retarget Nascent Flash onto them.", Job.WAR)]
+    [Retargeted]
+    WAR_NascentFlash_TT = 18155,
 
     [ReplaceSkill(WAR.RawIntuition, WAR.Bloodwhetting)]
     [CustomComboInfo("Raw Intuition to Nascent Flash Retargeting Feature", "If available, will replace the Raw Intuition/Bloodwhetting with Nascent Flash if you are hard targeting an ally.", Job.WAR)]
@@ -8040,7 +8055,7 @@ public enum Preset
     WAR_RetargetHolmgang = 18130,
 
     #endregion
-    // Last value = 18153
+    // Last value = 18155
     #endregion
 
     #region WHITE MAGE
@@ -8607,6 +8622,7 @@ public enum Preset
 
     #region ASTROLOGIAN
 
+    [AutoAction(false, false)]
     [PvPCustomCombo]
     [ReplaceSkill(ASTPvP.Malefic)]
     [CustomComboInfo("Burst Mode", "Turns Fall Malefic into an all-in-one damage button.", Job.AST)]
@@ -8674,6 +8690,7 @@ public enum Preset
 
     #region BLACK MAGE
 
+    [AutoAction(false, false)]
     [PvPCustomCombo]
     [ReplaceSkill(BLMPvP.Fire, BLMPvP.Blizzard)]
     [CustomComboInfo("Burst Mode", "Turns Fire into an all-in-one button.\n- Uses Blizzard spells while moving (One Button Mode only).\n- Will use Paradox when appropriate.", Job.BLM)]
@@ -8721,6 +8738,7 @@ public enum Preset
 
     #region BARD
 
+    [AutoAction(false, false)]
     [PvPCustomCombo]
     [ReplaceSkill(BRDPvP.PowerfulShot)]
     [CustomComboInfo("Burst Mode", "Turns Powerful Shot into an all-in-one damage button.", Job.BRD)]
@@ -8771,6 +8789,7 @@ public enum Preset
 
     #region DANCER
 
+    [AutoAction(false, false)]
     [PvPCustomCombo]
     [ReplaceSkill(DNCPvP.Fountain)]
     [CustomComboInfo("Burst Mode", "Turns Fountain Combo into an all-in-one damage button.", Job.DNC)]
@@ -8812,6 +8831,7 @@ public enum Preset
 
     #region DARK KNIGHT
 
+    [AutoAction(false, false)]
     [PvPCustomCombo]
     [ReplaceSkill(DRKPvP.Souleater)]
     [CustomComboInfo("Burst Mode", "Turns Souleater Combo into an all-in-one damage button.", Job.DRK)]
@@ -8870,6 +8890,7 @@ public enum Preset
 
     #region DRAGOON
 
+    [AutoAction(false, false)]
     [PvPCustomCombo]
     [ReplaceSkill(DRGPvP.Drakesbane)]
     [CustomComboInfo("Burst Mode", "Turns Drakesbane Combo into an all-in-one damage button.", Job.DRG)]
@@ -8933,6 +8954,7 @@ public enum Preset
 
     #region Burst Mode
 
+    [AutoAction(false, false)]
     [PvPCustomCombo]
     [ReplaceSkill(GNBPvP.SolidBarrel)]
     [CustomComboInfo("Burst Mode", "Turns Solid Barrel Combo into an all-in-one damage button.", Job.GNB)]
@@ -8991,6 +9013,7 @@ public enum Preset
 
     #region MACHINIST
 
+    [AutoAction(false, false)]
     [PvPCustomCombo]
     [ReplaceSkill(MCHPvP.BlastCharge)]
     [CustomComboInfo("Burst Mode", "Turns Blast Charge into an all-in-one damage button.", Job.MCH)]
@@ -9059,6 +9082,7 @@ public enum Preset
 
     #region MONK
 
+    [AutoAction(false, false)]
     [PvPCustomCombo]
     [ReplaceSkill(MNKPvP.PhantomRush)]
     [CustomComboInfo("Burst Mode", "Turns Phantom Rush Combo into an all-in-one damage button.", Job.MNK)]
@@ -9109,6 +9133,7 @@ public enum Preset
 
     #region NINJA
 
+    [AutoAction(false, false)]
     [PvPCustomCombo]
     [ReplaceSkill(NINPvP.AeolianEdge)]
     [CustomComboInfo("Burst Mode", "Turns Aeolian Edge Combo into an all-in-one damage button.", Job.NIN)]
@@ -9217,6 +9242,7 @@ public enum Preset
 
     #region PALADIN
 
+    [AutoAction(false, false)]
     [PvPCustomCombo]
     [ReplaceSkill(PLDPvP.RoyalAuthority)]
     [CustomComboInfo("Burst Mode", "Turns Royal Authority Combo into an all-in-one damage button.", Job.PLD)]
@@ -9274,6 +9300,7 @@ public enum Preset
 
     #region PICTOMANCER
 
+    [AutoAction(false, false)]
     [PvPCustomCombo]
     [ReplaceSkill(PCTPvP.FireInRed)]
     [CustomComboInfo("Burst Mode", "Turns Fire in Red into an all-in-one damage button.", Job.PCT)]
@@ -9343,6 +9370,7 @@ public enum Preset
 
     #region REAPER
 
+    [AutoAction(false, false)]
     [PvPCustomCombo]
     [ReplaceSkill(RPRPvP.Slice)]
     [CustomComboInfo("Burst Mode",
@@ -9417,6 +9445,7 @@ public enum Preset
 
     #region RED MAGE
 
+    [AutoAction(false, false)]
     [PvPCustomCombo]
     [ReplaceSkill(RDMPvP.Jolt3)]
     [CustomComboInfo("Burst Mode", "Turns Jolt III into an all-in-one button.\n- Will not attempt to cast Jolt III while moving by replacing it with Savage Blade.", Job.RDM)]
@@ -9468,6 +9497,7 @@ public enum Preset
 
     #region SAGE
 
+    [AutoAction(false, false)]
     [PvPCustomCombo]
     [ReplaceSkill(SGEPvP.Dosis)]
     [CustomComboInfo("Burst Mode", "Turns Dosis III into an all-in-one damage button.", Job.SGE)]
@@ -9527,6 +9557,7 @@ public enum Preset
 
     #region SAMURAI
 
+    [AutoAction(false, false)]
     [PvPCustomCombo]
     [ReplaceSkill(SAMPvP.Yukikaze)]
     [CustomComboInfo("Burst Mode",
@@ -9581,6 +9612,7 @@ public enum Preset
 
     #region SCHOLAR
 
+    [AutoAction(false, false)]
     [PvPCustomCombo]
     [ReplaceSkill(SCHPvP.Broil)]
     [CustomComboInfo("Burst Mode", "Turns Broil IV into all-in-one damage button.", Job.SCH)]
@@ -9631,6 +9663,7 @@ public enum Preset
 
     #region SUMMONER
 
+    [AutoAction(false, false)]
     [PvPCustomCombo]
     [ReplaceSkill(SMNPvP.Ruin3)]
     [CustomComboInfo("Burst Mode",
@@ -9691,6 +9724,7 @@ public enum Preset
 
     #region VIPER
 
+    [AutoAction(false, false)]
     [PvPCustomCombo]
     [ReplaceSkill(VPRPvP.SteelFangs)]
     [CustomComboInfo("Burst Mode", "Turns Dual Fang Combo into an all-in-one button.", Job.VPR)]
@@ -9744,6 +9778,7 @@ public enum Preset
 
     #region WARRIOR
 
+    [AutoAction(false, false)]
     [PvPCustomCombo]
     [ReplaceSkill(WARPvP.HeavySwing)]
     [CustomComboInfo("Burst Mode", "Turns Heavy Swing into an all-in-one damage button.", Job.WAR)]
@@ -9797,6 +9832,7 @@ public enum Preset
 
     #region WHITE MAGE
 
+    [AutoAction(false, false)]
     [PvPCustomCombo]
     [ReplaceSkill(WHMPvP.Glare)]
     [CustomComboInfo("Burst Mode", "Turns Glare into an all-in-one damage button.", Job.WHM)]
