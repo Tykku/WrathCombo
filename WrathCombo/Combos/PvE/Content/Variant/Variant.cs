@@ -1,6 +1,6 @@
-﻿using ECommons.DalamudServices;
-using ECommons.GameHelpers;
+﻿using ECommons.GameHelpers;
 using WrathCombo.Attributes;
+using WrathCombo.Data;
 using static WrathCombo.CustomComboNS.Functions.CustomComboFunctions;
 
 namespace WrathCombo.Combos.PvE;
@@ -8,13 +8,7 @@ namespace WrathCombo.Combos.PvE;
 // Static utility class for shared logic
 internal static partial class Variant
 {
-    /// <summary>
-    ///     Checks if the player is in a variant dungeon.<br/><br/>
-    ///     <c>1069</c> - The Sil'dihn Subterrane<br/>
-    ///     <c>1137</c> - Mount Rokkon<br/>
-    ///     <c>1176</c> - Aloalo Island
-    /// </summary>
-    public static bool IsInVariantDungeon => Svc.ClientState.TerritoryType is (1069 or 1137 or 1176);
+    public static bool IsInVariantDungeon => ContentCheck.IsInVariantDungeon;
 
     public static bool TryGetVariantAction(ref uint actionID)
     {
