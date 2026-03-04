@@ -1,7 +1,10 @@
-﻿using ECommons.GameHelpers;
+﻿using ECommons.DalamudServices;
+using ECommons.GameHelpers;
 using WrathCombo.Attributes;
 using WrathCombo.Data;
 using static WrathCombo.CustomComboNS.Functions.CustomComboFunctions;
+using EZ = ECommons.Throttlers.EzThrottler;
+using TS = System.TimeSpan;
 
 namespace WrathCombo.Combos.PvE;
 
@@ -9,6 +12,18 @@ namespace WrathCombo.Combos.PvE;
 internal static partial class Variant
 {
     public static bool IsInVariantDungeon => ContentCheck.IsInVariantDungeon;
+
+    private static ushort TerritoryID
+    {
+        get
+        {
+            if (!EZ.Throttle("variantTerritory", TS.FromSeconds(4)))
+                return field;
+
+            field = Svc.ClientState.TerritoryType;
+            return field;
+        }
+    }
 
     public static bool TryGetVariantAction(ref uint actionID)
     {
