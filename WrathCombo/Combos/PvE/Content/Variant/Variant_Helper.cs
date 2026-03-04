@@ -16,7 +16,7 @@ namespace WrathCombo.Combos.PvE
         {
             1069 => 29729,
             1137 or 1176 => 33862,
-            1315 => 46939,
+            1315 or 1316 => 46939,
             var _ => 0
         };
 
@@ -24,7 +24,7 @@ namespace WrathCombo.Combos.PvE
         {
             1069 => 29732,
             1137 or 1176 => 33863,
-            1315 => 46940,
+            1315 or 1316 => 46940,
             var _ => 0
         };
 
@@ -32,7 +32,7 @@ namespace WrathCombo.Combos.PvE
         {
             1069 => 29733,
             1137 or 1176 => 33864,
-            1315 => 46941,
+            1315 or 1316 => 46941,
             var _ => 0
         };
 
