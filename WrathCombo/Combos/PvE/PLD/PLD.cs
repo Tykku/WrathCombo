@@ -576,7 +576,7 @@ internal partial class PLD : Tank
 
                 if (ComboAction is RiotBlade && LevelChecked(RageOfHalone))
                 {
-                    return HasDivineMight
+                    return HasDivineMight && HasDivineMagicMP && PLD_HolySpirit_Standalone
                         ? HolySpirit
                         : OriginalHook(RageOfHalone);
                 }
@@ -596,7 +596,7 @@ internal partial class PLD : Tank
                 return actionID;
 
             if (ComboAction is TotalEclipse && ComboTimer > 0 && LevelChecked(Prominence))
-                return HasDivineMight
+                return HasDivineMight && HasDivineMagicMP && PLD_HolyCircle_Standalone
                     ? HolyCircle
                     : OriginalHook(Prominence);
 
