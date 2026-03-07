@@ -8558,7 +8558,7 @@ public enum Preset
     [ParentCombo(MNKPvP_Burst)]
     [PvPCustomCombo]
     [JobInfo(Job.MNK)]
-    MNKPvP_Burst_FlintsReply = 119003,
+    MNKPvP_Burst_FiresReply = 119003,
 
     [ParentCombo(MNKPvP_Burst)]
     [PvPCustomCombo]

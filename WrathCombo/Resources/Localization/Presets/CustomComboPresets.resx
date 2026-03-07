@@ -10496,11 +10496,11 @@ Keep Honing Dance bound to another key if you want to end early.</value>
   <data name="MNKPvP_Burst_RiddleOfEarth_Desc" xml:space="preserve">
     <value>Adds Riddle of Earth and Earth's Reply to Burst Mode when in combat.</value>
   </data>
-  <data name="MNKPvP_Burst_FlintsReply_Name" xml:space="preserve">
-    <value>Flints Reply Option</value>
+  <data name="MNKPvP_Burst_FiresReply_Name" xml:space="preserve">
+    <value>Fires Reply Option</value>
   </data>
-  <data name="MNKPvP_Burst_FlintsReply_Desc" xml:space="preserve">
-    <value>Adds Flints Reply to Burst Mode.</value>
+  <data name="MNKPvP_Burst_FiresReply_Desc" xml:space="preserve">
+    <value>Adds Fires Reply to Burst Mode.</value>
   </data>
   <data name="MNKPvP_Burst_RisingPhoenix_Name" xml:space="preserve">
     <value>Rising Phoenix Option</value>

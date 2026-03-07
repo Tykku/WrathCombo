@@ -13539,20 +13539,20 @@ namespace WrathCombo.Resources.Localization.Presets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adds Flints Reply to Burst Mode..
+        ///   Looks up a localized string similar to Adds Fires Reply to Burst Mode..
         /// </summary>
-        internal static string MNKPvP_Burst_FlintsReply_Desc {
+        internal static string MNKPvP_Burst_FiresReply_Desc {
             get {
-                return ResourceManager.GetString("MNKPvP_Burst_FlintsReply_Desc", resourceCulture);
+                return ResourceManager.GetString("MNKPvP_Burst_FiresReply_Desc", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Flints Reply Option.
+        ///   Looks up a localized string similar to Fires Reply Option.
         /// </summary>
-        internal static string MNKPvP_Burst_FlintsReply_Name {
+        internal static string MNKPvP_Burst_FiresReply_Name {
             get {
-                return ResourceManager.GetString("MNKPvP_Burst_FlintsReply_Name", resourceCulture);
+                return ResourceManager.GetString("MNKPvP_Burst_FiresReply_Name", resourceCulture);
             }
         }
         
