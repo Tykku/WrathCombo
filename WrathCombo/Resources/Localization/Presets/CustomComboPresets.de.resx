@@ -233,4 +233,22 @@ Wird nur in speziellen Inhalten empfohlen.</value>
   <data name="ALL_Melee_TrueNorth_Desc" xml:space="preserve">
     <value>Verhindert die Nutzung von Neuausrichten, wenn die Fähigkeit schon aktiv ist. Ersetzt Neuausrichten mit Wilde Klinge.</value>
   </data>
+  <data name="ALL_Ranged_Menu_Name" xml:space="preserve">
+    <value>Übergreifende physischer-Fernkämpfer Eigenschaften</value>
+  </data>
+  <data name="ALL_Ranged_Menu_Desc" xml:space="preserve">
+    <value>Einstellungen und Eigenschaften, welche geteilte Rollenaktionen für alle physische Fernkampf-Angreifer beinhalten.</value>
+  </data>
+  <data name="ALL_Ranged_Mitigation_Name" xml:space="preserve">
+    <value>Physische Fernkampf-Angreifer: Schutz vor doppelter Mitigation</value>
+  </data>
+  <data name="ALL_Ranged_Mitigation_Desc" xml:space="preserve">
+    <value>Verhindert die Nutzung von Taktiker/Troubador/Schildsamba falls das Ziel schon einen der genannten Effekte aktiv hat. Die Fähigkeit wird mit Wilder Klinge ersetzt.</value>
+  </data>
+  <data name="ALL_Ranged_Interrupt_Name" xml:space="preserve">
+    <value>Physische Fernkampf-Angreifer: Unterbrechen Eigenschaft</value>
+  </data>
+  <data name="ALL_Ranged_Interrupt_Desc" xml:space="preserve">
+    <value>Ersetzt Stolperschuss mit Haarscharfer Schuss, falls das Ziel unterbrochen werden kann.</value>
+  </data>
 </root>
