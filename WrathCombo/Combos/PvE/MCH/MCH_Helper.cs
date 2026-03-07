@@ -19,7 +19,7 @@ internal partial class MCH
             case false when
                 (ActionReady(Hypercharge) || HasStatusEffect(Buffs.Hypercharged)) &&
                 !IsComboExpiring(6) && !IsOverheated &&
-                LevelChecked(Heatblast) &&
+                ActionReady(Heatblast) &&
                 DrillCD && AirAnchorCD && ChainSawCD &&
                 !HasStatusEffect(Buffs.ExcavatorReady) &&
                 !HasStatusEffect(Buffs.FullMetalMachinist) &&
@@ -31,12 +31,10 @@ internal partial class MCH
                  !LevelChecked(Wildfire)):
 
             case true when
-                (ActionReady(Hypercharge) || HasStatusEffect(Buffs.Hypercharged)) &&
-                LevelChecked(AutoCrossbow) &&
-                (LevelChecked(BioBlaster) && GetCooldownRemainingTime(BioBlaster) > 10 ||
-                 !LevelChecked(BioBlaster) || IsNotEnabled(Preset.MCH_AoE_Adv_Tools)) &&
-                (LevelChecked(Flamethrower) && GetCooldownRemainingTime(Flamethrower) > 10 ||
-                 !LevelChecked(Flamethrower) || IsNotEnabled(Preset.MCH_AoE_Adv_FlameThrower)):
+                (ActionReady(Hypercharge) || HasStatusEffect(Buffs.Hypercharged)) && 
+                !IsOverheated && ActionReady(Heatblast) &&
+                (BioBlasterCD && ChainSawCD || IsNotEnabled(Preset.MCH_AoE_Adv_Tools)) &&
+                (FlamethrowerCD || IsNotEnabled(Preset.MCH_AoE_Adv_FlameThrower)):
                 return true;
         }
 
@@ -223,7 +221,7 @@ internal partial class MCH
     #region Tools
 
     private static bool DrillCD =>
-        !LevelChecked(Drill) ||
+        !ActionReady(Drill) ||
         !TraitLevelChecked(Traits.EnhancedMultiWeapon) && GetCooldownRemainingTime(Drill) >= 9 ||
         TraitLevelChecked(Traits.EnhancedMultiWeapon) && GetRemainingCharges(Drill) < GetMaxCharges(Drill) && GetCooldownChargeRemainingTime(Drill) >= 9;
 
@@ -234,6 +232,15 @@ internal partial class MCH
     private static bool ChainSawCD =>
         !LevelChecked(Chainsaw) ||
         LevelChecked(Chainsaw) && GetCooldownRemainingTime(Chainsaw) >= 9;
+
+    private static bool BioBlasterCD =>
+        !LevelChecked(BioBlaster) ||
+        !TraitLevelChecked(Traits.EnhancedMultiWeapon) && GetCooldownRemainingTime(BioBlaster) >= 9 ||
+        TraitLevelChecked(Traits.EnhancedMultiWeapon) && GetRemainingCharges(BioBlaster) < GetMaxCharges(BioBlaster) && GetCooldownChargeRemainingTime(BioBlaster) >= 9;
+
+    private static bool FlamethrowerCD =>
+        !ActionReady(Flamethrower) ||
+        LevelChecked(Flamethrower) && GetCooldownRemainingTime(Flamethrower) >= 9;
 
     private static bool CanUseTools(ref uint actionID)
     {
