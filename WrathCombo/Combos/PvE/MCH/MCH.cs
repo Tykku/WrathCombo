@@ -155,8 +155,12 @@ internal partial class MCH : PhysicalRanged
                 if (OvercapRicochet)
                     return OriginalHook(Ricochet);
 
-                //AutoCrossbow, Gauss, Rico
-                if (IsOverheated && !HasWeaved() &&
+                // Hypercharge
+                if (CanHypercharge(true))
+                    return Hypercharge;
+
+                //Gauss, Rico during HC
+                if (!HasWeaved() &&
                     (JustUsed(OriginalHook(AutoCrossbow), 1f) ||
                      JustUsed(OriginalHook(Heatblast), 1f)))
                 {
@@ -187,10 +191,6 @@ internal partial class MCH : PhysicalRanged
                          HasStatusEffect(Buffs.ExcavatorReady) && LevelChecked(Excavator)))
                         return Reassemble;
 
-                    // Hypercharge
-                    if (CanHypercharge(true))
-                        return Hypercharge;
-
                     //gauss and ricochet outside HC
                     if (CanGaussRound &&
                         (!JustUsed(OriginalHook(GaussRound), 2.5f) || !ActionReady(Ricochet)))
@@ -200,12 +200,12 @@ internal partial class MCH : PhysicalRanged
                         !JustUsed(OriginalHook(Ricochet), 2.5f))
                         return OriginalHook(Ricochet);
 
+                    if (Role.CanSecondWind(40))
+                        return Role.SecondWind;
+
                     // Interrupt
                     if (Role.CanHeadGraze(true))
                         return Role.HeadGraze;
-
-                    if (Role.CanSecondWind(40))
-                        return Role.SecondWind;
                 }
             }
 

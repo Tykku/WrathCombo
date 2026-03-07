@@ -19,7 +19,7 @@ internal partial class MCH
             case false when
                 (ActionReady(Hypercharge) || HasStatusEffect(Buffs.Hypercharged)) &&
                 !IsComboExpiring(6) && !IsOverheated &&
-                ActionReady(Heatblast) &&
+                LevelChecked(Heatblast) &&
                 DrillCD && AirAnchorCD && ChainSawCD &&
                 !HasStatusEffect(Buffs.ExcavatorReady) &&
                 !HasStatusEffect(Buffs.FullMetalMachinist) &&
@@ -31,10 +31,9 @@ internal partial class MCH
                  !LevelChecked(Wildfire)):
 
             case true when
-                (ActionReady(Hypercharge) || HasStatusEffect(Buffs.Hypercharged)) && 
-                !IsOverheated && ActionReady(Heatblast) &&
-                (BioBlasterCD && ChainSawCD || IsNotEnabled(Preset.MCH_AoE_Adv_Tools)) &&
-                (FlamethrowerCD || IsNotEnabled(Preset.MCH_AoE_Adv_FlameThrower)):
+                (ActionReady(Hypercharge) || HasStatusEffect(Buffs.Hypercharged)) &&
+                !IsOverheated && LevelChecked(Heatblast) &&
+                BioBlasterCD && ChainSawCD && FlamethrowerCD:
                 return true;
         }
 
@@ -226,15 +225,15 @@ internal partial class MCH
         TraitLevelChecked(Traits.EnhancedMultiWeapon) && GetRemainingCharges(Drill) < GetMaxCharges(Drill) && GetCooldownChargeRemainingTime(Drill) >= 9;
 
     private static bool AirAnchorCD =>
-        !LevelChecked(OriginalHook(AirAnchor)) ||
-        LevelChecked(OriginalHook(AirAnchor)) && GetCooldownRemainingTime(OriginalHook(AirAnchor)) >= 9;
+        !LevelChecked(OriginalHook(HotShot)) ||
+        LevelChecked(OriginalHook(HotShot)) && GetCooldownRemainingTime(OriginalHook(HotShot)) >= 9;
 
     private static bool ChainSawCD =>
         !LevelChecked(Chainsaw) ||
         LevelChecked(Chainsaw) && GetCooldownRemainingTime(Chainsaw) >= 9;
 
     private static bool BioBlasterCD =>
-        !LevelChecked(BioBlaster) ||
+        !ActionReady(BioBlaster) ||
         !TraitLevelChecked(Traits.EnhancedMultiWeapon) && GetCooldownRemainingTime(BioBlaster) >= 9 ||
         TraitLevelChecked(Traits.EnhancedMultiWeapon) && GetRemainingCharges(BioBlaster) < GetMaxCharges(BioBlaster) && GetCooldownChargeRemainingTime(BioBlaster) >= 9;
 
