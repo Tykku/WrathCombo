@@ -479,7 +479,7 @@ internal partial class MCH : PhysicalRanged
                         (LevelChecked(Scattergun) ||
                          GetCooldownRemainingTime(AirAnchor) < GCD && LevelChecked(AirAnchor) ||
                          GetCooldownRemainingTime(Chainsaw) < GCD && LevelChecked(Chainsaw) ||
-                         GetCooldownRemainingTime(OriginalHook(Chainsaw)) < GCD && LevelChecked(Excavator)))
+                         HasStatusEffect(Buffs.ExcavatorReady) && LevelChecked(Excavator)))
                         return Reassemble;
 
                     // Hypercharge
