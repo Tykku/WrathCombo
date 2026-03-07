@@ -1,4 +1,5 @@
-﻿using ECommons.DalamudServices;
+﻿using Dalamud.Game;
+using ECommons.DalamudServices;
 using ECommons.ExcelServices;
 using System.Collections.Concurrent;
 using System.Collections.Frozen;
@@ -53,6 +54,8 @@ namespace WrathCombo.Window
         // Cache the game culture.
         private static CultureInfo _gameCulture = Svc.PluginInterface.UiLanguage.ToCulture();
 
+        public static ClientLanguage LangFromCulture = Svc.ClientState.ClientLanguage;
+
         // Expose TextInfo for formatting purposes (Job Names)
         public static TextInfo TextFormatting => _gameCulture.TextInfo;
 
@@ -68,6 +71,18 @@ namespace WrathCombo.Window
             MiscUI.Culture = _gameCulture;
             SettingsUI.Culture = _gameCulture;
             SettingsCfgUI.Culture = _gameCulture;
+
+            LangFromCulture = _gameCulture.TwoLetterISOLanguageName switch
+            {
+                "en" => ClientLanguage.English,
+                "de" => ClientLanguage.German,
+                "ja" => ClientLanguage.Japanese,
+                "fr" => ClientLanguage.French,
+                "zh-Hans" or "zh-Hant" => (ClientLanguage)4,
+                _ => LangFromCulture
+            };
+
+            Svc.Log.Debug($"LangFromCulture {LangFromCulture}");
 
             // Invalidate the caches safely
             lock (PresetCacheLock)
