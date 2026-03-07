@@ -445,13 +445,18 @@ internal partial class MCH : PhysicalRanged
                     GetTargetHPPercent() <= MCH_AoE_QueenOverDriveHPThreshold)
                     return OriginalHook(RookOverdrive);
 
-                //AutoCrossbow, Gauss, Rico
+                // Hypercharge
+                if (IsEnabled(Preset.MCH_AoE_Adv_Hypercharge) &&
+                    GetTargetHPPercent() > MCH_AoE_HyperchargeHPThreshold &&
+                    CanHypercharge(true))
+                    return Hypercharge;
+
+                //Gauss & Rico outside HC
                 if (IsEnabled(Preset.MCH_AoE_Adv_GaussRicochet) &&
-                    IsOverheated &&
                     (JustUsed(OriginalHook(AutoCrossbow), 1f) ||
                      JustUsed(OriginalHook(Heatblast), 1f)) && !HasWeaved())
                 {
-                    if (CanGaussRound || !LevelChecked(Ricochet))
+                    if (CanGaussRound || !ActionReady(Ricochet))
                         return OriginalHook(GaussRound);
 
                     if (CanRicochet)
@@ -483,12 +488,6 @@ internal partial class MCH : PhysicalRanged
                          HasStatusEffect(Buffs.ExcavatorReady) && LevelChecked(Excavator)))
                         return Reassemble;
 
-                    // Hypercharge
-                    if (IsEnabled(Preset.MCH_AoE_Adv_Hypercharge) &&
-                        GetTargetHPPercent() > MCH_AoE_HyperchargeHPThreshold &&
-                        CanHypercharge(true))
-                        return Hypercharge;
-
                     //gauss and ricochet outside HC
                     if (IsEnabled(Preset.MCH_AoE_Adv_GaussRicochet))
                     {
@@ -499,13 +498,13 @@ internal partial class MCH : PhysicalRanged
                             return OriginalHook(Ricochet);
                     }
 
-                    // Interrupt
-                    if (Role.CanHeadGraze(Preset.MCH_AoE_Adv_Interrupt))
-                        return Role.HeadGraze;
-
                     if (IsEnabled(Preset.MCH_AoE_Adv_SecondWind) &&
                         Role.CanSecondWind(MCH_AoE_SecondWindHPThreshold))
                         return Role.SecondWind;
+
+                    // Interrupt
+                    if (Role.CanHeadGraze(Preset.MCH_AoE_Adv_Interrupt))
+                        return Role.HeadGraze;
                 }
             }
 
