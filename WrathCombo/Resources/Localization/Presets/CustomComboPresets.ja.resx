@@ -117,10 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ALL_Tank_Menu_Name" xml:space="preserve">
-    <value>Globa Tankuru Featuruu uwu</value>
-  </data>
-  <data name="ALL_Tank_Menu_Desc" xml:space="preserve">
-    <value>Something with tanks I can't speak uwu</value>
-  </data>
 </root>
