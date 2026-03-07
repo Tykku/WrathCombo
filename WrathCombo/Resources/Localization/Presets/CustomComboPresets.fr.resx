@@ -243,4 +243,7 @@ Utile pour trouver une cible si l'un des joueurs n'est pas en vie.</value>
   <data name="ALL_Ranged_Mitigation_Name" xml:space="preserve">
     <value>DPS Physique à distance : protection contre la double mitigation</value>
   </data>
+  <data name="ALL_Ranged_Mitigation_Desc" xml:space="preserve">
+    <value>Empêche l'utilisation de Tacticien/Troubadour/Samba protectrice quand la cible a déjà l'un de ces trois effets, remplaçant l'action par un sort grisé.</value>
+  </data>
 </root>
