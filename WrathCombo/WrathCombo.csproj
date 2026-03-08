@@ -5,7 +5,7 @@
     <PropertyGroup>
         <Authors>Team Wrath</Authors>
         <Company>-</Company>
-        <Version>1.0.3.19</Version>
+        <Version>1.0.3.20</Version>
         <!-- This is the version that will be used when pushing to the repo.-->
         <Description>XIVCombo for very lazy players</Description>
         <Copyright>Copyleft attick 2021 thanks attick UwU</Copyright>
@@ -22,7 +22,7 @@
         <EnableWindowsTargeting>true</EnableWindowsTargeting>
         <NoWarn>CS1591</NoWarn>
         <LangVersion>preview</LangVersion>
-        
+
         <Platforms>x64</Platforms>
         <Nullable>enable</Nullable>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -130,6 +130,73 @@
             <Private>false</Private>
         </Reference>
 
+    </ItemGroup>
+    <ItemGroup>
+      <Compile Update="Resources\Localization\Presets\CustomComboPresets.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>CustomComboPresets.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Localization\UI\AutoRotation\AutoRotationUI.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>AutoRotationUI.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Localization\UI\Features\FeaturesUI.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>FeaturesUI.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Localization\UI\MainWindow\MainWindowUI.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>MainWindowUI.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Localization\UI\Misc\MiscUI.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>MiscUI.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Localization\UI\Settings\SettingsCfgUI.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>SettingsCfgUI.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Localization\UI\Settings\SettingsUI.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>SettingsUI.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+    <ItemGroup>
+      <EmbeddedResource Update="Resources\Localization\Presets\CustomComboPresets.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>CustomComboPresets.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Localization\UI\AutoRotation\AutoRotationUI.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>AutoRotationUI.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Localization\UI\Features\FeaturesUI.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>FeaturesUI.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Localization\UI\MainWindow\MainWindowUI.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>MainWindowUI.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Localization\UI\Misc\MiscUI.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>MiscUI.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Localization\UI\Settings\SettingsCfgUI.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>SettingsCfgUI.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Localization\UI\Settings\SettingsUI.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>SettingsUI.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
     </ItemGroup>
 
     <!-- Release Manifest -->
