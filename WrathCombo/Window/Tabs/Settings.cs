@@ -58,6 +58,7 @@ internal class Settings : ConfigWindow
             if (field.Count > 0)
                 return field;
 
+            Setting.CachedSettings.Clear();
               return typeof(Configuration)
              .GetFields()
              .Select(rawSetting =>

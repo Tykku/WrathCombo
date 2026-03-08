@@ -47,15 +47,7 @@ public class SettingParent(string parentSettingFieldName) : Attribute
 
 [AttributeUsage(AttributeTargets.Field)]
 public class Setting(
-    string name,
-    string helpMark,
-    string recommendedValue,
-    string defaultValue,
-    string unitLabel = "DEFAULT",
-    Setting.Type type = Setting.Type.Toggle,
-    string extraHelpMark = "DEFAULT",
-    string warningMark = "DEFAULT",
-    string extraText = "DEFAULT",
+    Setting.Type type,
     float minFloat = float.NaN,
     float maxFloat = float.NaN,
     int minInt = int.MinValue,
@@ -73,19 +65,15 @@ public class Setting(
         Stack,
     }
     
-    internal string Name { get; } = name;
-    internal string HelpMark { get; } = helpMark;
-    internal string RecommendedValue { get; } = recommendedValue;
-    internal string DefaultValue { get; } = defaultValue;
-    internal string? UnitLabel { get; } =
-        unitLabel == "DEFAULT" ? null : unitLabel;
+    internal string Name { get; }
+    internal string HelpMark { get; } 
+    internal string RecommendedValue { get; } 
+    internal string DefaultValue { get; } 
+    internal string? UnitLabel { get; }
     internal Type TheType { get; } = type;
-    internal string? ExtraHelpMark { get; } = 
-        extraHelpMark == "DEFAULT" ? null : extraHelpMark;
-    internal string? WarningMark { get; } =
-        warningMark == "DEFAULT" ? null : warningMark;
-    internal string? ExtraText { get; } = 
-        extraText == "DEFAULT" ? null : extraText;
+    internal string? ExtraHelpMark { get; }
+    internal string? WarningMark { get; }
+    internal string? ExtraText { get; }
     internal float? MinFloat { get; } = 
         float.IsNaN(minFloat) ? null : minFloat;
     internal float? MaxFloat { get; } = 

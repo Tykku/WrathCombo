@@ -179,7 +179,7 @@ public class Setting
     #region References
 
     private readonly        FieldInfo                   _field;
-    private static readonly Dictionary<string, Setting> CachedSettings = [];
+    public static readonly Dictionary<string, Setting>  CachedSettings = [];
 
     private static Type ConfigurationType => typeof(Configuration);
     private static Configuration ConfigurationValues => Service.Configuration;
