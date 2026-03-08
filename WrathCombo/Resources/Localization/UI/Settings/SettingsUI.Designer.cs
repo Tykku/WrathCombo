@@ -80,11 +80,8 @@ namespace WrathCombo.Resources.Localization.UI.Settings {
         
         /// <summary>
         ///   Looks up a localized string similar to Will generate a debug file on your desktop.
-        ///U
-        ///
-        ///seful to give developers to help troubleshoot issues.
-        ///T
-        ///he same as using the following command: /wrath debug.
+        ///Useful to give developers to help troubleshoot issues.
+        ///The same as using the following command: /wrath debug.
         /// </summary>
         internal static string HelpText_CreateDebug {
             get {
