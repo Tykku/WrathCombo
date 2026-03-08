@@ -50,24 +50,34 @@ internal class Settings : ConfigWindow
 
     #region Loading Settings
 
-    private static readonly List<Setting> SettingsList = typeof(Configuration)
-        .GetFields()
-        .Select(rawSetting =>
+    public static List<Setting> SettingsList
+    {
+        get
         {
-            try
-            {
-                return new Setting(rawSetting.Name);
-            }
-            catch (Exception e)
-            {
-                // Skip raw settings that fail to construct.
-                PluginLog.Verbose(e.Message);
-                return null;
-            }
-        })
-        .Where(setting => setting != null)
-        .Select(s => s!)
-        .ToList();
+            field ??= new();
+            if (field.Count > 0)
+                return field;
+
+              return typeof(Configuration)
+             .GetFields()
+             .Select(rawSetting =>
+             {
+                 try
+                 {
+                     return new Setting(rawSetting.Name);
+                 }
+                 catch (Exception e)
+                 {
+                     // Skip raw settings that fail to construct.
+                     PluginLog.Verbose(e.Message);
+                     return null;
+                 }
+             })
+             .Where(setting => setting != null)
+             .Select(s => s!)
+             .ToList();
+        }
+    }
 
     public static void SanitiseSettings()
     {
@@ -114,7 +124,7 @@ internal class Settings : ConfigWindow
 
             var settings = SettingsList;
             const StringComparison lower =
-                StringComparison.InvariantCultureIgnoreCase;
+                StringComparison.CurrentCultureIgnoreCase;
             if (IsSearching)
                 settings = settings
                     .Where(s =>
