@@ -2930,6 +2930,96 @@ namespace WrathCombo.Resources.Localization.Presets {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Collection of Blizzard 3 Tweaks by Toshi..
+        /// </summary>
+        internal static string BLM_Toshi_Blizzard3_Desc {
+            get {
+                return ResourceManager.GetString("BLM_Toshi_Blizzard3_Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toshi&apos;s Blizzard 3 Tweaks.
+        /// </summary>
+        internal static string BLM_Toshi_Blizzard3_Name {
+            get {
+                return ResourceManager.GetString("BLM_Toshi_Blizzard3_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Collection of Blizzard 4 Tweaks by Toshi..
+        /// </summary>
+        internal static string BLM_Toshi_Blizzard4_Desc {
+            get {
+                return ResourceManager.GetString("BLM_Toshi_Blizzard4_Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toshi&apos;s Blizzard 4 Tweaks.
+        /// </summary>
+        internal static string BLM_Toshi_Blizzard4_Name {
+            get {
+                return ResourceManager.GetString("BLM_Toshi_Blizzard4_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Collection of Fire 4 Tweaks by Toshi..
+        /// </summary>
+        internal static string BLM_Toshi_Fire4_Desc {
+            get {
+                return ResourceManager.GetString("BLM_Toshi_Fire4_Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toshi&apos;s Fire 4 Tweaks.
+        /// </summary>
+        internal static string BLM_Toshi_Fire4_Name {
+            get {
+                return ResourceManager.GetString("BLM_Toshi_Fire4_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Collection of tweaks by Toshi..
+        /// </summary>
+        internal static string BLM_Toshi_Tweaks_Desc {
+            get {
+                return ResourceManager.GetString("BLM_Toshi_Tweaks_Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toshi Tweaks.
+        /// </summary>
+        internal static string BLM_Toshi_Tweaks_Name {
+            get {
+                return ResourceManager.GetString("BLM_Toshi_Tweaks_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Collection of Xenoglossy Tweaks by Toshi..
+        /// </summary>
+        internal static string BLM_Toshi_Xeno_Desc {
+            get {
+                return ResourceManager.GetString("BLM_Toshi_Xeno_Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toshi&apos;s Xenoglossy  Tweaks.
+        /// </summary>
+        internal static string BLM_Toshi_Xeno_Name {
+            get {
+                return ResourceManager.GetString("BLM_Toshi_Xeno_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Replaces Triplecast with Savage Blade when you already have triplecast active..
         /// </summary>
         internal static string BLM_TriplecastProtection_Desc {

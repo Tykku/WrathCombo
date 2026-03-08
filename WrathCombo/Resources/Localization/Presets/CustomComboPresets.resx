@@ -11314,4 +11314,34 @@ Only uses Crimson Cyclone when in melee range.</value>
   <data name="WAR_NascentFlash_TT_Desc" xml:space="preserve">
     <value>If your target's target is not you or in your party, will Retarget Nascent Flash onto them.</value>
   </data>
+  <data name="BLM_Toshi_Tweaks_Name" xml:space="preserve">
+    <value>Toshi Tweaks</value>
+  </data>
+  <data name="BLM_Toshi_Tweaks_Desc" xml:space="preserve">
+    <value>Collection of tweaks by Toshi.</value>
+  </data>
+  <data name="BLM_Toshi_Fire4_Desc" xml:space="preserve">
+    <value>Collection of Fire 4 Tweaks by Toshi.</value>
+  </data>
+  <data name="BLM_Toshi_Fire4_Name" xml:space="preserve">
+    <value>Toshi's Fire 4 Tweaks</value>
+  </data>
+  <data name="BLM_Toshi_Blizzard4_Desc" xml:space="preserve">
+    <value>Collection of Blizzard 4 Tweaks by Toshi.</value>
+  </data>
+  <data name="BLM_Toshi_Blizzard4_Name" xml:space="preserve">
+    <value>Toshi's Blizzard 4 Tweaks</value>
+  </data>
+  <data name="BLM_Toshi_Blizzard3_Desc" xml:space="preserve">
+    <value>Collection of Blizzard 3 Tweaks by Toshi.</value>
+  </data>
+  <data name="BLM_Toshi_Blizzard3_Name" xml:space="preserve">
+    <value>Toshi's Blizzard 3 Tweaks</value>
+  </data>
+  <data name="BLM_Toshi_Xeno_Name" xml:space="preserve">
+    <value>Toshi's Xenoglossy  Tweaks</value>
+  </data>
+  <data name="BLM_Toshi_Xeno_Desc" xml:space="preserve">
+    <value>Collection of Xenoglossy Tweaks by Toshi.</value>
+  </data>
 </root>
