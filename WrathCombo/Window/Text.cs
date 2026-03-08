@@ -1,6 +1,7 @@
 ﻿using Dalamud.Game;
 using ECommons.DalamudServices;
 using ECommons.ExcelServices;
+using Lumina.Excel.Sheets;
 using System.Collections.Concurrent;
 using System.Collections.Frozen;
 using System.Collections.Generic;
@@ -31,6 +32,15 @@ namespace WrathCombo.Window
 
         // Cache for localized strings with format parameters that read game data
         private static readonly ConcurrentDictionary<string, string> FormatCache = new();
+
+        // Cache for action names, keyed by ID
+        private static readonly ConcurrentDictionary<uint, string> ActionNameCache = new();
+
+        // Cache for trait names, keyed by ID
+        private static readonly ConcurrentDictionary<uint, string> TraitNameCache = new();
+
+        // Cache for status names, keyed by ID
+        private static readonly ConcurrentDictionary<uint, string> StatusNameCache = new();
 
         // For Reference: Dalamud supports these languages, and Ottercorp (CN)
         // https://github.com/goatcorp/Dalamud/blob/master/Dalamud/Localization.cs#L21
@@ -91,6 +101,9 @@ namespace WrathCombo.Window
             }
             JobNameCache.Clear();
             FormatCache.Clear();
+            ActionNameCache.Clear();
+            TraitNameCache.Clear();
+            StatusNameCache.Clear();
         }
 
         /// <summary>
@@ -171,6 +184,19 @@ namespace WrathCombo.Window
 
                 return new LocalizedJobInfo(name, shortName);
             }
+        }
+
+        internal static class ActionAndStatusLocalization
+        {
+            public static string GetActionName(uint actionId)
+                => ActionNameCache.GetOrAdd(actionId, Svc.Data.GetExcelSheet<Action>(LangFromCulture).GetRowOrDefault(actionId)?.Name.ToString() ?? "Unknown Action");
+
+            public static string GetTraitName(uint traitId)
+                => TraitNameCache.GetOrAdd(traitId, Svc.Data.GetExcelSheet<Trait>(LangFromCulture).GetRowOrDefault(traitId)?.Name.ToString() ?? "Unknown Trait");
+
+            public static string GetStatusName(uint statusId)
+                => StatusNameCache.GetOrAdd(statusId, Svc.Data.GetExcelSheet<Status>(LangFromCulture).GetRowOrDefault(statusId)?.Name.ToString() ?? "Unknown Status");
+
         }
 
         /// <summary>
