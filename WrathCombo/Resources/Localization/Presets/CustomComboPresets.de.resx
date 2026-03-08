@@ -908,7 +908,7 @@ Benötigt Okkulten Trank im Inventar.</value>
 Benötigt Okkultes Elixir im Inventar.</value>
   </data>
   <data name="Phantom_Bard_Name" xml:space="preserve">
-    <value>Barde</value>
+    <value>Barde Job Aktionen</value>
   </data>
   <data name="Phantom_Bard_Desc" xml:space="preserve">
     <value>Aktivieren Sie dies, um Barde-spezifische Aktionen in die Rotation einzufügen.</value>
@@ -918,5 +918,248 @@ Benötigt Okkultes Elixir im Inventar.</value>
   </data>
   <data name="Phantom_Bard_MightyMarch_Desc" xml:space="preserve">
     <value>Fügt Kraft-Coral in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_Bard_OffensiveAria_Name" xml:space="preserve">
+    <value>Angriffs-Arie</value>
+  </data>
+  <data name="Phantom_Bard_OffensiveAria_Desc" xml:space="preserve">
+    <value>Fügt Angriffs-Arie in die Rotation hinzu.</value>
+  </data>
+  <data name="Phantom_Bard_RomeosBallad_Name" xml:space="preserve">
+    <value>Liebliche Klänge</value>
+  </data>
+  <data name="Phantom_Bard_RomeosBallad_Desc" xml:space="preserve">
+    <value>Fügt Liebliche Klänge in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_Bard_HerosRime_Name" xml:space="preserve">
+    <value>Helden-Hymus</value>
+  </data>
+  <data name="Phantom_Bard_HerosRime_Desc" xml:space="preserve">
+    <value>Fügt Helden-Hymus in die Rotation hinzu.</value>
+  </data>
+  <data name="Phantom_Oracle_Name" xml:space="preserve">
+    <value>Seher Job Aktionen</value>
+  </data>
+  <data name="Phantom_Oracle_Desc" xml:space="preserve">
+    <value>Aktivieren Sie dies, um Seher-spezifische Aktionen in die Rotation einzufügen.</value>
+  </data>
+  <data name="Phantom_Oracle_Predict_Name" xml:space="preserve">
+    <value>Prophezeien</value>
+  </data>
+  <data name="Phantom_Oracle_Predict_Desc" xml:space="preserve">
+    <value>Fügt Prophezeien in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_Oracle_PhantomJudgment_Name" xml:space="preserve">
+    <value>Das Jüngste Gericht</value>
+  </data>
+  <data name="Phantom_Oracle_PhantomJudgment_Desc" xml:space="preserve">
+    <value>Fügt Das Jüngste Gericht in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_Oracle_Cleansing_Name" xml:space="preserve">
+    <value>Kosmischer Kollaps</value>
+  </data>
+  <data name="Phantom_Oracle_Cleansing_Desc" xml:space="preserve">
+    <value>Fügt Kosmischer Kollaps in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_Oracle_Blessing_Name" xml:space="preserve">
+    <value>Segen</value>
+  </data>
+  <data name="Phantom_Oracle_Blessing_Desc" xml:space="preserve">
+    <value>Fügt Segen in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_Oracle_Starfall_Name" xml:space="preserve">
+    <value>Sternenregen</value>
+  </data>
+  <data name="Phantom_Oracle_Starfall_Desc" xml:space="preserve">
+    <value>Fügt Sternenregen in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_Cannoneer_Name" xml:space="preserve">
+    <value>Grenadier Job Aktionen</value>
+  </data>
+  <data name="Phantom_Cannoneer_Desc" xml:space="preserve">
+    <value>Aktivieren Sie dies, um Grenadier-spezifische Aktionen in die Rotation einzufügen.</value>
+  </data>
+  <data name="Phantom_Cannoneer_PhantomFire_Name" xml:space="preserve">
+    <value>Bombardieren</value>
+  </data>
+  <data name="Phantom_Cannoneer_PhantomFire_Desc" xml:space="preserve">
+    <value>Fügt Bombardieren in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_Cannoneer_HolyCannon_Name" xml:space="preserve">
+    <value>Heilige Kanone</value>
+  </data>
+  <data name="Phantom_Cannoneer_HolyCannon_Desc" xml:space="preserve">
+    <value>Fügt Heilige Kanone in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_Cannoneer_DarkCannon_Name" xml:space="preserve">
+    <value>Dunkle Kanone</value>
+  </data>
+  <data name="Phantom_Cannoneer_DarkCannon_Desc" xml:space="preserve">
+    <value>Fügt Dunkle Kanone in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_Cannoneer_ShockCannon_Name" xml:space="preserve">
+    <value>Schockkanone</value>
+  </data>
+  <data name="Phantom_Cannoneer_ShockCannon_Desc" xml:space="preserve">
+    <value>Fügt Schockkanone in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_Cannoneer_SilverCannon_Name" xml:space="preserve">
+    <value>Silberkanone</value>
+  </data>
+  <data name="Phantom_Cannoneer_SilverCannon_Desc" xml:space="preserve">
+    <value>Fügt Silberkanone in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_Geomancer_Name" xml:space="preserve">
+    <value>Geomant Job Aktionen</value>
+  </data>
+  <data name="Phantom_Geomancer_Desc" xml:space="preserve">
+    <value>Aktivieren Sie dies, um Geomant-spezifische Aktionen in die Rotation einzufügen.</value>
+  </data>
+  <data name="Phantom_Geomancer_BattleBell_Name" xml:space="preserve">
+    <value>Kampfesglocke</value>
+  </data>
+  <data name="Phantom_Geomancer_BattleBell_Desc" xml:space="preserve">
+    <value>Fügt Kampfesglocke in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_Geomancer_RingingRespite_Name" xml:space="preserve">
+    <value>Ruheglocke</value>
+  </data>
+  <data name="Phantom_Geomancer_RingingRespite_Desc" xml:space="preserve">
+    <value>Fügt Ruheglocke in die Rotation hinzu.</value>
+  </data>
+  <data name="Phantom_Geomancer_Suspend_Name" xml:space="preserve">
+    <value>Schweben</value>
+  </data>
+  <data name="Phantom_Geomancer_Suspend_Desc" xml:space="preserve">
+    <value>Fügt Schweben in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_Geomancer_Weather_Name" xml:space="preserve">
+    <value>Wetter</value>
+  </data>
+  <data name="Phantom_Geomancer_Weather_Desc" xml:space="preserve">
+    <value>Fügt Wetter in die Rotation hinzu.</value>
+  </data>
+  <data name="Phantom_Geomancer_Sunbath_Name" xml:space="preserve">
+    <value>Sonnenbrand</value>
+  </data>
+  <data name="Phantom_Geomancer_Sunbath_Desc" xml:space="preserve">
+    <value>Fügt Sonnenbrand in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_Geomancer_CloudyCaress_Name" xml:space="preserve">
+    <value>Abendkühle</value>
+  </data>
+  <data name="Phantom_Geomancer_CloudyCaress_Desc" xml:space="preserve">
+    <value>Fügt Abendkühle in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_Geomancer_BlessedRain_Name" xml:space="preserve">
+    <value>Segenschauer</value>
+  </data>
+  <data name="Phantom_Geomancer_BlessedRain_Desc" xml:space="preserve">
+    <value>Fügt Segenschauer in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_Geomancer_MistyMirage_Name" xml:space="preserve">
+    <value>Trugnebel</value>
+  </data>
+  <data name="Phantom_Geomancer_MistyMirage_Desc" xml:space="preserve">
+    <value>Fügt Trugnebel in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_Geomancer_HastyMirage_Name" xml:space="preserve">
+    <value>Trughast</value>
+  </data>
+  <data name="Phantom_Geomancer_HastyMirage_Desc" xml:space="preserve">
+    <value>Fügt Trughast in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_Geomancer_AetherialGain_Name" xml:space="preserve">
+    <value>Ätherernte</value>
+  </data>
+  <data name="Phantom_Geomancer_AetherialGain_Desc" xml:space="preserve">
+    <value>Fügt Ätherernte in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_Dancer_Name" xml:space="preserve">
+    <value>Tänzer Job Aktionen</value>
+  </data>
+  <data name="Phantom_Dancer_Desc" xml:space="preserve">
+    <value>Aktivieren Sie dies, um Tänzer -spezifische Aktionen in die Rotation einzufügen.</value>
+  </data>
+  <data name="Phantom_Dancer_Dance_Name" xml:space="preserve">
+    <value>Tanzen</value>
+  </data>
+  <data name="Phantom_Dancer_Dance_Desc" xml:space="preserve">
+    <value>Fügt Tanzen und seine folgenden Attacken in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_Dancer_QuickStep_Name" xml:space="preserve">
+    <value>Schneller Schritt</value>
+  </data>
+  <data name="Phantom_Dancer_QuickStep_Desc" xml:space="preserve">
+    <value>Fügt Schneller Schritt in die Rotation ein, wenn ein Gegner dich anvisiert.</value>
+  </data>
+  <data name="Phantom_Dancer_Mesmerize_Name" xml:space="preserve">
+    <value>Betörung</value>
+  </data>
+  <data name="Phantom_Dancer_Mesmerize_Desc" xml:space="preserve">
+    <value>Fügt Betörung in die Rotation hinzu.</value>
+  </data>
+  <data name="Phantom_MysticKnight_Name" xml:space="preserve">
+    <value>Paladin</value>
+  </data>
+  <data name="Phantom_MysticKnight_Desc" xml:space="preserve">
+    <value>Aktivieren Sie dies, um Paladin-spezifische Aktionen in die Rotation einzufügen.</value>
+  </data>
+  <data name="Phantom_MysticKnight_SunderingSpellblade_Name" xml:space="preserve">
+    <value>Magieklingen-Versteinerung</value>
+  </data>
+  <data name="Phantom_MysticKnight_SunderingSpellblade_Desc" xml:space="preserve">
+    <value>Fügt Magieklingen-Versteinerung in die Rotation hinzu.</value>
+  </data>
+  <data name="Phantom_MysticKnight_HolySpellblade_Name" xml:space="preserve">
+    <value>Magieklingen-Sanctus</value>
+  </data>
+  <data name="Phantom_MysticKnight_HolySpellblade_Desc" xml:space="preserve">
+    <value>Fügt Magieklingen-Sanctus in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_MysticKnight_BlazingSpellblade_Name" xml:space="preserve">
+    <value>Magieklingen-Flare</value>
+  </data>
+  <data name="Phantom_MysticKnight_BlazingSpellblade_Desc" xml:space="preserve">
+    <value>Fügt Magieklingen-Flare in die Rotation ein, wenn der Effekt nicht vorhanden ist.</value>
+  </data>
+  <data name="Phantom_MysticKnight_MagicShell_Name" xml:space="preserve">
+    <value>Magie-Barriere</value>
+  </data>
+  <data name="Phantom_MysticKnight_MagicShell_Desc" xml:space="preserve">
+    <value>Fügt Magie-Barriere in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_Gladiator_Name" xml:space="preserve">
+    <value>Gladiator</value>
+  </data>
+  <data name="Phantom_Gladiator_Desc" xml:space="preserve">
+    <value>Aktivieren Sie dies, um Gladiator-spezifische Aktionen in die Rotation einzufügen.</value>
+  </data>
+  <data name="Phantom_Gladiator_Finisher_Name" xml:space="preserve">
+    <value>Todesstoß</value>
+  </data>
+  <data name="Phantom_Gladiator_Finisher_Desc" xml:space="preserve">
+    <value>Fügt Todesstoß in die Rotation hinzu.</value>
+  </data>
+  <data name="Phantom_Gladiator_Defend_Name" xml:space="preserve">
+    <value>Abwehr</value>
+  </data>
+  <data name="Phantom_Gladiator_Defend_Desc" xml:space="preserve">
+    <value>Fügt Abwehr in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_Gladiator_LongReach_Name" xml:space="preserve">
+    <value>Große Reichweite</value>
+  </data>
+  <data name="Phantom_Gladiator_LongReach_Desc" xml:space="preserve">
+    <value>Fügt Große Reichweite in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_Gladiator_BladeBlitz_Name" xml:space="preserve">
+    <value>Klingenblitz</value>
+  </data>
+  <data name="Phantom_Gladiator_BladeBlitz_Desc" xml:space="preserve">
+    <value>Fügt Klingenblitz in die Rotation ein.</value>
+  </data>
+  <data name="AST_ST_Simple_DPS_Name" xml:space="preserve">
+    <value>Einfacher DPS Modus - Einzelziel</value>
   </data>
 </root>
