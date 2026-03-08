@@ -408,6 +408,7 @@ internal partial class MNK
         !HasStatusEffect(Buffs.FormlessFist) &&
         IsOriginal(MasterfulBlitz) &&
         InActionRange(FiresReply) &&
+        !JustUsed(RiddleOfFire, GCD * 2) &&
         (JustUsed(OriginalHook(Bootshine), GCD * 1.5f) ||
          JustUsed(DragonKick, GCD * 1.5f) ||
          GetStatusEffectRemainingTime(Buffs.FiresRumination) < GCD * 2 ||
