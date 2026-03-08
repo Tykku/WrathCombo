@@ -167,13 +167,13 @@
   <data name="Bozja_Tank_Name" xml:space="preserve"><value>ボズヤタンク</value></data>
   <data name="Bozja_Tank_Desc" xml:space="preserve"><value>タンク向けのボズヤアクションをローテーションに追加します。</value></data>
   <data name="Bozja_Tank_LostFocus_Name" xml:space="preserve"><value>ロスト・チャージ</value></data>
-  <data name="Bozja_Tank_LostFocus_Desc" xml:space="preserve"><value>可能な場合はロスト・チャージを使用します。</value></data>
+  <data name="Bozja_Tank_LostFocus_Desc" xml:space="preserve"><value>ロスト・チャージが使用可能なときに使用します。</value></data>
   <data name="Bozja_Tank_LostFontOfPower_Name" xml:space="preserve"><value>ロスト・パワーフォント</value></data>
   <data name="Bozja_Tank_LostFontOfPower_Desc" xml:space="preserve"><value>利用可能な場合は、ロスト・パワーフォント を使用してください。</value></data>
   <data name="Bozja_Tank_LostSlash_Name" xml:space="preserve"><value>ロスト・スラッシュ</value></data>
-  <data name="Bozja_Tank_LostSlash_Desc" xml:space="preserve"><value>利用可能な場合はロスト・スラッシュを使用します。</value></data>
+  <data name="Bozja_Tank_LostSlash_Desc" xml:space="preserve"><value>ロスト・スラッシュが使用可能なときに使用します。</value></data>
   <data name="Bozja_Tank_LostDeath_Name" xml:space="preserve"><value>ロスト・デス</value></data>
-  <data name="Bozja_Tank_LostDeath_Desc" xml:space="preserve"><value>利用可能な場合はロスト・デスを使用してください。</value></data>
+  <data name="Bozja_Tank_LostDeath_Desc" xml:space="preserve"><value>ロスト・デスが使用可能なときに使用します。</value></data>
   <data name="Bozja_Tank_BannerOfNobleEnds_Name" xml:space="preserve"><value>背水の境地</value></data>
   <data name="Bozja_Tank_BannerOfNobleEnds_Desc" xml:space="preserve"><value>利用可能な場合は、背水の境地 を使用してください。</value></data>
   <data name="Bozja_Tank_PowerEnds_Name" xml:space="preserve"><value>「ロスト・パワーフォント」時のみ</value></data>
@@ -185,160 +185,160 @@
   <data name="Bozja_Tank_BannerOfHonedAcuity_Name" xml:space="preserve"><value>鋭敏の境地</value></data>
   <data name="Bozja_Tank_BannerOfHonedAcuity_Desc" xml:space="preserve"><value>利用可能な場合は、「研ぎ澄まされた鋭さ」のバナーを使用してください。</value></data>
   <data name="Bozja_Tank_LostFairTrade_Name" xml:space="preserve"><value>ロスト・フェアトレード</value></data>
-  <data name="Bozja_Tank_LostFairTrade_Desc" xml:space="preserve"><value>可能な場合は、ロスト・フェアトレードを使用してください。</value></data>
+  <data name="Bozja_Tank_LostFairTrade_Desc" xml:space="preserve"><value>ロスト・フェアトレードが使用可能なときに使用します。</value></data>
   <data name="Bozja_Tank_LostAssassination_Name" xml:space="preserve"><value>ロスト・アサシネイト</value></data>
-  <data name="Bozja_Tank_LostAssassination_Desc" xml:space="preserve"><value>可能な場合はロスト・アサシネイトを使用します。</value></data>
+  <data name="Bozja_Tank_LostAssassination_Desc" xml:space="preserve"><value>ロスト・アサシネイトが使用可能なときに使用します。</value></data>
   <data name="Bozja_Tank_LostManawall_Name" xml:space="preserve"><value>ロスト・ウォール</value></data>
-  <data name="Bozja_Tank_LostManawall_Desc" xml:space="preserve"><value>利用可能な場合はロスト・ウォールを使用してください。</value></data>
+  <data name="Bozja_Tank_LostManawall_Desc" xml:space="preserve"><value>ロスト・ウォールが使用可能なときに使用します。</value></data>
   <data name="Bozja_Tank_BannerOfTirelessConviction_Name" xml:space="preserve"><value>忍耐の境地</value></data>
   <data name="Bozja_Tank_BannerOfTirelessConviction_Desc" xml:space="preserve"><value>利用可能な場合は、「忍耐の境地」を使用してください。</value></data>
   <data name="Bozja_Tank_LostBloodRage_Name" xml:space="preserve"><value>ロスト・ブラッドレイジ</value></data>
-  <data name="Bozja_Tank_LostBloodRage_Desc" xml:space="preserve"><value>利用可能な場合はロスト・ブラッドレイジを使用します。</value></data>
+  <data name="Bozja_Tank_LostBloodRage_Desc" xml:space="preserve"><value>ロスト・ブラッドレイジが使用可能なときに使用します。</value></data>
   <data name="Bozja_Tank_BannerOfSolemnClarity_Name" xml:space="preserve"><value>瞑想の境地</value></data>
   <data name="Bozja_Tank_BannerOfSolemnClarity_Desc" xml:space="preserve"><value>利用可能な場合は、「瞑想の境地」を使用してください。</value></data>
   <data name="Bozja_Tank_LostCure_Name" xml:space="preserve"><value>ロスト・ケアル</value></data>
-  <data name="Bozja_Tank_LostCure_Desc" xml:space="preserve"><value>利用可能な場合はロスト・ケアルを使用してください。</value></data>
+  <data name="Bozja_Tank_LostCure_Desc" xml:space="preserve"><value>ロスト・ケアルが使用可能なときに使用します。</value></data>
   <data name="Bozja_Tank_LostCure2_Name" xml:space="preserve"><value>ロスト・ケアルラ</value></data>
-  <data name="Bozja_Tank_LostCure2_Desc" xml:space="preserve"><value>利用可能な場合はロスト・ケアルラ を使用してください。</value></data>
+  <data name="Bozja_Tank_LostCure2_Desc" xml:space="preserve"><value>ロスト・ケアルラが使用可能なときに使用します。</value></data>
   <data name="Bozja_Tank_LostCure3_Name" xml:space="preserve"><value>ロスト・ケアルガ</value></data>
-  <data name="Bozja_Tank_LostCure3_Desc" xml:space="preserve"><value>可能な場合はロスト・ケアルガ を使用してください。</value></data>
+  <data name="Bozja_Tank_LostCure3_Desc" xml:space="preserve"><value>ロスト・ケアルガが使用可能なときに使用します。</value></data>
   <data name="Bozja_Tank_LostCure4_Name" xml:space="preserve"><value>ロスト・ケアルジャ</value></data>
-  <data name="Bozja_Tank_LostCure4_Desc" xml:space="preserve"><value>可能な場合はロスト・ケアルジャ を使用してください。</value></data>
+  <data name="Bozja_Tank_LostCure4_Desc" xml:space="preserve"><value>ロスト・ケアルジャが使用可能なときに使用します。</value></data>
   <data name="Bozja_Tank_LostArise_Name" xml:space="preserve"><value>ロスト・アレイズ</value></data>
-  <data name="Bozja_Tank_LostArise_Desc" xml:space="preserve"><value>利用可能な場合はロスト・アレイズを使用します。</value></data>
+  <data name="Bozja_Tank_LostArise_Desc" xml:space="preserve"><value>ロスト・アレイズが使用可能なときに使用します。</value></data>
   <data name="Bozja_Tank_LostSacrifice_Name" xml:space="preserve"><value>ロスト・サクリファイス</value></data>
-  <data name="Bozja_Tank_LostSacrifice_Desc" xml:space="preserve"><value>利用可能な場合はロスト・サクリファイスを使用します。</value></data>
+  <data name="Bozja_Tank_LostSacrifice_Desc" xml:space="preserve"><value>ロスト・サクリファイスが使用可能なときに使用します。</value></data>
   <data name="Bozja_Tank_LostReraise_Name" xml:space="preserve"><value>ロスト・リレイズ</value></data>
-  <data name="Bozja_Tank_LostReraise_Desc" xml:space="preserve"><value>可能な場合はロスト・リレイズを使用します。</value></data>
+  <data name="Bozja_Tank_LostReraise_Desc" xml:space="preserve"><value>ロスト・リレイズが使用可能なときに使用します。</value></data>
   <data name="Bozja_Tank_LostSpellforge_Name" xml:space="preserve"><value>ロスト・スペルフォージ</value></data>
-  <data name="Bozja_Tank_LostSpellforge_Desc" xml:space="preserve"><value>利用可能な場合は ロスト・スペルフォージ を使用してください。</value></data>
+  <data name="Bozja_Tank_LostSpellforge_Desc" xml:space="preserve"><value>ロスト・スペルフォージが使用可能なときに使用します。</value></data>
   <data name="Bozja_Tank_LostSteelsting_Name" xml:space="preserve"><value>ロスト・スチールスティング</value></data>
   <data name="Bozja_Tank_LostSteelsting_Desc" xml:space="preserve"><value>利用可能な場合はロスト・スチールスティングを使用してください。</value></data>
   <data name="Bozja_Tank_LostProtect_Name" xml:space="preserve"><value>ロスト・プロテス</value></data>
-  <data name="Bozja_Tank_LostProtect_Desc" xml:space="preserve"><value>利用可能な場合は、ロスト・プロテス を使用してください。</value></data>
+  <data name="Bozja_Tank_LostProtect_Desc" xml:space="preserve"><value>ロスト・プロテスが使用可能なときに使用します。</value></data>
   <data name="Bozja_Tank_LostShell_Name" xml:space="preserve"><value>ロスト・シェル</value></data>
-  <data name="Bozja_Tank_LostShell_Desc" xml:space="preserve"><value>利用可能な場合はロスト・シェルを使用してください。</value></data>
+  <data name="Bozja_Tank_LostShell_Desc" xml:space="preserve"><value>ロスト・シェルが使用可能なときに使用します。</value></data>
   <data name="Bozja_Tank_LostReflect_Name" xml:space="preserve"><value>ロスト・リフレク</value></data>
-  <data name="Bozja_Tank_LostReflect_Desc" xml:space="preserve"><value>可能な場合はロスト・リフレクを使用してください。</value></data>
+  <data name="Bozja_Tank_LostReflect_Desc" xml:space="preserve"><value>ロスト・リフレクが使用可能なときに使用します。</value></data>
   <data name="Bozja_Tank_LostBravery_Name" xml:space="preserve"><value>ロスト・ブレイブ</value></data>
-  <data name="Bozja_Tank_LostBravery_Desc" xml:space="preserve"><value>利用可能な場合はロスト・ブレイブを使用してください。</value></data>
+  <data name="Bozja_Tank_LostBravery_Desc" xml:space="preserve"><value>ロスト・ブレイブが使用可能なときに使用します。</value></data>
   <data name="Bozja_Tank_LostAethershield_Name" xml:space="preserve"><value>ロスト・エーテルシールド</value></data>
   <data name="Bozja_Tank_LostAethershield_Desc" xml:space="preserve"><value>利用可能な場合は、ロスト・エーテルシールドを使用してください。</value></data>
   <data name="Bozja_Tank_LostProtect2_Name" xml:space="preserve"><value>ロスト・プロテスII</value></data>
-  <data name="Bozja_Tank_LostProtect2_Desc" xml:space="preserve"><value>利用可能な場合は、ロスト・プロテスII を使用してください。</value></data>
+  <data name="Bozja_Tank_LostProtect2_Desc" xml:space="preserve"><value>ロスト・プロテスIIが使用可能なときに使用します。</value></data>
   <data name="Bozja_Tank_LostShell2_Name" xml:space="preserve"><value>ロスト・シェルII</value></data>
-  <data name="Bozja_Tank_LostShell2_Desc" xml:space="preserve"><value>利用可能な場合はロスト・シェルII を使用してください。</value></data>
+  <data name="Bozja_Tank_LostShell2_Desc" xml:space="preserve"><value>ロスト・シェルIIが使用可能なときに使用します。</value></data>
   <data name="Bozja_Tank_LostBubble_Name" xml:space="preserve"><value>ロスト・バブル</value></data>
-  <data name="Bozja_Tank_LostBubble_Desc" xml:space="preserve"><value>利用可能な場合はロスト・バブルを使用してください。</value></data>
+  <data name="Bozja_Tank_LostBubble_Desc" xml:space="preserve"><value>ロスト・バブルが使用可能なときに使用します。</value></data>
   <data name="Bozja_Tank_LostStealth_Name" xml:space="preserve"><value>ロスト・ステルス</value></data>
-  <data name="Bozja_Tank_LostStealth_Desc" xml:space="preserve"><value>利用可能な場合はロスト・ステルスを使用します。</value></data>
+  <data name="Bozja_Tank_LostStealth_Desc" xml:space="preserve"><value>ロスト・ステルスが使用可能なときに使用します。</value></data>
   <data name="Bozja_Tank_LostSwift_Name" xml:space="preserve"><value>ロスト・スウィフト</value></data>
-  <data name="Bozja_Tank_LostSwift_Desc" xml:space="preserve"><value>可能な場合は ロスト・スウィフト を使用してください。</value></data>
+  <data name="Bozja_Tank_LostSwift_Desc" xml:space="preserve"><value>ロスト・スウィフトが使用可能なときに使用します。</value></data>
   <data name="Bozja_Tank_LostFontOfSkill_Name" xml:space="preserve"><value>ロスト・スキルフォント</value></data>
   <data name="Bozja_Tank_LostFontOfSkill_Desc" xml:space="preserve"><value>可能な場合はロスト・スキルフォントを使用してください。</value></data>
   <data name="Bozja_Tank_LostImpetus_Name" xml:space="preserve"><value>ロスト・インペタス</value></data>
-  <data name="Bozja_Tank_LostImpetus_Desc" xml:space="preserve"><value>利用可能な場合はロスト・インペタスを使用します。</value></data>
+  <data name="Bozja_Tank_LostImpetus_Desc" xml:space="preserve"><value>ロスト・インペタスが使用可能なときに使用します。</value></data>
   <data name="Bozja_Tank_LostParalyze3_Name" xml:space="preserve"><value>ロスト・パライガ</value></data>
-  <data name="Bozja_Tank_LostParalyze3_Desc" xml:space="preserve"><value>可能な場合はロスト・パライガを使用してください。</value></data>
+  <data name="Bozja_Tank_LostParalyze3_Desc" xml:space="preserve"><value>ロスト・パライガが使用可能なときに使用します。</value></data>
   <data name="Bozja_Tank_LostRampage_Name" xml:space="preserve"><value>ロスト・ランページ</value></data>
-  <data name="Bozja_Tank_LostRampage_Desc" xml:space="preserve"><value>利用可能な場合は、ロスト・ランページ を使用してください。</value></data>
+  <data name="Bozja_Tank_LostRampage_Desc" xml:space="preserve"><value>ロスト・ランページが使用可能なときに使用します。</value></data>
   <data name="Variant_Tank_Name" xml:space="preserve"><value>バリアントタンク</value></data>
   <data name="Variant_Tank_Desc" xml:space="preserve"><value>これを有効にすると、バリアント ダンジョンにバリアント アクションが追加されます。
  バリアント アクションは、シンプルとアドバンスの両方で、単体と範囲 DPS コンボで使用されます。</value></data>
   <data name="Variant_Tank_Cure_Name" xml:space="preserve"><value>ヴァリアント・ケアル</value></data>
   <data name="Variant_Tank_Cure_Desc" xml:space="preserve"><value>HPが設定されたしきい値を下回っている場合は、ヴァリアント・ケアルを使用します。</value></data>
   <data name="Variant_Tank_Ultimatum_Name" xml:space="preserve"><value>ヴァリアント・アルティメイタム</value></data>
-  <data name="Variant_Tank_Ultimatum_Desc" xml:space="preserve"><value>クールダウン時にヴァリアント・アルティメイタムを使用します。</value></data>
+  <data name="Variant_Tank_Ultimatum_Desc" xml:space="preserve"><value>ヴァリアント・アルティメイタムをリキャストごとに使用します。</value></data>
   <data name="Variant_Tank_Raise_Name" xml:space="preserve"><value>ヴァリアント・レイズ</value></data>
   <data name="Variant_Tank_Raise_Desc" xml:space="preserve"><value>無力化したパーティーメンバーにはヴァリアント・レイズを使用します。</value></data>
   <data name="Variant_Tank_SpiritDart_Name" xml:space="preserve"><value>ヴァリアント・スピリットダート</value></data>
   <data name="Variant_Tank_SpiritDart_Desc" xml:space="preserve"><value>デバフが存在しない場合、または 3 秒未満の場合は常にヴァリアント・スピリットダートを使用します。</value></data>
-  <data name="Variant_Tank_EagleEyeShot_Name" xml:space="preserve"><value>バリアント イーグル アイ ショット</value></data>
-  <data name="Variant_Tank_EagleEyeShot_Desc" xml:space="preserve"><value>クールダウン時にバリアント イーグル アイ ショットを使用します。</value></data>
+  <data name="Variant_Tank_EagleEyeShot_Name" xml:space="preserve"><value>ヴァリアント・イーグルアイ</value></data>
+  <data name="Variant_Tank_EagleEyeShot_Desc" xml:space="preserve"><value>ヴァリアント・イーグルアイをリキャストごとに使用します。</value></data>
   <data name="Variant_Healer_Name" xml:space="preserve"><value>バリアントヒーラー</value></data>
   <data name="Variant_Healer_Desc" xml:space="preserve"><value>これを有効にすると、バリアント ダンジョンにバリアント アクションが追加されます。
 バリアント アクションは、シンプルとアドバンスの両方で、単体と範囲 DPS コンボで使用されます。</value></data>
   <data name="Variant_Healer_Ultimatum_Name" xml:space="preserve"><value>ヴァリアント・アルティメイタム</value></data>
-  <data name="Variant_Healer_Ultimatum_Desc" xml:space="preserve"><value>クールダウン時にヴァリアント・アルティメイタムを使用します。</value></data>
+  <data name="Variant_Healer_Ultimatum_Desc" xml:space="preserve"><value>ヴァリアント・アルティメイタムをリキャストごとに使用します。</value></data>
   <data name="Variant_Healer_SpiritDart_Name" xml:space="preserve"><value>ヴァリアント・スピリットダート</value></data>
   <data name="Variant_Healer_SpiritDart_Desc" xml:space="preserve"><value>デバフが存在しない場合、または 3 秒未満の場合は常にヴァリアント・スピリットダートを使用します。</value></data>
   <data name="Variant_Healer_Rampart_Name" xml:space="preserve"><value>ヴァリアント・ランパート</value></data>
-  <data name="Variant_Healer_Rampart_Desc" xml:space="preserve"><value>クールダウン時にヴァリアント・ランパートを使用します。</value></data>
-  <data name="Variant_Healer_EagleEyeShot_Name" xml:space="preserve"><value>バリアント イーグル アイ ショット</value></data>
-  <data name="Variant_Healer_EagleEyeShot_Desc" xml:space="preserve"><value>クールダウン時にバリアント イーグル アイ ショットを使用します。</value></data>
+  <data name="Variant_Healer_Rampart_Desc" xml:space="preserve"><value>ヴァリアント・ランパートをリキャストごとに使用します。</value></data>
+  <data name="Variant_Healer_EagleEyeShot_Name" xml:space="preserve"><value>ヴァリアント・イーグルアイ</value></data>
+  <data name="Variant_Healer_EagleEyeShot_Desc" xml:space="preserve"><value>ヴァリアント・イーグルアイをリキャストごとに使用します。</value></data>
   <data name="Variant_Melee_Name" xml:space="preserve"><value>バリアント近接攻撃</value></data>
   <data name="Variant_Melee_Desc" xml:space="preserve"><value>これを有効にすると、バリアント ダンジョンにバリアント アクションが追加されます。
 バリアント アクションは、シンプルとアドバンスの両方で、単体と範囲 DPS コンボで使用されます。</value></data>
   <data name="Variant_Melee_Cure_Name" xml:space="preserve"><value>ヴァリアント・ケアル</value></data>
   <data name="Variant_Melee_Cure_Desc" xml:space="preserve"><value>HPが設定されたしきい値を下回っている場合は、ヴァリアント・ケアルを使用します。</value></data>
   <data name="Variant_Melee_Ultimatum_Name" xml:space="preserve"><value>ヴァリアント・アルティメイタム</value></data>
-  <data name="Variant_Melee_Ultimatum_Desc" xml:space="preserve"><value>クールダウン時にヴァリアント・アルティメイタムを使用します。</value></data>
+  <data name="Variant_Melee_Ultimatum_Desc" xml:space="preserve"><value>ヴァリアント・アルティメイタムをリキャストごとに使用します。</value></data>
   <data name="Variant_Melee_Raise_Name" xml:space="preserve"><value>ヴァリアント・レイズ</value></data>
   <data name="Variant_Melee_Raise_Desc" xml:space="preserve"><value>無力化したパーティーメンバーにはヴァリアント・レイズを使用します。</value></data>
   <data name="Variant_Melee_Rampart_Name" xml:space="preserve"><value>ヴァリアント・ランパート</value></data>
-  <data name="Variant_Melee_Rampart_Desc" xml:space="preserve"><value>クールダウン時にヴァリアント・ランパートを使用します。</value></data>
-  <data name="Variant_Melee_EagleEyeShot_Name" xml:space="preserve"><value>バリアント イーグル アイ ショット</value></data>
-  <data name="Variant_Melee_EagleEyeShot_Desc" xml:space="preserve"><value>クールダウン時にバリアント イーグル アイ ショットを使用します。</value></data>
+  <data name="Variant_Melee_Rampart_Desc" xml:space="preserve"><value>ヴァリアント・ランパートをリキャストごとに使用します。</value></data>
+  <data name="Variant_Melee_EagleEyeShot_Name" xml:space="preserve"><value>ヴァリアント・イーグルアイ</value></data>
+  <data name="Variant_Melee_EagleEyeShot_Desc" xml:space="preserve"><value>ヴァリアント・イーグルアイをリキャストごとに使用します。</value></data>
   <data name="Variant_PhysRanged_Name" xml:space="preserve"><value>バリアント物理遠距離</value></data>
   <data name="Variant_PhysRanged_Desc" xml:space="preserve"><value>これを有効にすると、バリアント ダンジョンにバリアント アクションが追加されます。
 バリアント アクションは、シンプルとアドバンスの両方で、単体と範囲 DPS コンボで使用されます。</value></data>
   <data name="Variant_PhysRanged_Cure_Name" xml:space="preserve"><value>ヴァリアント・ケアル</value></data>
   <data name="Variant_PhysRanged_Cure_Desc" xml:space="preserve"><value>HPが設定されたしきい値を下回っている場合は、ヴァリアント・ケアルを使用します。</value></data>
   <data name="Variant_PhysRanged_Ultimatum_Name" xml:space="preserve"><value>ヴァリアント・アルティメイタム</value></data>
-  <data name="Variant_PhysRanged_Ultimatum_Desc" xml:space="preserve"><value>クールダウン時にヴァリアント・アルティメイタムを使用します。</value></data>
+  <data name="Variant_PhysRanged_Ultimatum_Desc" xml:space="preserve"><value>ヴァリアント・アルティメイタムをリキャストごとに使用します。</value></data>
   <data name="Variant_PhysRanged_Raise_Name" xml:space="preserve"><value>ヴァリアント・レイズ</value></data>
   <data name="Variant_PhysRanged_Raise_Desc" xml:space="preserve"><value>無力化したパーティーメンバーにはヴァリアント・レイズを使用します。</value></data>
   <data name="Variant_PhysRanged_Rampart_Name" xml:space="preserve"><value>ヴァリアント・ランパート</value></data>
-  <data name="Variant_PhysRanged_Rampart_Desc" xml:space="preserve"><value>クールダウン時にヴァリアント・ランパートを使用します。</value></data>
-  <data name="Variant_PhysRanged_EagleEyeShot_Name" xml:space="preserve"><value>バリアント イーグル アイ ショット</value></data>
-  <data name="Variant_PhysRanged_EagleEyeShot_Desc" xml:space="preserve"><value>クールダウン時にバリアント イーグル アイ ショットを使用します。</value></data>
+  <data name="Variant_PhysRanged_Rampart_Desc" xml:space="preserve"><value>ヴァリアント・ランパートをリキャストごとに使用します。</value></data>
+  <data name="Variant_PhysRanged_EagleEyeShot_Name" xml:space="preserve"><value>ヴァリアント・イーグルアイ</value></data>
+  <data name="Variant_PhysRanged_EagleEyeShot_Desc" xml:space="preserve"><value>ヴァリアント・イーグルアイをリキャストごとに使用します。</value></data>
   <data name="Variant_Magic_Name" xml:space="preserve"><value>バリアントマジック</value></data>
   <data name="Variant_Magic_Desc" xml:space="preserve"><value>これを有効にすると、バリアント ダンジョンにバリアント アクションが追加されます。
 バリアント アクションは、シンプル選択と高度な選択の両方で、単体および範囲 DPS 機能によって使用されます。</value></data>
   <data name="Variant_Magic_Cure_Name" xml:space="preserve"><value>ヴァリアント・ケアル</value></data>
   <data name="Variant_Magic_Cure_Desc" xml:space="preserve"><value>HPが設定されたしきい値を下回っている場合は、ヴァリアント・ケアルを使用します。</value></data>
   <data name="Variant_Magic_Ultimatum_Name" xml:space="preserve"><value>ヴァリアント・アルティメイタム</value></data>
-  <data name="Variant_Magic_Ultimatum_Desc" xml:space="preserve"><value>クールダウン時にヴァリアント・アルティメイタムを使用します。</value></data>
+  <data name="Variant_Magic_Ultimatum_Desc" xml:space="preserve"><value>ヴァリアント・アルティメイタムをリキャストごとに使用します。</value></data>
   <data name="Variant_Magic_Raise_Name" xml:space="preserve"><value>ヴァリアント・レイズ</value></data>
   <data name="Variant_Magic_Raise_Desc" xml:space="preserve"><value>無力化したパーティーメンバーにはヴァリアント・レイズを使用します。</value></data>
   <data name="Variant_Magic_Rampart_Name" xml:space="preserve"><value>ヴァリアント・ランパート</value></data>
-  <data name="Variant_Magic_Rampart_Desc" xml:space="preserve"><value>クールダウン時にヴァリアント・ランパートを使用します。</value></data>
-  <data name="Variant_Magic_EagleEyeShot_Name" xml:space="preserve"><value>バリアント イーグル アイ ショット</value></data>
-  <data name="Variant_Magic_EagleEyeShot_Desc" xml:space="preserve"><value>クールダウン時にバリアント イーグル アイ ショットを使用します。</value></data>
+  <data name="Variant_Magic_Rampart_Desc" xml:space="preserve"><value>ヴァリアント・ランパートをリキャストごとに使用します。</value></data>
+  <data name="Variant_Magic_EagleEyeShot_Name" xml:space="preserve"><value>ヴァリアント・イーグルアイ</value></data>
+  <data name="Variant_Magic_EagleEyeShot_Desc" xml:space="preserve"><value>ヴァリアント・イーグルアイをリキャストごとに使用します。</value></data>
   <data name="Phantom_Freelancer_Name" xml:space="preserve"><value>フリーランサーのジョブアクション</value></data>
   <data name="Phantom_Freelancer_Desc" xml:space="preserve"><value>これを有効にすると、フリーランサー固有のアクションがローテーションに追加されます。</value></data>
-  <data name="Phantom_Freelancer_OccultResuscitation_Name" xml:space="preserve"><value>オカルト蘇生</value></data>
-  <data name="Phantom_Freelancer_OccultResuscitation_Desc" xml:space="preserve"><value>オカルト蘇生をローテーションに追加します。</value></data>
+  <data name="Phantom_Freelancer_OccultResuscitation_Name" xml:space="preserve"><value>マギ・ファーストエイド</value></data>
+  <data name="Phantom_Freelancer_OccultResuscitation_Desc" xml:space="preserve"><value>マギ・ファーストエイドをローテーションに追加します。</value></data>
   <data name="Phantom_Knight_Name" xml:space="preserve"><value>ナイトのジョブアクション</value></data>
   <data name="Phantom_Knight_Desc" xml:space="preserve"><value>これを有効にすると、ナイト固有のアクションがローテーションに追加されます。</value></data>
-  <data name="Phantom_Knight_PhantomGuard_Name" xml:space="preserve"><value>ファントムガード</value></data>
-  <data name="Phantom_Knight_PhantomGuard_Desc" xml:space="preserve"><value>ファントムガードをローテーションに追加します。</value></data>
-  <data name="Phantom_Knight_Pray_Name" xml:space="preserve"><value>祈る</value></data>
-  <data name="Phantom_Knight_Pray_Desc" xml:space="preserve"><value>「祈る」をローテーションに追加します。</value></data>
-  <data name="Phantom_Knight_OccultHeal_Name" xml:space="preserve"><value>オカルトヒール</value></data>
-  <data name="Phantom_Knight_OccultHeal_Desc" xml:space="preserve"><value>オカルトヒールをローテーションに追加します。</value></data>
-  <data name="Phantom_Knight_Pledge_Name" xml:space="preserve"><value>誓約</value></data>
-  <data name="Phantom_Knight_Pledge_Desc" xml:space="preserve"><value>「誓約」をローテーションに追加します。</value></data>
+  <data name="Phantom_Knight_PhantomGuard_Name" xml:space="preserve"><value>まもり</value></data>
+  <data name="Phantom_Knight_PhantomGuard_Desc" xml:space="preserve"><value>まもりをローテーションに追加します。</value></data>
+  <data name="Phantom_Knight_Pray_Name" xml:space="preserve"><value>いのり［回］</value></data>
+  <data name="Phantom_Knight_Pray_Desc" xml:space="preserve"><value>いのり［回］をローテーションに追加します。</value></data>
+  <data name="Phantom_Knight_OccultHeal_Name" xml:space="preserve"><value>マギ・ヒール</value></data>
+  <data name="Phantom_Knight_OccultHeal_Desc" xml:space="preserve"><value>マギ・ヒールをローテーションに追加します。</value></data>
+  <data name="Phantom_Knight_Pledge_Name" xml:space="preserve"><value>ちかい</value></data>
+  <data name="Phantom_Knight_Pledge_Desc" xml:space="preserve"><value>ちかいをローテーションに追加します。</value></data>
   <data name="Phantom_Monk_Name" xml:space="preserve"><value>モンクのジョブアクション</value></data>
   <data name="Phantom_Monk_Desc" xml:space="preserve"><value>これを有効にすると、モンク固有のアクションがローテーションに追加されます。</value></data>
-  <data name="Phantom_Monk_PhantomKick_Name" xml:space="preserve"><value>ファントムキック</value></data>
-  <data name="Phantom_Monk_PhantomKick_Desc" xml:space="preserve"><value>ファントムキックをローテーションに追加します。</value></data>
-  <data name="Phantom_Monk_OccultCounter_Name" xml:space="preserve"><value>オカルトカウンター</value></data>
-  <data name="Phantom_Monk_OccultCounter_Desc" xml:space="preserve"><value>オカルトカウンターをローテーションに追加します。</value></data>
-  <data name="Phantom_Monk_Counterstance_Name" xml:space="preserve"><value>カウンタースタンス</value></data>
-  <data name="Phantom_Monk_Counterstance_Desc" xml:space="preserve"><value>ローテーションにカウンタースタンスを追加します。</value></data>
-  <data name="Phantom_Monk_OccultChakra_Name" xml:space="preserve"><value>オカルト 輪撃</value></data>
-  <data name="Phantom_Monk_OccultChakra_Desc" xml:space="preserve"><value>オカルト チャクラをローテーションに追加します。</value></data>
+  <data name="Phantom_Monk_PhantomKick_Name" xml:space="preserve"><value>けり</value></data>
+  <data name="Phantom_Monk_PhantomKick_Desc" xml:space="preserve"><value>けりをローテーションに追加します。</value></data>
+  <data name="Phantom_Monk_OccultCounter_Name" xml:space="preserve"><value>マギ・カウンター</value></data>
+  <data name="Phantom_Monk_OccultCounter_Desc" xml:space="preserve"><value>マギ・カウンターをローテーションに追加します。</value></data>
+  <data name="Phantom_Monk_Counterstance_Name" xml:space="preserve"><value>かまえる［守］</value></data>
+  <data name="Phantom_Monk_Counterstance_Desc" xml:space="preserve"><value>かまえる［守］をローテーションに追加します。</value></data>
+  <data name="Phantom_Monk_OccultChakra_Name" xml:space="preserve"><value>マギ・チャクラ</value></data>
+  <data name="Phantom_Monk_OccultChakra_Desc" xml:space="preserve"><value>マギ・チャクラをローテーションに追加します。</value></data>
   <data name="Phantom_Thief_Name" xml:space="preserve"><value>シーフのジョブアクション</value></data>
   <data name="Phantom_Thief_Desc" xml:space="preserve"><value>これを有効にすると、シーフ固有のアクションがローテーションに追加されます。</value></data>
-  <data name="Phantom_Thief_OccultSprint_Name" xml:space="preserve"><value>オカルトスプリント</value></data>
-  <data name="Phantom_Thief_OccultSprint_Desc" xml:space="preserve"><value>オカルトスプリントをローテーションに追加します。</value></data>
-  <data name="Phantom_Thief_Steal_Name" xml:space="preserve"><value>窃盗</value></data>
-  <data name="Phantom_Thief_Steal_Desc" xml:space="preserve"><value>ローテーションにスティールを追加します。</value></data>
-  <data name="Phantom_Thief_Vigilance_Name" xml:space="preserve"><value>警戒</value></data>
-  <data name="Phantom_Thief_Vigilance_Desc" xml:space="preserve"><value>ローテーションに警戒を追加します。</value></data>
-  <data name="Phantom_Thief_PilferWeapon_Name" xml:space="preserve"><value>盗賊の武器</value></data>
-  <data name="Phantom_Thief_PilferWeapon_Desc" xml:space="preserve"><value>ピルファー武器をローテーションに追加します。</value></data>
+  <data name="Phantom_Thief_OccultSprint_Name" xml:space="preserve"><value>マギ・ダッシュ</value></data>
+  <data name="Phantom_Thief_OccultSprint_Desc" xml:space="preserve"><value>マギ・ダッシュをローテーションに追加します。</value></data>
+  <data name="Phantom_Thief_Steal_Name" xml:space="preserve"><value>ぬすむ</value></data>
+  <data name="Phantom_Thief_Steal_Desc" xml:space="preserve"><value>ぬすむをローテーションに追加します。</value></data>
+  <data name="Phantom_Thief_Vigilance_Name" xml:space="preserve"><value>けいかい</value></data>
+  <data name="Phantom_Thief_Vigilance_Desc" xml:space="preserve"><value>けいかいをローテーションに追加します。</value></data>
+  <data name="Phantom_Thief_PilferWeapon_Name" xml:space="preserve"><value>ぶきをぬすむ</value></data>
+  <data name="Phantom_Thief_PilferWeapon_Desc" xml:space="preserve"><value>ぶきをぬすむをローテーションに追加します。</value></data>
   <data name="Phantom_Samurai_Name" xml:space="preserve"><value>侍のジョブアクション</value></data>
   <data name="Phantom_Samurai_Desc" xml:space="preserve"><value>これを有効にすると、サムライ固有のアクションをローテーションに追加できます。</value></data>
   <data name="Phantom_Samurai_Mineuchi_Name" xml:space="preserve"><value>幻影 峰打ち</value></data>
@@ -351,125 +351,125 @@
   <data name="Phantom_Samurai_Zeninage_Desc" xml:space="preserve"><value>ファントム・ゼニナージュをローテーションに追加。</value></data>
   <data name="Phantom_Berserker_Name" xml:space="preserve"><value>バーサーカーアクション</value></data>
   <data name="Phantom_Berserker_Desc" xml:space="preserve"><value>これを有効にすると、バーサーカー固有のアクションがローテーションに追加されます。</value></data>
-  <data name="Phantom_Berserker_Rage_Name" xml:space="preserve"><value>怒り</value></data>
-  <data name="Phantom_Berserker_Rage_Desc" xml:space="preserve"><value>「怒り」をローテーションに追加します。</value></data>
-  <data name="Phantom_Berserker_DeadlyBlow_Name" xml:space="preserve"><value>必殺の一撃</value></data>
-  <data name="Phantom_Berserker_DeadlyBlow_Desc" xml:space="preserve"><value>ローテーションにデッドリーブローを追加します。</value></data>
+  <data name="Phantom_Berserker_Rage_Name" xml:space="preserve"><value>あばれる</value></data>
+  <data name="Phantom_Berserker_Rage_Desc" xml:space="preserve"><value>あばれるをローテーションに追加します。</value></data>
+  <data name="Phantom_Berserker_DeadlyBlow_Name" xml:space="preserve"><value>いちげき</value></data>
+  <data name="Phantom_Berserker_DeadlyBlow_Desc" xml:space="preserve"><value>いちげきをローテーションに追加します。</value></data>
   <data name="Phantom_Ranger_Name" xml:space="preserve"><value>レンジャーのジョブアクション</value></data>
   <data name="Phantom_Ranger_Desc" xml:space="preserve"><value>これを有効にすると、レンジャー固有のアクションがローテーションに追加されます。</value></data>
-  <data name="Phantom_Ranger_PhantomAim_Name" xml:space="preserve"><value>ファントムエイム</value></data>
-  <data name="Phantom_Ranger_PhantomAim_Desc" xml:space="preserve"><value>ファントムエイムをローテーションに追加します。</value></data>
-  <data name="Phantom_Ranger_OccultUnicorn_Name" xml:space="preserve"><value>オカルトユニコーン</value></data>
-  <data name="Phantom_Ranger_OccultUnicorn_Desc" xml:space="preserve"><value>オカルトユニコーンをローテーションに追加します。</value></data>
+  <data name="Phantom_Ranger_PhantomAim_Name" xml:space="preserve"><value>ねらう</value></data>
+  <data name="Phantom_Ranger_PhantomAim_Desc" xml:space="preserve"><value>ねらうをローテーションに追加します。</value></data>
+  <data name="Phantom_Ranger_OccultUnicorn_Name" xml:space="preserve"><value>マギ・ユニコーン</value></data>
+  <data name="Phantom_Ranger_OccultUnicorn_Desc" xml:space="preserve"><value>マギ・ユニコーンをローテーションに追加します。</value></data>
   <data name="Phantom_TimeMage_Name" xml:space="preserve"><value>タイムメイジのジョブアクション</value></data>
   <data name="Phantom_TimeMage_Desc" xml:space="preserve"><value>これを有効にすると、タイム メイジ固有のアクションがローテーションに追加されます。</value></data>
-  <data name="Phantom_TimeMage_OccultSlowga_Name" xml:space="preserve"><value>オカルトスローガ</value></data>
-  <data name="Phantom_TimeMage_OccultSlowga_Desc" xml:space="preserve"><value>オカルトスローガをローテーションに追加します。</value></data>
+  <data name="Phantom_TimeMage_OccultSlowga_Name" xml:space="preserve"><value>マギ・スロウガ</value></data>
+  <data name="Phantom_TimeMage_OccultSlowga_Desc" xml:space="preserve"><value>マギ・スロウガをローテーションに追加します。</value></data>
   <data name="Phantom_TimeMage_OccultSlowga_Wait_Name" xml:space="preserve"><value>完全な（っぽい）効果が得られるまで待ちます</value></data>
   <data name="Phantom_TimeMage_OccultSlowga_Wait_Desc" xml:space="preserve"><value>効果減衰が大きい場合、または効果減衰がまったく見込めない場合は、「スロウガ」を使用しません。</value></data>
-  <data name="Phantom_TimeMage_OccultComet_Name" xml:space="preserve"><value>オカルト コメット</value></data>
-  <data name="Phantom_TimeMage_OccultComet_Desc" xml:space="preserve"><value>オカルト彗星をローテーションに追加します。</value></data>
-  <data name="Phantom_TimeMage_OccultMageMasher_Name" xml:space="preserve"><value>オカルトメイジマッシャー</value></data>
-  <data name="Phantom_TimeMage_OccultMageMasher_Desc" xml:space="preserve"><value>オカルトメイジマッシャーをローテーションに追加します。</value></data>
-  <data name="Phantom_TimeMage_OccultDispel_Name" xml:space="preserve"><value>オカルトディスペル</value></data>
-  <data name="Phantom_TimeMage_OccultDispel_Desc" xml:space="preserve"><value>ターゲットが既知の解除可能なステータスを持っている場合、オカルト ディスペルをローテーションに追加します。</value></data>
-  <data name="Phantom_TimeMage_OccultQuick_Name" xml:space="preserve"><value>オカルトクイック</value></data>
-  <data name="Phantom_TimeMage_OccultQuick_Desc" xml:space="preserve"><value>オカルトクイックをローテーションに追加します。</value></data>
+  <data name="Phantom_TimeMage_OccultComet_Name" xml:space="preserve"><value>マギ・コメット</value></data>
+  <data name="Phantom_TimeMage_OccultComet_Desc" xml:space="preserve"><value>マギ・コメットをローテーションに追加します。</value></data>
+  <data name="Phantom_TimeMage_OccultMageMasher_Name" xml:space="preserve"><value>マギ・メイジマッシャー</value></data>
+  <data name="Phantom_TimeMage_OccultMageMasher_Desc" xml:space="preserve"><value>マギ・メイジマッシャーをローテーションに追加します。</value></data>
+  <data name="Phantom_TimeMage_OccultDispel_Name" xml:space="preserve"><value>マギ・ディスペル</value></data>
+  <data name="Phantom_TimeMage_OccultDispel_Desc" xml:space="preserve"><value>ターゲットに既知の解除可能なステータスがある場合、マギ・ディスペルをローテーションに追加します。</value></data>
+  <data name="Phantom_TimeMage_OccultQuick_Name" xml:space="preserve"><value>マギ・クイック［攻］</value></data>
+  <data name="Phantom_TimeMage_OccultQuick_Desc" xml:space="preserve"><value>マギ・クイック［攻］をローテーションに追加します。</value></data>
   <data name="Phantom_Chemist_Name" xml:space="preserve"><value>化学者のジョブアクション</value></data>
   <data name="Phantom_Chemist_Desc" xml:space="preserve"><value>これを有効にすると、化学者固有のアクションがローテーションに追加されます。</value></data>
-  <data name="Phantom_Chemist_OccultPotion_Name" xml:space="preserve"><value>オカルトポーション</value></data>
-  <data name="Phantom_Chemist_OccultPotion_Desc" xml:space="preserve"><value>オカルトポーションをローテーションに追加します。
-インベントリにオカルトポーションが必要です。</value></data>
-  <data name="Phantom_Chemist_OccultEther_Name" xml:space="preserve"><value>オカルトエーテル</value></data>
-  <data name="Phantom_Chemist_OccultEther_Desc" xml:space="preserve"><value>オカルトエーテルをローテーションに追加します。
-インベントリにオカルトポーションが必要です。</value></data>
-  <data name="Phantom_Chemist_Revive_Name" xml:space="preserve"><value>リヴァイヴ</value></data>
-  <data name="Phantom_Chemist_Revive_Desc" xml:space="preserve"><value>「リヴァイヴ」をローテーションに追加します。</value></data>
-  <data name="Phantom_Chemist_OccultElixir_Name" xml:space="preserve"><value>オカルトエリクサー</value></data>
-  <data name="Phantom_Chemist_OccultElixir_Desc" xml:space="preserve"><value>オカルトエリクサーをローテーションに追加します。
-インベントリにオカルトエリクサーが必要です。</value></data>
+  <data name="Phantom_Chemist_OccultPotion_Name" xml:space="preserve"><value>マギ・ポーション</value></data>
+  <data name="Phantom_Chemist_OccultPotion_Desc" xml:space="preserve"><value>マギ・ポーションをローテーションに追加します。
+インベントリにマギ・ポーションが必要です。</value></data>
+  <data name="Phantom_Chemist_OccultEther_Name" xml:space="preserve"><value>マギ・エーテル</value></data>
+  <data name="Phantom_Chemist_OccultEther_Desc" xml:space="preserve"><value>マギ・エーテルをローテーションに追加します。
+インベントリにマギ・ポーションが必要です。</value></data>
+  <data name="Phantom_Chemist_Revive_Name" xml:space="preserve"><value>そせい</value></data>
+  <data name="Phantom_Chemist_Revive_Desc" xml:space="preserve"><value>そせいをローテーションに追加します。</value></data>
+  <data name="Phantom_Chemist_OccultElixir_Name" xml:space="preserve"><value>マギ・エリクサー</value></data>
+  <data name="Phantom_Chemist_OccultElixir_Desc" xml:space="preserve"><value>マギ・エリクサーをローテーションに追加します。
+インベントリにマギ・エリクサーが必要です。</value></data>
   <data name="Phantom_Bard_Name" xml:space="preserve"><value>吟遊詩人のジョブアクション</value></data>
   <data name="Phantom_Bard_Desc" xml:space="preserve"><value>これを有効にすると、バード固有のアクションがローテーションに追加されます。</value></data>
-  <data name="Phantom_Bard_MightyMarch_Name" xml:space="preserve"><value>マイティマーチ</value></data>
-  <data name="Phantom_Bard_MightyMarch_Desc" xml:space="preserve"><value>マイティマーチをローテーションに追加します。</value></data>
-  <data name="Phantom_Bard_OffensiveAria_Name" xml:space="preserve"><value>攻撃のアリア</value></data>
-  <data name="Phantom_Bard_OffensiveAria_Desc" xml:space="preserve"><value>攻撃的なアリアをローテーションに追加します。</value></data>
+  <data name="Phantom_Bard_MightyMarch_Name" xml:space="preserve"><value>たいりょくのうた</value></data>
+  <data name="Phantom_Bard_MightyMarch_Desc" xml:space="preserve"><value>たいりょくのうたをローテーションに追加します。</value></data>
+  <data name="Phantom_Bard_OffensiveAria_Name" xml:space="preserve"><value>こうげきのうた</value></data>
+  <data name="Phantom_Bard_OffensiveAria_Desc" xml:space="preserve"><value>こうげきのうたをローテーションに追加します。</value></data>
   <data name="Phantom_Bard_RomeosBallad_Name" xml:space="preserve"><value>ロミオのバラード</value></data>
   <data name="Phantom_Bard_RomeosBallad_Desc" xml:space="preserve"><value>ロミオのバラードをローテーションに追加します。</value></data>
   <data name="Phantom_Bard_HerosRime_Name" xml:space="preserve"><value>英雄の樹氷</value></data>
   <data name="Phantom_Bard_HerosRime_Desc" xml:space="preserve"><value>ヒーローのライムをローテーションに追加します。</value></data>
   <data name="Phantom_Oracle_Name" xml:space="preserve"><value>オラクル ジョブのアクション</value></data>
   <data name="Phantom_Oracle_Desc" xml:space="preserve"><value>これを有効にすると、オラクル 固有のアクションがローテーションに追加されます。</value></data>
-  <data name="Phantom_Oracle_Predict_Name" xml:space="preserve"><value>予見</value></data>
-  <data name="Phantom_Oracle_Predict_Desc" xml:space="preserve"><value>「予見」をローテーションに追加します。</value></data>
-  <data name="Phantom_Oracle_PhantomJudgment_Name" xml:space="preserve"><value>ファントム・ジャッジメント</value></data>
-  <data name="Phantom_Oracle_PhantomJudgment_Desc" xml:space="preserve"><value>ファントムジャッジメントをローテーションに追加します。</value></data>
-  <data name="Phantom_Oracle_Cleansing_Name" xml:space="preserve"><value>クレンジング</value></data>
-  <data name="Phantom_Oracle_Cleansing_Desc" xml:space="preserve"><value>クレンジングをローテーションに追加します。</value></data>
-  <data name="Phantom_Oracle_Blessing_Name" xml:space="preserve"><value>祝福</value></data>
-  <data name="Phantom_Oracle_Blessing_Desc" xml:space="preserve"><value>ローテーションに祝福を追加します。</value></data>
-  <data name="Phantom_Oracle_Starfall_Name" xml:space="preserve"><value>スターフォール</value></data>
-  <data name="Phantom_Oracle_Starfall_Desc" xml:space="preserve"><value>「スターフォール」をローテーションに追加します。</value></data>
+  <data name="Phantom_Oracle_Predict_Name" xml:space="preserve"><value>よげん</value></data>
+  <data name="Phantom_Oracle_Predict_Desc" xml:space="preserve"><value>よげんをローテーションに追加します。</value></data>
+  <data name="Phantom_Oracle_PhantomJudgment_Name" xml:space="preserve"><value>せいなるしんぱん</value></data>
+  <data name="Phantom_Oracle_PhantomJudgment_Desc" xml:space="preserve"><value>せいなるしんぱんをローテーションに追加します。</value></data>
+  <data name="Phantom_Oracle_Cleansing_Name" xml:space="preserve"><value>てんちほうかい</value></data>
+  <data name="Phantom_Oracle_Cleansing_Desc" xml:space="preserve"><value>てんちほうかいをローテーションに追加します。</value></data>
+  <data name="Phantom_Oracle_Blessing_Name" xml:space="preserve"><value>てんのめぐみ</value></data>
+  <data name="Phantom_Oracle_Blessing_Desc" xml:space="preserve"><value>てんのめぐみをローテーションに追加します。</value></data>
+  <data name="Phantom_Oracle_Starfall_Name" xml:space="preserve"><value>いんせき</value></data>
+  <data name="Phantom_Oracle_Starfall_Desc" xml:space="preserve"><value>いんせきをローテーションに追加します。</value></data>
   <data name="Phantom_Cannoneer_Name" xml:space="preserve"><value>砲撃者のジョブアクション</value></data>
   <data name="Phantom_Cannoneer_Desc" xml:space="preserve"><value>これを有効にすると、砲撃者固有のアクションがローテーションに追加されます。</value></data>
-  <data name="Phantom_Cannoneer_PhantomFire_Name" xml:space="preserve"><value>ファントムファイア</value></data>
-  <data name="Phantom_Cannoneer_PhantomFire_Desc" xml:space="preserve"><value>ファントムファイアをローテーションに追加します。</value></data>
+  <data name="Phantom_Cannoneer_PhantomFire_Name" xml:space="preserve"><value>ほうげき</value></data>
+  <data name="Phantom_Cannoneer_PhantomFire_Desc" xml:space="preserve"><value>ほうげきをローテーションに追加します。</value></data>
   <data name="Phantom_Cannoneer_HolyCannon_Name" xml:space="preserve"><value>ホーリーキャノン</value></data>
   <data name="Phantom_Cannoneer_HolyCannon_Desc" xml:space="preserve"><value>ホーリーキャノンをローテーションに追加します。</value></data>
   <data name="Phantom_Cannoneer_DarkCannon_Name" xml:space="preserve"><value>ダークキャノン</value></data>
   <data name="Phantom_Cannoneer_DarkCannon_Desc" xml:space="preserve"><value>ダークキャノンをローテーションに追加します。</value></data>
-  <data name="Phantom_Cannoneer_ShockCannon_Name" xml:space="preserve"><value>放電 キャノン</value></data>
+  <data name="Phantom_Cannoneer_ShockCannon_Name" xml:space="preserve"><value>ショックキャノン</value></data>
   <data name="Phantom_Cannoneer_ShockCannon_Desc" xml:space="preserve"><value>ショックキャノンをローテーションに追加します。</value></data>
-  <data name="Phantom_Cannoneer_SilverCannon_Name" xml:space="preserve"><value>シルバーキャノン</value></data>
-  <data name="Phantom_Cannoneer_SilverCannon_Desc" xml:space="preserve"><value>シルバーキャノンをローテーションに追加します。</value></data>
+  <data name="Phantom_Cannoneer_SilverCannon_Name" xml:space="preserve"><value>オールドキャノン</value></data>
+  <data name="Phantom_Cannoneer_SilverCannon_Desc" xml:space="preserve"><value>オールドキャノンをローテーションに追加します。</value></data>
   <data name="Phantom_Geomancer_Name" xml:space="preserve"><value>風水師のジョブアクション</value></data>
   <data name="Phantom_Geomancer_Desc" xml:space="preserve"><value>これを有効にすると、風水師固有のアクションがローテーションに追加されます。</value></data>
-  <data name="Phantom_Geomancer_BattleBell_Name" xml:space="preserve"><value>バトルベル</value></data>
-  <data name="Phantom_Geomancer_BattleBell_Desc" xml:space="preserve"><value>バトルベルをローテーションに追加します。</value></data>
-  <data name="Phantom_Geomancer_RingingRespite_Name" xml:space="preserve"><value>リンギング・レスパイト</value></data>
-  <data name="Phantom_Geomancer_RingingRespite_Desc" xml:space="preserve"><value>「リンギング・レスパイト」をローテーションに追加します。</value></data>
-  <data name="Phantom_Geomancer_Suspend_Name" xml:space="preserve"><value>つるす</value></data>
-  <data name="Phantom_Geomancer_Suspend_Desc" xml:space="preserve"><value>ローテーションにサスペンドを追加します。</value></data>
-  <data name="Phantom_Geomancer_Weather_Name" xml:space="preserve"><value>天気</value></data>
-  <data name="Phantom_Geomancer_Weather_Desc" xml:space="preserve"><value>天気をローテーションに追加します。</value></data>
-  <data name="Phantom_Geomancer_Sunbath_Name" xml:space="preserve"><value>日光浴</value></data>
-  <data name="Phantom_Geomancer_Sunbath_Desc" xml:space="preserve"><value>ローテーションに日光浴を追加します。</value></data>
-  <data name="Phantom_Geomancer_CloudyCaress_Name" xml:space="preserve"><value>白濁の愛撫</value></data>
-  <data name="Phantom_Geomancer_CloudyCaress_Desc" xml:space="preserve"><value>「白濁の愛撫」をローテーションに追加します。</value></data>
-  <data name="Phantom_Geomancer_BlessedRain_Name" xml:space="preserve"><value>祝福の雨</value></data>
-  <data name="Phantom_Geomancer_BlessedRain_Desc" xml:space="preserve"><value>祝福の雨をローテーションに追加します。</value></data>
-  <data name="Phantom_Geomancer_MistyMirage_Name" xml:space="preserve"><value>ミスティミラージュ</value></data>
-  <data name="Phantom_Geomancer_MistyMirage_Desc" xml:space="preserve"><value>ミスティミラージュをローテーションに追加します。</value></data>
-  <data name="Phantom_Geomancer_HastyMirage_Name" xml:space="preserve"><value>ヘイスティ・ミラージュ</value></data>
-  <data name="Phantom_Geomancer_HastyMirage_Desc" xml:space="preserve"><value>ヘイスティミラージュをローテーションに追加します。</value></data>
-  <data name="Phantom_Geomancer_AetherialGain_Name" xml:space="preserve"><value>エセリアルゲイン</value></data>
-  <data name="Phantom_Geomancer_AetherialGain_Desc" xml:space="preserve"><value>「エセリアルゲイン」をローテーションに追加します。</value></data>
+  <data name="Phantom_Geomancer_BattleBell_Name" xml:space="preserve"><value>たたかいのベル</value></data>
+  <data name="Phantom_Geomancer_BattleBell_Desc" xml:space="preserve"><value>たたかいのベルをローテーションに追加します。</value></data>
+  <data name="Phantom_Geomancer_RingingRespite_Name" xml:space="preserve"><value>いこいのベル</value></data>
+  <data name="Phantom_Geomancer_RingingRespite_Desc" xml:space="preserve"><value>いこいのベルをローテーションに追加します。</value></data>
+  <data name="Phantom_Geomancer_Suspend_Name" xml:space="preserve"><value>ふゆう</value></data>
+  <data name="Phantom_Geomancer_Suspend_Desc" xml:space="preserve"><value>ふゆうをローテーションに追加します。</value></data>
+  <data name="Phantom_Geomancer_Weather_Name" xml:space="preserve"><value>てんき</value></data>
+  <data name="Phantom_Geomancer_Weather_Desc" xml:space="preserve"><value>てんきをローテーションに追加します。</value></data>
+  <data name="Phantom_Geomancer_Sunbath_Name" xml:space="preserve"><value>にっこうよく</value></data>
+  <data name="Phantom_Geomancer_Sunbath_Desc" xml:space="preserve"><value>にっこうよくをローテーションに追加します。</value></data>
+  <data name="Phantom_Geomancer_CloudyCaress_Name" xml:space="preserve"><value>ゆうすずみ</value></data>
+  <data name="Phantom_Geomancer_CloudyCaress_Desc" xml:space="preserve"><value>ゆうすずみをローテーションに追加します。</value></data>
+  <data name="Phantom_Geomancer_BlessedRain_Name" xml:space="preserve"><value>めぐみのあめ</value></data>
+  <data name="Phantom_Geomancer_BlessedRain_Desc" xml:space="preserve"><value>めぐみのあめをローテーションに追加します。</value></data>
+  <data name="Phantom_Geomancer_MistyMirage_Name" xml:space="preserve"><value>しんきろう</value></data>
+  <data name="Phantom_Geomancer_MistyMirage_Desc" xml:space="preserve"><value>しんきろうをローテーションに追加します。</value></data>
+  <data name="Phantom_Geomancer_HastyMirage_Name" xml:space="preserve"><value>にげみず</value></data>
+  <data name="Phantom_Geomancer_HastyMirage_Desc" xml:space="preserve"><value>にげみずをローテーションに追加します。</value></data>
+  <data name="Phantom_Geomancer_AetherialGain_Name" xml:space="preserve"><value>エーテルよく</value></data>
+  <data name="Phantom_Geomancer_AetherialGain_Desc" xml:space="preserve"><value>エーテルよくをローテーションに追加します。</value></data>
   <data name="Phantom_Dancer_Name" xml:space="preserve"><value>ダンサーのジョブアクション</value></data>
   <data name="Phantom_Dancer_Desc" xml:space="preserve"><value>これを有効にすると、ダンサー固有のアクションがローテーションに追加されます。</value></data>
-  <data name="Phantom_Dancer_Dance_Name" xml:space="preserve"><value>ダンス</value></data>
+  <data name="Phantom_Dancer_Dance_Name" xml:space="preserve"><value>おどる</value></data>
   <data name="Phantom_Dancer_Dance_Desc" xml:space="preserve"><value>ダンスとそれに続く GCD 攻撃をローテーションに追加します。</value></data>
   <data name="Phantom_Dancer_QuickStep_Name" xml:space="preserve"><value>クイックステップ</value></data>
   <data name="Phantom_Dancer_QuickStep_Desc" xml:space="preserve"><value>敵にターゲットされた場合にクイックステップをローテーションに追加します。</value></data>
   <data name="Phantom_Dancer_Mesmerize_Name" xml:space="preserve"><value>メズマライズ</value></data>
-  <data name="Phantom_Dancer_Mesmerize_Desc" xml:space="preserve"><value>「メズマライズ」をローテーションに追加します。</value></data>
+  <data name="Phantom_Dancer_Mesmerize_Desc" xml:space="preserve"><value>みりょうをローテーションに追加します。</value></data>
   <data name="Phantom_MysticKnight_Name" xml:space="preserve"><value>ミスティックナイトのジョブアクション</value></data>
   <data name="Phantom_MysticKnight_Desc" xml:space="preserve"><value>これを有効にすると、ミスティック ナイト固有のアクションがローテーションに追加されます。</value></data>
-  <data name="Phantom_MysticKnight_SunderingSpellblade_Name" xml:space="preserve"><value>サンダーリング・スペルブレード</value></data>
-  <data name="Phantom_MysticKnight_SunderingSpellblade_Desc" xml:space="preserve"><value>「サンダーリング・スペルブレード」をローテーションに追加します。</value></data>
-  <data name="Phantom_MysticKnight_HolySpellblade_Name" xml:space="preserve"><value>ホーリー・スペルブレード</value></data>
-  <data name="Phantom_MysticKnight_HolySpellblade_Desc" xml:space="preserve"><value>ホーリー・スペルブレードをローテーションに追加します。</value></data>
-  <data name="Phantom_MysticKnight_BlazingSpellblade_Name" xml:space="preserve"><value>ブレイジング・スペルブレード</value></data>
-  <data name="Phantom_MysticKnight_BlazingSpellblade_Desc" xml:space="preserve"><value>対応するバフがない場合、「ブレイジング・スペルブレード」をローテーションに追加します。</value></data>
-  <data name="Phantom_MysticKnight_MagicShell_Name" xml:space="preserve"><value>マジックシェル</value></data>
-  <data name="Phantom_MysticKnight_MagicShell_Desc" xml:space="preserve"><value>「マジックシェル」をローテーションに追加します。</value></data>
+  <data name="Phantom_MysticKnight_SunderingSpellblade_Name" xml:space="preserve"><value>まほうけんブレイク</value></data>
+  <data name="Phantom_MysticKnight_SunderingSpellblade_Desc" xml:space="preserve"><value>まほうけんブレイクをローテーションに追加します。</value></data>
+  <data name="Phantom_MysticKnight_HolySpellblade_Name" xml:space="preserve"><value>まほうけんホーリー</value></data>
+  <data name="Phantom_MysticKnight_HolySpellblade_Desc" xml:space="preserve"><value>まほうけんホーリーをローテーションに追加します。</value></data>
+  <data name="Phantom_MysticKnight_BlazingSpellblade_Name" xml:space="preserve"><value>まほうけんフレア</value></data>
+  <data name="Phantom_MysticKnight_BlazingSpellblade_Desc" xml:space="preserve"><value>対応するバフがない場合、まほうけんフレアをローテーションに追加します。</value></data>
+  <data name="Phantom_MysticKnight_MagicShell_Name" xml:space="preserve"><value>まほうバリア</value></data>
+  <data name="Phantom_MysticKnight_MagicShell_Desc" xml:space="preserve"><value>まほうバリアをローテーションに追加します。</value></data>
   <data name="Phantom_Gladiator_Name" xml:space="preserve"><value>グラディエーターのジョブアクション</value></data>
   <data name="Phantom_Gladiator_Desc" xml:space="preserve"><value>これを有効にすると、グラディエーター固有のアクションがローテーションに追加されます。</value></data>
-  <data name="Phantom_Gladiator_Finisher_Name" xml:space="preserve"><value>フィニッシャー</value></data>
-  <data name="Phantom_Gladiator_Finisher_Desc" xml:space="preserve"><value>フィニッシャーをローテーションに追加します。</value></data>
-  <data name="Phantom_Gladiator_Defend_Name" xml:space="preserve"><value>守る</value></data>
-  <data name="Phantom_Gladiator_Defend_Desc" xml:space="preserve"><value>ディフェンスをローテーションに追加します。</value></data>
-  <data name="Phantom_Gladiator_LongReach_Name" xml:space="preserve"><value>ロングリーチ</value></data>
-  <data name="Phantom_Gladiator_LongReach_Desc" xml:space="preserve"><value>ロングリーチをローテーションに追加します。</value></data>
+  <data name="Phantom_Gladiator_Finisher_Name" xml:space="preserve"><value>ひっさつ</value></data>
+  <data name="Phantom_Gladiator_Finisher_Desc" xml:space="preserve"><value>ひっさつをローテーションに追加します。</value></data>
+  <data name="Phantom_Gladiator_Defend_Name" xml:space="preserve"><value>ぼうぎょ</value></data>
+  <data name="Phantom_Gladiator_Defend_Desc" xml:space="preserve"><value>ぼうぎょをローテーションに追加します。</value></data>
+  <data name="Phantom_Gladiator_LongReach_Name" xml:space="preserve"><value>こうれつぎり</value></data>
+  <data name="Phantom_Gladiator_LongReach_Desc" xml:space="preserve"><value>こうれつぎりをローテーションに追加します。</value></data>
   <data name="Phantom_Gladiator_BladeBlitz_Name" xml:space="preserve"><value>ブレードブリッツ</value></data>
   <data name="Phantom_Gladiator_BladeBlitz_Desc" xml:space="preserve"><value>ブレードブリッツをローテーションに追加します。</value></data>
   <data name="AST_ST_Simple_DPS_Name" xml:space="preserve"><value>シンプル DPS モード - 単体</value></data>
@@ -560,7 +560,7 @@
   <data name="AST_ST_Heals_Esuna_Desc" xml:space="preserve"><value>浄化可能なデバフがある場合、ターゲットにエスナを適用します。</value></data>
   <data name="AST_ST_Heals_AspectedBenefic_Name" xml:space="preserve"><value>アスペクト・ベネフィクオプション</value></data>
   <data name="AST_ST_Heals_AspectedBenefic_Desc" xml:space="preserve"><value>アスペクト・ベネフィクを追加し、必要に応じて更新します。</value></data>
-  <data name="AST_ST_Heals_EssentialDignity_Name" xml:space="preserve"><value>エッセンシャル・ディグニティ・オプション</value></data>
+  <data name="AST_ST_Heals_EssentialDignity_Name" xml:space="preserve"><value>ディグニティオプション</value></data>
   <data name="AST_ST_Heals_EssentialDignity_Desc" xml:space="preserve"><value>目標が設定値以下の場合、エッセンシャル ディグニティが追加されます。</value></data>
   <data name="AST_ST_Heals_EssentialDignity_Emergency_Name" xml:space="preserve"><value>緊急ディグニティオプション</value></data>
   <data name="AST_ST_Heals_EssentialDignity_Emergency_Desc" xml:space="preserve"><value>別のしきい値で使用するための ディグニティ のチャージが保持されます。</value></data>
@@ -605,10 +605,10 @@
   <data name="AST_AoE_Heals_CollectiveUnconscious_Name" xml:space="preserve"><value>運命の輪オプション</value></data>
   <data name="AST_AoE_Heals_CollectiveUnconscious_Desc" xml:space="preserve"><value>運命の輪を追加します（リジェネのため、チャネリングされません）。</value></data>
   <data name="AST_Cards_QuickTargetCards_Name" xml:space="preserve"><value>クイックターゲットダメージカード</value></data>
-  <data name="AST_Cards_QuickTargetCards_Desc" xml:space="preserve"><value>コンボで天秤または槍をプレイすると、自動的に適切なパーティメンバーへバフを付与します。
-まず The Balance の優先順位に従って、そのカードに適したDPSを優先します。該当者がいない、またはすでにバフを持っている場合は、他のDPSを確認します。
-与ダメージ低下や衰弱が付いているパーティメンバーは可能な限り除外します。
-適切な対象が見つからない場合は自身を対象にします。</value></data>
+  <data name="AST_Cards_QuickTargetCards_Desc" xml:space="preserve"><value>コンボでアーゼマの均衡またはハルオーネの槍をプレイしたとき、自動的に適切なパーティメンバーを対象にバフを付与します。
+まずアーゼマの均衡の優先順位に従って、そのカードに適したDPSを探し、見つからないか既にバフが付いている場合はほかのDPSを対象にします。
+ダメージ低下や衰弱が付いているパーティメンバーは可能な限り避けます。
+適切な対象が見つからない場合は自分を対象にします。</value></data>
   <data name="AST_Benefic_Name" xml:space="preserve"><value>ベネフィク 2 のダウングレード</value></data>
   <data name="AST_Benefic_Desc" xml:space="preserve"><value>ベネフィック 2 がロック解除されていない、または利用できない場合、ベネフィック 2 をベネフィック 2 に変更します。</value></data>
   <data name="AST_Raise_Alternative_Name" xml:space="preserve"><value>代替レイズ機能</value></data>
@@ -640,7 +640,7 @@
   <data name="AST_Retargets_Benefic_Desc" xml:space="preserve"><value>ベネフィックとベネフィック II をヒール スタックに再ターゲットします (上記のベネフィック 2 ダウングレード機能からでも)。</value></data>
   <data name="AST_Retargets_AspectedBenefic_Name" xml:space="preserve"><value>アスペクト・ベネフィクオプション</value></data>
   <data name="AST_Retargets_AspectedBenefic_Desc" xml:space="preserve"><value>アスペクト・ベネフィクをヒール・スタックにリターゲットする。</value></data>
-  <data name="AST_Retargets_EssentialDignity_Name" xml:space="preserve"><value>エッセンシャル・ディグニティ・オプション</value></data>
+  <data name="AST_Retargets_EssentialDignity_Name" xml:space="preserve"><value>ディグニティオプション</value></data>
   <data name="AST_Retargets_EssentialDignity_Desc" xml:space="preserve"><value>エッセンシャル ディグニティをヒール スタックにリターゲットします。</value></data>
   <data name="AST_Retargets_Exaltation_Name" xml:space="preserve"><value>エクザルテーションオプション</value></data>
   <data name="AST_Retargets_Exaltation_Desc" xml:space="preserve"><value>エクザルテーションをヒールスタックにリターゲットします。</value></data>
@@ -667,7 +667,7 @@
   <data name="BLM_ST_Transpose_Desc" xml:space="preserve"><value>ローテーションにトランスポーズを追加します。</value></data>
   <data name="BLM_ST_LeyLines_Name" xml:space="preserve"><value>黒魔紋オプション</value></data>
   <data name="BLM_ST_LeyLines_Desc" xml:space="preserve"><value>ローテーションに黒魔紋を追加します。</value></data>
-  <data name="BLM_ST_Amplifier_Name" xml:space="preserve"><value>アンプリファイアリファイアオプション</value></data>
+  <data name="BLM_ST_Amplifier_Name" xml:space="preserve"><value>アンプリファイアオプション</value></data>
   <data name="BLM_ST_Amplifier_Desc" xml:space="preserve"><value>アンプリファイアをローテーションに追加します。</value></data>
   <data name="BLM_ST_Manafont_Name" xml:space="preserve"><value>マナフォントオプション</value></data>
   <data name="BLM_ST_Manafont_Desc" xml:space="preserve"><value>マナフォントをローテーションに追加します。</value></data>
@@ -697,12 +697,12 @@
   <data name="BLM_AoE_Transpose_Desc" xml:space="preserve"><value>ローテーションにトランスポーズを追加します。</value></data>
   <data name="BLM_AoE_LeyLines_Name" xml:space="preserve"><value>黒魔紋オプション</value></data>
   <data name="BLM_AoE_LeyLines_Desc" xml:space="preserve"><value>ローテーションに黒魔紋を追加します。</value></data>
-  <data name="BLM_AoE_Amplifier_Name" xml:space="preserve"><value>アンプリファイアリファイアオプション</value></data>
+  <data name="BLM_AoE_Amplifier_Name" xml:space="preserve"><value>アンプリファイアオプション</value></data>
   <data name="BLM_AoE_Amplifier_Desc" xml:space="preserve"><value>アンプリファイアをローテーションに追加します。</value></data>
   <data name="BLM_AoE_Manafont_Name" xml:space="preserve"><value>マナフォントオプション</value></data>
   <data name="BLM_AoE_Manafont_Desc" xml:space="preserve"><value>マナフォントをローテーションに追加します。</value></data>
   <data name="BLM_AoE_Triplecast_Name" xml:space="preserve"><value>三連魔オプション</value></data>
-  <data name="BLM_AoE_Triplecast_Desc" xml:space="preserve"><value>ローテーションに三連魔を追加します。</value></data>
+  <data name="BLM_AoE_Triplecast_Desc" xml:space="preserve"><value>三連魔をローテーションに追加します。</value></data>
   <data name="BLM_AoE_ParadoxFiller_Name" xml:space="preserve"><value>パラドックスフィラーオプション</value></data>
   <data name="BLM_AoE_ParadoxFiller_Desc" xml:space="preserve"><value>最大レベルでローテーションにフィラーとして パラドックス を追加します。</value></data>
   <data name="BLM_AoE_Thunder_Name" xml:space="preserve"><value>ハイサンダラオプション</value></data>
@@ -741,7 +741,7 @@
   <data name="BLM_XenoThunder_Name" xml:space="preserve"><value>ゼノグロシー→サンダー機能</value></data>
   <data name="BLM_XenoThunder_Desc" xml:space="preserve"><value>サンダーが3秒以下の場合、ゼノグロシーをサンダーに置き換えます。</value></data>
   <data name="BLM_FoulThunder_Name" xml:space="preserve"><value>ファウル→サンダー機能</value></data>
-  <data name="BLM_FoulThunder_Desc" xml:space="preserve"><value>サンダーが3秒以下の場合、ファウルをサンダーIIに置き換えます。</value></data>
+  <data name="BLM_FoulThunder_Desc" xml:space="preserve"><value>サンダーの残り時間が3秒以下の場合、ファウルをサンダラに置き換えます。</value></data>
   <data name="BLM_UmbralSoul_Name" xml:space="preserve"><value>アンブラルソウル／トランスポーズ機能</value></data>
   <data name="BLM_UmbralSoul_Desc" xml:space="preserve"><value>アンブラルソウル が利用可能な場合、トランス を アンブラルソウル に置き換えます。</value></data>
   <data name="BLM_ScatheXeno_Name" xml:space="preserve"><value>ゼノグロシー機能</value></data>
@@ -828,7 +828,7 @@
   <data name="BRD_Adv_Buffs_Desc" xml:space="preserve"><value>単体アドバンスモードにバフを追加します。
 すべて有効にすると、バーストバフのタイミングに合わせて使用します。</value></data>
   <data name="BRD_Adv_BuffsResonant_Name" xml:space="preserve"><value>超越者オプション</value></data>
-  <data name="BRD_Adv_BuffsResonant_Desc" xml:space="preserve"><value>連打後のローテーションにレゾナンスアローを追加します。</value></data>
+  <data name="BRD_Adv_BuffsResonant_Desc" xml:space="preserve"><value>乱れ撃ちの後、ローテーションにレゾナンスアローを追加します。</value></data>
   <data name="BRD_Adv_BuffsEncore_Name" xml:space="preserve"><value>アンコールオプション</value></data>
   <data name="BRD_Adv_BuffsEncore_Desc" xml:space="preserve"><value>フィナーレ後のローテーションに光神のアンコールを追加します。</value></data>
   <data name="BRD_ST_ApexArrow_Name" xml:space="preserve"><value>エイペックスアローオプション</value></data>
@@ -870,7 +870,7 @@
   <data name="BRD_AoE_BuffsEncore_Name" xml:space="preserve"><value>アンコールオプション</value></data>
   <data name="BRD_AoE_BuffsEncore_Desc" xml:space="preserve"><value>フィナーレ後のローテーションに光神のアンコールを追加します。</value></data>
   <data name="BRD_AoE_BuffsResonant_Name" xml:space="preserve"><value>超越者オプション</value></data>
-  <data name="BRD_AoE_BuffsResonant_Desc" xml:space="preserve"><value>連打後のローテーションにレゾナンスアローを追加します。</value></data>
+  <data name="BRD_AoE_BuffsResonant_Desc" xml:space="preserve"><value>乱れ撃ちの後、ローテーションにレゾナンスアローを追加します。</value></data>
   <data name="BRD_AoE_ApexArrow_Name" xml:space="preserve"><value>エイペックスアローオプション</value></data>
   <data name="BRD_AoE_ApexArrow_Desc" xml:space="preserve"><value>エイペックスアローとブラストショットを追加</value></data>
   <data name="BRD_AoE_SecondWind_Name" xml:space="preserve"><value>内丹オプション</value></data>
@@ -958,7 +958,7 @@
   <data name="DNC_ST_Adv_TS_Name" xml:space="preserve"><value>テクニカルダンスオプション</value></data>
   <data name="DNC_ST_Adv_TS_Desc" xml:space="preserve"><value>すべてのダンス ステップ、フィニッシュ、およびオプションでテクニカル ステップをローテーションに含めます。</value></data>
   <data name="DNC_ST_Adv_Devilment_Name" xml:space="preserve"><value>攻めのタンゴオプション</value></data>
-  <data name="DNC_ST_Adv_Devilment_Desc" xml:space="preserve"><value>ローテーションには攻めのタンゴが含まれます。 Lv70以上の場合、テクニカルフィニッシュ時にのみ発動します。 Lv70以下のクールタイムで使用されます。</value></data>
+  <data name="DNC_ST_Adv_Devilment_Desc" xml:space="preserve"><value>ローテーションに攻めのタンゴを組み込みます。レベル70以上ではテクニカルフィニッシュ中にのみ発動し、レベル70未満ではリキャストごとに使用します。</value></data>
   <data name="DNC_ST_Adv_Flourish_Name" xml:space="preserve"><value>フラリッシュオプション</value></data>
   <data name="DNC_ST_Adv_Flourish_Desc" xml:space="preserve"><value>ローテーションにはフラリッシュも含まれます。</value></data>
   <data name="DNC_ST_Adv_FanProccs_Name" xml:space="preserve"><value>扇の舞い【急】／扇の舞い【終】オプション</value></data>
@@ -1003,9 +1003,7 @@ Lv.70以下で可能な限り羽を織ります。</value></data>
   <data name="DNC_AoE_Adv_TS_Name" xml:space="preserve"><value>テクニカルダンスオプション</value></data>
   <data name="DNC_AoE_Adv_TS_Desc" xml:space="preserve"><value>すべてのダンス ステップ、フィニッシュ、およびオプションでテクニカル ステップを AoE ローテーションに含めます。</value></data>
   <data name="DNC_AoE_Adv_Devilment_Name" xml:space="preserve"><value>テクニカル 攻めのタンゴオプション</value></data>
-  <data name="DNC_AoE_Adv_Devilment_Desc" xml:space="preserve"><value>範囲ローテーションにデビルメ​​ントが含まれます。
-Lv70以上の場合、テクニカルフィニッシュ時にのみ発動します。
-Lv70以下のクールタイムで使用されます。</value></data>
+  <data name="DNC_AoE_Adv_Devilment_Desc" xml:space="preserve"><value>範囲ローテーションに攻めのタンゴを組み込みます。レベル70以上ではテクニカルフィニッシュ中にのみ発動し、レベル70未満ではリキャストごとに使用します。</value></data>
   <data name="DNC_AoE_Adv_Flourish_Name" xml:space="preserve"><value>フラリッシュオプション</value></data>
   <data name="DNC_AoE_Adv_Flourish_Desc" xml:space="preserve"><value>AoE ローテーションに フラリッシュ が含まれます。</value></data>
   <data name="DNC_AoE_Adv_FanProccs_Name" xml:space="preserve"><value>扇の舞い【急】／扇の舞い【終】オプション</value></data>
@@ -1039,7 +1037,7 @@ Lv.70以下で可能な限り羽を織ります。</value></data>
   <data name="DNC_ST_EspritOvercap_Desc" xml:space="preserve"><value>設定したエスプリ閾値を超えると剣の舞いが追加されます。</value></data>
   <data name="DNC_ST_FanDanceOvercap_Name" xml:space="preserve"><value>扇の舞い【序】オーバーキャップ重複防止オプション</value></data>
   <data name="DNC_ST_FanDanceOvercap_Desc" xml:space="preserve"><value>四重の羽根がいっぱいになると扇踊り1が追加されます。</value></data>
-  <data name="DNC_ST_FanDance34_Name" xml:space="preserve"><value>扇の舞い【序】オプション</value></data>
+  <data name="DNC_ST_FanDance34_Name" xml:space="preserve"><value>扇の舞いオプション</value></data>
   <data name="DNC_ST_FanDance34_Desc" xml:space="preserve"><value>利用可能な場合は扇の舞い【急】／扇の舞い【終】を追加します。</value></data>
   <data name="DNC_AoE_MultiButton_Name" xml:space="preserve"><value>AoE マルチボタン機能</value></data>
   <data name="DNC_AoE_MultiButton_Desc" xml:space="preserve"><value>ファンダンスとエスプリ使用による AoE コンボ。</value></data>
@@ -1110,8 +1108,8 @@ Lv.70以下で可能な限り羽を織ります。</value></data>
   <data name="DRK_ST_CD_Interrupt_Name" xml:space="preserve"><value>割り込みオプション</value></data>
   <data name="DRK_ST_CD_Interrupt_Desc" xml:space="preserve"><value>ターゲットのキャストが中断可能な場合、ローテーションにインタージェクトを追加します。</value></data>
   <data name="DRK_ST_CD_Stun_Name" xml:space="preserve"><value>スタンオプションによる中断</value></data>
-  <data name="DRK_ST_CD_Stun_Desc" xml:space="preserve"><value>ターゲットがキャストしているときにローテーションにロウブロウを追加します。
-気絶できない敵などに大量のロウブロウを無駄にする可能性があるため、オーバーワールド コンテンツ以外ではお勧めできません。ボス戦では使用しないようにします。</value></data>
+  <data name="DRK_ST_CD_Stun_Desc" xml:space="preserve"><value>ターゲットが詠唱しているとき、ローテーションにロウブロウを追加します。
+気絶できない敵などにロウブロウを無駄打ちする可能性があるため、フィールドコンテンツ以外では非推奨です。ボス戦では使用しないようにします。</value></data>
   <data name="DRK_ST_CD_Delirium_Name" xml:space="preserve"><value>デリリアムブレード（リキャストごと）</value></data>
   <data name="DRK_ST_CD_Delirium_Desc" xml:space="preserve"><value>クールダウン時とダークサイドがアップしているときに、デリリウム（または低レベルではブラッドウェポン）をローテーションに追加します。
  デリリアムブレードがオーバーキャップから保護する準備がほぼ整った場合、血液ゲージも 50 消費します。</value></data>
@@ -1119,7 +1117,7 @@ Lv.70以下で可能な限り羽を織ります。</value></data>
   <data name="DRK_ST_CD_Shadow_Desc" xml:space="preserve"><value>ダークサイドがアップしているときに影身具現をローテーションに追加します。</value></data>
   <data name="DRK_ST_CD_Disesteem_Name" xml:space="preserve"><value>ディセスティームオプション</value></data>
   <data name="DRK_ST_CD_Disesteem_Desc" xml:space="preserve"><value>利用可能な場合はローテーションにディセスティームを追加します。</value></data>
-  <data name="DRK_ST_CD_Bringer_Name" xml:space="preserve"><value>シャドウブリンガー オプション</value></data>
+  <data name="DRK_ST_CD_Bringer_Name" xml:space="preserve"><value>シャドウブリンガーオプション</value></data>
   <data name="DRK_ST_CD_Bringer_Desc" xml:space="preserve"><value>ダークサイドがアップしている間、シャドウブリンガーをローテーションに追加します。クールダウン時にすべてのスタックを使用します。</value></data>
   <data name="DRK_ST_CD_BringerBurst_Name" xml:space="preserve"><value>シャドウブリンガー バーストオプション</value></data>
   <data name="DRK_ST_CD_BringerBurst_Desc" xml:space="preserve"><value>偶数分のウィンドウバースト中に使用するシャドウブリンガーをプールします（ディセスティーム後）。</value></data>
@@ -1134,7 +1132,7 @@ Lv.70以下で可能な限り羽を織ります。</value></data>
   <data name="DRK_ST_Sp_ScarletChain_Name" xml:space="preserve"><value>レッドデリリアムコンボオプション</value></data>
   <data name="DRK_ST_Sp_ScarletChain_Desc" xml:space="preserve"><value>デリリアムブレード がアクティブになったときに、レッドデリリアム コンボ チェーンをローテーションに追加します。</value></data>
   <data name="DRK_ST_Sp_Bloodspiller_Name" xml:space="preserve"><value>ブラッドスピラーオプション</value></data>
-  <data name="DRK_ST_Sp_Bloodspiller_Desc" xml:space="preserve"><value>デリリアムブレード中、またはバースト直後にブラッドスピラーをローテーションに追加します。</value></data>
+  <data name="DRK_ST_Sp_Bloodspiller_Desc" xml:space="preserve"><value>ブラッドデリリアム中、またはバースト直後にブラッドスピラーをローテーションに追加します。</value></data>
   <data name="DRK_ST_Sp_BloodOvercap_Name" xml:space="preserve"><value>血液ゲージオーバーキャップオプション</value></data>
   <data name="DRK_ST_Sp_BloodOvercap_Desc" xml:space="preserve"><value>血液ゲージが選択したしきい値を超えている場合、ソウルイーターの前のローテーションにブラッドスピラーを追加します。</value></data>
   <data name="DRK_ST_Sp_Edge_Name" xml:space="preserve"><value>暗黒の剣オプション</value></data>
@@ -1154,10 +1152,10 @@ Lv.70以下で可能な限り羽を織ります。</value></data>
   <data name="DRK_AoE_Interrupt_Desc" xml:space="preserve"><value>ターゲットのキャストが中断可能な場合、ローテーションにインタージェクトを追加します。</value></data>
   <data name="DRK_AoE_Stun_Name" xml:space="preserve"><value>スタンオプションによる中断</value></data>
   <data name="DRK_AoE_Stun_Desc" xml:space="preserve"><value>ターゲットがキャストしているときにローテーションにロウブロウを追加します。</value></data>
-  <data name="DRK_AoE_CD_Delirium_Name" xml:space="preserve"><value>デリリアムブレードオプション</value></data>
+  <data name="DRK_AoE_CD_Delirium_Name" xml:space="preserve"><value>ブラッドデリリアムオプション</value></data>
   <data name="DRK_AoE_CD_Delirium_Desc" xml:space="preserve"><value>クールダウン時とダークサイドがアップしているときに、デリリウム（または低レベルではブラッドウェポン）をローテーションに追加します。</value></data>
   <data name="DRK_AoE_CD_Shadow_Name" xml:space="preserve"><value>影身具現オプション</value></data>
-  <data name="DRK_AoE_CD_Shadow_Desc" xml:space="preserve"><value>クールダウン時とダークサイドがアップしているときに、リビング シャドウをローテーションに追加します。</value></data>
+  <data name="DRK_AoE_CD_Shadow_Desc" xml:space="preserve"><value>暗黒中かつリキャストごとに影身具現をローテーションに追加します。</value></data>
   <data name="DRK_AoE_CD_Disesteem_Name" xml:space="preserve"><value>ディセスティームオプション</value></data>
   <data name="DRK_AoE_CD_Disesteem_Desc" xml:space="preserve"><value>利用可能な場合はローテーションにディセスティームを追加します。</value></data>
   <data name="DRK_AoE_CD_Bringer_Name" xml:space="preserve"><value>AoE シャドウブリンガー オプション</value></data>
@@ -1173,7 +1171,7 @@ Lv.70以下で可能な限り羽を織ります。</value></data>
   <data name="DRK_AoE_Sp_ImpalementChain_Name" xml:space="preserve"><value>インペイルメントオプション</value></data>
   <data name="DRK_AoE_Sp_ImpalementChain_Desc" xml:space="preserve"><value>デリリアムブレード がアクティブな場合、ローテーションに インペイルメント を追加します。</value></data>
   <data name="DRK_AoE_Sp_Quietus_Name" xml:space="preserve"><value>クワイタスオプション</value></data>
-  <data name="DRK_AoE_Sp_Quietus_Desc" xml:space="preserve"><value>デリリウム中、またはバースト直後に クワイタス をローテーションに追加します。</value></data>
+  <data name="DRK_AoE_Sp_Quietus_Desc" xml:space="preserve"><value>ブラッドデリリアム中、またはバースト直後にクワイタスをローテーションに追加します。</value></data>
   <data name="DRK_AoE_Sp_BloodOvercap_Name" xml:space="preserve"><value>血液ゲージオーバーキャップオプション</value></data>
   <data name="DRK_AoE_Sp_BloodOvercap_Desc" xml:space="preserve"><value>血液ゲージが選択したしきい値を超えると、クワイタス がローテーションに追加されます。</value></data>
   <data name="DRK_AoE_Sp_Flood_Name" xml:space="preserve"><value>漆黒の波動オプション</value></data>
@@ -1254,18 +1252,18 @@ Lv.70以下で可能な限り羽を織ります。</value></data>
   <data name="DRK_oGCD_Name" xml:space="preserve"><value>アビリティ 機能</value></data>
   <data name="DRK_oGCD_Desc" xml:space="preserve"><value>選択したアビリティをカーヴ・アンド・スピットとアビサルドレインに追加します。</value></data>
   <data name="DRK_oGCD_Interrupt_Name" xml:space="preserve"><value>割り込みオプション</value></data>
-  <data name="DRK_oGCD_Interrupt_Desc" xml:space="preserve"><value>ターゲットのキャストが中断可能な場合に、機能にインターヴィーンを追加します。</value></data>
-  <data name="DRK_oGCD_Delirium_Name" xml:space="preserve"><value>デリリアムブレードオプション</value></data>
+  <data name="DRK_oGCD_Interrupt_Desc" xml:space="preserve"><value>ターゲットの詠唱が中断可能な場合、この機能にインタージェクトを追加します。</value></data>
+  <data name="DRK_oGCD_Delirium_Name" xml:space="preserve"><value>ブラッドデリリアムオプション</value></data>
   <data name="DRK_oGCD_Delirium_Desc" xml:space="preserve"><value>デリリウム（またはブラッドウェポン）を機能に追加します。</value></data>
   <data name="DRK_oGCD_Shadow_Name" xml:space="preserve"><value>影身具現オプション</value></data>
   <data name="DRK_oGCD_Shadow_Desc" xml:space="preserve"><value>影身具現 をフィーチャーに追加します。</value></data>
   <data name="DRK_oGCD_Disesteem_Name" xml:space="preserve"><value>ディセスティームオプション</value></data>
   <data name="DRK_oGCD_Disesteem_Desc" xml:space="preserve"><value>特徴にディセスティームを追加します。</value></data>
   <data name="DRK_oGCD_SaltedEarth_Name" xml:space="preserve"><value>ソルトアースオプション</value></data>
-  <data name="DRK_oGCD_SaltedEarth_Desc" xml:space="preserve"><value>塩漬け土をフィーチャーに追加します。</value></data>
+  <data name="DRK_oGCD_SaltedEarth_Desc" xml:space="preserve"><value>この機能にソルトアースを追加します。</value></data>
   <data name="DRK_oGCD_SaltAndDarkness_Name" xml:space="preserve"><value>ソルト・アンド・ダークオプション</value></data>
   <data name="DRK_oGCD_SaltAndDarkness_Desc" xml:space="preserve"><value>塩漬けの大地の影響下にある場合、フィーチャーにソルト・アンド・ダークを追加します。</value></data>
-  <data name="DRK_oGCD_Shadowbringer_Name" xml:space="preserve"><value>シャドウブリンガー オプション</value></data>
+  <data name="DRK_oGCD_Shadowbringer_Name" xml:space="preserve"><value>シャドウブリンガーオプション</value></data>
   <data name="DRK_oGCD_Shadowbringer_Desc" xml:space="preserve"><value>シャドウブリンガー を機能に追加します。</value></data>
   <data name="DRK_Retarget_TBN_Name" xml:space="preserve"><value>ブラックナイト 機能をリターゲットする</value></data>
   <data name="DRK_Retarget_TBN_Desc" xml:space="preserve"><value>他のコンボ外では、ブラックナイトをマウスオーバー対象（または味方へのハードターゲット）にリターゲットします。</value></data>
@@ -1298,9 +1296,9 @@ Lv.70以下で可能な限り羽を織ります。</value></data>
   <data name="DRG_ST_Buffs_Name" xml:space="preserve"><value>バフオプション</value></data>
   <data name="DRG_ST_Buffs_Desc" xml:space="preserve"><value>ローテーションにさまざまなバフを追加します。</value></data>
   <data name="DRG_ST_BattleLitany_Name" xml:space="preserve"><value>バトルリタニーオプション</value></data>
-  <data name="DRG_ST_BattleLitany_Desc" xml:space="preserve"><value>バトルリタニー をローテーションに追加します。</value></data>
+  <data name="DRG_ST_BattleLitany_Desc" xml:space="preserve"><value>バトルリタニーをローテーションに追加します。</value></data>
   <data name="DRG_ST_LanceCharge_Name" xml:space="preserve"><value>ランスチャージオプション</value></data>
-  <data name="DRG_ST_LanceCharge_Desc" xml:space="preserve"><value>ランスチャージをローテーションに追加。</value></data>
+  <data name="DRG_ST_LanceCharge_Desc" xml:space="preserve"><value>ランスチャージをローテーションに追加します。</value></data>
   <data name="DRG_ST_LifeSurge_Name" xml:space="preserve"><value>ライフサージオプション</value></data>
   <data name="DRG_ST_LifeSurge_Desc" xml:space="preserve"><value>適切な GCD 上のライフ サージをローテーションに追加します。</value></data>
   <data name="DRG_ST_Damage_Name" xml:space="preserve"><value>メインコンボのダメージスキル</value></data>
@@ -1308,26 +1306,26 @@ Lv.70以下で可能な限り羽を織ります。</value></data>
   <data name="DRG_ST_HighJump_Name" xml:space="preserve"><value>ハイジャンプオプション</value></data>
   <data name="DRG_ST_HighJump_Desc" xml:space="preserve"><value>ローテーションに(高)ジャンプを追加します。</value></data>
   <data name="DRG_ST_Mirage_Name" xml:space="preserve"><value>ミラージュダイブオプション</value></data>
-  <data name="DRG_ST_Mirage_Desc" xml:space="preserve"><value>ミラージュダイブをローテーションに追加。</value></data>
-  <data name="DRG_ST_Geirskogul_Name" xml:space="preserve"><value>ゲイルスコグル オプション</value></data>
-  <data name="DRG_ST_Geirskogul_Desc" xml:space="preserve"><value>ゲイルスコグルをローテーションに加える。</value></data>
+  <data name="DRG_ST_Mirage_Desc" xml:space="preserve"><value>ミラージュダイブをローテーションに追加します。</value></data>
+  <data name="DRG_ST_Geirskogul_Name" xml:space="preserve"><value>ゲイルスコグルオプション</value></data>
+  <data name="DRG_ST_Geirskogul_Desc" xml:space="preserve"><value>ゲイルスコグルをローテーションに追加します。</value></data>
   <data name="DRG_ST_Nastrond_Name" xml:space="preserve"><value>ナーストレンドオプション</value></data>
   <data name="DRG_ST_Nastrond_Desc" xml:space="preserve"><value>ナーストレンドをローテーションに追加します。</value></data>
   <data name="DRG_ST_Wyrmwind_Name" xml:space="preserve"><value>天竜点睛オプション</value></data>
-  <data name="DRG_ST_Wyrmwind_Desc" xml:space="preserve"><value>ローテーションに竜風の推力を追加します。</value></data>
+  <data name="DRG_ST_Wyrmwind_Desc" xml:space="preserve"><value>天竜点睛をローテーションに追加します。</value></data>
   <data name="DRG_ST_Stardiver_Name" xml:space="preserve"><value>スターダイバーオプション</value></data>
   <data name="DRG_ST_Stardiver_Desc" xml:space="preserve"><value>スターダイバーをローテーションに追加します。</value></data>
   <data name="DRG_ST_Starcross_Name" xml:space="preserve"><value>スタークロッサーオプション</value></data>
-  <data name="DRG_ST_Starcross_Desc" xml:space="preserve"><value>スタークロスをローテーションに追加します。</value></data>
+  <data name="DRG_ST_Starcross_Desc" xml:space="preserve"><value>スタークロッサーをローテーションに追加します。</value></data>
   <data name="DRG_ST_DragonfireDive_Name" xml:space="preserve"><value>ドラゴンダイブオプション</value></data>
-  <data name="DRG_ST_DragonfireDive_Desc" xml:space="preserve"><value>ドラゴンダイブ をローテーションに追加します。</value></data>
+  <data name="DRG_ST_DragonfireDive_Desc" xml:space="preserve"><value>ドラゴンダイブをローテーションに追加します。</value></data>
   <data name="DRG_ST_RiseOfTheDragon_Name" xml:space="preserve"><value>ドラゴンライズオプション</value></data>
   <data name="DRG_ST_RiseOfTheDragon_Desc" xml:space="preserve"><value>ドラゴンライズ をローテーションに追加します。</value></data>
   <data name="DRG_ST_RangedUptime_Name" xml:space="preserve"><value>範囲稼働時間オプション</value></data>
-  <data name="DRG_ST_RangedUptime_Desc" xml:space="preserve"><value>近接攻撃範囲外にいる場合、ピアス タロンをローテーションに追加します。</value></data>
+  <data name="DRG_ST_RangedUptime_Desc" xml:space="preserve"><value>近接攻撃の射程外にいる場合、ピアシングタロンをローテーションに追加します。</value></data>
   <data name="DRG_TrueNorthDynamic_Name" xml:space="preserve"><value>動的トゥルーノースオプション</value></data>
   <data name="DRG_TrueNorthDynamic_Desc" xml:space="preserve"><value>強化された効力ボーナスの正しい位置にいない場合、カオス スラスト／カオティック スプリング、ファング アンド クロー、ホイーリング スラストの前に トゥルーノース を追加します。</value></data>
-  <data name="DRG_ST_StunInterupt_Name" xml:space="preserve"><value>足払いオプション</value></data>
+  <data name="DRG_ST_StunInterupt_Name" xml:space="preserve"><value>レッグスウィープオプション</value></data>
   <data name="DRG_ST_StunInterupt_Desc" xml:space="preserve"><value>ボス以外のターゲットが詠唱中に足払いを追加します。</value></data>
   <data name="DRG_ST_ComboHeals_Name" xml:space="preserve"><value>コンボヒールオプション</value></data>
   <data name="DRG_ST_ComboHeals_Desc" xml:space="preserve"><value>ブラッドバス と 内丹 をローテーションに追加します。</value></data>
@@ -1339,9 +1337,9 @@ Lv.70以下で可能な限り羽を織ります。</value></data>
   <data name="DRG_AoE_Buffs_Name" xml:space="preserve"><value>バフ範囲オプション</value></data>
   <data name="DRG_AoE_Buffs_Desc" xml:space="preserve"><value>ランスチャージ と バトルリタニー をローテーションに追加します。</value></data>
   <data name="DRG_AoE_BattleLitany_Name" xml:space="preserve"><value>バトルリタニー AoE オプション</value></data>
-  <data name="DRG_AoE_BattleLitany_Desc" xml:space="preserve"><value>バトルリタニー をローテーションに追加します。</value></data>
+  <data name="DRG_AoE_BattleLitany_Desc" xml:space="preserve"><value>バトルリタニーをローテーションに追加します。</value></data>
   <data name="DRG_AoE_LanceCharge_Name" xml:space="preserve"><value>ランスチャージAoEオプション</value></data>
-  <data name="DRG_AoE_LanceCharge_Desc" xml:space="preserve"><value>ランスチャージをローテーションに追加。</value></data>
+  <data name="DRG_AoE_LanceCharge_Desc" xml:space="preserve"><value>ランスチャージをローテーションに追加します。</value></data>
   <data name="DRG_AoE_LifeSurge_Name" xml:space="preserve"><value>ライフサージオプション</value></data>
   <data name="DRG_AoE_LifeSurge_Desc" xml:space="preserve"><value>ライフ サージを適切な GCD にローテーションに追加します。</value></data>
   <data name="DRG_AoE_Damage_Name" xml:space="preserve"><value>メインコンボのダメージスキル</value></data>
@@ -1349,26 +1347,26 @@ Lv.70以下で可能な限り羽を織ります。</value></data>
   <data name="DRG_AoE_HighJump_Name" xml:space="preserve"><value>ハイジャンプオプション</value></data>
   <data name="DRG_AoE_HighJump_Desc" xml:space="preserve"><value>ローテーションに(高)ジャンプを追加します。</value></data>
   <data name="DRG_AoE_Mirage_Name" xml:space="preserve"><value>ミラージュダイブオプション</value></data>
-  <data name="DRG_AoE_Mirage_Desc" xml:space="preserve"><value>ミラージュダイブをローテーションに追加。</value></data>
-  <data name="DRG_AoE_Geirskogul_Name" xml:space="preserve"><value>ゲイルスコグル オプション</value></data>
-  <data name="DRG_AoE_Geirskogul_Desc" xml:space="preserve"><value>ゲイルスコグルをローテーションに加える。</value></data>
+  <data name="DRG_AoE_Mirage_Desc" xml:space="preserve"><value>ミラージュダイブをローテーションに追加します。</value></data>
+  <data name="DRG_AoE_Geirskogul_Name" xml:space="preserve"><value>ゲイルスコグルオプション</value></data>
+  <data name="DRG_AoE_Geirskogul_Desc" xml:space="preserve"><value>ゲイルスコグルをローテーションに追加します。</value></data>
   <data name="DRG_AoE_Nastrond_Name" xml:space="preserve"><value>ナーストレンドオプション</value></data>
   <data name="DRG_AoE_Nastrond_Desc" xml:space="preserve"><value>ナーストレンドをローテーションに追加します。</value></data>
   <data name="DRG_AoE_Wyrmwind_Name" xml:space="preserve"><value>竜風のオプション</value></data>
-  <data name="DRG_AoE_Wyrmwind_Desc" xml:space="preserve"><value>ローテーションに竜風の推力を追加します。</value></data>
+  <data name="DRG_AoE_Wyrmwind_Desc" xml:space="preserve"><value>天竜点睛をローテーションに追加します。</value></data>
   <data name="DRG_AoE_Stardiver_Name" xml:space="preserve"><value>スターダイバーオプション</value></data>
   <data name="DRG_AoE_Stardiver_Desc" xml:space="preserve"><value>スターダイバーをローテーションに追加します。</value></data>
   <data name="DRG_AoE_Starcross_Name" xml:space="preserve"><value>スタークロッサーオプション</value></data>
-  <data name="DRG_AoE_Starcross_Desc" xml:space="preserve"><value>スタークロスをローテーションに追加します。</value></data>
+  <data name="DRG_AoE_Starcross_Desc" xml:space="preserve"><value>スタークロッサーをローテーションに追加します。</value></data>
   <data name="DRG_AoE_DragonfireDive_Name" xml:space="preserve"><value>ドラゴンダイブオプション</value></data>
-  <data name="DRG_AoE_DragonfireDive_Desc" xml:space="preserve"><value>ドラゴンダイブ をローテーションに追加します。</value></data>
+  <data name="DRG_AoE_DragonfireDive_Desc" xml:space="preserve"><value>ドラゴンダイブをローテーションに追加します。</value></data>
   <data name="DRG_AoE_RiseOfTheDragon_Name" xml:space="preserve"><value>ドラゴンライズオプション</value></data>
   <data name="DRG_AoE_RiseOfTheDragon_Desc" xml:space="preserve"><value>ドラゴンライズ をローテーションに追加します。</value></data>
   <data name="DRG_AoE_RangedUptime_Name" xml:space="preserve"><value>範囲稼働時間オプション</value></data>
-  <data name="DRG_AoE_RangedUptime_Desc" xml:space="preserve"><value>近接攻撃範囲外にいる場合、ピアス タロンをローテーションに追加します。</value></data>
+  <data name="DRG_AoE_RangedUptime_Desc" xml:space="preserve"><value>近接攻撃の射程外にいる場合、ピアシングタロンをローテーションに追加します。</value></data>
   <data name="DRG_AoE_Disembowel_Name" xml:space="preserve"><value>低レベル ディセムボウル</value></data>
   <data name="DRG_AoE_Disembowel_Desc" xml:space="preserve"><value>レベル 62 未満または同期している場合に、腹抜きコンボをローテーションに追加します。</value></data>
-  <data name="DRG_AoE_StunInterupt_Name" xml:space="preserve"><value>足払いオプション</value></data>
+  <data name="DRG_AoE_StunInterupt_Name" xml:space="preserve"><value>レッグスウィープオプション</value></data>
   <data name="DRG_AoE_StunInterupt_Desc" xml:space="preserve"><value>ボス以外のターゲットが詠唱中に足払いを追加します。</value></data>
   <data name="DRG_AoE_ComboHeals_Name" xml:space="preserve"><value>コンボヒールオプション</value></data>
   <data name="DRG_AoE_ComboHeals_Desc" xml:space="preserve"><value>ブラッドバス と 内丹 をローテーションに追加します。</value></data>
@@ -1389,7 +1387,7 @@ Lv.70以下で可能な限り羽を織ります。</value></data>
   <data name="GNB_ST_Advanced_Desc" xml:space="preserve"><value>キーンエッジ を 1 ボタンの完全な単体ローテーションに置き換えます。
 ローテーションを細かく調整したい場合に適した設定です。</value></data>
   <data name="GNB_ST_Opener_Name" xml:space="preserve"><value>バランスオープナー</value></data>
-  <data name="GNB_ST_Opener_Desc" xml:space="preserve"><value>Lv90からスキルスピードと現在のレベルに基づいてオープナーをローテーションに追加します。</value></data>
+  <data name="GNB_ST_Opener_Desc" xml:space="preserve"><value>レベル90から、スキルスピードと現在のレベルに基づいてオープナーをローテーションに追加します。</value></data>
   <data name="GNB_ST_NoMercy_Name" xml:space="preserve"><value>ノー・マーシーオプション</value></data>
   <data name="GNB_ST_NoMercy_Desc" xml:space="preserve"><value>必要に応じてローテーションに ノー・マーシー を追加します。</value></data>
   <data name="GNB_ST_Zone_Name" xml:space="preserve"><value>ゾーンオプション</value></data>
@@ -1411,12 +1409,12 @@ Lv.70以下で可能な限り羽を織ります。</value></data>
   <data name="GNB_ST_Reign_Name" xml:space="preserve"><value>統治コンボオプション</value></data>
   <data name="GNB_ST_Reign_Desc" xml:space="preserve"><value>必要に応じて、レイン／ノーブル／ライオンハートをローテーションに追加します。</value></data>
   <data name="GNB_ST_RangedUptime_Name" xml:space="preserve"><value>サンダーバレット維持オプション</value></data>
-  <data name="GNB_ST_RangedUptime_Desc" xml:space="preserve"><value>射程外にいるときにメインコンボにライトニングショットを追加します。</value></data>
+  <data name="GNB_ST_RangedUptime_Desc" xml:space="preserve"><value>射程外にいるとき、メインコンボにサンダーバレットを追加します。</value></data>
   <data name="GNB_ST_Interrupt_Name" xml:space="preserve"><value>割り込みオプション</value></data>
   <data name="GNB_ST_Interrupt_Desc" xml:space="preserve"><value>ターゲットのキャストが中断可能な場合、ローテーションにインタージェクトを追加します。</value></data>
   <data name="GNB_ST_Stun_Name" xml:space="preserve"><value>スタンオプションによる中断</value></data>
-  <data name="GNB_ST_Stun_Desc" xml:space="preserve"><value>ターゲットがキャストしているときにローテーションにロウブロウを追加します。
-気絶できない敵などに大量のロウブロウを無駄にする可能性があるため、オーバーワールド コンテンツ以外ではお勧めできません。ボス戦では使用しないようにします。</value></data>
+  <data name="GNB_ST_Stun_Desc" xml:space="preserve"><value>ターゲットが詠唱しているとき、ローテーションにロウブロウを追加します。
+気絶できない敵などにロウブロウを無駄打ちする可能性があるため、フィールドコンテンツ以外では非推奨です。ボス戦では使用しないようにします。</value></data>
   <data name="GNB_AoE_Advanced_Name" xml:space="preserve"><value>アドバンストモード - AoE</value></data>
   <data name="GNB_AoE_Advanced_Desc" xml:space="preserve"><value>デーモン スライスを 1 ボタンの完全な AoE ローテーションに置き換えます。
 ローテーションを細かく調整したい場合に適した設定です。</value></data>
@@ -1562,9 +1560,9 @@ Lv.70以下で可能な限り羽を織ります。</value></data>
   <data name="GNB_FC_Features_Name" xml:space="preserve"><value>フェイテッドサークル機能</value></data>
   <data name="GNB_FC_Features_Desc" xml:space="preserve"><value>フェイトサークル関連の機能を集めました。</value></data>
   <data name="GNB_FC_Continuation_Name" xml:space="preserve"><value>フェイテッドブランドオプション</value></data>
-  <data name="GNB_FC_Continuation_Desc" xml:space="preserve"><value>運命のブランドを運命のサークルに追加します。</value></data>
+  <data name="GNB_FC_Continuation_Desc" xml:space="preserve"><value>フェイテッドサークルにフェイテッドブランドを追加します。</value></data>
   <data name="GNB_FC_Bloodfest_Name" xml:space="preserve"><value>ブラッドソイルオプション</value></data>
-  <data name="GNB_FC_Bloodfest_Desc" xml:space="preserve"><value>必要に応じてブラッドフェストをフェイトサークルに追加します。</value></data>
+  <data name="GNB_FC_Bloodfest_Desc" xml:space="preserve"><value>状況に応じてフェイテッドサークルにブラッドソイルを追加します。</value></data>
   <data name="GNB_FC_BowShock_Name" xml:space="preserve"><value>バウショックオプション</value></data>
   <data name="GNB_FC_BowShock_Desc" xml:space="preserve"><value>必要に応じて、フェイテッドサークル に バウショック を追加します。</value></data>
   <data name="GNB_FC_DoubleDown_Name" xml:space="preserve"><value>ダブルダウンオプション</value></data>
@@ -1600,9 +1598,9 @@ Lv.70以下で可能な限り羽を織ります。</value></data>
   <data name="MCH_ST_Adv_Stabilizer_FullMetalField_Name" xml:space="preserve"><value>フルメタルバーストオプション</value></data>
   <data name="MCH_ST_Adv_Stabilizer_FullMetalField_Desc" xml:space="preserve"><value>フルメタルバーストをローテーションに追加します。</value></data>
   <data name="MCH_ST_Adv_WildFire_Name" xml:space="preserve"><value>ワイルドファイアオプション</value></data>
-  <data name="MCH_ST_Adv_WildFire_Desc" xml:space="preserve"><value>ワイルドファイア をローテーションに追加します。</value></data>
+  <data name="MCH_ST_Adv_WildFire_Desc" xml:space="preserve"><value>ワイルドファイアをローテーションに追加します。</value></data>
   <data name="MCH_ST_Adv_Hypercharge_Name" xml:space="preserve"><value>ハイパーチャージオプション</value></data>
-  <data name="MCH_ST_Adv_Hypercharge_Desc" xml:space="preserve"><value>ローテーションにハイパーチャージを追加します。</value></data>
+  <data name="MCH_ST_Adv_Hypercharge_Desc" xml:space="preserve"><value>ハイパーチャージをローテーションに追加します。</value></data>
   <data name="MCH_ST_Adv_Heatblast_Name" xml:space="preserve"><value>ヒートブラスト／ブレイズショットオプション</value></data>
   <data name="MCH_ST_Adv_Heatblast_Desc" xml:space="preserve"><value>ヒートブラストまたはブレイジングショットをローテーションに追加</value></data>
   <data name="MCH_ST_Adv_GaussRicochet_Name" xml:space="preserve"><value>ガウスラウンド／リコシェット ダブルチェック／チェックメイトオプション</value></data>
@@ -1628,9 +1626,9 @@ Lv.70以下で可能な限り羽を織ります。</value></data>
   <data name="MCH_ST_Adv_Tactician_Desc" xml:space="preserve"><value>全体攻撃のキャストが検出された場合、タクティシャンを追加します。</value></data>
   <data name="MCH_AoE_AdvancedMode_Name" xml:space="preserve"><value>アドバンストモード - AoE</value></data>
   <data name="MCH_AoE_AdvancedMode_Desc" xml:space="preserve"><value>スプレッドショットを完全な 1 ボタンの AoE ローテーションに置き換えます。 ローテーションを細かく調整したい場合に適した設定です。 スプレッドショットをサベッジブレードに置き換えることで、火炎放射器の動作を維持するために入力をロックアウトします。</value></data>
-  <data name="MCH_AoE_Adv_FlameThrower_Name" xml:space="preserve"><value>火炎放射オプション</value></data>
-  <data name="MCH_AoE_Adv_FlameThrower_Desc" xml:space="preserve"><value>火炎放射器をローテーションに追加します。
- 使用中はキャンセルを防ぐためにサベッジブレードに変化します。</value></data>
+  <data name="MCH_AoE_Adv_FlameThrower_Name" xml:space="preserve"><value>フレイムスロアーオプション</value></data>
+  <data name="MCH_AoE_Adv_FlameThrower_Desc" xml:space="preserve"><value>フレイムスロアーをローテーションに追加します。
+使用中はキャンセル防止のためサベッジブレードに置き換わります。</value></data>
   <data name="MCH_AoE_Adv_Stabilizer_Name" xml:space="preserve"><value>バレルヒーターオプション</value></data>
   <data name="MCH_AoE_Adv_Stabilizer_Desc" xml:space="preserve"><value>バレルヒーターをローテーションに追加します。</value></data>
   <data name="MCH_AoE_Adv_Stabilizer_FullMetalField_Name" xml:space="preserve"><value>フルメタルバーストオプション</value></data>
@@ -1638,13 +1636,13 @@ Lv.70以下で可能な限り羽を織ります。</value></data>
   <data name="MCH_AoE_Adv_GaussRicochet_Name" xml:space="preserve"><value>ガウスラウンド／リコシェット ダブルチェック／チェックメイトオプション</value></data>
   <data name="MCH_AoE_Adv_GaussRicochet_Desc" xml:space="preserve"><value>ローテーションにガウス ラウンドとリコシェット、またはダブル チェックとチェックメイトを追加します。</value></data>
   <data name="MCH_AoE_Adv_Hypercharge_Name" xml:space="preserve"><value>ハイパーチャージオプション</value></data>
-  <data name="MCH_AoE_Adv_Hypercharge_Desc" xml:space="preserve"><value>ローテーションにハイパーチャージを追加します。</value></data>
+  <data name="MCH_AoE_Adv_Hypercharge_Desc" xml:space="preserve"><value>ハイパーチャージをローテーションに追加します。</value></data>
   <data name="MCH_AoE_Adv_Queen_Name" xml:space="preserve"><value>オートタレット・ルーク／オートマトン・クイーンオプション</value></data>
   <data name="MCH_AoE_Adv_Queen_Desc" xml:space="preserve"><value>オートタレット・ルークまたはオートマトン・クイーンをローテーションに追加します。</value></data>
   <data name="MCH_AoE_Adv_QueenOverdrive_Name" xml:space="preserve"><value>ルーク／オーバードライブ・クイーンオプション</value></data>
   <data name="MCH_AoE_Adv_QueenOverdrive_Desc" xml:space="preserve"><value>ルークまたはクイーン オーバードライブをローテーションに追加します。</value></data>
   <data name="MCH_AoE_Adv_Reassemble_Name" xml:space="preserve"><value>整備オプション</value></data>
-  <data name="MCH_AoE_Adv_Reassemble_Desc" xml:space="preserve"><value>整備 をローテーションに追加します。</value></data>
+  <data name="MCH_AoE_Adv_Reassemble_Desc" xml:space="preserve"><value>整備をローテーションに追加します。</value></data>
   <data name="MCH_AoE_Adv_Tools_Name" xml:space="preserve"><value>ツール</value></data>
   <data name="MCH_AoE_Adv_Tools_Desc" xml:space="preserve"><value>バイオブラスター、チェーンソー、エクスカベーターをローテーションに追加します。</value></data>
   <data name="MCH_AoE_Adv_Interrupt_Name" xml:space="preserve"><value>ヘッドグレイズオプション</value></data>
@@ -1692,13 +1690,13 @@ Lv.70以下で可能な限り羽を織ります。</value></data>
   <data name="MNK_STUseTheForbiddenChakra_Name" xml:space="preserve"><value>陰陽闘気斬オプション</value></data>
   <data name="MNK_STUseTheForbiddenChakra_Desc" xml:space="preserve"><value>陰陽闘気斬をローテーションに追加します。</value></data>
   <data name="MNK_STUseFormShift_Name" xml:space="preserve"><value>演武オプション</value></data>
-  <data name="MNK_STUseFormShift_Desc" xml:space="preserve"><value>ローテーションにフォームシフトを追加します</value></data>
+  <data name="MNK_STUseFormShift_Desc" xml:space="preserve"><value>演武をローテーションに追加します。</value></data>
   <data name="MNK_STUseOpener_Name" xml:space="preserve"><value>オープナーオプション</value></data>
   <data name="MNK_STUseOpener_Desc" xml:space="preserve"><value>選択したバランスオープナーをレベル90／100で追加します。</value></data>
   <data name="MNK_STUseBuffs_Name" xml:space="preserve"><value>バフオプション</value></data>
   <data name="MNK_STUseBuffs_Desc" xml:space="preserve"><value>選択したバフをローテーションに追加します</value></data>
-  <data name="MNK_STUseBrotherhood_Name" xml:space="preserve"><value>桃園結義オプション</value></data>
-  <data name="MNK_STUseBrotherhood_Desc" xml:space="preserve"><value>ローテーションに同胞団を追加</value></data>
+  <data name="MNK_STUseBrotherhood_Name" xml:space="preserve"><value>桃園結義：攻撃オプション</value></data>
+  <data name="MNK_STUseBrotherhood_Desc" xml:space="preserve"><value>桃園結義をローテーションに追加します。</value></data>
   <data name="MNK_STUseROF_Name" xml:space="preserve"><value>紅蓮の極意オプション</value></data>
   <data name="MNK_STUseROF_Desc" xml:space="preserve"><value>紅蓮の極意をローテーションに追加</value></data>
   <data name="MNK_STUseFiresReply_Name" xml:space="preserve"><value>乾坤闘気弾オプション</value></data>
@@ -1714,7 +1712,7 @@ Lv.70以下で可能な限り羽を織ります。</value></data>
 ロック解除済みの場合は紅蓮の極意中にのみ使用します。</value></data>
   <data name="MNK_STUseTrueNorth_Name" xml:space="preserve"><value>トゥルーノースオプション</value></data>
   <data name="MNK_STUseTrueNorth_Desc" xml:space="preserve"><value>定位置にない場合にトゥルーノースをローテーションに動的に追加します</value></data>
-  <data name="MNK_ST_StunInterupt_Name" xml:space="preserve"><value>足払いオプション</value></data>
+  <data name="MNK_ST_StunInterupt_Name" xml:space="preserve"><value>レッグスウィープオプション</value></data>
   <data name="MNK_ST_StunInterupt_Desc" xml:space="preserve"><value>ボス以外のターゲットが詠唱中に足払いを追加します。</value></data>
   <data name="MNK_ST_ComboHeals_Name" xml:space="preserve"><value>コンボヒールオプション</value></data>
   <data name="MNK_ST_ComboHeals_Desc" xml:space="preserve"><value>ブラッドバス と 内丹 をローテーションに追加します。</value></data>
@@ -1732,11 +1730,11 @@ Lv.70以下で可能な限り羽を織ります。</value></data>
   <data name="MNK_AoEUseHowlingFist_Name" xml:space="preserve"><value>空鳴拳／万象闘気圏オプション</value></data>
   <data name="MNK_AoEUseHowlingFist_Desc" xml:space="preserve"><value>ローテーションにハウリングフィスト／エンライトメントを追加</value></data>
   <data name="MNK_AoEUseFormShift_Name" xml:space="preserve"><value>演武オプション</value></data>
-  <data name="MNK_AoEUseFormShift_Desc" xml:space="preserve"><value>ローテーションにフォームシフトを追加します</value></data>
+  <data name="MNK_AoEUseFormShift_Desc" xml:space="preserve"><value>演武をローテーションに追加します。</value></data>
   <data name="MNK_AoEUseBuffs_Name" xml:space="preserve"><value>バフオプション</value></data>
   <data name="MNK_AoEUseBuffs_Desc" xml:space="preserve"><value>選択したバフをローテーションに追加します</value></data>
-  <data name="MNK_AoEUseBrotherhood_Name" xml:space="preserve"><value>桃園結義オプション</value></data>
-  <data name="MNK_AoEUseBrotherhood_Desc" xml:space="preserve"><value>ローテーションに同胞団を追加</value></data>
+  <data name="MNK_AoEUseBrotherhood_Name" xml:space="preserve"><value>桃園結義：攻撃オプション</value></data>
+  <data name="MNK_AoEUseBrotherhood_Desc" xml:space="preserve"><value>桃園結義をローテーションに追加します。</value></data>
   <data name="MNK_AoEUseROF_Name" xml:space="preserve"><value>紅蓮の極意オプション</value></data>
   <data name="MNK_AoEUseROF_Desc" xml:space="preserve"><value>紅蓮の極意をローテーションに追加</value></data>
   <data name="MNK_AoEUseFiresReply_Name" xml:space="preserve"><value>乾坤闘気弾オプション</value></data>
@@ -1749,7 +1747,7 @@ Lv.70以下で可能な限り羽を織ります。</value></data>
   <data name="MNK_AoEUsePerfectBalance_Desc" xml:space="preserve"><value>ローテーションに踏鳴を追加します。</value></data>
   <data name="MNK_AoEUseMasterfulBlitz_Name" xml:space="preserve"><value>必殺技オプション</value></data>
   <data name="MNK_AoEUseMasterfulBlitz_Desc" xml:space="preserve"><value>必殺技をローテーションに追加</value></data>
-  <data name="MNK_AoE_StunInterupt_Name" xml:space="preserve"><value>足払いオプション</value></data>
+  <data name="MNK_AoE_StunInterupt_Name" xml:space="preserve"><value>レッグスウィープオプション</value></data>
   <data name="MNK_AoE_StunInterupt_Desc" xml:space="preserve"><value>ボス以外のターゲットが詠唱中に足払いを追加します。</value></data>
   <data name="MNK_AoE_ComboHeals_Name" xml:space="preserve"><value>コンボヒールオプション</value></data>
   <data name="MNK_AoE_ComboHeals_Desc" xml:space="preserve"><value>ブラッドバス と 内丹 をローテーションに追加します。</value></data>
@@ -1799,31 +1797,31 @@ Lv.70以下で可能な限り羽を織ります。</value></data>
   <data name="NIN_ST_AdvancedMode_Mug_Name" xml:space="preserve"><value>ぶんどる／毒盛の術オプション</value></data>
   <data name="NIN_ST_AdvancedMode_Mug_Desc" xml:space="preserve"><value>アドバンストモードにぶんどる／毒盛の術を追加します。</value></data>
   <data name="NIN_ST_AdvancedMode_Bunshin_Name" xml:space="preserve"><value>分身の術オプション</value></data>
-  <data name="NIN_ST_AdvancedMode_Bunshin_Desc" xml:space="preserve"><value>アドバンストモードに文心を追加します。</value></data>
+  <data name="NIN_ST_AdvancedMode_Bunshin_Desc" xml:space="preserve"><value>アドバンストモードに分身の術を追加します。</value></data>
   <data name="NIN_ST_AdvancedMode_Bhavacakra_Name" xml:space="preserve"><value>六道輪廻オプション</value></data>
-  <data name="NIN_ST_AdvancedMode_Bhavacakra_Desc" xml:space="preserve"><value>六道輪廻 をアドバンストモードに追加します。</value></data>
-  <data name="NIN_ST_AdvancedMode_Kassatsu_Name" xml:space="preserve"><value>活殺自在自在オプション</value></data>
+  <data name="NIN_ST_AdvancedMode_Bhavacakra_Desc" xml:space="preserve"><value>アドバンストモードに六道輪廻を追加します。</value></data>
+  <data name="NIN_ST_AdvancedMode_Kassatsu_Name" xml:space="preserve"><value>活殺自在オプション</value></data>
   <data name="NIN_ST_AdvancedMode_Kassatsu_Desc" xml:space="preserve"><value>アドバンストモードに活殺自在を追加します。</value></data>
   <data name="NIN_ST_AdvancedMode_TenChiJin_Name" xml:space="preserve"><value>天地人オプション</value></data>
   <data name="NIN_ST_AdvancedMode_TenChiJin_Desc" xml:space="preserve"><value>アドバンストモードに天地人（クールダウン）を追加します。</value></data>
   <data name="NIN_ST_AdvancedMode_TenriJindo_Name" xml:space="preserve"><value>天理人道</value></data>
-  <data name="NIN_ST_AdvancedMode_TenriJindo_Desc" xml:space="preserve"><value>アドバンストモードに天理神道を追加します。</value></data>
+  <data name="NIN_ST_AdvancedMode_TenriJindo_Desc" xml:space="preserve"><value>アドバンストモードに天理人道を追加します。</value></data>
   <data name="NIN_ST_AdvancedMode_Assassinate_Name" xml:space="preserve"><value>終撃／夢幻三段オプション</value></data>
   <data name="NIN_ST_AdvancedMode_Assassinate_Desc" xml:space="preserve"><value>上級モードに「暗殺」と「夢幻三段」を追加します。</value></data>
   <data name="NIN_ST_AdvancedMode_Meisui_Name" xml:space="preserve"><value>命水オプション</value></data>
-  <data name="NIN_ST_AdvancedMode_Meisui_Desc" xml:space="preserve"><value>メイスイをアドバンストモードに追加します。</value></data>
-  <data name="NIN_ST_AdvancedMode_StunInterupt_Name" xml:space="preserve"><value>足払いオプション</value></data>
+  <data name="NIN_ST_AdvancedMode_Meisui_Desc" xml:space="preserve"><value>アドバンストモードに命水を追加します。</value></data>
+  <data name="NIN_ST_AdvancedMode_StunInterupt_Name" xml:space="preserve"><value>レッグスウィープオプション</value></data>
   <data name="NIN_ST_AdvancedMode_StunInterupt_Desc" xml:space="preserve"><value>ボス以外のターゲットが詠唱中に足払いを追加します。</value></data>
   <data name="NIN_ST_AdvancedMode_PhantomKamaitachi_Name" xml:space="preserve"><value>残影鎌鼬オプション</value></data>
   <data name="NIN_ST_AdvancedMode_PhantomKamaitachi_Desc" xml:space="preserve"><value>アドバンストモードに残影鎌鼬を追加します。</value></data>
   <data name="NIN_ST_AdvancedMode_Raiju_Name" xml:space="preserve"><value>雷獣オプション</value></data>
-  <data name="NIN_ST_AdvancedMode_Raiju_Desc" xml:space="preserve"><value>アドバンストモードに儚い雷獣を追加します。</value></data>
+  <data name="NIN_ST_AdvancedMode_Raiju_Desc" xml:space="preserve"><value>アドバンストモードに月影雷獣牙を追加します。</value></data>
   <data name="NIN_ST_AdvancedMode_ThrowingDaggers_Name" xml:space="preserve"><value>投刃維持オプション</value></data>
-  <data name="NIN_ST_AdvancedMode_ThrowingDaggers_Desc" xml:space="preserve"><value>近接攻撃範囲外の場合、スローイングダガーをアドバンストモードに追加します。</value></data>
+  <data name="NIN_ST_AdvancedMode_ThrowingDaggers_Desc" xml:space="preserve"><value>近接攻撃の射程外にいる場合、アドバンストモードに投刃を追加します。</value></data>
   <data name="NIN_ST_AdvancedMode_SecondWind_Name" xml:space="preserve"><value>内丹オプション</value></data>
-  <data name="NIN_ST_AdvancedMode_SecondWind_Desc" xml:space="preserve"><value>アドバンストモードに 内丹 を追加します。</value></data>
+  <data name="NIN_ST_AdvancedMode_SecondWind_Desc" xml:space="preserve"><value>アドバンストモードに内丹を追加します。</value></data>
   <data name="NIN_ST_AdvancedMode_ShadeShift_Name" xml:space="preserve"><value>残影オプション</value></data>
-  <data name="NIN_ST_AdvancedMode_ShadeShift_Desc" xml:space="preserve"><value>アドバンストモードにシェードシフトを追加します。</value></data>
+  <data name="NIN_ST_AdvancedMode_ShadeShift_Desc" xml:space="preserve"><value>アドバンストモードに残影を追加します。</value></data>
   <data name="NIN_ST_AdvancedMode_Bloodbath_Name" xml:space="preserve"><value>ブラッドバスオプション</value></data>
   <data name="NIN_ST_AdvancedMode_Bloodbath_Desc" xml:space="preserve"><value>アドバンストモードにブラッドバスを追加します。</value></data>
   <data name="NIN_ST_AdvancedMode_Feint_Name" xml:space="preserve"><value>フェイント 全体攻撃 オプション</value></data>
@@ -1846,29 +1844,29 @@ Lv.70以下で可能な限り羽を織ります。</value></data>
   <data name="NIN_AoE_AdvancedMode_Mug_Name" xml:space="preserve"><value>ぶんどるオプション</value></data>
   <data name="NIN_AoE_AdvancedMode_Mug_Desc" xml:space="preserve"><value>アドバンストモードにぶんどるを追加します。</value></data>
   <data name="NIN_AoE_AdvancedMode_Bunshin_Name" xml:space="preserve"><value>分身の術オプション</value></data>
-  <data name="NIN_AoE_AdvancedMode_Bunshin_Desc" xml:space="preserve"><value>アドバンストモードに文心を追加します。</value></data>
+  <data name="NIN_AoE_AdvancedMode_Bunshin_Desc" xml:space="preserve"><value>アドバンストモードに分身の術を追加します。</value></data>
   <data name="NIN_AoE_AdvancedMode_HellfrogMedium_Name" xml:space="preserve"><value>口寄せの術・大蝦蟇オプション</value></data>
-  <data name="NIN_AoE_AdvancedMode_HellfrogMedium_Desc" xml:space="preserve"><value>口寄せの術・大蝦蟇 をアドバンスト モードに追加します。</value></data>
-  <data name="NIN_AoE_AdvancedMode_Kassatsu_Name" xml:space="preserve"><value>活殺自在自在オプション</value></data>
+  <data name="NIN_AoE_AdvancedMode_HellfrogMedium_Desc" xml:space="preserve"><value>アドバンストモードに口寄せの術・大蝦蟇を追加します。</value></data>
+  <data name="NIN_AoE_AdvancedMode_Kassatsu_Name" xml:space="preserve"><value>活殺自在オプション</value></data>
   <data name="NIN_AoE_AdvancedMode_Kassatsu_Desc" xml:space="preserve"><value>アドバンストモードに活殺自在を追加します。</value></data>
   <data name="NIN_AoE_AdvancedMode_TenChiJin_Name" xml:space="preserve"><value>天地人オプション</value></data>
   <data name="NIN_AoE_AdvancedMode_TenChiJin_Desc" xml:space="preserve"><value>アドバンストモードに天地人（クールダウン）を追加します。</value></data>
   <data name="NIN_AoE_AdvancedMode_TenriJindo_Name" xml:space="preserve"><value>天理人道オプション</value></data>
-  <data name="NIN_AoE_AdvancedMode_TenriJindo_Desc" xml:space="preserve"><value>アドバンストモードに天理神道を追加します。</value></data>
+  <data name="NIN_AoE_AdvancedMode_TenriJindo_Desc" xml:space="preserve"><value>アドバンストモードに天理人道を追加します。</value></data>
   <data name="NIN_AoE_AdvancedMode_Assassinate_Name" xml:space="preserve"><value>終撃／夢幻三段オプション</value></data>
   <data name="NIN_AoE_AdvancedMode_Assassinate_Desc" xml:space="preserve"><value>アドバンストモードに暗殺／夢幻三段を追加します。</value></data>
   <data name="NIN_AoE_AdvancedMode_Meisui_Name" xml:space="preserve"><value>命水オプション</value></data>
-  <data name="NIN_AoE_AdvancedMode_Meisui_Desc" xml:space="preserve"><value>メイスイをアドバンストモードに追加します。</value></data>
-  <data name="NIN_AoE_AdvancedMode_StunInterupt_Name" xml:space="preserve"><value>足払いオプション</value></data>
+  <data name="NIN_AoE_AdvancedMode_Meisui_Desc" xml:space="preserve"><value>アドバンストモードに命水を追加します。</value></data>
+  <data name="NIN_AoE_AdvancedMode_StunInterupt_Name" xml:space="preserve"><value>レッグスウィープオプション</value></data>
   <data name="NIN_AoE_AdvancedMode_StunInterupt_Desc" xml:space="preserve"><value>ボス以外のターゲットが詠唱中に足払いを追加します。</value></data>
   <data name="NIN_AoE_AdvancedMode_PhantomKamaitachi_Name" xml:space="preserve"><value>残影鎌鼬オプション</value></data>
   <data name="NIN_AoE_AdvancedMode_PhantomKamaitachi_Desc" xml:space="preserve"><value>アドバンストモードに残影鎌鼬を追加します。</value></data>
   <data name="NIN_AoE_AdvancedMode_ThrowingDaggers_Name" xml:space="preserve"><value>投刃維持オプション</value></data>
-  <data name="NIN_AoE_AdvancedMode_ThrowingDaggers_Desc" xml:space="preserve"><value>近接攻撃範囲外の場合、スローイングダガーをアドバンストモードに追加します。</value></data>
+  <data name="NIN_AoE_AdvancedMode_ThrowingDaggers_Desc" xml:space="preserve"><value>近接攻撃の射程外にいる場合、アドバンストモードに投刃を追加します。</value></data>
   <data name="NIN_AoE_AdvancedMode_SecondWind_Name" xml:space="preserve"><value>内丹オプション</value></data>
-  <data name="NIN_AoE_AdvancedMode_SecondWind_Desc" xml:space="preserve"><value>アドバンストモードに 内丹 を追加します。</value></data>
+  <data name="NIN_AoE_AdvancedMode_SecondWind_Desc" xml:space="preserve"><value>アドバンストモードに内丹を追加します。</value></data>
   <data name="NIN_AoE_AdvancedMode_ShadeShift_Name" xml:space="preserve"><value>残影オプション</value></data>
-  <data name="NIN_AoE_AdvancedMode_ShadeShift_Desc" xml:space="preserve"><value>アドバンストモードにシェードシフトを追加します。</value></data>
+  <data name="NIN_AoE_AdvancedMode_ShadeShift_Desc" xml:space="preserve"><value>アドバンストモードに残影を追加します。</value></data>
   <data name="NIN_AoE_AdvancedMode_Bloodbath_Name" xml:space="preserve"><value>ブラッドバスオプション</value></data>
   <data name="NIN_AoE_AdvancedMode_Bloodbath_Desc" xml:space="preserve"><value>アドバンストモードにブラッドバスを追加します。</value></data>
   <data name="NIN_ST_AeolianEdgeCombo_Name" xml:space="preserve"><value>旋風刃コンボ</value></data>
@@ -1881,10 +1879,10 @@ Lv.70以下で可能な限り羽を織ります。</value></data>
   <data name="NIN_KassatsuTrick_Desc" xml:space="preserve"><value>水遁の術またはヒドゥンが発動している間、カサツをトリックアタック／百雷銃に置き換えます。
 クールダウン追跡プラグインを推奨します。</value></data>
   <data name="NIN_TCJMeisui_Name" xml:space="preserve"><value>天地人→命水機能</value></data>
-  <data name="NIN_TCJMeisui_Desc" xml:space="preserve"><value>水遁の術が起きている間、天地人（技）をメイスイに置き換えます。
-クールダウン追跡プラグインを推奨します。</value></data>
+  <data name="NIN_TCJMeisui_Desc" xml:space="preserve"><value>水遁の術中、天地人（アクション）を命水に置き換えます。
+リキャスト管理プラグインの併用を推奨します。</value></data>
   <data name="NIN_KassatsuChiJin_Name" xml:space="preserve"><value>活殺自在→地／人機能</value></data>
-  <data name="NIN_KassatsuChiJin_Desc" xml:space="preserve"><value>強化活殺自在を持っている場合、活殺自在が発動している間、チーをジンに置き換えます。</value></data>
+  <data name="NIN_KassatsuChiJin_Desc" xml:space="preserve"><value>活殺自在強化を習得している場合、活殺自在中は地の印を人の印に置き換えます。</value></data>
   <data name="NIN_HideMug_Name" xml:space="preserve"><value>かくれるからぶんどる</value></data>
   <data name="NIN_HideMug_Desc" xml:space="preserve"><value>非表示を選択したオプションで置き換えます</value></data>
   <data name="NIN_Simple_Mudras_Name" xml:space="preserve"><value>簡易印機能</value></data>
@@ -1905,8 +1903,8 @@ Lv.70以下で可能な限り羽を織ります。</value></data>
   <data name="PCT_ST_AdvancedMode_Name" xml:space="preserve"><value>アドバンストモード - 単体</value></data>
   <data name="PCT_ST_AdvancedMode_Desc" xml:space="preserve"><value>レッドファイアを1ボタンの単体ローテーションに置き換えます。
 ローテーションを細かく調整したい場合に適した設定です。</value></data>
-  <data name="PCT_ST_Advanced_Openers_Name" xml:space="preserve"><value>バランスオープナー（Lv90／Lv100）</value></data>
-  <data name="PCT_ST_Advanced_Openers_Desc" xml:space="preserve"><value>Lv90／Lv100のバランスオープナーを組み込みます。</value></data>
+  <data name="PCT_ST_Advanced_Openers_Name" xml:space="preserve"><value>バランスオープナー（レベル90／100）</value></data>
+  <data name="PCT_ST_Advanced_Openers_Desc" xml:space="preserve"><value>レベル90／100のバランスオープナーを組み込みます。</value></data>
   <data name="PCT_ST_AdvancedMode_SubtractivePalette_Name" xml:space="preserve"><value>サブトラクティブパレット機能</value></data>
   <data name="PCT_ST_AdvancedMode_SubtractivePalette_Desc" xml:space="preserve"><value>コンボにサブトラクティブパレットを追加します。</value></data>
   <data name="PCT_ST_AdvancedMode_BlizzardInCyan_Name" xml:space="preserve"><value>シアンブリザドオプション</value></data>
@@ -1967,7 +1965,7 @@ Lv.70以下で可能な限り羽を織ります。</value></data>
 ローテーションを細かく調整したい場合に適した設定です。</value></data>
   <data name="PCT_AoE_AdvancedMode_SubtractivePalette_Name" xml:space="preserve"><value>サブトラクティブパレット機能</value></data>
   <data name="PCT_AoE_AdvancedMode_SubtractivePalette_Desc" xml:space="preserve"><value>コンボにサブトラクティブパレットを追加します。</value></data>
-  <data name="PCT_AoE_AdvancedMode_BlizzardInCyan_Name" xml:space="preserve"><value>シアンブリザドオプション</value></data>
+  <data name="PCT_AoE_AdvancedMode_BlizzardInCyan_Name" xml:space="preserve"><value>シアンブリザラオプション</value></data>
   <data name="PCT_AoE_AdvancedMode_BlizzardInCyan_Desc" xml:space="preserve"><value>コンボにシアンブリザドを追加します。</value></data>
   <data name="PCT_AoE_AdvancedMode_HolyinWhite_Name" xml:space="preserve"><value>ホワイトホーリーオプション</value></data>
   <data name="PCT_AoE_AdvancedMode_HolyinWhite_Desc" xml:space="preserve"><value>コンボにホワイトホーリーを追加します。</value></data>
@@ -2035,16 +2033,16 @@ Lv.70以下で可能な限り羽を織ります。</value></data>
   <data name="PLD_ST_Interrupt_Name" xml:space="preserve"><value>割り込みオプション</value></data>
   <data name="PLD_ST_Interrupt_Desc" xml:space="preserve"><value>ターゲットのキャストが中断可能な場合、ローテーションにインタージェクトを追加します。</value></data>
   <data name="PLD_ST_LowBlow_Name" xml:space="preserve"><value>ロウブロウ中断オプション</value></data>
-  <data name="PLD_ST_LowBlow_Desc" xml:space="preserve"><value>ターゲットがキャストしているときにローテーションにロウブロウを追加します。
-気絶できない敵などに大量のロウブロウを無駄にする可能性があるため、オーバーワールド コンテンツ以外ではお勧めできません。ボス戦では使用しないようにします。</value></data>
+  <data name="PLD_ST_LowBlow_Desc" xml:space="preserve"><value>ターゲットが詠唱しているとき、ローテーションにロウブロウを追加します。
+気絶できない敵などにロウブロウを無駄打ちする可能性があるため、フィールドコンテンツ以外では非推奨です。ボス戦では使用しないようにします。</value></data>
   <data name="PLD_ST_ShieldBash_Name" xml:space="preserve"><value>シールドバッシュオプションによる中断</value></data>
-  <data name="PLD_ST_ShieldBash_Desc" xml:space="preserve"><value>ターゲットがキャストしているときにシールド バッシュをローテーションに追加します。
-気絶できない敵などに多くの GCD を無駄にする可能性があるため、オーバーワールド コンテンツ以外ではお勧めできません。ボス戦では使用しないようにします。</value></data>
+  <data name="PLD_ST_ShieldBash_Desc" xml:space="preserve"><value>ターゲットが詠唱しているとき、ローテーションにシールドバッシュを追加します。
+気絶できない敵などに多くのGCDを無駄にする可能性があるため、フィールドコンテンツ以外では非推奨です。ボス戦では使用しないようにします。</value></data>
   <data name="PLD_ST_AdvancedMode_FoF_Name" xml:space="preserve"><value>ファイト・オア・フライトオプション</value></data>
   <data name="PLD_ST_AdvancedMode_FoF_Desc" xml:space="preserve"><value>アドバンストモードにファイト・オア・フライトを追加します。
-- オープナー中にロイヤルオーソリティーの後に使用します。
-- その後、レクイエスカット と一緒にクールダウンします。
-- ターゲットのHPは以下でなければなりません:</value></data>
+- オープナー中はロイヤルアソリティの後に使用します。
+- 以降はレクイエスカットと合わせてリキャストごとに使用します。
+- 対象のHPは以下以上である必要があります:</value></data>
   <data name="PLD_ST_AdvancedMode_ShieldLob_Name" xml:space="preserve"><value>シールドロブオプション</value></data>
   <data name="PLD_ST_AdvancedMode_ShieldLob_Desc" xml:space="preserve"><value>アドバンストモードにシールドロブを追加します。
 - 近接攻撃範囲外でのみ使用します。
@@ -2057,13 +2055,13 @@ Lv.70以下で可能な限り羽を織ります。</value></data>
   <data name="PLD_ST_AdvancedMode_SpiritsWithin_Desc" xml:space="preserve"><value>アドバンストモードにスピリッツウィズインを追加します。
 - ファイト・オア・フライト中に優先して使用します。</value></data>
   <data name="PLD_ST_AdvancedMode_GoringBlade_Name" xml:space="preserve"><value>ゴアブレードオプション</value></data>
-  <data name="PLD_ST_AdvancedMode_GoringBlade_Desc" xml:space="preserve"><value>アドバンストモードにゴーリングブレードを追加します。
-- レクイエスカット の後に優先して使用します。</value></data>
+  <data name="PLD_ST_AdvancedMode_GoringBlade_Desc" xml:space="preserve"><value>アドバンストモードにゴアブレードを追加します。
+- レクイエスカットの後に優先して使用します。</value></data>
   <data name="PLD_ST_AdvancedMode_HolySpirit_Name" xml:space="preserve"><value>ホーリースピリットオプション</value></data>
   <data name="PLD_ST_AdvancedMode_HolySpirit_Desc" xml:space="preserve"><value>アドバンストモードにホーリースピリットを追加します。
 - 神の力の下でのみ使用します。
 - バフの有効期限が切れている場合は優先されます。</value></data>
-  <data name="PLD_ST_AdvancedMode_Requiescat_Name" xml:space="preserve"><value>レクイエスカット オプション</value></data>
+  <data name="PLD_ST_AdvancedMode_Requiescat_Name" xml:space="preserve"><value>レクイエスカットオプション</value></data>
   <data name="PLD_ST_AdvancedMode_Requiescat_Desc" xml:space="preserve"><value>レクイエスカット をアドバンストモードに追加します。
 - ファイト・オア・フライトの後に使用します。</value></data>
   <data name="PLD_ST_AdvancedMode_Intervene_Name" xml:space="preserve"><value>インターヴィーンオプション</value></data>
@@ -2095,7 +2093,7 @@ Lv.70以下で可能な限り羽を織ります。</value></data>
   <data name="PLD_AoE_LowBlow_Name" xml:space="preserve"><value>ロウブロウ中断オプション</value></data>
   <data name="PLD_AoE_LowBlow_Desc" xml:space="preserve"><value>割り込み可能かどうかにかかわらず、ターゲットがキャストしているときにローテーションにロウブロウを追加します。</value></data>
   <data name="PLD_AoE_ShieldBash_Name" xml:space="preserve"><value>シールドバッシュオプションによる中断</value></data>
-  <data name="PLD_AoE_ShieldBash_Desc" xml:space="preserve"><value>割り込み可能かどうかに関係なく、ターゲットがキャストしているときにシールド バッシュをローテーションに追加します。</value></data>
+  <data name="PLD_AoE_ShieldBash_Desc" xml:space="preserve"><value>割り込み可能かどうかに関係なく、ターゲットが詠唱しているときにローテーションへシールドバッシュを追加します。</value></data>
   <data name="PLD_AoE_AdvancedMode_FoF_Name" xml:space="preserve"><value>ファイト・オア・フライトオプション</value></data>
   <data name="PLD_AoE_AdvancedMode_FoF_Desc" xml:space="preserve"><value>アドバンストモードにファイト・オア・フライトを追加します。
 - レクイエスカット と一緒にクールダウンで使用します。
@@ -2107,7 +2105,7 @@ Lv.70以下で可能な限り羽を織ります。</value></data>
   <data name="PLD_AoE_AdvancedMode_CircleOfScorn_Desc" xml:space="preserve"><value>アドバンストモードにサークル・オブ・ドゥームを追加します。
 - ターゲットの範囲内にいる場合にのみ使用します。
 - ファイト・オア・フライト中に優先して使用します。</value></data>
-  <data name="PLD_AoE_AdvancedMode_Requiescat_Name" xml:space="preserve"><value>レクイエスカット オプション</value></data>
+  <data name="PLD_AoE_AdvancedMode_Requiescat_Name" xml:space="preserve"><value>レクイエスカットオプション</value></data>
   <data name="PLD_AoE_AdvancedMode_Requiescat_Desc" xml:space="preserve"><value>レクイエスカット をアドバンストモードに追加します。
 - ファイト・オア・フライトの後に使用します。</value></data>
   <data name="PLD_AoE_AdvancedMode_Intervene_Name" xml:space="preserve"><value>インターヴィーンオプション</value></data>
@@ -2202,7 +2200,7 @@ Lv.70以下で可能な限り羽を織ります。</value></data>
   <data name="PLD_Mit_Sentinel_Name" xml:space="preserve"><value>センチネルオプション</value></data>
   <data name="PLD_Mit_Sentinel_Desc" xml:space="preserve"><value>ワンボタン軽減にセンチネル／ガーディアンを追加します。</value></data>
   <data name="PLD_Mit_Clemency_Name" xml:space="preserve"><value>クレメンシーオプション</value></data>
-  <data name="PLD_Mit_Clemency_Desc" xml:space="preserve"><value>ボタン 1 つで緩和できる寛大さを追加します。</value></data>
+  <data name="PLD_Mit_Clemency_Desc" xml:space="preserve"><value>ワンボタン軽減にクレメンシーを追加します。</value></data>
   <data name="PLD_Mit_Party_Name" xml:space="preserve"><value>ワンボタンパーティ軽減機能</value></data>
   <data name="PLD_Mit_Party_Desc" xml:space="preserve"><value>準備ができたら、神のベールをリプライザルに置き換えます。</value></data>
   <data name="PLD_Mit_Party_Wings_Name" xml:space="preserve"><value>パッセージ・オブ・アームズを含む</value></data>
@@ -2214,8 +2212,8 @@ Lv.70以下で可能な限り羽を織ります。</value></data>
   <data name="PLD_SpiritsWithin_Name" xml:space="preserve"><value>スピリッツウィズイン／サークル・オブ・ドゥーム機能</value></data>
   <data name="PLD_SpiritsWithin_Desc" xml:space="preserve"><value>利用可能な場合は、スピリット ウィズイン を サークル・オブ・ドゥーム に置き換えます。</value></data>
   <data name="PLD_ShieldLob_Feature_Name" xml:space="preserve"><value>シールドロブ／ホーリースピリット機能</value></data>
-  <data name="PLD_ShieldLob_Feature_Desc" xml:space="preserve"><value>利用可能な場合、シールド ロブをホーリー スピリットに置き換えます。
-- 神威の影響下にあるか、動いていない必要があります。</value></data>
+  <data name="PLD_ShieldLob_Feature_Desc" xml:space="preserve"><value>使用可能な場合、シールドロブをホーリースピリットに置き換えます。
+- 神聖魔法効果アップ中、または移動していないときに使用します。</value></data>
   <data name="PLD_RetargetClemency_Name" xml:space="preserve"><value>リターゲット クレメンシー機能</value></data>
   <data name="PLD_RetargetClemency_Desc" xml:space="preserve"><value>次のサブオプションに従ってクレメンシーを再ターゲットします</value></data>
   <data name="PLD_RetargetClemency_MO_Name" xml:space="preserve"><value>マウスオーバークレメンシーオプション</value></data>
@@ -2251,19 +2249,19 @@ Lv.70以下で可能な限り羽を織ります。</value></data>
   <data name="RPR_ST_Opener_Name" xml:space="preserve"><value>バランスオープナー (レベル 90／100)</value></data>
   <data name="RPR_ST_Opener_Desc" xml:space="preserve"><value>レベル90／100にバランスオープナーを追加します。</value></data>
   <data name="RPR_ST_ArcaneCircle_Name" xml:space="preserve"><value>アルケインサークルオプション</value></data>
-  <data name="RPR_ST_ArcaneCircle_Desc" xml:space="preserve"><value>アルケインサークル をローテーションに追加します。</value></data>
+  <data name="RPR_ST_ArcaneCircle_Desc" xml:space="preserve"><value>アルケインサークルをローテーションに追加します。</value></data>
   <data name="RPR_ST_PlentifulHarvest_Name" xml:space="preserve"><value>プレンティフルハーベストオプション</value></data>
-  <data name="RPR_ST_PlentifulHarvest_Desc" xml:space="preserve"><value>ローテーションに「豊作の収穫」を追加します。</value></data>
+  <data name="RPR_ST_PlentifulHarvest_Desc" xml:space="preserve"><value>プレンティフルハーベストをローテーションに追加します。</value></data>
   <data name="RPR_ST_SoD_Name" xml:space="preserve"><value>シャドウ・オブ・デスオプション</value></data>
   <data name="RPR_ST_SoD_Desc" xml:space="preserve"><value>シャドウ・オブ・デス をローテーションに追加します。</value></data>
   <data name="RPR_ST_SoulSow_Name" xml:space="preserve"><value>ソウルソウ</value></data>
   <data name="RPR_ST_SoulSow_Desc" xml:space="preserve"><value>非戦闘状態でバフを持っていないときに、ソウルソウ をローテーションに追加します。</value></data>
   <data name="RPR_ST_SoulSlice_Name" xml:space="preserve"><value>ソウルスライスオプション</value></data>
-  <data name="RPR_ST_SoulSlice_Desc" xml:space="preserve"><value>ローテーションにソウルスライスを追加。</value></data>
+  <data name="RPR_ST_SoulSlice_Desc" xml:space="preserve"><value>ソウルスライスをローテーションに追加します。</value></data>
   <data name="RPR_ST_Bloodstalk_Name" xml:space="preserve"><value>ストークスウェーズオプション</value></data>
   <data name="RPR_ST_Bloodstalk_Desc" xml:space="preserve"><value>ストークスウェーズをローテーションに追加します。</value></data>
   <data name="RPR_ST_Gluttony_Name" xml:space="preserve"><value>グラトニーオプション</value></data>
-  <data name="RPR_ST_Gluttony_Desc" xml:space="preserve"><value>ローテーションにグラトニーを追加します。</value></data>
+  <data name="RPR_ST_Gluttony_Desc" xml:space="preserve"><value>グラトニーをローテーションに追加します。</value></data>
   <data name="RPR_ST_GibbetGallows_Name" xml:space="preserve"><value>ジビトゥ／ギャロウズオプション</value></data>
   <data name="RPR_ST_GibbetGallows_Desc" xml:space="preserve"><value>ジビトゥとギャロウズをローテーションに追加します。</value></data>
   <data name="RPR_ST_Enshroud_Name" xml:space="preserve"><value>レムールシュラウドオプション</value></data>
@@ -2274,14 +2272,14 @@ Lv.70以下で可能な限り羽を織ります。</value></data>
   <data name="RPR_ST_Lemure_Name" xml:space="preserve"><value>レムールスライスオプション</value></data>
   <data name="RPR_ST_Lemure_Desc" xml:space="preserve"><value>レムールスライスをローテーションに追加します。</value></data>
   <data name="RPR_ST_Communio_Name" xml:space="preserve"><value>コムニオフィニッシャーオプション</value></data>
-  <data name="RPR_ST_Communio_Desc" xml:space="preserve"><value>コムニオ をローテーションに追加します。</value></data>
+  <data name="RPR_ST_Communio_Desc" xml:space="preserve"><value>コムニオをローテーションに追加します。</value></data>
   <data name="RPR_ST_Sacrificium_Name" xml:space="preserve"><value>サクリフィキウムオプション</value></data>
-  <data name="RPR_ST_Sacrificium_Desc" xml:space="preserve"><value>サクリフィシウムをローテーションに追加します。</value></data>
+  <data name="RPR_ST_Sacrificium_Desc" xml:space="preserve"><value>サクリフィキウムをローテーションに追加します。</value></data>
   <data name="RPR_ST_Perfectio_Name" xml:space="preserve"><value>ペルフェクティオオプション</value></data>
-  <data name="RPR_ST_Perfectio_Desc" xml:space="preserve"><value>ローテーションにペルフェクティオを追加します。</value></data>
+  <data name="RPR_ST_Perfectio_Desc" xml:space="preserve"><value>ペルフェクティオをローテーションに追加します。</value></data>
   <data name="RPR_ST_TrueNorthDynamic_Name" xml:space="preserve"><value>動的トゥルーノース機能</value></data>
   <data name="RPR_ST_TrueNorthDynamic_Desc" xml:space="preserve"><value>正しい位置にいない場合、ジビトゥ／ギャロウズの前にトゥルーノースを追加します。</value></data>
-  <data name="RPR_ST_StunInterupt_Name" xml:space="preserve"><value>足払いオプション</value></data>
+  <data name="RPR_ST_StunInterupt_Name" xml:space="preserve"><value>レッグスウィープオプション</value></data>
   <data name="RPR_ST_StunInterupt_Desc" xml:space="preserve"><value>ボス以外のターゲットが詠唱中に足払いを追加します。</value></data>
   <data name="RPR_ST_RangedFiller_Name" xml:space="preserve"><value>ハルパーオプション</value></data>
   <data name="RPR_ST_RangedFiller_Desc" xml:space="preserve"><value>近接範囲外の場合、コンボチェーンをハルパーに置き換えます。 コムニオ をオーバーライドしません。</value></data>
@@ -2297,9 +2295,9 @@ Lv.70以下で可能な限り羽を織ります。</value></data>
   <data name="RPR_AoE_AdvancedMode_Desc" xml:space="preserve"><value>スピニングサイズ を 1 ボタンの完全な AoE ローテーションに置き換えます。
 ローテーションを細かく調整したい場合に適した設定です。</value></data>
   <data name="RPR_AoE_ArcaneCircle_Name" xml:space="preserve"><value>アルケインサークルオプション</value></data>
-  <data name="RPR_AoE_ArcaneCircle_Desc" xml:space="preserve"><value>アルケインサークル をローテーションに追加します。</value></data>
+  <data name="RPR_AoE_ArcaneCircle_Desc" xml:space="preserve"><value>アルケインサークルをローテーションに追加します。</value></data>
   <data name="RPR_AoE_PlentifulHarvest_Name" xml:space="preserve"><value>プレンティフルハーベストオプション</value></data>
-  <data name="RPR_AoE_PlentifulHarvest_Desc" xml:space="preserve"><value>ローテーションに「豊作の収穫」を追加します。</value></data>
+  <data name="RPR_AoE_PlentifulHarvest_Desc" xml:space="preserve"><value>プレンティフルハーベストをローテーションに追加します。</value></data>
   <data name="RPR_AoE_WoD_Name" xml:space="preserve"><value>ワーラル・オブ・デスオプション</value></data>
   <data name="RPR_AoE_WoD_Desc" xml:space="preserve"><value>ローテーションに死の渦を追加します。</value></data>
   <data name="RPR_AoE_SoulSow_Name" xml:space="preserve"><value>ソウルソウ</value></data>
@@ -2307,25 +2305,25 @@ Lv.70以下で可能な限り羽を織ります。</value></data>
   <data name="RPR_AoE_SoulScythe_Name" xml:space="preserve"><value>ソウルサイズオプション</value></data>
   <data name="RPR_AoE_SoulScythe_Desc" xml:space="preserve"><value>ソウルサイズをローテーションに追加します。</value></data>
   <data name="RPR_AoE_GrimSwathe_Name" xml:space="preserve"><value>シーフスウェーズオプション</value></data>
-  <data name="RPR_AoE_GrimSwathe_Desc" xml:space="preserve"><value>シーフスウェーズ をローテーションに追加します。</value></data>
+  <data name="RPR_AoE_GrimSwathe_Desc" xml:space="preserve"><value>シーフスウェーズをローテーションに追加します。</value></data>
   <data name="RPR_AoE_Gluttony_Name" xml:space="preserve"><value>グラトニーオプション</value></data>
-  <data name="RPR_AoE_Gluttony_Desc" xml:space="preserve"><value>ローテーションにグラトニーを追加します。</value></data>
+  <data name="RPR_AoE_Gluttony_Desc" xml:space="preserve"><value>グラトニーをローテーションに追加します。</value></data>
   <data name="RPR_AoE_Guillotine_Name" xml:space="preserve"><value>ギロティンオプション</value></data>
-  <data name="RPR_AoE_Guillotine_Desc" xml:space="preserve"><value>ギロチンをローテーションに追加します。</value></data>
+  <data name="RPR_AoE_Guillotine_Desc" xml:space="preserve"><value>ギロティンをローテーションに追加します。</value></data>
   <data name="RPR_AoE_Enshroud_Name" xml:space="preserve"><value>レムールシュラウドオプション</value></data>
   <data name="RPR_AoE_Enshroud_Desc" xml:space="preserve"><value>レムールシュラウドをローテーションに追加します。</value></data>
   <data name="RPR_AoE_Reaping_Name" xml:space="preserve"><value>グリムリーパーオプション</value></data>
-  <data name="RPR_AoE_Reaping_Desc" xml:space="preserve"><value>グリムリーピングをローテーションに追加します。
-(これを無効にすると、レムールシュラウド中にワンボタンコンボが機能しなくなる可能性があります)</value></data>
+  <data name="RPR_AoE_Reaping_Desc" xml:space="preserve"><value>グリムリーパーをローテーションに追加します。
+（これを無効にすると、エンシュラウド中にワンボタンコンボが機能しなくなる可能性があります）</value></data>
   <data name="RPR_AoE_Lemure_Name" xml:space="preserve"><value>レムールサイズオプション</value></data>
-  <data name="RPR_AoE_Lemure_Desc" xml:space="preserve"><value>レムレの鎌をローテーションに追加します。</value></data>
+  <data name="RPR_AoE_Lemure_Desc" xml:space="preserve"><value>レムールサイズをローテーションに追加します。</value></data>
   <data name="RPR_AoE_Communio_Name" xml:space="preserve"><value>コムニオフィニッシャーオプション</value></data>
-  <data name="RPR_AoE_Communio_Desc" xml:space="preserve"><value>コムニオ をローテーションに追加します。</value></data>
+  <data name="RPR_AoE_Communio_Desc" xml:space="preserve"><value>コムニオをローテーションに追加します。</value></data>
   <data name="RPR_AoE_Sacrificium_Name" xml:space="preserve"><value>サクリフィキウムオプション</value></data>
-  <data name="RPR_AoE_Sacrificium_Desc" xml:space="preserve"><value>サクリフィシウムをローテーションに追加します。</value></data>
+  <data name="RPR_AoE_Sacrificium_Desc" xml:space="preserve"><value>サクリフィキウムをローテーションに追加します。</value></data>
   <data name="RPR_AoE_Perfectio_Name" xml:space="preserve"><value>ペルフェクティオオプション</value></data>
-  <data name="RPR_AoE_Perfectio_Desc" xml:space="preserve"><value>ローテーションにペルフェクティオを追加します。</value></data>
-  <data name="RPR_AoE_StunInterupt_Name" xml:space="preserve"><value>足払いオプション</value></data>
+  <data name="RPR_AoE_Perfectio_Desc" xml:space="preserve"><value>ペルフェクティオをローテーションに追加します。</value></data>
+  <data name="RPR_AoE_StunInterupt_Name" xml:space="preserve"><value>レッグスウィープオプション</value></data>
   <data name="RPR_AoE_StunInterupt_Desc" xml:space="preserve"><value>ボス以外のターゲットが詠唱中に足払いを追加します。</value></data>
   <data name="RPR_AoE_ComboHeals_Name" xml:space="preserve"><value>コンボヒールオプション</value></data>
   <data name="RPR_AoE_ComboHeals_Desc" xml:space="preserve"><value>ブラッドバス と 内丹 をコンボに追加し、HP パーセンテージのしきい値を下回ったときに使用します。</value></data>
@@ -2345,7 +2343,7 @@ Lv.70以下で可能な限り羽を織ります。</value></data>
   <data name="RPR_GluttonyBloodSwathe_Sacrificium_Name" xml:space="preserve"><value>サクリフィキウムのみオプション</value></data>
   <data name="RPR_GluttonyBloodSwathe_Sacrificium_Desc" xml:space="preserve"><value>包まれている間、血の茎とグリムスワスに犠牲のみを追加します。</value></data>
   <data name="RPR_TrueNorthGluttony_Name" xml:space="preserve"><value>トゥルーノース機能</value></data>
-  <data name="RPR_TrueNorthGluttony_Desc" xml:space="preserve"><value>大食の下で、ジビトゥ／ギャロウズのオプションが選択されている場合、それらのスキルを置き換えるトゥルーノースを追加します。</value></data>
+  <data name="RPR_TrueNorthGluttony_Desc" xml:space="preserve"><value>グラトニー中かつ、ジビトゥ／ギャロウズを置き換えるオプションが有効な場合、トゥルーノースを追加します。</value></data>
   <data name="RPR_Soulsow_Name" xml:space="preserve"><value>ソウルソウ リマインダー機能</value></data>
   <data name="RPR_Soulsow_Desc" xml:space="preserve"><value>非戦闘時に以下で選択したスキルに ソウルソウ を追加します。 
 また、戦闘中にターゲットが選択されていない場合、ハルパー に ソウルソウ を追加します。</value></data>
@@ -2613,9 +2611,9 @@ Lv.70以下で可能な限り羽を織ります。</value></data>
   <data name="SGE_ST_Heal_Pepsis_Desc" xml:space="preserve"><value>シールドが存在する場合、ペプシスをトリガーします。</value></data>
   <data name="SGE_ST_Heal_Physis_Name" xml:space="preserve"><value>ピュシスオプション</value></data>
   <data name="SGE_ST_Heal_Physis_Desc" xml:space="preserve"><value>フィシスを追加します。</value></data>
-  <data name="SGE_ST_Heal_Kerachole_Name" xml:space="preserve"><value>ケーラコレ オプション</value></data>
+  <data name="SGE_ST_Heal_Kerachole_Name" xml:space="preserve"><value>ケーラコレオプション</value></data>
   <data name="SGE_ST_Heal_Kerachole_Desc" xml:space="preserve"><value>ケーラコレを追加します。</value></data>
-  <data name="SGE_ST_Heal_Holos_Name" xml:space="preserve"><value>ホーリズム オプション</value></data>
+  <data name="SGE_ST_Heal_Holos_Name" xml:space="preserve"><value>ホーリズムオプション</value></data>
   <data name="SGE_ST_Heal_Holos_Desc" xml:space="preserve"><value>ホーリズムを追加します。</value></data>
   <data name="SGE_ST_Heal_Panhaima_Name" xml:space="preserve"><value>パンハイマオプション</value></data>
   <data name="SGE_ST_Heal_Panhaima_Desc" xml:space="preserve"><value>パンハイマを追加します。</value></data>
@@ -2629,9 +2627,9 @@ Lv.70以下で可能な限り羽を織ります。</value></data>
   <data name="SGE_AoE_Heal_EPrognosis_Desc" xml:space="preserve"><value>エウクラシアンの予後を追加します。</value></data>
   <data name="SGE_AoE_Heal_Ixochole_Name" xml:space="preserve"><value>イックソコレオプション</value></data>
   <data name="SGE_AoE_Heal_Ixochole_Desc" xml:space="preserve"><value>イクソコールを追加します。</value></data>
-  <data name="SGE_AoE_Heal_Kerachole_Name" xml:space="preserve"><value>ケーラコレ オプション</value></data>
+  <data name="SGE_AoE_Heal_Kerachole_Name" xml:space="preserve"><value>ケーラコレオプション</value></data>
   <data name="SGE_AoE_Heal_Kerachole_Desc" xml:space="preserve"><value>ケーラコレを追加します。</value></data>
-  <data name="SGE_AoE_Heal_Holos_Name" xml:space="preserve"><value>ホーリズム オプション</value></data>
+  <data name="SGE_AoE_Heal_Holos_Name" xml:space="preserve"><value>ホーリズムオプション</value></data>
   <data name="SGE_AoE_Heal_Holos_Desc" xml:space="preserve"><value>ホーリズムを追加します。</value></data>
   <data name="SGE_AoE_Heal_Physis_Name" xml:space="preserve"><value>ピュシスオプション</value></data>
   <data name="SGE_AoE_Heal_Physis_Desc" xml:space="preserve"><value>フィシスを追加します。</value></data>
@@ -2696,10 +2694,10 @@ Lv.70以下で可能な限り羽を織ります。</value></data>
   <data name="SGE_Raidwide_EPrognosis_Name" xml:space="preserve"><value>エウクラシア・プログノシスオプション</value></data>
   <data name="SGE_Raidwide_EPrognosis_Desc" xml:space="preserve"><value>エウクラシア・プログノシスのシールドチェックを満たしている場合、全体攻撃の詠唱が検出されたときにシールドを使用します。 
 4つのメインコンボすべてで使用されます。</value></data>
-  <data name="SGE_Raidwide_Kerachole_Name" xml:space="preserve"><value>ケーラコレ オプション</value></data>
+  <data name="SGE_Raidwide_Kerachole_Name" xml:space="preserve"><value>ケーラコレオプション</value></data>
   <data name="SGE_Raidwide_Kerachole_Desc" xml:space="preserve"><value>全体攻撃の詠唱が検出された場合、ケーラコレを使用します。 
 4つのメインコンボすべてで使用されます。</value></data>
-  <data name="SGE_Raidwide_Holos_Name" xml:space="preserve"><value>ホーリズム オプション</value></data>
+  <data name="SGE_Raidwide_Holos_Name" xml:space="preserve"><value>ホーリズムオプション</value></data>
   <data name="SGE_Raidwide_Holos_Desc" xml:space="preserve"><value>全体攻撃の詠唱が検出された場合、ホーリズムを使用します。 
 4つのメインコンボすべてで使用されます。</value></data>
   <data name="SAM_ST_SimpleMode_Name" xml:space="preserve"><value>シンプルモード - 単体</value></data>
@@ -2722,14 +2720,14 @@ Lv.70以下で可能な限り羽を織ります。</value></data>
   <data name="SAM_ST_CDs_Name" xml:space="preserve"><value>メインコンボのクールダウン</value></data>
   <data name="SAM_ST_CDs_Desc" xml:space="preserve"><value>メインコンボのクールダウン機能のコレクション。</value></data>
   <data name="SAM_ST_CDs_MeikyoShisui_Name" xml:space="preserve"><value>明鏡止水オプション</value></data>
-  <data name="SAM_ST_CDs_MeikyoShisui_Desc" xml:space="preserve"><value>明鏡止水をローテーションに加える。</value></data>
+  <data name="SAM_ST_CDs_MeikyoShisui_Desc" xml:space="preserve"><value>明鏡止水をローテーションに追加します。</value></data>
   <data name="SAM_ST_CDs_Ikishoten_Name" xml:space="preserve"><value>意気衝天オプション</value></data>
   <data name="SAM_ST_CDs_Ikishoten_Desc" xml:space="preserve"><value>剣気50以下で意気衝天を追加。
 PRE 94: 残り10秒で剣気を消費し、意気衝天を使用可能にします。
 POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="SAM_ST_Damage_Name" xml:space="preserve"><value>メインコンボのダメージスキル</value></data>
   <data name="SAM_ST_Damage_Desc" xml:space="preserve"><value>メインコンボのダメージスキルを集めました。</value></data>
-  <data name="SAM_ST_CDs_Iaijutsu_Name" xml:space="preserve"><value>天下五剣オプション</value></data>
+  <data name="SAM_ST_CDs_Iaijutsu_Name" xml:space="preserve"><value>居合術オプション</value></data>
   <data name="SAM_ST_CDs_Iaijutsu_Desc" xml:space="preserve"><value>「乱れ雪月花」「彼岸花」「かえし：雪月花」をローテーションに追加します。</value></data>
   <data name="SAM_ST_CDs_UseHiganbana_Name" xml:space="preserve"><value>彼岸花を追加</value></data>
   <data name="SAM_ST_CDs_UseHiganbana_Desc" xml:space="preserve"><value>サブオプションに応じてヒガンバナを使用します。</value></data>
@@ -2753,11 +2751,11 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="SAM_ST_Shinten_Desc" xml:space="preserve"><value>震天をローテーションに追加します。
 バースト用に剣気を温存します。</value></data>
   <data name="SAM_ST_RangedUptime_Name" xml:space="preserve"><value>範囲アップタイム機能</value></data>
-  <data name="SAM_ST_RangedUptime_Desc" xml:space="preserve"><value>範囲外にいる場合にエンピをローテーションに追加します。
-可能で有効な場合は、扇術または居合術を使用します。</value></data>
+  <data name="SAM_ST_RangedUptime_Desc" xml:space="preserve"><value>射程外にいる場合、燕飛をローテーションに追加します。
+使用可能かつ有効な場合は、奥義または居合術を使用します。</value></data>
   <data name="SAM_ST_TrueNorth_Name" xml:space="preserve"><value>トゥルーノース機能</value></data>
   <data name="SAM_ST_TrueNorth_Desc" xml:space="preserve"><value>強化された効力ボーナスを得るために正しい位置にいないときにトゥルーノースを追加します。</value></data>
-  <data name="SAM_ST_StunInterupt_Name" xml:space="preserve"><value>足払いオプション</value></data>
+  <data name="SAM_ST_StunInterupt_Name" xml:space="preserve"><value>レッグスウィープオプション</value></data>
   <data name="SAM_ST_StunInterupt_Desc" xml:space="preserve"><value>ボス以外のターゲットが詠唱中に足払いを追加します。</value></data>
   <data name="SAM_ST_ComboHeals_Name" xml:space="preserve"><value>コンボヒールオプション</value></data>
   <data name="SAM_ST_ComboHeals_Desc" xml:space="preserve"><value>ブラッドバス と 内丹 をコンボに追加し、HP パーセンテージのしきい値を下回ったときに使用します。</value></data>
@@ -2778,25 +2776,25 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="SAM_AoE_CDs_Name" xml:space="preserve"><value>メインコンボのクールダウン</value></data>
   <data name="SAM_AoE_CDs_Desc" xml:space="preserve"><value>メインコンボのクールダウン機能のコレクション。</value></data>
   <data name="SAM_AoE_MeikyoShisui_Name" xml:space="preserve"><value>明鏡止水オプション</value></data>
-  <data name="SAM_AoE_MeikyoShisui_Desc" xml:space="preserve"><value>明鏡止水をローテーションに加える。</value></data>
+  <data name="SAM_AoE_MeikyoShisui_Desc" xml:space="preserve"><value>明鏡止水をローテーションに追加します。</value></data>
   <data name="SAM_AOE_CDs_Ikishoten_Name" xml:space="preserve"><value>意気衝天オプション</value></data>
   <data name="SAM_AOE_CDs_Ikishoten_Desc" xml:space="preserve"><value>剣気50以下で意気衝天を追加します。
 残り10秒の時点で剣気を使い、意気衝天を使えるようにします。</value></data>
   <data name="SAM_AoE_Damage_Name" xml:space="preserve"><value>メインコンボのダメージスキル</value></data>
   <data name="SAM_AoE_Damage_Desc" xml:space="preserve"><value>メインコンボのダメージスキルを集めました。</value></data>
-  <data name="SAM_AoE_TenkaGoken_Name" xml:space="preserve"><value>天下五剣オプション</value></data>
+  <data name="SAM_AoE_TenkaGoken_Name" xml:space="preserve"><value>居合術オプション</value></data>
   <data name="SAM_AoE_TenkaGoken_Desc" xml:space="preserve"><value>使用可能で、かつ移動していないとき、天下五剣、乱れ雪月花、返し五剣を追加します。</value></data>
   <data name="SAM_AoE_Guren_Name" xml:space="preserve"><value>紅蓮のオプション</value></data>
   <data name="SAM_AoE_Guren_Desc" xml:space="preserve"><value>紅蓮をローテーションに加えます。</value></data>
   <data name="SAM_AoE_OgiNamikiri_Name" xml:space="preserve"><value>奥義波切オプション</value></data>
   <data name="SAM_AoE_OgiNamikiri_Desc" xml:space="preserve"><value>準備ができたときとローテーションに移動していないときに、奥義波切と返し: 波切りを追加します。</value></data>
   <data name="SAM_AoE_Zanshin_Name" xml:space="preserve"><value>残心オプション</value></data>
-  <data name="SAM_AoE_Zanshin_Desc" xml:space="preserve"><value>残心をローテーションに加えます。</value></data>
+  <data name="SAM_AoE_Zanshin_Desc" xml:space="preserve"><value>残心をローテーションに追加します。</value></data>
   <data name="SAM_AoE_Shoha_Name" xml:space="preserve"><value>照破オプション</value></data>
   <data name="SAM_AoE_Shoha_Desc" xml:space="preserve"><value>瞑想スタックが 3 つある場合、照破 を追加します。</value></data>
   <data name="SAM_AoE_Kyuten_Name" xml:space="preserve"><value>九天オプション</value></data>
   <data name="SAM_AoE_Kyuten_Desc" xml:space="preserve"><value>九天をローテーションに加えます。</value></data>
-  <data name="SAM_AoE_StunInterupt_Name" xml:space="preserve"><value>足払いオプション</value></data>
+  <data name="SAM_AoE_StunInterupt_Name" xml:space="preserve"><value>レッグスウィープオプション</value></data>
   <data name="SAM_AoE_StunInterupt_Desc" xml:space="preserve"><value>ボス以外のターゲットが詠唱中に足払いを追加します。</value></data>
   <data name="SAM_AoE_ComboHeals_Name" xml:space="preserve"><value>コンボヒールオプション</value></data>
   <data name="SAM_AoE_ComboHeals_Desc" xml:space="preserve"><value>ブラッドバス と 内丹 をコンボに追加し、HP パーセンテージのしきい値を下回ったときに使用します。</value></data>
@@ -2933,7 +2931,7 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="SCH_ST_Heal_FeyIllumination_Desc" xml:space="preserve"><value>フェイイルミネーションを使用します。</value></data>
   <data name="SCH_ST_Heal_FeyBlessing_Name" xml:space="preserve"><value>フェイブレッシングオプション</value></data>
   <data name="SCH_ST_Heal_FeyBlessing_Desc" xml:space="preserve"><value>フェイブレッシングを使用します。</value></data>
-  <data name="SCH_ST_Heal_Seraphism_Name" xml:space="preserve"><value>セラフィズムのオプション</value></data>
+  <data name="SCH_ST_Heal_Seraphism_Name" xml:space="preserve"><value>セラフィズムオプション</value></data>
   <data name="SCH_ST_Heal_Seraphism_Desc" xml:space="preserve"><value>セラフィズムを使用します。</value></data>
   <data name="SCH_ST_Heal_Expedient_Name" xml:space="preserve"><value>疾風怒濤の計オプション</value></data>
   <data name="SCH_ST_Heal_Expedient_Desc" xml:space="preserve"><value>疾風怒濤の計を使用します。</value></data>
@@ -2951,7 +2949,7 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="SCH_AoE_Heal_FeyIllumination_Desc" xml:space="preserve"><value>フェイイルミネーションを使用します。</value></data>
   <data name="SCH_AoE_Heal_FeyBlessing_Name" xml:space="preserve"><value>フェイブレッシングオプション</value></data>
   <data name="SCH_AoE_Heal_FeyBlessing_Desc" xml:space="preserve"><value>フェイブレッシングを使用します。</value></data>
-  <data name="SCH_AoE_Heal_Seraphism_Name" xml:space="preserve"><value>セラフィズムのオプション</value></data>
+  <data name="SCH_AoE_Heal_Seraphism_Name" xml:space="preserve"><value>セラフィズムオプション</value></data>
   <data name="SCH_AoE_Heal_Seraphism_Desc" xml:space="preserve"><value>セラフィズムを使用します。</value></data>
   <data name="SCH_AoE_Heal_SummonSeraph_Name" xml:space="preserve"><value>サモン・セラフィムオプション</value></data>
   <data name="SCH_AoE_Heal_SummonSeraph_Desc" xml:space="preserve"><value>サモンセラフを使用します。</value></data>
@@ -2978,11 +2976,11 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="SCH_DeploymentTactics_Recitation_Name" xml:space="preserve"><value>秘策オプション</value></data>
   <data name="SCH_DeploymentTactics_Recitation_Desc" xml:space="preserve"><value>クールダウン終了時に秘策を追加し、パーティーメンバーにクリティカルなガルバナイズバフを強制します。</value></data>
   <data name="SCH_FairyReminder_Name" xml:space="preserve"><value>妖精特集</value></data>
-  <data name="SCH_FairyReminder_Desc" xml:space="preserve"><value>妖精が召喚されていないときは、すべての妖精のアクションをイオス召喚に変更します。</value></data>
+  <data name="SCH_FairyReminder_Desc" xml:space="preserve"><value>フェアリーが召喚されていないとき、すべてのフェアリーアクションをサモン・エオスに置き換えます。</value></data>
   <data name="SCH_Consolation_Name" xml:space="preserve"><value>フェイブレッシング→セラフ・コンソレイション機能</value></data>
   <data name="SCH_Consolation_Desc" xml:space="preserve"><value>セラフが出ているときにフェイブレッシングをコンソレイションに変更します。</value></data>
   <data name="SCH_Fairy_Combo_Name" xml:space="preserve"><value>フェアリーヒーリングコンボ機能</value></data>
-  <data name="SCH_Fairy_Combo_Desc" xml:space="preserve"><value>使用すると、夜明けの囁きをフェイ・イルミネーション、フェイ・ブレッシング、そして夜明けの囁きに変更します。</value></data>
+  <data name="SCH_Fairy_Combo_Desc" xml:space="preserve"><value>使用時、囁きとフェイイルミネーション、フェイブレッシング、囁きを順に切り替えます。</value></data>
   <data name="SCH_Fairy_Combo_Consolation_Name" xml:space="preserve"><value>セラフ中コンソレイションオプション</value></data>
   <data name="SCH_Fairy_Combo_Consolation_Desc" xml:space="preserve"><value>セラフ中にコンソレイションを追加します。</value></data>
   <data name="SCH_Raise_Name" xml:space="preserve"><value>迅速魔レイズコンボ機能</value></data>
@@ -3044,21 +3042,21 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="SMN_ST_Advanced_Combo_DemiSummons_Attacks_Name" xml:space="preserve"><value>デミ攻撃コンボオプション</value></data>
   <data name="SMN_ST_Advanced_Combo_DemiSummons_Attacks_Desc" xml:space="preserve"><value>デミ召喚 アビリティ を単体のコンボに追加します。</value></data>
   <data name="SMN_ST_Advanced_Combo_DemiSummons_Rekindle_Name" xml:space="preserve"><value>再生の炎コンボオプション</value></data>
-  <data name="SMN_ST_Advanced_Combo_DemiSummons_Rekindle_Desc" xml:space="preserve"><value>単体のコンボに 再生の炎 を追加します。</value></data>
+  <data name="SMN_ST_Advanced_Combo_DemiSummons_Rekindle_Desc" xml:space="preserve"><value>単体コンボに再生の炎を追加します。</value></data>
   <data name="SMN_ST_Advanced_Combo_DemiSummons_Rekindle_Retarget_Name" xml:space="preserve"><value>リターゲット 再生の炎コンボオプション</value></data>
   <data name="SMN_ST_Advanced_Combo_DemiSummons_Rekindle_Retarget_Desc" xml:space="preserve"><value>再ターゲットは、自己の前に、それを必要とするタンク、次に回復が必要なパーティーメンバーに再燃します。</value></data>
   <data name="SMN_ST_Advanced_Combo_Titan_Name" xml:space="preserve"><value>サモン・タイタン</value></data>
   <data name="SMN_ST_Advanced_Combo_Titan_Desc" xml:space="preserve"><value>タイタン を単体のローテーションに追加します</value></data>
-  <data name="SMN_ST_Advanced_Combo_Garuda_Name" xml:space="preserve"><value>ガルーダ召喚</value></data>
+  <data name="SMN_ST_Advanced_Combo_Garuda_Name" xml:space="preserve"><value>サモン・ガルーダ</value></data>
   <data name="SMN_ST_Advanced_Combo_Garuda_Desc" xml:space="preserve"><value>ガルーダを単体のローテーションに追加します</value></data>
   <data name="SMN_ST_Advanced_Combo_Ifrit_Name" xml:space="preserve"><value>サモン・イフリート</value></data>
   <data name="SMN_ST_Advanced_Combo_Ifrit_Desc" xml:space="preserve"><value>単体のローテーションにイフリートを追加します</value></data>
   <data name="SMN_ST_Advanced_Combo_EgiSummons_Attacks_Name" xml:space="preserve"><value>エギ攻撃コンボオプション</value></data>
-  <data name="SMN_ST_Advanced_Combo_EgiSummons_Attacks_Desc" xml:space="preserve"><value>単体のコンボにジェムシャインを追加します。</value></data>
+  <data name="SMN_ST_Advanced_Combo_EgiSummons_Attacks_Desc" xml:space="preserve"><value>単体コンボにジェムシャインを追加します。</value></data>
   <data name="SMN_ST_Ruin3_Emerald_Ruin3_Name" xml:space="preserve"><value>エメラルド・ルインガ→ルインガオプション</value></data>
-  <data name="SMN_ST_Ruin3_Emerald_Ruin3_Desc" xml:space="preserve"><value>静止していてルインマスタリー III がアクティブでない場合、ローテーション内でエメラルド ルイン III をルイン III に置き換えます (54-72)。
-これを使用する場合、ガルーダがそれらのレベル中に最後に呼び出すように設定するのが最善です。そうしないと、ガルーダのチャージをすべて使い切るまで他の召喚を行わなくなります。 
-主に重要な 70 アルティメット を対象としています。 (平均的な使用には価値がありません)</value></data>
+  <data name="SMN_ST_Ruin3_Emerald_Ruin3_Desc" xml:space="preserve"><value>静止中かつルインマスタリーIIIが有効でない場合（レベル54〜72）、ローテーション内のエメラルド・ルインガをルインガに置き換えます。
+この設定を使う場合、そのレベル帯ではガルーダを最後に呼び出す設定にするのが望ましいです。そうしないと、ガルーダチャージを使い切るまで他の召喚を行わなくなります。
+主にレベル70絶向けの調整で、通常用途ではあまり推奨しません。</value></data>
   <data name="SMN_ST_Advanced_Combo_Egi_AstralFlow_Name" xml:space="preserve"><value>エギ・アストラルフロウを追加</value></data>
   <data name="SMN_ST_Advanced_Combo_Egi_AstralFlow_Desc" xml:space="preserve"><value>ローテーションに追加するエギ アストラルフローを選択します。</value></data>
   <data name="SMN_ST_Advanced_Combo_DemiEgiMenu_SwiftcastEgi_Name" xml:space="preserve"><value>迅速魔 エギアビリティオプション</value></data>
@@ -3068,17 +3066,17 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="SMN_ST_Advanced_Combo_oGCDPooling_Name" xml:space="preserve"><value>プールされた アビリティ オプション</value></data>
   <data name="SMN_ST_Advanced_Combo_oGCDPooling_Desc" xml:space="preserve"><value>プールは、灼熱の光バフ下で使用すると アビリティ にダメージを与えます。</value></data>
   <data name="SMN_ST_Advanced_Combo_SearingLight_Name" xml:space="preserve"><value>シアリングライトコンボオプション</value></data>
-  <data name="SMN_ST_Advanced_Combo_SearingLight_Desc" xml:space="preserve"><value>単体のコンボに灼熱の光を追加します。</value></data>
+  <data name="SMN_ST_Advanced_Combo_SearingLight_Desc" xml:space="preserve"><value>単体コンボにシアリングライトを追加します。</value></data>
   <data name="SMN_ST_Advanced_Combo_SearingLight_Burst_Name" xml:space="preserve"><value>シアリングライトバーストオプション</value></data>
   <data name="SMN_ST_Advanced_Combo_SearingLight_Burst_Desc" xml:space="preserve"><value>デミフェイズ中のみ灼熱の光を使用します。
 スペルスピード構成ではこれをオフにします。</value></data>
   <data name="SMN_ST_Advanced_Combo_SearingFlash_Name" xml:space="preserve"><value>シアリングスパークコンボオプション</value></data>
-  <data name="SMN_ST_Advanced_Combo_SearingFlash_Desc" xml:space="preserve"><value>単体のコンボに灼熱のフラッシュを追加します。</value></data>
+  <data name="SMN_ST_Advanced_Combo_SearingFlash_Desc" xml:space="preserve"><value>単体コンボにシアリングスパークを追加します。</value></data>
   <data name="SMN_ST_Advanced_Combo_Ruin4_Name" xml:space="preserve"><value>ルインジャコンボオプション</value></data>
   <data name="SMN_ST_Advanced_Combo_Ruin4_Desc" xml:space="preserve"><value>ルインジャ を単体のコンボに追加します。
 ガルーダフェイズ中に移動していてアチューンメントを持っていない場合、イフリートフェイズ中に移動している場合、またはアクティブなエギまたはデミ召喚がない場合に使用します。</value></data>
   <data name="SMN_ST_Advanced_Combo_DemiSummons_LuxSolaris_Name" xml:space="preserve"><value>ルクス・ソラリスコンボオプション</value></data>
-  <data name="SMN_ST_Advanced_Combo_DemiSummons_LuxSolaris_Desc" xml:space="preserve"><value>単体のコンボにラックス ソラリスを追加します。</value></data>
+  <data name="SMN_ST_Advanced_Combo_DemiSummons_LuxSolaris_Desc" xml:space="preserve"><value>単体コンボにルクス・ソラリスを追加します。</value></data>
   <data name="SMN_ST_Advanced_Combo_Radiant_Name" xml:space="preserve"><value>守りの光オプション</value></data>
   <data name="SMN_ST_Advanced_Combo_Radiant_Desc" xml:space="preserve"><value>無駄を防ぐために、2回のチャージ時に守りの光、30秒のセルフシールドを使用します</value></data>
   <data name="SMN_ST_Advanced_Combo_Lucid_Name" xml:space="preserve"><value>ルーシッドドリームオプション</value></data>
@@ -3093,17 +3091,17 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="SMN_AoE_Advanced_Combo_DemiSummons_Attacks_Name" xml:space="preserve"><value>デミ攻撃コンボオプション</value></data>
   <data name="SMN_AoE_Advanced_Combo_DemiSummons_Attacks_Desc" xml:space="preserve"><value>デミ召喚 アビリティ を AoE コンボに追加します。</value></data>
   <data name="SMN_AoE_Advanced_Combo_DemiSummons_Rekindle_Name" xml:space="preserve"><value>再生の炎コンボオプション</value></data>
-  <data name="SMN_AoE_Advanced_Combo_DemiSummons_Rekindle_Desc" xml:space="preserve"><value>AoE コンボに 再生の炎 を追加します。</value></data>
+  <data name="SMN_AoE_Advanced_Combo_DemiSummons_Rekindle_Desc" xml:space="preserve"><value>範囲コンボに再生の炎を追加します。</value></data>
   <data name="SMN_AoE_Advanced_Combo_DemiSummons_Rekindle_Retarget_Name" xml:space="preserve"><value>リターゲット 再生の炎コンボオプション</value></data>
   <data name="SMN_AoE_Advanced_Combo_DemiSummons_Rekindle_Retarget_Desc" xml:space="preserve"><value>再ターゲットは、自己の前に、それを必要とするタンク、次に回復が必要なパーティーメンバーに再燃します。</value></data>
   <data name="SMN_AoE_Advanced_Combo_Titan_Name" xml:space="preserve"><value>サモン・タイタン</value></data>
   <data name="SMN_AoE_Advanced_Combo_Titan_Desc" xml:space="preserve"><value>タイタンを AoE ローテーションに追加します</value></data>
-  <data name="SMN_AoE_Advanced_Combo_Garuda_Name" xml:space="preserve"><value>ガルーダ召喚</value></data>
+  <data name="SMN_AoE_Advanced_Combo_Garuda_Name" xml:space="preserve"><value>サモン・ガルーダ</value></data>
   <data name="SMN_AoE_Advanced_Combo_Garuda_Desc" xml:space="preserve"><value>ガルーダを AoE ローテーションに追加</value></data>
   <data name="SMN_AoE_Advanced_Combo_Ifrit_Name" xml:space="preserve"><value>サモン・イフリート</value></data>
   <data name="SMN_AoE_Advanced_Combo_Ifrit_Desc" xml:space="preserve"><value>イフリートを AoE ローテーションに追加します</value></data>
   <data name="SMN_AoE_Advanced_Combo_EgiSummons_Attacks_Name" xml:space="preserve"><value>エギ攻撃コンボオプション</value></data>
-  <data name="SMN_AoE_Advanced_Combo_EgiSummons_Attacks_Desc" xml:space="preserve"><value>AoEコンボにジェムブリリアンスを追加します。</value></data>
+  <data name="SMN_AoE_Advanced_Combo_EgiSummons_Attacks_Desc" xml:space="preserve"><value>範囲コンボにジェムブリリアンスを追加します。</value></data>
   <data name="SMN_AoE_Advanced_Combo_Egi_AstralFlow_Name" xml:space="preserve"><value>エギ・アストラルフロウを追加</value></data>
   <data name="SMN_AoE_Advanced_Combo_Egi_AstralFlow_Desc" xml:space="preserve"><value>ローテーションに追加するエギ アストラルフローを選択します。</value></data>
   <data name="SMN_AoE_Advanced_Combo_DemiEgiMenu_SwiftcastEgi_Name" xml:space="preserve"><value>迅速魔 エギアビリティオプション</value></data>
@@ -3113,17 +3111,17 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="SMN_AoE_Advanced_Combo_oGCDPooling_Name" xml:space="preserve"><value>プールされた アビリティ オプション</value></data>
   <data name="SMN_AoE_Advanced_Combo_oGCDPooling_Desc" xml:space="preserve"><value>シアリングライトバフ内で使用するためにアビリティにダメージを与えるプール</value></data>
   <data name="SMN_AoE_Advanced_Combo_SearingLight_Name" xml:space="preserve"><value>シアリングライトコンボオプション</value></data>
-  <data name="SMN_AoE_Advanced_Combo_SearingLight_Desc" xml:space="preserve"><value>AoE コンボに灼熱の光を追加します。</value></data>
+  <data name="SMN_AoE_Advanced_Combo_SearingLight_Desc" xml:space="preserve"><value>範囲コンボにシアリングライトを追加します。</value></data>
   <data name="SMN_AoE_Advanced_Combo_SearingLight_Burst_Name" xml:space="preserve"><value>シアリングライトバーストオプション</value></data>
   <data name="SMN_AoE_Advanced_Combo_SearingLight_Burst_Desc" xml:space="preserve"><value>デミフェイズ中のみ灼熱の光を使用します。
 スペルスピード構成ではこれをオフにします。</value></data>
   <data name="SMN_AoE_Advanced_Combo_SearingFlash_Name" xml:space="preserve"><value>シアリングスパークコンボオプション</value></data>
-  <data name="SMN_AoE_Advanced_Combo_SearingFlash_Desc" xml:space="preserve"><value>AoE コンボに灼熱のフラッシュを追加します。</value></data>
+  <data name="SMN_AoE_Advanced_Combo_SearingFlash_Desc" xml:space="preserve"><value>範囲コンボにシアリングスパークを追加します。</value></data>
   <data name="SMN_AoE_Advanced_Combo_Ruin4_Name" xml:space="preserve"><value>ルインジャコンボオプション</value></data>
   <data name="SMN_AoE_Advanced_Combo_Ruin4_Desc" xml:space="preserve"><value>範囲コンボに ルインジャ を追加します。
 ガルーダフェイズ中に移動していてアチューンメントを持っていない場合、イフリートフェイズ中に移動している場合、またはアクティブなエギまたはデミ召喚がない場合に使用します。</value></data>
   <data name="SMN_AoE_Advanced_Combo_DemiSummons_LuxSolaris_Name" xml:space="preserve"><value>ルクス・ソラリスコンボオプション</value></data>
-  <data name="SMN_AoE_Advanced_Combo_DemiSummons_LuxSolaris_Desc" xml:space="preserve"><value>AoE コンボに ルクス・ソラリス を追加します。</value></data>
+  <data name="SMN_AoE_Advanced_Combo_DemiSummons_LuxSolaris_Desc" xml:space="preserve"><value>範囲コンボにルクス・ソラリスを追加します。</value></data>
   <data name="SMN_AoE_Advanced_Combo_Radiant_Name" xml:space="preserve"><value>守りの光オプション</value></data>
   <data name="SMN_AoE_Advanced_Combo_Radiant_Desc" xml:space="preserve"><value>無駄を防ぐために、2回のチャージ時に守りの光、30秒のセルフシールドを使用します</value></data>
   <data name="SMN_AoE_Advanced_Combo_Lucid_Name" xml:space="preserve"><value>ルーシッドドリームオプション</value></data>
@@ -3135,7 +3133,7 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="SMN_ESPainflare_Name" xml:space="preserve"><value>ペイン・フレア→エナジーサイフォン機能</value></data>
   <data name="SMN_ESPainflare_Desc" xml:space="preserve"><value>エーテルフロースタックがない場合、ペイン・フレアをエナジーサイフォンに置き換えます。</value></data>
   <data name="SMN_CarbuncleReminder_Name" xml:space="preserve"><value>カーバンクルリマインダー機能</value></data>
-  <data name="SMN_CarbuncleReminder_Desc" xml:space="preserve"><value>召喚されていない場合、ほとんどの攻撃的なアクションをカーバンクルの召喚に置き換えます。</value></data>
+  <data name="SMN_CarbuncleReminder_Desc" xml:space="preserve"><value>召喚されていない場合、ほとんどの攻撃アクションをサモン・カーバンクルに置き換えます。</value></data>
   <data name="SMN_DemiAbilities_Name" xml:space="preserve"><value>デミ召喚中アストラルフロウ／エンキンドル機能</value></data>
   <data name="SMN_DemiAbilities_Desc" xml:space="preserve"><value>エンキンドル・バハムート、エンキンドル・フェニックス、アストラル・フローを関連する召喚に追加します。</value></data>
   <data name="SMN_Raise_Name" xml:space="preserve"><value>代替レイズ機能</value></data>
@@ -3175,18 +3173,18 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="VPR_ST_SerpentsTail_Name" xml:space="preserve"><value>蛇尾術</value></data>
   <data name="VPR_ST_SerpentsTail_Desc" xml:space="preserve"><value>蛇尾術をローテーションに追加します。</value></data>
   <data name="VPR_ST_UncoiledFury_Name" xml:space="preserve"><value>飛蛇の尾</value></data>
-  <data name="VPR_ST_UncoiledFury_Desc" xml:space="preserve"><value>アンコイルド・フューリーをローテーションに追加します。</value></data>
+  <data name="VPR_ST_UncoiledFury_Desc" xml:space="preserve"><value>飛蛇の尾をローテーションに追加します。</value></data>
   <data name="VPR_ST_UncoiledFuryCombo_Name" xml:space="preserve"><value>飛蛇の尾コンボ</value></data>
   <data name="VPR_ST_UncoiledFuryCombo_Desc" xml:space="preserve"><value>アンコイルド・ツインファングとアンコイルド・ツインブラッドをローテーションに追加します。</value></data>
   <data name="VPR_ST_Reawaken_Name" xml:space="preserve"><value>祖霊降ろし</value></data>
-  <data name="VPR_ST_Reawaken_Desc" xml:space="preserve"><value>ローテーションに再覚醒を追加します。</value></data>
+  <data name="VPR_ST_Reawaken_Desc" xml:space="preserve"><value>祖霊降ろしをローテーションに追加します。</value></data>
   <data name="VPR_ST_GenerationCombo_Name" xml:space="preserve"><value>ジェネレーションズコンボ</value></data>
   <data name="VPR_ST_GenerationCombo_Desc" xml:space="preserve"><value>ローテーションに世代を追加します。</value></data>
   <data name="VPR_ST_LegacyWeaves_Name" xml:space="preserve"><value>レガシー織り</value></data>
   <data name="VPR_ST_LegacyWeaves_Desc" xml:space="preserve"><value>レガシー ウィーブをローテーションに追加します。</value></data>
   <data name="VPR_TrueNorthDynamic_Name" xml:space="preserve"><value>動的トゥルーノースオプション</value></data>
   <data name="VPR_TrueNorthDynamic_Desc" xml:space="preserve"><value>強化された効力ボーナスを得るために正しい位置にいないときにトゥルーノースを追加します。</value></data>
-  <data name="VPR_ST_StunInterupt_Name" xml:space="preserve"><value>足払いオプション</value></data>
+  <data name="VPR_ST_StunInterupt_Name" xml:space="preserve"><value>レッグスウィープオプション</value></data>
   <data name="VPR_ST_StunInterupt_Desc" xml:space="preserve"><value>ボス以外のターゲットが詠唱中に足払いを追加します。</value></data>
   <data name="VPR_ST_RangedUptime_Name" xml:space="preserve"><value>範囲稼働時間オプション</value></data>
   <data name="VPR_ST_RangedUptime_Desc" xml:space="preserve"><value>近接攻撃範囲外にいるときのローテーションに「飛蛇の牙」を追加します。
@@ -3209,14 +3207,14 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="VPR_AoE_SerpentsTail_Name" xml:space="preserve"><value>蛇尾術</value></data>
   <data name="VPR_AoE_SerpentsTail_Desc" xml:space="preserve"><value>蛇尾術をローテーションに追加します。</value></data>
   <data name="VPR_AoE_UncoiledFury_Name" xml:space="preserve"><value>飛蛇の尾</value></data>
-  <data name="VPR_AoE_UncoiledFury_Desc" xml:space="preserve"><value>アンコイルド・フューリーをローテーションに追加します。</value></data>
+  <data name="VPR_AoE_UncoiledFury_Desc" xml:space="preserve"><value>飛蛇の尾をローテーションに追加します。</value></data>
   <data name="VPR_AoE_UncoiledFuryCombo_Name" xml:space="preserve"><value>飛蛇の尾コンボ</value></data>
   <data name="VPR_AoE_UncoiledFuryCombo_Desc" xml:space="preserve"><value>アンコイルド・ツインファングとアンコイルド・ツインブラッドをローテーションに追加します。</value></data>
   <data name="VPR_AoE_Reawaken_Name" xml:space="preserve"><value>祖霊降ろし</value></data>
-  <data name="VPR_AoE_Reawaken_Desc" xml:space="preserve"><value>ローテーションに再覚醒を追加します。</value></data>
+  <data name="VPR_AoE_Reawaken_Desc" xml:space="preserve"><value>祖霊降ろしをローテーションに追加します。</value></data>
   <data name="VPR_AoE_ReawakenCombo_Name" xml:space="preserve"><value>祖霊降ろしコンボ</value></data>
   <data name="VPR_AoE_ReawakenCombo_Desc" xml:space="preserve"><value>ジェネレーションズとレガシー ウィーブをローテーションに追加します。</value></data>
-  <data name="VPR_AoE_StunInterupt_Name" xml:space="preserve"><value>足払いオプション</value></data>
+  <data name="VPR_AoE_StunInterupt_Name" xml:space="preserve"><value>レッグスウィープオプション</value></data>
   <data name="VPR_AoE_StunInterupt_Desc" xml:space="preserve"><value>ボス以外のターゲットが詠唱中に足払いを追加します。</value></data>
   <data name="VPR_AoE_ComboHeals_Name" xml:space="preserve"><value>コンボヒールオプション</value></data>
   <data name="VPR_AoE_ComboHeals_Desc" xml:space="preserve"><value>ブラッドバス と 内丹 をローテーションに追加します。</value></data>
@@ -3234,7 +3232,7 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="VPR_VicepitDens_oGCDs_Name" xml:space="preserve"><value>ツインコンボアクションを含む</value></data>
   <data name="VPR_VicepitDens_oGCDs_Desc" xml:space="preserve"><value>ボタンにツインファングとツインブラッドを追加します。</value></data>
   <data name="VPR_UncoiledTwins_Name" xml:space="preserve"><value>アンコイルド - ツインズ</value></data>
-  <data name="VPR_UncoiledTwins_Desc" xml:space="preserve"><value>アンコイルド・フューリーをアンコイルド・ツインファングとアンコイルド・ツインブラッドに置き換えます。</value></data>
+  <data name="VPR_UncoiledTwins_Desc" xml:space="preserve"><value>アンコイルド・フューリーを飛蛇連尾撃と飛蛇連血撃に置き換えます。</value></data>
   <data name="VPR_ReawakenLegacy_Name" xml:space="preserve"><value>祖霊降ろし - 祖霊の牙</value></data>
   <data name="VPR_ReawakenLegacy_Desc" xml:space="preserve"><value>オプションを祖霊の牙【壱】〜【参】に置き換えます。</value></data>
   <data name="VPR_ReawakenLegacyWeaves_Name" xml:space="preserve"><value>祖霊降ろし - 祖霊の蛇</value></data>
@@ -3244,7 +3242,7 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="VPR_Legacies_Name" xml:space="preserve"><value>従来のボタン</value></data>
   <data name="VPR_Legacies_Desc" xml:space="preserve"><value>世代をレガシーに置き換えます。</value></data>
   <data name="VPR_SerpentsTail_Name" xml:space="preserve"><value>蛇尾術</value></data>
-  <data name="VPR_SerpentsTail_Desc" xml:space="preserve"><value>該当する場合、基本コンボを断末魔またはラストラッシュに置き換えます。</value></data>
+  <data name="VPR_SerpentsTail_Desc" xml:space="preserve"><value>状況に応じて、基本コンボを蛇尾撃またはラストラッシュに置き換えます。</value></data>
   <data name="VPR_VicewinderProtection_Name" xml:space="preserve"><value>壱の蛇【強砕】／壱の大蛇【強砕】 重複防止</value></data>
   <data name="VPR_VicewinderProtection_Desc" xml:space="preserve"><value>壱の蛇【強砕】／壱の大蛇【強砕】 がすでにアクティブな場合、壱の蛇【強砕】／壱の大蛇【強砕】 を サベッジブレード に置き換えます。</value></data>
   <data name="WAR_ST_Simple_Name" xml:space="preserve"><value>シンプルモード - 単体</value></data>
@@ -3259,7 +3257,7 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="WAR_ST_BalanceOpener_Name" xml:space="preserve"><value>バランスオープナー (レベル 100)</value></data>
   <data name="WAR_ST_BalanceOpener_Desc" xml:space="preserve"><value>レベル100にバランスオープナーを追加します。</value></data>
   <data name="WAR_ST_StormsEye_Name" xml:space="preserve"><value>シュトルムブレハオプション</value></data>
-  <data name="WAR_ST_StormsEye_Desc" xml:space="preserve"><value>ストームズアイをローテーションに追加します。</value></data>
+  <data name="WAR_ST_StormsEye_Desc" xml:space="preserve"><value>シュトルムブレハをローテーションに追加します。</value></data>
   <data name="WAR_ST_InnerRelease_Name" xml:space="preserve"><value>原初の解放オプション</value></data>
   <data name="WAR_ST_InnerRelease_Desc" xml:space="preserve"><value>バーサーク／原初の解放をローテーションに追加。</value></data>
   <data name="WAR_ST_FellCleave_Name" xml:space="preserve"><value>フェルクリーヴオプション</value></data>
@@ -3270,21 +3268,21 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="WAR_ST_Infuriate_Desc" xml:space="preserve"><value>ウォークライをローテーションに追加します。</value></data>
   <data name="WAR_ST_Onslaught_Name" xml:space="preserve"><value>オンスロートオプション</value></data>
   <data name="WAR_ST_Onslaught_Desc" xml:space="preserve"><value>オンスロートをローテーションに追加します。</value></data>
-  <data name="WAR_ST_Upheaval_Name" xml:space="preserve"><value>大激震オプション</value></data>
-  <data name="WAR_ST_Upheaval_Desc" xml:space="preserve"><value>激動をローテーションに追加します。</value></data>
+  <data name="WAR_ST_Upheaval_Name" xml:space="preserve"><value>アップヒーバルオプション</value></data>
+  <data name="WAR_ST_Upheaval_Desc" xml:space="preserve"><value>アップヒーバルをローテーションに追加します。</value></data>
   <data name="WAR_ST_PrimalRend_Name" xml:space="preserve"><value>プライマルレンドオプション</value></data>
   <data name="WAR_ST_PrimalRend_Desc" xml:space="preserve"><value>プライマルレンドをローテーションに追加します。</value></data>
   <data name="WAR_ST_PrimalWrath_Name" xml:space="preserve"><value>原初の激震オプション</value></data>
   <data name="WAR_ST_PrimalWrath_Desc" xml:space="preserve"><value>原初の激震をローテーションに追加します。</value></data>
   <data name="WAR_ST_PrimalRuination_Name" xml:space="preserve"><value>ルイネーターオプション</value></data>
-  <data name="WAR_ST_PrimalRuination_Desc" xml:space="preserve"><value>ルイネーター をローテーションに追加します。</value></data>
+  <data name="WAR_ST_PrimalRuination_Desc" xml:space="preserve"><value>ルイネーターをローテーションに追加します。</value></data>
   <data name="WAR_ST_RangedUptime_Name" xml:space="preserve"><value>トマホーク稼働時間オプション</value></data>
   <data name="WAR_ST_RangedUptime_Desc" xml:space="preserve"><value>範囲外にいるときにトマホークをローテーションに追加します。</value></data>
   <data name="WAR_ST_Interrupt_Name" xml:space="preserve"><value>割り込みオプション</value></data>
   <data name="WAR_ST_Interrupt_Desc" xml:space="preserve"><value>ターゲットのキャストが中断可能な場合、ローテーションにインタージェクトを追加します。</value></data>
   <data name="WAR_ST_Stun_Name" xml:space="preserve"><value>スタンオプションによる中断</value></data>
-  <data name="WAR_ST_Stun_Desc" xml:space="preserve"><value>ターゲットがキャストしているときにローテーションにロウブロウを追加します。
-気絶できない敵などに大量のロウブロウを無駄にする可能性があるため、オーバーワールド コンテンツ以外ではお勧めできません。ボス戦では使用しないようにします。</value></data>
+  <data name="WAR_ST_Stun_Desc" xml:space="preserve"><value>ターゲットが詠唱しているとき、ローテーションにロウブロウを追加します。
+気絶できない敵などにロウブロウを無駄打ちする可能性があるため、フィールドコンテンツ以外では非推奨です。ボス戦では使用しないようにします。</value></data>
   <data name="WAR_AoE_Advanced_Name" xml:space="preserve"><value>アドバンストモード - AoE</value></data>
   <data name="WAR_AoE_Advanced_Desc" xml:space="preserve"><value>オーバーパワー を 1 ボタンの完全な AoE ローテーションに置き換えます。
 ローテーションを細かく調整したい場合に適した設定です。</value></data>
@@ -3296,8 +3294,8 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="WAR_AoE_Infuriate_Desc" xml:space="preserve"><value>ウォークライ を範囲ローテーションに追加します。</value></data>
   <data name="WAR_AoE_Onslaught_Name" xml:space="preserve"><value>オンスロートオプション</value></data>
   <data name="WAR_AoE_Onslaught_Desc" xml:space="preserve"><value>オンスロートを範囲ローテーションに追加します。</value></data>
-  <data name="WAR_AoE_Orogeny_Name" xml:space="preserve"><value>地盤崩壊オプション</value></data>
-  <data name="WAR_AoE_Orogeny_Desc" xml:space="preserve"><value>AoE ローテーションに造山運動を追加します。</value></data>
+  <data name="WAR_AoE_Orogeny_Name" xml:space="preserve"><value>オロジェネシスオプション</value></data>
+  <data name="WAR_AoE_Orogeny_Desc" xml:space="preserve"><value>範囲ローテーションにオロジェネシスを追加します。</value></data>
   <data name="WAR_AoE_PrimalRend_Name" xml:space="preserve"><value>プライマルレンドオプション</value></data>
   <data name="WAR_AoE_PrimalRend_Desc" xml:space="preserve"><value>プライマルレンドをAoEローテーションに追加します。</value></data>
   <data name="WAR_AoE_PrimalWrath_Name" xml:space="preserve"><value>原初の激震オプション</value></data>
@@ -3329,7 +3327,7 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="WAR_Mitigation_NonBoss_Reprisal_Desc" xml:space="preserve"><value>ターゲットが5体以上の場合、リプライザルを追加します。</value></data>
   <data name="WAR_Mitigation_NonBoss_RawIntuition_Name" xml:space="preserve"><value>原初の直感／原初の血気オプション</value></data>
   <data name="WAR_Mitigation_NonBoss_RawIntuition_Desc" xml:space="preserve"><value>利用可能な場合、原初の直感／原初の血気を追加します。他と重なってしまいます。</value></data>
-  <data name="WAR_Mitigation_NonBoss_ShakeItOff_Name" xml:space="preserve"><value>シェイクオフ オプション</value></data>
+  <data name="WAR_Mitigation_NonBoss_ShakeItOff_Name" xml:space="preserve"><value>シェイクオフオプション</value></data>
   <data name="WAR_Mitigation_NonBoss_ShakeItOff_Desc" xml:space="preserve"><value>回復のためにシェイクオフを追加します。軽減バフが失われる場合には使用しません。</value></data>
   <data name="WAR_Mitigation_NonBoss_Equilibrium_Name" xml:space="preserve"><value>エクリブリウムオプション</value></data>
   <data name="WAR_Mitigation_NonBoss_Equilibrium_Desc" xml:space="preserve"><value>治癒のためのエクリブリウムを追加します。</value></data>
@@ -3369,12 +3367,12 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
 注: 無効時でも、スリル・オブ・バトルを最低優先で使用しようとします。</value></data>
   <data name="WAR_Mit_Rampart_Name" xml:space="preserve"><value>ランパートオプション</value></data>
   <data name="WAR_Mit_Rampart_Desc" xml:space="preserve"><value>ワンボタン緩和にランパートを追加します。</value></data>
-  <data name="WAR_Mit_ShakeItOff_Name" xml:space="preserve"><value>シェイクオフ オプション</value></data>
+  <data name="WAR_Mit_ShakeItOff_Name" xml:space="preserve"><value>シェイクオフオプション</value></data>
   <data name="WAR_Mit_ShakeItOff_Desc" xml:space="preserve"><value>ワンボタン軽減策に シェイクオフ を追加します。</value></data>
   <data name="WAR_Mit_ArmsLength_Name" xml:space="preserve"><value>アームズレングスオプション</value></data>
   <data name="WAR_Mit_ArmsLength_Desc" xml:space="preserve"><value>ワンボタン軽減にアームズレングスを追加します。</value></data>
   <data name="WAR_Mit_Vengeance_Name" xml:space="preserve"><value>ヴェンジェンスオプション</value></data>
-  <data name="WAR_Mit_Vengeance_Desc" xml:space="preserve"><value>ワンボタン軽減に復讐を追加します。</value></data>
+  <data name="WAR_Mit_Vengeance_Desc" xml:space="preserve"><value>ワンボタン軽減にヴェンジェンスを追加します。</value></data>
   <data name="WAR_Mit_Party_Name" xml:space="preserve"><value>ワンボタンパーティ軽減機能</value></data>
   <data name="WAR_Mit_Party_Desc" xml:space="preserve"><value>準備ができたら シェイクオフ をリプライザルに置き換えます。</value></data>
   <data name="WAR_FC_Features_Name" xml:space="preserve"><value>フェルクリーヴ機能</value></data>
@@ -3385,9 +3383,9 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="WAR_FC_Infuriate_Name" xml:space="preserve"><value>ウォークライオプション</value></data>
   <data name="WAR_FC_Infuriate_Desc" xml:space="preserve"><value>利用可能な場合、フェルクリーヴ に ウォークライ を追加します。</value></data>
   <data name="WAR_FC_Onslaught_Name" xml:space="preserve"><value>オンスロートオプション</value></data>
-  <data name="WAR_FC_Onslaught_Desc" xml:space="preserve"><value>利用可能な場合、猛攻撃をフェルクリーブに追加します。</value></data>
-  <data name="WAR_FC_Upheaval_Name" xml:space="preserve"><value>大激震オプション</value></data>
-  <data name="WAR_FC_Upheaval_Desc" xml:space="preserve"><value>利用可能な場合、フェルクリーヴ に 大激震 を追加します。</value></data>
+  <data name="WAR_FC_Onslaught_Desc" xml:space="preserve"><value>使用可能なとき、フェルクリーヴにオンスロートを追加します。</value></data>
+  <data name="WAR_FC_Upheaval_Name" xml:space="preserve"><value>アップヒーバルオプション</value></data>
+  <data name="WAR_FC_Upheaval_Desc" xml:space="preserve"><value>使用可能なとき、フェルクリーヴにアップヒーバルを追加します。</value></data>
   <data name="WAR_FC_PrimalRend_Name" xml:space="preserve"><value>プライマルレンドオプション</value></data>
   <data name="WAR_FC_PrimalRend_Desc" xml:space="preserve"><value>利用可能な場合は、プライマルレンド を フェルクリーヴ に追加します。</value></data>
   <data name="WAR_FC_PrimalWrath_Name" xml:space="preserve"><value>原初の激震オプション</value></data>
@@ -3405,7 +3403,7 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="WAR_InfuriateFellCleave_IRFirst_Name" xml:space="preserve"><value>原初の解放 優先オプション</value></data>
   <data name="WAR_InfuriateFellCleave_IRFirst_Desc" xml:space="preserve"><value>内部解放スタックが利用可能な間は ウォークライ の使用を防ぎます。</value></data>
   <data name="WAR_EyePath_Name" xml:space="preserve"><value>シュトルムブレハ機能</value></data>
-  <data name="WAR_EyePath_Desc" xml:space="preserve"><value>サージングテンペストのバフをリフレッシュする必要がある場合、嵐の道を嵐の目で置き換えます。</value></data>
+  <data name="WAR_EyePath_Desc" xml:space="preserve"><value>戦嵐の効果時間を更新する必要がある場合、シュトルムヴィントをシュトルムブレハに置き換えます。</value></data>
   <data name="WAR_PrimalCombo_InnerRelease_Name" xml:space="preserve"><value>プライマルコンボ機能</value></data>
   <data name="WAR_PrimalCombo_InnerRelease_Desc" xml:space="preserve"><value>使用時、バーサク／原初の解放がプライマルコンボ（プライマルレンド→ルイネーター）に変化します。</value></data>
   <data name="WAR_ThrillEquilibrium_Name" xml:space="preserve"><value>エクリブリウム→スリル・オブ・バトル機能</value></data>
@@ -3446,7 +3444,7 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="WHM_ST_MainCombo_DoT_Name" xml:space="preserve"><value>エアロ／ディア アップタイム オプション</value></data>
   <data name="WHM_ST_MainCombo_DoT_Desc" xml:space="preserve"><value>現在のターゲットにデバフが存在しない場合、または期限切れが近づいている場合、単体のコンボに エアロ／ディア を追加します。</value></data>
   <data name="WHM_ST_MainCombo_Assize_Name" xml:space="preserve"><value>アサイズオプション</value></data>
-  <data name="WHM_ST_MainCombo_Assize_Desc" xml:space="preserve"><value>単体のコンボに アサイズ を追加します。</value></data>
+  <data name="WHM_ST_MainCombo_Assize_Desc" xml:space="preserve"><value>単体コンボにアサイズを追加します。</value></data>
   <data name="WHM_ST_MainCombo_GlareIV_Name" xml:space="preserve"><value>グレアジャオプション</value></data>
   <data name="WHM_ST_MainCombo_GlareIV_Desc" xml:space="preserve"><value>グレアジャ実行可下で単体のコンボにグレアジャを追加します</value></data>
   <data name="WHM_ST_MainCombo_Misery_Name" xml:space="preserve"><value>ハート・オブ・ミゼリオプション</value></data>
@@ -3463,7 +3461,7 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="WHM_AoE_DPS_SwiftHoly_Desc" xml:space="preserve"><value>AoE ローテーションの開始時に 迅速魔-&gt;ホーリー を追加します。
 すでに戦闘中であり、移動を停止しており、まだ アサイズ を使用していないことが必要です。</value></data>
   <data name="WHM_AoE_DPS_Assize_Name" xml:space="preserve"><value>アサイズオプション</value></data>
-  <data name="WHM_AoE_DPS_Assize_Desc" xml:space="preserve"><value>AoE コンボに アサイズ を追加します。</value></data>
+  <data name="WHM_AoE_DPS_Assize_Desc" xml:space="preserve"><value>範囲コンボにアサイズを追加します。</value></data>
   <data name="WHM_AoE_DPS_GlareIV_Name" xml:space="preserve"><value>グレアジャオプション</value></data>
   <data name="WHM_AoE_DPS_GlareIV_Desc" xml:space="preserve"><value>グレアジャ実行可下でのAoEコンボにグレアジャを追加</value></data>
   <data name="WHM_AoE_DPS_Misery_Name" xml:space="preserve"><value>ハート・オブ・ミゼリオプション</value></data>
@@ -3514,17 +3512,17 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="WHM_AoEHeals_Rapture_Name" xml:space="preserve"><value>ハート・オブ・ラプチャーオプション</value></data>
   <data name="WHM_AoEHeals_Rapture_Desc" xml:space="preserve"><value>利用可能な場合はアフラトゥス ラプチャーを使用します。</value></data>
   <data name="WHM_AoEHeals_Cure3_Name" xml:space="preserve"><value>ケアルガオプション</value></data>
-  <data name="WHM_AoEHeals_Cure3_Desc" xml:space="preserve"><value>利用可能な場合は、メディカをキュア III に置き換えます。</value></data>
+  <data name="WHM_AoEHeals_Cure3_Desc" xml:space="preserve"><value>使用可能な場合、メディカをケアルガに置き換えます。</value></data>
   <data name="WHM_AoEHeals_Assize_Name" xml:space="preserve"><value>アサイズオプション</value></data>
   <data name="WHM_AoEHeals_Assize_Desc" xml:space="preserve"><value>可能な場合は アサイズ を使用します。</value></data>
-  <data name="WHM_AoEHeals_Plenary_Name" xml:space="preserve"><value>インドゥルゲンティア オプション</value></data>
+  <data name="WHM_AoEHeals_Plenary_Name" xml:space="preserve"><value>インドゥルゲンティアオプション</value></data>
   <data name="WHM_AoEHeals_Plenary_Desc" xml:space="preserve"><value>使用可能な場合はインドゥルゲンティアを使用します。</value></data>
   <data name="WHM_AoEHeals_Asylum_Name" xml:space="preserve"><value>アサイラムオプション</value></data>
   <data name="WHM_AoEHeals_Asylum_Desc" xml:space="preserve"><value>静止しているときの亡命の配置をローテーションに追加します。
 それを自分自身にリターゲットします。</value></data>
   <data name="WHM_AoEHeals_Temperance_Name" xml:space="preserve"><value>テンパランスオプション</value></data>
   <data name="WHM_AoEHeals_Temperance_Desc" xml:space="preserve"><value>パーティーの平均が設定されたしきい値を下回るたびに、治癒ブーストに利用可能な場合はテンパランスを使用します。</value></data>
-  <data name="WHM_AoEHeals_DivineCaress_Name" xml:space="preserve"><value>ディヴァインカレス</value></data>
+  <data name="WHM_AoEHeals_DivineCaress_Name" xml:space="preserve"><value>ディヴァインカレス［バリア］</value></data>
   <data name="WHM_AoEHeals_DivineCaress_Desc" xml:space="preserve"><value>テンペランスのディバイン・グレースが有効な場合、ディヴァインカレスを使用します。</value></data>
   <data name="WHM_AoEHeals_LiturgyOfTheBell_Name" xml:space="preserve"><value>リタージー・オブ・ベル オプション</value></data>
   <data name="WHM_AoEHeals_LiturgyOfTheBell_Desc" xml:space="preserve"><value>リタージー・オブ・ベル (リリーベル) の配置をローテーションに追加します。</value></data>
@@ -3533,7 +3531,7 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="WHM_Raise_Retarget_Name" xml:space="preserve"><value>レイズリターゲティング</value></data>
   <data name="WHM_Raise_Retarget_Desc" xml:space="preserve"><value>ここで影響を受けるレイズをレイズ スタックにリターゲットします。</value></data>
   <data name="WHM_ThinAirRaise_Name" xml:space="preserve"><value>シンエアー レイズ機能</value></data>
-  <data name="WHM_ThinAirRaise_Desc" xml:space="preserve"><value>グローバル レイズ機能／オルタナティブ レイズ機能にシン エアを追加します。</value></data>
+  <data name="WHM_ThinAirRaise_Desc" xml:space="preserve"><value>グローバル蘇生機能／代替蘇生機能にシンエアーを追加します。</value></data>
   <data name="WHM_RaptureMisery_Name" xml:space="preserve"><value>ハート・オブ・ラプチャー→アファラトゥス・ミゼリ機能</value></data>
   <data name="WHM_RaptureMisery_Desc" xml:space="preserve"><value>使用する準備ができたら、ハート・オブ・ラプチャー を ハート・オブ・ミゼリ に置き換えます。</value></data>
   <data name="WHM_SolaceMisery_Name" xml:space="preserve"><value>ハート・オブ・ソラス→アファラトゥス・ミゼリ機能</value></data>
@@ -3546,8 +3544,8 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="WHM_Mit_ST_Desc" xml:space="preserve"><value>使用後、アクアヴェールをテトラグラマトンまたはディバインベニソンに変化させる。
 各アクションは、以下のリターゲット機能を使用してリターゲットできます。</value></data>
   <data name="WHM_Mit_AoE_Name" xml:space="preserve"><value>軽減機能 - AoE</value></data>
-  <data name="WHM_Mit_AoE_Desc" xml:space="preserve"><value>使用後にアサイラムをテンペランスに変更し、その後ディヴァインカレスに変更します。
-以下のリターゲティング機能を使用してリターゲティングできます。</value></data>
+  <data name="WHM_Mit_AoE_Desc" xml:space="preserve"><value>アサイラムをテンパランスに、使用後はディヴァインカレスに置き換えます。
+以下のリターゲット機能で対象変更できます。</value></data>
   <data name="WHM_Retargets_Name" xml:space="preserve"><value>リターゲティング機能</value></data>
   <data name="WHM_Retargets_Desc" xml:space="preserve"><value>手動で使用される単体のヒールを再ターゲットするためのオプションのコレクション。</value></data>
   <data name="WHM_Re_Cure_Name" xml:space="preserve"><value>ケアルオプション</value></data>
@@ -3592,25 +3590,25 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="DOL_NodeSearchingBuffs_Name" xml:space="preserve"><value>【園芸師／採掘師】位置特定と真実機能</value></data>
   <data name="DOL_NodeSearchingBuffs_Desc" xml:space="preserve"><value>未発動時、ランドサーベイ／アーバーコールをプロスペクト／トライアングレートとトゥルー・オブ・ミネラル／トゥルー・オブ・フォレストに置き換えます。</value></data>
   <data name="FSH_CastHook_Name" xml:space="preserve"><value>【漁師】キャスティング→フッキング機能</value></data>
-  <data name="FSH_CastHook_Desc" xml:space="preserve"><value>釣りの際にキャストをフックに置き換えます。</value></data>
+  <data name="FSH_CastHook_Desc" xml:space="preserve"><value>釣り中、キャストをフッキングに置き換えます。</value></data>
   <data name="FSH_Swim_Name" xml:space="preserve"><value>【漁師】ダイビング機能</value></data>
   <data name="FSH_Swim_Desc" xml:space="preserve"><value>水中での釣り能力を潜水能力に置き換えます。</value></data>
   <data name="FSH_CastGig_Name" xml:space="preserve"><value>【漁師】キャスティング→ギグオプション</value></data>
-  <data name="FSH_CastGig_Desc" xml:space="preserve"><value>ダイビング時にキャストをギグに置き換えます。</value></data>
+  <data name="FSH_CastGig_Desc" xml:space="preserve"><value>潜水中、キャストをギギングに置き換えます。</value></data>
   <data name="FSH_SurfaceTrade_Name" xml:space="preserve"><value>トレードリリース→ベテラントレードオプション</value></data>
   <data name="FSH_SurfaceTrade_Desc" xml:space="preserve"><value>ダイビング時の表面スラップをベテラントレードに置き換えます。</value></data>
   <data name="FSH_PrizeBounty_Name" xml:space="preserve"><value>大物狙いからネイチャーバウンティオプション</value></data>
-  <data name="FSH_PrizeBounty_Desc" xml:space="preserve"><value>ダイビング時に賞品の獲物を自然の恵みに置き換えます。</value></data>
+  <data name="FSH_PrizeBounty_Desc" xml:space="preserve"><value>潜水中、収集品狙いをネイチャーバウンティに置き換えます。</value></data>
   <data name="FSH_SnaggingSalvage_Name" xml:space="preserve"><value>引掛釣り→サルベージオプション</value></data>
   <data name="FSH_SnaggingSalvage_Desc" xml:space="preserve"><value>ダイビング時の引っ掛かりをサルベージに置き換えます。</value></data>
   <data name="FSH_CastLight_ElectricCurrent_Name" xml:space="preserve"><value>キャストライト→エレクトリックカレントオプション</value></data>
-  <data name="FSH_CastLight_ElectricCurrent_Desc" xml:space="preserve"><value>ダイビング時にキャストライトを電流に置き換えます。</value></data>
+  <data name="FSH_CastLight_ElectricCurrent_Desc" xml:space="preserve"><value>潜水中、サーチライトをエレクトリックカレントに置き換えます。</value></data>
   <data name="FSH_Mooch_SharkEye_Name" xml:space="preserve"><value>泳がせ釣り→シャークアイオプション</value></data>
   <data name="FSH_Mooch_SharkEye_Desc" xml:space="preserve"><value>ダイビング時にムーチをシャークアイに置き換えます。</value></data>
   <data name="FSH_FishEyes_VitalSight_Name" xml:space="preserve"><value>フィッシュアイ→選魚眼オプション</value></data>
-  <data name="FSH_FishEyes_VitalSight_Desc" xml:space="preserve"><value>ダイビング時にフィッシュアイをバイタルサイトに置き換えます。</value></data>
+  <data name="FSH_FishEyes_VitalSight_Desc" xml:space="preserve"><value>潜水中、フィッシュアイを選魚眼に置き換えます。</value></data>
   <data name="FSH_Chum_BaitedBreath_Name" xml:space="preserve"><value>撒き餌→ホールドブレスオプション</value></data>
-  <data name="FSH_Chum_BaitedBreath_Desc" xml:space="preserve"><value>ダイビング時にチャムをベイテッドブレスに置き換えます。</value></data>
+  <data name="FSH_Chum_BaitedBreath_Desc" xml:space="preserve"><value>潜水中、撒き餌をホールドブレスに置き換えます。</value></data>
   <data name="PvP_EmergencyHeals_Name" xml:space="preserve"><value>緊急回復機能</value></data>
   <data name="PvP_EmergencyHeals_Desc" xml:space="preserve"><value>HPが設定されたしきい値を下回っており、MPが十分にある場合に回復を使用します。</value></data>
   <data name="PvP_EmergencyGuard_Name" xml:space="preserve"><value>緊急ガード機能</value></data>
@@ -3620,7 +3618,7 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="PvP_MashCancel_Name" xml:space="preserve"><value>防止 ぶちのめす キャンセル機能</value></data>
   <data name="PvP_MashCancel_Desc" xml:space="preserve"><value>ボタンをサベッジブレードに置き換えることで、ボタンを素早く押している場合にガードがキャンセルされなくなります。</value></data>
   <data name="PvP_MashCancelRecup_Name" xml:space="preserve"><value>快気オプション</value></data>
-  <data name="PvP_MashCancelRecup_Desc" xml:space="preserve"><value>健康が無駄にならないほど低い場合、ガードボタンの回復でガードをキャンセルできます。</value></data>
+  <data name="PvP_MashCancelRecup_Desc" xml:space="preserve"><value>HPが十分に減っていて無駄にならない場合、ガードボタン上で快気を使ってガードを解除できるようにします。</value></data>
   <data name="ASTPvP_Burst_Name" xml:space="preserve"><value>バーストモード</value></data>
   <data name="ASTPvP_Burst_Desc" xml:space="preserve"><value>フォールマレフィク をオールインワンのダメージ ボタンに変えます。</value></data>
   <data name="ASTPvP_Burst_DrawCard_Name" xml:space="preserve"><value>カードドローオプション</value></data>
@@ -3658,10 +3656,10 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="BLMPvP_Lethargy_Desc" xml:space="preserve"><value>利用可能な場合は無気力を使用します。
 - プレイヤー以外に対しては使用できません。
 - ターゲットのHPが以下である必要があります:</value></data>
-  <data name="BLMPvP_ElementalWeave_Name" xml:space="preserve"><value>エレメンタルウィーブオプション</value></data>
+  <data name="BLMPvP_ElementalWeave_Name" xml:space="preserve"><value>エレメントギフトオプション</value></data>
   <data name="BLMPvP_ElementalWeave_Desc" xml:space="preserve"><value>利用可能な場合は火の花輪を使用します。
 - プレイヤーの HP が以下の値以上である必要があります。</value></data>
-  <data name="BLMPvP_ElementalStar_Name" xml:space="preserve"><value>エレメンタルスターオプション</value></data>
+  <data name="BLMPvP_ElementalStar_Name" xml:space="preserve"><value>エレメントスターオプション</value></data>
   <data name="BLMPvP_ElementalStar_Desc" xml:space="preserve"><value>利用可能な場合はエレメンタルスターを使用します。
 - 有効期限が切れない限り、フレアスターを優先します。</value></data>
   <data name="BLMPvP_PhantomDart_Name" xml:space="preserve"><value>ファントムダートオプション</value></data>
@@ -3672,14 +3670,14 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="BRDPvP_BurstMode_Name" xml:space="preserve"><value>バーストモード</value></data>
   <data name="BRDPvP_BurstMode_Desc" xml:space="preserve"><value>パワフルショットをオールインワンのダメージボタンに変えます。</value></data>
   <data name="BRDPvP_SilentNocturne_Name" xml:space="preserve"><value>黙者のノクターンオプション</value></data>
-  <data name="BRDPvP_SilentNocturne_Desc" xml:space="preserve"><value>黙者のノクターン をバーストモードに追加します。</value></data>
+  <data name="BRDPvP_SilentNocturne_Desc" xml:space="preserve"><value>バーストモードに黙者のノクターンを追加します。</value></data>
   <data name="BRDPvP_ApexArrow_Name" xml:space="preserve"><value>エイペックスアローオプション</value></data>
-  <data name="BRDPvP_ApexArrow_Desc" xml:space="preserve"><value>エイペックスアローをバーストモードに追加します。</value></data>
+  <data name="BRDPvP_ApexArrow_Desc" xml:space="preserve"><value>バーストモードにエイペックスアローを追加します。</value></data>
   <data name="BRDPvP_BlastArrow_Name" xml:space="preserve"><value>ブラストアローオプション</value></data>
-  <data name="BRDPvP_BlastArrow_Desc" xml:space="preserve"><value>バーストモードにブラストアローを追加。</value></data>
+  <data name="BRDPvP_BlastArrow_Desc" xml:space="preserve"><value>バーストモードにブラストアローを追加します。</value></data>
   <data name="BRDPvP_HarmonicArrow_Name" xml:space="preserve"><value>ハーモニックアローオプション</value></data>
   <data name="BRDPvP_HarmonicArrow_Desc" xml:space="preserve"><value>バーストモードにハーモニックアローを追加します。設定されたチャージ数で、かつターゲットが実行のチャージごとのヘルスしきい値を下回っている場合に、それを使用します。</value></data>
-  <data name="BRDPvP_EncoreOfLight_Name" xml:space="preserve"><value>光のアンコール オプション</value></data>
+  <data name="BRDPvP_EncoreOfLight_Name" xml:space="preserve"><value>英雄のアンコールオプション</value></data>
   <data name="BRDPvP_EncoreOfLight_Desc" xml:space="preserve"><value>バーストモードに光のアンコールを追加。</value></data>
   <data name="BRDPvP_Wardens_Name" xml:space="preserve"><value>時神のピーアンオプション</value></data>
   <data name="BRDPvP_Wardens_Desc" xml:space="preserve"><value>弱体系状態異常の自動自己解除です。
@@ -3705,7 +3703,7 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="DRKPvP_Burst_Name" xml:space="preserve"><value>バーストモード</value></data>
   <data name="DRKPvP_Burst_Desc" xml:space="preserve"><value>ソウルイーター コンボ をオールインワンのダメージ ボタンに変えます。</value></data>
   <data name="DRKPvP_Plunge_Name" xml:space="preserve"><value>プランジカットオプション</value></data>
-  <data name="DRKPvP_Plunge_Desc" xml:space="preserve"><value>バーストモードにプランジを追加します。</value></data>
+  <data name="DRKPvP_Plunge_Desc" xml:space="preserve"><value>バーストモードにプランジカットを追加します。</value></data>
   <data name="DRKPvP_PlungeMelee_Name" xml:space="preserve"><value>近接 プランジカットオプション</value></data>
   <data name="DRKPvP_PlungeMelee_Desc" xml:space="preserve"><value>ギャップを埋めるためだけでなく、近接範囲内でプランジを使用します。</value></data>
   <data name="DRKPvP_SaltedEarth_Name" xml:space="preserve"><value>ソルトアースオプション</value></data>
@@ -3714,7 +3712,7 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="DRKPvP_SaltAndDarkness_Desc" xml:space="preserve"><value>バーストモードにソルト・アンド・ダークを追加します。</value></data>
   <data name="DRKPvP_Impalement_Name" xml:space="preserve"><value>インペイルメントオプション</value></data>
   <data name="DRKPvP_Impalement_Desc" xml:space="preserve"><value>バーストモードにインペイルメントを追加します。</value></data>
-  <data name="DRKPvP_Shadowbringer_Name" xml:space="preserve"><value>シャドウブリンガー オプション</value></data>
+  <data name="DRKPvP_Shadowbringer_Name" xml:space="preserve"><value>シャドウブリンガーオプション</value></data>
   <data name="DRKPvP_Shadowbringer_Desc" xml:space="preserve"><value>シャドウブリンガーをバーストモードに追加します。</value></data>
   <data name="DRKPvP_BlackestNight_Name" xml:space="preserve"><value>ブラックナイトオプション</value></data>
   <data name="DRKPvP_BlackestNight_Desc" xml:space="preserve"><value>バーストモードにブラックナイトを追加します。</value></data>
@@ -3724,20 +3722,20 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="DRKPvP_Rampart_Desc" xml:space="preserve"><value>選択されたヘルスの下に防御ロールアクションランパートをバーストモードに追加します</value></data>
   <data name="DRGPvP_Burst_Name" xml:space="preserve"><value>バーストモード</value></data>
   <data name="DRGPvP_Burst_Desc" xml:space="preserve"><value>ドレイクスベイン コンボをオールインワンのダメージ ボタンに変えます。</value></data>
-  <data name="DRGPvP_Geirskogul_Name" xml:space="preserve"><value>ゲイルスコグル オプション</value></data>
-  <data name="DRGPvP_Geirskogul_Desc" xml:space="preserve"><value>ゲイルスコグルをバーストモードに追加します。</value></data>
+  <data name="DRGPvP_Geirskogul_Name" xml:space="preserve"><value>ゲイルスコグルオプション</value></data>
+  <data name="DRGPvP_Geirskogul_Desc" xml:space="preserve"><value>バーストモードにゲイルスコグルを追加します。</value></data>
   <data name="DRGPvP_Nastrond_Name" xml:space="preserve"><value>ナーストレンドオプション</value></data>
-  <data name="DRGPvP_Nastrond_Desc" xml:space="preserve"><value>ナーストレンドをバーストモードに追加します。</value></data>
+  <data name="DRGPvP_Nastrond_Desc" xml:space="preserve"><value>バーストモードにナーストレンドを追加します。</value></data>
   <data name="DRGPvP_HorridRoar_Name" xml:space="preserve"><value>ホリッドロアオプション</value></data>
-  <data name="DRGPvP_HorridRoar_Desc" xml:space="preserve"><value>バーストモードに恐ろしい咆哮を追加します。</value></data>
+  <data name="DRGPvP_HorridRoar_Desc" xml:space="preserve"><value>バーストモードにホリッドロアを追加します。</value></data>
   <data name="DRGPvP_ChaoticSpringSustain_Name" xml:space="preserve"><value>サステイン 混沌スプリングオプション</value></data>
   <data name="DRGPvP_ChaoticSpringSustain_Desc" xml:space="preserve"><value>設定されたHPパーセンテージを下回るとカオススプリングをバーストモードに追加します。</value></data>
   <data name="DRGPvP_ChaoticSpringExecute_Name" xml:space="preserve"><value>エグゼキュート 混沌スプリングオプション</value></data>
   <data name="DRGPvP_ChaoticSpringExecute_Desc" xml:space="preserve"><value>ガードを貫通できるため、対象のHPが8,000未満の場合は桜華繚乱をバーストモードに追加します。</value></data>
   <data name="DRGPvP_WyrmwindThrust_Name" xml:space="preserve"><value>天竜点睛オプション</value></data>
-  <data name="DRGPvP_WyrmwindThrust_Desc" xml:space="preserve"><value>バーストモードに竜風の推力を追加。</value></data>
+  <data name="DRGPvP_WyrmwindThrust_Desc" xml:space="preserve"><value>バーストモードに天竜点睛を追加します。</value></data>
   <data name="DRGPvP_HighJump_Name" xml:space="preserve"><value>ハイジャンプウィーブオプション</value></data>
-  <data name="DRGPvP_HighJump_Desc" xml:space="preserve"><value>バーストモードにハイジャンプを追加。</value></data>
+  <data name="DRGPvP_HighJump_Desc" xml:space="preserve"><value>バーストモードにハイジャンプを追加します。</value></data>
   <data name="DRGPvP_BurstProtection_Name" xml:space="preserve"><value>イルーシブジャンプバーストオプション</value></data>
   <data name="DRGPvP_BurstProtection_Desc" xml:space="preserve"><value>イルーシブジャンプ を使用すると、すべてのクールダウンの準備が完了すると、雲蒸竜変 コンボがオールインワンのバースト ダメージ ボタンに変わります。 
  バーストの準備ができていない場合は、イルーシブジャンプ を無効にします。</value></data>
@@ -3752,9 +3750,9 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="GNBPvP_ST_Continuation_Name" xml:space="preserve"><value>コンティニュエーションオプション</value></data>
   <data name="GNBPvP_ST_Continuation_Desc" xml:space="preserve"><value>バーストモードにコンティニュエーションを追加します。</value></data>
   <data name="GNBPvP_RoughDivide_Name" xml:space="preserve"><value>ラフディバイドオプション</value></data>
-  <data name="GNBPvP_RoughDivide_Desc" xml:space="preserve"><value>必要に応じて、ローテーションに大まかな分割を追加します。</value></data>
+  <data name="GNBPvP_RoughDivide_Desc" xml:space="preserve"><value>状況に応じて、ローテーションにラフディバイドを追加します。</value></data>
   <data name="GNBPvP_BlastingZone_Name" xml:space="preserve"><value>ブラスティングゾーンオプション</value></data>
-  <data name="GNBPvP_BlastingZone_Desc" xml:space="preserve"><value>しきい値以下の場合、バーストモードにブラストゾーンを追加します。</value></data>
+  <data name="GNBPvP_BlastingZone_Desc" xml:space="preserve"><value>しきい値以下のとき、バーストモードにブラスティングゾーンを追加します。</value></data>
   <data name="GNBPvP_Corundum_Name" xml:space="preserve"><value>ハート・オブ・コランダムオプション</value></data>
   <data name="GNBPvP_Corundum_Desc" xml:space="preserve"><value>設定されたヘルス%でハート・オブ・コランダムをバーストモードに追加します。</value></data>
   <data name="GNBPvP_Rampart_Name" xml:space="preserve"><value>ロールアクション ランパートオプション</value></data>
@@ -3766,7 +3764,7 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="MCHPvP_BurstMode_AirAnchor_Name" xml:space="preserve"><value>エアアンカーオプション</value></data>
   <data name="MCHPvP_BurstMode_AirAnchor_Desc" xml:space="preserve"><value>バーストモードにエアアンカーを追加します。</value></data>
   <data name="MCHPvP_BurstMode_Analysis_Name" xml:space="preserve"><value>アナライズオプション</value></data>
-  <data name="MCHPvP_BurstMode_Analysis_Desc" xml:space="preserve"><value>バーストモードに分析を追加します。</value></data>
+  <data name="MCHPvP_BurstMode_Analysis_Desc" xml:space="preserve"><value>バーストモードにアナライズを追加します。</value></data>
   <data name="MCHPvP_BurstMode_AltAnalysis_Name" xml:space="preserve"><value>代替 アナライズオプション</value></data>
   <data name="MCHPvP_BurstMode_AltAnalysis_Desc" xml:space="preserve"><value>チェーンソーの代わりにエアアンカーを使用した分析を使用します。</value></data>
   <data name="MCHPvP_BurstMode_Drill_Name" xml:space="preserve"><value>ドリルオプション</value></data>
@@ -3775,12 +3773,12 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="MCHPvP_BurstMode_AltDrill_Desc" xml:space="preserve"><value>ワイルドファイア 後に使用するためにドリルを保存します。</value></data>
   <data name="MCHPvP_BurstMode_BioBlaster_Name" xml:space="preserve"><value>バイオブラストオプション</value></data>
   <data name="MCHPvP_BurstMode_BioBlaster_Desc" xml:space="preserve"><value>バイオブラスターをバーストモードに追加します。</value></data>
-  <data name="MCHPvP_BurstMode_ChainSaw_Name" xml:space="preserve"><value>チェーンソーオプション</value></data>
-  <data name="MCHPvP_BurstMode_ChainSaw_Desc" xml:space="preserve"><value>チェーンソーをバーストモードに追加します。</value></data>
+  <data name="MCHPvP_BurstMode_ChainSaw_Name" xml:space="preserve"><value>回転のこぎりオプション</value></data>
+  <data name="MCHPvP_BurstMode_ChainSaw_Desc" xml:space="preserve"><value>バーストモードに回転のこぎりを追加します。</value></data>
   <data name="MCHPvP_BurstMode_FullMetalField_Name" xml:space="preserve"><value>フルメタルバーストオプション</value></data>
-  <data name="MCHPvP_BurstMode_FullMetalField_Desc" xml:space="preserve"><value>バーストモードにフルメタルバーストを追加。</value></data>
+  <data name="MCHPvP_BurstMode_FullMetalField_Desc" xml:space="preserve"><value>バーストモードにフルメタルバーストを追加します。</value></data>
   <data name="MCHPvP_BurstMode_Wildfire_Name" xml:space="preserve"><value>ワイルドファイアオプション</value></data>
-  <data name="MCHPvP_BurstMode_Wildfire_Desc" xml:space="preserve"><value>ワイルドファイアをバーストモードに追加します。</value></data>
+  <data name="MCHPvP_BurstMode_Wildfire_Desc" xml:space="preserve"><value>バーストモードにワイルドファイアを追加します。</value></data>
   <data name="MCHPvP_BurstMode_MarksmanSpite_Name" xml:space="preserve"><value>魔弾の射手オプション</value></data>
   <data name="MCHPvP_BurstMode_MarksmanSpite_Desc" xml:space="preserve"><value>ターゲットが指定されたHPを下回っている場合、マークスマンスパイトをバーストモードに追加します。</value></data>
   <data name="MCHPvP_Eagle_Name" xml:space="preserve"><value>ロール アクション イーグル アイ ショット オプション</value></data>
@@ -3789,15 +3787,15 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="MNKPvP_Burst_Name" xml:space="preserve"><value>バーストモード</value></data>
   <data name="MNKPvP_Burst_Desc" xml:space="preserve"><value>ファントム ラッシュ コンボをオールインワンのダメージ ボタンに変えます。</value></data>
   <data name="MNKPvP_Burst_Meteodrive_Name" xml:space="preserve"><value>メテオドライヴオプション</value></data>
-  <data name="MNKPvP_Burst_Meteodrive_Desc" xml:space="preserve"><value>対象がガード中かつHP20,000未満の場合、メテオドライヴのリミットブレイクをバーストモードに追加します。</value></data>
+  <data name="MNKPvP_Burst_Meteodrive_Desc" xml:space="preserve"><value>対象がガード中かつHPが20,000未満の場合、メテオドライヴのリミットブレイクをバーストモードに追加します。</value></data>
   <data name="MNKPvP_Burst_Thunderclap_Name" xml:space="preserve"><value>抜重歩法オプション</value></data>
-  <data name="MNKPvP_Burst_Thunderclap_Desc" xml:space="preserve"><value>風の共鳴によるバフを受けていない場合、バーストモードにサンダークラップを追加します。</value></data>
+  <data name="MNKPvP_Burst_Thunderclap_Desc" xml:space="preserve"><value>風の共鳴で強化されていないとき、バーストモードに抜重歩法を追加します。</value></data>
   <data name="MNKPvP_Burst_RiddleOfEarth_Name" xml:space="preserve"><value>金剛の極意オプション</value></data>
   <data name="MNKPvP_Burst_RiddleOfEarth_Desc" xml:space="preserve"><value>戦闘中のバーストモードに「金剛の極意」と「金剛転輪」を追加します。</value></data>
   <data name="MNKPvP_Burst_FiresReply_Name" xml:space="preserve"><value>乾坤闘気弾オプション</value></data>
   <data name="MNKPvP_Burst_FiresReply_Desc" xml:space="preserve"><value>バーストモードに乾坤闘気弾を追加します。</value></data>
   <data name="MNKPvP_Burst_RisingPhoenix_Name" xml:space="preserve"><value>鳳凰の舞オプション</value></data>
-  <data name="MNKPvP_Burst_RisingPhoenix_Desc" xml:space="preserve"><value>バーストモードにライジングフェニックスを追加。</value></data>
+  <data name="MNKPvP_Burst_RisingPhoenix_Desc" xml:space="preserve"><value>バーストモードに鳳凰の舞を追加します。</value></data>
   <data name="MNKPvP_Burst_WindsReply_Name" xml:space="preserve"><value>絶空拳オプション</value></data>
   <data name="MNKPvP_Burst_WindsReply_Desc" xml:space="preserve"><value>バーストモードに絶空拳を追加します。</value></data>
   <data name="MNKPvP_Smite_Name" xml:space="preserve"><value>ロール アクション スマイト オプション</value></data>
@@ -3812,15 +3810,15 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="NINPvP_ST_MudraMode_Desc" xml:space="preserve"><value>3つのムドラからムドラを使用し、自動的に単体バーストモードになります。
 文心スタックがある場合は、氷翔乱龍 ＞ フォーク雷獣 ＞ 風遁の術を使用します。</value></data>
   <data name="NINPvP_ST_FumaShuriken_Name" xml:space="preserve"><value>風魔手裏剣オプション</value></data>
-  <data name="NINPvP_ST_FumaShuriken_Desc" xml:space="preserve"><value>バーストモードに風魔手裏剣を追加。</value></data>
+  <data name="NINPvP_ST_FumaShuriken_Desc" xml:space="preserve"><value>バーストモードに風魔手裏剣を追加します。</value></data>
   <data name="NINPvP_ST_ThreeMudra_Name" xml:space="preserve"><value>三印自在オプション</value></data>
-  <data name="NINPvP_ST_ThreeMudra_Desc" xml:space="preserve"><value>バーストモードにスリームドラを追加します。</value></data>
+  <data name="NINPvP_ST_ThreeMudra_Desc" xml:space="preserve"><value>バーストモードに三印自在を追加します。</value></data>
   <data name="NINPvP_ST_ThreeMudraPool_Name" xml:space="preserve"><value>三印自在 温存オプション</value></data>
   <data name="NINPvP_ST_ThreeMudraPool_Desc" xml:space="preserve"><value>ブンシンがバーストするときの両方のチャージを節約します</value></data>
   <data name="NINPvP_ST_Dokumori_Name" xml:space="preserve"><value>毒盛の術オプション</value></data>
-  <data name="NINPvP_ST_Dokumori_Desc" xml:space="preserve"><value>バーストモードに「毒盛の術」を追加。</value></data>
+  <data name="NINPvP_ST_Dokumori_Desc" xml:space="preserve"><value>バーストモードに毒盛の術を追加します。</value></data>
   <data name="NINPvP_ST_Bunshin_Name" xml:space="preserve"><value>分身の術オプション</value></data>
-  <data name="NINPvP_ST_Bunshin_Desc" xml:space="preserve"><value>バーストモードにブンシンを追加。</value></data>
+  <data name="NINPvP_ST_Bunshin_Desc" xml:space="preserve"><value>バーストモードに分身の術を追加します。</value></data>
   <data name="NINPvP_ST_SeitonTenchu_Name" xml:space="preserve"><value>星遁天誅オプション</value></data>
   <data name="NINPvP_ST_SeitonTenchu_Desc" xml:space="preserve"><value>ターゲットがHPしきい値%を下回った場合、聖遁天誅をバーストモードに追加します。</value></data>
   <data name="NINPvP_AoE_Meisui_Name" xml:space="preserve"><value>命水オプション</value></data>
@@ -3829,15 +3827,15 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="NINPvP_AoE_MudraMode_Desc" xml:space="preserve"><value>AoE バースト モードで自動的に 3 つのムドラからムドラを使用します。 
  道遁&gt;五箇目脚を使用します</value></data>
   <data name="NINPvP_AoE_FumaShuriken_Name" xml:space="preserve"><value>風魔手裏剣オプション</value></data>
-  <data name="NINPvP_AoE_FumaShuriken_Desc" xml:space="preserve"><value>バーストモードに風魔手裏剣を追加。</value></data>
+  <data name="NINPvP_AoE_FumaShuriken_Desc" xml:space="preserve"><value>バーストモードに風魔手裏剣を追加します。</value></data>
   <data name="NINPvP_AoE_ThreeMudra_Name" xml:space="preserve"><value>三印自在オプション</value></data>
-  <data name="NINPvP_AoE_ThreeMudra_Desc" xml:space="preserve"><value>バーストモードにスリームドラを追加します。</value></data>
+  <data name="NINPvP_AoE_ThreeMudra_Desc" xml:space="preserve"><value>バーストモードに三印自在を追加します。</value></data>
   <data name="NINPvP_AoE_ThreeMudraPool_Name" xml:space="preserve"><value>三印自在 温存オプション</value></data>
   <data name="NINPvP_AoE_ThreeMudraPool_Desc" xml:space="preserve"><value>ブンシンがバーストするときの両方のチャージを節約します</value></data>
   <data name="NINPvP_AoE_Dokumori_Name" xml:space="preserve"><value>毒盛の術オプション</value></data>
-  <data name="NINPvP_AoE_Dokumori_Desc" xml:space="preserve"><value>バーストモードに「毒盛の術」を追加。</value></data>
+  <data name="NINPvP_AoE_Dokumori_Desc" xml:space="preserve"><value>バーストモードに毒盛の術を追加します。</value></data>
   <data name="NINPvP_AoE_Bunshin_Name" xml:space="preserve"><value>分身の術オプション</value></data>
-  <data name="NINPvP_AoE_Bunshin_Desc" xml:space="preserve"><value>バーストモードにブンシンを追加。</value></data>
+  <data name="NINPvP_AoE_Bunshin_Desc" xml:space="preserve"><value>バーストモードに分身の術を追加します。</value></data>
   <data name="NINPvP_AoE_SeitonTenchu_Name" xml:space="preserve"><value>星遁天誅オプション</value></data>
   <data name="NINPvP_AoE_SeitonTenchu_Desc" xml:space="preserve"><value>ターゲットがHPしきい値%を下回った場合、聖遁天誅をバーストモードに追加します。</value></data>
   <data name="NINPvP_Smite_Name" xml:space="preserve"><value>ロール アクション スマイト オプション</value></data>
@@ -3847,11 +3845,11 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="PLDPvP_ShieldSmite_Name" xml:space="preserve"><value>シールドスマイトオプション</value></data>
   <data name="PLDPvP_ShieldSmite_Desc" xml:space="preserve"><value>バーストモードにシールドスマイトを追加します。</value></data>
   <data name="PLDPvP_Imperator_Name" xml:space="preserve"><value>インペラトルオプション</value></data>
-  <data name="PLDPvP_Imperator_Desc" xml:space="preserve"><value>インペラトル をバーストモードに追加します。</value></data>
+  <data name="PLDPvP_Imperator_Desc" xml:space="preserve"><value>バーストモードにインペラトルを追加します。</value></data>
   <data name="PLDPvP_Confiteor_Name" xml:space="preserve"><value>コンフィテオルオプション</value></data>
-  <data name="PLDPvP_Confiteor_Desc" xml:space="preserve"><value>コンフィテオルをバーストモードに追加します。</value></data>
+  <data name="PLDPvP_Confiteor_Desc" xml:space="preserve"><value>バーストモードにコンフィテオルを追加します。</value></data>
   <data name="PLDPvP_HolySpirit_Name" xml:space="preserve"><value>ホーリースピリットオプション</value></data>
-  <data name="PLDPvP_HolySpirit_Desc" xml:space="preserve"><value>バーストモードにホーリースピリットを追加。</value></data>
+  <data name="PLDPvP_HolySpirit_Desc" xml:space="preserve"><value>バーストモードにホーリースピリットを追加します。</value></data>
   <data name="PLDPvP_Intervene_Name" xml:space="preserve"><value>インターヴィーンオプション</value></data>
   <data name="PLDPvP_Intervene_Desc" xml:space="preserve"><value>バーストモードにインターヴィーンを追加します。</value></data>
   <data name="PLDPvP_Intervene_Melee_Name" xml:space="preserve"><value>近接 インターヴィーンオプション</value></data>
@@ -3947,15 +3945,15 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="SGEPvP_BurstMode_Pneuma_Name" xml:space="preserve"><value>プネウマオプション</value></data>
   <data name="SGEPvP_BurstMode_Pneuma_Desc" xml:space="preserve"><value>バーストモードにプネウマを追加します。</value></data>
   <data name="SGEPvP_BurstMode_Eukrasia_Name" xml:space="preserve"><value>エウクラシアオプション</value></data>
-  <data name="SGEPvP_BurstMode_Eukrasia_Desc" xml:space="preserve"><value>エウクラシアをバーストモードに追加。</value></data>
+  <data name="SGEPvP_BurstMode_Eukrasia_Desc" xml:space="preserve"><value>バーストモードにエウクラシアを追加します。</value></data>
   <data name="SGEPvP_BurstMode_Phlegma_Name" xml:space="preserve"><value>フレグマオプション</value></data>
-  <data name="SGEPvP_BurstMode_Phlegma_Desc" xml:space="preserve"><value>痰をバーストモードに追加します。</value></data>
+  <data name="SGEPvP_BurstMode_Phlegma_Desc" xml:space="preserve"><value>バーストモードにフレグマを追加します。</value></data>
   <data name="SGEPvP_BurstMode_Psyche_Name" xml:space="preserve"><value>プシュケーオプション</value></data>
-  <data name="SGEPvP_BurstMode_Psyche_Desc" xml:space="preserve"><value>バーストモードにプシュケを追加。</value></data>
+  <data name="SGEPvP_BurstMode_Psyche_Desc" xml:space="preserve"><value>バーストモードにプシュケーを追加します。</value></data>
   <data name="SGEPvP_BurstMode_Toxikon_Name" xml:space="preserve"><value>トキシコンオプション</value></data>
-  <data name="SGEPvP_BurstMode_Toxikon_Desc" xml:space="preserve"><value>トキシコンをバーストモードに追加します。</value></data>
+  <data name="SGEPvP_BurstMode_Toxikon_Desc" xml:space="preserve"><value>バーストモードにトキシコンを追加します。</value></data>
   <data name="SGEPvP_BurstMode_Toxikon2_Name" xml:space="preserve"><value>トキシコンIIオプション</value></data>
-  <data name="SGEPvP_BurstMode_Toxikon2_Desc" xml:space="preserve"><value>トキシコンII をバーストモードに追加します。</value></data>
+  <data name="SGEPvP_BurstMode_Toxikon2_Desc" xml:space="preserve"><value>バーストモードにトキシコンIIを追加します。</value></data>
   <data name="SGEPvP_BurstMode_KardiaReminder_Name" xml:space="preserve"><value>カルディアリマインダーオプション</value></data>
   <data name="SGEPvP_BurstMode_KardiaReminder_Desc" xml:space="preserve"><value>バフが不足している場合にカルディアリマインダーをバーストモードに追加します</value></data>
   <data name="SGEPvP_Diabrosis_Name" xml:space="preserve"><value>役割 アクション ディアグノシスオプション</value></data>
@@ -3987,13 +3985,13 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="SCHPvP_Burst_Name" xml:space="preserve"><value>バーストモード</value></data>
   <data name="SCHPvP_Burst_Desc" xml:space="preserve"><value>極炎法 をオールインワンのダメージ ボタンに変えます。</value></data>
   <data name="SCHPvP_Expedient_Name" xml:space="preserve"><value>疾風怒濤の計オプション</value></data>
-  <data name="SCHPvP_Expedient_Desc" xml:space="preserve"><value>バーストモードにエクスペディエントを追加してバイオリシスを強化します。</value></data>
+  <data name="SCHPvP_Expedient_Desc" xml:space="preserve"><value>バーストモードに疾風怒濤の計を追加し、バイオリシスを強化します。</value></data>
   <data name="SCHPvP_Biolysis_Name" xml:space="preserve"><value>蠱毒法オプション</value></data>
   <data name="SCHPvP_Biolysis_Desc" xml:space="preserve"><value>バーストモードのクールダウン時にバイオリシスの使用を追加します。</value></data>
   <data name="SCHPvP_DeploymentTactics_Name" xml:space="preserve"><value>展開戦術オプション</value></data>
   <data name="SCHPvP_DeploymentTactics_Desc" xml:space="preserve"><value>利用可能な場合、展開戦術をバースト モードに追加します。</value></data>
   <data name="SCHPvP_ChainStratagem_Name" xml:space="preserve"><value>連環計オプション</value></data>
-  <data name="SCHPvP_ChainStratagem_Desc" xml:space="preserve"><value>利用可能な場合、バースト モードにチェーン ストラタジェムを追加します。</value></data>
+  <data name="SCHPvP_ChainStratagem_Desc" xml:space="preserve"><value>使用可能なとき、バーストモードに連環計を追加します。</value></data>
   <data name="SCHPvP_Diabrosis_Name" xml:space="preserve"><value>役割 アクション ディアグノシスオプション</value></data>
   <data name="SCHPvP_Diabrosis_Desc" xml:space="preserve"><value>選択したヘルスの下のバーストモードにロールアクションディアブロシスを追加します</value></data>
   <data name="SCHPvP_Adlo_Name" xml:space="preserve"><value>アドロオプション</value></data>
@@ -4006,15 +4004,15 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="SMNPvP_BurstMode_RadiantAegis_Name" xml:space="preserve"><value>守りの光オプション</value></data>
   <data name="SMNPvP_BurstMode_RadiantAegis_Desc" xml:space="preserve"><value>利用可能で、HP が設定パーセンテージ以下である場合、守りの光 をバースト モードに追加します。</value></data>
   <data name="SMNPvP_BurstMode_CrimsonCyclone_Name" xml:space="preserve"><value>クリムゾンサイクロンオプション</value></data>
-  <data name="SMNPvP_BurstMode_CrimsonCyclone_Desc" xml:space="preserve"><value>バーストモードにクリムゾンサイクロンを追加。</value></data>
+  <data name="SMNPvP_BurstMode_CrimsonCyclone_Desc" xml:space="preserve"><value>バーストモードにクリムゾンサイクロンを追加します。</value></data>
   <data name="SMNPvP_BurstMode_CrimsonStrike_Name" xml:space="preserve"><value>クリムゾンストライクオプション</value></data>
-  <data name="SMNPvP_BurstMode_CrimsonStrike_Desc" xml:space="preserve"><value>バーストモードにクリムゾンストライクを追加。</value></data>
+  <data name="SMNPvP_BurstMode_CrimsonStrike_Desc" xml:space="preserve"><value>バーストモードにクリムゾンストライクを追加します。</value></data>
   <data name="SMNPvP_BurstMode_MountainBuster_Name" xml:space="preserve"><value>マウンテンバスターオプション</value></data>
-  <data name="SMNPvP_BurstMode_MountainBuster_Desc" xml:space="preserve"><value>バーストモードにマウンテンバスターを追加。</value></data>
+  <data name="SMNPvP_BurstMode_MountainBuster_Desc" xml:space="preserve"><value>バーストモードにマウンテンバスターを追加します。</value></data>
   <data name="SMNPvP_BurstMode_Slipstream_Name" xml:space="preserve"><value>スリップストリームオプション</value></data>
   <data name="SMNPvP_BurstMode_Slipstream_Desc" xml:space="preserve"><value>バーストモードにスリップストリームを追加します。</value></data>
   <data name="SMNPvP_BurstMode_Necrotize_Name" xml:space="preserve"><value>ミアズマノヴァオプション</value></data>
-  <data name="SMNPvP_BurstMode_Necrotize_Desc" xml:space="preserve"><value>バーストモードにネクロタイズを追加。</value></data>
+  <data name="SMNPvP_BurstMode_Necrotize_Desc" xml:space="preserve"><value>バーストモードにミアズマノヴァを追加します。</value></data>
   <data name="SMNPvP_BurstMode_DeathFlare_Name" xml:space="preserve"><value>デスフレアオプション</value></data>
   <data name="SMNPvP_BurstMode_DeathFlare_Desc" xml:space="preserve"><value>デスフレアをバーストモードに追加します。</value></data>
   <data name="SMNPvP_BurstMode_BrandofPurgatory_Name" xml:space="preserve"><value>煉獄の炎オプション</value></data>
@@ -4023,23 +4021,23 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="SMNPvP_PhantomDart_Desc" xml:space="preserve"><value>設定されたヘルスしきい値以下で利用可能な場合、ファントムダート (選択されている場合) を使用します。</value></data>
   <data name="VPRPvP_Burst_Name" xml:space="preserve"><value>バーストモード</value></data>
   <data name="VPRPvP_Burst_Desc" xml:space="preserve"><value>デュアル ファング コンボをオールインワン ボタンに変えます。</value></data>
-  <data name="VPRPvP_Bloodcoil_Name" xml:space="preserve"><value>ブラッドコイルオプション</value></data>
+  <data name="VPRPvP_Bloodcoil_Name" xml:space="preserve"><value>壱の蛇【血宴】オプション</value></data>
   <data name="VPRPvP_Bloodcoil_Desc" xml:space="preserve"><value>使用可能な場合はブラッドコイルを使用します。
 - 対象または自身のHPが以下である必要があります:</value></data>
   <data name="VPRPvP_UncoiledFury_Name" xml:space="preserve"><value>飛蛇の尾オプション</value></data>
   <data name="VPRPvP_UncoiledFury_Desc" xml:space="preserve"><value>利用可能な場合はアンコイルド・フューリーを使用します。
 - ターゲットのHPが以下である必要があります:</value></data>
-  <data name="VPRPvP_Backlash_Name" xml:space="preserve"><value>後方尾刃オプション</value></data>
+  <data name="VPRPvP_Backlash_Name" xml:space="preserve"><value>蛇鱗撃オプション</value></data>
   <data name="VPRPvP_Backlash_Desc" xml:space="preserve"><value>利用可能な場合はバックラッシュを使用します。</value></data>
   <data name="VPRPvP_RattlingCoil_Name" xml:space="preserve"><value>飛蛇の魂オプション</value></data>
   <data name="VPRPvP_RattlingCoil_Desc" xml:space="preserve"><value>いずれかの条件を満たすとラトルコイルを使用します。</value></data>
-  <data name="VPRPvP_Slither_Name" xml:space="preserve"><value>蛇尾薙ぎオプション</value></data>
+  <data name="VPRPvP_Slither_Name" xml:space="preserve"><value>蛇行オプション</value></data>
   <data name="VPRPvP_Slither_Desc" xml:space="preserve"><value>近接攻撃以外ではスリザーを使用します。
 - 最大範囲内に留まらなければなりません。
 - すでにスリザーの影響下にある場合は使用できません。</value></data>
   <data name="VPRPvP_SnakeScales_Feature_Name" xml:space="preserve"><value>蛇鱗術 初期化機能</value></data>
-  <data name="VPRPvP_SnakeScales_Feature_Desc" xml:space="preserve"><value>利用可能な場合は、ガラガラコイルをスネークスケールに追加します。
-- ヘビの鱗がクールダウンしている必要があります。</value></data>
+  <data name="VPRPvP_SnakeScales_Feature_Desc" xml:space="preserve"><value>使用可能な場合、蛇鱗術に飛蛇の魂を追加します。
+- 蛇鱗術がリキャスト中である必要があります。</value></data>
   <data name="VPRPvP_Smite_Name" xml:space="preserve"><value>ロール アクション スマイト オプション</value></data>
   <data name="VPRPvP_Smite_Desc" xml:space="preserve"><value>選択したヘルスの下のバーストモードにロールアクションスマイトを追加します</value></data>
   <data name="WARPvP_BurstMode_Name" xml:space="preserve"><value>バーストモード</value></data>
@@ -4047,27 +4045,27 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="WARPvP_BurstMode_Bloodwhetting_Name" xml:space="preserve"><value>原初の血気オプション</value></data>
   <data name="WARPvP_BurstMode_Bloodwhetting_Desc" xml:space="preserve"><value>GCD間だけでなく、いつでも原初の血気を使用できるようにします。</value></data>
   <data name="WARPvP_BurstMode_Blota_Name" xml:space="preserve"><value>ブロートオプション</value></data>
-  <data name="WARPvP_BurstMode_Blota_Desc" xml:space="preserve"><value>近接範囲外にいるときにブロタをバーストモードに追加します。</value></data>
+  <data name="WARPvP_BurstMode_Blota_Desc" xml:space="preserve"><value>近接攻撃の射程外にいるとき、バーストモードにブロートを追加します。</value></data>
   <data name="WARPvP_BurstMode_PrimalRend_Name" xml:space="preserve"><value>プライマルレンドオプション</value></data>
-  <data name="WARPvP_BurstMode_PrimalRend_Desc" xml:space="preserve"><value>プライマルレンドをバーストモードに追加します。</value></data>
+  <data name="WARPvP_BurstMode_PrimalRend_Desc" xml:space="preserve"><value>バーストモードにプライマルレンドを追加します。</value></data>
   <data name="WARPvP_BurstMode_InnerChaos_Name" xml:space="preserve"><value>インナーカオスオプション</value></data>
   <data name="WARPvP_BurstMode_InnerChaos_Desc" xml:space="preserve"><value>バーストモードにインナーカオスを追加します。</value></data>
-  <data name="WARPvP_BurstMode_Orogeny_Name" xml:space="preserve"><value>地盤崩壊オプション</value></data>
-  <data name="WARPvP_BurstMode_Orogeny_Desc" xml:space="preserve"><value>バーストモードに造山運動を追加します。</value></data>
+  <data name="WARPvP_BurstMode_Orogeny_Name" xml:space="preserve"><value>オロジェネシスオプション</value></data>
+  <data name="WARPvP_BurstMode_Orogeny_Desc" xml:space="preserve"><value>バーストモードにオロジェネシスを追加します。</value></data>
   <data name="WARPvP_BurstMode_Onslaught_Name" xml:space="preserve"><value>オンスロートオプション</value></data>
   <data name="WARPvP_BurstMode_Onslaught_Desc" xml:space="preserve"><value>バーストモードにオンスロートを追加します。</value></data>
   <data name="WARPvP_BurstMode_PrimalScream_Name" xml:space="preserve"><value>原初の怒号オプション</value></data>
-  <data name="WARPvP_BurstMode_PrimalScream_Desc" xml:space="preserve"><value>バーストモードにプライマルスクリームを追加。</value></data>
+  <data name="WARPvP_BurstMode_PrimalScream_Desc" xml:space="preserve"><value>バーストモードに原初の怒号を追加します。</value></data>
   <data name="WARPvP_Rampart_Name" xml:space="preserve"><value>ロールアクション ランパートオプション</value></data>
   <data name="WARPvP_Rampart_Desc" xml:space="preserve"><value>選択されたヘルスの下に防御ロールアクションランパートをバーストモードに追加します</value></data>
   <data name="WHMPvP_Burst_Name" xml:space="preserve"><value>バーストモード</value></data>
   <data name="WHMPvP_Burst_Desc" xml:space="preserve"><value>グレア をオールインワンのダメージ ボタンに変えます。</value></data>
-  <data name="WHMPvP_Afflatus_Misery_Name" xml:space="preserve"><value>デスペアオプション</value></data>
-  <data name="WHMPvP_Afflatus_Misery_Desc" xml:space="preserve"><value>バーストモードにアフラトゥス・ミザリーを追加。</value></data>
+  <data name="WHMPvP_Afflatus_Misery_Name" xml:space="preserve"><value>悲嘆オプション</value></data>
+  <data name="WHMPvP_Afflatus_Misery_Desc" xml:space="preserve"><value>バーストモードにハート・オブ・ミゼリを追加します。</value></data>
   <data name="WHMPvP_Mirace_of_Nature_Name" xml:space="preserve"><value>ミラクル・オブ・ネイチャーオプション</value></data>
   <data name="WHMPvP_Mirace_of_Nature_Desc" xml:space="preserve"><value>バーストモードに自然の奇跡を追加します。</value></data>
   <data name="WHMPvP_Seraph_Strike_Name" xml:space="preserve"><value>セラフストライクオプション</value></data>
-  <data name="WHMPvP_Seraph_Strike_Desc" xml:space="preserve"><value>バーストモードにセラフストライクを追加。</value></data>
+  <data name="WHMPvP_Seraph_Strike_Desc" xml:space="preserve"><value>バーストモードにセラフストライクを追加します。</value></data>
   <data name="WHMPvP_AfflatusPurgation_Name" xml:space="preserve"><value>ハート・オブ・パーゲーションオプション</value></data>
   <data name="WHMPvP_AfflatusPurgation_Desc" xml:space="preserve"><value>バーストモードにアフラトゥス・パーゲーション（リミットブレイク）を追加。</value></data>
   <data name="WHMPvP_Diabrosis_Name" xml:space="preserve"><value>役割 アクション ディアグノシスオプション</value></data>
