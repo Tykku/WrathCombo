@@ -178,13 +178,13 @@ Utile pour trouver une cible si l'un des joueurs n'est pas en vie.</value>
     <value>Recible la résurrection</value>
   </data>
   <data name="ALL_Healer_Raise_Retarget_Desc" xml:space="preserve">
-    <value>Recible la résurrection à votre groupe de soin.</value>
+    <value>Recible la résurrection en fonction de la priorité.</value>
   </data>
   <data name="ALL_Healer_EsunaRetargeting_Name" xml:space="preserve">
     <value>Soigneurs : Ciblage d'Esuna</value>
   </data>
   <data name="ALL_Healer_EsunaRetargeting_Desc" xml:space="preserve">
-    <value>Recible Esuna (en dehors d'un combo) à votre groupe de soin, vérifiant si chaque potentielle cible de votre groupe as un débuff à purger.</value>
+    <value>Recible Esuna (en dehors d'un combo) en fonction de la priorité, vérifiant si chaque potentielle cible de votre groupe as un débuff à purger.</value>
   </data>
   <data name="ALL_Healer_RescueRetargeting_Name" xml:space="preserve">
     <value>Soigneurs : Reciblage de "Secours"</value>
@@ -214,7 +214,7 @@ Utile pour trouver une cible si l'un des joueurs n'est pas en vie.</value>
     <value>Recible la résurrection</value>
   </data>
   <data name="ALL_Caster_Raise_Retarget_Desc" xml:space="preserve">
-    <value>Recible la résurrection à votre groupe de soin.</value>
+    <value>Recible la résurrection par priorité.</value>
   </data>
   <data name="ALL_Melee_Menu_Name" xml:space="preserve">
     <value>Options des DPS mêlée</value>
@@ -245,5 +245,8 @@ Utile pour trouver une cible si l'un des joueurs n'est pas en vie.</value>
   </data>
   <data name="ALL_Ranged_Mitigation_Desc" xml:space="preserve">
     <value>Empêche l'utilisation de Tacticien/Troubadour/Samba protectrice quand la cible a déjà l'un de ces trois effets, remplaçant l'action par un sort grisé.</value>
+  </data>
+  <data name="ALL_Ranged_Interrupt_Name" xml:space="preserve">
+    <value>DPS Physique à distance : Option d'interruption</value>
   </data>
 </root>
