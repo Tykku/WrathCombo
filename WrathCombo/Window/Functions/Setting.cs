@@ -60,10 +60,14 @@ public class Setting
 
         #region Loading from Attributes
 
-        Category = _field.GetCustomAttribute<SettingCategory>()?.TheCategory ??
+        var catAtt = _field.GetCustomAttribute<SettingCategory>() ??
                    throw new ArgumentException(
                        $"Setting `{settingName}` is missing required " +
                        $"`SettingCategory` attribute.");
+        Category              = catAtt.TheCategory;
+        CategoryName          = catAtt.LocalizedCategoryName;
+
+
         var setting = _field.GetCustomAttribute<Attributes.Setting>() ??
                       throw new ArgumentException(
                           $"Setting `{settingName}` is missing required " +
@@ -84,9 +88,11 @@ public class Setting
         StackStringsToExclude = setting.StackStringsToExclude;
 
         var group = _field.GetCustomAttribute<SettingGroup>();
+
         GroupName             = group?.GroupName;
         GroupNameSpace        = group?.NameSpace;
         GroupShouldBeDisabled = group?.ShouldThisGroupGetDisabled;
+        
 
         var collapsibleGroup = _field.GetCustomAttribute<SettingCollapsibleGroup>();
         CollapsibleGroupName = collapsibleGroup?.GroupName;
@@ -145,6 +151,7 @@ public class Setting
     #region Required Attribute Fields
 
     public Category    Category;
+    public string      CategoryName;
     public string      DefaultValue;
     public string      FieldName;
     public string      HelpMark;

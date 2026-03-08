@@ -232,7 +232,7 @@ internal class Settings : ConfigWindow
             ImGuiEx.Spacing(new Vector2(0, 20));
 
             ImGuiEx.TextUnderlined(
-                setting.Category.ToString().Replace("_", " "));
+                setting.CategoryName);
 
             _currentCategory = setting.Category;
         }

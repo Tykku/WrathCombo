@@ -1,6 +1,7 @@
 #region
 
 using System;
+using WrathCombo.Resources.Localization.UI.Settings;
 // ReSharper disable ClassNeverInstantiated.Global
 
 #endregion
@@ -21,6 +22,21 @@ public class SettingCategory(SettingCategory.Category category) : Attribute
     }
 
     internal Category TheCategory { get; } = category;
+
+    public string LocalizedCategoryName
+    {
+        get
+        {
+            return TheCategory switch
+            {
+                Category.Main_UI_Options => SettingsCfgUI.MainUIOptions_Category,
+                Category.Rotation_Behavior_Options => SettingsCfgUI.RotationBehaviourOptions_Category,
+                Category.Targeting_Options => SettingsCfgUI.TargetingOptions_Category,
+                Category.Troubleshooting_Options => SettingsCfgUI.TroubleshootingOptions_Category,
+                _ => "UNKNOWN"
+            };
+        }
+    }
 }
 
 [AttributeUsage(AttributeTargets.Field)]
