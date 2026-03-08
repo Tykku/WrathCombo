@@ -6,10 +6,10 @@ using System.Reflection;
 using ECommons.Reflection;
 using WrathCombo.Attributes;
 using WrathCombo.Core;
+using WrathCombo.Resources.Localization.UI.Settings;
 using WrathCombo.Services;
 using SettingType = WrathCombo.Attributes.Setting.Type;
 using Category = WrathCombo.Attributes.SettingCategory.Category;
-using WrathCombo.Window.Tabs;
 
 #endregion
 
@@ -72,15 +72,15 @@ public class Setting
                       throw new ArgumentException(
                           $"Setting `{settingName}` is missing required " +
                           $"`Setting` attribute.");
-        Name                  = Text.GetLocalizedString($"{settingName}_Name", Resources.Localization.UI.Settings.SettingsCfgUI.ResourceManager);
-        HelpMark              = Text.GetLocalizedString($"{settingName}_helpMark", Resources.Localization.UI.Settings.SettingsCfgUI.ResourceManager);
-        RecommendedValue      = Text.GetLocalizedString($"{settingName}_recommendedValue", Resources.Localization.UI.Settings.SettingsCfgUI.ResourceManager);
-        DefaultValue          = Text.GetLocalizedString($"{settingName}_defaultValue", Resources.Localization.UI.Settings.SettingsCfgUI.ResourceManager);
+        Name                  = Text.GetLocalizedString($"{settingName}_Name", SettingsCfgUI.ResourceManager);
+        HelpMark              = Text.GetLocalizedString($"{settingName}_helpMark", SettingsCfgUI.ResourceManager);
+        RecommendedValue      = Text.GetLocalizedString($"{settingName}_recommendedValue", SettingsCfgUI.ResourceManager);
+        DefaultValue          = Text.GetLocalizedString($"{settingName}_defaultValue", SettingsCfgUI.ResourceManager);
         Type                  = setting.TheType;
-        UnitLabel             = setting.UnitLabel is null ? null : Text.GetLocalizedString($"{settingName}_unitLabel", Resources.Localization.UI.Settings.SettingsCfgUI.ResourceManager);
-        ExtraHelpMark         = setting.ExtraHelpMark is null ? null : Text.GetLocalizedString($"{settingName}_extraHelpMark", Resources.Localization.UI.Settings.SettingsCfgUI.ResourceManager);
-        WarningMark           = setting.WarningMark is null ? null : Text.GetLocalizedString($"{settingName}_warningMark", Resources.Localization.UI.Settings.SettingsCfgUI.ResourceManager);
-        ExtraText             = setting.ExtraText is null ? null : Text.GetLocalizedString($"{settingName}_extraText", Resources.Localization.UI.Settings.SettingsCfgUI.ResourceManager);
+        UnitLabel             = setting.UnitLabel is null ? null : Text.GetLocalizedString($"{settingName}_unitLabel", SettingsCfgUI.ResourceManager);
+        ExtraHelpMark         = setting.ExtraHelpMark is null ? null : Text.GetLocalizedString($"{settingName}_extraHelpMark", SettingsCfgUI.ResourceManager);
+        WarningMark           = setting.WarningMark is null ? null : Text.GetLocalizedString($"{settingName}_warningMark", SettingsCfgUI.ResourceManager);
+        ExtraText             = setting.ExtraText is null ? null : Text.GetLocalizedString($"{settingName}_extraText", SettingsCfgUI.ResourceManager);
         MinFLoat              = setting.MinFloat;
         MaxFloat              = setting.MaxFloat;
         MinInt                = setting.MinInt;
@@ -92,7 +92,7 @@ public class Setting
         GroupName             = group?.GroupName;
         GroupNameSpace        = group?.NameSpace;
         GroupShouldBeDisabled = group?.ShouldThisGroupGetDisabled;
-        
+
 
         var collapsibleGroup = _field.GetCustomAttribute<SettingCollapsibleGroup>();
         CollapsibleGroupName = collapsibleGroup?.GroupName;
