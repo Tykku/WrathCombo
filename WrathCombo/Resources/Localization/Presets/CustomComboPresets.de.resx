@@ -670,4 +670,253 @@ Wird nur in speziellen Inhalten empfohlen.</value>
   <data name="Phantom_Freelancer_Desc" xml:space="preserve">
     <value>Aktivieren Sie dies, um Freiberufler-spezifische Aktionen in die Rotation einzufügen.</value>
   </data>
+  <data name="Phantom_Freelancer_OccultResuscitation_Name" xml:space="preserve">
+    <value>Kreszente Erste Hilfe</value>
+  </data>
+  <data name="Phantom_Freelancer_OccultResuscitation_Desc" xml:space="preserve">
+    <value>Fügt Kreszente Erste Hilfe in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_Knight_Name" xml:space="preserve">
+    <value>Ritter</value>
+  </data>
+  <data name="Phantom_Knight_Desc" xml:space="preserve">
+    <value>Aktivieren Sie dies, um Ritter-spezifische Aktionen in die Rotation einzufügen.</value>
+  </data>
+  <data name="Phantom_Knight_PhantomGuard_Name" xml:space="preserve">
+    <value>Phantom-Beschützen</value>
+  </data>
+  <data name="Phantom_Knight_PhantomGuard_Desc" xml:space="preserve">
+    <value>Fügt Phantom-Beschützen in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_Knight_Pray_Name" xml:space="preserve">
+    <value>Beten</value>
+  </data>
+  <data name="Phantom_Knight_Pray_Desc" xml:space="preserve">
+    <value>Fügt Beten in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_Knight_OccultHeal_Name" xml:space="preserve">
+    <value>Kreszentes Heilen</value>
+  </data>
+  <data name="Phantom_Knight_OccultHeal_Desc" xml:space="preserve">
+    <value>Fügt Kreszentes Heilen in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_Knight_Pledge_Name" xml:space="preserve">
+    <value>Geloben</value>
+  </data>
+  <data name="Phantom_Knight_Pledge_Desc" xml:space="preserve">
+    <value>Fügt Geloben in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_Monk_Name" xml:space="preserve">
+    <value>Mönch Job Aktionen</value>
+  </data>
+  <data name="Phantom_Monk_Desc" xml:space="preserve">
+    <value>Aktivieren Sie dies, um Mönch-spezifische Aktionen in die Rotation einzufügen.</value>
+  </data>
+  <data name="Phantom_Monk_PhantomKick_Name" xml:space="preserve">
+    <value>Treten</value>
+  </data>
+  <data name="Phantom_Monk_PhantomKick_Desc" xml:space="preserve">
+    <value>Fügt Phantom Treten in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_Monk_OccultCounter_Name" xml:space="preserve">
+    <value>Kreszenter Konter</value>
+  </data>
+  <data name="Phantom_Monk_OccultCounter_Desc" xml:space="preserve">
+    <value>Fügt Kreszenter Konter in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_Monk_Counterstance_Name" xml:space="preserve">
+    <value>Gegenzug</value>
+  </data>
+  <data name="Phantom_Monk_Counterstance_Desc" xml:space="preserve">
+    <value>Fügt Gegenzug in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_Monk_OccultChakra_Name" xml:space="preserve">
+    <value>Kreszentes Chakra</value>
+  </data>
+  <data name="Phantom_Monk_OccultChakra_Desc" xml:space="preserve">
+    <value>Fügt Kreszentes Chakra in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_Thief_Name" xml:space="preserve">
+    <value>Dieb</value>
+  </data>
+  <data name="Phantom_Thief_Desc" xml:space="preserve">
+    <value>Aktivieren Sie dies, um Dieb-spezifische Aktionen in die Rotation einzufügen.</value>
+  </data>
+  <data name="Phantom_Thief_OccultSprint_Name" xml:space="preserve">
+    <value>Kreszenter Sprint</value>
+  </data>
+  <data name="Phantom_Thief_OccultSprint_Desc" xml:space="preserve">
+    <value>Fügt Kreszenter Sprint in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_Thief_Steal_Name" xml:space="preserve">
+    <value>Stehlen</value>
+  </data>
+  <data name="Phantom_Thief_Steal_Desc" xml:space="preserve">
+    <value>Fügt Stehlen in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_Thief_Vigilance_Name" xml:space="preserve">
+    <value>Wachsamkeit</value>
+  </data>
+  <data name="Phantom_Thief_Vigilance_Desc" xml:space="preserve">
+    <value>Fügt Wachsamkeit in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_Thief_PilferWeapon_Name" xml:space="preserve">
+    <value>Waffe stehlen</value>
+  </data>
+  <data name="Phantom_Thief_PilferWeapon_Desc" xml:space="preserve">
+    <value>Fügt Waffe stehlen in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_Samurai_Name" xml:space="preserve">
+    <value>Samurai Job Aktionen</value>
+  </data>
+  <data name="Phantom_Samurai_Desc" xml:space="preserve">
+    <value>Aktivieren Sie dies, um Samurai-spezifische Aktionen in die Rotation einzufügen.</value>
+  </data>
+  <data name="Phantom_Samurai_Mineuchi_Name" xml:space="preserve">
+    <value>Mineuchi</value>
+  </data>
+  <data name="Phantom_Samurai_Mineuchi_Desc" xml:space="preserve">
+    <value>Fügt Mineuchi in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_Samurai_Shirahadori_Name" xml:space="preserve">
+    <value>Shirahadori</value>
+  </data>
+  <data name="Phantom_Samurai_Shirahadori_Desc" xml:space="preserve">
+    <value>Fügt Shirahadori in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_Samurai_Iainuki_Name" xml:space="preserve">
+    <value>Iainuki</value>
+  </data>
+  <data name="Phantom_Samurai_Iainuki_Desc" xml:space="preserve">
+    <value>Fügt Iainuki in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_Samurai_Zeninage_Name" xml:space="preserve">
+    <value>Zeninage</value>
+  </data>
+  <data name="Phantom_Samurai_Zeninage_Desc" xml:space="preserve">
+    <value>Fügt Zeninage in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_Berserker_Name" xml:space="preserve">
+    <value>Berserker Job Aktionen</value>
+  </data>
+  <data name="Phantom_Berserker_Desc" xml:space="preserve">
+    <value>Aktivieren Sie dies, um Berserker-spezifische Aktionen in die Rotation einzufügen.</value>
+  </data>
+  <data name="Phantom_Berserker_Rage_Name" xml:space="preserve">
+    <value>Wüten</value>
+  </data>
+  <data name="Phantom_Berserker_Rage_Desc" xml:space="preserve">
+    <value>Fügt Wüten in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_Berserker_DeadlyBlow_Name" xml:space="preserve">
+    <value>Todesstoß</value>
+  </data>
+  <data name="Phantom_Berserker_DeadlyBlow_Desc" xml:space="preserve">
+    <value>Fügt Todesstoß in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_Ranger_Name" xml:space="preserve">
+    <value>Jäger Job Aktionen</value>
+  </data>
+  <data name="Phantom_Ranger_Desc" xml:space="preserve">
+    <value>Aktivieren Sie dies, um Jäger-spezifische Aktionen in die Rotation einzufügen.</value>
+  </data>
+  <data name="Phantom_Ranger_PhantomAim_Name" xml:space="preserve">
+    <value>Phantom-Zielen</value>
+  </data>
+  <data name="Phantom_Ranger_PhantomAim_Desc" xml:space="preserve">
+    <value>Fügt Phantom-Zielen in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_Ranger_OccultUnicorn_Name" xml:space="preserve">
+    <value>Kreszentes Einhorn</value>
+  </data>
+  <data name="Phantom_Ranger_OccultUnicorn_Desc" xml:space="preserve">
+    <value>Fügt Kreszentes Einhorn in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_TimeMage_Name" xml:space="preserve">
+    <value>Zeitmagier</value>
+  </data>
+  <data name="Phantom_TimeMage_Desc" xml:space="preserve">
+    <value>Aktivieren Sie dies, um Zeitmagier-spezifische Aktionen in die Rotation einzufügen.</value>
+  </data>
+  <data name="Phantom_TimeMage_OccultSlowga_Name" xml:space="preserve">
+    <value>Kreszentes Gemachga</value>
+  </data>
+  <data name="Phantom_TimeMage_OccultSlowga_Desc" xml:space="preserve">
+    <value>Fügt Kreszentes Gemachga in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_TimeMage_OccultSlowga_Wait_Name" xml:space="preserve">
+    <value>Wartet auf vollen Effekt</value>
+  </data>
+  <data name="Phantom_TimeMage_OccultSlowga_Wait_Desc" xml:space="preserve">
+    <value>Wird Kreszentes Gemachga nicht verwenden, wenn der Effekt aus wiederholten Gebrauch nicht erheblich genug wäre, oder es überhaupt keinen Effekt gäbe.</value>
+  </data>
+  <data name="Phantom_TimeMage_OccultComet_Name" xml:space="preserve">
+    <value>Kreszenter Komet</value>
+  </data>
+  <data name="Phantom_TimeMage_OccultComet_Desc" xml:space="preserve">
+    <value>Fügt Kreszenter Komet in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_TimeMage_OccultMageMasher_Name" xml:space="preserve">
+    <value>Kreszenter Stummdolch</value>
+  </data>
+  <data name="Phantom_TimeMage_OccultMageMasher_Desc" xml:space="preserve">
+    <value>Fügt Kreszenter Stummdolch in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_TimeMage_OccultDispel_Name" xml:space="preserve">
+    <value>Kreszenter Bann</value>
+  </data>
+  <data name="Phantom_TimeMage_OccultDispel_Desc" xml:space="preserve">
+    <value>Fügt Kreszenter Bann in die Rotation ein, wenn das Ziel einen entfernbaren Status hat.</value>
+  </data>
+  <data name="Phantom_TimeMage_OccultQuick_Name" xml:space="preserve">
+    <value>Kreszentes Schnell</value>
+  </data>
+  <data name="Phantom_TimeMage_OccultQuick_Desc" xml:space="preserve">
+    <value>Fügt Kreszentes Schnell in die Rotation ein.</value>
+  </data>
+  <data name="Phantom_Chemist_Name" xml:space="preserve">
+    <value>Alchemisten Job Aktionen</value>
+  </data>
+  <data name="Phantom_Chemist_Desc" xml:space="preserve">
+    <value>Aktivieren Sie dies, um Alchemisten-spezifische Aktionen in die Rotation einzufügen.</value>
+  </data>
+  <data name="Phantom_Chemist_OccultPotion_Name" xml:space="preserve">
+    <value>Kreszenter Trank</value>
+  </data>
+  <data name="Phantom_Chemist_OccultPotion_Desc" xml:space="preserve">
+    <value>Fügt Kreszenter Trank in die Rotation ein.
+Benötigt Okkulten Trank im Inventar.</value>
+  </data>
+  <data name="Phantom_Chemist_OccultEther_Name" xml:space="preserve">
+    <value>Kreszenter Äther</value>
+  </data>
+  <data name="Phantom_Chemist_OccultEther_Desc" xml:space="preserve">
+    <value>Fügt Kreszenter Äther in die Drehung ein.
+Benötigt Okkulten Trank im Inventar.</value>
+  </data>
+  <data name="Phantom_Chemist_Revive_Name" xml:space="preserve">
+    <value>Wiederbeleben</value>
+  </data>
+  <data name="Phantom_Chemist_Revive_Desc" xml:space="preserve">
+    <value>Fügt Wiederbeleben in die Rotation hinzu.</value>
+  </data>
+  <data name="Phantom_Chemist_OccultElixir_Name" xml:space="preserve">
+    <value>Kreszentes Elixier</value>
+  </data>
+  <data name="Phantom_Chemist_OccultElixir_Desc" xml:space="preserve">
+    <value>Fügt Kreszentes Elixier in die Drehung ein.
+Benötigt Okkultes Elixir im Inventar.</value>
+  </data>
+  <data name="Phantom_Bard_Name" xml:space="preserve">
+    <value>Barde</value>
+  </data>
+  <data name="Phantom_Bard_Desc" xml:space="preserve">
+    <value>Aktivieren Sie dies, um Barde-spezifische Aktionen in die Rotation einzufügen.</value>
+  </data>
+  <data name="Phantom_Bard_MightyMarch_Name" xml:space="preserve">
+    <value>Kraft-Coral</value>
+  </data>
+  <data name="Phantom_Bard_MightyMarch_Desc" xml:space="preserve">
+    <value>Fügt Kraft-Coral in die Rotation ein.</value>
+  </data>
 </root>
