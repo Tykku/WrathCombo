@@ -346,8 +346,8 @@ internal abstract partial class CustomComboFunctions
                 // Atomos = 17952
                 // Inner Darkness = 4177
                 // Outer Darkness = 4178
-                if (targetID is 17950 or 17952 && HasStatusEffect(4178, null, true)) return true; // If on the tiles
-                if (targetID is 17951 && HasStatusEffect(4177, null, true)) return true; // If on platforms
+                if (targetID is 17950 && HasStatusEffect(4178, null, true)) return true; // If on the tiles
+                if (targetID is 17951 or 17952 && HasStatusEffect(4177, null, true)) return true; // If on platforms
 
                 return false;
             
