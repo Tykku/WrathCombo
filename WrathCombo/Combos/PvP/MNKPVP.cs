@@ -22,7 +22,7 @@ internal static class MNKPvP
         EarthsReply = 29483,
         Meteordrive = 29485,
         WindsReply = 41509,
-        FlintsReply = 41447,
+        FiresReply = 41448,
         LeapingOpo = 41444,
         RisingRaptor = 41445,
         PouncingCoeurl = 41446;
@@ -76,7 +76,7 @@ internal static class MNKPvP
                     GetTargetHPPercent() <= MNKPvP_SmiteThreshold)
                     return PvPMelee.Smite;
 
-                if (IsEnabled(Preset.MNKPvP_Burst_RisingPhoenix))
+                if (IsEnabled(Preset.MNKPvP_Burst_RisingPhoenix) && NumberOfEnemiesInRange(RisingPhoenix) >= 1)
                 {
                     if (!HasStatusEffect(Buffs.FireResonance) && GetRemainingCharges(RisingPhoenix) > 1 || WasLastWeaponskill(PouncingCoeurl) && GetRemainingCharges(RisingPhoenix) > 0)
                         return OriginalHook(RisingPhoenix);
@@ -99,11 +99,10 @@ internal static class MNKPvP
                         return OriginalHook(EarthsReply);
                 }
 
-                if (IsEnabled(Preset.MNKPvP_Burst_FlintsReply))
-                {
-                    if (GetRemainingCharges(FlintsReply) > 0 && (!WasLastAction(LeapingOpo) || !WasLastAction(RisingRaptor) || !WasLastAction(PouncingCoeurl)) || HasStatusEffect(Buffs.FiresRumination) && !WasLastAction(PouncingCoeurl))
-                        return OriginalHook(FlintsReply);
-                }
+                if (IsEnabled(Preset.MNKPvP_Burst_FiresReply) && GetRemainingCharges(FiresReply) > 0 &&
+                    (!WasLastAction(LeapingOpo) || !WasLastAction(RisingRaptor) || !WasLastAction(PouncingCoeurl)))
+                    return OriginalHook(FiresReply);
+
             }
             return actionID;
         }
