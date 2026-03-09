@@ -1162,4 +1162,124 @@ Benötigt Okkultes Elixir im Inventar.</value>
   <data name="AST_ST_Simple_DPS_Name" xml:space="preserve">
     <value>Einfacher DPS Modus - Einzelziel</value>
   </data>
+  <data name="AST_ST_Simple_DPS_Desc" xml:space="preserve">
+    <value>Ersetzt Spannungsaspekt mit einer vollen Ein-Tasten-Einzelziel-Rotation, einschließlich automatischer dps Kartenzuweisung.
+Dies ist die ideale Option für Neuankömmlinge des Jobs.</value>
+  </data>
+  <data name="AST_AOE_Simple_DPS_Name" xml:space="preserve">
+    <value>Einfacher DPS Modus - Flächenschaden</value>
+  </data>
+  <data name="AST_AOE_Simple_DPS_Desc" xml:space="preserve">
+    <value>Ersetzt 	Gravitas mit einer vollen Ein-Tasten-Einzelziel-Rotation, einschließlich automatischer dps Kartenzuweisung.
+Dies ist die ideale Option für Neuankömmlinge des Jobs.</value>
+  </data>
+  <data name="AST_Simple_ST_Heals_Name" xml:space="preserve">
+    <value>Einfacher Heilmodus - Einzelziel</value>
+  </data>
+  <data name="AST_Simple_ST_Heals_Desc" xml:space="preserve">
+    <value>Ersetzt Harmonieaspekt mit einer vollen Ein-Tasten-Einzelziel-Rotation samt Heilung, einschließlich automatischer dps Kartenzuweisung.
+Dies ist die ideale Option für Neuankömmlinge des Jobs.</value>
+  </data>
+  <data name="AST_Simple_AoE_Heals_Name" xml:space="preserve">
+    <value>Einfacher Heilmodus - Flächenschaden</value>
+  </data>
+  <data name="AST_Simple_AoE_Heals_Desc" xml:space="preserve">
+    <value>Ersetzt Helios mit einer vollen Ein-Tasten-Einzelziel-Rotation samt Heilung, einschließlich automatischer dps Kartenzuweisung.
+Dies ist die ideale Option für Neuankömmlinge des Jobs.</value>
+  </data>
+  <data name="AST_ST_DPS_Name" xml:space="preserve">
+    <value>Erweiterter DPS Modus - Einzelziel</value>
+  </data>
+  <data name="AST_ST_DPS_Desc" xml:space="preserve">
+    <value>Ersetzt Spannungsaspekt oder Konjunktion durch folgende Optionen</value>
+  </data>
+  <data name="AST_ST_DPS_Opener_Name" xml:space="preserve">
+    <value>Balance Opener (Level 92)</value>
+  </data>
+  <data name="AST_ST_DPS_Opener_Desc" xml:space="preserve">
+    <value>Fügt den Balance opener für Stufe 92 hinzu.</value>
+  </data>
+  <data name="AST_ST_DPS_CombustUptime_Name" xml:space="preserve">
+    <value>Konjunktion uptime Option</value>
+  </data>
+  <data name="AST_ST_DPS_CombustUptime_Desc" xml:space="preserve">
+    <value>Fügt Konjunktion der DPS-Funktion hinzu, wenn sie nicht auf dem aktuellen Ziel vorhanden ist oder kurz vor dem Ablauf.</value>
+  </data>
+  <data name="AST_ST_DPS_Move_DoT_Name" xml:space="preserve">
+    <value>Konjunktion Bewegungs Option</value>
+  </data>
+  <data name="AST_ST_DPS_Move_DoT_Desc" xml:space="preserve">
+    <value>"Wird DoT frühzeitig auf alle Feinde innerhalb der Reichweite anwenden, während sie sich bewegen."</value>
+  </data>
+  <data name="AST_DPS_LightSpeed_Name" xml:space="preserve">
+    <value>Lichtgeschwindigkeit Weave Option</value>
+  </data>
+  <data name="AST_DPS_LightSpeed_Desc" xml:space="preserve">
+    <value>Fügt Lichtgeschwindigkeit der Rotation hinzu, sobald sie sich bewegen</value>
+  </data>
+  <data name="AST_DPS_LightSpeedHold_Name" xml:space="preserve">
+    <value>Lichtgeschwindigkeit Halten Option</value>
+  </data>
+  <data name="AST_DPS_LightSpeedHold_Desc" xml:space="preserve">
+    <value>Hält eine Lichtgeschwindigkeit Ladung über für manuelle Verwendung</value>
+  </data>
+  <data name="AST_DPS_Divination_Name" xml:space="preserve">
+    <value>Weissagung Weave Option</value>
+  </data>
+  <data name="AST_DPS_Divination_Desc" xml:space="preserve">
+    <value>Fügt Weissagung hinzu</value>
+  </data>
+  <data name="AST_DPS_LightspeedBurst_Name" xml:space="preserve">
+    <value>Lichtgeschwindigkeit Burst Option</value>
+  </data>
+  <data name="AST_DPS_LightspeedBurst_Desc" xml:space="preserve">
+    <value>Fügen Sie Lichtgeschwindigkeit vor der Weissagung 
+Kombinieren Sie mit Lichtgeschwindigkeit halten-Optionen, um sicherzustellen, dass Sie eine Ladung zum Verwenden haben</value>
+  </data>
+  <data name="AST_DPS_AutoDraw_Name" xml:space="preserve">
+    <value>Karten Ziehen Weave Option</value>
+  </data>
+  <data name="AST_DPS_AutoDraw_Desc" xml:space="preserve">
+    <value>Zieht deine Karten</value>
+  </data>
+  <data name="AST_DPS_AutoPlay_Name" xml:space="preserve">
+    <value>Karten spielen Weave Option</value>
+  </data>
+  <data name="AST_DPS_AutoPlay_Desc" xml:space="preserve">
+    <value>Benutzt deine Waage und Speer Karten (wird am besten mit schnellen Zielkarten verwendet)</value>
+  </data>
+  <data name="AST_DPS_CardPool_Name" xml:space="preserve">
+    <value>Karten aufhalten Option</value>
+  </data>
+  <data name="AST_DPS_CardPool_Desc" xml:space="preserve">
+    <value>Hält deine dps Karten für Weissagung auf</value>
+  </data>
+  <data name="AST_DPS_LazyLord_Name" xml:space="preserve">
+    <value>König der Kronen Weave Option</value>
+  </data>
+  <data name="AST_DPS_LazyLord_Desc" xml:space="preserve">
+    <value>Fügt König der Kronen hinzu</value>
+  </data>
+  <data name="AST_DPS_LordPool_Name" xml:space="preserve">
+    <value>König der Kronen aufhalten Option</value>
+  </data>
+  <data name="AST_DPS_LordPool_Desc" xml:space="preserve">
+    <value>Hält König der Kronen für deine Weissagung auf</value>
+  </data>
+  <data name="AST_DPS_Oracle_Name" xml:space="preserve">
+    <value>Orakel Option</value>
+  </data>
+  <data name="AST_DPS_Oracle_Desc" xml:space="preserve">
+    <value>Fügt Orakel nach der Weissagung hinzu</value>
+  </data>
+  <data name="AST_ST_DPS_EarthlyStar_Name" xml:space="preserve">
+    <value>Irdischer Stern Option</value>
+  </data>
+  <data name="AST_ST_DPS_EarthlyStar_Desc" xml:space="preserve">
+    <value>Fügt der Rotation die Platzierung des irdischen Sterns hinzu, aber nicht die Sprengung.
+Wird zuerst auf jeden Feind ausgerichtet werden, dann auf dein Fokus ziel, dann auf dein anvisiertes Ziel, bevor es auf dich zurückfällt, um es zu deinen Füßen zu platzieren.</value>
+  </data>
+  <data name="AST_ST_DPS_StellarDetonation_Name" xml:space="preserve">
+    <value>Stellare Detonation Option</value>
+  </data>
 </root>
