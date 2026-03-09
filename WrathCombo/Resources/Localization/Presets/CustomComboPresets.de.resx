@@ -1167,28 +1167,28 @@ Benötigt Okkultes Elixir im Inventar.</value>
 Dies ist die ideale Option für Neuankömmlinge des Jobs.</value>
   </data>
   <data name="AST_AOE_Simple_DPS_Name" xml:space="preserve">
-    <value>Einfacher DPS Modus - Flächenschaden</value>
+    <value>Einfacher DPS Modus - Flächenschaden (Simple DPS Mode - AoE)</value>
   </data>
   <data name="AST_AOE_Simple_DPS_Desc" xml:space="preserve">
     <value>Ersetzt 	Gravitas mit einer vollen Ein-Tasten-Einzelziel-Rotation, einschließlich automatischer dps Kartenzuweisung.
 Dies ist die ideale Option für Neuankömmlinge des Jobs.</value>
   </data>
   <data name="AST_Simple_ST_Heals_Name" xml:space="preserve">
-    <value>Einfacher Heilmodus - Einzelziel</value>
+    <value>Einfacher Heilmodus - Einzelziel (Simple Healing Mode - Single Target)</value>
   </data>
   <data name="AST_Simple_ST_Heals_Desc" xml:space="preserve">
     <value>Ersetzt Harmonieaspekt mit einer vollen Ein-Tasten-Einzelziel-Rotation samt Heilung, einschließlich automatischer dps Kartenzuweisung.
 Dies ist die ideale Option für Neuankömmlinge des Jobs.</value>
   </data>
   <data name="AST_Simple_AoE_Heals_Name" xml:space="preserve">
-    <value>Einfacher Heilmodus - Flächenschaden</value>
+    <value>Einfacher Heilmodus - Flächenheilung (Simple Healing Mode - AoE)</value>
   </data>
   <data name="AST_Simple_AoE_Heals_Desc" xml:space="preserve">
     <value>Ersetzt Helios mit einer vollen Ein-Tasten-Einzelziel-Rotation samt Heilung, einschließlich automatischer dps Kartenzuweisung.
 Dies ist die ideale Option für Neuankömmlinge des Jobs.</value>
   </data>
   <data name="AST_ST_DPS_Name" xml:space="preserve">
-    <value>Erweiterter DPS Modus - Einzelziel</value>
+    <value>Erweiterter DPS Modus - Einzelziel (Advanced DPS Mode - Single Target)</value>
   </data>
   <data name="AST_ST_DPS_Desc" xml:space="preserve">
     <value>Ersetzt Spannungsaspekt oder Konjunktion durch folgende Optionen</value>
@@ -1281,5 +1281,271 @@ Wird zuerst auf jeden Feind ausgerichtet werden, dann auf dein Fokus ziel, dann 
   </data>
   <data name="AST_ST_DPS_StellarDetonation_Name" xml:space="preserve">
     <value>Stellare Detonation Option</value>
+  </data>
+  <data name="AST_ST_DPS_StellarDetonation_Desc" xml:space="preserve">
+    <value>Fügt eine frühe Stellare Detonation mit irdischer Herrschaft basierend auf den Lebenspunkten des Ziels, Prozentsatz oder Art der Begegnung hinzu</value>
+  </data>
+  <data name="AST_DPS_Lucid_Name" xml:space="preserve">
+    <value>Klartraum Weave Option</value>
+  </data>
+  <data name="AST_DPS_Lucid_Desc" xml:space="preserve">
+    <value>Fügt Klartraum hinzu, wenn MP unter den Schwellenwert fällt</value>
+  </data>
+  <data name="AST_AOE_DPS_Name" xml:space="preserve">
+    <value>Erweiterter DPS Modus - Flächenschaden (Advanced DPS Mode - AoE)</value>
+  </data>
+  <data name="AST_AOE_DPS_Desc" xml:space="preserve">
+    <value>Ersetzt Gravitas durch folgende Optionen</value>
+  </data>
+  <data name="AST_AOE_DPS_DoT_Name" xml:space="preserve">
+    <value>Multitarget Dot Option</value>
+  </data>
+  <data name="AST_AOE_DPS_DoT_Desc" xml:space="preserve">
+    <value>Hält Dots auf mehrere Ziele aufrecht.</value>
+  </data>
+  <data name="AST_AOE_LightSpeed_Name" xml:space="preserve">
+    <value>Lichtgeschwindigkeit Weave Option</value>
+  </data>
+  <data name="AST_AOE_LightSpeed_Desc" xml:space="preserve">
+    <value>Fügt Lichtgeschwindigkeit der Rotation hinzu, sobald sie sich bewegen</value>
+  </data>
+  <data name="AST_AOE_LightSpeedHold_Name" xml:space="preserve">
+    <value>Lichtgeschwindigkeit Halten Option</value>
+  </data>
+  <data name="AST_AOE_LightSpeedHold_Desc" xml:space="preserve">
+    <value>Hält eine Lichtgeschwindigkeit Ladung über für manuelle Verwendung</value>
+  </data>
+  <data name="AST_AOE_Divination_Name" xml:space="preserve">
+    <value>Weissagung Weave Option</value>
+  </data>
+  <data name="AST_AOE_Divination_Desc" xml:space="preserve">
+    <value>Fügt Weissagung hinzu</value>
+  </data>
+  <data name="AST_AOE_LightspeedBurst_Name" xml:space="preserve">
+    <value>Lichtgeschwindigkeit Burst Option</value>
+  </data>
+  <data name="AST_AOE_LightspeedBurst_Desc" xml:space="preserve">
+    <value>Fügen Sie Lichtgeschwindigkeit vor der Weissagung 
+Kombinieren Sie mit Lichtgeschwindigkeit halten-Optionen, um sicherzustellen, dass Sie eine Ladung zum Verwenden haben</value>
+  </data>
+  <data name="AST_AOE_AutoDraw_Name" xml:space="preserve">
+    <value>Karten Ziehen Weave Option</value>
+  </data>
+  <data name="AST_AOE_AutoDraw_Desc" xml:space="preserve">
+    <value>Zieht deine Karten</value>
+  </data>
+  <data name="AST_AOE_AutoPlay_Name" xml:space="preserve">
+    <value>Karten spielen Weave Option</value>
+  </data>
+  <data name="AST_AOE_AutoPlay_Desc" xml:space="preserve">
+    <value>Benutzt deine Waage und Speer Karten (wird am besten mit schnellen Zielkarten verwendet)</value>
+  </data>
+  <data name="AST_AOE_CardPool_Name" xml:space="preserve">
+    <value>Karten aufhalten Option</value>
+  </data>
+  <data name="AST_AOE_CardPool_Desc" xml:space="preserve">
+    <value>Hält deine dps Karten für Weissagung auf</value>
+  </data>
+  <data name="AST_AOE_LazyLord_Name" xml:space="preserve">
+    <value>König der Kronen Weave Option</value>
+  </data>
+  <data name="AST_AOE_LazyLord_Desc" xml:space="preserve">
+    <value>Fügt König der Kronen hinzu</value>
+  </data>
+  <data name="AST_AOE_LordPool_Name" xml:space="preserve">
+    <value>König der Kronen aufhalten Option</value>
+  </data>
+  <data name="AST_AOE_LordPool_Desc" xml:space="preserve">
+    <value>Hält König der Kronen für deine Weissagung auf</value>
+  </data>
+  <data name="AST_AOE_Oracle_Name" xml:space="preserve">
+    <value>Orakel Option</value>
+  </data>
+  <data name="AST_AOE_Oracle_Desc" xml:space="preserve">
+    <value>Fügt Orakel nach der Weissagung hinzu</value>
+  </data>
+  <data name="AST_AOE_DPS_EarthlyStar_Name" xml:space="preserve">
+    <value>Irdischer Stern Option</value>
+  </data>
+  <data name="AST_AOE_DPS_EarthlyStar_Desc" xml:space="preserve">
+    <value>Fügt der Rotation die Platzierung des irdischen Sterns hinzu, aber nicht die Sprengung.
+Wird zuerst auf jeden Feind ausgerichtet werden, dann auf dein Fokus ziel, dann auf dein anvisiertes Ziel, bevor es auf dich zurückfällt, um es zu deinen Füßen zu platzieren.</value>
+  </data>
+  <data name="AST_AOE_DPS_StellarDetonation_Name" xml:space="preserve">
+    <value>Stellare Detonation Option</value>
+  </data>
+  <data name="AST_AOE_DPS_StellarDetonation_Desc" xml:space="preserve">
+    <value>Fügt eine frühe Stellare Detonation mit irdischer Herrschaft basierend auf den Lebenspunkten des Ziels, Prozentsatz oder Art der Begegnung hinzu</value>
+  </data>
+  <data name="AST_AOE_DPS_MacroCosmos_Name" xml:space="preserve">
+    <value>Makrokosmos Option</value>
+  </data>
+  <data name="AST_AOE_DPS_MacroCosmos_Desc" xml:space="preserve">
+    <value>Fügt Makrokosmos nach 3 GCDs zur Flächenschaden-Rotation hinzu</value>
+  </data>
+  <data name="AST_AOE_Lucid_Name" xml:space="preserve">
+    <value>Klartraum Weave Option</value>
+  </data>
+  <data name="AST_AOE_Lucid_Desc" xml:space="preserve">
+    <value>Fügt Klartraum hinzu, wenn MP unter den Schwellenwert fällt</value>
+  </data>
+  <data name="AST_ST_Heals_Name" xml:space="preserve">
+    <value>Einfacher Heilmodus - Einzelziel (Advanced Healing Mode - Single Target)</value>
+  </data>
+  <data name="AST_ST_Heals_Desc" xml:space="preserve">
+    <value>Ersetzt Harmonieaspekt mit einer vollen Ein-Tasten-Einzelziel-Rotation.</value>
+  </data>
+  <data name="AST_ST_Heals_Esuna_Name" xml:space="preserve">
+    <value>Medica Option</value>
+  </data>
+  <data name="AST_ST_Heals_Esuna_Desc" xml:space="preserve">
+    <value>Wendet Medica auf Ihr Ziel an, wenn es einen entfernbaren Effekt gibt.</value>
+  </data>
+  <data name="AST_ST_Heals_AspectedBenefic_Name" xml:space="preserve">
+    <value>Harmonischer Orbis Option</value>
+  </data>
+  <data name="AST_ST_Heals_AspectedBenefic_Desc" xml:space="preserve">
+    <value>Fügt Harmonischer Orbis hinzu &amp; erneuert ihn, falls nötig.</value>
+  </data>
+  <data name="AST_ST_Heals_EssentialDignity_Name" xml:space="preserve">
+    <value>Essenzielle Würde Option</value>
+  </data>
+  <data name="AST_ST_Heals_EssentialDignity_Desc" xml:space="preserve">
+    <value>Essenzielle Würde wird hinzugefügt, wenn das Ziel bei oder unter dem Wert liegt.</value>
+  </data>
+  <data name="AST_ST_Heals_EssentialDignity_Emergency_Name" xml:space="preserve">
+    <value>Notfall Essenzielle Würde Option</value>
+  </data>
+  <data name="AST_ST_Heals_EssentialDignity_Emergency_Desc" xml:space="preserve">
+    <value>Behält eine Ladung von Essenzielle Würde, um sie für einen anderen Wert zu verwenden.</value>
+  </data>
+  <data name="AST_ST_Heals_CelestialIntersection_Name" xml:space="preserve">
+    <value>Kongruenz Option</value>
+  </data>
+  <data name="AST_ST_Heals_CelestialIntersection_Desc" xml:space="preserve">
+    <value>Fügt Kongruenz hinzu.</value>
+  </data>
+  <data name="AST_ST_Heals_Exaltation_Name" xml:space="preserve">
+    <value>Exaltation Option</value>
+  </data>
+  <data name="AST_ST_Heals_Exaltation_Desc" xml:space="preserve">
+    <value>Fügt Exaltation hinzu.</value>
+  </data>
+  <data name="AST_ST_Heals_Spire_Name" xml:space="preserve">
+    <value>Turm Option</value>
+  </data>
+  <data name="AST_ST_Heals_Spire_Desc" xml:space="preserve">
+    <value>Fügt den Turm (Schild) hinzu, wenn die Karte gezogen wurde.</value>
+  </data>
+  <data name="AST_ST_Heals_Ewer_Name" xml:space="preserve">
+    <value>Krug Option</value>
+  </data>
+  <data name="AST_ST_Heals_Ewer_Desc" xml:space="preserve">
+    <value>Fügt den Krug (Heilung über Zeit) hinzu, wenn die Karte gezogen wurde.</value>
+  </data>
+  <data name="AST_ST_Heals_Arrow_Name" xml:space="preserve">
+    <value>Pfeil Option</value>
+  </data>
+  <data name="AST_ST_Heals_Arrow_Desc" xml:space="preserve">
+    <value>Fügt den Pfeil (erhöhte Heilung) hinzu, wenn die Karte gezogen wurde.</value>
+  </data>
+  <data name="AST_ST_Heals_Bole_Name" xml:space="preserve">
+    <value>Eiche Option</value>
+  </data>
+  <data name="AST_ST_Heals_Bole_Desc" xml:space="preserve">
+    <value>Fügt die Eiche (Reduzierter Schaden) hinzu, wenn die Karte gezogen wurde.</value>
+  </data>
+  <data name="AST_ST_Heals_CelestialOpposition_Name" xml:space="preserve">
+    <value>Opposition Option</value>
+  </data>
+  <data name="AST_ST_Heals_CelestialOpposition_Desc" xml:space="preserve">
+    <value>Fügt Opposition hinzu.</value>
+  </data>
+  <data name="AST_ST_Heals_CollectiveUnconscious_Name" xml:space="preserve">
+    <value>Numinosum Option</value>
+  </data>
+  <data name="AST_ST_Heals_CollectiveUnconscious_Desc" xml:space="preserve">
+    <value>Fügt Numinosum hinzu (für Heilung über Zeit. Damit er nicht kanalisiert).</value>
+  </data>
+  <data name="AST_ST_Heals_SoloLady_Name" xml:space="preserve">
+    <value>Königin der Kronen Option</value>
+  </data>
+  <data name="AST_ST_Heals_SoloLady_Desc" xml:space="preserve">
+    <value>Fügt Königin der Kronen hinzu, wenn die Karte gezogen wird.</value>
+  </data>
+  <data name="AST_ST_Heals_NeutralSect_Name" xml:space="preserve">
+    <value>Neutral Option</value>
+  </data>
+  <data name="AST_ST_Heals_NeutralSect_Desc" xml:space="preserve">
+    <value>Fügt Neutral/Sonnenzeichen hinzu.</value>
+  </data>
+  <data name="AST_AoE_Heals_Name" xml:space="preserve">
+    <value>Erweiterter Heilmodus - Flächenheilung (Advanced Healing Mode - AoE)</value>
+  </data>
+  <data name="AST_AoE_Heals_Desc" xml:space="preserve">
+    <value>Ersetzt Aspektierter Helios/Helios in Konjunktion oder Helios durch einen Heilungseffekt auf einen Knopf. Der Zauber wird die unterste Priorität ohne Prüfungen haben, unabhängig von den unteren Einstellungen.</value>
+  </data>
+  <data name="AST_AoE_Heals_Aspected_Name" xml:space="preserve">
+    <value>Aspektierter Helios Option</value>
+  </data>
+  <data name="AST_AoE_Heals_Aspected_Desc" xml:space="preserve">
+    <value>Fügt eine Aspektierter Helios/Helios in Konjunktion hinzu.</value>
+  </data>
+  <data name="AST_AoE_Heals_Helios_Name" xml:space="preserve">
+    <value>Helios Option</value>
+  </data>
+  <data name="AST_AoE_Heals_Helios_Desc" xml:space="preserve">
+    <value>Fügt Helios hinzu.</value>
+  </data>
+  <data name="AST_AoE_Heals_CelestialOpposition_Name" xml:space="preserve">
+    <value>Opposition Option</value>
+  </data>
+  <data name="AST_AoE_Heals_CelestialOpposition_Desc" xml:space="preserve">
+    <value>Fügt Opposition hinzu.</value>
+  </data>
+  <data name="AST_AoE_Heals_LazyLady_Name" xml:space="preserve">
+    <value>Faule Königin der Kronen Option</value>
+  </data>
+  <data name="AST_AoE_Heals_LazyLady_Desc" xml:space="preserve">
+    <value>Fügt Königin der Kronen hinzu, wenn die Karte gezogen wird.</value>
+  </data>
+  <data name="AST_AoE_Heals_Horoscope_Name" xml:space="preserve">
+    <value>Horoskop Option</value>
+  </data>
+  <data name="AST_AoE_Heals_Horoscope_Desc" xml:space="preserve">
+    <value>Fügt Horoskop hinzu, gefolgt von Aspektierter Helios oder Helios.</value>
+  </data>
+  <data name="AST_AoE_Heals_HoroscopeHeal_Name" xml:space="preserve">
+    <value>Horoskop Helios Option</value>
+  </data>
+  <data name="AST_AoE_Heals_HoroscopeHeal_Desc" xml:space="preserve">
+    <value>Fügt Horoskop Helios hinzu.</value>
+  </data>
+  <data name="AST_AoE_Heals_NeutralSect_Name" xml:space="preserve">
+    <value>Neutral Option</value>
+  </data>
+  <data name="AST_AoE_Heals_NeutralSect_Desc" xml:space="preserve">
+    <value>Fügt Neutral und sein Nachfolger Sonnenzeichen hinzu.</value>
+  </data>
+  <data name="AST_AoE_Heals_StellarDetonation_Name" xml:space="preserve">
+    <value>Stellare Detonation Option</value>
+  </data>
+  <data name="AST_AoE_Heals_StellarDetonation_Desc" xml:space="preserve">
+    <value>Fügt Stellare Detonation hinzu, wenn unter dem Effekt von Irdische Herrschaft.</value>
+  </data>
+  <data name="AST_AoE_Heals_CollectiveUnconscious_Name" xml:space="preserve">
+    <value>Numinosum Option</value>
+  </data>
+  <data name="AST_AoE_Heals_CollectiveUnconscious_Desc" xml:space="preserve">
+    <value>Fügt Numinosum hinzu (für Heilung über Zeit. Damit er nicht kanalisiert).</value>
+  </data>
+  <data name="AST_Cards_QuickTargetCards_Name" xml:space="preserve">
+    <value>Vereinfachte Schadenskarten</value>
+  </data>
+  <data name="AST_Cards_QuickTargetCards_Desc" xml:space="preserve">
+    <value>Wenn du die Waage oder den Speer in einer Kombo spielst, wird dies automatisch auf ein Gruppenmitglied ausgerichtet.
+Es wird auf einen DPS geschaut zu dem die Karte am meisten passt, und folgt den Prioritäten des Balance (Balance Discord);, wenn keine gefundenen oder sie bereits selbigen Effekt haben, wird stattdessen auf die anderen DPS geschaut.
+Wird versuchen, Gruppenmitglieder zu überspringen, die Schaden - oder Schwäche haben.
+Standardeinstellung für Sie, wenn keine passenden Gruppenmitglieder gefunden wurden.</value>
   </data>
 </root>
