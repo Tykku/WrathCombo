@@ -343,9 +343,10 @@ internal abstract partial class CustomComboFunctions
             case 1241: // Cloud of Darkness Chaotic - Sphere of Naught
                 // Cloud of Darkness = 17950
                 // Stygian Shadow = 17951
+                // Atomos = 17952
                 // Inner Darkness = 4177
                 // Outer Darkness = 4178
-                if (targetID is 17950 && HasStatusEffect(4178, null, true)) return true; // If on the tiles
+                if ((targetID is 17950 || targetID is 17952) && HasStatusEffect(4178, null, true)) return true; // If on the tiles
                 if (targetID is 17951 && HasStatusEffect(4177, null, true)) return true; // If on platforms
 
                 return false;
