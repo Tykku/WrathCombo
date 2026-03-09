@@ -503,13 +503,13 @@ Les actions embranchées seront utilisées par les combos à cible unique et les
     <value>Ultimatum Embranché</value>
   </data>
   <data name="Variant_Tank_Ultimatum_Desc" xml:space="preserve">
-    <value>Utilise Ultimatum Embranché dès que disponible.</value>
+    <value>Utilise Ultimatum embranché dès que disponible.</value>
   </data>
   <data name="Variant_Tank_Raise_Name" xml:space="preserve">
-    <value>Vie Embranchée</value>
+    <value>Vie embranchée</value>
   </data>
   <data name="Variant_Tank_Raise_Desc" xml:space="preserve">
-    <value>Utilise Vie Embranchée sur les membres inapte de l'équipe.</value>
+    <value>Utilise Vie embranchée sur les membres inapte de l'équipe.</value>
   </data>
   <data name="Variant_Tank_SpiritDart_Name" xml:space="preserve">
     <value>Flèche spirituelle embranchée</value>
@@ -585,13 +585,85 @@ Les actions embranchées seront utilisées par les combos à cible unique et les
   <data name="Variant_Melee_Rampart_Desc" xml:space="preserve">
     <value>Utilise Rempart embranché dès que possible.</value>
   </data>
+  <data name="Variant_Melee_EagleEyeShot_Name" xml:space="preserve">
+    <value>Œil d'aigle embranché</value>
+  </data>
+  <data name="Variant_Melee_EagleEyeShot_Desc" xml:space="preserve">
+    <value>Utilise Œil d'aigle embranché dès que possible.</value>
+  </data>
+  <data name="Variant_PhysRanged_Name" xml:space="preserve">
+    <value>DPS Distance Physique embranché</value>
+  </data>
   <data name="Variant_PhysRanged_Desc" xml:space="preserve">
     <value>Activer pour ajouter les Actions embranchées dans les Donjons à Embranchements. 
 Les actions embranchées seront utilisées par les combos à cible unique et les combos en zones. Lors des modes simplifié et avancé</value>
   </data>
+  <data name="Variant_PhysRanged_Cure_Name" xml:space="preserve">
+    <value>Soin Embranché</value>
+  </data>
+  <data name="Variant_PhysRanged_Cure_Desc" xml:space="preserve">
+    <value>Utilise Soin Embranché quand les PV sont en dessous du seuil.</value>
+  </data>
+  <data name="Variant_PhysRanged_Ultimatum_Name" xml:space="preserve">
+    <value>Ultimatum Embranché</value>
+  </data>
+  <data name="Variant_PhysRanged_Ultimatum_Desc" xml:space="preserve">
+    <value>Utilise Ultimatum embranché dès que disponible.</value>
+  </data>
+  <data name="Variant_PhysRanged_Raise_Name" xml:space="preserve">
+    <value>Vie embranchée</value>
+  </data>
+  <data name="Variant_PhysRanged_Raise_Desc" xml:space="preserve">
+    <value>Utilise Vie embranchée sur les membres inapte de l'équipe.</value>
+  </data>
+  <data name="Variant_PhysRanged_Rampart_Name" xml:space="preserve">
+    <value>Rempart embranché</value>
+  </data>
+  <data name="Variant_PhysRanged_Rampart_Desc" xml:space="preserve">
+    <value>Utilise Rempart embranché dès que possible.</value>
+  </data>
+  <data name="Variant_PhysRanged_EagleEyeShot_Name" xml:space="preserve">
+    <value>Œil d'aigle embranché</value>
+  </data>
+  <data name="Variant_PhysRanged_EagleEyeShot_Desc" xml:space="preserve">
+    <value>Utilise Œil d'aigle embranché dès que possible.</value>
+  </data>
+  <data name="Variant_Magic_Name" xml:space="preserve">
+    <value>DPS Magique embranché</value>
+  </data>
   <data name="Variant_Magic_Desc" xml:space="preserve">
     <value>Activer pour ajouter les Actions embranchées dans les Donjons à Embranchements. 
 Les actions embranchées seront utilisées par les combos à cible unique et les combos en zones. Lors des modes simplifié et avancé</value>
+  </data>
+  <data name="Variant_Magic_Cure_Name" xml:space="preserve">
+    <value>Soin Embranché</value>
+  </data>
+  <data name="Variant_Magic_Cure_Desc" xml:space="preserve">
+    <value>Utilise Soin Embranché quand les PV sont en dessous du seuil.</value>
+  </data>
+  <data name="Variant_Magic_Ultimatum_Name" xml:space="preserve">
+    <value>Ultimatum Embranché</value>
+  </data>
+  <data name="Variant_Magic_Ultimatum_Desc" xml:space="preserve">
+    <value>Utilise Ultimatum embranché dès que disponible.</value>
+  </data>
+  <data name="Variant_Magic_Raise_Name" xml:space="preserve">
+    <value>Vie embranchée</value>
+  </data>
+  <data name="Variant_Magic_Raise_Desc" xml:space="preserve">
+    <value>Utilise Vie embranchée sur les membres inapte de l'équipe.</value>
+  </data>
+  <data name="Variant_Magic_Rampart_Name" xml:space="preserve">
+    <value>Rempart embranché</value>
+  </data>
+  <data name="Variant_Magic_Rampart_Desc" xml:space="preserve">
+    <value>Utilise Rempart embranché dès que possible.</value>
+  </data>
+  <data name="Variant_Magic_EagleEyeShot_Name" xml:space="preserve">
+    <value>Œil d'aigle embranché</value>
+  </data>
+  <data name="Variant_Magic_EagleEyeShot_Desc" xml:space="preserve">
+    <value>Utilise Œil d'aigle embranché dès que possible.</value>
   </data>
   <data name="Phantom_Freelancer_Desc" xml:space="preserve">
     <value>Activer pour ajouter les actions spécifiques du Freelance fantôme à la rotation.</value>
