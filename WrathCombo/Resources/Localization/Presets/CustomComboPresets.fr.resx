@@ -249,4 +249,13 @@ Utile pour trouver une cible si l'un des joueurs n'est pas en vie.</value>
   <data name="ALL_Ranged_Interrupt_Name" xml:space="preserve">
     <value>DPS Physique à distance : Option d'interruption</value>
   </data>
+  <data name="ALL_Ranged_Interrupt_Desc" xml:space="preserve">
+    <value>Remplace écorche-pied par écorche-tête quand la cible peut être interrompue.</value>
+  </data>
+  <data name="Bozja_Tank_Name" xml:space="preserve">
+    <value>Bozja Tank</value>
+  </data>
+  <data name="Bozja_Tank_Desc" xml:space="preserve">
+    <value>Ajoute les actions de Tank relative à Bozja dans la rotation.</value>
+  </data>
 </root>
