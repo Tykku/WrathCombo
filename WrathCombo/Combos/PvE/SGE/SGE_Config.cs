@@ -1,5 +1,8 @@
 ﻿using WrathCombo.CustomComboNS.Functions;
 using static WrathCombo.Extensions.UIntExtensions;
+using static WrathCombo.Extensions.UShortExtensions;
+using static WrathCombo.Resources.Localization.JobConfigs.Generics;
+using static WrathCombo.Resources.Localization.JobConfigs.SGE_Config;
 using static WrathCombo.Window.Functions.SliderIncrements;
 using static WrathCombo.Window.Functions.UserConfig;
 namespace WrathCombo.Combos.PvE;
@@ -16,18 +19,18 @@ internal partial class SGE
 
                 case Preset.SGE_ST_DPS_Opener:
                     DrawHorizontalRadioButton(SGE_SelectedOpener,
-                        "Toxikon Opener", "Uses Toxikon opener", 0);
+                        $"{Toxikon.ActionName()} Opener", $"Uses {Toxikon.ActionName()} opener", 0);
 
                     DrawHorizontalRadioButton(SGE_SelectedOpener,
-                        "Pneuma Opener", "Uses Pneuma opener", 1);
+                        $"{Pneuma.ActionName()} Opener", $"Uses {Pneuma.ActionName()} opener", 1);
 
                     ImGui.NewLine();
                     DrawBossOnlyChoice(SGE_Balance_Content);
                     break;
 
                 case Preset.SGE_ST_DPS:
-                    DrawHorizontalRadioButton(SGE_ST_DPS_Adv, $"On All {Dosis.ActionName()}", "Applies options to all Dosis.", 0);
-                    DrawHorizontalRadioButton(SGE_ST_DPS_Adv, $"On {Dosis2.ActionName()}", "Applies options to ONLY Dosis 2.", 1);
+                    DrawHorizontalRadioButton(SGE_ST_DPS_Adv, $"On All {Dosis.ActionName()}", $"Applies options to all {Dosis.ActionName()}.", 0);
+                    DrawHorizontalRadioButton(SGE_ST_DPS_Adv, $"On {Dosis2.ActionName()}", $"Applies options to ONLY {Dosis2.ActionName()}.", 1);
                     break;
 
                 case Preset.SGE_ST_DPS_EDosis:
@@ -47,7 +50,7 @@ internal partial class SGE
 
                 case Preset.SGE_ST_DPS_Rhizo:
                     DrawSliderInt(1, 3, SGE_ST_DPS_Rhizo,
-                        "Addersgall Threshold");
+                        $"{Traits.Addersgall.TraitName()} Threshold");
                     break;
 
                 case Preset.SGE_ST_DPS_Phlegma:
@@ -58,17 +61,17 @@ internal partial class SGE
                     }
 
                     DrawAdditionalBoolChoice(SGE_ST_DPS_Phlegma_Burst,
-                        "Burst option", "Save Phlegma charges for burst.");
+                        "Burst option", $"Save {Phlegma.ActionName()} charges for burst.");
                     break;
 
                 case Preset.SGE_ST_DPS_AddersgallProtect:
                     DrawSliderInt(1, 3, SGE_ST_DPS_AddersgallProtect,
-                        "Addersgall Threshold");
+                        $"{Traits.Addersgall.TraitName()} Threshold");
                     break;
 
                 case Preset.SGE_ST_DPS_Movement:
                     DrawHorizontalMultiChoice(SGE_ST_DPS_Movement,
-                        Toxikon.ActionName(), $"Use {Toxikon.ActionName()} when Addersting charges are available.", 3, 0);
+                        Toxikon.ActionName(), $"Use {Toxikon.ActionName()} when {Traits.Addersting.TraitName()} charges are available.", 3, 0);
                     DrawPriorityInput(SGE_ST_DPS_Movement_Priority,
                         3, 0, $"{Toxikon.ActionName()} Priority: ");
                     DrawHorizontalMultiChoice(SGE_ST_DPS_Movement,
@@ -97,12 +100,12 @@ internal partial class SGE
 
                 case Preset.SGE_AoE_DPS_Rhizo:
                     DrawSliderInt(1, 3, SGE_AoE_DPS_Rhizo,
-                        "Addersgall Threshold");
+                        $"{Traits.Addersgall.TraitName()} Threshold");
                     break;
 
                 case Preset.SGE_AoE_DPS_AddersgallProtect:
                     DrawSliderInt(1, 3, SGE_AoE_DPS_AddersgallProtect,
-                        "Addersgall Threshold");
+                        $"{Traits.Addersgall.TraitName()} Threshold");
                     break;
 
                 #endregion
@@ -111,7 +114,7 @@ internal partial class SGE
 
                 case Preset.SGE_ST_Heal:
                     DrawSliderInt(0, 2, SGE_Heal_HoldAddersgall,
-                        "How many Addersgall to retain for Manual Usage.");
+                        $"How many {Traits.Addersgall.TraitName()} to retain for Manual Usage.");
                     DrawAdditionalBoolChoice(SGE_ST_Heal_IncludeShields,
                         "Include Shields in HP Percent Sliders", "");
                     break;
@@ -164,7 +167,7 @@ internal partial class SGE
                     DrawSliderInt(0, 100, SGE_ST_Heal_Haima,
                         "Start using when below HP %. Set to 100 to disable this check.");
                     DrawAdditionalBoolChoice(SGE_ST_Heal_HaimaBossOption,
-                        "Not on Bosses", "Will not use on ST in Boss encounters.");
+                        "Not on Bosses", "Will not use on Single Target in Boss encounters.");
                     DrawAdditionalBoolChoice(SGE_ST_Heal_Haima_TankOnly,
                         "Tank Only", "Will only use on tanks.");
                     DrawPriorityInput(SGE_ST_Heals_Priority,
@@ -175,7 +178,7 @@ internal partial class SGE
                     DrawSliderInt(0, 100, SGE_ST_Heal_Krasis,
                         "Start using when below HP %. Set to 100 to disable this check.");
                     DrawAdditionalBoolChoice(SGE_ST_Heal_KrasisBossOption,
-                        "Not on Bosses", "Will not use on ST in Boss encounters.");
+                        "Not on Bosses", "Will not use on Single Target in Boss encounters.");
                     DrawAdditionalBoolChoice(SGE_ST_Heal_Krasis_TankOnly,
                         "Tank Only", "Will only use on tanks.");
                     DrawPriorityInput(SGE_ST_Heals_Priority,
@@ -209,7 +212,7 @@ internal partial class SGE
                         "Start using when below HP %. Set to 100 to disable this check");
 
                     DrawAdditionalBoolChoice(SGE_ST_Heal_KeracholeBossOption,
-                        "Not on Bosses", "Will not use on ST in Boss encounters.");
+                        "Not on Bosses", "Will not use on Single Target in Boss encounters.");
 
                     DrawPriorityInput(SGE_ST_Heals_Priority,
                         12, 8, $"{Kerachole.ActionName()} Priority: ");
@@ -220,7 +223,7 @@ internal partial class SGE
                         "Start using when below HP %. Set to 100 to disable this check");
 
                     DrawAdditionalBoolChoice(SGE_ST_Heal_PhysisBossOption,
-                        "Not on Bosses", "Will not use on ST in Boss encounters.");
+                        "Not on Bosses", "Will not use on Single Target in Boss encounters.");
 
                     DrawPriorityInput(SGE_ST_Heals_Priority,
                         12, 9, $"{Physis.ActionName()} Priority: ");
@@ -231,7 +234,7 @@ internal partial class SGE
                         "Start using when below HP %. Set to 100 to disable this check");
 
                     DrawAdditionalBoolChoice(SGE_ST_Heal_PanhaimaBossOption,
-                        "Not on Bosses", "Will not use on ST in Boss encounters.");
+                        "Not on Bosses", "Will not use on Single Target in Boss encounters.");
 
                     DrawPriorityInput(SGE_ST_Heals_Priority,
                         12, 10, $"{Panhaima.ActionName()} Priority: ");
@@ -242,15 +245,15 @@ internal partial class SGE
                         "Start using when below HP %. Set to 100 to disable this check");
 
                     DrawAdditionalBoolChoice(SGE_ST_Heal_HolosBossOption,
-                        "Not on Bosses", "Will not use on ST in Boss encounters.");
+                        "Not on Bosses", "Will not use on Single Target in Boss encounters.");
 
                     DrawPriorityInput(SGE_ST_Heals_Priority,
                         12, 11, $"{Holos.ActionName()} Priority: ");
                     break;
-                
+
                 case Preset.SGE_AoE_Heal:
                     DrawSliderInt(0, 2, SGE_Heal_HoldAddersgall,
-                        "How many Addersgall to retain for Manual Usage.");
+                        $"How many {Traits.Addersgall.TraitName()} to retain for Manual Usage.");
                     break;
 
                 case Preset.SGE_AoE_Heal_Lucid:
@@ -263,7 +266,7 @@ internal partial class SGE
                         "Start using when below party average HP %. Set to 100 to disable this check");
 
                     DrawAdditionalBoolChoice(SGE_AoE_Heal_KeracholeTrait,
-                        "Check for Enhanced Kerachole Trait (Heal over Time)", $"Enabling this will prevent {Kerachole.ActionName()} from being used when the Heal over Time trait is unavailable.");
+                        $"Check for {Traits.EnhancedKerachole.TraitName()} Trait (Heal over Time)", $"Enabling this will prevent {Kerachole.ActionName()} from being used when the Heal over Time trait is unavailable.");
 
                     DrawPriorityInput(SGE_AoE_Heals_Priority,
                         9, 0, $"{Kerachole.ActionName()} Priority: ");
@@ -298,7 +301,7 @@ internal partial class SGE
                         "Start using when below party average HP %. Set to 100 to disable this check");
 
                     DrawHorizontalMultiChoice(SGE_ST_Heal_PanhaimaOpts,
-                        "Any Panhaima check", "Enable to not override an existing Panhaima.", 1, 0);
+                        $"Any {Panhaima.ActionName()} check", $"Enable to not override an existing {Panhaima.ActionName()}.", 1, 0);
 
                     DrawPriorityInput(SGE_AoE_Heals_Priority,
                         9, 4, $"{Panhaima.ActionName()} Priority: ");
@@ -352,28 +355,28 @@ internal partial class SGE
 
                 case Preset.SGE_Mit_ST:
                     DrawHorizontalMultiChoice(SGE_Mit_ST_Options,
-                        "Include Haima", "Will add Haima for more mitigation.", 2, 0);
+                        $"Include {Haima.ActionName()}", $"Will add {Haima.ActionName()} for more mitigation.", 2, 0);
                     ImGui.NewLine();
                     DrawHorizontalMultiChoice(SGE_Mit_ST_Options,
-                        "Include Taurochole", "Will add Taurochole to top off targets health and add Damage reduction.", 2, 1);
+                        $"Include {Taurochole.ActionName()}", $"Will add {Taurochole.ActionName()} to top off targets health and add Damage reduction.", 2, 1);
                     if (SGE_Mit_ST_Options[1])
                     {
                         ImGui.Indent();
                         DrawSliderInt(1, 100, SGE_Mit_ST_TaurocholeThreshold,
-                            "Target HP% to use Taurochole at or below. Set to 100 to disable this check.");
+                            $"Target HP% to use {Taurochole.ActionName()} at or below. Set to 100 to disable this check.");
                         ImGui.Unindent();
                     }
                     break;
 
                 case Preset.SGE_Mit_AoE:
                     DrawSliderInt(0, 100, SGE_Mit_AoE_PrognosisOption,
-                        "Shield Check: Percentage of Party Members to get Prognosis shields. \n 0 = Dont use, 100 = everyone needs shields", sliderIncrement: 25);
+                        $"Shield Check: Percentage of Party Members to get {Prognosis.ActionName()} shields. \n 0 = Dont use, 100 = everyone needs shields", sliderIncrement: 25);
                     DrawHorizontalMultiChoice(SGE_Mit_AoE_Options,
-                        "Include Philosophia", "Will add Philosophia before Eukrasian Prognosis for the Healing Boost", 3, 0);
+                        $"Include {Philosophia.ActionName()}", $"Will add {Philosophia.ActionName()} before {EukrasianPrognosis.ActionName()} for the Healing Boost", 3, 0);
                     DrawHorizontalMultiChoice(SGE_Mit_AoE_Options,
-                        "Include Kerachole", "Will add Kerachole at beginning", 3, 1);
+                        $"Include {Kerachole.ActionName()}", $"Will add {Kerachole.ActionName()} at beginning", 3, 1);
                     DrawHorizontalMultiChoice(SGE_Mit_AoE_Options,
-                        "Include Panhaima", "Will add Panhaima at the end", 3, 2);
+                        $"Include {Panhaima.ActionName()}", $"Will add {Panhaima.ActionName()} at the end", 3, 2);
                     break;
 
                 case Preset.SGE_Raidwide_Holos:
