@@ -1957,9 +1957,6 @@ Lv.70以下で可能な限り羽を織ります。</value></data>
   <data name="PCT_ST_AdvancedMode_SwiftcastOption_Desc" xml:space="preserve"><value>移動中、コンボに迅速魔を追加します。</value></data>
   <data name="PCT_ST_AdvancedMode_Addle_Name" xml:space="preserve"><value>アドル全体攻撃対応オプション</value></data>
   <data name="PCT_ST_AdvancedMode_Addle_Desc" xml:space="preserve"><value>全体攻撃の詠唱を検知した際にアドルを追加します。</value></data>
-  <data name="PCT_ST_AdvancedMode_Tempura_Name" xml:space="preserve"><value>テンペラコート全体攻撃対応オプション</value></data>
-  <data name="PCT_ST_AdvancedMode_Tempura_Desc" xml:space="preserve"><value>全体攻撃の詠唱を検知した際にテンペラコートを追加します。
-射程内のパーティメンバーが十分にいる場合（75%以上）、テンペラグラッサで展開します。</value></data>
   <data name="PCT_AoE_AdvancedMode_Name" xml:space="preserve"><value>アドバンストモード - 範囲</value></data>
   <data name="PCT_AoE_AdvancedMode_Desc" xml:space="preserve"><value>レッドファイラを1ボタンの範囲ローテーションに置き換えます。
 ローテーションを細かく調整したい場合に適した設定です。</value></data>
@@ -4087,4 +4084,11 @@ POST 94: バーストウィンドウ中に使用します。</value></data>
   <data name="WAR_NascentFlash_MO_Desc" xml:space="preserve"><value>UI で味方にマウスを置くと、初期の フラッシュ がその味方にリターゲットされます。</value></data>
   <data name="WAR_NascentFlash_TT_Name" xml:space="preserve"><value>ターゲットのターゲットを含める</value></data>
   <data name="WAR_NascentFlash_TT_Desc" xml:space="preserve"><value>あなたのターゲットのターゲットがあなたまたはあなたのパーティーにいない場合、原初の猛りを彼らにリターゲットします。</value></data>
+  <data name="PCT_ST_AdvancedMode_Tempera_Desc" xml:space="preserve">
+    <value>全体攻撃の詠唱を検知した際にテンペラコートを追加します。
+射程内のパーティメンバーが十分にいる場合（75%以上）、テンペラグラッサで展開します。</value>
+  </data>
+  <data name="PCT_ST_AdvancedMode_Tempera_Name" xml:space="preserve">
+    <value>テンペラコート全体攻撃対応オプション</value>
+  </data>
 </root>
