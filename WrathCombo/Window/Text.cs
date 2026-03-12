@@ -10,6 +10,7 @@ using System.Resources;
 using System.Threading;
 using WrathCombo.Core;
 using WrathCombo.Extensions;
+using WrathCombo.Resources.Localization.JobConfigs;
 using WrathCombo.Resources.Localization.Presets;
 using WrathCombo.Resources.Localization.UI.AutoRotation;
 using WrathCombo.Resources.Localization.UI.Features;
@@ -82,6 +83,8 @@ namespace WrathCombo.Window
             MiscUI.Culture = _gameCulture;
             SettingsUI.Culture = _gameCulture;
             SettingsCfgUI.Culture = _gameCulture;
+            Generics.Culture = _gameCulture;
+            AST_Config.Culture = _gameCulture;
 
             LangFromCulture = _gameCulture.TwoLetterISOLanguageName switch
             {

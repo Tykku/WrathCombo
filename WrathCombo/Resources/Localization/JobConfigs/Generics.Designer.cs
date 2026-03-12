@@ -61,11 +61,318 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} Priority: .
+        /// </summary>
+        internal static string Action_Priority {
+            get {
+                return ResourceManager.GetString("Action_Priority", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All Content.
+        /// </summary>
+        internal static string AllContent {
+            get {
+                return ResourceManager.GetString("AllContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Applies to all content in the game..
+        /// </summary>
+        internal static string AllContentDescription {
+            get {
+                return ResourceManager.GetString("AllContentDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All Enemies.
+        /// </summary>
+        internal static string AllEnemies {
+            get {
+                return ResourceManager.GetString("AllEnemies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Applies options to {0} only..
+        /// </summary>
+        internal static string ApplyOnlyTo0 {
+            get {
+                return ResourceManager.GetString("ApplyOnlyTo0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Applies options to all of these:
+        ///{0}.
+        /// </summary>
+        internal static string ApplyToAll0 {
+            get {
+                return ResourceManager.GetString("ApplyToAll0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Boss Encounter Non Bosses. Stop using at Enemy HP %..
+        /// </summary>
+        internal static string BossEncounterNonBossHpPercent {
+            get {
+                return ResourceManager.GetString("BossEncounterNonBossHpPercent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Boss Only Content.
+        /// </summary>
+        internal static string BossOnlyContent {
+            get {
+                return ResourceManager.GetString("BossOnlyContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Only applies in instances where you directly fight a boss. Excludes many A Realm Reborn &amp; Heavensward raids that include trash..
+        /// </summary>
+        internal static string BossOnlyDescription {
+            get {
+                return ResourceManager.GetString("BossOnlyDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bosses Only. Stop using at Enemy HP %..
+        /// </summary>
+        internal static string BossOnlyHpPercent {
+            get {
+                return ResourceManager.GetString("BossOnlyHpPercent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to How many charges to retain for manual use. Set to 0 to disable this check..
+        /// </summary>
+        internal static string ChargePool {
+            get {
+                return ResourceManager.GetString("ChargePool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Don&apos;t Use {0}.
+        /// </summary>
+        internal static string DontUse0 {
+            get {
+                return ResourceManager.GetString("DontUse0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Seconds remaining before reapplying the DoT. Set to Zero to disable this check..
+        /// </summary>
+        internal static string DoTSecondsRemainingZeroDisable {
+            get {
+                return ResourceManager.GetString("DoTSecondsRemainingZeroDisable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select what kind of enemies the HP check should be applied to:.
+        /// </summary>
+        internal static string EnemyTypeCheck {
+            get {
+                return ResourceManager.GetString("EnemyTypeCheck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Applies the HP check above to all enemies..
+        /// </summary>
+        internal static string HPCheckAllEnemies {
+            get {
+                return ResourceManager.GetString("HPCheckAllEnemies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Only applies the HP check above to non-bosses..
+        /// </summary>
+        internal static string HPCheckNonBosses {
+            get {
+                return ResourceManager.GetString("HPCheckNonBosses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Include Shields in HP Percent Sliders.
+        /// </summary>
+        internal static string IncludeShields {
+            get {
+                return ResourceManager.GetString("IncludeShields", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set value for your MP to be at or under for this feature to work.
+        /// </summary>
+        internal static string LucidMP {
+            get {
+                return ResourceManager.GetString("LucidMP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maximum number of targets to employ multi-dotting .
+        /// </summary>
+        internal static string MaxTargetsMultiDot {
+            get {
+                return ResourceManager.GetString("MaxTargetsMultiDot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Non-boss Encounters Only.
+        /// </summary>
+        internal static string NonBossEncountersOnly {
+            get {
+                return ResourceManager.GetString("NonBossEncountersOnly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Non-Bosses.
+        /// </summary>
+        internal static string NonBosses {
+            get {
+                return ResourceManager.GetString("NonBosses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Non boss encounter. Stop using at Enemy HP %..
+        /// </summary>
+        internal static string NonBossHpPercent {
+            get {
+                return ResourceManager.GetString("NonBossHpPercent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Normal Targeting.
+        /// </summary>
+        internal static string NormalTargeting {
+            get {
+                return ResourceManager.GetString("NormalTargeting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to On {0}.
         /// </summary>
         internal static string On0 {
             get {
                 return ResourceManager.GetString("On0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Only Weave.
+        /// </summary>
+        internal static string OnlyWeave {
+            get {
+                return ResourceManager.GetString("OnlyWeave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Priority: .
+        /// </summary>
+        internal static string Priority {
+            get {
+                return ResourceManager.GetString("Priority", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select what kind of content this option applies to:.
+        /// </summary>
+        internal static string SelectWhatKindOfContentThisOptionAppliesTo {
+            get {
+                return ResourceManager.GetString("SelectWhatKindOfContentThisOptionAppliesTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Self Only.
+        /// </summary>
+        internal static string SelfOnly {
+            get {
+                return ResourceManager.GetString("SelfOnly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stop using at Enemy HP %. Set to Zero to disable this check..
+        /// </summary>
+        internal static string StopEnemyHpPercent {
+            get {
+                return ResourceManager.GetString("StopEnemyHpPercent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start using when below HP %. Set to 100 to disable this check.
+        /// </summary>
+        internal static string StopFriendlyHpPercent100 {
+            get {
+                return ResourceManager.GetString("StopFriendlyHpPercent100", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stop using when below HP %. Set to Zero to disable this check.
+        /// </summary>
+        internal static string StopFriendlyHpPercentZero {
+            get {
+                return ResourceManager.GetString("StopFriendlyHpPercentZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Seconds remaining before reapplying (0 = Do not reapply early).
+        /// </summary>
+        internal static string StopSeconds {
+            get {
+                return ResourceManager.GetString("StopSeconds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Two target dotting.
+        /// </summary>
+        internal static string TwoTargetDotting {
+            get {
+                return ResourceManager.GetString("TwoTargetDotting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Will maintain Damage over time spells on two targets if applicable..
+        /// </summary>
+        internal static string TwoTargetDottingDescription {
+            get {
+                return ResourceManager.GetString("TwoTargetDottingDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use {0}.
+        /// </summary>
+        internal static string Use0 {
+            get {
+                return ResourceManager.GetString("Use0", resourceCulture);
             }
         }
     }

@@ -61,34 +61,7 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Applies options to all Combusts..
-        /// </summary>
-        internal static string AppliesOptionsToAllCombusts {
-            get {
-                return ResourceManager.GetString("AppliesOptionsToAllCombusts", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Applies options to all Malefics..
-        /// </summary>
-        internal static string AppliesOptionsToAllMalefics {
-            get {
-                return ResourceManager.GetString("AppliesOptionsToAllMalefics", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Applies options to Malefic 2 only..
-        /// </summary>
-        internal static string AppliesOptionsToMalefic2Only {
-            get {
-                return ResourceManager.GetString("AppliesOptionsToMalefic2Only", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Does not use Earthly Star in the Opener..
+        ///   Looks up a localized string similar to Does not use {0} in the Opener..
         /// </summary>
         internal static string DoesNotUseEarthlyStarInTheOpener {
             get {
@@ -97,16 +70,43 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Don&apos;t Use Earthly Star.
+        ///   Looks up a localized string similar to Emergency {0} Priority:.
         /// </summary>
-        internal static string DonTUseEarthlyStar {
+        internal static string Emergency0Priority {
             get {
-                return ResourceManager.GetString("DonTUseEarthlyStar", resourceCulture);
+                return ResourceManager.GetString("Emergency0Priority", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Places Earthly Star in the Opener..
+        ///   Looks up a localized string similar to Follows normal targeting plan.
+        /// </summary>
+        internal static string FollowsNormalTargetingPlan {
+            get {
+                return ResourceManager.GetString("FollowsNormalTargetingPlan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overwrite Non-DPS Cards.
+        /// </summary>
+        internal static string OverwriteNonDPSCards {
+            get {
+                return ResourceManager.GetString("OverwriteNonDPSCards", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Places at own feet only.
+        /// </summary>
+        internal static string PlacesAtOwnFeetOnly {
+            get {
+                return ResourceManager.GetString("PlacesAtOwnFeetOnly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Places {0} in the Opener..
         /// </summary>
         internal static string PlacesEarthlyStarInTheOpener {
             get {
@@ -115,11 +115,29 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use Earthly Star.
+        ///   Looks up a localized string similar to Standard {0} Priority: .
         /// </summary>
-        internal static string UseEarthlyStar {
+        internal static string Standard0Priority {
             get {
-                return ResourceManager.GetString("UseEarthlyStar", resourceCulture);
+                return ResourceManager.GetString("Standard0Priority", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use when Target is at or below HP% (0% = Never Detonate Early, 100% = Detonate ASAP)..
+        /// </summary>
+        internal static string UseWhenTargetIsAtOrBelowHP0NeverDetonateEarly100DetonateASAP {
+            get {
+                return ResourceManager.GetString("UseWhenTargetIsAtOrBelowHP0NeverDetonateEarly100DetonateASAP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Will draw even if you have healing cards remaining..
+        /// </summary>
+        internal static string WillDrawEvenIfYouHaveHealingCardsRemaining {
+            get {
+                return ResourceManager.GetString("WillDrawEvenIfYouHaveHealingCardsRemaining", resourceCulture);
             }
         }
     }
