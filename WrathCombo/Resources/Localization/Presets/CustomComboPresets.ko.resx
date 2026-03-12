@@ -117,4 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Bozja_Tank_LostFontOfPower_Desc" xml:space="preserve">
+    <value>사용 가능할 때 로스트 힘의 원천을 사용합니다.</value>
+  </data>
+  <data name="Bozja_Tank_LostSlash_Name" xml:space="preserve">
+    <value>로스트 참격</value>
+  </data>
+  <data name="Bozja_Tank_LostSlash_Desc" xml:space="preserve">
+    <value>사용 가능할 때 로스트 참격을 사용합니다.</value>
+  </data>
+  <data name="Bozja_Tank_LostBravery_Desc" xml:space="preserve">
+    <value>사용 가능할 때 로스트 브레이브를 사용합니다.</value>
+  </data>
+  <data name="Bozja_Tank_LostAethershield_Desc" xml:space="preserve">
+    <value>사용 가능할 때 로스트 에테르 방패를 사용합니다.</value>
+  </data>
 </root>
