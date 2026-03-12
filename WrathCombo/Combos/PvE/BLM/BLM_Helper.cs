@@ -53,8 +53,7 @@ internal partial class BLM
     private static bool CanFireParadox =>
         ActiveParadox &&
         !HasStatusEffect(Buffs.Firestarter) &&
-        (LevelChecked(FlareStar) && (JustUsed(Transpose) ||
-                                     AstralFireStacks is 3 && JustUsed(FlareStar) && MP.Cur >= 1600) ||
+        (LevelChecked(FlareStar) && (JustUsed(Transpose) || AstralFireStacks is 3 && JustUsed(FlareStar) && MP.Cur >= 1600) ||
          GetCooldownRemainingTime(Manafont) <= GCD * 2 ||
          !LevelChecked(FlareStar) && ActionReady(Despair));
 

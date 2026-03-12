@@ -106,7 +106,7 @@ internal partial class BLM : Caster
                     !HasStatusEffect(Buffs.Firestarter) &&
                     !HasStatusEffect(Buffs.Triplecast) &&
                     !HasStatusEffect(Role.Buffs.Swiftcast))
-                    return Paradox;
+                    return OriginalHook(Paradox);
 
                 if (ActionReady(Role.Swiftcast) && !HasStatusEffect(Buffs.Triplecast))
                     return Role.Swiftcast;
@@ -131,7 +131,7 @@ internal partial class BLM : Caster
                     return Fire3;
 
                 if (CanFireParadox)
-                    return Paradox;
+                    return OriginalHook(Paradox);
 
                 if (CanFlarestar)
                     return FlareStar;
@@ -164,7 +164,7 @@ internal partial class BLM : Caster
                 if (UmbralHearts is 3 &&
                     UmbralIceStacks is 3 &&
                     ActiveParadox)
-                    return Paradox;
+                    return OriginalHook(Paradox);
 
                 if (MP.Full || JustUsed(Blizzard4))
                 {
@@ -254,7 +254,7 @@ internal partial class BLM : Caster
                 return OriginalHook(Thunder2);
 
             if (ActiveParadox && EndOfIcePhaseAoE)
-                return Paradox;
+                return OriginalHook(Paradox);
 
             if (FirePhase)
             {
@@ -445,7 +445,7 @@ internal partial class BLM : Caster
                     return Fire3;
 
                 if (CanFireParadox)
-                    return Paradox;
+                    return OriginalHook(Paradox);
 
                 if (IsEnabled(Preset.BLM_ST_FlareStar) &&
                     CanFlarestar)
@@ -480,7 +480,7 @@ internal partial class BLM : Caster
                 if (UmbralHearts is 3 &&
                     UmbralIceStacks is 3 &&
                     ActiveParadox)
-                    return Paradox;
+                    return OriginalHook(Paradox);
 
                 if (MP.Full || JustUsed(Blizzard4))
                 {
@@ -583,7 +583,7 @@ internal partial class BLM : Caster
 
             if (IsEnabled(Preset.BLM_AoE_ParadoxFiller) &&
                 ActiveParadox && EndOfIcePhaseAoE)
-                return Paradox;
+                return OriginalHook(Paradox);
 
             if (FirePhase)
             {
