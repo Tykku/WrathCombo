@@ -125,7 +125,7 @@ internal partial class BLM
                   !JustUsed(Triplecast)),
 
         // Paradox
-        (OriginalHook(Paradox), Preset.BLM_ST_Movement,
+        (OriginalHook(Fire), Preset.BLM_ST_Movement,
             () => BLM_ST_MovementOption[1] &&
                   ActionReady(Paradox) &&
                   FirePhase && ActiveParadox &&
@@ -340,7 +340,7 @@ internal partial class BLM
 
         internal static int FireAoE => GetResourceCost(OriginalHook(Fire2));
 
-        internal static int FireParadox => GetResourceCost(OriginalHook(Paradox));
+        internal static int FireParadox => GetResourceCost(Paradox);
     }
 
     private static readonly FrozenDictionary<uint, ushort> ThunderList = new Dictionary<uint, ushort>
