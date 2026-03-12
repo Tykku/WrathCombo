@@ -51,8 +51,9 @@ internal partial class BLM
          !LevelChecked(Fire4) && TimeSinceFirestarterBuff >= GCD * 3);
 
     private static bool CanFireParadox =>
-        ActiveParadox &&
-        (!HasStatusEffect(Buffs.Firestarter) && JustUsed(Transpose) || JustUsed(FlareStar) && MP.Cur >= 1600 ||
+        ActiveParadox && MP.Cur >= MP.FireParadox &&
+        (!HasStatusEffect(Buffs.Firestarter) && JustUsed(Transpose) ||
+         JustUsed(FlareStar) ||
          !LevelChecked(FlareStar) && ActionReady(Despair));
 
     private static bool EndOfFirePhase =>
@@ -128,6 +129,7 @@ internal partial class BLM
             () => BLM_ST_MovementOption[1] &&
                   ActionReady(Paradox) &&
                   FirePhase && ActiveParadox &&
+                  MP.Cur >= MP.FireParadox &&
                   !HasStatusEffect(Buffs.Firestarter) &&
                   !HasStatusEffect(Buffs.Triplecast) &&
                   !HasStatusEffect(Role.Buffs.Swiftcast)),
@@ -337,6 +339,8 @@ internal partial class BLM
         internal static int FireI => GetResourceCost(OriginalHook(Fire));
 
         internal static int FireAoE => GetResourceCost(OriginalHook(Fire2));
+
+        internal static int FireParadox => GetResourceCost(OriginalHook(Paradox));
     }
 
     private static readonly FrozenDictionary<uint, ushort> ThunderList = new Dictionary<uint, ushort>
