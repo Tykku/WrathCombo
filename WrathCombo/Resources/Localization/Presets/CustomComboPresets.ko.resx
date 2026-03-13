@@ -1797,4 +1797,573 @@
   <data name="BLM_AoE_Amplifier_Desc" xml:space="preserve">
     <value>딜사이클에 언어 확장을 추가합니다.</value>
   </data>
+  <data name="BLM_AoE_Manafont_Name" xml:space="preserve">
+    <value>마나샘 옵션</value>
+  </data>
+  <data name="BLM_AoE_Manafont_Desc" xml:space="preserve">
+    <value>딜사이클에 마나샘을 추가합니다.</value>
+  </data>
+  <data name="BLM_AoE_Triplecast_Name" xml:space="preserve">
+    <value>삼연속 마법 옵션</value>
+  </data>
+  <data name="BLM_AoE_Triplecast_Desc" xml:space="preserve">
+    <value>딜사이클에 삼연속 마법를 추가합니다.</value>
+  </data>
+  <data name="BLM_AoE_ParadoxFiller_Name" xml:space="preserve">
+    <value>역설 옵션</value>
+  </data>
+  <data name="BLM_AoE_ParadoxFiller_Desc" xml:space="preserve">
+    <value>최대 레벨 딜사이클에서 역설을 추가합니다.</value>
+  </data>
+  <data name="BLM_AoE_Thunder_Name" xml:space="preserve">
+    <value>선더라 / 하이선더라 옵션</value>
+  </data>
+  <data name="BLM_AoE_Thunder_Desc" xml:space="preserve">
+    <value>딜사이클에 선더라(또는 하이선더라)를 추가합니다.</value>
+  </data>
+  <data name="BLM_AoE_Movement_Name" xml:space="preserve">
+    <value>이동 중 옵션</value>
+  </data>
+  <data name="BLM_AoE_Movement_Desc" xml:space="preserve">
+    <value>이동 중 삼연속 마법를 추가합니다.</value>
+  </data>
+  <data name="BLM_AoE_UsePolyglot_Name" xml:space="preserve">
+    <value>금지된 언어 옵션</value>
+  </data>
+  <data name="BLM_AoE_UsePolyglot_Desc" xml:space="preserve">
+    <value>딜사이클에 금지된 언어를 추가합니다..</value>
+  </data>
+  <data name="BLM_AoE_Blizzard4Sub_Name" xml:space="preserve">
+    <value>2타겟 블리자쟈 전환 옵션</value>
+  </data>
+  <data name="BLM_AoE_Blizzard4Sub_Desc" xml:space="preserve">
+    <value>타격 대상이 2명일 경우 프리즈 대신 블리자쟈를 사용합니다.</value>
+  </data>
+  <data name="BLM_Retargetting_Aetherial_Manipulation_Name" xml:space="preserve">
+    <value>에테르 촉진 대상 지정 옵션</value>
+  </data>
+  <data name="BLM_Retargetting_Aetherial_Manipulation_Desc" xml:space="preserve">
+    <value>에테르 촉진의 대상을 UI 또는 필드의 마우스오버 대상으로 변경합니다.</value>
+  </data>
+  <data name="BLM_TriplecastProtection_Name" xml:space="preserve">
+    <value>삼연속 마법 중복 사용 방지</value>
+  </data>
+  <data name="BLM_TriplecastProtection_Desc" xml:space="preserve">
+    <value>삼연속 마법이 이미 활성화된 상태라면 삼연속 마법을 더미 기술(비활성화)로 대체하여 낭비를 방지합니다.</value>
+  </data>
+  <data name="BLM_Fire1and3_Name" xml:space="preserve">
+    <value>파이어 / 파이가 기능</value>
+  </data>
+  <data name="BLM_Fire1and3_Desc" xml:space="preserve">
+    <value>파이어 또는 파이가를 아래의 옵션들이 적용된 기술로 대체합니다.</value>
+  </data>
+  <data name="BLM_F1toF4_Name" xml:space="preserve">
+    <value>파이어에서 파이쟈로 전환 기능</value>
+  </data>
+  <data name="BLM_F1toF4_Desc" xml:space="preserve">
+    <value>사용 가능할 때 파이어를 파이쟈로 대체합니다.</value>
+  </data>
+  <data name="BLM_Fire4_Name" xml:space="preserve">
+    <value>파이쟈 기능</value>
+  </data>
+  <data name="BLM_Fire4_Desc" xml:space="preserve">
+    <value>파이쟈를 아래의 옵션들이 적용된 기술로 대체합니다.</value>
+  </data>
+  <data name="BLM_Flare_Name" xml:space="preserve">
+    <value>플레어 기능</value>
+  </data>
+  <data name="BLM_Flare_Desc" xml:space="preserve">
+    <value>플레어를 아래의 옵션들이 적용된 기술로 대체합니다.</value>
+  </data>
+  <data name="BLM_Blizzard1and3_Name" xml:space="preserve">
+    <value>블리자드 / 블리자가 기능</value>
+  </data>
+  <data name="BLM_Blizzard1and3_Desc" xml:space="preserve">
+    <value>블리자드 또는 블리자가를 아래의 옵션들이 적용된 기술로 대체합니다.</value>
+  </data>
+  <data name="BLM_B1toB4_Name" xml:space="preserve">
+    <value>블리자드에서 블리자쟈로 전환 기능</value>
+  </data>
+  <data name="BLM_B1toB4_Desc" xml:space="preserve">
+    <value>사용 가능할 때 블리자드를 블리자쟈로 대체합니다.</value>
+  </data>
+  <data name="BLM_Blizzard4toDespair_Name" xml:space="preserve">
+    <value>블리자쟈에서 절망으로 전환 기능</value>
+  </data>
+  <data name="BLM_Blizzard4toDespair_Desc" xml:space="preserve">
+    <value>천상의 화염 상태일 때 블리자쟈를 절망으로 대체합니다.</value>
+  </data>
+  <data name="BLM_Freeze_Name" xml:space="preserve">
+    <value>프리즈 기능</value>
+  </data>
+  <data name="BLM_Freeze_Desc" xml:space="preserve">
+    <value>저승의 냉기 3중첩일 때 프리즈를 역설로 대체합니다.
+레벨 조율 시에는 동결을 블리자라로 변경합니다.</value>
+  </data>
+  <data name="BLM_FlareParadox_Name" xml:space="preserve">
+    <value>타오르는 별에서 역설로 전환 기능</value>
+  </data>
+  <data name="BLM_FlareParadox_Desc" xml:space="preserve">
+    <value>타오르는 영혼 스택이 최대가 아닐 때 타오르는 별을 역설로 대체합니다.</value>
+  </data>
+  <data name="BLM_AmplifierXeno_Name" xml:space="preserve">
+    <value>언어 확장에서 미지의 언어로 전환 기능</value>
+  </data>
+  <data name="BLM_AmplifierXeno_Desc" xml:space="preserve">
+    <value>언어의 통달 스택이 최대일 때 언어 확장을 민지의 언어로 대체합니다.</value>
+  </data>
+  <data name="BLM_XenoThunder_Name" xml:space="preserve">
+    <value>미지의 언어에서 선더로 전환 기능</value>
+  </data>
+  <data name="BLM_XenoThunder_Desc" xml:space="preserve">
+    <value>선더(지속 피해) 남은 시간이 3초 이하일 때 민지의 언어를 선더 계열 기술로 대체합니다.</value>
+  </data>
+  <data name="BLM_FoulThunder_Name" xml:space="preserve">
+    <value>금지된 언어에서 선더라로 전환 기능</value>
+  </data>
+  <data name="BLM_FoulThunder_Desc" xml:space="preserve">
+    <value>선더(지속 피해) 남은 시간이 3초 이하일 때 금지된 언어를 선더라(또는 상위 기술)로 대체합니다.</value>
+  </data>
+  <data name="BLM_UmbralSoul_Name" xml:space="preserve">
+    <value>저승의 영혼 / 속성 전환 기능</value>
+  </data>
+  <data name="BLM_UmbralSoul_Desc" xml:space="preserve">
+    <value>사용 가능할 때 속성 전환을 저승의 영혼으로 대체합니다.</value>
+  </data>
+  <data name="BLM_ScatheXeno_Name" xml:space="preserve">
+    <value>미지의 언어 기능</value>
+  </data>
+  <data name="BLM_ScatheXeno_Desc" xml:space="preserve">
+    <value>사용 가능할 때 컬랩스를 미지의 언어로 대체합니다.</value>
+  </data>
+  <data name="BLM_Between_The_LeyLines_Name" xml:space="preserve">
+    <value>문양 도약 기능</value>
+  </data>
+  <data name="BLM_Between_The_LeyLines_Desc" xml:space="preserve">
+    <value>마법 문양이 활성화되어 있을 때 흑마법 문양 기술을 문양 도약으로 대체합니다.</value>
+  </data>
+  <data name="BLM_Aetherial_Manipulation_Name" xml:space="preserve">
+    <value>에테르 촉진 기능</value>
+  </data>
+  <data name="BLM_Aetherial_Manipulation_Desc" xml:space="preserve">
+    <value>마법 문양 범위를 벗어나 있고 제자리에 서 있을 때, 에테르 촉진을 문양 도약으로 대체합니다.</value>
+  </data>
+  <data name="BLU_NewMoonFluteOpener_Name" xml:space="preserve">
+    <value>청마도사 달의 피리 오프너 (80레벨)</value>
+  </data>
+  <data name="BLU_NewMoonFluteOpener_Desc" xml:space="preserve">
+    <value>달의 피리를 사용해 전체 오프너를 수행합니다.
+오프너를 다시 시작하기 전에 '천벌의 날개' 남은 중첩 2개를 반드시 소모하세요!
+시전 속도 2.50에서 수행 가능합니다.
+깃털 비는 자동으로 대상을 타겟팅하므로 직접 위치를 지정할 필요가 없습니다.</value>
+  </data>
+  <data name="BLU_NewMoonFluteOpener_DoTOpener_Name" xml:space="preserve">
+    <value>DoT(지속 피해) 오프너</value>
+  </data>
+  <data name="BLU_NewMoonFluteOpener_DoTOpener_Desc" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="BLU_Opener_Name" xml:space="preserve">
+    <value>청마도사 달의 피리 오프너 (70레벨)</value>
+  </data>
+  <data name="BLU_Opener_Desc" xml:space="preserve">
+    <value>달의 피리를 사용해 전체 오프너를 수행합니다. 과거 버전 기록용이며, 80레벨 오프너가 더 강력합니다.
+깃털 비는 자동으로 대상을 타겟팅하므로 직접 위치를 지정할 필요가 없습니다.</value>
+  </data>
+  <data name="BLU_FinalSting_Name" xml:space="preserve">
+    <value>최후의 일침 딜사이클</value>
+  </data>
+  <data name="BLU_FinalSting_Desc" xml:space="preserve">
+    <value>최후의 일침을 버프 딜사이클로 변경합니다: 달의 피리 &gt;  찌릿찌릿 &gt;  휘파람 &gt;  최후의 일침.
+깃털 비는 자동으로 대상을 타겟팅하므로 직접 위치를 지정할 필요가 없습니다.</value>
+  </data>
+  <data name="BLU_Primals_Name" xml:space="preserve">
+    <value>야만신 기술 추가 (쿨타임마다)</value>
+  </data>
+  <data name="BLU_Primals_Desc" xml:space="preserve">
+    <value>딜사이클에 투령탄, 깃털비, 빙설난무, 정의의 발차기를 추가합니다.
+깃털비는 자동으로 대상을 타겟팅하므로 직접 위치를 지정할 필요가 없습니다.</value>
+  </data>
+  <data name="BLU_SoloMode_Name" xml:space="preserve">
+    <value>솔로 모드</value>
+  </data>
+  <data name="BLU_SoloMode_Desc" xml:space="preserve">
+    <value>인스턴스 던전에 혼자 진입했을 경우 '투쟁 본능'을 사용합니다.</value>
+  </data>
+  <data name="BLU_Ultravibrate_Name" xml:space="preserve">
+    <value>초진동 딜사이클</value>
+  </data>
+  <data name="BLU_Ultravibrate_Desc" xml:space="preserve">
+    <value>대상이 '빙결' 상태가 아니면 초진동 대신 빙결의 포효를 사용합니다. 사용 가능 시 초진동을 신속마와 함께 사용합니다.</value>
+  </data>
+  <data name="BLU_HydroPull_Name" xml:space="preserve">
+    <value>수력 당기기 설정</value>
+  </data>
+  <data name="BLU_HydroPull_Desc" xml:space="preserve">
+    <value>빙결의 포효를 사용하기 전에 수력 당기기를 먼저 사용합니다.</value>
+  </data>
+  <data name="BLU_PrimalCombo_Name" xml:space="preserve">
+    <value>야만신 기술 기능</value>
+  </data>
+  <data name="BLU_PrimalCombo_Desc" xml:space="preserve">
+    <value>깃털비를 번개 충격, 투령탄, 빙설난무로 대체합니다.
+쿨타임마다 사용할 경우 달의 피리 버스트 단계와 야만신 기술의 타이밍이 어긋날 수 있습니다.
+깃털비는 자동으로 대상을 타겟팅하므로 직접 위치를 지정할 필요가 없습니다.</value>
+  </data>
+  <data name="BLU_PrimalCombo_Pool_Name" xml:space="preserve">
+    <value>달의 피리 버스트 자원 보존 옵션</value>
+  </data>
+  <data name="BLU_PrimalCombo_Pool_Desc" xml:space="preserve">
+    <value>달의 피리 버스트가 곧 돌아올 예정이면 재사용 대기시간이 끝난 기술의 사용을 보류합니다.</value>
+  </data>
+  <data name="BLU_PrimalCombo_JKick_Name" xml:space="preserve">
+    <value>정의의 발차기 옵션</value>
+  </data>
+  <data name="BLU_PrimalCombo_JKick_Desc" xml:space="preserve">
+    <value>딜사이클에 정의의 발차기를 추가합니다.</value>
+  </data>
+  <data name="BLU_PrimalCombo_SeaShanty_Name" xml:space="preserve">
+    <value>바다의 뱃노래 옵션</value>
+  </data>
+  <data name="BLU_PrimalCombo_SeaShanty_Desc" xml:space="preserve">
+    <value>딜사이클에 바다의 뱃노래를 추가합니다.</value>
+  </data>
+  <data name="BLU_PrimalCombo_WingedReprobation_Name" xml:space="preserve">
+    <value>천벌의 날개 옵션</value>
+  </data>
+  <data name="BLU_PrimalCombo_WingedReprobation_Desc" xml:space="preserve">
+    <value>딜사이클에 천벌의 날개를 추가합니다.</value>
+  </data>
+  <data name="BRD_Adv_DoT_Desc" xml:space="preserve">
+    <value>아래의 옵션들을 추가하여 지속 피해(DoT) 기술을 사용합니다.</value>
+  </data>
+  <data name="BRD_Adv_Buffs_Name" xml:space="preserve">
+    <value>버프 옵션</value>
+  </data>
+  <data name="BRD_Adv_Buffs_Desc" xml:space="preserve">
+    <value>음유시인의 버프들을 사용합니다. 
+모두 활성화하면 시너지 타이밍에 맞춰 사용하며, 하나라도 비활성화하면 단순 우선순위에 따라 사용합니다.</value>
+  </data>
+  <data name="BRD_Adv_BuffsResonant_Name" xml:space="preserve">
+    <value>공명 화살 옵션</value>
+  </data>
+  <data name="BRD_Adv_BuffsResonant_Desc" xml:space="preserve">
+    <value>'마구 쏘기' 실행 후 '공명 화살'을 연계합니다.</value>
+  </data>
+  <data name="BRD_Adv_BuffsEncore_Name" xml:space="preserve">
+    <value>빛신의 앙코르 옵션</value>
+  </data>
+  <data name="BRD_Adv_BuffsEncore_Desc" xml:space="preserve">
+    <value>'빛신의 종곡' 이후 '빛신의 앙코르'를 사용합니다.</value>
+  </data>
+  <data name="BRD_ST_ApexArrow_Name" xml:space="preserve">
+    <value>정점의 화살 옵션</value>
+  </data>
+  <data name="BRD_ST_ApexArrow_Desc" xml:space="preserve">
+    <value>정점의 화살과 돌풍 화살을 딜사이클에 포함합니다.</value>
+  </data>
+  <data name="BRD_ST_Adv_oGCD_Name" xml:space="preserve">
+    <value>논 글쿨(oGCD) 기술 옵션</value>
+  </data>
+  <data name="BRD_ST_Adv_oGCD_Desc" xml:space="preserve">
+    <value>독사 강습, 천상의 화살, 사혈 화살, 절대 음감을 끼워넣기로 사용합니다.</value>
+  </data>
+  <data name="BRD_Adv_Pooling_Name" xml:space="preserve">
+    <value>버스트 자원 최적화 옵션</value>
+  </data>
+  <data name="BRD_Adv_Pooling_Desc" xml:space="preserve">
+    <value>시너지 버스트 구간을 위해 사혈 화살과 독사 강습을 모아둡니다.</value>
+  </data>
+  <data name="BRD_Adv_ApexPooling_Name" xml:space="preserve">
+    <value>정점의 화살 축적 옵션</value>
+  </data>
+  <data name="BRD_Adv_ApexPooling_Desc" xml:space="preserve">
+    <value>시너지 구간 혹은 주요 버프 쿨타임이 50~60초 남았을 때 사용하기 위해 정점의 화살을 아껴둡니다.</value>
+  </data>
+  <data name="BRD_Adv_Interrupt_Name" xml:space="preserve">
+    <value>차단 옵션</value>
+  </data>
+  <data name="BRD_Adv_Interrupt_Desc" xml:space="preserve">
+    <value>적의 기술 차단이 가능한 경우 '머리 쏘기'를 사용합니다.</value>
+  </data>
+  <data name="BRD_ST_SecondWind_Name" xml:space="preserve">
+    <value>내단 옵션</value>
+  </data>
+  <data name="BRD_ST_SecondWind_Desc" xml:space="preserve">
+    <value>지정된 HP 비율 이하일 때 내단을 사용합니다.</value>
+  </data>
+  <data name="BRD_ST_Wardens_Name" xml:space="preserve">
+    <value>자가 정화 옵션</value>
+  </data>
+  <data name="BRD_ST_Wardens_Desc" xml:space="preserve">
+    <value>해제 가능한 디버프가 있을 때 '시간신의 찬미가'를 사용합니다.</value>
+  </data>
+  <data name="BRD_Adv_Troubadour_Name" xml:space="preserve">
+    <value>방랑하는 음악가 옵션</value>
+  </data>
+  <data name="BRD_Adv_Troubadour_Desc" xml:space="preserve">
+    <value>광역 공격이 감지되면 '방랑하는 음악가'를 사용하여 파티원을 보호합니다.</value>
+  </data>
+  <data name="BRD_Adv_NaturesMinne_Name" xml:space="preserve">
+    <value>대지신의 연가 옵션</value>
+  </data>
+  <data name="BRD_Adv_NaturesMinne_Desc" xml:space="preserve">
+    <value>광역 공격 시 '방랑하는 음악가'가 없을 경우 '대지신의 연가'를 보조적으로 사용합니다.</value>
+  </data>
+  <data name="BRD_AoE_AdvMode_Name" xml:space="preserve">
+    <value>고급 모드 - 광역 공격</value>
+  </data>
+  <data name="BRD_AoE_AdvMode_Desc" xml:space="preserve">
+    <value>재빠른 활시위 및 라돈 화살을 버튼 하나로 조작 가능한 광역 공격 딜사이클로 교체합니다.
+딜사이클을 사용자에 맞게 세부 설정하고 싶을 때 적합합니다.</value>
+  </data>
+  <data name="BRD_AoE_Adv_Multidot_Name" xml:space="preserve">
+    <value>다중 도트딜 옵션</value>
+  </data>
+  <data name="BRD_AoE_Adv_Multidot_Desc" xml:space="preserve">
+    <value>최대 3명의 대상에게 지속 피해(DoT)를 유지합니다.</value>
+  </data>
+  <data name="BRD_AoE_Adv_Songs_Name" xml:space="preserve">
+    <value>노래 옵션</value>
+  </data>
+  <data name="BRD_AoE_Adv_Songs_Desc" xml:space="preserve">
+    <value>딜사이클 중 노래 기술을 자동으로 끼워넣습니다.</value>
+  </data>
+  <data name="BRD_AoE_Adv_Buffs_Name" xml:space="preserve">
+    <value>광역 버프 옵션</value>
+  </data>
+  <data name="BRD_AoE_Adv_Buffs_Desc" xml:space="preserve">
+    <value>시너지 타이밍에 맞춰 버프를 사용합니다.
+모두 활성화 하면 시너지에 맞춰서 사용합니다.
+버프를 하나라도 비활성화하면 단순 우선순위에 따라서만 사용합니다.</value>
+  </data>
+  <data name="BRD_AoE_Adv_oGCD_Name" xml:space="preserve">
+    <value>논 글쿨 기술 옵션</value>
+  </data>
+  <data name="BRD_AoE_Adv_oGCD_Desc" xml:space="preserve">
+    <value>독사 강습, 천상의 화살, 사혈 화살, 절대 음감을 광역 상황에 맞춰 사용합니다.</value>
+  </data>
+  <data name="BRD_AoE_Pooling_Name" xml:space="preserve">
+    <value>버스트 최적화</value>
+  </data>
+  <data name="BRD_AoE_Pooling_Desc" xml:space="preserve">
+    <value>시너지 구간을 위해 '죽음의 화살비' 스택을 모아둡니다.</value>
+  </data>
+  <data name="BRD_AoE_ApexPooling_Name" xml:space="preserve">
+    <value>정점의 화살 축적</value>
+  </data>
+  <data name="BRD_AoE_ApexPooling_Desc" xml:space="preserve">
+    <value>버스트 타이밍에 맞춰 정점의 화살 게이지를 조절합니다.</value>
+  </data>
+  <data name="BRD_AoE_Adv_Interrupt_Name" xml:space="preserve">
+    <value>차단 옵션</value>
+  </data>
+  <data name="BRD_AoE_Adv_Interrupt_Desc" xml:space="preserve">
+    <value>차단 가능 기술 확인 시 머리 쏘기를 사용합니다.</value>
+  </data>
+  <data name="BRD_AoE_BuffsEncore_Name" xml:space="preserve">
+    <value>빛신의 앙코르 옵션</value>
+  </data>
+  <data name="BRD_AoE_BuffsEncore_Desc" xml:space="preserve">
+    <value>빛신의 종곡 이후 앙코르를 연계합니다.</value>
+  </data>
+  <data name="BRD_AoE_BuffsResonant_Name" xml:space="preserve">
+    <value>공명 화살 옵션</value>
+  </data>
+  <data name="BRD_AoE_BuffsResonant_Desc" xml:space="preserve">
+    <value>마구 쏘기 이후 공명 화살을 연계합니다.</value>
+  </data>
+  <data name="BRD_AoE_ApexArrow_Name" xml:space="preserve">
+    <value>정점의 화살 옵션</value>
+  </data>
+  <data name="BRD_AoE_ApexArrow_Desc" xml:space="preserve">
+    <value>정점의 화살과 돌풍 화살을 최적으로 사용합니다.</value>
+  </data>
+  <data name="BRD_AoE_SecondWind_Name" xml:space="preserve">
+    <value>내단 옵션</value>
+  </data>
+  <data name="BRD_AoE_SecondWind_Desc" xml:space="preserve">
+    <value>지정된 체력 이하 시 내단을 사용합니다.</value>
+  </data>
+  <data name="BRD_AoE_Wardens_Name" xml:space="preserve">
+    <value>자가 정화 옵션</value>
+  </data>
+  <data name="BRD_AoE_Wardens_Desc" xml:space="preserve">
+    <value>해제 가능 디버프 시 찬미가를 사용합니다.</value>
+  </data>
+  <data name="BRD_StraightShotUpgrade_Name" xml:space="preserve">
+    <value>직선 사격 자동 전환</value>
+  </data>
+  <data name="BRD_StraightShotUpgrade_Desc" xml:space="preserve">
+    <value>프록이 없을 때 '직선 사격/찬란한 화살' 버튼을 '육중한 사격/파열 사격'으로 대체하여 버튼 낭비를 줄입니다.</value>
+  </data>
+  <data name="BRD_StraightShotUpgrade_OGCDs_Name" xml:space="preserve">
+    <value>논 글쿨 자원 관리</value>
+  </data>
+  <data name="BRD_StraightShotUpgrade_OGCDs_Desc" xml:space="preserve">
+    <value>자원 넘침을 방지하기 위해 논글쿨 기술들을 자동으로 끼워넣습니다.</value>
+  </data>
+  <data name="BRD_DoTMaintainance_Name" xml:space="preserve">
+    <value>도트딜 자동 유지</value>
+  </data>
+  <data name="BRD_DoTMaintainance_Desc" xml:space="preserve">
+    <value>대상의 지속 피해(DoT) 상태를 감지하여 부여 및 갱신합니다.</value>
+  </data>
+  <data name="BRD_IronJaws_Name" xml:space="preserve">
+    <value>굳은 결의 스마트 전환</value>
+  </data>
+  <data name="BRD_IronJaws_Desc" xml:space="preserve">
+    <value>도트가 하나라도 빠진 경우 '굳은 결의' 버튼을 '맹독 화살' 혹은 '폭풍 화살'로 교체하여 재부여를 돕습니다.</value>
+  </data>
+  <data name="BRD_WideVolleyUpgrade_Name" xml:space="preserve">
+    <value>일제 사격 자동 전환</value>
+  </data>
+  <data name="BRD_WideVolleyUpgrade_Desc" xml:space="preserve">
+    <value>프록 상태나 레벨에 따라 '일제 사격/그림자 화살' 버튼을 '재빠른 활시위/라돈 화살'로 적절히 대체합니다.</value>
+  </data>
+  <data name="BRD_WideVolleyUpgrade_OGCDs_Name" xml:space="preserve">
+    <value>논 글쿨 관리</value>
+  </data>
+  <data name="BRD_WideVolleyUpgrade_OGCDs_Desc" xml:space="preserve">
+    <value>공격 중 자원이 낭비되지 않도록 논글쿨 기술들을 사용합니다.</value>
+  </data>
+  <data name="BRD_WideVolleyUpgrade_Apex_Name" xml:space="preserve">
+    <value>정점의 화살 대체</value>
+  </data>
+  <data name="BRD_WideVolleyUpgrade_Apex_Desc" xml:space="preserve">
+    <value>게이지 충전 시 광역 버튼을 '정점의 화살' 및 '돌풍 화살'로 대체하여 사용 가능하게 합니다.</value>
+  </data>
+  <data name="BRD_ST_oGCD_Name" xml:space="preserve">
+    <value>단일 대상 논 글쿨 통합</value>
+  </data>
+  <data name="BRD_ST_oGCD_Desc" xml:space="preserve">
+    <value>사혈 화살/파혈 화살 버튼 하나에 모든 단일 대상 논글쿨기를 통합합니다.</value>
+  </data>
+  <data name="BRD_ST_oGCD_Songs_Name" xml:space="preserve">
+    <value>노래 자동 연계 (단일)</value>
+  </data>
+  <data name="BRD_ST_oGCD_Songs_Desc" xml:space="preserve">
+    <value>논글쿨 버튼에 여행신의 무곡 ? 현인의 담시곡 ? 군신의 찬가 순서로 노래를 통합합니다.</value>
+  </data>
+  <data name="BRD_AoE_oGCD_Name" xml:space="preserve">
+    <value>광역 논 글쿨 통합</value>
+  </data>
+  <data name="BRD_AoE_oGCD_Desc" xml:space="preserve">
+    <value>죽음의 화살비 버튼 하나에 모든 광역 논글쿨기를 통합합니다.</value>
+  </data>
+  <data name="BRD_AoE_oGCD_Songs_Name" xml:space="preserve">
+    <value>노래 자동 연계 (광역)</value>
+  </data>
+  <data name="BRD_AoE_oGCD_Songs_Desc" xml:space="preserve">
+    <value>광역 딜사이클 중 논글쿨 버튼에 노래 기술들을 통합하여 사용합니다.</value>
+  </data>
+  <data name="BRD_Buffs_Name" xml:space="preserve">
+    <value>버프 통합 기능</value>
+  </data>
+  <data name="BRD_Buffs_Desc" xml:space="preserve">
+    <value>용맹한 사격과 전장의 노래를 '마구 쏘기' 버튼에 통합하여 한 번에 사용합니다.</value>
+  </data>
+  <data name="BRD_OneButtonSongs_Name" xml:space="preserve">
+    <value>원버튼 노래 통합</value>
+  </data>
+  <data name="BRD_OneButtonSongs_Desc" xml:space="preserve">
+    <value>'여행신의 무곡' 버튼 하나로 쿨타임에 맞춰 '현인의 담시곡'과 '군신의 찬가'를 순차적으로 사용합니다.</value>
+  </data>
+  <data name="BRD_OneButtonDots_Name" xml:space="preserve">
+    <value>원버튼 도트딜 통합</value>
+  </data>
+  <data name="BRD_OneButtonDots_Desc" xml:space="preserve">
+    <value>도트 상태에 따라 독화살 버튼 하나로 맹독/바람/폭풍 화살을 순서대로 부여합니다.</value>
+  </data>
+  <data name="BRD_OneButtonDots_IronJaws_Name" xml:space="preserve">
+    <value>원버튼 굳은 결의 갱신</value>
+  </data>
+  <data name="BRD_OneButtonDots_IronJaws_Desc" xml:space="preserve">
+    <value>도트가 유지 중일 때 도트 버튼을 '굳은 결의'로 대체하여 편리하게 갱신합니다.</value>
+  </data>
+  <data name="BRD_OneButtonDots_Retargeted_Name" xml:space="preserve">
+    <value>다중 도트 부여</value>
+  </data>
+  <data name="BRD_OneButtonDots_Retargeted_Desc" xml:space="preserve">
+    <value>전투 중 주변의 여러 대상에게 자동으로 도트딜을 분산하여 부여합니다.</value>
+  </data>
+  <data name="BRD_OneButtonDots_SavageBlade_Name" xml:space="preserve">
+    <value>도트 오버라이트 방지</value>
+  </data>
+  <data name="BRD_OneButtonDots_SavageBlade_Desc" xml:space="preserve">
+    <value>남은 지속시간 5초 이내의 도트딜이 적용된 대상이 주변에 없다면, 해당 도트딜 기술들을 야성의 검격 스킬로 대체하여 보호합니다.</value>
+  </data>
+  <data name="BRD_Hidden_Song_Extension_Name" xml:space="preserve">
+    <value>군신의 찬가 지속 연장</value>
+  </data>
+  <data name="BRD_Hidden_Song_Extension_Desc" xml:space="preserve">
+    <value>'군신의 찬가'를 종료 3초 전까지 유지하여 버스트 효율을 극대화합니다.</value>
+  </data>
+  <data name="DNC_ST_BlockFinishes_Name" xml:space="preserve">
+    <value>무도 마무리 사용 시 주변 적 확인 기능</value>
+  </data>
+  <data name="DNC_ST_BlockFinishes_Desc" xml:space="preserve">
+    <value>적에게 무도 마무리 대미지를 입힐 수 있는 거리일 때만 '정석 마무리'와 '기교 마무리'를 실행합니다.
+무도 효과가 만료되기 직전에는 거리와 상관없이 무도 마무리를 표시합니다.
+Balance에서 권장하는 방식이지만, 글쿨 밀림(Drift)이 발생할 수 있으므로 파티 상황에 맞춰 사용하세요.</value>
+  </data>
+  <data name="DNC_ST_SimpleMode_Name" xml:space="preserve">
+    <value>간편 모드 - 단일 대상</value>
+  </data>
+  <data name="DNC_ST_SimpleMode_Desc" xml:space="preserve">
+    <value>캐스케이드가 단일 대상 딜사이클을 자동으로 수행합니다.
+강제 3중 끼워넣기(Triple Weave) 방지 솔루션이 적용되어 있습니다.</value>
+  </data>
+  <data name="DNC_AoE_SimpleMode_Name" xml:space="preserve">
+    <value>간편 모드 - 범위 공격</value>
+  </data>
+  <data name="DNC_AoE_SimpleMode_Desc" xml:space="preserve">
+    <value>'윈드밀'이 범위 공격 딜사이클을 자동으로 수행합니다.</value>
+  </data>
+  <data name="DNC_ST_AdvancedMode_Name" xml:space="preserve">
+    <value>고급 모드 - 단일 대상</value>
+  </data>
+  <data name="DNC_ST_AdvancedMode_Desc" xml:space="preserve">
+    <value>'캐스케이드'를 단일 대상 딜사이클로 대체합니다.
+딜사이클을 사용자에 맞게 세부 설정하고 싶을 때 적합합니다.</value>
+  </data>
+  <data name="DNC_ST_BalanceOpener_Name" xml:space="preserve">
+    <value>The Balance 오프너 (100레벨)</value>
+  </data>
+  <data name="DNC_ST_BalanceOpener_Desc" xml:space="preserve">
+    <value>100레벨 기준 Balance 표준 오프너를 사용합니다.
+필수 조건:
+- 정석 무도 사용 가능
+- 기교 무도 사용 가능
+- 공세의 탱고 사용 가능
+(카운트다운 도중에는 대기 상태가 되며, 반드시 초읽기가 필요합니다)</value>
+  </data>
+  <data name="DNC_ST_Opener_BlockEarly_Name" xml:space="preserve">
+    <value>초읽기 대기 옵션</value>
+  </data>
+  <data name="DNC_ST_Opener_BlockEarly_Desc" xml:space="preserve">
+    <value>비전투 시 초읽기가 시작될 때까지 기술 사용을 대기합니다.
+오프너 시작 전 보스를 미리 타겟팅할 때 유용합니다. 레이드 연속 공략 시에만 켜두는 것을 권장합니다.</value>
+  </data>
+  <data name="DNC_ST_Adv_Partner_Name" xml:space="preserve">
+    <value>마주서기 알림 옵션</value>
+  </data>
+  <data name="DNC_ST_Adv_AutoPartner_Desc" xml:space="preserve">
+    <value>현재 파트너가 '피해량 감소' 디버프를 받는 등 최적이 아닐 경우, '마주서기 해제' 후 더 나은 대상에게 다시 설정합니다.</value>
+  </data>
+  <data name="DNC_ST_Adv_Peloton_Name" xml:space="preserve">
+    <value>전투 전 단체 질주 옵션</value>
+  </data>
+  <data name="DNC_ST_Adv_Peloton_Desc" xml:space="preserve">
+    <value>비전투 중이고 '단체 질주' 버프가 없으며, 정석 무도 시전 중 시간이 5초 이상 남았을 때 '단체 질주'를 사용합니다.</value>
+  </data>
+  <data name="DNC_ST_Adv_Interrupt_Name" xml:space="preserve">
+    <value>차단 옵션</value>
+  </data>
+  <data name="DNC_ST_Adv_Interrupt_Desc" xml:space="preserve">
+    <value>대상에게 차단 가능한 기술 시전 시 자동으로 '머리 쏘기'를 사용합니다.</value>
+  </data>
+  <data name="DNC_ST_Adv_SS_Name" xml:space="preserve">
+    <value>정석 무도 옵션</value>
+  </data>
 </root>
