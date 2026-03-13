@@ -52,7 +52,7 @@ internal partial class BLM
 
     private static bool CanFireParadox =>
         ActiveParadox && MP.Cur >= MP.FireParadox &&
-        (!HasStatusEffect(Buffs.Firestarter) && JustUsed(Transpose) ||
+        (!HasStatusEffect(Buffs.Firestarter) && AstralFireStacks < 3  ||
          JustUsed(FlareStar) ||
          !LevelChecked(FlareStar) && ActionReady(Despair));
 
