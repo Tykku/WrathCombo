@@ -1076,4 +1076,725 @@
   <data name="Phantom_Dancer_Name" xml:space="preserve">
     <value>서포트 무도가 직업 스킬</value>
   </data>
+  <data name="Phantom_Dancer_Desc" xml:space="preserve">
+    <value>서포트 무도가 전용 기술들을 딜사이클에 추가합니다.</value>
+  </data>
+  <data name="Phantom_Dancer_Dance_Name" xml:space="preserve">
+    <value>춤추기</value>
+  </data>
+  <data name="Phantom_Dancer_Dance_Desc" xml:space="preserve">
+    <value>딜사이클에 춤추기 및 후속 공격 기술들을 추가합니다.</value>
+  </data>
+  <data name="Phantom_Dancer_QuickStep_Name" xml:space="preserve">
+    <value>빠른 발놀림</value>
+  </data>
+  <data name="Phantom_Dancer_QuickStep_Desc" xml:space="preserve">
+    <value>적의 타겟이 되었을 때 딜사이클에 빠른 발놀림을 추가합니다.</value>
+  </data>
+  <data name="Phantom_Dancer_Mesmerize_Name" xml:space="preserve">
+    <value>매료</value>
+  </data>
+  <data name="Phantom_Dancer_Mesmerize_Desc" xml:space="preserve">
+    <value>딜사이클에 매료를 추가합니다.</value>
+  </data>
+  <data name="Phantom_MysticKnight_Name" xml:space="preserve">
+    <value>서포트 마법검사 직업 스킬</value>
+  </data>
+  <data name="Phantom_MysticKnight_Desc" xml:space="preserve">
+    <value>서포트 마법검사 전용 기술들을 딜사이클에 추가합니다.</value>
+  </data>
+  <data name="Phantom_MysticKnight_SunderingSpellblade_Name" xml:space="preserve">
+    <value>마법검술 브레이크</value>
+  </data>
+  <data name="Phantom_MysticKnight_SunderingSpellblade_Desc" xml:space="preserve">
+    <value>딜사이클에 마법검술 브레이크를 추가합니다.</value>
+  </data>
+  <data name="Phantom_MysticKnight_HolySpellblade_Name" xml:space="preserve">
+    <value>마법검술 홀리</value>
+  </data>
+  <data name="Phantom_MysticKnight_HolySpellblade_Desc" xml:space="preserve">
+    <value>딜사이클에 마법검술 홀리를 추가합니다.</value>
+  </data>
+  <data name="Phantom_MysticKnight_BlazingSpellblade_Name" xml:space="preserve">
+    <value>마법검술 플레어</value>
+  </data>
+  <data name="Phantom_MysticKnight_BlazingSpellblade_Desc" xml:space="preserve">
+    <value>강화 효과가 없을 때 딜사이클에 마법검술 플레어를 추가합니다.</value>
+  </data>
+  <data name="Phantom_MysticKnight_MagicShell_Name" xml:space="preserve">
+    <value>마법 보호막</value>
+  </data>
+  <data name="Phantom_MysticKnight_MagicShell_Desc" xml:space="preserve">
+    <value>딜사이클에 마법 보호막을 추가합니다.</value>
+  </data>
+  <data name="Phantom_Gladiator_Name" xml:space="preserve">
+    <value>서포트 검투사 직업 스킬</value>
+  </data>
+  <data name="Phantom_Gladiator_Desc" xml:space="preserve">
+    <value>서포트 검투사 전용 기술들을 딜사이클에 추가합니다.</value>
+  </data>
+  <data name="Phantom_Gladiator_Finisher_Name" xml:space="preserve">
+    <value>필살 공격</value>
+  </data>
+  <data name="Phantom_Gladiator_Finisher_Desc" xml:space="preserve">
+    <value>딜사이클에 필살 공격을 추가합니다.</value>
+  </data>
+  <data name="Phantom_Gladiator_Defend_Name" xml:space="preserve">
+    <value>방호</value>
+  </data>
+  <data name="Phantom_Gladiator_Defend_Desc" xml:space="preserve">
+    <value>딜사이클에 방호를 추가합니다.</value>
+  </data>
+  <data name="Phantom_Gladiator_LongReach_Name" xml:space="preserve">
+    <value>후열 베기</value>
+  </data>
+  <data name="Phantom_Gladiator_LongReach_Desc" xml:space="preserve">
+    <value>딜사이클에 후열 베기를 추가합니다.</value>
+  </data>
+  <data name="Phantom_Gladiator_BladeBlitz_Name" xml:space="preserve">
+    <value>전부 베기</value>
+  </data>
+  <data name="Phantom_Gladiator_BladeBlitz_Desc" xml:space="preserve">
+    <value>딜사이클에 전부 베기를 추가합니다.</value>
+  </data>
+  <data name="AST_ST_Simple_DPS_Name" xml:space="preserve">
+    <value>단순 공격 모드 - 단일 공격</value>
+  </data>
+  <data name="AST_ST_Simple_DPS_Desc" xml:space="preserve">
+    <value>말레피크 스킬 시전 시 공격용 카드 배분을 포함한 모든 단일 딜사이클을 자동으로 수행합니다.
+입문자에게 가장 추천하는 옵션입니다.</value>
+  </data>
+  <data name="AST_AOE_Simple_DPS_Name" xml:space="preserve">
+    <value>단순 공격 모드 - 광역 공격</value>
+  </data>
+  <data name="AST_AOE_Simple_DPS_Desc" xml:space="preserve">
+    <value>그라비데 시전 시 공격용 카드 배분을 포함한 모든 광역 딜사이클을 자동으로 수행합니다.
+입문자에게 가장 추천하는 옵션입니다.</value>
+  </data>
+  <data name="AST_Simple_ST_Heals_Name" xml:space="preserve">
+    <value>단순 회복 모드 - 단일</value>
+  </data>
+  <data name="AST_Simple_ST_Heals_Desc" xml:space="preserve">
+    <value>베네피크를 단일 타겟 회복 기능으로 변경합니다.
+입문자에게 가장 추천하는 옵션입니다. 자동 순환이 함께 켜져 있을 때 더 자연스럽게 작동합니다.</value>
+  </data>
+  <data name="AST_Simple_AoE_Heals_Name" xml:space="preserve">
+    <value>단순 회복 모드 - 광역</value>
+  </data>
+  <data name="AST_Simple_AoE_Heals_Desc" xml:space="preserve">
+    <value>헬리오스를 광역 회복 기능으로 변경합니다.
+입문자에게 가장 추천하는 옵션입니다. 자동 순환이 함께 켜져 있을 때 더 자연스럽게 작동합니다.</value>
+  </data>
+  <data name="AST_ST_DPS_Name" xml:space="preserve">
+    <value>고급 공격 모드 - 단일 대상</value>
+  </data>
+  <data name="AST_ST_DPS_Desc" xml:space="preserve">
+    <value>말레피크 계열 스킬이나 컴버스 계열 스킬을 아래 옵션들로 변경합니다.
+딜사이클을 사용자에 맞게 세부 설정하고 싶을 때 적합합니다.</value>
+  </data>
+  <data name="AST_ST_DPS_Opener_Name" xml:space="preserve">
+    <value>Balance 오프너 (레벨 92 이상 필요)</value>
+  </data>
+  <data name="AST_ST_DPS_Opener_Desc" xml:space="preserve">
+    <value>레벨 92부터 사용 가능한 The Balance 오프너를 사용합니다.</value>
+  </data>
+  <data name="AST_ST_DPS_CombustUptime_Name" xml:space="preserve">
+    <value>컴버스 지속시간 옵션</value>
+  </data>
+  <data name="AST_ST_DPS_CombustUptime_Desc" xml:space="preserve">
+    <value>컴버스가 걸려있지 않거나 곧 끝날 예정인 경우 사용합니다.</value>
+  </data>
+  <data name="AST_ST_DPS_Move_DoT_Name" xml:space="preserve">
+    <value>컴버스 이동 옵션</value>
+  </data>
+  <data name="AST_ST_DPS_Move_DoT_Desc" xml:space="preserve">
+    <value>이동 중일 경우, 컴버스를 사용 가능한 사정거리 내의 적들에게 (지속시간이 넉넉하더라도) 컴버스를 사용합니다.</value>
+  </data>
+  <data name="AST_DPS_LightSpeed_Name" xml:space="preserve">
+    <value>광속시전 끼워넣기 옵션</value>
+  </data>
+  <data name="AST_DPS_LightSpeed_Desc" xml:space="preserve">
+    <value>이동 시 광속 시전 활성화</value>
+  </data>
+  <data name="AST_DPS_LightSpeedHold_Name" xml:space="preserve">
+    <value>광속 시전 보유 옵션</value>
+  </data>
+  <data name="AST_DPS_LightSpeedHold_Desc" xml:space="preserve">
+    <value>기믹 대응 등을 위해 광속 시전 1회분은 자동으로 쓰지 않고 남겨두기</value>
+  </data>
+  <data name="AST_DPS_Divination_Name" xml:space="preserve">
+    <value>점복 끼워넣기 옵션</value>
+  </data>
+  <data name="AST_DPS_Divination_Desc" xml:space="preserve">
+    <value>점복 추가</value>
+  </data>
+  <data name="AST_DPS_LightspeedBurst_Name" xml:space="preserve">
+    <value>광속 시전 버스트 옵션</value>
+  </data>
+  <data name="AST_DPS_LightspeedBurst_Desc" xml:space="preserve">
+    <value>점복 전에 광속 시전을 추가하세요.
+광속 시전 보유 옵션과 함께 사용하면 사용할 충전이 확보됩니다.</value>
+  </data>
+  <data name="AST_DPS_AutoDraw_Name" xml:space="preserve">
+    <value>카드 뽑기 끼워넣기 옵션</value>
+  </data>
+  <data name="AST_DPS_AutoDraw_Desc" xml:space="preserve">
+    <value>카드를 뽑습니다</value>
+  </data>
+  <data name="AST_DPS_AutoPlay_Name" xml:space="preserve">
+    <value>카드 사용 끼워넣기 옵션</value>
+  </data>
+  <data name="AST_DPS_AutoPlay_Desc" xml:space="preserve">
+    <value>아제마/비레고 카드 끼워넣기 활성화</value>
+  </data>
+  <data name="AST_DPS_CardPool_Name" xml:space="preserve">
+    <value>카드 사용 비축 옵션</value>
+  </data>
+  <data name="AST_DPS_CardPool_Desc" xml:space="preserve">
+    <value>시너지 타임을 위해 공격 카드를 아꼈다가 점복 중에 몰아 쓰기</value>
+  </data>
+  <data name="AST_DPS_LazyLord_Name" xml:space="preserve">
+    <value>왕의 검 끼워넣기 옵션</value>
+  </data>
+  <data name="AST_DPS_LazyLord_Desc" xml:space="preserve">
+    <value>왕의 검 추가</value>
+  </data>
+  <data name="AST_DPS_LordPool_Name" xml:space="preserve">
+    <value>왕의 검 보존 옵션</value>
+  </data>
+  <data name="AST_DPS_LordPool_Desc" xml:space="preserve">
+    <value>점복 구간을 위해 왕의 검 보존</value>
+  </data>
+  <data name="AST_DPS_Oracle_Name" xml:space="preserve">
+    <value>신탁 옵션</value>
+  </data>
+  <data name="AST_DPS_Oracle_Desc" xml:space="preserve">
+    <value>점복 후 신탁 시전 추가</value>
+  </data>
+  <data name="AST_ST_DPS_EarthlyStar_Name" xml:space="preserve">
+    <value>지상의 별 옵션</value>
+  </data>
+  <data name="AST_ST_DPS_EarthlyStar_Desc" xml:space="preserve">
+    <value>지상의 별을 터뜨리지는 않고, 설치만 순환에 추가합니다.
+설치 대상 우선순위는 다음과 같습니다, 먼저 주시 대상 그다음 임시 대상과 고정 대상 마지막으로 자기 발밑에 설치합니다.</value>
+  </data>
+  <data name="AST_ST_DPS_StellarDetonation_Name" xml:space="preserve">
+    <value>별 폭발 옵션</value>
+  </data>
+  <data name="AST_ST_DPS_StellarDetonation_Desc" xml:space="preserve">
+    <value>대상의 HP 비율과 전투 유형에 따라, 큰별의 지배자 상태에서 별 폭발을 조기에 사용하도록 추가합니다.</value>
+  </data>
+  <data name="AST_DPS_Lucid_Name" xml:space="preserve">
+    <value>자각몽 끼워넣기 옵션</value>
+  </data>
+  <data name="AST_DPS_Lucid_Desc" xml:space="preserve">
+    <value>MP가 슬라이더 설정치보다 낮아지면 자각몽 시전</value>
+  </data>
+  <data name="AST_AOE_DPS_Name" xml:space="preserve">
+    <value>고급 공격 모드 - 광역 공격</value>
+  </data>
+  <data name="AST_AOE_DPS_Desc" xml:space="preserve">
+    <value>그라비데를 아래 옵션으로 대체</value>
+  </data>
+  <data name="AST_AOE_DPS_DoT_Name" xml:space="preserve">
+    <value>다중 대상 지속 피해(도트) 설정</value>
+  </data>
+  <data name="AST_AOE_DPS_DoT_Desc" xml:space="preserve">
+    <value>여러 적에게 지속 피해(도트) 유지</value>
+  </data>
+  <data name="AST_AOE_LightSpeed_Name" xml:space="preserve">
+    <value>광속 시전 끼워넣기 옵션</value>
+  </data>
+  <data name="AST_AOE_LightSpeed_Desc" xml:space="preserve">
+    <value>이동 시 광속 시전 활성화</value>
+  </data>
+  <data name="AST_AOE_LightSpeedHold_Name" xml:space="preserve">
+    <value>광속 시전 보유 옵션</value>
+  </data>
+  <data name="AST_AOE_LightSpeedHold_Desc" xml:space="preserve">
+    <value>광속 시전 수동 사용을 위해 1개를 항상 남겨두기</value>
+  </data>
+  <data name="AST_AOE_Divination_Name" xml:space="preserve">
+    <value>기술 사이에 점복 사용 옵션</value>
+  </data>
+  <data name="AST_AOE_Divination_Desc" xml:space="preserve">
+    <value>점복 추가</value>
+  </data>
+  <data name="AST_AOE_LightspeedBurst_Name" xml:space="preserve">
+    <value>광속 시전 버스트 옵션</value>
+  </data>
+  <data name="AST_AOE_LightspeedBurst_Desc" xml:space="preserve">
+    <value>점복 전에 광속 시전을 추가합니다.
+광속 시전 보유 옵션과 함께 사용하여, 사용할 수 있는 충전 수를 확보하도록 합니다</value>
+  </data>
+  <data name="AST_AOE_AutoDraw_Name" xml:space="preserve">
+    <value>기술 사이에 카드 뽑기 사용</value>
+  </data>
+  <data name="AST_AOE_AutoDraw_Desc" xml:space="preserve">
+    <value>카드 뽑기 활성화</value>
+  </data>
+  <data name="AST_AOE_AutoPlay_Name" xml:space="preserve">
+    <value>기술 사이에 카드 사용 옵션</value>
+  </data>
+  <data name="AST_AOE_AutoPlay_Desc" xml:space="preserve">
+    <value>'아제마의 균형' 또는 '비레고의 화살' 끼워넣기 (카드 빠른 대상 지정과 함께 사용하는 것을 권장)</value>
+  </data>
+  <data name="AST_AOE_CardPool_Name" xml:space="preserve">
+    <value>카드 사용 비축 옵션</value>
+  </data>
+  <data name="AST_AOE_CardPool_Desc" xml:space="preserve">
+    <value>점복 시너지 구간을 위해 공격 카드 축적</value>
+  </data>
+  <data name="AST_AOE_LazyLord_Name" xml:space="preserve">
+    <value>왕의 검 끼워넣기 옵션</value>
+  </data>
+  <data name="AST_AOE_LazyLord_Desc" xml:space="preserve">
+    <value>왕의 검 추가</value>
+  </data>
+  <data name="AST_AOE_LordPool_Name" xml:space="preserve">
+    <value>왕의 검 비축 설정</value>
+  </data>
+  <data name="AST_AOE_LordPool_Desc" xml:space="preserve">
+    <value>점복 시너지 구간을 위해 왕의 검 보존</value>
+  </data>
+  <data name="AST_AOE_Oracle_Name" xml:space="preserve">
+    <value>신탁 옵션</value>
+  </data>
+  <data name="AST_AOE_Oracle_Desc" xml:space="preserve">
+    <value>점복 후 신탁 추가</value>
+  </data>
+  <data name="AST_AOE_DPS_EarthlyStar_Name" xml:space="preserve">
+    <value>지상의 별 옵션</value>
+  </data>
+  <data name="AST_AOE_DPS_EarthlyStar_Desc" xml:space="preserve">
+    <value>지상의 별을 터뜨리지는 않고, 설치만 순환에 추가합니다.
+설치 대상 우선순위는 다음과 같습니다, 먼저 주시 대상 그다음 임시 대상과 고정 대상 마지막으로 자기 발밑에 설치합니다.</value>
+  </data>
+  <data name="AST_AOE_DPS_StellarDetonation_Name" xml:space="preserve">
+    <value>별 폭발 옵션</value>
+  </data>
+  <data name="AST_AOE_DPS_StellarDetonation_Desc" xml:space="preserve">
+    <value>대상의 HP 비율과 전투 유형에 따라, 큰별의 지배자 상태에서 별 폭발을 조기에 사용하도록 추가합니다.</value>
+  </data>
+  <data name="AST_AOE_DPS_MacroCosmos_Name" xml:space="preserve">
+    <value>대우주 옵션</value>
+  </data>
+  <data name="AST_AOE_DPS_MacroCosmos_Desc" xml:space="preserve">
+    <value>광역 순환에서 3GCDs 이후에 대우주를 추가합니다.</value>
+  </data>
+  <data name="AST_AOE_Lucid_Name" xml:space="preserve">
+    <value>자각몽 끼워넣기 설정</value>
+  </data>
+  <data name="AST_AOE_Lucid_Desc" xml:space="preserve">
+    <value>슬라이더로 설정한 MP 수치 아래로 떨어지면 자동으로 자각몽 추가</value>
+  </data>
+  <data name="AST_ST_Heals_Name" xml:space="preserve">
+    <value>고급 치유 모드 - 단일 치유</value>
+  </data>
+  <data name="AST_ST_Heals_Desc" xml:space="preserve">
+    <value>베네피크를 하나의 버튼으로 사용하는 힐 스킬로 대체합니다.</value>
+  </data>
+  <data name="AST_ST_Heals_Esuna_Name" xml:space="preserve">
+    <value>에스나 옵션</value>
+  </data>
+  <data name="AST_ST_Heals_Esuna_Desc" xml:space="preserve">
+    <value>해제 가능한 디버프가 있을 경우 대상에게 에스나를 사용합니다.</value>
+  </data>
+  <data name="AST_ST_Heals_AspectedBenefic_Name" xml:space="preserve">
+    <value>별읽기 : 베네피크 옵션</value>
+  </data>
+  <data name="AST_ST_Heals_AspectedBenefic_Desc" xml:space="preserve">
+    <value>별읽기 : 베네피크를 추가하고, 자동으로 갱신합니다.</value>
+  </data>
+  <data name="AST_ST_Heals_EssentialDignity_Name" xml:space="preserve">
+    <value>본질적 위계 옵션</value>
+  </data>
+  <data name="AST_ST_Heals_EssentialDignity_Desc" xml:space="preserve">
+    <value>대상이 설정된 체력 이하가 되었을 때, 본질적 위계를 사용합니다.</value>
+  </data>
+  <data name="AST_ST_Heals_EssentialDignity_Emergency_Name" xml:space="preserve">
+    <value>긴급 본질적 위계 옵션</value>
+  </data>
+  <data name="AST_ST_Heals_EssentialDignity_Emergency_Desc" xml:space="preserve">
+    <value>대상의 체력 수치를 체크하는 수치를 추가로 설정하여 본질적 위계를 사용합니다. (급한 상황일 경우)</value>
+  </data>
+  <data name="AST_ST_Heals_CelestialIntersection_Name" xml:space="preserve">
+    <value>천궁의 교차 옵션</value>
+  </data>
+  <data name="AST_ST_Heals_CelestialIntersection_Desc" xml:space="preserve">
+    <value>천궁의 교차를 사용합니다.</value>
+  </data>
+  <data name="AST_ST_Heals_Exaltation_Name" xml:space="preserve">
+    <value>성위 격상 옵션</value>
+  </data>
+  <data name="AST_ST_Heals_Exaltation_Desc" xml:space="preserve">
+    <value>성위 격상을 사용합니다.</value>
+  </data>
+  <data name="AST_ST_Heals_Spire_Name" xml:space="preserve">
+    <value>비레고의 탑 옵션</value>
+  </data>
+  <data name="AST_ST_Heals_Spire_Desc" xml:space="preserve">
+    <value>비레고의 탑(보호막)이 나왔을 때 사용합니다.</value>
+  </data>
+  <data name="AST_ST_Heals_Ewer_Name" xml:space="preserve">
+    <value>살리아크의 물병 옵션</value>
+  </data>
+  <data name="AST_ST_Heals_Ewer_Desc" xml:space="preserve">
+    <value>살리아크의 물병(도트힐)이 나왔을 때 사용합니다.</value>
+  </data>
+  <data name="AST_ST_Heals_Arrow_Name" xml:space="preserve">
+    <value>오쉬온의 화살 옵션</value>
+  </data>
+  <data name="AST_ST_Heals_Arrow_Desc" xml:space="preserve">
+    <value>오쉬온의 화살(받는 회복 효과 향상)이 나왔을 때 사용합니다.</value>
+  </data>
+  <data name="AST_ST_Heals_Bole_Name" xml:space="preserve">
+    <value>세계수의 줄기 옵션</value>
+  </data>
+  <data name="AST_ST_Heals_Bole_Desc" xml:space="preserve">
+    <value>세계수의 줄기(뎀감)가 나왔을 때 사용합니다.</value>
+  </data>
+  <data name="AST_ST_Heals_CelestialOpposition_Name" xml:space="preserve">
+    <value>천궁의 반목 옵션</value>
+  </data>
+  <data name="AST_ST_Heals_CelestialOpposition_Desc" xml:space="preserve">
+    <value>천궁의 반목을 사용합니다.</value>
+  </data>
+  <data name="AST_ST_Heals_CollectiveUnconscious_Name" xml:space="preserve">
+    <value>운명의 수레바퀴 옵션</value>
+  </data>
+  <data name="AST_ST_Heals_CollectiveUnconscious_Desc" xml:space="preserve">
+    <value>운명의 수레바퀴를 사용합니다. (도트힐, 다운타임을 위해 채널링을 지속하지는 않습니다)</value>
+  </data>
+  <data name="AST_ST_Heals_SoloLady_Name" xml:space="preserve">
+    <value>여왕의 날개 옵션</value>
+  </data>
+  <data name="AST_ST_Heals_SoloLady_Desc" xml:space="preserve">
+    <value>여왕의 날개가 나왔을 때 사용합니다.</value>
+  </data>
+  <data name="AST_ST_Heals_NeutralSect_Name" xml:space="preserve">
+    <value>하루별읽기 옵션</value>
+  </data>
+  <data name="AST_ST_Heals_NeutralSect_Desc" xml:space="preserve">
+    <value>하루별읽기/태양궁을 사용합니다.</value>
+  </data>
+  <data name="AST_AoE_Heals_Name" xml:space="preserve">
+    <value>고급 치유 모드 - 광역 치유</value>
+  </data>
+  <data name="AST_AoE_Heals_Desc" xml:space="preserve">
+    <value>별읽기: 헬리오스/회합: 헬리오스 또는 헬리오스를 하나의 버튼으로 사용하는 힐 스킬로 대체합니다. 이 스킬은 아래 설정과 관계없이 어떠한 체크도 하지 않으며, 항상 가장 낮은 우선순위로 간주됩니다.</value>
+  </data>
+  <data name="AST_AoE_Heals_Aspected_Name" xml:space="preserve">
+    <value>별읽기: 헬리오스 옵션</value>
+  </data>
+  <data name="AST_AoE_Heals_Aspected_Desc" xml:space="preserve">
+    <value>'별읽기: 헬리오스'와 '헬리오스' 추가</value>
+  </data>
+  <data name="AST_AoE_Heals_Helios_Name" xml:space="preserve">
+    <value>헬리오스 옵션</value>
+  </data>
+  <data name="AST_AoE_Heals_Helios_Desc" xml:space="preserve">
+    <value>헬리오스 추가</value>
+  </data>
+  <data name="AST_AoE_Heals_CelestialOpposition_Name" xml:space="preserve">
+    <value>천궁의 반목 옵션</value>
+  </data>
+  <data name="AST_AoE_Heals_CelestialOpposition_Desc" xml:space="preserve">
+    <value>천궁의 반목 추가</value>
+  </data>
+  <data name="AST_AoE_Heals_LazyLady_Name" xml:space="preserve">
+    <value>여왕의 날개 즉시 시전 옵션</value>
+  </data>
+  <data name="AST_AoE_Heals_LazyLady_Desc" xml:space="preserve">
+    <value>여왕의 날개를 뽑은 경우 추가로 사용합니다.</value>
+  </data>
+  <data name="AST_AoE_Heals_Horoscope_Name" xml:space="preserve">
+    <value>별점운 옵션</value>
+  </data>
+  <data name="AST_AoE_Heals_Horoscope_Desc" xml:space="preserve">
+    <value>별점운을 사용한 뒤, 별읽기: 헬리오스 또는 헬리오스를 이어서 사용하도록 추가합니다.</value>
+  </data>
+  <data name="AST_AoE_Heals_HoroscopeHeal_Name" xml:space="preserve">
+    <value>별점운: 헬리오스 옵션</value>
+  </data>
+  <data name="AST_AoE_Heals_HoroscopeHeal_Desc" xml:space="preserve">
+    <value>별점운: 헬리오스 추가</value>
+  </data>
+  <data name="AST_AoE_Heals_NeutralSect_Name" xml:space="preserve">
+    <value>하루별읽기 옵션</value>
+  </data>
+  <data name="AST_AoE_Heals_NeutralSect_Desc" xml:space="preserve">
+    <value>하루별읽기와 그 후속 스킬인 태양궁 추가</value>
+  </data>
+  <data name="AST_AoE_Heals_StellarDetonation_Name" xml:space="preserve">
+    <value>별 폭발 옵션</value>
+  </data>
+  <data name="AST_AoE_Heals_StellarDetonation_Desc" xml:space="preserve">
+    <value>큰별의 지배자 상태일 때 별 폭발 사용 추가</value>
+  </data>
+  <data name="AST_AoE_Heals_CollectiveUnconscious_Name" xml:space="preserve">
+    <value>운명의 수레바퀴 옵션</value>
+  </data>
+  <data name="AST_AoE_Heals_CollectiveUnconscious_Desc" xml:space="preserve">
+    <value>운명의 수레바퀴 추가 (유지하지 않고 지속 회복 효과만 적용)</value>
+  </data>
+  <data name="AST_Cards_QuickTargetCards_Name" xml:space="preserve">
+    <value>공격 카드 빠른 대상 지정</value>
+  </data>
+  <data name="AST_Cards_QuickTargetCards_Desc" xml:space="preserve">
+    <value>콤보에서 아제마의 균형 또는 할로네의 창 카드를 사용할 때, 이 기능은 자동으로 해당 버프를 파티원에게 걸어줍니다.
+먼저 Balance의 우선순위에 따라 카드에 적합한 딜러를 확인합니다; 적합한 딜러가 없거나 이미 버프가 적용되어 있다면, 다른 딜러를 대상으로 확인합니다.
+주는 피해 감소 효과가 있거나 쇠약 상태인 파티원은 건너뛰려고 시도합니다.
+적합한 파티원이 없으면 기본적으로 자신에게 적용됩니다.</value>
+  </data>
+  <data name="AST_Benefic_Name" xml:space="preserve">
+    <value>베네피라 하위 호환</value>
+  </data>
+  <data name="AST_Benefic_Desc" xml:space="preserve">
+    <value>베네피라 미습득 시 베네피크로 대체</value>
+  </data>
+  <data name="AST_Raise_Alternative_Name" xml:space="preserve">
+    <value>부활 보조 기능</value>
+  </data>
+  <data name="AST_Raise_Alternative_Desc" xml:space="preserve">
+    <value>신속한 마법 사용 시 생환으로 버튼 변경</value>
+  </data>
+  <data name="AST_Raise_Alternative_Retarget_Name" xml:space="preserve">
+    <value>부활 대상 자동 재지정</value>
+  </data>
+  <data name="AST_Raise_Alternative_Retarget_Desc" xml:space="preserve">
+    <value>부활 시 부활된 대상은 자동으로 당신의 힐 스택으로 재지정됩니다.</value>
+  </data>
+  <data name="AST_Lightspeed_Protection_Name" xml:space="preserve">
+    <value>광속 시전 버프 중복 적용 보호 기능</value>
+  </data>
+  <data name="AST_Lightspeed_Protection_Desc" xml:space="preserve">
+    <value>버프 적용 중 광속 시전 중복 사용 방지</value>
+  </data>
+  <data name="AST_Mit_ST_Name" xml:space="preserve">
+    <value>경감 기능 - 단일 대상</value>
+  </data>
+  <data name="AST_Mit_ST_Desc" xml:space="preserve">
+    <value>성위 격상 사용 직후 버튼이 본질적 위계나 천궁의 교차로 바뀌어 연속적인 생존 관리가 가능해집니다.
+각 행동은 아래의 기술 대상 재지정 기능을 사용하여 다시 목표를 지정할 수 있습니다.</value>
+  </data>
+  <data name="AST_Mit_AoE_Name" xml:space="preserve">
+    <value>광역 경감 기능 - 광역 공격</value>
+  </data>
+  <data name="AST_Mit_AoE_Desc" xml:space="preserve">
+    <value>운명의 수레바퀴 사용 시 하루별읽기/태양궁 또는 별읽기: 헬리오스/별점운: 헬리오스로 버튼 변경합니다.</value>
+  </data>
+  <data name="AST_Raidwide_Name" xml:space="preserve">
+    <value>보스 광역 공격 대응 설정</value>
+  </data>
+  <data name="AST_Raidwide_Desc" xml:space="preserve">
+    <value>적의 전체 공격이 감지될 때 적절한 기술을 시전하도록 설계된 기능 모음입니다. 대부분의 광역 공격에 작동하지만 모든 상황을 완벽히 커버할 수는 없으므로, 직접 기믹을 숙지하는 것을 대체할 수는 없습니다.
+본 기능은 보조 도구일 뿐이며, 원활한 공략을 위해서는 던전 기믹 숙지가 반드시 병행되어야 합니다.</value>
+  </data>
+  <data name="AST_Raidwide_CollectiveUnconscious_Name" xml:space="preserve">
+    <value>전체 공격 대응용 운명의 수레바퀴 사용 옵션</value>
+  </data>
+  <data name="AST_Raidwide_CollectiveUnconscious_Desc" xml:space="preserve">
+    <value>적의 전체 공격 캐스팅 중, 스킬 사이사이에 '운명의 수레바퀴'를 자동으로 사용하여 피해를 경감합니다.
+</value>
+  </data>
+  <data name="AST_Raidwide_NeutralSect_Name" xml:space="preserve">
+    <value>전체 공격 시 하루별읽기 콤보 옵션</value>
+  </data>
+  <data name="AST_Raidwide_NeutralSect_Desc" xml:space="preserve">
+    <value>적의 전체 공격 캐스팅 중, 하루별읽기를 켜고 태양궁까지 자동으로 사용하여 파티를 보호합니다.
+모든 4가지 주요 콤보(설정)에서 공통으로 적용됩니다.</value>
+  </data>
+  <data name="AST_Raidwide_AspectedHelios_Name" xml:space="preserve">
+    <value>전체 공격 대응용 별읽기: 헬리오스 옵션</value>
+  </data>
+  <data name="AST_Raidwide_AspectedHelios_Desc" xml:space="preserve">
+    <value>적의 전체 공격 캐스팅 시, 하루별읽기 버프가 적용된 별읽기: 헬리오스를 우선 사용하여 보호막을 생성합니다.
+모든 4가지 주요 콤보(설정)에서 공통으로 적용됩니다.</value>
+  </data>
+  <data name="AST_Retargets_Name" xml:space="preserve">
+    <value>대상 자동 재지정 기능</value>
+  </data>
+  <data name="AST_Retargets_Desc" xml:space="preserve">
+    <value>수동으로 사용한 단일 대상 치유를 재지정할 수 있는 옵션 모음</value>
+  </data>
+  <data name="AST_Retargets_Benefic_Name" xml:space="preserve">
+    <value>베네피크 옵션</value>
+  </data>
+  <data name="AST_Retargets_Benefic_Desc" xml:space="preserve">
+    <value>베네피크/베네피라 시전 시, 힐 스택 내의 대상을 자동으로 타겟팅합니다. (하위 호환 기술에도 적용)</value>
+  </data>
+  <data name="AST_Retargets_AspectedBenefic_Name" xml:space="preserve">
+    <value>별읽기: 베네피크 옵션</value>
+  </data>
+  <data name="AST_Retargets_AspectedBenefic_Desc" xml:space="preserve">
+    <value>별읽기: 베네피크 시전 시, 힐 스택 내의 파티원을 자동으로 타겟팅합니다.</value>
+  </data>
+  <data name="AST_Retargets_EssentialDignity_Name" xml:space="preserve">
+    <value>본질적 위계 옵션</value>
+  </data>
+  <data name="AST_Retargets_EssentialDignity_Desc" xml:space="preserve">
+    <value>본질적 위계 시전 시, 힐 스택 내의 대상을 자동으로 타겟팅합니다.</value>
+  </data>
+  <data name="AST_Retargets_Exaltation_Name" xml:space="preserve">
+    <value>성위 격상 옵션</value>
+  </data>
+  <data name="AST_Retargets_Exaltation_Desc" xml:space="preserve">
+    <value>성위 격상 시전 시, 힐 스택 내의 대상을 자동으로 타겟팅합니다.</value>
+  </data>
+  <data name="AST_Retargets_Synastry_Name" xml:space="preserve">
+    <value>궁합 옵션</value>
+  </data>
+  <data name="AST_Retargets_Synastry_Desc" xml:space="preserve">
+    <value>궁합 시전 시, 힐 스택 내의 대상을 자동으로 타겟팅합니다.</value>
+  </data>
+  <data name="AST_Retargets_CelestialIntersection_Name" xml:space="preserve">
+    <value>천궁의 교차 옵션</value>
+  </data>
+  <data name="AST_Retargets_CelestialIntersection_Desc" xml:space="preserve">
+    <value>천궁의 교차 시전 시, 힐 스택내의 대상을 자동으로 타겟팅합니다.</value>
+  </data>
+  <data name="AST_Retargets_HealCards_Name" xml:space="preserve">
+    <value>회복/방어 카드 옵션</value>
+  </data>
+  <data name="AST_Retargets_HealCards_Desc" xml:space="preserve">
+    <value>회복/경감 카드 4종(물병/화살/나무/탑) 대상 자동 재지정</value>
+  </data>
+  <data name="AST_Retargets_EarthlyStar_Name" xml:space="preserve">
+    <value>지상의 별 옵션</value>
+  </data>
+  <data name="AST_Retargets_EarthlyStar_Desc" xml:space="preserve">
+    <value>지상의 별 시전 시, 현재 내 캐릭터 위치(발밑)를 타겟팅하여 설치합니다.</value>
+  </data>
+  <data name="BLM_ST_SimpleMode_Name" xml:space="preserve">
+    <value>단순 모드 - 단일 대상</value>
+  </data>
+  <data name="BLM_ST_SimpleMode_Desc" xml:space="preserve">
+    <value>파이어를 단일 대상 딜사이클로 대체합니다.
+입문자에게 가장 이상적인 옵션입니다.</value>
+  </data>
+  <data name="BLM_AoE_SimpleMode_Name" xml:space="preserve">
+    <value>단순 모드 - 광역</value>
+  </data>
+  <data name="BLM_AoE_SimpleMode_Desc" xml:space="preserve">
+    <value>블리자라를 원버튼 광역 딜사이클로 대체합니다.
+입문자에게 가장 이상적인 옵션입니다.</value>
+  </data>
+  <data name="BLM_ST_AdvancedMode_Name" xml:space="preserve">
+    <value>고급 모드 - 단일 대상</value>
+  </data>
+  <data name="BLM_ST_AdvancedMode_Desc" xml:space="preserve">
+    <value>파이어를 단일 대상 딜사이클로 대체합니다.
+딜사이클을 사용자에 맞게 세부 설정하고 싶을 때 적합합니다.</value>
+  </data>
+  <data name="BLM_ST_Opener_Name" xml:space="preserve">
+    <value>Balance 오프너 (100레벨)</value>
+  </data>
+  <data name="BLM_ST_Opener_Desc" xml:space="preserve">
+    <value>100레벨 정석 Balance 오프너를 추가합니다.</value>
+  </data>
+  <data name="BLM_ST_Transpose_Name" xml:space="preserve">
+    <value>속성 전환 옵션</value>
+  </data>
+  <data name="BLM_ST_Transpose_Desc" xml:space="preserve">
+    <value>딜사이클에 속성 전환을 추가합니다.</value>
+  </data>
+  <data name="BLM_ST_LeyLines_Name" xml:space="preserve">
+    <value>흑마법 문양 옵션</value>
+  </data>
+  <data name="BLM_ST_LeyLines_Desc" xml:space="preserve">
+    <value>딜사이클에 흑마법 문양을 추가합니다.</value>
+  </data>
+  <data name="BLM_ST_Amplifier_Name" xml:space="preserve">
+    <value>언어 확장 옵션</value>
+  </data>
+  <data name="BLM_ST_Amplifier_Desc" xml:space="preserve">
+    <value>딜사이클에 언어 확장을 추가합니다.</value>
+  </data>
+  <data name="BLM_ST_Manafont_Name" xml:space="preserve">
+    <value>마나샘 옵션</value>
+  </data>
+  <data name="BLM_ST_Manafont_Desc" xml:space="preserve">
+    <value>딜사이클에 마나샘을 추가합니다.</value>
+  </data>
+  <data name="BLM_ST_Thunder_Name" xml:space="preserve">
+    <value>선더 / 하이선더 옵션</value>
+  </data>
+  <data name="BLM_ST_Thunder_Desc" xml:space="preserve">
+    <value>딜사이클에 선더(또는 하이선더)를 추가합니다.</value>
+  </data>
+  <data name="BLM_ST_Despair_Name" xml:space="preserve">
+    <value>절망 옵션</value>
+  </data>
+  <data name="BLM_ST_Despair_Desc" xml:space="preserve">
+    <value>딜사이클에 절망을 추가합니다.</value>
+  </data>
+  <data name="BLM_ST_FlareStar_Name" xml:space="preserve">
+    <value>타오르는 별 옵션</value>
+  </data>
+  <data name="BLM_ST_FlareStar_Desc" xml:space="preserve">
+    <value>딜사이클에 타오르는 별을 추가합니다.</value>
+  </data>
+  <data name="BLM_ST_Swiftcast_Name" xml:space="preserve">
+    <value>신속한 마법 옵션</value>
+  </data>
+  <data name="BLM_ST_Swiftcast_Desc" xml:space="preserve">
+    <value>딜사이클에 신속한 마법을 추가합니다.</value>
+  </data>
+  <data name="BLM_ST_Triplecast_Name" xml:space="preserve">
+    <value>삼연속 마법 옵션</value>
+  </data>
+  <data name="BLM_ST_Triplecast_Desc" xml:space="preserve">
+    <value>딜사이클에 삼연속 마법를 추가합니다.
+신속한 마법이 재사용 대기 중일 때만 사용됩니다.</value>
+  </data>
+  <data name="BLM_ST_UsePolyglot_Name" xml:space="preserve">
+    <value>금지된 언어 / 미지의 언어 옵션</value>
+  </data>
+  <data name="BLM_ST_UsePolyglot_Desc" xml:space="preserve">
+    <value>딜사이클에 금지된 언어 / 미지의 언어를 추가합니다.</value>
+  </data>
+  <data name="BLM_ST_Movement_Name" xml:space="preserve">
+    <value>이동 중 옵션</value>
+  </data>
+  <data name="BLM_ST_Movement_Desc" xml:space="preserve">
+    <value>이동 시 사용할 기술 옵션을 추가합니다.</value>
+  </data>
+  <data name="BLM_ST_Manaward_Name" xml:space="preserve">
+    <value>마배리어 옵션</value>
+  </data>
+  <data name="BLM_ST_Manaward_Desc" xml:space="preserve">
+    <value>HP가 임계값 이하이거나 광역 공격이 감지될 때 마배리어를 사용합니다.</value>
+  </data>
+  <data name="BLM_ST_Addle_Name" xml:space="preserve">
+    <value>광역 대응 정신 교란 옵션</value>
+  </data>
+  <data name="BLM_ST_Addle_Desc" xml:space="preserve">
+    <value>광역 공격 영창이 감지되면 정신 교란을 사용합니다.</value>
+  </data>
+  <data name="BLM_AoE_AdvancedMode_Name" xml:space="preserve">
+    <value>고급 모드 - 광역</value>
+  </data>
+  <data name="BLM_AoE_AdvancedMode_Desc" xml:space="preserve">
+    <value>블리자라를 광역 딜사이클로 대체합니다.
+딜사이클을 사용자에 맞게 세부 설정하고 싶을 때 적합합니다.</value>
+  </data>
+  <data name="BLM_AoE_Transpose_Name" xml:space="preserve">
+    <value>속성 전환 옵션</value>
+  </data>
+  <data name="BLM_AoE_Transpose_Desc" xml:space="preserve">
+    <value>딜사이클에 속성 전환을 추가합니다.</value>
+  </data>
+  <data name="BLM_AoE_LeyLines_Name" xml:space="preserve">
+    <value>흑마법 문양 옵션</value>
+  </data>
+  <data name="BLM_AoE_LeyLines_Desc" xml:space="preserve">
+    <value>딜사이클에 흑마법 문양을 추가합니다.</value>
+  </data>
+  <data name="BLM_AoE_Amplifier_Name" xml:space="preserve">
+    <value>언어 확장 옵션</value>
+  </data>
+  <data name="BLM_AoE_Amplifier_Desc" xml:space="preserve">
+    <value>딜사이클에 언어 확장을 추가합니다.</value>
+  </data>
 </root>
