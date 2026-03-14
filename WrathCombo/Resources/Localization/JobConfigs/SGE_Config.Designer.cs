@@ -59,5 +59,96 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Any {0} check.
+        /// </summary>
+        internal static string AnyPanhaimaCheck {
+            get {
+                return ResourceManager.GetString("AnyPanhaimaCheck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable to not override an existing {0}..
+        /// </summary>
+        internal static string AnyPanhaimaCheckDesc {
+            get {
+                return ResourceManager.GetString("AnyPanhaimaCheckDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Check for {0} Trait (Heal over Time).
+        /// </summary>
+        internal static string KerecholeTraitCheck {
+            get {
+                return ResourceManager.GetString("KerecholeTraitCheck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enabling this will prevent {0} from being used when the Heal over Time trait is unavailable..
+        /// </summary>
+        internal static string KerecholeTraitCheckDesc {
+            get {
+                return ResourceManager.GetString("KerecholeTraitCheckDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Will add {0} at beginning.
+        /// </summary>
+        internal static string SGE_Mit_AoE_Kerachole_Help {
+            get {
+                return ResourceManager.GetString("SGE_Mit_AoE_Kerachole_Help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Will add {0} at the end.
+        /// </summary>
+        internal static string SGE_Mit_AoE_Panhaima_Help {
+            get {
+                return ResourceManager.GetString("SGE_Mit_AoE_Panhaima_Help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Will add {0} before {1} for the Healing Boost.
+        /// </summary>
+        internal static string SGE_Mit_AoE_Philosophia_Help {
+            get {
+                return ResourceManager.GetString("SGE_Mit_AoE_Philosophia_Help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shield Check: Percentage of Party Members to get {0} shields. 
+        ///0 = Dont use, 100 = everyone needs shields.
+        /// </summary>
+        internal static string SGE_Mit_AoE_PrognosisOption_Name {
+            get {
+                return ResourceManager.GetString("SGE_Mit_AoE_PrognosisOption_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Will add {0} for more mitigation..
+        /// </summary>
+        internal static string SGE_Mit_ST_Haima_Help {
+            get {
+                return ResourceManager.GetString("SGE_Mit_ST_Haima_Help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Will add {0} to top off targets health and add Damage reduction..
+        /// </summary>
+        internal static string SGE_Mit_ST_Taurochole_Help {
+            get {
+                return ResourceManager.GetString("SGE_Mit_ST_Taurochole_Help", resourceCulture);
+            }
+        }
     }
 }

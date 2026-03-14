@@ -211,10 +211,27 @@ namespace WrathCombo.Window
 
             private static LocalizedJobInfo BuildEntry(Job job)
             {
-                var name = job.Name();
-                var shortName = job.Shorthand();
+                // Name
+                var sheet = Svc.Data.GetExcelSheet<ClassJob>(LangFromCulture).GetRow((uint)job);
+                string jobName = job switch
+                {
+                    Job.ADV => MiscUI.Roles_and_Content,
+                    Job.MIN or Job.BTN or Job.FSH
+                        => sheet.ClassJobCategory.Value.Name.ToString(),
+                    _ => sheet.Name.ToString()
+                };
 
-                return new LocalizedJobInfo(name, shortName);
+                jobName = TextFormatting.ToTitleCase(jobName);
+
+                // Abbreviation / Short Name
+                string shortName = job switch
+                {
+                    Job.ADV => string.Empty,
+                    Job.MIN or Job.BTN or Job.FSH => MiscUI.DOL,
+                    _ => sheet.Abbreviation.ToString()
+                };
+
+                return new LocalizedJobInfo(jobName, shortName);
             }
         }
 

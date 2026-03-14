@@ -61,11 +61,29 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} Opener.
+        /// </summary>
+        internal static string Action_Opener {
+            get {
+                return ResourceManager.GetString("Action_Opener", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} Priority: .
         /// </summary>
         internal static string Action_Priority {
             get {
                 return ResourceManager.GetString("Action_Priority", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} Threshold.
+        /// </summary>
+        internal static string Action_Threshold {
+            get {
+                return ResourceManager.GetString("Action_Threshold", resourceCulture);
             }
         }
         
@@ -161,6 +179,15 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to BurstOption.
+        /// </summary>
+        internal static string BurstOption {
+            get {
+                return ResourceManager.GetString("BurstOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to How many charges to retain for manual use. Set to 0 to disable this check..
         /// </summary>
         internal static string ChargePool {
@@ -238,6 +265,24 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         internal static string IncludeShields {
             get {
                 return ResourceManager.GetString("IncludeShields", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} Shield Check.
+        /// </summary>
+        internal static string Job0ShieldCheck {
+            get {
+                return ResourceManager.GetString("Job0ShieldCheck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable to not override an existing {0}&apos;s shield..
+        /// </summary>
+        internal static string Job0ShieldCheckDesc {
+            get {
+                return ResourceManager.GetString("Job0ShieldCheckDesc", resourceCulture);
             }
         }
         
@@ -332,6 +377,15 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Save {0} charges for burst..
+        /// </summary>
+        internal static string Save0ChargesForBurst {
+            get {
+                return ResourceManager.GetString("Save0ChargesForBurst", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select what kind of content this option applies to:.
         /// </summary>
         internal static string SelectWhatKindOfContentThisOptionAppliesTo {
@@ -346,6 +400,15 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         internal static string SelfOnly {
             get {
                 return ResourceManager.GetString("SelfOnly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shield Check: Percentage of Party Members without shields to check for..
+        /// </summary>
+        internal static string ShieldCheckPartyMemberNeedPercent {
+            get {
+                return ResourceManager.GetString("ShieldCheckPartyMemberNeedPercent", resourceCulture);
             }
         }
         
@@ -404,11 +467,20 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  Tanks Only.
+        ///   Looks up a localized string similar to Tanks Only.
         /// </summary>
         internal static string TanksOnly {
             get {
                 return ResourceManager.GetString("TanksOnly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Target HP% to use {0} at or below. Set to 100 to disable this check..
+        /// </summary>
+        internal static string TargetHPUse0AtOrBelow {
+            get {
+                return ResourceManager.GetString("TargetHPUse0AtOrBelow", resourceCulture);
             }
         }
         
@@ -431,11 +503,38 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Use {0} Opener.
+        /// </summary>
+        internal static string Use_0_Opener {
+            get {
+                return ResourceManager.GetString("Use_0_Opener", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Use {0}.
         /// </summary>
         internal static string Use0 {
             get {
                 return ResourceManager.GetString("Use0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use {0} when {1} charges are available..
+        /// </summary>
+        internal static string Use0When1ChargesAreAvailable {
+            get {
+                return ResourceManager.GetString("Use0When1ChargesAreAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use {0} when in range of a selected enemy target..
+        /// </summary>
+        internal static string Use0WhenInRangeOfEnemy {
+            get {
+                return ResourceManager.GetString("Use0WhenInRangeOfEnemy", resourceCulture);
             }
         }
         
