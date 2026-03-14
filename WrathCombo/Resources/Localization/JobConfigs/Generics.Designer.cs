@@ -97,6 +97,15 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ally Hard Target.
+        /// </summary>
+        internal static string AllyHardTarget {
+            get {
+                return ResourceManager.GetString("AllyHardTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Applies options to {0} only..
         /// </summary>
         internal static string ApplyOnlyTo0 {
@@ -179,6 +188,15 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enemy Hard Target.
+        /// </summary>
+        internal static string EnemyHardTarget {
+            get {
+                return ResourceManager.GetString("EnemyHardTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select what kind of enemies the HP check should be applied to:.
         /// </summary>
         internal static string EnemyTypeCheck {
@@ -202,6 +220,15 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         internal static string HPCheckNonBosses {
             get {
                 return ResourceManager.GetString("HPCheckNonBosses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Include {0}.
+        /// </summary>
+        internal static string Include0 {
+            get {
+                return ResourceManager.GetString("Include0", resourceCulture);
             }
         }
         
@@ -269,6 +296,15 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Not In Boss Encounters.
+        /// </summary>
+        internal static string NotInBossEncounters {
+            get {
+                return ResourceManager.GetString("NotInBossEncounters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to On {0}.
         /// </summary>
         internal static string On0 {
@@ -314,6 +350,15 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Start using when below party average HP %. Set to 100 to disable this check.
+        /// </summary>
+        internal static string StartUsingWhenBelowPartyAverageHPSetTo100ToDisableThisCheck {
+            get {
+                return ResourceManager.GetString("StartUsingWhenBelowPartyAverageHPSetTo100ToDisableThisCheck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Stop using at Enemy HP %. Set to Zero to disable this check..
         /// </summary>
         internal static string StopEnemyHpPercent {
@@ -350,6 +395,24 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Stop using when below set percentage.
+        /// </summary>
+        internal static string StopUsingWhenBelowSetPercentage {
+            get {
+                return ResourceManager.GetString("StopUsingWhenBelowSetPercentage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  Tanks Only.
+        /// </summary>
+        internal static string TanksOnly {
+            get {
+                return ResourceManager.GetString("TanksOnly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Two target dotting.
         /// </summary>
         internal static string TwoTargetDotting {
@@ -373,6 +436,33 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         internal static string Use0 {
             get {
                 return ResourceManager.GetString("Use0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Will not use in Boss encounters..
+        /// </summary>
+        internal static string WillNotUseInBossEncounters {
+            get {
+                return ResourceManager.GetString("WillNotUseInBossEncounters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Will only use on Tanks.
+        /// </summary>
+        internal static string WillOnlyUseOnTanks {
+            get {
+                return ResourceManager.GetString("WillOnlyUseOnTanks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Will only weave this action..
+        /// </summary>
+        internal static string WillOnlyWeaveThisAction {
+            get {
+                return ResourceManager.GetString("WillOnlyWeaveThisAction", resourceCulture);
             }
         }
     }

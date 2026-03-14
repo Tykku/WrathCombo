@@ -204,4 +204,34 @@
   <data name="ApplyOnlyTo0" xml:space="preserve">
     <value>Applies options to {0} only.</value>
   </data>
+  <data name="WillOnlyWeaveThisAction" xml:space="preserve">
+    <value>Will only weave this action.</value>
+  </data>
+  <data name="NotInBossEncounters" xml:space="preserve">
+    <value>Not In Boss Encounters</value>
+  </data>
+  <data name="WillNotUseInBossEncounters" xml:space="preserve">
+    <value>Will not use in Boss encounters.</value>
+  </data>
+  <data name="TanksOnly" xml:space="preserve">
+    <value> Tanks Only</value>
+  </data>
+  <data name="WillOnlyUseOnTanks" xml:space="preserve">
+    <value>Will only use on Tanks</value>
+  </data>
+  <data name="StopUsingWhenBelowSetPercentage" xml:space="preserve">
+    <value>Stop using when below set percentage</value>
+  </data>
+  <data name="StartUsingWhenBelowPartyAverageHPSetTo100ToDisableThisCheck" xml:space="preserve">
+    <value>Start using when below party average HP %. Set to 100 to disable this check</value>
+  </data>
+  <data name="EnemyHardTarget" xml:space="preserve">
+    <value>Enemy Hard Target</value>
+  </data>
+  <data name="AllyHardTarget" xml:space="preserve">
+    <value>Ally Hard Target</value>
+  </data>
+  <data name="Include0" xml:space="preserve">
+    <value>Include {0}</value>
+  </data>
 </root>

@@ -61,6 +61,51 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Also Retarget manually-used Cards.
+        /// </summary>
+        internal static string AlsoRetargetManuallyUsedCards {
+            get {
+                return ResourceManager.GetString("AlsoRetargetManuallyUsedCards", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Alternative AoE Mode. Leaves {0} alone for manual HoTs.
+        /// </summary>
+        internal static string AlternativeAoEModeLeaves0AloneForManualHoTs {
+            get {
+                return ResourceManager.GetString("AlternativeAoEModeLeaves0AloneForManualHoTs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Alternative AOE Mode. Leaves Aspected Helios alone for manual HoTs.
+        /// </summary>
+        internal static string AlternativeAOEModeLeavesAspectedHeliosAloneForManualHoTs {
+            get {
+                return ResourceManager.GetString("AlternativeAOEModeLeavesAspectedHeliosAloneForManualHoTs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Any Mouseover Override.
+        /// </summary>
+        internal static string AnyMouseoverOverride {
+            get {
+                return ResourceManager.GetString("AnyMouseoverOverride", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overrides selection with UI or Nameplate or Model MouseOver target (in that order), if you have one that is in range and does not have damage down or rez sickness..
+        /// </summary>
+        internal static string AnyMouseoverOverrideDesc {
+            get {
+                return ResourceManager.GetString("AnyMouseoverOverrideDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Does not use {0} in the Opener..
         /// </summary>
         internal static string DoesNotUseEarthlyStarInTheOpener {
@@ -79,11 +124,74 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Focus Target Override (when correct role).
+        /// </summary>
+        internal static string FocusTargetOverrideWhenCorrectRole {
+            get {
+                return ResourceManager.GetString("FocusTargetOverrideWhenCorrectRole", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overrides selection with your Focus Target, if they are within range and do not have damage down or rez sickness, and are melee for Balance or ranged for Spear (including supports)..
+        /// </summary>
+        internal static string FocusTargetOverrideWhenCorrectRoleDesc {
+            get {
+                return ResourceManager.GetString("FocusTargetOverrideWhenCorrectRoleDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Follows normal targeting plan.
         /// </summary>
         internal static string FollowsNormalTargetingPlan {
             get {
                 return ResourceManager.GetString("FollowsNormalTargetingPlan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hard Target Override.
+        /// </summary>
+        internal static string HardTargetOverride {
+            get {
+                return ResourceManager.GetString("HardTargetOverride", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overrides selection with hard target, if you have one that is in range and does not have damage down or rez sickness..
+        /// </summary>
+        internal static string HardTargetOverrideDesc {
+            get {
+                return ResourceManager.GetString("HardTargetOverrideDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Override.
+        /// </summary>
+        internal static string NoOverride {
+            get {
+                return ResourceManager.GetString("NoOverride", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Will not override the automatic party target viability checking with any manual input.\nThe cards will be targeted according to The Balance&apos;s priorities and status checking\n(like not doubling up on cards, and no damage down, etc.)..
+        /// </summary>
+        internal static string NoOverrideDesc {
+            get {
+                return ResourceManager.GetString("NoOverrideDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Options to try to Retarget {0} to before Self:.
+        /// </summary>
+        internal static string OptionsToTryToRetarget0ToBeforeSelf {
+            get {
+                return ResourceManager.GetString("OptionsToTryToRetarget0ToBeforeSelf", resourceCulture);
             }
         }
         
@@ -124,6 +232,42 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Target HP% to use {0} below.
+        /// </summary>
+        internal static string TargetHPToUse0Below {
+            get {
+                return ResourceManager.GetString("TargetHPToUse0Below", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Target Overrides:.
+        /// </summary>
+        internal static string TargetOverrides {
+            get {
+                return ResourceManager.GetString("TargetOverrides", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UI MouseOver Override.
+        /// </summary>
+        internal static string UIMouseOverOverride {
+            get {
+                return ResourceManager.GetString("UIMouseOverOverride", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overrides selection with UI MouseOver target, if you have one that is in range and does not have damage down or rez sickness..
+        /// </summary>
+        internal static string UIMouseOverOverrideDesc {
+            get {
+                return ResourceManager.GetString("UIMouseOverOverrideDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Use when Target is at or below HP% (0% = Never Detonate Early, 100% = Detonate ASAP)..
         /// </summary>
         internal static string UseWhenTargetIsAtOrBelowHP0NeverDetonateEarly100DetonateASAP {
@@ -133,11 +277,57 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Will add {0} for more mitigation..
+        /// </summary>
+        internal static string WillAdd0ForMoreMitigation {
+            get {
+                return ResourceManager.GetString("WillAdd0ForMoreMitigation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Will add {0} to top off targets health..
+        /// </summary>
+        internal static string WillAdd0ToTopOffTargetsHealth {
+            get {
+                return ResourceManager.GetString("WillAdd0ToTopOffTargetsHealth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Will also automatically target cards that you manually use, as in, those outside of your damage rotations..
+        /// </summary>
+        internal static string WillAlsoAutomaticallyTargetCardsThatYouManuallyUseAsInThoseOutsideOfYourDamageRotations {
+            get {
+                return ResourceManager.GetString("WillAlsoAutomaticallyTargetCardsThatYouManuallyUseAsInThoseOutsideOfYourDamageRot" +
+                        "ations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Will draw even if you have healing cards remaining..
         /// </summary>
         internal static string WillDrawEvenIfYouHaveHealingCardsRemaining {
             get {
                 return ResourceManager.GetString("WillDrawEvenIfYouHaveHealingCardsRemaining", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Will place at hard target if ally.
+        /// </summary>
+        internal static string WillPlaceAtHardTargetIfAlly {
+            get {
+                return ResourceManager.GetString("WillPlaceAtHardTargetIfAlly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Will place at hard target if enemy.
+        /// </summary>
+        internal static string WillPlaceAtHardTargetIfEnemy {
+            get {
+                return ResourceManager.GetString("WillPlaceAtHardTargetIfEnemy", resourceCulture);
             }
         }
     }
