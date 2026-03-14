@@ -128,11 +128,11 @@ internal partial class BLM : Caster
                         ? Xenoglossy
                         : Foul;
 
-                if (CanFire3)
-                    return Fire3;
-
                 if (CanFireParadox)
                     return OriginalHook(Fire);
+
+                if (CanFire3)
+                    return Fire3;
 
                 if (CanFlarestar)
                     return FlareStar;
@@ -442,11 +442,11 @@ internal partial class BLM : Caster
                         ? Xenoglossy
                         : Foul;
 
-                if (CanFire3)
-                    return Fire3;
-
                 if (CanFireParadox)
                     return OriginalHook(Fire);
+
+                if (CanFire3)
+                    return Fire3;
 
                 if (IsEnabled(Preset.BLM_ST_FlareStar) &&
                     CanFlarestar)
