@@ -45,8 +45,7 @@ internal partial class BLM
 
     private static bool CanFire3 =>
         LevelChecked(Fire3) && HasStatusEffect(Buffs.Firestarter) &&
-        (LevelChecked(Paradox) && AstralFireStacks < 3 ||
-         !LevelChecked(Fire4) && TimeSinceFirestarterBuff >= GCD * 3);
+        (AstralFireStacks < 3 || !LevelChecked(Fire4) && TimeSinceFirestarterBuff >= GCD * 3);
 
     private static bool CanFireParadox =>
         ActiveParadox && MP.Cur >= MP.FireParadox &&

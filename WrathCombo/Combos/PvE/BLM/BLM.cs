@@ -466,7 +466,8 @@ internal partial class BLM : Caster
                     return Despair;
 
                 if (ActionReady(Blizzard3) &&
-                    !HasStatusEffect(Role.Buffs.Swiftcast) && !HasStatusEffect(Buffs.Triplecast))
+                    !HasStatusEffect(Role.Buffs.Swiftcast) &&
+                    !HasStatusEffect(Buffs.Triplecast))
                     return Blizzard3;
 
                 if (IsEnabled(Preset.BLM_ST_Transpose) &&
@@ -508,7 +509,8 @@ internal partial class BLM : Caster
                     return BlizzardSpam;
             }
 
-            if (ActionReady(Blizzard3))
+            if (ActionReady(Blizzard3) &&
+                !FirePhase && !IcePhase)
                 return MP.Cur < 7500
                     ? Blizzard3
                     : Fire3;
