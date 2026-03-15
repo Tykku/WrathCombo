@@ -2657,7 +2657,7 @@ namespace WrathCombo.Resources.Localization.Presets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Replaces Fire with a full one-button single target rotation.
+        ///   Looks up a localized string similar to Replaces Blizzard I with a full one-button single target rotation.
         ///These features are ideal if you want to customize the rotation..
         /// </summary>
         internal static string BLM_ST_AdvancedMode_Desc {
@@ -2820,7 +2820,7 @@ namespace WrathCombo.Resources.Localization.Presets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Replaces Fire with a full one-button single target rotation.
+        ///   Looks up a localized string similar to Replaces Blizzard I with a full one-button single target rotation.
         ///This is the ideal option for newcomers to the job..
         /// </summary>
         internal static string BLM_ST_SimpleMode_Desc {
