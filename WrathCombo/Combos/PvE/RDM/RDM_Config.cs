@@ -246,7 +246,7 @@ internal partial class RDM
 
                 case Preset.RDM_MagickProtection:
                     DrawSliderInt(0, 5, RDM_MagickProtectionDuration,
-                        "Time Remaining on others Magick Barrier to allow within\n(0 = MAgick Barrier must not be on the target)");
+                        "Time Remaining on others Magick Barrier to allow within\n(0 = Magick Barrier must not be on the target)");
                     break;
 
                 case Preset.RDM_OGCDs:
