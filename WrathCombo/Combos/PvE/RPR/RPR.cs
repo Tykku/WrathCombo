@@ -272,7 +272,9 @@ internal partial class RPR : Melee
                 Opener().FullOpener(ref actionID) && HasBattleTarget())
                 return actionID;
 
-            if (ContentSpecificActions.TryGet(out uint contentAction))
+            if (!HasStatusEffect(Buffs.Executioner) &&
+                !HasStatusEffect(Buffs.SoulReaver) &&
+                ContentSpecificActions.TryGet(out uint contentAction))
                 return contentAction;
 
             //All Weaves
