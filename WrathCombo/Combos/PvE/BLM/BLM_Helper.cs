@@ -140,6 +140,7 @@ internal partial class BLM
         //Xeno
         (Xenoglossy, Preset.BLM_ST_Movement,
             () => BLM_ST_MovementOption[3] &&
+                  ActionReady(Xenoglossy) &&
                   HasPolyglotStacks() &&
                   !HasStatusEffect(Buffs.Triplecast) &&
                   !HasStatusEffect(Role.Buffs.Swiftcast)),
