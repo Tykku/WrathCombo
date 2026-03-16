@@ -1,6 +1,7 @@
 ﻿using Dalamud.Game;
 using ECommons.DalamudServices;
 using ECommons.ExcelServices;
+using Lumina.Excel.Sheets;
 using System.Collections.Concurrent;
 using System.Collections.Frozen;
 using System.Collections.Generic;
@@ -9,12 +10,14 @@ using System.Resources;
 using System.Threading;
 using WrathCombo.Core;
 using WrathCombo.Extensions;
+using WrathCombo.Resources.Localization.JobConfigs;
 using WrathCombo.Resources.Localization.Presets;
 using WrathCombo.Resources.Localization.UI.AutoRotation;
 using WrathCombo.Resources.Localization.UI.Features;
 using WrathCombo.Resources.Localization.UI.MainWindow;
 using WrathCombo.Resources.Localization.UI.Misc;
 using WrathCombo.Resources.Localization.UI.Settings;
+using WrathCombo.Window.Tabs;
 
 namespace WrathCombo.Window
 {
@@ -31,6 +34,15 @@ namespace WrathCombo.Window
 
         // Cache for localized strings with format parameters that read game data
         private static readonly ConcurrentDictionary<string, string> FormatCache = new();
+
+        // Cache for action names, keyed by ID
+        private static readonly ConcurrentDictionary<uint, string> ActionNameCache = new();
+
+        // Cache for trait names, keyed by ID
+        private static readonly ConcurrentDictionary<uint, string> TraitNameCache = new();
+
+        // Cache for status names, keyed by ID
+        private static readonly ConcurrentDictionary<uint, string> StatusNameCache = new();
 
         // For Reference: Dalamud supports these languages, and Ottercorp (CN)
         // https://github.com/goatcorp/Dalamud/blob/master/Dalamud/Localization.cs#L21
@@ -65,12 +77,41 @@ namespace WrathCombo.Window
             _gameCulture = newLang.ToCulture();
 
             // Update cultures in resource managers
+            // UI
             AutoRotationUI.Culture = _gameCulture;
             FeaturesUI.Culture = _gameCulture;
             MainWindowUI.Culture = _gameCulture;
             MiscUI.Culture = _gameCulture;
             SettingsUI.Culture = _gameCulture;
             SettingsCfgUI.Culture = _gameCulture;
+            Generics.Culture = _gameCulture;
+            AST_Config.Culture = _gameCulture;
+
+            // Job Configs
+            Generics.Culture = _gameCulture;
+            AST_Config.Culture = _gameCulture;
+            //BLM_Config.Culture = _gameCulture;
+            //BLU_Config.Culture = _gameCulture;
+            //BRD_Config.Culture = _gameCulture;
+            //DNC_Config.Culture = _gameCulture;
+            //DOL_Config.Culture = _gameCulture;
+            //DRG_Config.Culture = _gameCulture;
+            //DRK_Config.Culture = _gameCulture;
+            //GNB_Config.Culture = _gameCulture;
+            //MCH_Config.Culture = _gameCulture;
+            //MNK_Config.Culture = _gameCulture;
+            //NIN_Config.Culture = _gameCulture;
+            //PCT_Config.Culture = _gameCulture;
+            //PLD_Config.Culture = _gameCulture;
+            //RPR_Config.Culture = _gameCulture;
+            //RDM_Config.Culture = _gameCulture;
+            //SAM_Config.Culture = _gameCulture;
+            //SCH_Config.Culture = _gameCulture;
+            SGE_Config.Culture = _gameCulture;
+            //SMN_Config.Culture = _gameCulture;
+            //VPR_Config.Culture = _gameCulture;
+            //WAR_Config.Culture = _gameCulture;
+            //WHM_Config.Culture = _gameCulture;
 
             LangFromCulture = _gameCulture.TwoLetterISOLanguageName switch
             {
@@ -91,6 +132,10 @@ namespace WrathCombo.Window
             }
             JobNameCache.Clear();
             FormatCache.Clear();
+            ActionNameCache.Clear();
+            TraitNameCache.Clear();
+            StatusNameCache.Clear();
+            Settings.SettingsList.Clear();
         }
 
         /// <summary>
@@ -166,11 +211,41 @@ namespace WrathCombo.Window
 
             private static LocalizedJobInfo BuildEntry(Job job)
             {
-                var name = job.Name();
-                var shortName = job.Shorthand();
+                // Name
+                var sheet = Svc.Data.GetExcelSheet<ClassJob>(LangFromCulture).GetRow((uint)job);
+                string jobName = job switch
+                {
+                    Job.ADV => MiscUI.Roles_and_Content,
+                    Job.MIN or Job.BTN or Job.FSH
+                        => sheet.ClassJobCategory.Value.Name.ToString(),
+                    _ => sheet.Name.ToString()
+                };
 
-                return new LocalizedJobInfo(name, shortName);
+                jobName = TextFormatting.ToTitleCase(jobName);
+
+                // Abbreviation / Short Name
+                string shortName = job switch
+                {
+                    Job.ADV => string.Empty,
+                    Job.MIN or Job.BTN or Job.FSH => MiscUI.DOL,
+                    _ => sheet.Abbreviation.ToString()
+                };
+
+                return new LocalizedJobInfo(jobName, shortName);
             }
+        }
+
+        internal static class ActionAndStatusLocalization
+        {
+            public static string GetActionName(uint actionId)
+                => ActionNameCache.GetOrAdd(actionId, Svc.Data.GetExcelSheet<Action>(LangFromCulture).GetRowOrDefault(actionId)?.Name.ToString() ?? "Unknown Action");
+
+            public static string GetTraitName(uint traitId)
+                => TraitNameCache.GetOrAdd(traitId, Svc.Data.GetExcelSheet<Trait>(LangFromCulture).GetRowOrDefault(traitId)?.Name.ToString() ?? "Unknown Trait");
+
+            public static string GetStatusName(uint statusId)
+                => StatusNameCache.GetOrAdd(statusId, Svc.Data.GetExcelSheet<Status>(LangFromCulture).GetRowOrDefault(statusId)?.Name.ToString() ?? "Unknown Status");
+
         }
 
         /// <summary>
@@ -188,7 +263,7 @@ namespace WrathCombo.Window
         /// Core localized string resolver.
         /// Lets ResourceManager handle fallback chain.
         /// </summary>
-        private static string GetLocalizedString(string key, ResourceManager rm)
+        public static string GetLocalizedString(string key, ResourceManager rm)
         {
             var value = rm.GetString(key, _gameCulture);
 
