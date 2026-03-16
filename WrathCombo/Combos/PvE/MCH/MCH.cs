@@ -18,7 +18,7 @@ internal partial class MCH : PhysicalRanged
             if (CanReassemble() && !IsOverheated && !HasWeaved())
                 return Reassemble;
 
-            if (!JustUsed(Hypercharge, GCD + 0.9f) &&
+            if (!IsOverheated &&
                 ContentSpecificActions.TryGet(out uint contentAction))
                 return contentAction;
 
@@ -270,7 +270,7 @@ internal partial class MCH : PhysicalRanged
                 GetRemainingCharges(Reassemble) > MCH_ST_ReassemblePool)
                 return Reassemble;
 
-            if (!JustUsed(Hypercharge, GCD + 0.9f) &&
+            if (!IsOverheated &&
                 ContentSpecificActions.TryGet(out uint contentAction))
                 return contentAction;
 
