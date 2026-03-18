@@ -25,10 +25,7 @@ internal partial class DRG : Melee
                         return BattleLitany;
 
                     //Lance Charge Feature
-                    if (ActionReady(LanceCharge) &&
-                        (ActionReady(BattleLitany) ||
-                         GetCooldownRemainingTime(BattleLitany) is > 50 and < 65 ||
-                         !LevelChecked(BattleLitany)) &&
+                    if (CanLanceCharge &&
                         GetTargetHPPercent() > HPThresholdLanceCharge)
                         return LanceCharge;
 
@@ -140,10 +137,7 @@ internal partial class DRG : Melee
                         return BattleLitany;
 
                     //Lance Charge Feature
-                    if (ActionReady(LanceCharge) &&
-                        (ActionReady(BattleLitany) ||
-                         GetCooldownRemainingTime(BattleLitany) is > 50 and < 65 ||
-                         !LevelChecked(BattleLitany)) &&
+                    if (CanLanceCharge &&
                         GetTargetHPPercent() > 25)
                         return LanceCharge;
 
@@ -267,10 +261,7 @@ internal partial class DRG : Melee
 
                         //Lance Charge Feature
                         if (IsEnabled(Preset.DRG_ST_LanceCharge) &&
-                            ActionReady(LanceCharge) &&
-                            (ActionReady(BattleLitany) ||
-                             GetCooldownRemainingTime(BattleLitany) is > 50 and < 65 ||
-                             !LevelChecked(BattleLitany)) &&
+                            CanLanceCharge &&
                             GetTargetHPPercent() > HPThresholdLanceCharge)
                             return LanceCharge;
 
@@ -420,10 +411,7 @@ internal partial class DRG : Melee
 
                         //Lance Charge Feature
                         if (IsEnabled(Preset.DRG_AoE_LanceCharge) &&
-                            ActionReady(LanceCharge) &&
-                            (ActionReady(BattleLitany) ||
-                             GetCooldownRemainingTime(BattleLitany) is > 50 and < 65 ||
-                             !LevelChecked(BattleLitany)) &&
+                            CanLanceCharge &&
                             GetTargetHPPercent() > DRG_AoE_LanceChargeHPTreshold)
                             return LanceCharge;
 

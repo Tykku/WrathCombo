@@ -297,6 +297,13 @@ internal partial class DRG
     private static IStatus? ChaosDebuff =>
         GetStatusEffect(ChaoticList[OriginalHook(ChaosThrust)], CurrentTarget);
 
+    private static bool CanLanceCharge =>
+        ActionReady(LanceCharge) &&
+        HasBattleTarget() &&
+        (JustUsed(BattleLitany, GCD * 1.5f) ||
+         GetCooldownRemainingTime(BattleLitany) is > 50 and < 65 ||
+         !LevelChecked(BattleLitany));
+
     private static int HPThresholdBattleLitany =>
         DRG_ST_BattleLitanyBossOption == 1 ||
         !InBossEncounter() ? DRG_ST_BattleLitanyHPOption : 0;
@@ -304,6 +311,9 @@ internal partial class DRG
     private static int HPThresholdLanceCharge =>
         DRG_ST_LanceChargeBossOption == 1 ||
         !InBossEncounter() ? DRG_ST_LanceChargeHPOption : 0;
+
+    private static float GCD =>
+        GetCooldown(OriginalHook(TrueThrust)).CooldownTotal;
 
     #endregion
 
