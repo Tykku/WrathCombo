@@ -264,6 +264,9 @@ internal partial class DRG : Melee
                         //Lance Charge Feature
                         if (IsEnabled(Preset.DRG_ST_LanceCharge) &&
                             ActionReady(LanceCharge) &&
+                            (ActionReady(BattleLitany) || 
+                             GetCooldownRemainingTime(BattleLitany) is > 50 and < 65 ||
+                             !LevelChecked(BattleLitany)) &&
                             GetTargetHPPercent() > HPThresholdLanceCharge)
                             return LanceCharge;
 
