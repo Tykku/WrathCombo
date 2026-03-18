@@ -742,7 +742,7 @@ internal partial class RDM : Caster
                 return Manafication;
 
             return ActionReady(Embolden) &&
-                   GetStatusEffectRemainingTime(Buffs.EmboldenOthers, anyOwner: true) > RDM_EmboldenProtectionDuration
+                   HasStatusEffect(Buffs.EmboldenOthers, anyOwner: true)
                 ? All.SavageBlade
                 : actionID;
         }
