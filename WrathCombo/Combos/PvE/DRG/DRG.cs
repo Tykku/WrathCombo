@@ -421,7 +421,8 @@ internal partial class DRG : Melee
                         if (IsEnabled(Preset.DRG_AoE_Geirskogul) &&
                             ActionReady(Geirskogul) &&
                             !LoTDActive &&
-                            InActionRange(Geirskogul))
+                            InActionRange(Geirskogul) &&
+                            GetTargetHPPercent() > DRG_AoE_GeirskogulHPTreshold)
                             return Geirskogul;
 
                         //Wyrmwind Thrust Feature

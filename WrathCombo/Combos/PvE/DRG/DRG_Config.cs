@@ -131,6 +131,11 @@ internal partial class DRG
                         "Stop using when target HP% is at or below (Set to 0 to Disable This Check)");
                     break;
 
+                case Preset.DRG_AoE_Geirskogul:
+                    DrawSliderInt(0, 100, DRG_AoE_GeirskogulHPTreshold,
+                        "Stop using when target HP% is at or below (Set to 0 to Disable This Check)");
+                    break;
+
                 case Preset.DRG_AoE_HighJump:
                     DrawHorizontalMultiChoice(DRG_AoE_JumpMovingOrInRanged,
                         "No movement", $"Only uses {Jump.ActionName()} when not moving.", 2, 0);
@@ -192,6 +197,7 @@ internal partial class DRG
             DRG_ST_BloodbathHPThreshold = new("DRG_ST_BloodbathHPThreshold", 30),
             DRG_AoE_BattleLitanyHPTreshold = new("DRG_AoE_BattleLitanyHPTreshold", 25),
             DRG_AoE_LanceChargeHPTreshold = new("DRG_AoE_LanceChargeHPTreshold", 25),
+            DRG_AoE_GeirskogulHPTreshold = new("DRG_AoE_GeirskogulHPTreshold", 25),
             DRG_AoE_DragonfireDiveHPTreshold = new("DRG_AoE_DragonfireDiveHPTreshold", 25),
             DRG_AoE_SecondWindHPThreshold = new("DRG_AoE_SecondWindHPThreshold", 40),
             DRG_AoE_BloodbathHPThreshold = new("DRG_AoE_BloodbathHPThreshold", 30);
