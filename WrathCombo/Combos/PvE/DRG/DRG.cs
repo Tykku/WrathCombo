@@ -20,13 +20,11 @@ internal partial class DRG : Melee
             {
                 if (CanDRGWeave())
                 {
-                    if (ActionReady(BattleLitany) &&
-                        GetTargetHPPercent() > HPThresholdBattleLitany)
+                    if (ActionReady(BattleLitany))
                         return BattleLitany;
 
                     //Lance Charge Feature
-                    if (CanLanceCharge &&
-                        GetTargetHPPercent() > HPThresholdLanceCharge)
+                    if (CanLanceCharge)
                         return LanceCharge;
 
                     //Life Surge Feature
@@ -93,18 +91,16 @@ internal partial class DRG : Melee
                     }
 
                     //Dragonfire Dive Feature
-                    if (InMeleeRange() &&
-                        ActionReady(DragonfireDive) &&
-                        !HasStatusEffect(Buffs.DragonsFlight) &&
+                    if (ActionReady(DragonfireDive) &&
+                        !HasStatusEffect(Buffs.DragonsFlight) && InMeleeRange() &&
                         (LoTDActive || !TraitLevelChecked(Traits.LifeOfTheDragon)))
                         return DragonfireDive;
                 }
 
                 //StarDiver Feature
-                if (InMeleeRange() &&
-                    ActionReady(Stardiver) &&
+                if (ActionReady(Stardiver) &&
                     CanDRGWeave(1.5f, true) &&
-                    LoTDActive &&
+                    LoTDActive && InMeleeRange() &&
                     !HasStatusEffect(Buffs.StarcrossReady))
                     return Stardiver;
             }
@@ -208,9 +204,9 @@ internal partial class DRG : Melee
                             : Jump;
 
                     //Dragonfire Dive Feature
-                    if (InMeleeRange() &&
-                        ActionReady(DragonfireDive) &&
-                        !HasStatusEffect(Buffs.DragonsFlight) &&
+                    if (ActionReady(DragonfireDive) &&
+                        !HasStatusEffect(Buffs.DragonsFlight) && InMeleeRange() &&
+                        GetTargetHPPercent() > 25 &&
                         (LoTDActive || !TraitLevelChecked(Traits.LifeOfTheDragon)))
                         return DragonfireDive;
                 }
@@ -361,6 +357,7 @@ internal partial class DRG : Melee
                              DRG_ST_DragonfireDiveMovingOptions[1] && InMeleeRange()) &&
                             ActionReady(DragonfireDive) &&
                             !HasStatusEffect(Buffs.DragonsFlight) &&
+                            GetTargetHPPercent() > HPThresholdDragonfireDive &&
                             (LoTDActive || !TraitLevelChecked(Traits.LifeOfTheDragon)))
                             return DragonfireDive;
                     }
@@ -509,6 +506,7 @@ internal partial class DRG : Melee
                              DRG_AoE_DragonfireDiveMovingOptions[1] && InMeleeRange()) &&
                             ActionReady(DragonfireDive) &&
                             !HasStatusEffect(Buffs.DragonsFlight) &&
+                            GetTargetHPPercent() > DRG_AoE_DragonfireDiveHPTreshold &&
                             (LoTDActive || !TraitLevelChecked(Traits.LifeOfTheDragon)))
                             return DragonfireDive;
                     }
@@ -552,10 +550,10 @@ internal partial class DRG : Melee
                         ? OriginalHook(Disembowel)
                         : OriginalHook(VorpalThrust);
 
-                if (ComboAction == OriginalHook(Disembowel) && LevelChecked(ChaosThrust))
+                if (DRG_Heavens_Basic && ComboAction == OriginalHook(Disembowel) && LevelChecked(ChaosThrust))
                     return OriginalHook(ChaosThrust);
 
-                if (ComboAction == OriginalHook(ChaosThrust) && LevelChecked(WheelingThrust))
+                if (DRG_Heavens_Basic && ComboAction == OriginalHook(ChaosThrust) && LevelChecked(WheelingThrust))
                     return WheelingThrust;
 
                 if (ComboAction == OriginalHook(VorpalThrust) && LevelChecked(FullThrust))

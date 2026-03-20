@@ -14,19 +14,15 @@ internal partial class DRG
             {
                 case Preset.DRG_ST_Opener:
                     DrawHorizontalRadioButton(DRG_SelectedOpener,
-                        "Standard opener", "Uses Standard opener",
-                        0);
+                        "Standard opener", "Uses Standard opener", 0);
 
                     DrawHorizontalRadioButton(DRG_SelectedOpener,
-                        $"{PiercingTalon.ActionName()} opener", $"Uses {PiercingTalon.ActionName()} opener",
-                        1);
-
+                        $"{PiercingTalon.ActionName()} opener", $"Uses {PiercingTalon.ActionName()} opener", 1);
                     ImGui.NewLine();
                     DrawBossOnlyChoice(DRG_Balance_Content);
                     break;
 
                 case Preset.DRG_ST_BattleLitany:
-
                     DrawSliderInt(0, 50, DRG_ST_BattleLitanyHPOption,
                         "Stop using at Enemy HP %. Set to Zero to disable this check.");
 
@@ -39,12 +35,10 @@ internal partial class DRG
 
                     DrawHorizontalRadioButton(DRG_ST_BattleLitanyBossOption,
                         "All Enemies", "Applies the HP check above to all enemies.", 1);
-
                     ImGui.Unindent();
                     break;
 
                 case Preset.DRG_ST_LanceCharge:
-
                     DrawSliderInt(0, 50, DRG_ST_LanceChargeHPOption,
                         "Stop using at Enemy HP %. Set to Zero to disable this check.");
 
@@ -57,7 +51,6 @@ internal partial class DRG
 
                     DrawHorizontalRadioButton(DRG_ST_LanceChargeBossOption,
                         "All Enemies", "Applies the HP check above to all enemies.", 1);
-
                     ImGui.Unindent();
                     break;
 
@@ -86,6 +79,20 @@ internal partial class DRG
                     break;
 
                 case Preset.DRG_ST_DragonfireDive:
+                    DrawSliderInt(0, 50, DRG_ST_LanceChargeHPOption,
+                        "Stop using at Enemy HP %. Set to Zero to disable this check.");
+
+                    ImGui.Indent();
+                    ImGui.TextColored(ImGuiColors.DalamudYellow,
+                        "Select what kind of enemies the HP check should be applied to:");
+
+                    DrawHorizontalRadioButton(DRG_ST_LanceChargeBossOption,
+                        "Non-Bosses", "Only applies the HP check above to non-bosses.", 0);
+
+                    DrawHorizontalRadioButton(DRG_ST_LanceChargeBossOption,
+                        "All Enemies", "Applies the HP check above to all enemies.", 1);
+                    ImGui.Unindent();
+
                     DrawHorizontalMultiChoice(DRG_ST_DragonfireDiveMovingOptions,
                         "No movement", $"Only uses {DragonfireDive.ActionName()} when not moving.", 2, 0);
 
@@ -133,6 +140,9 @@ internal partial class DRG
                     break;
 
                 case Preset.DRG_AoE_DragonfireDive:
+                    DrawSliderInt(0, 100, DRG_AoE_DragonfireDiveHPTreshold,
+                        "Stop using when target HP% is at or below (Set to 0 to Disable This Check)");
+
                     DrawHorizontalMultiChoice(DRG_AoE_DragonfireDiveMovingOptions,
                         "No movement", $"Only uses {DragonfireDive.ActionName()} when not moving.", 2, 0);
 
@@ -175,11 +185,14 @@ internal partial class DRG
             DRG_ST_GeirskogulBossOption = new("DRG_ST_GeirskogulBossOption"),
             DRG_ST_GeirskogulBossAddsOption = new("DRG_ST_GeirskogulBossAddsOption", 10),
             DRG_ST_GeirskogulTrashOption = new("DRG_ST_GeirskogulTrashOption", 25),
+            DRG_ST_DragonfireDiveHPOption = new("DRG_ST_DragonfireDiveHPOption", 25),
+            DRG_ST_DragonfireDiveBossOption = new("DRG_ST_DragonfireDiveBossOption"),
             DRG_ManualTN = new("DRG_ManualTN"),
             DRG_ST_SecondWindHPThreshold = new("DRG_STSecondWindThreshold", 40),
             DRG_ST_BloodbathHPThreshold = new("DRG_STBloodbathThreshold", 30),
             DRG_AoE_BattleLitanyHPTreshold = new("DRG_AoE_BattleLitanyHPTreshold", 25),
             DRG_AoE_LanceChargeHPTreshold = new("DRG_AoE_LanceChargeHPTreshold", 25),
+            DRG_AoE_DragonfireDiveHPTreshold = new("DRG_AoE_DragonfireDiveHPTreshold", 25),
             DRG_AoE_SecondWindHPThreshold = new("DRG_AoE_SecondWindThreshold", 40),
             DRG_AoE_BloodbathHPThreshold = new("DRG_AoE_BloodbathThreshold", 30);
 
