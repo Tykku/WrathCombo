@@ -311,15 +311,15 @@ internal partial class DRG
 
     #region HP Thresholds
 
-    private static int HPThresholdBattleLitany =>
+    private static int HPThresholdSTBattleLitany =>
         DRG_ST_BattleLitanyBossOption == 1 ||
         !InBossEncounter() ? DRG_ST_BattleLitanyHPOption : 0;
 
-    private static int HPThresholdLanceCharge =>
+    private static int HPThresholdSTLanceCharge =>
         DRG_ST_LanceChargeBossOption == 1 ||
         !InBossEncounter() ? DRG_ST_LanceChargeHPOption : 0;
 
-    private static int HPThresholdDragonfireDive =>
+    private static int HPThresholdSTDragonfireDive =>
         DRG_ST_DragonfireDiveBossOption == 1 ||
         !InBossEncounter() ? DRG_ST_DragonfireDiveHPOption : 0;
 

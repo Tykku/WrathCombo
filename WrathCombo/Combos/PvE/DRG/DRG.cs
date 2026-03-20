@@ -58,8 +58,7 @@ internal partial class DRG : Melee
                     //Nastrond Feature
                     if (ActionReady(Nastrond) &&
                         HasStatusEffect(Buffs.NastrondReady) &&
-                        LoTDActive &&
-                        InActionRange(Nastrond))
+                        LoTDActive && InActionRange(Nastrond))
                         return Nastrond;
 
                     if (Role.CanFeint() &&
@@ -80,13 +79,14 @@ internal partial class DRG : Melee
                 if (CanDRGWeave(0.8f))
                 {
                     //(High) Jump Feature   
-                    if (ActionReady(Jump) &&
-                        OriginalHook(Jump) is Jump or HighJump)
+                    if (ActionReady(Jump))
                     {
-                        if (!LevelChecked(HighJump))
+                        if (!LevelChecked(HighJump) &&
+                            IsOriginal(Jump))
                             return Jump;
 
-                        if (LevelChecked(HighJump))
+                        if (LevelChecked(HighJump) &&
+                            IsOriginal(HighJump))
                             return HighJump;
                     }
 
@@ -155,8 +155,7 @@ internal partial class DRG : Melee
 
                     //Geirskogul Feature
                     if (ActionReady(Geirskogul) &&
-                        !LoTDActive &&
-                        InActionRange(Geirskogul))
+                        !LoTDActive && InActionRange(Geirskogul))
                         return Geirskogul;
 
                     //Wyrmwind Thrust Feature
@@ -196,26 +195,24 @@ internal partial class DRG : Melee
                 if (CanDRGWeave(0.8f))
                 {
                     //(High) Jump Feature   
-                    if (InMeleeRange() &&
-                        ActionReady(Jump) &&
-                        OriginalHook(Jump) is Jump or HighJump)
-                        return LevelChecked(HighJump)
+                    if (ActionReady(Jump) && InMeleeRange())
+                        return LevelChecked(HighJump) &&
+                               (IsOriginal(Jump) || IsOriginal(HighJump))
                             ? HighJump
                             : Jump;
 
                     //Dragonfire Dive Feature
                     if (ActionReady(DragonfireDive) &&
-                        !HasStatusEffect(Buffs.DragonsFlight) && InMeleeRange() &&
-                        GetTargetHPPercent() > 25 &&
+                        !HasStatusEffect(Buffs.DragonsFlight) &&
+                        InMeleeRange() && GetTargetHPPercent() > 25 &&
                         (LoTDActive || !TraitLevelChecked(Traits.LifeOfTheDragon)))
                         return DragonfireDive;
                 }
 
                 //StarDiver Feature
-                if (InMeleeRange() &&
-                    ActionReady(Stardiver) &&
+                if (ActionReady(Stardiver) &&
                     CanDRGWeave(1.5f, true) &&
-                    LoTDActive &&
+                    LoTDActive && InMeleeRange() &&
                     !HasStatusEffect(Buffs.StarcrossReady))
                     return Stardiver;
             }
@@ -252,13 +249,13 @@ internal partial class DRG : Melee
                         //Battle Litany Feature
                         if (IsEnabled(Preset.DRG_ST_BattleLitany) &&
                             ActionReady(BattleLitany) &&
-                            GetTargetHPPercent() > HPThresholdBattleLitany)
+                            GetTargetHPPercent() > HPThresholdSTBattleLitany)
                             return BattleLitany;
 
                         //Lance Charge Feature
                         if (IsEnabled(Preset.DRG_ST_LanceCharge) &&
                             CanLanceCharge &&
-                            GetTargetHPPercent() > HPThresholdLanceCharge)
+                            GetTargetHPPercent() > HPThresholdSTLanceCharge)
                             return LanceCharge;
 
                         //Life Surge Feature
@@ -302,8 +299,7 @@ internal partial class DRG : Melee
                         if (IsEnabled(Preset.DRG_ST_Nastrond) &&
                             ActionReady(Nastrond) &&
                             HasStatusEffect(Buffs.NastrondReady) &&
-                            LoTDActive &&
-                            InActionRange(Nastrond))
+                            LoTDActive && InActionRange(Nastrond))
                             return Nastrond;
                     }
 
@@ -333,45 +329,39 @@ internal partial class DRG : Melee
                     {
                         //(High) Jump Feature   
                         if (IsEnabled(Preset.DRG_ST_HighJump) &&
-                            (!DRG_ST_JumpMovingOptions[0] ||
-                             DRG_ST_JumpMovingOptions[0] && !IsMoving()) &&
-                            (!DRG_ST_JumpMovingOptions[1] ||
-                             DRG_ST_JumpMovingOptions[1] && InMeleeRange()) &&
-                            ActionReady(Jump) && OriginalHook(Jump) is Jump or HighJump)
+                            ActionReady(Jump) &&
+                            (!DRG_ST_JumpMovingOrInRanged[0] || !IsMoving()) &&
+                            (!DRG_ST_JumpMovingOrInRanged[1] || InMeleeRange()))
                         {
-                            if (!LevelChecked(HighJump))
+                            if (!LevelChecked(HighJump) &&
+                                IsOriginal(Jump))
                                 return Jump;
 
                             if (LevelChecked(HighJump) &&
-                                (DRG_ST_DoubleMirage &&
-                                 (GetCooldownRemainingTime(Geirskogul) < 13 || LoTDActive) ||
+                                IsOriginal(HighJump) &&
+                                (DRG_ST_DoubleMirage && (GetCooldownRemainingTime(Geirskogul) < 13 || LoTDActive) ||
                                  !DRG_ST_DoubleMirage))
                                 return HighJump;
                         }
 
                         //Dragonfire Dive Feature
                         if (IsEnabled(Preset.DRG_ST_DragonfireDive) &&
-                            (!DRG_ST_DragonfireDiveMovingOptions[0] ||
-                             DRG_ST_DragonfireDiveMovingOptions[0] && !IsMoving()) &&
-                            (!DRG_ST_DragonfireDiveMovingOptions[1] ||
-                             DRG_ST_DragonfireDiveMovingOptions[1] && InMeleeRange()) &&
                             ActionReady(DragonfireDive) &&
+                            (!DRG_ST_DragonfireDiveMovingOrInRanged[0] || !IsMoving()) &&
+                            (!DRG_ST_DragonfireDiveMovingOrInRanged[1] || InMeleeRange()) &&
                             !HasStatusEffect(Buffs.DragonsFlight) &&
-                            GetTargetHPPercent() > HPThresholdDragonfireDive &&
+                            GetTargetHPPercent() > HPThresholdSTDragonfireDive &&
                             (LoTDActive || !TraitLevelChecked(Traits.LifeOfTheDragon)))
                             return DragonfireDive;
                     }
 
                     //StarDiver Feature
                     if (IsEnabled(Preset.DRG_ST_Stardiver) &&
-                        (!DRG_ST_StardiverMovingOptions[0] ||
-                         DRG_ST_StardiverMovingOptions[0] && !IsMoving()) &&
-                        (!DRG_ST_StardiverMovingOptions[1] ||
-                         DRG_ST_StardiverMovingOptions[1] && InMeleeRange()) &&
                         ActionReady(Stardiver) &&
+                        (!DRG_ST_StardiverMovingOrInRanged[0] || !IsMoving()) &&
+                        (!DRG_ST_StardiverMovingOrInRanged[1] || InMeleeRange()) &&
                         CanDRGWeave(1.5f, true) &&
-                        LoTDActive &&
-                        !HasStatusEffect(Buffs.StarcrossReady))
+                        LoTDActive && !HasStatusEffect(Buffs.StarcrossReady))
                         return Stardiver;
                 }
             }
@@ -463,8 +453,7 @@ internal partial class DRG : Melee
                         if (IsEnabled(Preset.DRG_AoE_Nastrond) &&
                             ActionReady(Nastrond) &&
                             HasStatusEffect(Buffs.NastrondReady) &&
-                            LoTDActive &&
-                            InActionRange(Nastrond))
+                            LoTDActive && InActionRange(Nastrond))
                             return Nastrond;
                     }
 
@@ -489,22 +478,19 @@ internal partial class DRG : Melee
                     {
                         //(High) Jump Feature   
                         if (IsEnabled(Preset.DRG_AoE_HighJump) &&
-                            (!DRG_AoE_JumpMovingOptions[0] ||
-                             DRG_AoE_JumpMovingOptions[0] && !IsMoving()) &&
-                            (!DRG_AoE_JumpMovingOptions[1] ||
-                             DRG_AoE_JumpMovingOptions[1] && InMeleeRange()) &&
-                            ActionReady(Jump) && OriginalHook(Jump) is Jump or HighJump)
-                            return LevelChecked(HighJump)
+                            ActionReady(Jump) &&
+                            (!DRG_AoE_JumpMovingOrInRanged[0] || !IsMoving()) &&
+                            (!DRG_AoE_JumpMovingOrInRanged[1] || InMeleeRange()))
+                            return LevelChecked(HighJump) &&
+                                   (IsOriginal(Jump) || IsOriginal(HighJump))
                                 ? HighJump
                                 : Jump;
 
                         //Dragonfire Dive Feature
                         if (IsEnabled(Preset.DRG_AoE_DragonfireDive) &&
-                            (!DRG_AoE_DragonfireDiveMovingOptions[0] ||
-                             DRG_AoE_DragonfireDiveMovingOptions[0] && !IsMoving()) &&
-                            (!DRG_AoE_DragonfireDiveMovingOptions[1] ||
-                             DRG_AoE_DragonfireDiveMovingOptions[1] && InMeleeRange()) &&
                             ActionReady(DragonfireDive) &&
+                            (!DRG_AoE_DragonfireDiveMovingOrInRanged[0] || !IsMoving()) &&
+                            (!DRG_AoE_DragonfireDiveMovingOrInRanged[1] || InMeleeRange()) &&
                             !HasStatusEffect(Buffs.DragonsFlight) &&
                             GetTargetHPPercent() > DRG_AoE_DragonfireDiveHPTreshold &&
                             (LoTDActive || !TraitLevelChecked(Traits.LifeOfTheDragon)))
@@ -513,14 +499,11 @@ internal partial class DRG : Melee
 
                     //StarDiver Feature
                     if (IsEnabled(Preset.DRG_AoE_Stardiver) &&
-                        (!DRG_AoE_StardiverMovingOptions[0] ||
-                         DRG_AoE_StardiverMovingOptions[0] && !IsMoving()) &&
-                        (!DRG_AoE_StardiverMovingOptions[1] ||
-                         DRG_AoE_StardiverMovingOptions[1] && InMeleeRange()) &&
                         ActionReady(Stardiver) &&
+                        (!DRG_AoE_StardiverMovingOrInRanged[0] || !IsMoving()) &&
+                        (!DRG_AoE_StardiverMovingOrInRanged[1] || InMeleeRange()) &&
                         CanDRGWeave(1.5f, true) &&
-                        LoTDActive &&
-                        !HasStatusEffect(Buffs.StarcrossReady))
+                        LoTDActive && !HasStatusEffect(Buffs.StarcrossReady))
                         return Stardiver;
                 }
             }
