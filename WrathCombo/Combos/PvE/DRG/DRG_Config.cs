@@ -79,17 +79,17 @@ internal partial class DRG
                     break;
 
                 case Preset.DRG_ST_DragonfireDive:
-                    DrawSliderInt(0, 50, DRG_ST_LanceChargeHPOption,
+                    DrawSliderInt(0, 50, DRG_ST_DragonfireDiveHPOption,
                         "Stop using at Enemy HP %. Set to Zero to disable this check.");
 
                     ImGui.Indent();
                     ImGui.TextColored(ImGuiColors.DalamudYellow,
                         "Select what kind of enemies the HP check should be applied to:");
 
-                    DrawHorizontalRadioButton(DRG_ST_LanceChargeBossOption,
+                    DrawHorizontalRadioButton(DRG_ST_DragonfireDiveBossOption,
                         "Non-Bosses", "Only applies the HP check above to non-bosses.", 0);
 
-                    DrawHorizontalRadioButton(DRG_ST_LanceChargeBossOption,
+                    DrawHorizontalRadioButton(DRG_ST_DragonfireDiveBossOption,
                         "All Enemies", "Applies the HP check above to all enemies.", 1);
                     ImGui.Unindent();
 
