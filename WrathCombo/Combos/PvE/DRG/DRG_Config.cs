@@ -19,7 +19,7 @@ internal partial class DRG
                     DrawHorizontalRadioButton(DRG_SelectedOpener,
                         $"{PiercingTalon.ActionName()} opener", $"Uses {PiercingTalon.ActionName()} opener", 1);
                     ImGui.NewLine();
-                    DrawBossOnlyChoice(DRG_Balance_Content);
+                    DrawBossOnlyChoice(DRG_BalanceContent);
                     break;
 
                 case Preset.DRG_ST_BattleLitany:
@@ -167,7 +167,7 @@ internal partial class DRG
                     break;
 
                 case Preset.DRG_HeavensThrust:
-                    DrawAdditionalBoolChoice(DRG_Heavens_Basic,
+                    DrawAdditionalBoolChoice(DRG_ChaoticCombo,
                         "Add Chaos Combo", "Adds Chaos combo when applicable.");
                     break;
             }
@@ -177,7 +177,7 @@ internal partial class DRG
 
         public static UserInt
             DRG_SelectedOpener = new("DRG_SelectedOpener"),
-            DRG_Balance_Content = new("DRG_Balance_Content", 1),
+            DRG_BalanceContent = new("DRG_BalanceContent", 1),
             DRG_ST_BattleLitanyHPOption = new("DRG_ST_BattleLitanyHPOption", 25),
             DRG_ST_BattleLitanyBossOption = new("DRG_ST_BattleLitanyBossOption"),
             DRG_ST_LanceChargeHPOption = new("DRG_ST_LanceChargeHPOption", 25),
@@ -198,7 +198,7 @@ internal partial class DRG
 
         public static UserBool
             DRG_ST_DoubleMirage = new("DRG_ST_DoubleMirage"),
-            DRG_Heavens_Basic = new("DRG_Heavens_Basic");
+            DRG_ChaoticCombo = new("DRG_ChaoticCombo");
 
         public static UserBoolArray
             DRG_ST_JumpMovingOrInRanged = new("DRG_ST_JumpMovingOrInRanged"),
