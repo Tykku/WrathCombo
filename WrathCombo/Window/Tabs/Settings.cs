@@ -58,25 +58,24 @@ internal class Settings : ConfigWindow
             if (field.Count > 0)
                 return field;
 
-            Setting.CachedSettings.Clear();
-              return typeof(Configuration)
-             .GetFields()
-             .Select(rawSetting =>
-             {
-                 try
-                 {
-                     return new Setting(rawSetting.Name);
-                 }
-                 catch (Exception e)
-                 {
-                     // Skip raw settings that fail to construct.
-                     PluginLog.Verbose(e.Message);
-                     return null;
-                 }
-             })
-             .Where(setting => setting != null)
-             .Select(s => s!)
-             .ToList();
+            return typeof(Configuration)
+           .GetFields()
+           .Select(rawSetting =>
+           {
+               try
+               {
+                   return new Setting(rawSetting.Name);
+               }
+               catch (Exception e)
+               {
+                   // Skip raw settings that fail to construct.
+                   PluginLog.Verbose(e.Message);
+                   return null;
+               }
+           })
+           .Where(setting => setting != null)
+           .Select(s => s!)
+           .ToList();
         }
     }
 
