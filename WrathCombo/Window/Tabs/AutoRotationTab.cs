@@ -369,6 +369,12 @@ internal class AutoRotationTab : ConfigWindow
                 "HealerAlwaysHardTarget");
             ImGuiComponents.HelpMarker(AutoRotationUI.HelpText_HealerAlwaysHardTarget);
 
+            changed |= P.UIHelper.ShowIPCControlledCheckboxIfNeeded(
+                AutoRotationUI.Checkbox_HandleRaidwides,
+                ref cfg.HealerSettings.HandleRaidwides,
+                "HandleRaidwides");
+            ImGuiComponents.HelpMarker(Text.FormatAndCache(AutoRotationUI.HelpText_HandleRaidwides, SGE.Eukrasia.ActionName()));
+
         }
 
         ImGuiEx.TextUnderlined(AutoRotationUI.Label_Advanced);

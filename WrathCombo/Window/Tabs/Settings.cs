@@ -301,7 +301,11 @@ internal class Settings : ConfigWindow
 
                     changed = ImGui.Checkbox(label, ref value);
                     if (changed)
+                    {
                         setting.Value = value;
+                        if (setting.FieldName == "ActionChanging")
+                            Service.Configuration.SetActionChanging(value);
+                    }
 
                     break;
                 }
