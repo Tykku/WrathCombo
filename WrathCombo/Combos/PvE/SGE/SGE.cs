@@ -91,7 +91,7 @@ internal partial class SGE : Healer
                 if (InCombat() && IsMoving() && HasBattleTarget())
                 {
                     //Toxikon
-                    if (ActionReady(Toxikon) && HasAddersting())
+                    if (ActionReady(OriginalHook(Toxikon)) && HasAddersting())
                         return OriginalHook(Toxikon);
 
                     // Dyskrasia
@@ -165,7 +165,7 @@ internal partial class SGE : Healer
                 return OriginalHook(Phlegma);
 
             //Toxikon
-            if (ActionReady(Toxikon) &&
+            if (ActionReady(OriginalHook(Toxikon)) &&
                 HasBattleTarget() && HasAddersting() &&
                 InActionRange(OriginalHook(Toxikon)))
                 return OriginalHook(Toxikon);
@@ -399,7 +399,7 @@ internal partial class SGE : Healer
 
             //Toxikon
             if (IsEnabled(Preset.SGE_AoE_DPS_Toxikon) &&
-                ActionReady(Toxikon) &&
+                ActionReady(OriginalHook(Toxikon)) &&
                 HasBattleTarget() && HasAddersting() &&
                 InActionRange(OriginalHook(Toxikon)))
                 return OriginalHook(Toxikon);

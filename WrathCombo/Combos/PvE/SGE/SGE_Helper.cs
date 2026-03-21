@@ -306,7 +306,7 @@ internal partial class SGE
         //Toxikon
         (OriginalHook(Toxikon), Preset.SGE_ST_DPS_Movement,
             () => SGE_ST_DPS_Movement[0] &&
-                  ActionReady(Toxikon) &&
+                  ActionReady(OriginalHook(Toxikon)) &&
                   HasAddersting()),
         // Dyskrasia
         (OriginalHook(Dyskrasia), Preset.SGE_ST_DPS_Movement,
