@@ -18,7 +18,8 @@ internal partial class MCH : PhysicalRanged
             if (CanReassemble() && !IsOverheated && !HasWeaved())
                 return Reassemble;
 
-            if (ContentSpecificActions.TryGet(out uint contentAction))
+            if (!IsOverheated &&
+                ContentSpecificActions.TryGet(out uint contentAction))
                 return contentAction;
 
             // All weaves
@@ -269,7 +270,8 @@ internal partial class MCH : PhysicalRanged
                 GetRemainingCharges(Reassemble) > MCH_ST_ReassemblePool)
                 return Reassemble;
 
-            if (ContentSpecificActions.TryGet(out uint contentAction))
+            if (!IsOverheated &&
+                ContentSpecificActions.TryGet(out uint contentAction))
                 return contentAction;
 
             // All weaves
