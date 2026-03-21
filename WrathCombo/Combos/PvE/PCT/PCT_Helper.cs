@@ -111,10 +111,10 @@ internal partial class PCT
             flags.HasFlag(Combo.Simple) ? 0 : 
             flags.HasFlag(Combo.ST) ? PCT_ST_AdvancedMode_BurnBoss : PCT_AoE_AdvancedMode_BurnBoss;
         
-        bool scenicMuseReady = ActionReady(ScenicMuse) && gauge.LandscapeMotifDrawn; 
-        bool livingMuseReady = ActionReady(LivingMuse) && gauge.CreatureMotifDrawn;
-        bool steelMuseReady = ActionReady(SteelMuse)  && gauge.WeaponMotifDrawn && !HasStatusEffect(Buffs.HammerTime);
-        bool portraitReady = ActionReady(MogoftheAges) && (gauge.MooglePortraitReady || gauge.MadeenPortraitReady); //Check for either portrait being ready
+        bool scenicMuseReady = ActionReady(OriginalHook(ScenicMuse)) && gauge.LandscapeMotifDrawn; 
+        bool livingMuseReady = ActionReady(OriginalHook(LivingMuse)) && gauge.CreatureMotifDrawn;
+        bool steelMuseReady = ActionReady(OriginalHook(SteelMuse))  && gauge.WeaponMotifDrawn && !HasStatusEffect(Buffs.HammerTime);
+        bool portraitReady = ActionReady(OriginalHook(MogoftheAges)) && (gauge.MooglePortraitReady || gauge.MadeenPortraitReady); //Check for either portrait being ready
         bool paletteReady = LevelChecked(SubtractivePalette) && 
                             !HasStatusEffect(Buffs.SubtractivePalette) && !HasStatusEffect(Buffs.MonochromeTones) && //Don't overwrite self of comet in black
                                          (HasStatusEffect(Buffs.SubtractiveSpectrum) || //Free use from Starry Muse
