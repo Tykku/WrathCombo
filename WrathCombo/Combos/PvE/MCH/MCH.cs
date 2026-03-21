@@ -365,8 +365,7 @@ internal partial class MCH : PhysicalRanged
 
                     if (IsEnabled(Preset.MCH_ST_Dismantle) &&
                         ActionReady(Dismantle) &&
-                        !HasStatusEffect(Debuffs.Dismantled, CurrentTarget, true) &&
-                        CanApplyStatus(CurrentTarget, Debuffs.Dismantled) &&
+                        GetStatusEffectRemainingTime(Debuffs.Dismantled, CurrentTarget, true) > MCH_DismantledDuration &&
                         GroupDamageIncoming())
                         return Dismantle;
 
