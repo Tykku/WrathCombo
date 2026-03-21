@@ -73,7 +73,7 @@ internal partial class SGE : Healer
             {
                 // Phlegma
                 if (InCombat() && InActionRange(OriginalHook(Phlegma)) &&
-                    ActionReady(Phlegma))
+                    ActionReady(OriginalHook(Phlegma)))
                 {
                     //If not enabled or not high enough level, follow slider
                     if (!LevelChecked(Psyche) &&
@@ -159,7 +159,7 @@ internal partial class SGE : Healer
                 return Eukrasia;
 
             //Phlegma
-            if (ActionReady(Phlegma) &&
+            if (ActionReady(OriginalHook(Phlegma)) &&
                 HasBattleTarget() &&
                 InActionRange(OriginalHook(Phlegma)))
                 return OriginalHook(Phlegma);
@@ -286,7 +286,7 @@ internal partial class SGE : Healer
                 // Phlegma
                 if (IsEnabled(Preset.SGE_ST_DPS_Phlegma) &&
                     InCombat() && InActionRange(OriginalHook(Phlegma)) &&
-                    ActionReady(Phlegma))
+                    ActionReady(OriginalHook(Phlegma)))
                 {
                     //If not enabled or not high enough level, follow slider
                     if ((!SGE_ST_DPS_Phlegma_Burst || !LevelChecked(Psyche)) &&
@@ -392,7 +392,7 @@ internal partial class SGE : Healer
 
             //Phlegma
             if (IsEnabled(Preset.SGE_AoE_DPS_Phlegma) &&
-                ActionReady(Phlegma) &&
+                ActionReady(OriginalHook(Phlegma)) &&
                 HasBattleTarget() &&
                 InActionRange(OriginalHook(Phlegma)))
                 return OriginalHook(Phlegma);
