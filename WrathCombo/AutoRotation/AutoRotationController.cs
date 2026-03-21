@@ -159,7 +159,10 @@ internal unsafe class AutoRotationController
             else
             {
                 if (AutorotRaidwides > 0)
-                    Svc.Log.Debug($"Used {AutorotRaidwides} raidwides");
+                {
+                    Svc.Log.Debug($"Used {AutorotRaidwides} raidwides {string.Join(", ", BlacklistedRaidwides.Select(x => x.ActionName()))}");
+                    BlacklistedRaidwides.Clear();
+                }
                 AutorotRaidwides = 0;
                 AutorotRaidwiding = false;
             }
@@ -229,8 +232,10 @@ internal unsafe class AutoRotationController
     public static IEnumerable<uint> RaidwideActions =
     [
         WHM.PlenaryIndulgence,
+        WHM.LiturgyOfTheBell.Retarget(SimpleTarget.Self),
         WHM.Temperance,
         WHM.DivineCaress,
+        WHM.Asylum.Retarget(SimpleTarget.Self),
         WHM.Medica2,
         WHM.Medica3,
         SCH.Protraction,
@@ -252,16 +257,23 @@ internal unsafe class AutoRotationController
         SGE.EukrasianPrognosis,
         SGE.EukrasianPrognosis2
     ];
+
+    public static List<uint> BlacklistedRaidwides = [];
     private static void HandleRaidwide()
     {
         foreach (var spell in RaidwideActions)
         {
+            if (BlacklistedRaidwides.Contains(spell))
+                continue;
+
             if (ActionReady(spell) && !JustUsed(spell, 5) && LocalPlayer.CastActionId != spell && (!IsMoving(true) || ActionManager.GetAdjustedCastTime(ActionType.Action, spell) == 0))
             {
                 if (AutorotRaidwides >= 2)
                     return;
 
+                WouldLikeToGroundTarget = ActionSheet[spell].TargetArea;
                 ActionManager.Instance()->UseAction(ActionType.Action, spell);
+                WouldLikeToGroundTarget = false;
                 return;
             }
         }
