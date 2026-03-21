@@ -131,7 +131,7 @@ internal partial class DRG : Melee
                         return BattleLitany;
 
                     //Lance Charge Feature
-                    if (CanLanceCharge)
+                    if (ActionReady(LanceCharge))
                         return LanceCharge;
 
                     //Life Surge Feature
@@ -392,7 +392,7 @@ internal partial class DRG : Melee
 
                         //Lance Charge Feature
                         if (IsEnabled(Preset.DRG_AoE_LanceCharge) &&
-                            CanLanceCharge &&
+                            ActionReady(LanceCharge) &&
                             GetTargetHPPercent() > DRG_AoE_LanceChargeHPTreshold)
                             return LanceCharge;
 
