@@ -153,11 +153,11 @@ internal partial class GNB
                 #region Single-Target
 
                 case Preset.GNB_ST_Opener:
-                    DrawBossOnlyChoice(GNB_ST_Balance_Content);
                     DrawHorizontalRadioButton(GNB_Opener_NM,
                         $"Normal {NoMercy.ActionName()}", $"Uses {NoMercy.ActionName()} normally in all openers", 0);
                     DrawHorizontalRadioButton(GNB_Opener_NM,
                         $"Early {NoMercy.ActionName()}", $"Uses {NoMercy.ActionName()} as soon as possible in all openers", 1);
+                    DrawBossOnlyChoice(GNB_ST_Balance_Content);
                     break;
 
                 case Preset.GNB_ST_NoMercy:
