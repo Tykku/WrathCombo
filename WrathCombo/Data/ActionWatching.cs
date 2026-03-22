@@ -435,7 +435,8 @@ public static class ActionWatching
         {
             if (actionType is ActionType.Action)
             {
-                if (mode == ActionManager.UseActionMode.Queue || AutoRotationController.AutorotRaidwiding) // This is so we can remove queue suppression
+                var disablingReplacingTemp = mode == ActionManager.UseActionMode.Queue || AutoRotationController.AutorotRaidwiding;
+                if (disablingReplacingTemp) // This is so we can remove queue suppression
                     Service.ActionReplacer.DisableActionReplacingIfRequired(); // It gets re-enabled at the end of sending. 
 
                 var original = actionId; //Save the original action, do not modify
@@ -464,6 +465,10 @@ public static class ActionWatching
                     targetId = actionManager->QueuedTargetId.Id;
 
                 var areaTargeted = ActionSheet[replacedWith].TargetArea;
+
+                if (areaTargeted && disablingReplacingTemp) //Ground targets don't hit the send method, so it has to be re-enabled here. Could be re-enabled further down the line if it causes output issues.
+                    Service.ActionReplacer.EnableActionReplacingIfRequired();
+
                 var targetObject = targetId.GetObject();
 
                 if (changed && !areaTargeted) //Check if the action can be used on the target, and if not revert to original
