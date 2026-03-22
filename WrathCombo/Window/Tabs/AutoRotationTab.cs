@@ -371,8 +371,7 @@ internal class AutoRotationTab : ConfigWindow
 
             changed |= P.UIHelper.ShowIPCControlledCheckboxIfNeeded(
                 AutoRotationUI.Checkbox_HandleRaidwides,
-                ref cfg.HealerSettings.HandleRaidwides,
-                "HandleRaidwides");
+                ref cfg.HealerSettings.HandleRaidwides);
             ImGuiComponents.HelpMarker(Text.FormatAndCache(AutoRotationUI.HelpText_HandleRaidwides, SGE.Eukrasia.ActionName()));
 
         }
