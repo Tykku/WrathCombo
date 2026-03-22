@@ -449,7 +449,7 @@ public static class ActionWatching
                 if (changed)
                 {
                     var targObj = changedTargetId.GetObject();
-                    if (targObj == null || !targObj.IsTargetable || (targObj.IsHostile() && targObj.IsDead) || (targObj.IsFriendly()))
+                    if (targObj == null || !targObj.IsTargetable || (targObj.IsHostile() && targObj.IsDead))
                         targetId = originalTargetId;
                     else
                         targetId = changedTargetId;
