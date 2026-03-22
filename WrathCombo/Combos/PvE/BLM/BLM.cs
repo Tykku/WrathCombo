@@ -512,8 +512,7 @@ internal partial class BLM : Caster
                     return BlizzardSpam;
             }
 
-            if (LevelChecked(Blizzard3) &&
-                !FirePhase && !IcePhase)
+            if (LevelChecked(Blizzard3))
                 return MP.Cur < 7500
                     ? Blizzard3
                     : Fire3;
