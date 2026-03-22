@@ -307,7 +307,7 @@ internal partial class VPR
         !IsComboExpiring(6) && !IsEmpowermentExpiring(6) &&
         !IsVenomExpiring(4) && !IsHoningExpiring(4) &&
         !UsedVicewinder && !UsedHuntersCoil && !UsedSwiftskinsCoil &&
-        JustUsed(Vicewinder) && !JustUsed(Ouroboros) && !HasStatusEffect(Buffs.Reawakened) &&
+        !JustUsed(Vicewinder) && !JustUsed(Ouroboros) && !HasStatusEffect(Buffs.Reawakened) &&
         (IreCD >= GCD * 3 && InBossEncounter() || !InBossEncounter() || !LevelChecked(SerpentsIre));
 
     private static bool CanUseUncoiledFury(bool isAoE = false)
