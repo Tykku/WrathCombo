@@ -300,6 +300,7 @@ internal partial class RPR : Melee
                     !IsComboExpiring(3))
                 {
                     if (IsEnabled(Preset.RPR_ST_TrueNorthDynamic) &&
+                        IsEnabled(Preset.RPR_ST_Gluttony) &&
                         GetCooldownRemainingTime(Gluttony) <= GCD && Role.CanTrueNorth() &&
                         GetRemainingCharges(Role.TrueNorth) > RPR_ManualTN)
                         return Role.TrueNorth;
