@@ -152,9 +152,7 @@ internal partial class BLM : Caster
                     return Despair;
 
                 if (ActionReady(Blizzard3) &&
-                    EndOfFirePhase &&
-                    !HasStatusEffect(Role.Buffs.Swiftcast) &&
-                    !HasStatusEffect(Buffs.Triplecast))
+                    EndOfFirePhase)
                     return Blizzard3;
 
                 if (ActionReady(Transpose) &&
@@ -469,9 +467,7 @@ internal partial class BLM : Caster
                     return Despair;
 
                 if (LevelChecked(Blizzard3) &&
-                    EndOfFirePhase &&
-                    !HasStatusEffect(Role.Buffs.Swiftcast) &&
-                    !HasStatusEffect(Buffs.Triplecast))
+                    EndOfFirePhase)
                     return Blizzard3;
 
                 if (IsEnabled(Preset.BLM_ST_Transpose) &&
