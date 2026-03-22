@@ -306,7 +306,7 @@ internal partial class VPR
         ActionReady(Vicewinder) && InActionRange(Vicewinder) && InCombat() &&
         !IsComboExpiring(4) && !IsVenomExpiring(4) && !IsHoningExpiring(4) &&
         !UsedVicewinder && !UsedHuntersCoil && !UsedSwiftskinsCoil && !JustUsed(Vicewinder) &&
-        (IreCD >= GCD * 3 && InBossEncounter() || !InBossEncounter() || !LevelChecked(SerpentsIre));
+        (IreCD <= GCD * 6 && InBossEncounter() || !InBossEncounter() || !LevelChecked(SerpentsIre));
 
     private static bool CanUseUncoiledFury(bool isAoE = false)
     {
