@@ -1,8 +1,5 @@
 ﻿using Dalamud.Game.ClientState.JobGauge.Enums;
 using Dalamud.Game.ClientState.JobGauge.Types;
-using ECommons.DalamudServices;
-using ECommons.Reflection;
-using FFXIVClientStructs.FFXIV.Client.Game;
 using System;
 using System.Collections.Generic;
 using WrathCombo.CustomComboNS;
@@ -235,7 +232,7 @@ internal partial class VPR
         return false;
     }
 
-    private unsafe static uint ReawakenCombo(uint actionId)
+    private static uint ReawakenCombo(uint actionId)
     {
         switch (Gauge.DreadCombo)
         {
@@ -470,8 +467,6 @@ internal partial class VPR
     private static byte RattlingCoilStacks => Gauge.RattlingCoilStacks;
 
     private static byte SerpentOffering => Gauge.SerpentOffering;
-
-    private static byte AnguineTribute => Gauge.AnguineTribute;
 
     private static DreadCombo DreadCombo => Gauge.DreadCombo;
 
