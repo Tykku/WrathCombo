@@ -316,7 +316,7 @@ internal partial class GNB : Tank
             {
                 if (CanWeave())
                 {
-                    if (ShouldUseNoMercy(Preset.GNB_AoE_NoMercy, 10))
+                    if (ShouldUseNoMercy(Preset.GNB_AoE_Simple, 10))
                         return NoMercy;
 
                     if (LevelChecked(FatedBrand) &&
