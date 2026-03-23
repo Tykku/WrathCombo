@@ -412,7 +412,8 @@ internal partial class GNB : Tank
             EyeGouge
         ];
         public override Preset Preset => Preset.GNB_ST_Opener;
-       
+        
+        public override List<int> VeryDelayedWeaveSteps { get; set; } = [5];
     }
     internal class Lv90SlowNormalNM : GNBOpenerLv90Base
     {
