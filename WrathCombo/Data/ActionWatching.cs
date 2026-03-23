@@ -296,7 +296,7 @@ public static class ActionWatching
         if (Service.Configuration.EnabledOutputLog)
             OutputLog();
 
-        if (AutoRotationController.AutorotRaidwiding && AutoRotationController.RaidwideActions.Any(x => x == actionId))
+        if (AutoRotationController.AutorotRaidwiding && AutoRotationController.RaidwideActions.Any(x => x.Action == actionId))
         {
             AutoRotationController.BlacklistedRaidwides.Add(actionId);
             if (actionId != SGE.Eukrasia)
