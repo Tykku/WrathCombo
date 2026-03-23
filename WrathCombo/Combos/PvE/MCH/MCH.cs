@@ -117,7 +117,7 @@ internal partial class MCH : PhysicalRanged
             // 1-2-3 Combo
             if (ComboTimer > 0)
             {
-                if (ComboAction is SplitShot && ActionReady(OriginalHook(SlugShot)))
+                if (ComboAction is SplitShot && LevelChecked(OriginalHook(SlugShot)))
                     return OriginalHook(SlugShot);
 
                 if (ComboAction is SlugShot && !LevelChecked(Drill) &&
@@ -125,7 +125,7 @@ internal partial class MCH : PhysicalRanged
                     ActionReady(Reassemble))
                     return Reassemble;
 
-                if (ComboAction is SlugShot && ActionReady(OriginalHook(CleanShot)))
+                if (ComboAction is SlugShot && LevelChecked(OriginalHook(CleanShot)))
                     return OriginalHook(CleanShot);
             }
             return actionID;
@@ -398,7 +398,7 @@ internal partial class MCH : PhysicalRanged
             // 1-2-3 Combo
             if (ComboTimer > 0)
             {
-                if (ComboAction is SplitShot && ActionReady(OriginalHook(SlugShot)))
+                if (ComboAction is SplitShot && LevelChecked(OriginalHook(SlugShot)))
                     return OriginalHook(SlugShot);
 
                 if (IsEnabled(Preset.MCH_ST_Adv_Reassemble) &&
@@ -406,7 +406,7 @@ internal partial class MCH : PhysicalRanged
                     !HasStatusEffect(Buffs.Reassembled) && ActionReady(Reassemble))
                     return Reassemble;
 
-                if (ComboAction is SlugShot && ActionReady(OriginalHook(CleanShot)))
+                if (ComboAction is SlugShot && LevelChecked(OriginalHook(CleanShot)))
                     return OriginalHook(CleanShot);
             }
             return actionID;
@@ -566,10 +566,10 @@ internal partial class MCH : PhysicalRanged
 
             if (ComboTimer > 0)
             {
-                if (ComboAction is SplitShot && ActionReady(OriginalHook(SlugShot)))
+                if (ComboAction is SplitShot && LevelChecked(OriginalHook(SlugShot)))
                     return OriginalHook(SlugShot);
 
-                if (ComboAction is SlugShot && ActionReady(OriginalHook(CleanShot)))
+                if (ComboAction is SlugShot && LevelChecked(OriginalHook(CleanShot)))
                     return OriginalHook(CleanShot);
             }
 
