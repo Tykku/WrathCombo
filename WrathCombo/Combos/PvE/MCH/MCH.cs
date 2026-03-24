@@ -361,13 +361,13 @@ internal partial class MCH : PhysicalRanged
                         GetStatusEffectRemainingTime(Debuffs.Dismantled, CurrentTarget, true) > MCH_DismantledDuration &&
                         GroupDamageIncoming())
                         return Dismantle;
-                    
+
                     if (IsEnabled(Preset.MCH_ST_Adv_Tactician) &&
                         ActionReady(Tactician) && GroupDamageIncoming() && !JustUsed(Dismantle, 6) &&
                         NumberOfAlliesInRange(Tactician) >= GetPartyMembers().Count * .75 &&
                         !HasAnyStatusEffects([BRD.Buffs.Troubadour, DNC.Buffs.ShieldSamba, Buffs.Tactician], anyOwner: true))
                         return Tactician;
-                    
+
                     // Healing
                     if (IsEnabled(Preset.MCH_ST_Adv_SecondWind) &&
                         Role.CanSecondWind(MCH_ST_SecondWindHPThreshold))
