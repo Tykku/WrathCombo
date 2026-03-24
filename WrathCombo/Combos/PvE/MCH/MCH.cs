@@ -356,18 +356,18 @@ internal partial class MCH : PhysicalRanged
                             return OriginalHook(Ricochet);
                     }
 
-                    if (IsEnabled(Preset.MCH_ST_Adv_Tactician) &&
-                        ActionReady(Tactician) && GroupDamageIncoming() &&
-                        NumberOfAlliesInRange(Tactician) >= GetPartyMembers().Count * .75 &&
-                        !HasAnyStatusEffects([BRD.Buffs.Troubadour, DNC.Buffs.ShieldSamba, Buffs.Tactician], anyOwner: true))
-                        return Tactician;
-
                     if (IsEnabled(Preset.MCH_ST_Dismantle) &&
                         ActionReady(Dismantle) &&
                         GetStatusEffectRemainingTime(Debuffs.Dismantled, CurrentTarget, true) > MCH_DismantledDuration &&
                         GroupDamageIncoming())
                         return Dismantle;
-
+                    
+                    if (IsEnabled(Preset.MCH_ST_Adv_Tactician) &&
+                        ActionReady(Tactician) && GroupDamageIncoming() && !JustUsed(Dismantle, 6) &&
+                        NumberOfAlliesInRange(Tactician) >= GetPartyMembers().Count * .75 &&
+                        !HasAnyStatusEffects([BRD.Buffs.Troubadour, DNC.Buffs.ShieldSamba, Buffs.Tactician], anyOwner: true))
+                        return Tactician;
+                    
                     // Healing
                     if (IsEnabled(Preset.MCH_ST_Adv_SecondWind) &&
                         Role.CanSecondWind(MCH_ST_SecondWindHPThreshold))
