@@ -434,7 +434,7 @@ internal unsafe class AutoRotationController
 
                 if (Player.Object is not null && ActionManager.CanUseActionOnTarget(spell, SimpleTarget.FocusTarget.Struct()) && !OutOfRange(spell, Player.Object, SimpleTarget.FocusTarget) && ActionManager.Instance()->GetActionStatus(ActionType.Action, spell) == 0)
                 {
-                    ActionManager.Instance()->UseAction(ActionType.Action, shieldSpell, SimpleTarget.FocusTarget.GameObjectId);
+                    ActionManager.Instance()->UseAction(ActionType.Action, spell, SimpleTarget.FocusTarget.GameObjectId);
                     return;
                 }
             }
@@ -565,7 +565,7 @@ internal unsafe class AutoRotationController
             if (res is 0 or 565)
             {
                 Svc.Log.Debug($"Cleansing {memberBC.Name}");
-                ActionManager.Instance()->UseAction(ActionType.Action, RoleActions.Healer.Esuna, memberBC.GameObjectId);
+                ActionManager.Instance()->UseAction(ActionType.Action, RoleActions.Healer.Esuna.Retarget(memberBC), memberBC.GameObjectId);
             }
         }
     }
@@ -586,7 +586,7 @@ internal unsafe class AutoRotationController
             var enemiesTargeting = Svc.Objects.Count(x => x.IsTargetable && x.IsHostile() && x.TargetObjectId == member.BattleChara.GameObjectId);
             if (enemiesTargeting > 0 && !HasStatusEffect(SGE.Buffs.Kardion, member.BattleChara))
             {
-                ActionManager.Instance()->UseAction(ActionType.Action, SGE.Kardia, member.BattleChara.GameObjectId);
+                ActionManager.Instance()->UseAction(ActionType.Action, SGE.Kardia.Retarget(member.BattleChara), member.BattleChara.GameObjectId);
                 return;
             }
         }
