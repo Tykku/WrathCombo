@@ -778,6 +778,7 @@ internal class Debug : ConfigWindow, IDisposable
                 if (_debugSpell.Value.UnlockLink.RowId != 0 && Svc.Data.GetExcelSheet<Quest>().TryGetRow(_debugSpell.Value.UnlockLink.RowId, out var unlockQuest))
                     CustomStyleText("Quest:", $"{unlockQuest.Name} ({(UIState.Instance()->IsUnlockLinkUnlockedOrQuestCompleted(_debugSpell.Value.UnlockLink.RowId) ? "Completed" : "Not Completed")})");
 
+                CustomStyleText("Tooltip:", $"{Svc.Data.GetExcelSheet<ActionTransient>().GetRow(_debugSpell.Value.RowId).Description}");
                 CustomStyleText("Base Recast:", $"{_debugSpell.Value.Recast100ms / 10f}s");
                 CustomStyleText("Base Recast Total:", $"{GetCooldown(_debugSpell.Value.RowId).BaseCooldownTotal}");
                 CustomStyleText("Original Hook:", OriginalHook(_debugSpell.Value.RowId).ActionName());
@@ -1360,7 +1361,7 @@ internal class Debug : ConfigWindow, IDisposable
 
         // Optional Monofont
         if (useMonofont) ImGui.PushFont(UiBuilder.MonoFont);
-        ImGui.TextUnformatted(secondColumn?.ToString() ?? string.Empty);
+        ImGui.TextWrapped(secondColumn?.ToString() ?? string.Empty);
         if (useMonofont) ImGui.PopFont();
 
         ImGui.PopStyleColor();
