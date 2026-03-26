@@ -66,7 +66,7 @@ internal partial class MNK
                 HasBattleTarget() && !JustUsed(PerfectBalance):
             {
                 // Odd window
-                if ((JustUsed(OriginalHook(Bootshine), GCD) || JustUsed(DragonKick, GCD)) &&
+                if ((JustUsed(OriginalHook(Bootshine), GCD * 2) || JustUsed(DragonKick, GCD * 2)) &&
                     !JustUsed(PerfectBalance, 20) && GetCooldownRemainingTime(RiddleOfFire) <= GCD * 2 && !HasStatusEffect(Buffs.Brotherhood))
                     return true;
 
@@ -77,7 +77,8 @@ internal partial class MNK
 
                 // Even window second use
                 if ((JustUsed(OriginalHook(Bootshine), GCD) || JustUsed(DragonKick, GCD)) &&
-                    HasStatusEffect(Buffs.Brotherhood) && HasStatusEffect(Buffs.RiddleOfFire) && (!HasStatusEffect(Buffs.FiresRumination) || IsNotEnabled(Preset.MNK_STUseFiresReply)))
+                    HasStatusEffect(Buffs.Brotherhood) && HasStatusEffect(Buffs.RiddleOfFire) &&
+                    (!HasStatusEffect(Buffs.FiresRumination) || IsNotEnabled(Preset.MNK_STUseFiresReply)))
                     return true;
 
                 // Low level
@@ -430,7 +431,7 @@ internal partial class MNK
         HasStatusEffect(Buffs.WindsRumination) &&
         InActionRange(WindsReply) &&
         (GetCooldownRemainingTime(RiddleOfFire) > 10 ||
-         HasStatusEffect(Buffs.RiddleOfFire) ||
+         HasStatusEffect(Buffs.RiddleOfFire) && !HasStatusEffect(Buffs.FiresRumination) ||
          GetStatusEffectRemainingTime(Buffs.WindsRumination) < GCD * 2 ||
          !InMeleeRange());
 
