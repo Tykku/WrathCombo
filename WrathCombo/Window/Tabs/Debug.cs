@@ -778,12 +778,16 @@ internal class Debug : ConfigWindow, IDisposable
                 if (_debugSpell.Value.UnlockLink.RowId != 0 && Svc.Data.GetExcelSheet<Quest>().TryGetRow(_debugSpell.Value.UnlockLink.RowId, out var unlockQuest))
                     CustomStyleText("Quest:", $"{unlockQuest.Name} ({(UIState.Instance()->IsUnlockLinkUnlockedOrQuestCompleted(_debugSpell.Value.UnlockLink.RowId) ? "Completed" : "Not Completed")})");
 
+                CustomStyleText("Tooltip:", $"{Svc.Data.GetExcelSheet<ActionTransient>().GetRow(_debugSpell.Value.RowId).Description}");
                 CustomStyleText("Base Recast:", $"{_debugSpell.Value.Recast100ms / 10f}s");
                 CustomStyleText("Base Recast Total:", $"{GetCooldown(_debugSpell.Value.RowId).BaseCooldownTotal}");
                 CustomStyleText("Original Hook:", OriginalHook(_debugSpell.Value.RowId).ActionName());
-                CustomStyleText("Cooldown Total:", $"{GetCooldown(_debugSpell.Value.RowId).CooldownTotal}");
-                CustomStyleText("Current Cooldown:", GetCooldown(_debugSpell.Value.RowId).CooldownRemaining);
+                CustomStyleText("Cooldown Total:", $"{GetCooldown(_debugSpell.Value.RowId).CooldownTotal:N2}");
+                CustomStyleText("CS CD:", $"{GetCooldown(_debugSpell.Value.RowId).CurrentRecast:N2}");
+                CustomStyleText("Remaining Cooldown:", $"{GetCooldown(_debugSpell.Value.RowId).CooldownRemaining:N2}");
+                CustomStyleText("Elpased Cooldown:", $"{GetCooldown(_debugSpell.Value.RowId).CooldownElapsed:N2}");
                 CustomStyleText("Current Cast Time:", ActionManager.GetAdjustedCastTime(ActionType.Action, _debugSpell.Value.RowId));
+                CustomStyleText("Current Charges:", $"{GetCooldown(_debugSpell.Value.RowId).RemainingCharges}");
                 CustomStyleText("Max Charges:", $"{_debugSpell.Value.MaxCharges}");
                 CustomStyleText("Charges (Level):", $"{GetCooldown(_debugSpell.Value.RowId).MaxCharges}");
                 CustomStyleText("Range:", $"{GetActionRange(_debugSpell.Value.RowId)}");
@@ -920,7 +924,7 @@ internal class Debug : ConfigWindow, IDisposable
         {
             CustomStyleText("Countdown Active:", $"{CountdownActive}");
             CustomStyleText("Countdown Remaining:", $"{CountdownRemaining}");
-            CustomStyleText("Raidwide Incoming:", $"{GroupDamageIncoming()}");
+            CustomStyleText("Raidwide Incoming:", $"{GroupDamageIncoming()} {(GroupDamageIncoming(out var multi) ? $"Multi: {multi}" : "")}");
 
             ImGui.Indent();
             if (ImGui.CollapsingHeader("Occult Crescent Job Icons"))
@@ -1357,7 +1361,7 @@ internal class Debug : ConfigWindow, IDisposable
 
         // Optional Monofont
         if (useMonofont) ImGui.PushFont(UiBuilder.MonoFont);
-        ImGui.TextUnformatted(secondColumn?.ToString() ?? string.Empty);
+        ImGui.TextWrapped(secondColumn?.ToString() ?? string.Empty);
         if (useMonofont) ImGui.PopFont();
 
         ImGui.PopStyleColor();

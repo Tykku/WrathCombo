@@ -229,40 +229,43 @@ internal unsafe class AutoRotationController
         ProcessAutoActions(autoActions, ref _, canHeal, false);
     }
 
-    public static IEnumerable<uint> RaidwideActions =
+    public static IEnumerable<(uint Action, bool MultiHitOnly)> RaidwideActions =
     [
-        WHM.PlenaryIndulgence,
-        WHM.LiturgyOfTheBell.Retarget(SimpleTarget.Self),
-        WHM.Temperance,
-        WHM.DivineCaress,
-        WHM.Asylum.Retarget(SimpleTarget.Self),
-        WHM.Medica2,
-        WHM.Medica3,
-        SCH.Protraction,
-        SCH.Expedient,
-        SCH.Seraphism,
-        SCH.Succor,
-        SCH.Concitation,
-        AST.CollectiveUnconscious,
-        AST.SunSign,
-        AST.CelestialOpposition,
-        AST.AspectedHelios,
-        AST.HeliosConjuction,
-        SGE.Kerachole,
-        SGE.Physis,
-        SGE.Physis2,
-        SGE.Holos,
-        SGE.Panhaima,
-        SGE.Eukrasia,
-        SGE.EukrasianPrognosis,
-        SGE.EukrasianPrognosis2
+        (WHM.PlenaryIndulgence, false),
+        (WHM.LiturgyOfTheBell.Retarget(SimpleTarget.Self), true),
+        (WHM.Temperance, false),
+        (WHM.DivineCaress, false),
+        (WHM.Asylum.Retarget(SimpleTarget.Self), false),
+        (WHM.Medica2, false),
+        (WHM.Medica3, false),
+        (SCH.Expedient, false),
+        (SCH.Seraphism, false),
+        (SCH.Succor, false),
+        (SCH.Concitation, false),
+        (AST.CollectiveUnconscious, false),
+        (AST.SunSign, false),
+        (AST.CelestialOpposition, false),
+        (AST.AspectedHelios, false),
+        (AST.HeliosConjuction, false),
+        (SGE.Kerachole, false),
+        (SGE.Physis, false),
+        (SGE.Physis2, false),
+        (SGE.Holos, false),
+        (SGE.Panhaima, true),
+        (SGE.Eukrasia, false),
+        (SGE.EukrasianPrognosis, false),
+        (SGE.EukrasianPrognosis2, false),
     ];
 
     public static List<uint> BlacklistedRaidwides = [];
     private static void HandleRaidwide()
     {
-        foreach (var spell in RaidwideActions)
+        GroupDamageIncoming(out bool isMultiHit);
+        foreach (var (spell, multihitter) in RaidwideActions)
         {
+            if (!isMultiHit && multihitter)
+                continue;
+
             if (BlacklistedRaidwides.Contains(spell))
                 continue;
 
@@ -431,7 +434,7 @@ internal unsafe class AutoRotationController
 
                 if (Player.Object is not null && ActionManager.CanUseActionOnTarget(spell, SimpleTarget.FocusTarget.Struct()) && !OutOfRange(spell, Player.Object, SimpleTarget.FocusTarget) && ActionManager.Instance()->GetActionStatus(ActionType.Action, spell) == 0)
                 {
-                    ActionManager.Instance()->UseAction(ActionType.Action, shieldSpell, SimpleTarget.FocusTarget.GameObjectId);
+                    ActionManager.Instance()->UseAction(ActionType.Action, spell, SimpleTarget.FocusTarget.GameObjectId);
                     return;
                 }
             }
@@ -562,7 +565,7 @@ internal unsafe class AutoRotationController
             if (res is 0 or 565)
             {
                 Svc.Log.Debug($"Cleansing {memberBC.Name}");
-                ActionManager.Instance()->UseAction(ActionType.Action, RoleActions.Healer.Esuna, memberBC.GameObjectId);
+                ActionManager.Instance()->UseAction(ActionType.Action, RoleActions.Healer.Esuna.Retarget(memberBC), memberBC.GameObjectId);
             }
         }
     }
@@ -583,7 +586,7 @@ internal unsafe class AutoRotationController
             var enemiesTargeting = Svc.Objects.Count(x => x.IsTargetable && x.IsHostile() && x.TargetObjectId == member.BattleChara.GameObjectId);
             if (enemiesTargeting > 0 && !HasStatusEffect(SGE.Buffs.Kardion, member.BattleChara))
             {
-                ActionManager.Instance()->UseAction(ActionType.Action, SGE.Kardia, member.BattleChara.GameObjectId);
+                ActionManager.Instance()->UseAction(ActionType.Action, SGE.Kardia.Retarget(member.BattleChara), member.BattleChara.GameObjectId);
                 return;
             }
         }
