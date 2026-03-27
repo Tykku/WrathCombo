@@ -258,7 +258,6 @@ internal partial class All
 
         protected override uint Invoke(uint actionID) =>
             actionID is RoleActions.Melee.Feint &&
-            Melee.Role.CanFeint() &&
             GetStatusEffectRemainingTime(RoleActions.Melee.Debuffs.Feint, CurrentTarget, true) > Config.AllMeleeFeintThreshold
                 ? SavageBlade
                 : actionID;
