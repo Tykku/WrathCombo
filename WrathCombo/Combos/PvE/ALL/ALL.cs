@@ -93,7 +93,6 @@ internal partial class All
 
         protected override uint Invoke(uint actionID) =>
             actionID is RoleActions.Tank.Reprisal &&
-            Tank.Role.CanReprisal() &&
             GetStatusEffectRemainingTime(RoleActions.Tank.Debuffs.Reprisal, CurrentTarget, true) > Config.AllTankReprisalThreshold
                 ? SavageBlade
                 : actionID;
@@ -209,7 +208,6 @@ internal partial class All
 
         protected override uint Invoke(uint actionID) =>
             actionID is RoleActions.Caster.Addle &&
-            Caster.Role.CanAddle() &&
             GetStatusEffectRemainingTime(RoleActions.Caster.Debuffs.Addle, CurrentTarget, true) > Config.AllCasterAddleThreshold
                 ? SavageBlade
                 : actionID;
