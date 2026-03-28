@@ -195,12 +195,12 @@ internal partial class RDM
 
                 #region Standalones
                 case Preset.RDM_Riposte_Weaves:
-                    DrawHorizontalMultiChoice(RDM_Riposte_Weaves_Options, "Fleche", "Adds to the OGCD button", 6, 0);
-                    DrawHorizontalMultiChoice(RDM_Riposte_Weaves_Options, "Contre Sixte", "Adds to the OGCD button", 6, 1);
-                    DrawHorizontalMultiChoice(RDM_Riposte_Weaves_Options, "Vice Of Thorns", "Adds to the OGCD button", 6, 2);
-                    DrawHorizontalMultiChoice(RDM_Riposte_Weaves_Options, "Prefulgence", "Adds to the OGCD button", 6, 3);
-                    DrawHorizontalMultiChoice(RDM_Riposte_Weaves_Options, "Engagement", "Adds to the OGCD button", 6, 4);
-                    DrawHorizontalMultiChoice(RDM_Riposte_Weaves_Options, "Corps-a-corps", "Adds to the OGCD button", 6, 5);
+                    DrawHorizontalMultiChoice(RDM_Riposte_Weaves_Options, Fleche.ActionName(), "Adds to the OGCD button", 6, 0);
+                    DrawHorizontalMultiChoice(RDM_Riposte_Weaves_Options, ContreSixte.ActionName(), "Adds to the OGCD button", 6, 1);
+                    DrawHorizontalMultiChoice(RDM_Riposte_Weaves_Options, ViceOfThorns.ActionName(), "Adds to the OGCD button", 6, 2);
+                    DrawHorizontalMultiChoice(RDM_Riposte_Weaves_Options, Prefulgence.ActionName(), "Adds to the OGCD button", 6, 3);
+                    DrawHorizontalMultiChoice(RDM_Riposte_Weaves_Options, Engagement.ActionName(), "Adds to the OGCD button", 6, 4);
+                    DrawHorizontalMultiChoice(RDM_Riposte_Weaves_Options, Corpsacorps.ActionName(), "Adds to the OGCD button", 6, 5);
 
                     if (RDM_Riposte_Weaves_Options[4])
                     {
@@ -215,12 +215,12 @@ internal partial class RDM
                     break;
 
                 case Preset.RDM_Moulinet_Weaves:
-                    DrawHorizontalMultiChoice(RDM_Moulinet_Weaves_Options, "Fleche", "Adds to the OGCD button", 6, 0);
-                    DrawHorizontalMultiChoice(RDM_Moulinet_Weaves_Options, "Contre Sixte", "Adds to the OGCD button", 6, 1);
-                    DrawHorizontalMultiChoice(RDM_Moulinet_Weaves_Options, "Vice Of Thorns", "Adds to the OGCD button", 6, 2);
-                    DrawHorizontalMultiChoice(RDM_Moulinet_Weaves_Options, "Prefulgence", "Adds to the OGCD button", 6, 3);
-                    DrawHorizontalMultiChoice(RDM_Moulinet_Weaves_Options, "Engagement", "Adds to the OGCD button", 6, 4);
-                    DrawHorizontalMultiChoice(RDM_Moulinet_Weaves_Options, "Corps-a-corps", "Adds to the OGCD button", 6, 5);
+                    DrawHorizontalMultiChoice(RDM_Moulinet_Weaves_Options, Fleche.ActionName(), "Adds to the OGCD button", 6, 0);
+                    DrawHorizontalMultiChoice(RDM_Moulinet_Weaves_Options, ContreSixte.ActionName(), "Adds to the OGCD button", 6, 1);
+                    DrawHorizontalMultiChoice(RDM_Moulinet_Weaves_Options, ViceOfThorns.ActionName(), "Adds to the OGCD button", 6, 2);
+                    DrawHorizontalMultiChoice(RDM_Moulinet_Weaves_Options, Prefulgence.ActionName(), "Adds to the OGCD button", 6, 3);
+                    DrawHorizontalMultiChoice(RDM_Moulinet_Weaves_Options, Engagement.ActionName(), "Adds to the OGCD button", 6, 4);
+                    DrawHorizontalMultiChoice(RDM_Moulinet_Weaves_Options, Corpsacorps.ActionName(), "Adds to the OGCD button", 6, 5);
 
                     if (RDM_Moulinet_Weaves_Options[4])
                     {
@@ -245,11 +245,11 @@ internal partial class RDM
                     break;
 
                 case Preset.RDM_OGCDs:
-                    DrawHorizontalMultiChoice(RDM_OGCDs_Options, "Contre Sixte", "Adds to the OGCD button", 5, 0);
-                    DrawHorizontalMultiChoice(RDM_OGCDs_Options, "Vice Of Thorns", "Adds to the OGCD button", 5, 1);
-                    DrawHorizontalMultiChoice(RDM_OGCDs_Options, "Prefulgence", "Adds to the OGCD button", 5, 2);
-                    DrawHorizontalMultiChoice(RDM_OGCDs_Options, "Engagement", "Adds to the OGCD button", 5, 3);
-                    DrawHorizontalMultiChoice(RDM_OGCDs_Options, "Corps-a-corps", "Adds to the OGCD button", 5, 4);
+                    DrawHorizontalMultiChoice(RDM_OGCDs_Options, ContreSixte.ActionName(), "Adds to the OGCD button", 5, 0);
+                    DrawHorizontalMultiChoice(RDM_OGCDs_Options, ViceOfThorns.ActionName(), "Adds to the OGCD button", 5, 1);
+                    DrawHorizontalMultiChoice(RDM_OGCDs_Options, Prefulgence.ActionName(), "Adds to the OGCD button", 5, 2);
+                    DrawHorizontalMultiChoice(RDM_OGCDs_Options, Engagement.ActionName(), "Adds to the OGCD button", 5, 3);
+                    DrawHorizontalMultiChoice(RDM_OGCDs_Options, Corpsacorps.ActionName(), "Adds to the OGCD button", 5, 4);
 
                     if (RDM_OGCDs_Options[3])
                     {
@@ -265,28 +265,28 @@ internal partial class RDM
 
                 case Preset.RDM_VerAero:
                     DrawHorizontalMultiChoice(RDM_VerAero_Options, "Holy Flare Combo", "Adds smart Holy/Flare", 4, 0);
-                    DrawHorizontalMultiChoice(RDM_VerAero_Options, "VerStone", "Adds VerStone", 4, 1);
+                    DrawHorizontalMultiChoice(RDM_VerAero_Options, Verstone.ActionName(), "Adds VerStone", 4, 1);
                     DrawHorizontalMultiChoice(RDM_VerAero_Options, "Scorch Combo", "Adds Scorch/Resolution Finishers", 4, 2);
-                    DrawHorizontalMultiChoice(RDM_VerAero_Options, "Jolt", "Adds Jolt", 4, 3);
+                    DrawHorizontalMultiChoice(RDM_VerAero_Options, Jolt.ActionName(), "Adds Jolt", 4, 3);
                     break;
 
                 case Preset.RDM_VerThunder:
                     DrawHorizontalMultiChoice(RDM_VerThunder_Options, "Holy Flare Combo", "Adds smart Holy/Flare", 4, 0);
-                    DrawHorizontalMultiChoice(RDM_VerThunder_Options, "VerFire", "Adds VerFire", 4, 1);
+                    DrawHorizontalMultiChoice(RDM_VerThunder_Options, Verfire.ActionName(), "Adds VerFire", 4, 1);
                     DrawHorizontalMultiChoice(RDM_VerThunder_Options, "Scorch Combo", "Adds Scorch/Resolution Finishers", 4, 2);
-                    DrawHorizontalMultiChoice(RDM_VerThunder_Options, "Jolt", "Adds Jolt", 4, 3);
+                    DrawHorizontalMultiChoice(RDM_VerThunder_Options, Jolt.ActionName(), "Adds Jolt", 4, 3);
                     break;
 
                 case Preset.RDM_VerAero2:
                     DrawHorizontalMultiChoice(RDM_VerAero2_Options, "Holy Flare Combo", "Adds smart Holy/Flare", 3, 0);
                     DrawHorizontalMultiChoice(RDM_VerAero2_Options, "Scorch Combo", "Adds Scorch/Resolution Finishers", 3, 1);
-                    DrawHorizontalMultiChoice(RDM_VerAero2_Options, "Impact", "Adds Impact", 3, 2);
+                    DrawHorizontalMultiChoice(RDM_VerAero2_Options, Impact.ActionName(), "Adds Impact", 3, 2);
                     break;
 
                 case Preset.RDM_VerThunder2:
                     DrawHorizontalMultiChoice(RDM_VerThunder2_Options, "Holy Flare Combo", "Adds smart Holy/Flare", 3, 0);
                     DrawHorizontalMultiChoice(RDM_VerThunder2_Options, "Scorch Combo", "Adds Scorch/Resolution Finishers", 3, 1);
-                    DrawHorizontalMultiChoice(RDM_VerThunder2_Options, "Impact", "Adds Impact", 3, 2);
+                    DrawHorizontalMultiChoice(RDM_VerThunder2_Options, Impact.ActionName(), "Adds Impact", 3, 2);
                     break;
                     #endregion
             }

@@ -304,10 +304,10 @@ internal partial class SCH
                     break;
 
                 case Preset.SCH_Recitation:
-                    DrawRadioButton(SCH_Recitation_Mode, "Adloquium", "", 0);
-                    DrawRadioButton(SCH_Recitation_Mode, "Succor", "", 1);
-                    DrawRadioButton(SCH_Recitation_Mode, "Indomitability", "", 2);
-                    DrawRadioButton(SCH_Recitation_Mode, "Excogitation", "", 3);
+                    DrawRadioButton(SCH_Recitation_Mode, Adloquium.ActionName(), "", 0);
+                    DrawRadioButton(SCH_Recitation_Mode, Succor.ActionName(), "", 1);
+                    DrawRadioButton(SCH_Recitation_Mode, Indomitability.ActionName(), "", 2);
+                    DrawRadioButton(SCH_Recitation_Mode, Excogitation.ActionName(), "", 3);
                     break;
 
                 case Preset.SCH_Raidwide_Succor:
@@ -320,16 +320,16 @@ internal partial class SCH
                     break;
 
                 case Preset.SCH_Mit_ST:
-                    DrawHorizontalMultiChoice(SCH_Mit_STOptions, "Recitation", "Will Recitation before Adloquium if available.", 3, 0);
-                    DrawHorizontalMultiChoice(SCH_Mit_STOptions, "Deployment Tactics", "Will spread Adloquium crit shield if available.", 3, 1);
-                    DrawHorizontalMultiChoice(SCH_Mit_STOptions, "Excogitation", "Will use Excogitation if available.", 3, 2);
+                    DrawHorizontalMultiChoice(SCH_Mit_STOptions, Recitation.ActionName(), "Will Recitation before Adloquium if available.", 3, 0);
+                    DrawHorizontalMultiChoice(SCH_Mit_STOptions, DeploymentTactics.ActionName(), "Will spread Adloquium crit shield if available.", 3, 1);
+                    DrawHorizontalMultiChoice(SCH_Mit_STOptions, Excogitation.ActionName(), "Will use Excogitation if available.", 3, 2);
                     break;
 
                 case Preset.SCH_Mit_AoE:
-                    DrawHorizontalMultiChoice(SCH_Mit_AoEOptions, "Fey Illumination", "Will activate Fey Illumination before Succor", 4, 0);
+                    DrawHorizontalMultiChoice(SCH_Mit_AoEOptions, FeyIllumination.ActionName(), "Will activate Fey Illumination before Succor", 4, 0);
                     DrawHorizontalMultiChoice(SCH_Mit_AoEOptions, "Crit Adloquium Deployment", "Will Recitation into Adloquium and Deployment tactics in place of Succor" +
                         "\nThis will be targeted at yourself for simplicity and reliability.", 4, 1);
-                    DrawHorizontalMultiChoice(SCH_Mit_AoEOptions, "Expedient", "Will use Expedient if available.", 4, 2);
+                    DrawHorizontalMultiChoice(SCH_Mit_AoEOptions, Expedient.ActionName(), "Will use Expedient if available.", 4, 2);
                     DrawHorizontalMultiChoice(SCH_Mit_AoEOptions, "Summon Seraph Consolation", "Will summon Seraph if available and use Consolation for more shield.", 4, 3);
                     break;
 
