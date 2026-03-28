@@ -1,7 +1,9 @@
 using WrathCombo.CustomComboNS.Functions;
 using WrathCombo.Extensions;
 using WrathCombo.Window.Functions;
+using WrathCombo.Resources.Localization.JobConfigs;
 using static WrathCombo.Window.Functions.UserConfig;
+using static WrathCombo.Window.Text;
 namespace WrathCombo.Combos.PvE;
 
 internal partial class SMN
@@ -64,17 +66,17 @@ internal partial class SMN
 
                 case Preset.SMN_ST_Advanced_Combo_Titan:
                     DrawPriorityInput(SMN_ST_Egi_Priority, 3, 0,
-                        $"{SummonTopaz.ActionName()} Priority: ");
+                        FormatAndCache(Generics.Action_Priority, SummonTopaz.ActionName()));
                     break;
 
                 case Preset.SMN_ST_Advanced_Combo_Garuda:
                     DrawPriorityInput(SMN_ST_Egi_Priority, 3, 1,
-                        $"{SummonEmerald.ActionName()} Priority: ");
+                        FormatAndCache(Generics.Action_Priority, SummonEmerald.ActionName()));
                     break;
 
                 case Preset.SMN_ST_Advanced_Combo_Ifrit:
                     DrawPriorityInput(SMN_ST_Egi_Priority, 3, 2,
-                        $"{SummonRuby.ActionName()} Priority: ");
+                        FormatAndCache(Generics.Action_Priority, SummonRuby.ActionName()));
                     break;
 
                 case Preset.SMN_ST_Advanced_Combo_DemiEgiMenu_SwiftcastEgi:
@@ -105,17 +107,17 @@ internal partial class SMN
                 #region AoE
                 case Preset.SMN_AoE_Advanced_Combo_Titan:
                     DrawPriorityInput(SMN_AoE_Egi_Priority, 3, 0,
-                        $"{SummonTopaz.ActionName()} Priority: ");
+                        FormatAndCache(Generics.Action_Priority, SummonTopaz.ActionName()));
                     break;
 
                 case Preset.SMN_AoE_Advanced_Combo_Garuda:
                     DrawPriorityInput(SMN_AoE_Egi_Priority, 3, 1,
-                        $"{SummonEmerald.ActionName()} Priority: ");
+                        FormatAndCache(Generics.Action_Priority, SummonEmerald.ActionName()));
                     break;
 
                 case Preset.SMN_AoE_Advanced_Combo_Ifrit:
                     DrawPriorityInput(SMN_AoE_Egi_Priority, 3, 2,
-                        $"{SummonRuby.ActionName()} Priority: ");
+                        FormatAndCache(Generics.Action_Priority, SummonRuby.ActionName()));
                     break;
 
                 case Preset.SMN_AoE_Advanced_Combo_DemiEgiMenu_SwiftcastEgi:
