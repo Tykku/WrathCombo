@@ -4,6 +4,7 @@ using WrathCombo.Resources.Localization.JobConfigs;
 using static WrathCombo.Extensions.UIntExtensions;
 using static WrathCombo.Window.Functions.SliderIncrements;
 using static WrathCombo.Window.Functions.UserConfig;
+using static WrathCombo.Window.Text;
 namespace WrathCombo.Combos.PvE;
 
 internal partial class SCH
@@ -41,7 +42,7 @@ internal partial class SCH
                     ImGui.Indent();
                     DrawRoundedSliderFloat(0, 4, SCH_ST_DPS_BioUptime_Threshold, Generics.DoTSecondsRemainingZeroDisable, digits: 1);
                     ImGui.Unindent();
-                    DrawAdditionalBoolChoice(SCH_ST_ADV_DPS_Bio_TwoTarget, "Two target dotting", "Will maintain Damage over time spells on two targets if applicable.");
+                    DrawAdditionalBoolChoice(SCH_ST_ADV_DPS_Bio_TwoTarget, Generics.TwoTargetDotting, Generics.TwoTargetDottingDescription);
                     break;
 
                 case Preset.SCH_ST_ADV_DPS_ChainStrat:
@@ -103,9 +104,9 @@ internal partial class SCH
                 case Preset.SCH_AoE_ADV_DPS_DoT:
                     DrawSliderInt(0, 100, SCH_AoE_ADV_DPS_DoT_HPThreshold, "Target HP% to stop using (0 = Use Always, 100 = Never)");
                     ImGui.Indent();
-                    DrawRoundedSliderFloat(0, 5, SCH_AoE_ADV_DPS_DoT_Reapply, "Seconds remaining before reapplying (0 = Do not reapply early)", digits: 1);
+                    DrawRoundedSliderFloat(0, 5, SCH_AoE_ADV_DPS_DoT_Reapply, Generics.StopSeconds, digits: 1);
                     ImGui.Unindent();
-                    DrawSliderInt(0, 10, SCH_AoE_ADV_DPS_DoT_MaxTargets, "Maximum number of targets to employ multi-dotting ");
+                    DrawSliderInt(0, 10, SCH_AoE_ADV_DPS_DoT_MaxTargets, Generics.MaxTargetsMultiDot);
                     break;
                 #endregion
 
@@ -123,71 +124,71 @@ internal partial class SCH
                     break;
 
                 case Preset.SCH_ST_Heal_Lustrate:
-                    DrawSliderInt(0, 100, SCH_ST_Heal_LustrateOption, "Start using when below HP %. Set to 100 to disable this check");
-                    DrawPriorityInput(SCH_ST_Heals_Priority, 12, 0, $"{Lustrate.ActionName()} Priority: ");
+                    DrawSliderInt(0, 100, SCH_ST_Heal_LustrateOption, Generics.StopFriendlyHpPercent100);
+                    DrawPriorityInput(SCH_ST_Heals_Priority, 12, 0, FormatAndCache(Generics.Action_Priority, Lustrate.ActionName()));
                     break;
 
                 case Preset.SCH_ST_Heal_Excogitation:
-                    DrawSliderInt(0, 100, SCH_ST_Heal_ExcogitationOption, "Start using when below HP %. Set to 100 to disable this check");
-                    DrawAdditionalBoolChoice(SCH_ST_Heal_ExcogitationBossOption, "Not on Bosses", "Will not use on ST in Boss encounters.");
+                    DrawSliderInt(0, 100, SCH_ST_Heal_ExcogitationOption, Generics.StopFriendlyHpPercent100);
+                    DrawAdditionalBoolChoice(SCH_ST_Heal_ExcogitationBossOption, Generics.NotInBossEncounters, Generics.WillNotUseInBossEncounters);
                     DrawAdditionalBoolChoice(SCH_ST_Heal_ExcogitationTankOption, "Only on Tanks", "Will only use on a Tank.");
-                    DrawPriorityInput(SCH_ST_Heals_Priority, 12, 1, $"{Excogitation.ActionName()} Priority: ");
+                    DrawPriorityInput(SCH_ST_Heals_Priority, 12, 1, FormatAndCache(Generics.Action_Priority, Excogitation.ActionName()));
                     break;
 
                 case Preset.SCH_ST_Heal_Protraction:
-                    DrawSliderInt(0, 100, SCH_ST_Heal_ProtractionOption, "Start using when below HP %. Set to 100 to disable this check");
-                    DrawAdditionalBoolChoice(SCH_ST_Heal_ProtractionBossOption, "Not on Bosses", "Will not use on ST in Boss encounters.");
+                    DrawSliderInt(0, 100, SCH_ST_Heal_ProtractionOption, Generics.StopFriendlyHpPercent100);
+                    DrawAdditionalBoolChoice(SCH_ST_Heal_ProtractionBossOption, Generics.NotInBossEncounters, Generics.WillNotUseInBossEncounters);
                     DrawAdditionalBoolChoice(SCH_ST_Heal_ProtractionTankOption, "Only on Tanks", "Will only use on a Tank.");
-                    DrawPriorityInput(SCH_ST_Heals_Priority, 12, 2, $"{Protraction.ActionName()} Priority: ");
+                    DrawPriorityInput(SCH_ST_Heals_Priority, 12, 2, FormatAndCache(Generics.Action_Priority, Protraction.ActionName()));
                     break;
 
                 case Preset.SCH_ST_Heal_Aetherpact:
-                    DrawSliderInt(0, 100, SCH_ST_Heal_AetherpactOption, "Start using when below HP %. Set to 100 to disable this check");
+                    DrawSliderInt(0, 100, SCH_ST_Heal_AetherpactOption, Generics.StopFriendlyHpPercent100);
                     DrawSliderInt(0, 100, SCH_ST_Heal_AetherpactDissolveOption, "Stop using when above HP %.");
                     DrawSliderInt(10, 100, SCH_ST_Heal_AetherpactFairyGauge, "Minimal Fairy Gauge to start using Aetherpact", sliderIncrement: Tens);
-                    DrawPriorityInput(SCH_ST_Heals_Priority, 12, 3, $"{Aetherpact.ActionName()} Priority: ");
+                    DrawPriorityInput(SCH_ST_Heals_Priority, 12, 3, FormatAndCache(Generics.Action_Priority, Aetherpact.ActionName()));
                     break;
 
                 case Preset.SCH_ST_Heal_WhisperingDawn:
-                    DrawSliderInt(0, 100, SCH_ST_Heal_WhisperingDawnOption, "Start using when below HP %. Set to 100 to disable this check");
-                    DrawAdditionalBoolChoice(SCH_ST_Heal_WhisperingDawnBossOption, "Not on Bosses", "Will not use on ST in Boss encounters.");
-                    DrawPriorityInput(SCH_ST_Heals_Priority, 12, 5, $"{WhisperingDawn.ActionName()} Priority: ");
+                    DrawSliderInt(0, 100, SCH_ST_Heal_WhisperingDawnOption, Generics.StopFriendlyHpPercent100);
+                    DrawAdditionalBoolChoice(SCH_ST_Heal_WhisperingDawnBossOption, Generics.NotInBossEncounters, Generics.WillNotUseInBossEncounters);
+                    DrawPriorityInput(SCH_ST_Heals_Priority, 12, 5, FormatAndCache(Generics.Action_Priority, WhisperingDawn.ActionName()));
                     break;
 
                 case Preset.SCH_ST_Heal_FeyIllumination:
-                    DrawSliderInt(0, 100, SCH_ST_Heal_FeyIlluminationOption, "Start using when below HP %. Set to 100 to disable this check");
-                    DrawAdditionalBoolChoice(SCH_ST_Heal_FeyIlluminationBossOption, "Not on Bosses", "Will not use on ST in Boss encounters.");
-                    DrawPriorityInput(SCH_ST_Heals_Priority, 12, 6, $"{FeyIllumination.ActionName()} Priority: ");
+                    DrawSliderInt(0, 100, SCH_ST_Heal_FeyIlluminationOption, Generics.StopFriendlyHpPercent100);
+                    DrawAdditionalBoolChoice(SCH_ST_Heal_FeyIlluminationBossOption, Generics.NotInBossEncounters, Generics.WillNotUseInBossEncounters);
+                    DrawPriorityInput(SCH_ST_Heals_Priority, 12, 6, FormatAndCache(Generics.Action_Priority, FeyIllumination.ActionName()));
                     break;
 
                 case Preset.SCH_ST_Heal_FeyBlessing:
-                    DrawSliderInt(0, 100, SCH_ST_Heal_FeyBlessingOption, "Start using when below HP %. Set to 100 to disable this check");
-                    DrawAdditionalBoolChoice(SCH_ST_Heal_FeyBlessingBossOption, "Not on Bosses", "Will not use on ST in Boss encounters.");
-                    DrawPriorityInput(SCH_ST_Heals_Priority, 12, 7, $"{FeyBlessing.ActionName()} Priority: ");
+                    DrawSliderInt(0, 100, SCH_ST_Heal_FeyBlessingOption, Generics.StopFriendlyHpPercent100);
+                    DrawAdditionalBoolChoice(SCH_ST_Heal_FeyBlessingBossOption, Generics.NotInBossEncounters, Generics.WillNotUseInBossEncounters);
+                    DrawPriorityInput(SCH_ST_Heals_Priority, 12, 7, FormatAndCache(Generics.Action_Priority, FeyBlessing.ActionName()));
                     break;
 
                 case Preset.SCH_ST_Heal_Seraphism:
-                    DrawSliderInt(0, 100, SCH_ST_Heal_SeraphismOption, "Start using when below HP %. Set to 100 to disable this check");
-                    DrawAdditionalBoolChoice(SCH_ST_Heal_SeraphismBossOption, "Not on Bosses", "Will not use on ST in Boss encounters.");
-                    DrawPriorityInput(SCH_ST_Heals_Priority, 12, 8, $"{Seraphism.ActionName()} Priority: ");
+                    DrawSliderInt(0, 100, SCH_ST_Heal_SeraphismOption, Generics.StopFriendlyHpPercent100);
+                    DrawAdditionalBoolChoice(SCH_ST_Heal_SeraphismBossOption, Generics.NotInBossEncounters, Generics.WillNotUseInBossEncounters);
+                    DrawPriorityInput(SCH_ST_Heals_Priority, 12, 8, FormatAndCache(Generics.Action_Priority, Seraphism.ActionName()));
                     break;
 
                 case Preset.SCH_ST_Heal_Expedient:
-                    DrawSliderInt(0, 100, SCH_ST_Heal_ExpedientOption, "Start using when below HP %. Set to 100 to disable this check");
-                    DrawAdditionalBoolChoice(SCH_ST_Heal_ExpedientBossOption, "Not on Bosses", "Will not use on ST in Boss encounters.");
-                    DrawPriorityInput(SCH_ST_Heals_Priority, 12, 9, $"{Expedient.ActionName()} Priority: ");
+                    DrawSliderInt(0, 100, SCH_ST_Heal_ExpedientOption, Generics.StopFriendlyHpPercent100);
+                    DrawAdditionalBoolChoice(SCH_ST_Heal_ExpedientBossOption, Generics.NotInBossEncounters, Generics.WillNotUseInBossEncounters);
+                    DrawPriorityInput(SCH_ST_Heals_Priority, 12, 9, FormatAndCache(Generics.Action_Priority, Expedient.ActionName()));
                     break;
 
                 case Preset.SCH_ST_Heal_SummonSeraph:
-                    DrawSliderInt(0, 100, SCH_ST_Heal_SummonSeraphOption, "Start using when below HP %. Set to 100 to disable this check");
-                    DrawAdditionalBoolChoice(SCH_ST_Heal_SummonSeraphBossOption, "Not on Bosses", "Will not use on ST in Boss encounters.");
-                    DrawPriorityInput(SCH_ST_Heals_Priority, 12, 10, $"{SummonSeraph.ActionName()} Priority: ");
+                    DrawSliderInt(0, 100, SCH_ST_Heal_SummonSeraphOption, Generics.StopFriendlyHpPercent100);
+                    DrawAdditionalBoolChoice(SCH_ST_Heal_SummonSeraphBossOption, Generics.NotInBossEncounters, Generics.WillNotUseInBossEncounters);
+                    DrawPriorityInput(SCH_ST_Heals_Priority, 12, 10, FormatAndCache(Generics.Action_Priority, SummonSeraph.ActionName()));
                     break;
 
                 case Preset.SCH_ST_Heal_Consolation:
-                    DrawSliderInt(0, 100, SCH_ST_Heal_ConsolationOption, "Start using when below HP %. Set to 100 to disable this check");
-                    DrawAdditionalBoolChoice(SCH_ST_Heal_ConsolationBossOption, "Not on Bosses", "Will not use on ST in Boss encounters.");
-                    DrawPriorityInput(SCH_ST_Heals_Priority, 12, 11, $"{Consolation.ActionName()} Priority: ");
+                    DrawSliderInt(0, 100, SCH_ST_Heal_ConsolationOption, Generics.StopFriendlyHpPercent100);
+                    DrawAdditionalBoolChoice(SCH_ST_Heal_ConsolationBossOption, Generics.NotInBossEncounters, Generics.WillNotUseInBossEncounters);
+                    DrawPriorityInput(SCH_ST_Heals_Priority, 12, 11, FormatAndCache(Generics.Action_Priority, Consolation.ActionName()));
                     break;
 
                 case Preset.SCH_ST_Heal_Adloquium:
@@ -203,11 +204,11 @@ internal partial class SCH
                         ImGui.Unindent();
                     }
 
-                    DrawPriorityInput(SCH_ST_Heals_Priority, 12, 4, $"{Adloquium.ActionName()} Priority: ");
+                    DrawPriorityInput(SCH_ST_Heals_Priority, 12, 4, FormatAndCache(Generics.Action_Priority, Adloquium.ActionName()));
                     break;
 
                 case Preset.SCH_ST_Heal_Esuna:
-                    DrawSliderInt(0, 100, SCH_ST_Heal_EsunaOption, "Stop using when below HP %. Set to Zero to disable this check");
+                    DrawSliderInt(0, 100, SCH_ST_Heal_EsunaOption, Generics.StopFriendlyHpPercentZero);
                     break;
 
                 #endregion
@@ -221,45 +222,45 @@ internal partial class SCH
                     ImGui.TextUnformatted("Note: Succor will always be available.");
                     ImGui.TextUnformatted("These options are to provide optional priority to Succor or to set up Emergency tactics option.");
                     DrawSliderInt(0, 100, SCH_AoE_Heal_SuccorShieldOption, "Shield Check: Will use when less than set percentage of party have shields.", sliderIncrement: 25);
-                    DrawPriorityInput(SCH_AoE_Heals_Priority, 8, 7, $"{Succor.ActionName()} Priority: ");
+                    DrawPriorityInput(SCH_AoE_Heals_Priority, 8, 7, FormatAndCache(Generics.Action_Priority, Succor.ActionName()));
                     DrawHorizontalMultiChoice(SCH_AoE_Heal_Succor_Options, "Emergency Tactics", "If more than the set percentage of the party has shields, will use Emergency Tactics before Succor", 2, 0);
                     DrawHorizontalMultiChoice(SCH_AoE_Heal_Succor_Options, "Recitation", "Will use Recitation to buff Succor", 2, 1);
                     break;
 
                 case Preset.SCH_AoE_Heal_WhisperingDawn:
-                    DrawSliderInt(0, 100, SCH_AoE_Heal_WhisperingDawnOption, "Start using when below party average HP %. Set to 100 to disable this check");
-                    DrawPriorityInput(SCH_AoE_Heals_Priority, 8, 0, $"{WhisperingDawn.ActionName()} Priority: ");
+                    DrawSliderInt(0, 100, SCH_AoE_Heal_WhisperingDawnOption, Generics.StartUsingWhenBelowPartyAverageHPSetTo100ToDisableThisCheck);
+                    DrawPriorityInput(SCH_AoE_Heals_Priority, 8, 0, FormatAndCache(Generics.Action_Priority, WhisperingDawn.ActionName()));
                     break;
 
                 case Preset.SCH_AoE_Heal_FeyIllumination:
-                    DrawSliderInt(0, 100, SCH_AoE_Heal_FeyIlluminationOption, "Start using when below party average HP %. Set to 100 to disable this check");
-                    DrawPriorityInput(SCH_AoE_Heals_Priority, 8, 1, $"{FeyIllumination.ActionName()} Priority: ");
+                    DrawSliderInt(0, 100, SCH_AoE_Heal_FeyIlluminationOption, Generics.StartUsingWhenBelowPartyAverageHPSetTo100ToDisableThisCheck);
+                    DrawPriorityInput(SCH_AoE_Heals_Priority, 8, 1, FormatAndCache(Generics.Action_Priority, FeyIllumination.ActionName()));
                     break;
 
                 case Preset.SCH_AoE_Heal_FeyBlessing:
-                    DrawSliderInt(0, 100, SCH_AoE_Heal_FeyBlessingOption, "Start using when below party average HP %. Set to 100 to disable this check");
-                    DrawPriorityInput(SCH_AoE_Heals_Priority, 8, 2, $"{FeyBlessing.ActionName()} Priority: ");
+                    DrawSliderInt(0, 100, SCH_AoE_Heal_FeyBlessingOption, Generics.StartUsingWhenBelowPartyAverageHPSetTo100ToDisableThisCheck);
+                    DrawPriorityInput(SCH_AoE_Heals_Priority, 8, 2, FormatAndCache(Generics.Action_Priority, FeyBlessing.ActionName()));
                     break;
 
                 case Preset.SCH_AoE_Heal_Consolation:
-                    DrawSliderInt(0, 100, SCH_AoE_Heal_ConsolationOption, "Start using when below party average HP %. Set to 100 to disable this check");
-                    DrawPriorityInput(SCH_AoE_Heals_Priority, 8, 3, $"{Consolation.ActionName()} Priority: ");
+                    DrawSliderInt(0, 100, SCH_AoE_Heal_ConsolationOption, Generics.StartUsingWhenBelowPartyAverageHPSetTo100ToDisableThisCheck);
+                    DrawPriorityInput(SCH_AoE_Heals_Priority, 8, 3, FormatAndCache(Generics.Action_Priority, Consolation.ActionName()));
                     break;
 
                 case Preset.SCH_AoE_Heal_SummonSeraph:
-                    DrawSliderInt(0, 100, SCH_AoE_Heal_SummonSeraph, "Start using when below party average HP %. Set to 100 to disable this check");
-                    DrawPriorityInput(SCH_AoE_Heals_Priority, 8, 6, $"{SummonSeraph.ActionName()} Priority: ");
+                    DrawSliderInt(0, 100, SCH_AoE_Heal_SummonSeraph, Generics.StartUsingWhenBelowPartyAverageHPSetTo100ToDisableThisCheck);
+                    DrawPriorityInput(SCH_AoE_Heals_Priority, 8, 6, FormatAndCache(Generics.Action_Priority, SummonSeraph.ActionName()));
                     break;
 
                 case Preset.SCH_AoE_Heal_Seraphism:
-                    DrawSliderInt(0, 100, SCH_AoE_Heal_SeraphismOption, "Start using when below party average HP %. Set to 100 to disable this check");
-                    DrawPriorityInput(SCH_AoE_Heals_Priority, 8, 4, $"{Seraphism.ActionName()} Priority: ");
+                    DrawSliderInt(0, 100, SCH_AoE_Heal_SeraphismOption, Generics.StartUsingWhenBelowPartyAverageHPSetTo100ToDisableThisCheck);
+                    DrawPriorityInput(SCH_AoE_Heals_Priority, 8, 4, FormatAndCache(Generics.Action_Priority, Seraphism.ActionName()));
                     break;
 
                 case Preset.SCH_AoE_Heal_Indomitability:
-                    DrawSliderInt(0, 100, SCH_AoE_Heal_IndomitabilityOption, "Start using when below party average HP %. Set to 100 to disable this check");
+                    DrawSliderInt(0, 100, SCH_AoE_Heal_IndomitabilityOption, Generics.StartUsingWhenBelowPartyAverageHPSetTo100ToDisableThisCheck);
                     DrawAdditionalBoolChoice(SCH_AoE_Heal_Indomitability_Recitation, "Recitation Option", "Will use Recitation to buff Indomitability.");
-                    DrawPriorityInput(SCH_AoE_Heals_Priority, 8, 5, $"{Indomitability.ActionName()} Priority: ");
+                    DrawPriorityInput(SCH_AoE_Heals_Priority, 8, 5, FormatAndCache(Generics.Action_Priority, Indomitability.ActionName()));
                     break;
 
                 case Preset.SCH_AoE_Heal_Aetherflow:
@@ -314,8 +315,8 @@ internal partial class SCH
                     break;
 
                 case Preset.SCH_Retarget_SacredSoil:
-                    DrawHorizontalMultiChoice(SCH_Retarget_SacredSoilOptions, "Enemy Hard Target", "Will place under hard target if it is an Enemy.", 2, 0);
-                    DrawHorizontalMultiChoice(SCH_Retarget_SacredSoilOptions, "Ally Hard Target", "Will place under hard target if it is an Ally.", 2, 1);
+                    DrawHorizontalMultiChoice(SCH_Retarget_SacredSoilOptions, Generics.EnemyHardTarget, "Will place under hard target if it is an Enemy.", 2, 0);
+                    DrawHorizontalMultiChoice(SCH_Retarget_SacredSoilOptions, Generics.AllyHardTarget, "Will place under hard target if it is an Ally.", 2, 1);
                     break;
 
                 case Preset.SCH_Mit_ST:

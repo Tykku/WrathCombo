@@ -6,6 +6,7 @@ using WrathCombo.Resources.Localization.JobConfigs;
 using WrathCombo.Window.Functions;
 using static WrathCombo.Extensions.UIntExtensions;
 using static WrathCombo.Window.Functions.UserConfig;
+using static WrathCombo.Window.Text;
 
 // ReSharper disable AccessToStaticMemberViaDerivedType
 // ReSharper disable GrammarMistakeInComment
@@ -48,7 +49,7 @@ internal partial class WHM
                     ImGui.Indent();
                     DrawRoundedSliderFloat(0, 4, WHM_ST_DPS_AeroUptime_Threshold, Generics.DoTSecondsRemainingZeroDisable, digits: 1);
                     ImGui.Unindent();
-                    DrawAdditionalBoolChoice(WHM_ST_MainCombo_DoT_TwoTarget, "Two target dotting", "Will maintain Damage over time spells on two targets if applicable.");
+                    DrawAdditionalBoolChoice(WHM_ST_MainCombo_DoT_TwoTarget, Generics.TwoTargetDotting, Generics.TwoTargetDottingDescription);
                     break;
 
                 case Preset.WHM_ST_MainCombo_Misery:
@@ -85,7 +86,7 @@ internal partial class WHM
                         itemWidth: little, digits: 1);
                     ImGui.Unindent();
                     DrawSliderInt(0, 10, WHM_AoE_MainCombo_DoT_MaxTargets,
-                        "Maximum number of targets to employ multi-dotting ");
+                        Generics.MaxTargetsMultiDot);
                     break;
 
                 case Preset.WHM_AoE_DPS_Misery:
@@ -103,7 +104,7 @@ internal partial class WHM
 
                 case Preset.WHM_STHeals:
                     DrawAdditionalBoolChoice(WHM_STHeals_IncludeShields,
-                        "Include Shields in HP Percent Sliders",
+                        Generics.IncludeShields,
                         "");
                     break;
 
@@ -113,7 +114,7 @@ internal partial class WHM
                     DrawSliderInt(1, 100, WHM_STHeals_BenedictionHP,
                         targetStartUsingAtDescription);
                     DrawPriorityInput(WHM_ST_Heals_Priority, 9, 0,
-                        $"{Benediction.ActionName()} Priority: ");
+                        FormatAndCache(Generics.Action_Priority, Benediction.ActionName()));
                     break;
 
                 case Preset.WHM_STHeals_Tetragrammaton:
@@ -124,7 +125,7 @@ internal partial class WHM
                     DrawSliderInt(1, 100, WHM_STHeals_TetraHP,
                         targetStartUsingAtDescription);
                     DrawPriorityInput(WHM_ST_Heals_Priority, 9, 1,
-                        $"{Tetragrammaton.ActionName()} Priority: ");
+                        FormatAndCache(Generics.Action_Priority, Tetragrammaton.ActionName()));
                     break;
 
                 case Preset.WHM_STHeals_Benison:
@@ -137,24 +138,24 @@ internal partial class WHM
                     DrawSliderInt(1, 100, WHM_STHeals_BenisonHP,
                         targetStartUsingAtDescription);
                     DrawPriorityInput(WHM_ST_Heals_Priority, 9, 2,
-                        $"{DivineBenison.ActionName()} Priority: ");
+                        FormatAndCache(Generics.Action_Priority, DivineBenison.ActionName()));
                     break;
 
                 case Preset.WHM_STHeals_Aquaveil:
-                    DrawHorizontalMultiChoice(WHM_STHeals_AquaveilOptions,"Only Weave", weaveDescription, 3, 0);
+                    DrawHorizontalMultiChoice(WHM_STHeals_AquaveilOptions,Generics.OnlyWeave, weaveDescription, 3, 0);
                     DrawHorizontalMultiChoice(WHM_STHeals_AquaveilOptions,"Not On Bosses", nonBossesDescription, 3, 1);
-                    DrawHorizontalMultiChoice(WHM_STHeals_AquaveilOptions,"Tanks Only", "Only on Tanks", 3, 2);
+                    DrawHorizontalMultiChoice(WHM_STHeals_AquaveilOptions,Generics.TanksOnly, "Only on Tanks", 3, 2);
                     DrawSliderInt(1, 100, WHM_STHeals_AquaveilHP,
                         targetStartUsingAtDescription);
                     DrawPriorityInput(WHM_ST_Heals_Priority, 9, 3,
-                        $"{Aquaveil.ActionName()} Priority: ");
+                        FormatAndCache(Generics.Action_Priority, Aquaveil.ActionName()));
                     break;
 
                 case Preset.WHM_STHeals_Solace:
                     DrawSliderInt(1, 100, WHM_STHeals_SolaceHP,
                         targetStartUsingAtDescription);
                     DrawPriorityInput(WHM_ST_Heals_Priority, 9, 4,
-                        $"{AfflatusSolace.ActionName()} Priority: ");
+                        FormatAndCache(Generics.Action_Priority, AfflatusSolace.ActionName()));
                     break;
 
                 case Preset.WHM_STHeals_Regen:
@@ -168,34 +169,34 @@ internal partial class WHM
                     DrawSliderInt(0, 100, WHM_STHeals_RegenHPUpper,
                         targetStartUsingAtDescription);
                     DrawPriorityInput(WHM_ST_Heals_Priority, 9, 5,
-                        $"{Regen.ActionName()} Priority: ");
+                        FormatAndCache(Generics.Action_Priority, Regen.ActionName()));
                     break;
 
                 case Preset.WHM_STHeals_Temperance:
                     DrawSliderInt(1, 100, WHM_STHeals_TemperanceHP,
                         targetStartUsingAtDescription);
-                    DrawHorizontalMultiChoice(WHM_STHeals_TemperanceOptions,"Only Weave", weaveDescription, 2, 0);
+                    DrawHorizontalMultiChoice(WHM_STHeals_TemperanceOptions,Generics.OnlyWeave, weaveDescription, 2, 0);
                     DrawHorizontalMultiChoice(WHM_STHeals_TemperanceOptions,"Not On Bosses", nonBossesDescription, 2, 1);
                     DrawPriorityInput(WHM_ST_Heals_Priority, 9, 6,
-                        $"{Temperance.ActionName()} Priority: ");
+                        FormatAndCache(Generics.Action_Priority, Temperance.ActionName()));
                     break;
 
                 case Preset.WHM_STHeals_Asylum:
                     DrawSliderInt(1, 100, WHM_STHeals_AsylumHP,
                         targetStartUsingAtDescription);
-                    DrawHorizontalMultiChoice(WHM_STHeals_AsylumOptions,"Only Weave", weaveDescription, 2, 0);
+                    DrawHorizontalMultiChoice(WHM_STHeals_AsylumOptions,Generics.OnlyWeave, weaveDescription, 2, 0);
                     DrawHorizontalMultiChoice(WHM_STHeals_AsylumOptions,"Not On Bosses", nonBossesDescription, 2, 1);
                     DrawPriorityInput(WHM_ST_Heals_Priority, 9, 7,
-                        $"{Asylum.ActionName()} Priority: ");
+                        FormatAndCache(Generics.Action_Priority, Asylum.ActionName()));
                     break;
 
                 case Preset.WHM_STHeals_LiturgyOfTheBell:
                     DrawSliderInt(1, 100, WHM_STHeals_LiturgyOfTheBellHP,
                         targetStartUsingAtDescription);
-                    DrawHorizontalMultiChoice(WHM_STHeals_LiturgyOfTheBellOptions,"Only Weave", weaveDescription, 2, 0);
+                    DrawHorizontalMultiChoice(WHM_STHeals_LiturgyOfTheBellOptions,Generics.OnlyWeave, weaveDescription, 2, 0);
                     DrawHorizontalMultiChoice(WHM_STHeals_LiturgyOfTheBellOptions,"Not On Bosses", nonBossesDescription, 2, 1);
                     DrawPriorityInput(WHM_ST_Heals_Priority, 9, 8,
-                        $"{LiturgyOfTheBell.ActionName()} Priority: ");
+                        FormatAndCache(Generics.Action_Priority, LiturgyOfTheBell.ActionName()));
                     break;
 
                 case Preset.WHM_STHeals_ThinAir:
@@ -227,7 +228,7 @@ internal partial class WHM
                         itemWidth: little);
                     ImGui.Unindent();
                     DrawPriorityInput(WHM_AoE_Heals_Priority, 9, 0,
-                        $"{Medica2.ActionName()} Priority: ");
+                        FormatAndCache(Generics.Action_Priority, Medica2.ActionName()));
                     break;
 
                 case Preset.WHM_AoEHeals_Cure3:
@@ -239,7 +240,7 @@ internal partial class WHM
                         "MP to be over",
                         sliderIncrement: 500);
                     DrawPriorityInput(WHM_AoE_Heals_Priority, 9, 1,
-                        $"{Cure3.ActionName()} Priority: ");
+                        FormatAndCache(Generics.Action_Priority, Cure3.ActionName()));
                     break;
 
                 case Preset.WHM_AoEHeals_Plenary:
@@ -249,7 +250,7 @@ internal partial class WHM
                         weaveDescription,
                         "");
                     DrawPriorityInput(WHM_AoE_Heals_Priority, 9, 2,
-                        $"{PlenaryIndulgence.ActionName()} Priority: ");
+                        FormatAndCache(Generics.Action_Priority, PlenaryIndulgence.ActionName()));
                     break;
 
                 case Preset.WHM_AoEHeals_Temperance:
@@ -262,7 +263,7 @@ internal partial class WHM
                         WHM_AoEHeals_TemperanceDifficultyListSet,
                         "Select what content difficulties Temperance should be used in:");
                     DrawPriorityInput(WHM_AoE_Heals_Priority, 9, 3,
-                        $"{Temperance.ActionName()} Priority: ");
+                        FormatAndCache(Generics.Action_Priority, Temperance.ActionName()));
                     break;
 
                 case Preset.WHM_AoEHeals_Asylum:
@@ -275,7 +276,7 @@ internal partial class WHM
                         WHM_AoEHeals_AsylumDifficultyListSet,
                         "Select what content difficulties Asylum should be used in:");
                     DrawPriorityInput(WHM_AoE_Heals_Priority, 9, 4,
-                        $"{Asylum.ActionName()} Priority: ");
+                        FormatAndCache(Generics.Action_Priority, Asylum.ActionName()));
                     break;
 
                 case Preset.WHM_AoEHeals_LiturgyOfTheBell:
@@ -288,14 +289,14 @@ internal partial class WHM
                         WHM_AoEHeals_LiturgyDifficultyListSet,
                         "Select what content difficulties LiturgyOfTheBell should be used in:");
                     DrawPriorityInput(WHM_AoE_Heals_Priority, 9, 5,
-                        $"{LiturgyOfTheBell.ActionName()} Priority: ");
+                        FormatAndCache(Generics.Action_Priority, LiturgyOfTheBell.ActionName()));
                     break;
 
                 case Preset.WHM_AoEHeals_Rapture:
                     DrawSliderInt(1, 100, WHM_AoEHeals_RaptureHP,
                         partyStartUsingAtDescription);
                     DrawPriorityInput(WHM_AoE_Heals_Priority, 9, 6,
-                        $"{AfflatusRapture.ActionName()} Priority: ");
+                        FormatAndCache(Generics.Action_Priority, AfflatusRapture.ActionName()));
                     break;
 
                 case Preset.WHM_AoEHeals_Assize:
@@ -304,7 +305,7 @@ internal partial class WHM
                     DrawAdditionalBoolChoice(WHM_AoEHeals_AssizeWeave,
                         weaveDescription, "");
                     DrawPriorityInput(WHM_AoE_Heals_Priority, 9, 7,
-                        $"{Assize.ActionName()} Priority: ");
+                        FormatAndCache(Generics.Action_Priority, Assize.ActionName()));
                     break;
 
                 case Preset.WHM_AoEHeals_DivineCaress:
@@ -313,7 +314,7 @@ internal partial class WHM
                     DrawAdditionalBoolChoice(WHM_AoEHeals_DivineCaressWeave,
                         weaveDescription, "");
                     DrawPriorityInput(WHM_AoE_Heals_Priority, 9, 8,
-                        $"{DivineCaress.ActionName()} Priority: ");
+                        FormatAndCache(Generics.Action_Priority, DivineCaress.ActionName()));
                     break;
 
                 case Preset.WHM_AoEHeals_ThinAir:
@@ -355,9 +356,9 @@ internal partial class WHM
                     ImGui.TextColored(ImGuiColors.DalamudGrey, "Options to try to Retarget Asylum to before Self:");
                     ImGui.Unindent();
                     DrawHorizontalMultiChoice(WHM_AsylumOptions,
-                        "Enemy Hard Target", "Will place at hard target if enemy", 3, 0);
+                        Generics.EnemyHardTarget, "Will place at hard target if enemy", 3, 0);
                     DrawHorizontalMultiChoice(WHM_AsylumOptions,
-                        "Ally Hard Target", "Will place at hard target if ally", 3, 1);
+                        Generics.AllyHardTarget, "Will place at hard target if ally", 3, 1);
                     break;
 
                 case Preset.WHM_Re_LiturgyOfTheBell:
@@ -365,9 +366,9 @@ internal partial class WHM
                     ImGui.TextColored(ImGuiColors.DalamudGrey, "Options to try to Retarget Liturgy of the Bell to before Self:");
                     ImGui.Unindent();
                     DrawHorizontalMultiChoice(WHM_LiturgyOfTheBellOptions,
-                        "Enemy Hard Target", "Will place at hard target if enemy", 2, 0);
+                        Generics.EnemyHardTarget, "Will place at hard target if enemy", 2, 0);
                     DrawHorizontalMultiChoice(WHM_LiturgyOfTheBellOptions,
-                        "Ally Hard Target", "Will place at hard target if ally", 2, 1);
+                        Generics.AllyHardTarget, "Will place at hard target if ally", 2, 1);
                     break;
 
 
@@ -405,7 +406,7 @@ internal partial class WHM
 
         /// Description for reapplication of Buff/DoT time remaining
         private const string reapplyTimeRemainingDescription =
-            "Seconds remaining before reapplying (0 = Do not reapply early)";
+            Generics.StopSeconds;
 
         /// Description for charges to keep
         private const string chargesToKeepDescription =
@@ -413,7 +414,7 @@ internal partial class WHM
 
         /// Description for only weaving
         private const string weaveDescription =
-            "Only Weave";
+            Generics.OnlyWeave;
 
         private const string nonBossesDescription =
             "Will not use on ST in Boss encounters.";

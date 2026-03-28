@@ -53,33 +53,33 @@ internal partial class PLD
                     break;
                 case Preset.PLD_Mitigation_Boss_SheltronTankbuster:
                     DrawDifficultyMultiChoice(PLD_Mitigation_Boss_SheltronTankbuster_Difficulty, PLD_Boss_Mit_DifficultyListSet,
-                        "Select which difficulties the ability should be used in:");
+                        Generics.SelectWhatKindOfContentThisOptionAppliesTo);
                     break;
 
                 case Preset.PLD_Mitigation_Boss_DivineVeil:
                     DrawDifficultyMultiChoice(PLD_Mitigation_Boss_DivineVeil_Difficulty, PLD_Boss_Mit_DifficultyListSet,
-                        "Select which difficulties the ability should be used in:");
+                        Generics.SelectWhatKindOfContentThisOptionAppliesTo);
                     break;
 
                 case Preset.PLD_Mitigation_Boss_Reprisal:
                     DrawDifficultyMultiChoice(PLD_Mitigation_Boss_Reprisal_Difficulty, PLD_Boss_Mit_DifficultyListSet,
-                        "Select which difficulties the ability should be used in:");
+                        Generics.SelectWhatKindOfContentThisOptionAppliesTo);
                     break;
 
                 case Preset.PLD_Mitigation_Boss_Rampart:
                     DrawDifficultyMultiChoice(PLD_Mitigation_Boss_Rampart_Difficulty, PLD_Boss_Mit_DifficultyListSet,
-                        "Select which difficulties the ability should be used in:");
+                        Generics.SelectWhatKindOfContentThisOptionAppliesTo);
                     break;
 
                 case Preset.PLD_Mitigation_Boss_Sentinel:
                     DrawDifficultyMultiChoice(PLD_Mitigation_Boss_Sentinel_Difficulty, PLD_Boss_Mit_DifficultyListSet,
-                        "Select which difficulties the ability should be used in:");
+                        Generics.SelectWhatKindOfContentThisOptionAppliesTo);
                     DrawAdditionalBoolChoice(PLD_Mitigation_Boss_Sentinel_First, "Use Sentinel First", "Uses Sentinel before Rampart");
                     break;
 
                 case Preset.PLD_Mitigation_Boss_Bulwark:
                     DrawDifficultyMultiChoice(PLD_Mitigation_Boss_Bulwark_Difficulty, PLD_Boss_Mit_DifficultyListSet,
-                        "Select which difficulties the ability should be used in:");
+                        Generics.SelectWhatKindOfContentThisOptionAppliesTo);
                     DrawSliderFloat(1, 100, PLD_Mitigation_Boss_Bulwark_Threshold, "Will use Bulwark as extra tankbuster mitigation if under this HP%", decimals: 0);
                     DrawAdditionalBoolChoice(PLD_Mitigation_Boss_Bulwark_Align, "Align Bulwark", "Tries to align Bulwark with Rampart for tankbusters.");
                     break;

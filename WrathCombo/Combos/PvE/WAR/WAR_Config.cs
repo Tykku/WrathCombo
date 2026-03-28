@@ -62,41 +62,41 @@ internal partial class WAR
 
                 case Preset.WAR_Mitigation_Boss_RawIntuition_OnCD:
                     DrawDifficultyMultiChoice(WAR_Mitigation_Boss_RawIntuition_OnCD_Difficulty, WAR_Boss_Mit_DifficultyListSet ,
-                        "Select which difficulties the ability should be used in:");
+                        Generics.SelectWhatKindOfContentThisOptionAppliesTo);
                     DrawSliderInt(1, 100, WAR_Mitigation_Boss_RawIntuition_Health, "Player HP% to use Raw Intuition/Bloodwhetting at or below");
                     break;
 
                 case Preset.WAR_Mitigation_Boss_RawIntuition_TankBuster:
                     DrawDifficultyMultiChoice(WAR_Mitigation_Boss_RawIntuition_TankBuster_Difficulty, WAR_Boss_Mit_DifficultyListSet ,
-                        "Select which difficulties the ability should be used in:");
+                        Generics.SelectWhatKindOfContentThisOptionAppliesTo);
                     break;
 
                 case Preset.WAR_Mitigation_Boss_Rampart:
                     DrawDifficultyMultiChoice(WAR_Mitigation_Boss_Rampart_Difficulty, WAR_Boss_Mit_DifficultyListSet ,
-                        "Select which difficulties the ability should be used in:");
+                        Generics.SelectWhatKindOfContentThisOptionAppliesTo);
                     break;
 
                 case Preset.WAR_Mitigation_Boss_Vengeance:
                     DrawDifficultyMultiChoice(WAR_Mitigation_Boss_Vengeance_Difficulty, WAR_Boss_Mit_DifficultyListSet ,
-                        "Select which difficulties the ability should be used in:");
+                        Generics.SelectWhatKindOfContentThisOptionAppliesTo);
                     DrawAdditionalBoolChoice(WAR_Mitigation_Boss_Vengeance_First, "Use Vengeance First", "Uses Vengeance before Rampart");
                     break;
 
                 case Preset.WAR_Mitigation_Boss_ThrillOfBattle:
                     DrawDifficultyMultiChoice(WAR_Mitigation_Boss_ThrillOfBattle_Difficulty, WAR_Boss_Mit_DifficultyListSet ,
-                        "Select which difficulties the ability should be used in:");
+                        Generics.SelectWhatKindOfContentThisOptionAppliesTo);
                     DrawSliderFloat(1, 100, WAR_Mitigation_Boss_ThrillOfBattle_Threshold, "Will use Thrill Of Battle as extra tankbuster mitigation if under this HP%", decimals: 0);
                     DrawAdditionalBoolChoice(WAR_Mitigation_Boss_ThrillOfBattle_Align, "Align Thrill Of Battle", "Tries to align Thrill Of Battle with Rampart for tankbusters.");
                     break;
 
                 case Preset.WAR_Mitigation_Boss_ShakeItOff:
                     DrawDifficultyMultiChoice(WAR_Mitigation_Boss_ShakeItOff_Difficulty, WAR_Boss_Mit_DifficultyListSet ,
-                        "Select which difficulties the ability should be used in:");
+                        Generics.SelectWhatKindOfContentThisOptionAppliesTo);
                     break;
 
                 case Preset.WAR_Mitigation_Boss_Reprisal:
                     DrawDifficultyMultiChoice(WAR_Mitigation_Boss_Reprisal_Difficulty, WAR_Boss_Mit_DifficultyListSet ,
-                        "Select which difficulties the ability should be used in:");
+                        Generics.SelectWhatKindOfContentThisOptionAppliesTo);
                     break;
                 #endregion
 
