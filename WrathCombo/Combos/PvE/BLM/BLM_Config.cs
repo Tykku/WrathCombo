@@ -30,10 +30,10 @@ internal partial class BLM
                 case Preset.BLM_ST_LeyLines:
 
                     DrawHorizontalRadioButton(BLM_ST_LeyLinesMovement,
-                        Generics.StationaryOnly, "Uses Leylines only while stationary", 0);
+                        Generics.StationaryOnly, FormatAndCache(Generics.UseActionOnlyWhileStationary, LeyLines.ActionName()), 0);
 
                     DrawHorizontalRadioButton(BLM_ST_LeyLinesMovement,
-                        Generics.AnyMovement, "Uses Leylines regardless of any movement conditions.\nNOTE: This could possibly get you killed", 1);
+                        Generics.AnyMovement, FormatAndCache(Generics.Uses0RegardlessOfAnyMovementConditions, LeyLines.ActionName()), 1);
 
                     ImGui.Spacing();
                     if (BLM_ST_LeyLinesMovement == 0)
@@ -148,10 +148,10 @@ internal partial class BLM
                 case Preset.BLM_AoE_LeyLines:
 
                     DrawHorizontalRadioButton(BLM_AoE_LeyLinesMovement,
-                        Generics.StationaryOnly, "Uses Leylines only while stationary", 0);
+                        Generics.StationaryOnly, FormatAndCache(Generics.UseActionOnlyWhileStationary, LeyLines.ActionName()), 0);
 
                     DrawHorizontalRadioButton(BLM_AoE_LeyLinesMovement,
-                        Generics.AnyMovement, "Uses Leylines regardless of any movement conditions.\nNOTE: This could possibly get you killed", 1);
+                        Generics.AnyMovement, FormatAndCache(Generics.Uses0RegardlessOfAnyMovementConditions, LeyLines.ActionName()), 1);
 
                     ImGui.Spacing();
                     if (BLM_AoE_LeyLinesMovement == 0)

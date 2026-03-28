@@ -88,6 +88,15 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} HP % Threshold.
+        /// </summary>
+        internal static string ActionHPPercentageThreshold {
+            get {
+                return ResourceManager.GetString("ActionHPPercentageThreshold", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to All Content.
         /// </summary>
         internal static string AllContent {
@@ -731,11 +740,39 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Use {0} only while stationary.
+        /// </summary>
+        internal static string UseActionOnlyWhileStationary {
+            get {
+                return ResourceManager.GetString("UseActionOnlyWhileStationary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uses {0} regardless of any movement conditions.
+        ///NOTE: This could possibly get you killed.
+        /// </summary>
+        internal static string Uses0RegardlessOfAnyMovementConditions {
+            get {
+                return ResourceManager.GetString("Uses0RegardlessOfAnyMovementConditions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Uses Standard opener.
         /// </summary>
         internal static string UsesStandardOpener {
             get {
                 return ResourceManager.GetString("UsesStandardOpener", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  Use when Distance from target is less than or equal to:.
+        /// </summary>
+        internal static string UseWhenDistanceFromTargetIsLessThanOrEqualTo {
+            get {
+                return ResourceManager.GetString("UseWhenDistanceFromTargetIsLessThanOrEqualTo", resourceCulture);
             }
         }
         

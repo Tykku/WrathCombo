@@ -2,8 +2,10 @@ using Dalamud.Interface.Colors;
 using ECommons.ImGuiMethods;
 using WrathCombo.CustomComboNS.Functions;
 using WrathCombo.Data;
+using WrathCombo.Extensions;
 using WrathCombo.Resources.Localization.JobConfigs;
 using WrathCombo.Window.Functions;
+using static WrathCombo.Window.Text;
 using static WrathCombo.Window.Functions.UserConfig;
 using BossAvoidance = WrathCombo.Combos.PvE.All.Enums.BossAvoidance;
 using PartyRequirement = WrathCombo.Combos.PvE.All.Enums.PartyRequirement;
@@ -122,10 +124,10 @@ internal partial class PLD
                 // Intervene
                 case Preset.PLD_ST_AdvancedMode_Intervene:
                     DrawHorizontalRadioButton(PLD_ST_Intervene_Movement,
-                        Generics.StationaryOnly, "Uses Intervene only while stationary", 0);
+                        Generics.StationaryOnly, FormatAndCache(Generics.UseActionOnlyWhileStationary, Intervene.ActionName()), 0);
 
                     DrawHorizontalRadioButton(PLD_ST_Intervene_Movement,
-                        Generics.AnyMovement, "Uses Intervene regardless of any movement conditions.\nNOTE: This could possibly get you killed", 1);
+                        Generics.AnyMovement, FormatAndCache(Generics.Uses0RegardlessOfAnyMovementConditions, Intervene.ActionName()), 1);
 
                     ImGui.Spacing();
                     if (PLD_ST_Intervene_Movement == 0)
@@ -138,7 +140,7 @@ internal partial class PLD
                         Generics.HowManyChargesToKeepReady);
 
                     DrawSliderInt(1, 20, PLD_ST_Intervene_Distance,
-                        " Use when Distance from target is less than or equal to:");
+                        Generics.UseWhenDistanceFromTargetIsLessThanOrEqualTo);
                     break;
 
                 // Shield Lob
@@ -167,10 +169,10 @@ internal partial class PLD
 
                 case Preset.PLD_AoE_AdvancedMode_Intervene:
                     DrawHorizontalRadioButton(PLD_AoE_Intervene_Movement,
-                        Generics.StationaryOnly, "Uses Intervene only while stationary", 0);
+                        Generics.StationaryOnly, FormatAndCache(Generics.UseActionOnlyWhileStationary, Intervene.ActionName()), 0);
 
                     DrawHorizontalRadioButton(PLD_AoE_Intervene_Movement,
-                        Generics.AnyMovement, "Uses Intervene regardless of any movement conditions.\nNOTE: This could possibly get you killed", 1);
+                        Generics.AnyMovement, FormatAndCache(Generics.Uses0RegardlessOfAnyMovementConditions, Intervene.ActionName()), 1);
 
                     ImGui.Spacing();
                     if (PLD_AoE_Intervene_Movement == 0)
@@ -183,7 +185,7 @@ internal partial class PLD
                         Generics.HowManyChargesToKeepReady);
 
                     DrawSliderInt(1, 20, PLD_AoE_Intervene_Distance,
-                        " Use when Distance from target is less than or equal to:");
+                        Generics.UseWhenDistanceFromTargetIsLessThanOrEqualTo);
                     break;
 
                 case Preset.PLD_AoE_AdvancedMode_MP_Reserve:
