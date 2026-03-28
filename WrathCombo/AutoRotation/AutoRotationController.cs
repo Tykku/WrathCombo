@@ -231,8 +231,8 @@ internal unsafe class AutoRotationController
 
     public static IEnumerable<(uint Action, bool MultiHitOnly)> RaidwideActions =
     [
-        (WHM.PlenaryIndulgence, false),
         (WHM.LiturgyOfTheBell.Retarget(SimpleTarget.Self), true),
+        (WHM.PlenaryIndulgence, false),
         (WHM.Temperance, false),
         (WHM.DivineCaress, false),
         (WHM.Asylum.Retarget(SimpleTarget.Self), false),
@@ -247,11 +247,11 @@ internal unsafe class AutoRotationController
         (AST.CelestialOpposition, false),
         (AST.AspectedHelios, false),
         (AST.HeliosConjuction, false),
+        (SGE.Panhaima, true),
         (SGE.Kerachole, false),
         (SGE.Physis, false),
         (SGE.Physis2, false),
         (SGE.Holos, false),
-        (SGE.Panhaima, true),
         (SGE.Eukrasia, false),
         (SGE.EukrasianPrognosis, false),
         (SGE.EukrasianPrognosis2, false),
@@ -263,17 +263,17 @@ internal unsafe class AutoRotationController
         GroupDamageIncoming(out bool isMultiHit);
         foreach (var (spell, multihitter) in RaidwideActions)
         {
+            if (AutorotRaidwides >= 2)
+                return;
+
             if (!isMultiHit && multihitter)
                 continue;
 
             if (BlacklistedRaidwides.Contains(spell))
                 continue;
 
-            if (ActionReady(spell) && !JustUsed(spell, 5) && LocalPlayer.CastActionId != spell && (!IsMoving(true) || ActionManager.GetAdjustedCastTime(ActionType.Action, spell) == 0))
+            if (ActionReady(spell) && !JustUsed(spell, 10) && LocalPlayer.CastActionId != spell && (!IsMoving(true) || ActionManager.GetAdjustedCastTime(ActionType.Action, spell) == 0))
             {
-                if (AutorotRaidwides >= 2)
-                    return;
-
                 WouldLikeToGroundTarget = ActionSheet[spell].TargetArea;
                 ActionManager.Instance()->UseAction(ActionType.Action, spell);
                 WouldLikeToGroundTarget = false;
