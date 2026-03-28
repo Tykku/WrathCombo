@@ -2,9 +2,9 @@
 
 using Dalamud.Interface.Colors;
 using ECommons.ImGuiMethods;
-using System.Numerics;
 using WrathCombo.CustomComboNS.Functions;
 using WrathCombo.Data;
+using WrathCombo.Resources.Localization.JobConfigs;
 using WrathCombo.Window.Functions;
 using BossAvoidance = WrathCombo.Combos.PvE.All.Enums.BossAvoidance;
 using PartyRequirement = WrathCombo.Combos.PvE.All.Enums.PartyRequirement;
@@ -58,7 +58,7 @@ internal partial class DRK
                         "Disables the use of mitigations in Simple Mode.",
                         (int)SimpleMitigation.Off);
                     break;
-                
+
                 case Preset.DRK_ST_Adv:
                     UserConfig.DrawHorizontalRadioButton(DRK_ST_AdvancedMitigation,
                         "Include Mitigations",
@@ -217,7 +217,7 @@ internal partial class DRK
 
                 case Preset.DRK_ST_CDs:
                     UserConfig.DrawHorizontalRadioButton(
-                        DRK_ST_CDsBossRequirement, "All Enemies",
+                        DRK_ST_CDsBossRequirement, Generics.AllEnemies,
                         "Will use Cooldowns regardless of the type of enemy.",
                         outputValue: (int)BossRequirement.Off, itemWidth: 125f);
                     UserConfig.DrawHorizontalRadioButton(
@@ -329,8 +329,8 @@ internal partial class DRK
                         sliderIncrement: SliderIncrements.Thousands);
 
                     break;
-                
-                #endregion             
+
+                #endregion
 
                 #region One-Button Mitigation
 
@@ -356,7 +356,7 @@ internal partial class DRK
 
                 case Preset.DRK_Mit_Oblation:
                     UserConfig.DrawSliderInt(0, 1, DRK_Mit_Oblation_Charges,
-                        "How many charges to keep ready? (0 = Use All)",
+                        Generics.HowManyChargesToKeepReady,
                         itemWidth: little, sliderIncrement: SliderIncrements.Ones);
 
                     UserConfig.DrawPriorityInput(DRK_Mit_Priorities,
@@ -409,7 +409,7 @@ internal partial class DRK
                 case Preset.DRK_Mit_ArmsLength:
                     ImGui.Indent();
                     UserConfig.DrawHorizontalRadioButton(
-                        DRK_Mit_ArmsLength_Boss, "All Enemies",
+                        DRK_Mit_ArmsLength_Boss, Generics.AllEnemies,
                         "Will use Arm's Length regardless of the type of enemy.",
                         outputValue: (int)BossAvoidance.Off, itemWidth: 125f);
                     UserConfig.DrawHorizontalRadioButton(
@@ -514,7 +514,7 @@ internal partial class DRK
         /// Bar Description for # of charges to keep
         private const string chargesToKeepDescription =
             "# charges to keep (0 = Use All)";
-        
+
         /// Content choice description for when to use an ability
         private const string contentToUseAbilityDescription =
             "Select what difficulties the ability should be used in:";
@@ -573,7 +573,7 @@ internal partial class DRK
         /// <seealso cref="Preset.DRK_AoE_Simple" />
         public static readonly UserInt DRK_AoE_SimpleMitigation =
             new("DRK_AoE_SimpleMitigation", (int)SimpleMitigation.On);
-        
+
         /// <summary>
         ///     Simple Mitigation option for Single Target.
         /// </summary>
@@ -599,31 +599,31 @@ internal partial class DRK
             new("DRK_AoE_AdvancedMitigation", (int)SimpleMitigation.On);
 
         public static readonly ContentCheck.ListSet DRK_Boss_Mit_DifficultyListSet = ContentCheck.ListSet.CasualVSHard;
-        
+
         public static readonly UserFloat DRK_Mit_NonBoss_Threshold = new("DRK_Mit_NonBoss_Threshold", 10f);
-        
+
         public static readonly UserInt DRK_Mit_NonBoss_LivingDead_Health = new("DRK_Mit_NonBoss_LivingDead_Health", 15);
-        
+
         public static readonly UserBoolArray DRK_Mit_Boss_BlackestNight_OnCD_Difficulty = new("DRK_Mit_Boss_BlackestNight_OnCD_Difficulty",  [true, false]);
         public static readonly UserInt DRK_Mit_Boss_BlackestNight_Health = new("DRK_Mit_Boss_BlackestNight_Health", 30);
-        
+
         public static readonly UserBoolArray DRK_Mit_Boss_BlackestNight_TankBuster_Difficulty = new("DRK_Mit_Boss_BlackestNight_TankBuster_Difficulty",  [true, false]);
-        
+
         public static readonly UserBoolArray DRK_Mit_Boss_Rampart_Difficulty = new("DRK_Mit_Boss_Rampart_Difficulty",  [true, false]);
-        
+
         public static readonly UserBoolArray DRK_Mit_Boss_ShadowWall_Difficulty = new("DRK_Mit_Boss_ShadowWall_Difficulty",  [true, false]);
         public static readonly UserBool DRK_Mit_Boss_ShadowWall_First = new("DRK_Mit_Boss_ShadowWall_First", true);
-        
+
         public static readonly UserBoolArray DRK_Mit_Boss_DarkMind_Difficulty = new("DRK_Mit_Boss_DarkMind_Difficulty",  [true, false]);
         public static readonly UserFloat DRK_Mit_Boss_DarkMind_Threshold = new("DRK_Mit_Boss_DarkMind_Threshold", 80f);
         public static readonly UserBool DRK_Mit_Boss_DarkMind_Align= new("DRK_Mit_Boss_DarkMind_Align", true);
-        
+
         public static readonly UserBoolArray DRK_Mit_Boss_Oblation_TankBuster_Difficulty = new("DRK_Mit_Boss_Oblation_TankBuster_Difficulty",  [true, false]);
-        
+
         public static readonly UserBoolArray DRK_Mit_Boss_DarkMissionary_Difficulty = new("DRK_Mit_Boss_DarkMissionary_Difficulty",  [true, false]);
-        
+
         public static readonly UserBoolArray DRK_Mit_Boss_Reprisal_Difficulty = new("DRK_Mit_Boss_Reprisal_Difficulty",  [true, false]);
-        
+
 
         #endregion
 
@@ -1010,7 +1010,7 @@ internal partial class DRK
             new("DRK_Mit_Oblation_Charges", 0);
 
         #endregion
-        
+
         #region Standalones
 
         public static readonly UserInt

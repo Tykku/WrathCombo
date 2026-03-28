@@ -1,5 +1,6 @@
 ﻿using Dalamud.Interface.Colors;
 using WrathCombo.CustomComboNS.Functions;
+using WrathCombo.Resources.Localization.JobConfigs;
 using static WrathCombo.Extensions.UIntExtensions;
 using static WrathCombo.Window.Functions.SliderIncrements;
 using static WrathCombo.Window.Functions.UserConfig;
@@ -34,28 +35,28 @@ internal partial class SCH
                     break;
 
                 case Preset.SCH_ST_ADV_DPS_Bio:
-                    DrawSliderInt(0, 100, SCH_ST_DPS_BioBossOption, "Bosses Only. Stop using at Enemy HP %.");
-                    DrawSliderInt(0, 100, SCH_ST_DPS_BioBossAddsOption, "Boss Encounter Non Bosses. Stop using at Enemy HP %.");
-                    DrawSliderInt(0, 100, SCH_ST_DPS_BioTrashOption, "Non boss encounter. Stop using at Enemy HP %.");
+                    DrawSliderInt(0, 100, SCH_ST_DPS_BioBossOption, Generics.BossOnlyHpPercent);
+                    DrawSliderInt(0, 100, SCH_ST_DPS_BioBossAddsOption, Generics.BossEncounterNonBossHpPercent);
+                    DrawSliderInt(0, 100, SCH_ST_DPS_BioTrashOption, Generics.NonBossHpPercent);
                     ImGui.Indent();
-                    DrawRoundedSliderFloat(0, 4, SCH_ST_DPS_BioUptime_Threshold, "Seconds remaining before reapplying the DoT. Set to Zero to disable this check.", digits: 1);
+                    DrawRoundedSliderFloat(0, 4, SCH_ST_DPS_BioUptime_Threshold, Generics.DoTSecondsRemainingZeroDisable, digits: 1);
                     ImGui.Unindent();
                     DrawAdditionalBoolChoice(SCH_ST_ADV_DPS_Bio_TwoTarget, "Two target dotting", "Will maintain Damage over time spells on two targets if applicable.");
                     break;
 
                 case Preset.SCH_ST_ADV_DPS_ChainStrat:
 
-                    DrawSliderInt(0, 100, SCH_ST_DPS_ChainStratagemOption, "Stop using at Enemy HP%. Set to Zero to disable this check.");
+                    DrawSliderInt(0, 100, SCH_ST_DPS_ChainStratagemOption, Generics.StopEnemyHpPercent);
 
                     ImGui.Indent();
 
-                    ImGui.TextColored(ImGuiColors.DalamudYellow, "Select what kind of enemies the HP check should be applied to:");
+                    ImGui.TextColored(ImGuiColors.DalamudYellow, Generics.EnemyTypeCheck);
 
                     DrawHorizontalRadioButton(SCH_ST_DPS_ChainStratagemSubOption,
-                        "Non-Bosses", "Only applies the HP check above to non-bosses.\nAllows you to only stop DoTing early when it's not a boss.", 0);
+                        Generics.NonBosses, "Only applies the HP check above to non-bosses.\nAllows you to only stop DoTing early when it's not a boss.", 0);
 
                     DrawHorizontalRadioButton(SCH_ST_DPS_ChainStratagemSubOption,
-                        "All Enemies", "Applies the HP check above to all enemies.", 1);
+                        Generics.AllEnemies, Generics.HPCheckAllEnemies, 1);
 
                     ImGui.Unindent();
 
@@ -76,17 +77,17 @@ internal partial class SCH
                     DrawAdditionalBoolChoice(SCH_AoE_DPS_ChainStratagemBanefulOption,
                         "Baneful Only", "Will only use Chain Strategem when high enough level to use Baneful Impaction");
 
-                    DrawSliderInt(0, 100, SCH_AoE_DPS_ChainStratagemOption, "Stop using at Enemy HP%. Set to Zero to disable this check.");
+                    DrawSliderInt(0, 100, SCH_AoE_DPS_ChainStratagemOption, Generics.StopEnemyHpPercent);
 
                     ImGui.Indent();
 
-                    ImGui.TextColored(ImGuiColors.DalamudYellow, "Select what kind of enemies the HP check should be applied to:");
+                    ImGui.TextColored(ImGuiColors.DalamudYellow, Generics.EnemyTypeCheck);
 
                     DrawHorizontalRadioButton(SCH_AoE_DPS_ChainStratagemSubOption,
-                        "Non-Bosses", "Only applies the HP check above to non-bosses.\nAllows you to only stop DoTing early when it's not a boss.", 0);
+                        Generics.NonBosses, "Only applies the HP check above to non-bosses.\nAllows you to only stop DoTing early when it's not a boss.", 0);
 
                     DrawHorizontalRadioButton(SCH_AoE_DPS_ChainStratagemSubOption,
-                        "All Enemies", "Applies the HP check above to all enemies.", 1);
+                        Generics.AllEnemies, Generics.HPCheckAllEnemies, 1);
 
                     ImGui.Unindent();
 
@@ -107,7 +108,7 @@ internal partial class SCH
                     DrawSliderInt(0, 10, SCH_AoE_ADV_DPS_DoT_MaxTargets, "Maximum number of targets to employ multi-dotting ");
                     break;
                 #endregion
-                
+
                 #region ST Healing
                 case Preset.SCH_ST_Heal:
 
@@ -164,25 +165,25 @@ internal partial class SCH
                     DrawAdditionalBoolChoice(SCH_ST_Heal_FeyBlessingBossOption, "Not on Bosses", "Will not use on ST in Boss encounters.");
                     DrawPriorityInput(SCH_ST_Heals_Priority, 12, 7, $"{FeyBlessing.ActionName()} Priority: ");
                     break;
-                
+
                 case Preset.SCH_ST_Heal_Seraphism:
                     DrawSliderInt(0, 100, SCH_ST_Heal_SeraphismOption, "Start using when below HP %. Set to 100 to disable this check");
                     DrawAdditionalBoolChoice(SCH_ST_Heal_SeraphismBossOption, "Not on Bosses", "Will not use on ST in Boss encounters.");
                     DrawPriorityInput(SCH_ST_Heals_Priority, 12, 8, $"{Seraphism.ActionName()} Priority: ");
                     break;
-                
+
                 case Preset.SCH_ST_Heal_Expedient:
                     DrawSliderInt(0, 100, SCH_ST_Heal_ExpedientOption, "Start using when below HP %. Set to 100 to disable this check");
                     DrawAdditionalBoolChoice(SCH_ST_Heal_ExpedientBossOption, "Not on Bosses", "Will not use on ST in Boss encounters.");
                     DrawPriorityInput(SCH_ST_Heals_Priority, 12, 9, $"{Expedient.ActionName()} Priority: ");
                     break;
-                
+
                 case Preset.SCH_ST_Heal_SummonSeraph:
                     DrawSliderInt(0, 100, SCH_ST_Heal_SummonSeraphOption, "Start using when below HP %. Set to 100 to disable this check");
                     DrawAdditionalBoolChoice(SCH_ST_Heal_SummonSeraphBossOption, "Not on Bosses", "Will not use on ST in Boss encounters.");
                     DrawPriorityInput(SCH_ST_Heals_Priority, 12, 10, $"{SummonSeraph.ActionName()} Priority: ");
                     break;
-                
+
                 case Preset.SCH_ST_Heal_Consolation:
                     DrawSliderInt(0, 100, SCH_ST_Heal_ConsolationOption, "Start using when below HP %. Set to 100 to disable this check");
                     DrawAdditionalBoolChoice(SCH_ST_Heal_ConsolationBossOption, "Not on Bosses", "Will not use on ST in Boss encounters.");
@@ -208,7 +209,7 @@ internal partial class SCH
                 case Preset.SCH_ST_Heal_Esuna:
                     DrawSliderInt(0, 100, SCH_ST_Heal_EsunaOption, "Stop using when below HP %. Set to Zero to disable this check");
                     break;
-                
+
                 #endregion
 
                 #region AoE Healing

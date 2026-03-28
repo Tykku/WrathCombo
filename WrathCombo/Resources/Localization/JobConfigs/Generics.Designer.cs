@@ -115,11 +115,29 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to UI Mouseover &gt; Field Mouseover &gt; Focus Target &gt; Soft Target &gt; Hard Target.
+        /// </summary>
+        internal static string AllHealerRetargetting {
+            get {
+                return ResourceManager.GetString("AllHealerRetargetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ally Hard Target.
         /// </summary>
         internal static string AllyHardTarget {
             get {
                 return ResourceManager.GetString("AllyHardTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Any Movement.
+        /// </summary>
+        internal static string AnyMovement {
+            get {
+                return ResourceManager.GetString("AnyMovement", resourceCulture);
             }
         }
         
@@ -233,11 +251,57 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Field Mouseover.
+        /// </summary>
+        internal static string FieldMouseover {
+            get {
+                return ResourceManager.GetString("FieldMouseover", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Focus Target.
+        /// </summary>
+        internal static string FocusTarget {
+            get {
+                return ResourceManager.GetString("FocusTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  How many charges to keep ready?
+        ///(0 = Use All).
+        /// </summary>
+        internal static string HowManyChargesToKeepReady {
+            get {
+                return ResourceManager.GetString("HowManyChargesToKeepReady", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Applies HP Check to All Content.
+        /// </summary>
+        internal static string HPCheckAllContent {
+            get {
+                return ResourceManager.GetString("HPCheckAllContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Applies the HP check above to all enemies..
         /// </summary>
         internal static string HPCheckAllEnemies {
             get {
                 return ResourceManager.GetString("HPCheckAllEnemies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Applies HP check to Non-Boss Encounters only.
+        /// </summary>
+        internal static string HPCheckNonBossEncountersOnly {
+            get {
+                return ResourceManager.GetString("HPCheckNonBossEncountersOnly", resourceCulture);
             }
         }
         
@@ -265,6 +329,15 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         internal static string IncludeShields {
             get {
                 return ResourceManager.GetString("IncludeShields", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to In Melee Range.
+        /// </summary>
+        internal static string InMeleeRange {
+            get {
+                return ResourceManager.GetString("InMeleeRange", resourceCulture);
             }
         }
         
@@ -301,6 +374,15 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         internal static string MaxTargetsMultiDot {
             get {
                 return ResourceManager.GetString("MaxTargetsMultiDot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Movement.
+        /// </summary>
+        internal static string NoMovement {
+            get {
+                return ResourceManager.GetString("NoMovement", resourceCulture);
             }
         }
         
@@ -413,11 +495,47 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Soft Target.
+        /// </summary>
+        internal static string SoftTarget {
+            get {
+                return ResourceManager.GetString("SoftTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Standard opener.
+        /// </summary>
+        internal static string StandardOpener {
+            get {
+                return ResourceManager.GetString("StandardOpener", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Start using when below party average HP %. Set to 100 to disable this check.
         /// </summary>
         internal static string StartUsingWhenBelowPartyAverageHPSetTo100ToDisableThisCheck {
             get {
                 return ResourceManager.GetString("StartUsingWhenBelowPartyAverageHPSetTo100ToDisableThisCheck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  Stationary Delay Check (in seconds):.
+        /// </summary>
+        internal static string StationaryDelayCheck {
+            get {
+                return ResourceManager.GetString("StationaryDelayCheck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stationary Only.
+        /// </summary>
+        internal static string StationaryOnly {
+            get {
+                return ResourceManager.GetString("StationaryOnly", resourceCulture);
             }
         }
         
@@ -485,6 +603,26 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Time Remaining on others {0} to allow within
+        ///(0 = {0} must not be on the target).
+        /// </summary>
+        internal static string TimeRemainingOnOthers {
+            get {
+                return ResourceManager.GetString("TimeRemainingOnOthers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time Remaining on others {0} / {1} / {2} to allow within
+        ///(0 = {0} / {1} / {2} must not be on the target).
+        /// </summary>
+        internal static string TimeRemainingOnOthers3 {
+            get {
+                return ResourceManager.GetString("TimeRemainingOnOthers3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Two target dotting.
         /// </summary>
         internal static string TwoTargetDotting {
@@ -535,6 +673,24 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         internal static string Use0WhenInRangeOfEnemy {
             get {
                 return ResourceManager.GetString("Use0WhenInRangeOfEnemy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uses Standard opener.
+        /// </summary>
+        internal static string UsesStandardOpener {
+            get {
+                return ResourceManager.GetString("UsesStandardOpener", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Will add {0} to the priority stack.
+        /// </summary>
+        internal static string WillAdd_0_ToThePriorityStack {
+            get {
+                return ResourceManager.GetString("WillAdd_0_ToThePriorityStack", resourceCulture);
             }
         }
         

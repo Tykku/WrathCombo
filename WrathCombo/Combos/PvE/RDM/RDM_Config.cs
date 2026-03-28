@@ -1,5 +1,6 @@
 ﻿using Dalamud.Interface.Colors;
 using WrathCombo.CustomComboNS.Functions;
+using WrathCombo.Resources.Localization.JobConfigs;
 using static WrathCombo.Extensions.UIntExtensions;
 using static WrathCombo.Window.Functions.SliderIncrements;
 using static WrathCombo.Window.Functions.UserConfig;
@@ -10,7 +11,7 @@ internal partial class RDM
     {
         #region Options
         public static UserBool RDM_ST_ThunderAero_Pull = new("RDM_ST_ThunderAero_Pull", true);
-        
+
         public static UserInt
             RDM_ST_Lucid_Threshold = new("RDM_LucidDreaming_Threshold", 6500),
             RDM_AoE_Lucid_Threshold = new("RDM_AoE_Lucid_Threshold", 6500),
@@ -66,41 +67,41 @@ internal partial class RDM
                 case Preset.RDM_Balance_Opener:
                     DrawBossOnlyChoice(RDM_BalanceOpener_Content);
                     ImGui.NewLine();
-                    DrawRadioButton(RDM_Opener_Selection, "Standard Opener", 
+                    DrawRadioButton(RDM_Opener_Selection, Generics.StandardOpener,
                         "Opener Failure Timeout (in Settings Tab) Must be set to 5+ seconds for opener to function due to long initial spell cast.", 0, descriptionAsTooltip: true);
-                    DrawRadioButton(RDM_Opener_Selection, "GapClosing Adjusted Standard Opener", 
+                    DrawRadioButton(RDM_Opener_Selection, "GapClosing Adjusted Standard Opener",
                         "Opener Failure Timeout (in Settings Tab) Must be set to 5+ seconds for opener to function due to long initial spell cast.", 1, descriptionAsTooltip: true);
                     break;
-                
+
                 case Preset.RDM_ST_ThunderAero:
                     DrawAdditionalBoolChoice(RDM_ST_ThunderAero_Pull, "Pull with Thunder/Aero", "Starts with Thunder/Aero if out of combat.");
                     break;
-                
+
                 case Preset.RDM_ST_VerCure:
                     DrawSliderInt(1, 100, RDM_ST_VerCureThreshold, "HP% to be at or under", 200);
                     break;
-                    
+
                 case Preset.RDM_ST_Embolden:
                     DrawSliderInt(0, 100, RDM_ST_Embolden_Threshold,
                         "Stop using Embolden on targets below this HP % (0% = always use, 100% = never use).");
                     ImGui.Indent();
-                    ImGui.TextColored(ImGuiColors.DalamudYellow, "Select what kind of enemies the HP check should be applied to:");
+                    ImGui.TextColored(ImGuiColors.DalamudYellow, Generics.EnemyTypeCheck);
                     DrawHorizontalRadioButton(RDM_ST_Embolden_SubOption,
-                        "Non-boss Encounters Only", $"Applies HP check to Non-Boss Encounters only", 0);
+                        Generics.NonBossEncountersOnly, Generics.HPCheckNonBossEncountersOnly, 0);
                     DrawHorizontalRadioButton(RDM_ST_Embolden_SubOption,
-                        "All Content", $"Applies HP Check to All Content", 1);
+                        Generics.AllContent, Generics.HPCheckAllContent, 1);
                     ImGui.Unindent();
                     break;
-                
+
                 case Preset.RDM_ST_Manafication:
                     DrawSliderInt(0, 100, RDM_ST_Manafication_Threshold,
                         "Stop using Manafication on targets below this HP % (0% = always use, 100% = never use).");
                     ImGui.Indent();
-                    ImGui.TextColored(ImGuiColors.DalamudYellow, "Select what kind of enemies the HP check should be applied to:");
+                    ImGui.TextColored(ImGuiColors.DalamudYellow, Generics.EnemyTypeCheck);
                     DrawHorizontalRadioButton(RDM_ST_Manafication_SubOption,
-                        "Non-boss Encounters Only", $"Applies HP check to Non-Boss Encounters only", 0);
+                        Generics.NonBossEncountersOnly, Generics.HPCheckNonBossEncountersOnly, 0);
                     DrawHorizontalRadioButton(RDM_ST_Manafication_SubOption,
-                        "All Content", $"Applies HP Check to All Content", 1);
+                        Generics.AllContent, Generics.HPCheckAllContent, 1);
                     ImGui.Unindent();
                     break;
 
@@ -117,21 +118,21 @@ internal partial class RDM
                 case Preset.RDM_ST_Corpsacorps:
                     DrawSliderInt(0, 25, RDM_ST_Corpsacorps_Distance,
                         " Use when Distance from target is less than or equal to:");
-                    
+
                     DrawSliderInt(0, 5, RDM_ST_Corpsacorps_Time,
                         " How long you need to be stationary to use. Zero to disable");
                     break;
-                
+
                 case Preset.RDM_ST_MeleeCombo_GapCloser:
                     DrawSliderInt(0, 5, RDM_ST_GapCloseCorpsacorps_Time,
                         " How long you need to be stationary to use. Zero to disable");
                     break;
-                
+
                 case Preset.RDM_ST_MeleeCombo_IncludeReprise:
                     DrawSliderInt(4, 25, RDM_ST_MeleeCombo_IncludeReprise_Distance,
                         "Use when Distance from target is greater than or equal to:");
                     break;
-                    
+
                 #endregion
 
                 #region AOE
@@ -141,36 +142,36 @@ internal partial class RDM
                     DrawSliderInt(0, 5, RDM_AoE_Corpsacorps_Time,
                         " How long you need to be stationary to use. Zero to disable");
                     break;
-                
+
                 case Preset.RDM_AoE_MeleeCombo_GapCloser:
                     DrawSliderInt(0, 5, RDM_AoE_GapCloseCorpsacorps_Time,
                         " How long you need to be stationary to use. Zero to disable");
                     break;
-                    
+
                 case Preset.RDM_AoE_Embolden:
                     DrawSliderInt(0, 100, RDM_AoE_Embolden_Threshold,
                         $"Stop using Embolden on targets below this HP % (0% = always use, 100% = never use).");
                     ImGui.Indent();
-                    ImGui.TextColored(ImGuiColors.DalamudYellow, "Select what kind of enemies the HP check should be applied to:");
+                    ImGui.TextColored(ImGuiColors.DalamudYellow, Generics.EnemyTypeCheck);
                     DrawHorizontalRadioButton(RDM_AoE_Embolden_SubOption,
-                        "Non-boss Encounters Only", $"Applies HP check to Non-Boss Encounters only", 0);
+                        Generics.NonBossEncountersOnly, Generics.HPCheckNonBossEncountersOnly, 0);
                     DrawHorizontalRadioButton(RDM_AoE_Embolden_SubOption,
-                        "All Content", $"Applies HP Check to All Content", 1);
+                        Generics.AllContent, Generics.HPCheckAllContent, 1);
                     ImGui.Unindent();
                     break;
-                
+
                 case Preset.RDM_AoE_Manafication:
                     DrawSliderInt(0, 100, RDM_AoE_Manafication_Threshold,
                         $"Stop using Manafication on targets below this HP % (0% = always use, 100% = never use).");
                     ImGui.Indent();
-                    ImGui.TextColored(ImGuiColors.DalamudYellow, "Select what kind of enemies the HP check should be applied to:");
+                    ImGui.TextColored(ImGuiColors.DalamudYellow, Generics.EnemyTypeCheck);
                     DrawHorizontalRadioButton(RDM_AoE_Manafication_SubOption,
-                        "Non-boss Encounters Only", $"Applies HP check to Non-Boss Encounters only", 0);
+                        Generics.NonBossEncountersOnly, Generics.HPCheckNonBossEncountersOnly, 0);
                     DrawHorizontalRadioButton(RDM_AoE_Manafication_SubOption,
-                        "All Content", $"Applies HP Check to All Content", 1);
+                        Generics.AllContent, Generics.HPCheckAllContent, 1);
                     ImGui.Unindent();
                     break;
-                
+
                 case Preset.RDM_AoE_VerCure:
                     DrawSliderInt(1, 100, RDM_AoE_VerCureThreshold, "HP% to be at or under", 200);
                     break;
@@ -184,11 +185,11 @@ internal partial class RDM
                     break;
 
                 case Preset.RDM_ST_Acceleration:
-                    DrawSliderInt(0, 1, RDM_ST_Acceleration_Charges, "How many charges to keep ready\n (0 = Use All)");
+                    DrawSliderInt(0, 1, RDM_ST_Acceleration_Charges, " How many charges to keep ready\n (0 = Use All)");
                     break;
 
                 case Preset.RDM_AoE_Acceleration:
-                    DrawSliderInt(0, 1, RDM_AoE_Acceleration_Charges, "How many charges to keep ready?\n (0 = Use All)");
+                    DrawSliderInt(0, 1, RDM_AoE_Acceleration_Charges, Generics.HowManyChargesToKeepReady);
                     break;
                 #endregion
 
@@ -232,7 +233,7 @@ internal partial class RDM
                         DrawSliderInt(0, 25, RDM_Moulinet_Weaves_Options_Corpsacorps_Distance, "Use Corps when distance is less than or equal to:");
                     }
                     break;
-                
+
                 case Preset.RDM_MagickBarrierAddle:
                     DrawSliderInt(0, 5, RDM_AddleDuration,
                         "Time Remaining on others Addle to allow within\n(0 = Addle must not be on the target)");

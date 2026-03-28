@@ -287,4 +287,58 @@
   <data name="TargetHPUse0AtOrBelow" xml:space="preserve">
     <value>Target HP% to use {0} at or below. Set to 100 to disable this check.</value>
   </data>
+  <data name="TimeRemainingOnOthers" xml:space="preserve">
+    <value>Time Remaining on others {0} to allow within
+(0 = {0} must not be on the target)</value>
+  </data>
+  <data name="TimeRemainingOnOthers3" xml:space="preserve">
+    <value>Time Remaining on others {0} / {1} / {2} to allow within
+(0 = {0} / {1} / {2} must not be on the target)</value>
+  </data>
+  <data name="AllHealerRetargetting" xml:space="preserve">
+    <value>UI Mouseover &gt; Field Mouseover &gt; Focus Target &gt; Soft Target &gt; Hard Target</value>
+  </data>
+  <data name="FieldMouseover" xml:space="preserve">
+    <value>Field Mouseover</value>
+  </data>
+  <data name="FocusTarget" xml:space="preserve">
+    <value>Focus Target</value>
+  </data>
+  <data name="SoftTarget" xml:space="preserve">
+    <value>Soft Target</value>
+  </data>
+  <data name="WillAdd_0_ToThePriorityStack" xml:space="preserve">
+    <value>Will add {0} to the priority stack</value>
+  </data>
+  <data name="StandardOpener" xml:space="preserve">
+    <value>Standard opener</value>
+  </data>
+  <data name="UsesStandardOpener" xml:space="preserve">
+    <value>Uses Standard opener</value>
+  </data>
+  <data name="StationaryOnly" xml:space="preserve">
+    <value>Stationary Only</value>
+  </data>
+  <data name="AnyMovement" xml:space="preserve">
+    <value>Any Movement</value>
+  </data>
+  <data name="StationaryDelayCheck" xml:space="preserve">
+    <value> Stationary Delay Check (in seconds):</value>
+  </data>
+  <data name="HowManyChargesToKeepReady" xml:space="preserve">
+    <value> How many charges to keep ready?
+(0 = Use All)</value>
+  </data>
+  <data name="HPCheckNonBossEncountersOnly" xml:space="preserve">
+    <value>Applies HP check to Non-Boss Encounters only</value>
+  </data>
+  <data name="HPCheckAllContent" xml:space="preserve">
+    <value>Applies HP Check to All Content</value>
+  </data>
+  <data name="NoMovement" xml:space="preserve">
+    <value>No Movement</value>
+  </data>
+  <data name="InMeleeRange" xml:space="preserve">
+    <value>In Melee Range</value>
+  </data>
 </root>

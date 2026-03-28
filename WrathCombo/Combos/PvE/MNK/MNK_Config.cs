@@ -1,6 +1,7 @@
 using Dalamud.Interface.Colors;
 using WrathCombo.CustomComboNS.Functions;
 using WrathCombo.Extensions;
+using WrathCombo.Resources.Localization.JobConfigs;
 using static WrathCombo.Window.Functions.UserConfig;
 namespace WrathCombo.Combos.PvE;
 
@@ -35,18 +36,18 @@ internal partial class MNK
                 case Preset.MNK_STUseBrotherhood:
 
                     DrawSliderInt(0, 50, MNK_ST_BHHPThreshold,
-                        "Stop using at Enemy HP %. Set to Zero to disable this check.");
+                        Generics.StopEnemyHpPercent);
 
                     ImGui.Indent();
 
                     ImGui.TextColored(ImGuiColors.DalamudYellow,
-                        "Select what kind of enemies the HP check should be applied to:");
+                        Generics.EnemyTypeCheck);
 
                     DrawHorizontalRadioButton(MNK_ST_BHBossOption,
-                        "Non-Bosses", "Only applies the HP check above to non-bosses.", 0);
+                        Generics.NonBosses, Generics.HPCheckNonBosses, 0);
 
                     DrawHorizontalRadioButton(MNK_ST_BHBossOption,
-                        "All Enemies", "Applies the HP check above to all enemies.", 1);
+                        Generics.AllEnemies, Generics.HPCheckAllEnemies, 1);
 
                     ImGui.Unindent();
                     break;
@@ -54,18 +55,18 @@ internal partial class MNK
                 case Preset.MNK_STUseROF:
 
                     DrawSliderInt(0, 50, MNK_ST_RoFHPThreshold,
-                        "Stop using at Enemy HP %. Set to Zero to disable this check.");
+                        Generics.StopEnemyHpPercent);
 
                     ImGui.Indent();
 
                     ImGui.TextColored(ImGuiColors.DalamudYellow,
-                        "Select what kind of enemies the HP check should be applied to:");
+                        Generics.EnemyTypeCheck);
 
                     DrawHorizontalRadioButton(MNK_ST_RoFBossOption,
-                        "Non-Bosses", "Only applies the HP check above to non-bosses.", 0);
+                        Generics.NonBosses, Generics.HPCheckNonBosses, 0);
 
                     DrawHorizontalRadioButton(MNK_ST_RoFBossOption,
-                        "All Enemies", "Applies the HP check above to all enemies.", 1);
+                        Generics.AllEnemies, Generics.HPCheckAllEnemies, 1);
 
                     ImGui.Unindent();
                     break;
@@ -73,25 +74,25 @@ internal partial class MNK
                 case Preset.MNK_STUseROW:
 
                     DrawSliderInt(0, 50, MNK_ST_RoWHPThreshold,
-                        "Stop using at Enemy HP %. Set to Zero to disable this check.");
+                        Generics.StopEnemyHpPercent);
 
                     ImGui.Indent();
 
                     ImGui.TextColored(ImGuiColors.DalamudYellow,
-                        "Select what kind of enemies the HP check should be applied to:");
+                        Generics.EnemyTypeCheck);
 
                     DrawHorizontalRadioButton(MNK_ST_RoWBossOption,
-                        "Non-Bosses", "Only applies the HP check above to non-bosses.", 0);
+                        Generics.NonBosses, Generics.HPCheckNonBosses, 0);
 
                     DrawHorizontalRadioButton(MNK_ST_RoWBossOption,
-                        "All Enemies", "Applies the HP check above to all enemies.", 1);
+                        Generics.AllEnemies, Generics.HPCheckAllEnemies, 1);
 
                     ImGui.Unindent();
                     break;
 
                 case Preset.MNK_STUseTrueNorth:
                     DrawSliderInt(0, 1, MNK_ManualTN,
-                        "How many charges to keep for manual usage.");
+                        Generics.ChargePool);
                     break;
 
                 case Preset.MNK_ST_ComboHeals:

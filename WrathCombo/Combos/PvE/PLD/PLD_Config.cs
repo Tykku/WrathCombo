@@ -2,6 +2,7 @@ using Dalamud.Interface.Colors;
 using ECommons.ImGuiMethods;
 using WrathCombo.CustomComboNS.Functions;
 using WrathCombo.Data;
+using WrathCombo.Resources.Localization.JobConfigs;
 using WrathCombo.Window.Functions;
 using static WrathCombo.Window.Functions.UserConfig;
 using BossAvoidance = WrathCombo.Combos.PvE.All.Enums.BossAvoidance;
@@ -102,18 +103,18 @@ internal partial class PLD
                 // Fight or Flight
                 case Preset.PLD_ST_AdvancedMode_FoF:
                     DrawSliderInt(0, 50, PLD_ST_FoF_HPOption,
-                        "Stop using at Enemy HP %. Set to Zero to disable this check.");
+                        Generics.StopEnemyHpPercent);
 
                     ImGui.Indent();
 
                     ImGui.TextColored(ImGuiColors.DalamudYellow,
-                        "Select what kind of enemies the HP check should be applied to:");
+                        Generics.EnemyTypeCheck);
 
                     DrawHorizontalRadioButton(PLD_ST_FoF_BossOption,
-                        "Non-Bosses", "Only apply the HP check above to non-bosses.", 0);
+                        Generics.NonBosses, Generics.HPCheckNonBosses, 0);
 
                     DrawHorizontalRadioButton(PLD_ST_FoF_BossOption,
-                        "All Enemies", "Apply the HP check above to all enemies.", 1);
+                        Generics.AllEnemies, Generics.HPCheckAllEnemies, 1);
                     ImGui.Unindent();
                     break;
 
@@ -121,20 +122,20 @@ internal partial class PLD
                 // Intervene
                 case Preset.PLD_ST_AdvancedMode_Intervene:
                     DrawHorizontalRadioButton(PLD_ST_Intervene_Movement,
-                        "Stationary Only", "Uses Intervene only while stationary", 0);
+                        Generics.StationaryOnly, "Uses Intervene only while stationary", 0);
 
                     DrawHorizontalRadioButton(PLD_ST_Intervene_Movement,
-                        "Any Movement", "Uses Intervene regardless of any movement conditions.\nNOTE: This could possibly get you killed", 1);
+                        Generics.AnyMovement, "Uses Intervene regardless of any movement conditions.\nNOTE: This could possibly get you killed", 1);
 
                     ImGui.Spacing();
                     if (PLD_ST_Intervene_Movement == 0)
                     {
                         DrawSliderFloat(0, 3, PLD_ST_InterveneTimeStill,
-                            " Stationary Delay Check (in seconds):", decimals: 1);
+                            Generics.StationaryDelayCheck, decimals: 1);
                     }
 
                     DrawSliderInt(0, 2, PLD_ST_Intervene_Charges,
-                        " How many charges to keep ready?\n (0 = Use All)");
+                        Generics.HowManyChargesToKeepReady);
 
                     DrawSliderInt(1, 20, PLD_ST_Intervene_Distance,
                         " Use when Distance from target is less than or equal to:");
@@ -166,20 +167,20 @@ internal partial class PLD
 
                 case Preset.PLD_AoE_AdvancedMode_Intervene:
                     DrawHorizontalRadioButton(PLD_AoE_Intervene_Movement,
-                        "Stationary Only", "Uses Intervene only while stationary", 0);
+                        Generics.StationaryOnly, "Uses Intervene only while stationary", 0);
 
                     DrawHorizontalRadioButton(PLD_AoE_Intervene_Movement,
-                        "Any Movement", "Uses Intervene regardless of any movement conditions.\nNOTE: This could possibly get you killed", 1);
+                        Generics.AnyMovement, "Uses Intervene regardless of any movement conditions.\nNOTE: This could possibly get you killed", 1);
 
                     ImGui.Spacing();
                     if (PLD_AoE_Intervene_Movement == 0)
                     {
                         DrawSliderFloat(0, 3, PLD_AoE_InterveneTimeStill,
-                            " Stationary Delay Check (in seconds):", decimals: 1);
+                            Generics.StationaryDelayCheck, decimals: 1);
                     }
 
                     DrawSliderInt(0, 2, PLD_AoE_Intervene_Charges,
-                        " How many charges to keep ready?\n (0 = Use All)");
+                        Generics.HowManyChargesToKeepReady);
 
                     DrawSliderInt(1, 20, PLD_AoE_Intervene_Distance,
                         " Use when Distance from target is less than or equal to:");
@@ -259,7 +260,7 @@ internal partial class PLD
                     );
 
                     DrawSliderInt(1, 100, PLD_Mit_HallowedGround_Max_Health,
-                        "Player HP% to be \nless than or equal to:",
+                        Generics.StopFriendlyHpPercent100,
                         200, SliderIncrements.Fives);
                     break;
 
@@ -310,7 +311,7 @@ internal partial class PLD
                 case Preset.PLD_Mit_ArmsLength:
                     ImGui.Indent();
                     DrawHorizontalRadioButton(PLD_Mit_ArmsLength_Boss,
-                        "All Enemies", "Will use Arm's Length regardless of the type of enemy.", (int)BossAvoidance.Off, 125f);
+                        Generics.AllEnemies, "Will use Arm's Length regardless of the type of enemy.", (int)BossAvoidance.Off, 125f);
 
                     DrawHorizontalRadioButton(PLD_Mit_ArmsLength_Boss,
                         "Avoid Bosses", "Will try not to use Arm's Length when in a boss fight.", (int)BossAvoidance.On, 125f);
@@ -332,7 +333,7 @@ internal partial class PLD
 
                 case Preset.PLD_Mit_Clemency:
                     DrawSliderInt(1, 100, PLD_Mit_Clemency_Health,
-                        "HP% to use at or below (100 = Disable check)",
+                        Generics.StopFriendlyHpPercent100,
                         sliderIncrement: SliderIncrements.Ones);
 
                     DrawPriorityInput(PLD_Mit_Priorities,

@@ -2,6 +2,7 @@ using Dalamud.Interface.Colors;
 using WrathCombo.CustomComboNS.Functions;
 using WrathCombo.Data;
 using WrathCombo.Extensions;
+using WrathCombo.Resources.Localization.JobConfigs;
 using WrathCombo.Window.Functions;
 using static WrathCombo.Window.Functions.UserConfig;
 using BossAvoidance = WrathCombo.Combos.PvE.All.Enums.BossAvoidance;
@@ -173,17 +174,17 @@ internal partial class GNB
 
                 case Preset.GNB_ST_NoMercy:
                     DrawSliderInt(0, 50, GNB_ST_NM_HPOption,
-                        "Stop using at Enemy HP %. Set to Zero to disable this check.");
+                        Generics.StopEnemyHpPercent);
 
                     ImGui.Indent();
                     ImGui.TextColored(ImGuiColors.DalamudYellow,
-                        "Select what kind of enemies the HP check should be applied to:");
+                        Generics.EnemyTypeCheck);
 
                     DrawHorizontalRadioButton(GNB_ST_NM_BossOption,
-                        "Non-Bosses", "Only apply the HP check above to non-bosses.", 0);
+                        Generics.NonBosses, Generics.HPCheckNonBosses, 0);
 
                     DrawHorizontalRadioButton(GNB_ST_NM_BossOption,
-                        "All Enemies", "Apply the HP check above to all enemies.", 1);
+                        Generics.AllEnemies, Generics.HPCheckAllEnemies, 1);
                     ImGui.Unindent();
                     break;
 
@@ -246,12 +247,12 @@ internal partial class GNB
                 case Preset.GNB_Mit_Superbolide_Max:
                     DrawDifficultyMultiChoice(GNB_Mit_Superbolide_Difficulty, GNB_Mit_Superbolide_DifficultyListSet,
                         "Select what difficulties Superbolide should be used in:");
-                    DrawSliderInt(1, 100, GNB_Mit_Superbolide_Health, "Player HP% to be \nless than or equal to:", 200, SliderIncrements.Fives);
+                    DrawSliderInt(1, 100, GNB_Mit_Superbolide_Health, Generics.StopFriendlyHpPercent100, 200, SliderIncrements.Fives);
                     break;
 
                 case Preset.GNB_Mit_Corundum:
                     DrawSliderInt(1, 100, GNB_Mit_Corundum_Health,
-                        "HP% to use at or below (100 = Disable check)",
+                        Generics.StopFriendlyHpPercent100,
                         sliderIncrement: SliderIncrements.Ones);
                     DrawPriorityInput(GNB_Mit_Priorities, NumMitigationOptions, 0,
                         "Heart of Corundum Priority:");
@@ -259,9 +260,9 @@ internal partial class GNB
 
                 case Preset.GNB_Mit_Aurora:
                     DrawSliderInt(0, 1, GNB_Mit_Aurora_Charges,
-                        "How many charges to keep ready?\n (0 = Use All)");
+                        Generics.HowManyChargesToKeepReady);
                     DrawSliderInt(1, 100, GNB_Mit_Aurora_Health,
-                        "HP% to use at or below (100 = Disable check)",
+                        Generics.StopFriendlyHpPercent100,
                         sliderIncrement: SliderIncrements.Ones);
                     DrawPriorityInput(GNB_Mit_Priorities, NumMitigationOptions, 1,
                         "Aurora Priority:");
@@ -298,7 +299,7 @@ internal partial class GNB
                 case Preset.GNB_Mit_ArmsLength:
                     ImGui.Indent();
                     DrawHorizontalRadioButton(GNB_Mit_ArmsLength_Boss,
-                        "All Enemies", "Will use Arm's Length regardless of the type of enemy.",
+                        Generics.AllEnemies, "Will use Arm's Length regardless of the type of enemy.",
                         (int)BossAvoidance.Off, 125f);
                     DrawHorizontalRadioButton(
                         GNB_Mit_ArmsLength_Boss,

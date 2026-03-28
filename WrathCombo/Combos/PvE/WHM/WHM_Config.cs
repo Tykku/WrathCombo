@@ -2,6 +2,7 @@
 using Dalamud.Interface.Colors;
 using WrathCombo.CustomComboNS.Functions;
 using WrathCombo.Data;
+using WrathCombo.Resources.Localization.JobConfigs;
 using WrathCombo.Window.Functions;
 using static WrathCombo.Extensions.UIntExtensions;
 using static WrathCombo.Window.Functions.UserConfig;
@@ -41,20 +42,20 @@ internal partial class WHM
                     break;
 
                 case Preset.WHM_ST_MainCombo_DoT:
-                    DrawSliderInt(0, 100, WHM_ST_DPS_AeroBossOption, "Bosses Only. Stop using at Enemy HP %.");
-                    DrawSliderInt(0, 100, WHM_ST_DPS_AeroBossAddsOption, "Boss Encounter Non Bosses. Stop using at Enemy HP %.");
-                    DrawSliderInt(0, 100, WHM_ST_DPS_AeroTrashOption, "Non boss encounter. Stop using at Enemy HP %.");
+                    DrawSliderInt(0, 100, WHM_ST_DPS_AeroBossOption, Generics.BossOnlyHpPercent);
+                    DrawSliderInt(0, 100, WHM_ST_DPS_AeroBossAddsOption, Generics.BossEncounterNonBossHpPercent);
+                    DrawSliderInt(0, 100, WHM_ST_DPS_AeroTrashOption, Generics.NonBossHpPercent);
                     ImGui.Indent();
-                    DrawRoundedSliderFloat(0, 4, WHM_ST_DPS_AeroUptime_Threshold, "Seconds remaining before reapplying the DoT. Set to Zero to disable this check.", digits: 1);
+                    DrawRoundedSliderFloat(0, 4, WHM_ST_DPS_AeroUptime_Threshold, Generics.DoTSecondsRemainingZeroDisable, digits: 1);
                     ImGui.Unindent();
                     DrawAdditionalBoolChoice(WHM_ST_MainCombo_DoT_TwoTarget, "Two target dotting", "Will maintain Damage over time spells on two targets if applicable.");
                     break;
-                
+
                 case Preset.WHM_ST_MainCombo_Misery:
                     DrawHorizontalRadioButton(WHM_ST_MainCombo_Misery_Option, "Hold for Burst", "Will attempt to hold for burst as long as possible without overcapping. \nWill prevent afflatus heals from being possible when at full Blood Lily stacks.", 0, descriptionColor: ImGuiColors.DalamudWhite);
                     DrawHorizontalRadioButton(WHM_ST_MainCombo_Misery_Option, "Use Immediately", "Will Use Immediately to make sure you are free to use Afflatus heals. ", 1, descriptionColor: ImGuiColors.DalamudWhite);
                     break;
-                
+
                 case Preset.WHM_ST_MainCombo_LilyOvercap:
                     DrawSliderInt(0, 10, WHM_STDPS_LilyOvercap, "Time in Seconds to use Afflatus Rapture before overcapping Lily stacks", itemWidth: medium);
                     break;
@@ -74,7 +75,7 @@ internal partial class WHM
                         mpThresholdDescription,
                         itemWidth: medium, SliderIncrements.Hundreds);
                     break;
-                
+
                 case Preset.WHM_AoE_MainCombo_DoT:
                     DrawSliderInt(0, 100, WHM_AoE_MainCombo_DoT_HPThreshold,
                         targetStopUsingAtDescription);
@@ -86,12 +87,12 @@ internal partial class WHM
                     DrawSliderInt(0, 10, WHM_AoE_MainCombo_DoT_MaxTargets,
                         "Maximum number of targets to employ multi-dotting ");
                     break;
-                
+
                 case Preset.WHM_AoE_DPS_Misery:
                     DrawHorizontalRadioButton(WHM_AoE_DPS_Misery_Option, "Hold for Burst", "Will attempt to hold for burst as long as possible without overcapping. \nWill prevent afflatus heals from being possible when at full Blood Lily stacks.", 0 ,descriptionColor: ImGuiColors.DalamudWhite);
                     DrawHorizontalRadioButton(WHM_AoE_DPS_Misery_Option, "Use Immediately", "Will Use Immediately to make sure you are free to use Afflatus heals. ", 1 ,descriptionColor: ImGuiColors.DalamudWhite);
                     break;
-                
+
                 case Preset.WHM_AoE_DPS_LilyOvercap:
                     DrawSliderInt(0, 10, WHM_AoEDPS_LilyOvercap, "Time in Seconds to use Afflatus Rapture before overcapping Lily stacks", itemWidth: medium);
                     break;
@@ -105,8 +106,8 @@ internal partial class WHM
                         "Include Shields in HP Percent Sliders",
                         "");
                     break;
-                
-                case Preset.WHM_STHeals_Benediction: 
+
+                case Preset.WHM_STHeals_Benediction:
                     DrawAdditionalBoolChoice(WHM_STHeals_BenedictionWeave,
                         weaveDescription, "");
                     DrawSliderInt(1, 100, WHM_STHeals_BenedictionHP,
@@ -116,7 +117,7 @@ internal partial class WHM
                     break;
 
                 case Preset.WHM_STHeals_Tetragrammaton:
-                    DrawAdditionalBoolChoice(WHM_STHeals_TetraBalance, 
+                    DrawAdditionalBoolChoice(WHM_STHeals_TetraBalance,
                         "Balance Charges Option", "Will only use if Tetra Charges are greater than or equal to Divine Benison Charges.");
                     DrawAdditionalBoolChoice(WHM_STHeals_TetraWeave,
                         weaveDescription, "");
@@ -127,11 +128,11 @@ internal partial class WHM
                     break;
 
                 case Preset.WHM_STHeals_Benison:
-                    DrawAdditionalBoolChoice(WHM_STHeals_BenisonBalance, 
+                    DrawAdditionalBoolChoice(WHM_STHeals_BenisonBalance,
                         "Balance Charges Option", "Will only use if Divine Benison Charges are greater than or equal to Tetragrammaton Charges.");
                     DrawAdditionalBoolChoice(WHM_STHeals_BenisonWeave,
                         weaveDescription, "");
-                    DrawSliderInt(0, 1, WHM_STHeals_BenisonCharges, 
+                    DrawSliderInt(0, 1, WHM_STHeals_BenisonCharges,
                         chargesToKeepDescription);
                     DrawSliderInt(1, 100, WHM_STHeals_BenisonHP,
                         targetStartUsingAtDescription);
@@ -148,7 +149,7 @@ internal partial class WHM
                     DrawPriorityInput(WHM_ST_Heals_Priority, 9, 3,
                         $"{Aquaveil.ActionName()} Priority: ");
                     break;
-                
+
                 case Preset.WHM_STHeals_Solace:
                     DrawSliderInt(1, 100, WHM_STHeals_SolaceHP,
                         targetStartUsingAtDescription);
@@ -178,7 +179,7 @@ internal partial class WHM
                     DrawPriorityInput(WHM_ST_Heals_Priority, 9, 6,
                         $"{Temperance.ActionName()} Priority: ");
                     break;
-                
+
                 case Preset.WHM_STHeals_Asylum:
                     DrawSliderInt(1, 100, WHM_STHeals_AsylumHP,
                         targetStartUsingAtDescription);
@@ -187,7 +188,7 @@ internal partial class WHM
                     DrawPriorityInput(WHM_ST_Heals_Priority, 9, 7,
                         $"{Asylum.ActionName()} Priority: ");
                     break;
-                
+
                 case Preset.WHM_STHeals_LiturgyOfTheBell:
                     DrawSliderInt(1, 100, WHM_STHeals_LiturgyOfTheBellHP,
                         targetStartUsingAtDescription);
@@ -196,12 +197,12 @@ internal partial class WHM
                     DrawPriorityInput(WHM_ST_Heals_Priority, 9, 8,
                         $"{LiturgyOfTheBell.ActionName()} Priority: ");
                     break;
-                
+
                 case Preset.WHM_STHeals_ThinAir:
                     DrawSliderInt(0, 1, WHM_STHeals_ThinAir,
                         chargesToKeepDescription);
                     break;
-                
+
                 case Preset.WHM_STHeals_Lucid:
                     DrawSliderInt(4000, 9500, WHM_STHeals_Lucid,
                         mpThresholdDescription,
@@ -216,8 +217,8 @@ internal partial class WHM
                 #endregion
 
                 #region AoE Heals
-                
-                case Preset.WHM_AoEHeals_Medica2: 
+
+                case Preset.WHM_AoEHeals_Medica2:
                     DrawSliderInt(1, 100, WHM_AoEHeals_Medica2HP,
                         partyStartUsingAtDescription);
                     ImGui.Indent();
@@ -228,7 +229,7 @@ internal partial class WHM
                     DrawPriorityInput(WHM_AoE_Heals_Priority, 9, 0,
                         $"{Medica2.ActionName()} Priority: ");
                     break;
-                
+
                 case Preset.WHM_AoEHeals_Cure3:
                     DrawSliderInt(1, 100, WHM_AoEHeals_Cure3HP,
                         partyStartUsingAtDescription);
@@ -240,7 +241,7 @@ internal partial class WHM
                     DrawPriorityInput(WHM_AoE_Heals_Priority, 9, 1,
                         $"{Cure3.ActionName()} Priority: ");
                     break;
-                
+
                 case Preset.WHM_AoEHeals_Plenary:
                     DrawSliderInt(1, 100, WHM_AoEHeals_PlenaryHP,
                         partyStartUsingAtDescription);
@@ -250,9 +251,9 @@ internal partial class WHM
                     DrawPriorityInput(WHM_AoE_Heals_Priority, 9, 2,
                         $"{PlenaryIndulgence.ActionName()} Priority: ");
                     break;
-                
+
                 case Preset.WHM_AoEHeals_Temperance:
-                    DrawSliderInt(1, 100, WHM_AoEHeals_TemperanceHP, 
+                    DrawSliderInt(1, 100, WHM_AoEHeals_TemperanceHP,
                         partyStartUsingAtDescription);
                     DrawAdditionalBoolChoice(WHM_AoEHeals_TemperanceWeave,
                         weaveDescription,
@@ -263,9 +264,9 @@ internal partial class WHM
                     DrawPriorityInput(WHM_AoE_Heals_Priority, 9, 3,
                         $"{Temperance.ActionName()} Priority: ");
                     break;
-                
+
                 case Preset.WHM_AoEHeals_Asylum:
-                    DrawSliderInt(1, 100, WHM_AoEHeals_AsylumHP, 
+                    DrawSliderInt(1, 100, WHM_AoEHeals_AsylumHP,
                         partyStartUsingAtDescription);
                     DrawAdditionalBoolChoice(WHM_AoEHeals_AsylumWeave,
                         weaveDescription,
@@ -276,9 +277,9 @@ internal partial class WHM
                     DrawPriorityInput(WHM_AoE_Heals_Priority, 9, 4,
                         $"{Asylum.ActionName()} Priority: ");
                     break;
-                
+
                 case Preset.WHM_AoEHeals_LiturgyOfTheBell:
-                    DrawSliderInt(1, 100, WHM_AoEHeals_LiturgyHP, 
+                    DrawSliderInt(1, 100, WHM_AoEHeals_LiturgyHP,
                         partyStartUsingAtDescription);
                     DrawAdditionalBoolChoice(WHM_AoEHeals_LiturgyWeave,
                         weaveDescription,
@@ -289,14 +290,14 @@ internal partial class WHM
                     DrawPriorityInput(WHM_AoE_Heals_Priority, 9, 5,
                         $"{LiturgyOfTheBell.ActionName()} Priority: ");
                     break;
-                
+
                 case Preset.WHM_AoEHeals_Rapture:
                     DrawSliderInt(1, 100, WHM_AoEHeals_RaptureHP,
                         partyStartUsingAtDescription);
                     DrawPriorityInput(WHM_AoE_Heals_Priority, 9, 6,
                         $"{AfflatusRapture.ActionName()} Priority: ");
                     break;
-                
+
                 case Preset.WHM_AoEHeals_Assize:
                     DrawSliderInt(1, 100, WHM_AoEHeals_AssizeHP,
                         partyStartUsingAtDescription);
@@ -305,7 +306,7 @@ internal partial class WHM
                     DrawPriorityInput(WHM_AoE_Heals_Priority, 9, 7,
                         $"{Assize.ActionName()} Priority: ");
                     break;
-                
+
                 case Preset.WHM_AoEHeals_DivineCaress:
                     DrawSliderInt(1, 100, WHM_AoEHeals_DivineCaressHP,
                         partyStartUsingAtDescription);
@@ -325,7 +326,7 @@ internal partial class WHM
                         mpThresholdDescription,
                         itemWidth: medium, SliderIncrements.Hundreds);
                     break;
-                
+
                 #endregion
 
                 #region Mitigation Features
@@ -346,9 +347,9 @@ internal partial class WHM
                     break;
 
                 #endregion
-                
+
                 #region Retargeting Features
-                
+
                 case Preset.WHM_Re_Asylum:
                     ImGui.Indent();
                     ImGui.TextColored(ImGuiColors.DalamudGrey, "Options to try to Retarget Asylum to before Self:");
@@ -358,7 +359,7 @@ internal partial class WHM
                     DrawHorizontalMultiChoice(WHM_AsylumOptions,
                         "Ally Hard Target", "Will place at hard target if ally", 3, 1);
                     break;
-                
+
                 case Preset.WHM_Re_LiturgyOfTheBell:
                     ImGui.Indent();
                     ImGui.TextColored(ImGuiColors.DalamudGrey, "Options to try to Retarget Liturgy of the Bell to before Self:");
@@ -368,8 +369,8 @@ internal partial class WHM
                     DrawHorizontalMultiChoice(WHM_LiturgyOfTheBellOptions,
                         "Ally Hard Target", "Will place at hard target if ally", 2, 1);
                     break;
-                    
-                
+
+
                 #endregion
             }
         }
@@ -385,7 +386,7 @@ internal partial class WHM
         /// Bar Description for target HP% to start using plus disable text
         private const string targetStartUsingAtDescription =
             "Target HP% to use at or below (100 = Disable check)";
-        
+
         /// Bar Description for Party HP%  Average to start using plus disable text
         private const string partyStartUsingAtDescription =
             "Start using when below party average HP% (100 = Disable check)";
@@ -475,12 +476,12 @@ internal partial class WHM
         /// <seealso cref="Preset.WHM_ST_MainCombo_DoT" />
         public static UserInt WHM_ST_DPS_AeroBossOption =
             new("WHM_ST_DPS_AeroBossOption", 0);
-        
+
         /// <summary>
         ///     Two Target option
-        /// </summary> 
+        /// </summary>
         /// <seealso cref="Preset.WHM_ST_MainCombo_DoT" />
-        public static UserBool WHM_ST_MainCombo_DoT_TwoTarget = 
+        public static UserBool WHM_ST_MainCombo_DoT_TwoTarget =
             new("WHM_ST_MainCombo_DoT_TwoTarget", true);
 
         /// <summary>
@@ -494,7 +495,7 @@ internal partial class WHM
         /// <seealso cref="Preset.WHM_ST_MainCombo_DoT" />
         public static UserInt WHM_ST_DPS_AeroBossAddsOption =
             new("WHM_ST_DPS_AeroBossAddsOption", 50);
-        
+
         /// <summary>
         ///     HP threshold to stop applying DoTs on Trash.
         /// </summary>
@@ -529,20 +530,20 @@ internal partial class WHM
         /// <seealso cref="Preset.WHM_ST_MainCombo_DoT" />
         public static UserInt WHM_ST_DPS_AeroOptionSubOption =
             new("WHM_ST_DPS_AeroOptionSubOption", (int)EnemyRestriction.AllEnemies);
-        
+
         /// <summary>
         ///     Pooling option for Afflatus Misery. Default 1 = Use Immediately, 0 = Hold for Burst
         /// </summary>
         /// <seealso cref="Preset.WHM_ST_MainCombo_Misery" />
-        public static UserInt WHM_ST_MainCombo_Misery_Option = 
+        public static UserInt WHM_ST_MainCombo_Misery_Option =
             new("WHM_ST_MainCombo_Misery_Option", 1);
-        
+
         /// <summary>
         ///     Overcap Prevention Slider for Afflatus Rapture
         ///     Default 8 = Use Rapture if Lily will overcap in 8 seconds
         /// </summary>
         /// <seealso cref="Preset.WHM_ST_MainCombo_LilyOvercap" />
-        public static UserInt WHM_STDPS_LilyOvercap = 
+        public static UserInt WHM_STDPS_LilyOvercap =
             new("WHM_STDPS_LilyOvercap", 8);
 
         /// <summary>
@@ -572,7 +573,7 @@ internal partial class WHM
         /// <seealso cref="Preset.WHM_AoE_DPS_Lucid" />
         public static UserInt WHM_AoEDPS_Lucid =
             new("WHM_AoE_Lucid", 6500);
-        
+
         /// <summary>
         ///     Reapplication Threshold for AoE Multi-DoTing
         /// </summary>
@@ -584,49 +585,49 @@ internal partial class WHM
         /// <seealso cref="Preset.WHM_AoE_MainCombo_DoT" />
         public static UserFloat WHM_AoE_MainCombo_DoT_Reapply =
             new("WHM_AoE_MainCombo_DoT_Reapply", 0);
-        
+
         /// <summary>
         ///     Health Threshold to stop Multi-DoTing
-        /// </summary> 
+        /// </summary>
         /// <value>
         ///     <b>Default</b>: 50 <br />
         ///     <b>Range</b>: 0 - 100<br />
         ///     <b>Step</b>: <see cref="SliderIncrements.Ones" />
         /// </value>
         /// <seealso cref="Preset.WHM_AoE_MainCombo_DoT" />
-        public static UserInt WHM_AoE_MainCombo_DoT_HPThreshold = 
+        public static UserInt WHM_AoE_MainCombo_DoT_HPThreshold =
             new("WHM_AoE_MainCombo_DoT_HPThreshold", 50);
-        
+
         /// <summary>
         ///     Max Targets for AoE Multi-DoTing
-        /// </summary> 
+        /// </summary>
         /// <value>
         ///     <b>Default</b>: 4 <br />
         ///     <b>Range</b>: 0 - 10<br />
         ///     <b>Step</b>: <see cref="SliderIncrements.Ones" />
         /// </value>
         /// <seealso cref="Preset.WHM_AoE_MainCombo_DoT" />
-        public static UserInt WHM_AoE_MainCombo_DoT_MaxTargets = 
+        public static UserInt WHM_AoE_MainCombo_DoT_MaxTargets =
             new("WHM_AoE_MainCombo_DoT_MaxTargets", 4);
-        
+
         /// <summary>
         ///     Pooling option for Afflatus Misery. Default 1 = Use Immediately, 0 = Hold for Burst
         /// </summary>
         /// <seealso cref="Preset.WHM_AoE_DPS_Misery" />
-        public static UserInt WHM_AoE_DPS_Misery_Option = 
+        public static UserInt WHM_AoE_DPS_Misery_Option =
             new("WHM_AoE_DPS_Misery_Option", 1);
-        
+
         /// <summary>
         ///     Overcap Prevention Slider for Afflatus Rapture
         ///     Default 8 = Use Rapture if Lily will overcap in 8 seconds
         /// </summary>
         /// <seealso cref="Preset.WHM_AoE_DPS_LilyOvercap" />
-        public static UserInt WHM_AoEDPS_LilyOvercap = 
+        public static UserInt WHM_AoEDPS_LilyOvercap =
             new("WHM_AoEDPS_LilyOvercap", 8);
 
         #endregion
 
-        #region Single Target Heals 
+        #region Single Target Heals
 
         /// <summary>
         ///     Include shields when calculating HP percentages.
@@ -701,7 +702,7 @@ internal partial class WHM
         /// <seealso cref="Preset.WHM_STHeals_Benediction" />
         public static UserInt WHM_STHeals_BenedictionHP =
             new("WHM_STHeals_BenedictionHP", 20);
-        
+
         /// <summary>
         ///     HP threshold to use Afflatus Solace.
         /// </summary>
@@ -711,8 +712,8 @@ internal partial class WHM
         ///     <b>Step</b>: <see cref="SliderIncrements.Ones" />
         /// </value>
         /// <seealso cref="Preset.WHM_STHeals_Solace" />
-        
-        public static UserInt WHM_STHeals_SolaceHP = 
+
+        public static UserInt WHM_STHeals_SolaceHP =
             new("WHM_STHeals_SolaceHP", 70);
 
         /// <summary>
@@ -736,8 +737,8 @@ internal partial class WHM
         /// <seealso cref="Preset.WHM_STHeals_Tetragrammaton" />
         public static UserBool WHM_STHeals_TetraWeave =
             new("WHM_STHeals_TetraWeave", false);
-        
-        
+
+
         /// <summary>
         ///     Only use Tetragrammaton when it has greater than or equal charges to divine Benison
         /// </summary>
@@ -768,7 +769,7 @@ internal partial class WHM
         /// <seealso cref="Preset.WHM_STHeals_Benison" />
         public static UserBool WHM_STHeals_BenisonWeave =
             new("WHM_STHeals_BenisonWeave", false);
-        
+
         /// <summary>
         ///     Only use Divine Benison when it has greater than or equal charges to Tetragrammaton
         /// </summary>
@@ -776,9 +777,9 @@ internal partial class WHM
         ///     <b>Default</b>: false
         /// </value>
         /// <seealso cref="Preset.WHM_STHeals_Benison" />
-        
+
         public static UserBool WHM_STHeals_BenisonBalance = new("WHM_STHeals_BenisonBalance", true);
-        
+
         /// <summary>
         ///     Charges to keep of Divine Benison.
         /// </summary>
@@ -839,7 +840,7 @@ internal partial class WHM
 
         /// <summary>
         ///     Weaving and boss selection options for Temperance.
-        /// </summary> 
+        /// </summary>
         /// <value>
         ///     <b>Default</b>: false
         /// </value>
@@ -880,10 +881,10 @@ internal partial class WHM
         /// <seealso cref="Preset.WHM_STHeals_Asylum" />
         public static UserInt WHM_STHeals_AsylumHP =
             new("WHM_STHeals_AsylumHP", 70);
-        
+
         /// <summary>
         ///     Weaving and boss selection options for LiturgyOfTheBell.
-        /// </summary> 
+        /// </summary>
         /// <value>
         ///     <b>Default</b>: false
         /// </value>
@@ -918,7 +919,7 @@ internal partial class WHM
         #endregion
 
         #region AoE Heals
-        
+
         /// <summary>
         ///     Priority order for AoE healing abilities.
         /// </summary>
@@ -936,7 +937,7 @@ internal partial class WHM
         /// <seealso cref="Preset.WHM_AoEHeals_ThinAir" />
         public static UserInt WHM_AoEHeals_ThinAir =
             new("WHM_AoE_ThinAir");
-        
+
         /// <summary>
         ///     Average party HP% threshold to use Cure3.
         /// </summary>
@@ -946,10 +947,10 @@ internal partial class WHM
         ///     <b>Step</b>: <see cref="SliderIncrements.Ones" />
         /// </value>
         /// <seealso cref="Preset.WHM_AoEHeals_Cure3" />
-        
-        public static UserInt WHM_AoEHeals_Cure3HP = 
+
+        public static UserInt WHM_AoEHeals_Cure3HP =
             new("WHM_AoEHeals_Cure3HP", 50);
-        
+
         /// <summary>
         ///     Minimum Party Members In range of target to use Cure 3.
         /// </summary>
@@ -959,8 +960,8 @@ internal partial class WHM
         ///     <b>Step</b>: <see cref="SliderIncrements.Ones" />
         /// </value>
         /// <seealso cref="Preset.WHM_AoEHeals_Cure3" />
-        
-        public static UserInt WHM_AoEHeals_Cure3Allies = 
+
+        public static UserInt WHM_AoEHeals_Cure3Allies =
             new("WHM_AoEHeals_Cure3Allies", 4);
 
         /// <summary>
@@ -984,9 +985,9 @@ internal partial class WHM
         ///     <b>Step</b>: <see cref="SliderIncrements.Ones" />
         /// </value>
         /// <seealso cref="Preset.WHM_AoEHeals_Assize" />
-        public static UserInt WHM_AoEHeals_AssizeHP = 
+        public static UserInt WHM_AoEHeals_AssizeHP =
             new("WHM_AoEHeals_AssizeHP", 100);
-        
+
         /// <summary>
         ///     Only use Assize when weaving.
         /// </summary>
@@ -996,7 +997,7 @@ internal partial class WHM
         /// <seealso cref="Preset.WHM_AoEHeals_Assize" />
         public static UserBool WHM_AoEHeals_AssizeWeave =
             new("WHM_AoEHeals_AssizeWeave");
-        
+
         /// <summary>
         ///     Average party HP% threshold to use Plenary.
         /// </summary>
@@ -1006,8 +1007,8 @@ internal partial class WHM
         ///     <b>Step</b>: <see cref="SliderIncrements.Ones" />
         /// </value>
         /// <seealso cref="Preset.WHM_AoEHeals_Plenary" />
-        
-        public static UserInt WHM_AoEHeals_PlenaryHP = 
+
+        public static UserInt WHM_AoEHeals_PlenaryHP =
             new("WHM_AoEHeals_PlenaryHP", 100);
 
         /// <summary>
@@ -1053,7 +1054,7 @@ internal partial class WHM
         /// <seealso cref="Preset.WHM_AoEHeals_Medica2" />
         public static UserFloat WHM_AoEHeals_MedicaTime =
             new("WHM_AoEHeals_MedicaTime");
-        
+
         /// <summary>
         ///     Average party HP% threshold to use Medica2.
         /// </summary>
@@ -1063,10 +1064,10 @@ internal partial class WHM
         ///     <b>Step</b>: <see cref="SliderIncrements.Ones" />
         /// </value>
         /// <seealso cref="Preset.WHM_AoEHeals_Medica2" />
-        
-        public static UserInt WHM_AoEHeals_Medica2HP = 
+
+        public static UserInt WHM_AoEHeals_Medica2HP =
             new("WHM_AoEHeals_Medica2HP", 100);
-        
+
         /// <summary>
         ///     Average party HP% threshold to use Rapture.
         /// </summary>
@@ -1076,10 +1077,10 @@ internal partial class WHM
         ///     <b>Step</b>: <see cref="SliderIncrements.Ones" />
         /// </value>
         /// <seealso cref="Preset.WHM_AoEHeals_Rapture" />
-        
-        public static UserInt WHM_AoEHeals_RaptureHP = 
+
+        public static UserInt WHM_AoEHeals_RaptureHP =
             new("WHM_AoEHeals_RaptureHP", 100);
-        
+
         /// <summary>
         ///     Average party HP% threshold to use Divine Caress.
         /// </summary>
@@ -1089,10 +1090,10 @@ internal partial class WHM
         ///     <b>Step</b>: <see cref="SliderIncrements.Ones" />
         /// </value>
         /// <seealso cref="Preset.WHM_AoEHeals_DivineCaress" />
-        
-        public static UserInt WHM_AoEHeals_DivineCaressHP = 
+
+        public static UserInt WHM_AoEHeals_DivineCaressHP =
             new("WHM_AoEHeals_DivineCaressHP", 100);
-        
+
         /// <summary>
         ///     Only use Divine Caress when weaving.
         /// </summary>
@@ -1102,7 +1103,7 @@ internal partial class WHM
         /// <seealso cref="Preset.WHM_AoEHeals_DivineCaress" />
         public static UserBool WHM_AoEHeals_DivineCaressWeave =
             new("WHM_AoEHeals_DivineCaressWeave");
-        
+
         /// <summary>
         ///     Average party HP% threshold to use LiturgyOfTheBell.
         /// </summary>
@@ -1114,7 +1115,7 @@ internal partial class WHM
         /// <seealso cref="Preset.WHM_AoEHeals_LiturgyOfTheBell" />
         public static UserInt WHM_AoEHeals_LiturgyHP =
             new("WHM_AoEHeals_LiturgyHP", 30);
-        
+
         /// <summary>
         ///     Only use Liturgy when weaving.
         /// </summary>
@@ -1179,7 +1180,7 @@ internal partial class WHM
         public static readonly ContentCheck.ListSet
             WHM_AoEHeals_TemperanceDifficultyListSet =
                 ContentCheck.ListSet.Halved;
-        
+
         /// <summary>
         ///     Average party HP% threshold to use Asylum.
         /// </summary>
@@ -1191,7 +1192,7 @@ internal partial class WHM
         /// <seealso cref="Preset.WHM_AoEHeals_Asylum" />
         public static UserInt WHM_AoEHeals_AsylumHP =
             new("WHM_AoEHeals_AsylumHP", 70);
-        
+
         /// <summary>
         ///     Only use Asylum when weaving.
         /// </summary>
@@ -1225,40 +1226,40 @@ internal partial class WHM
                 ContentCheck.ListSet.Halved;
 
         #endregion
-        
+
         #region Standalone Features
 
         /// <summary>
         ///     Hard target Retargeting Options for Asylum Standalone Feature
-        /// </summary> 
+        /// </summary>
         /// <value>
         ///     <b>Default</b>: True True
         /// </value>
         /// <seealso cref="Preset.WHM_Re_Asylum" />
-        public static UserBoolArray WHM_AsylumOptions = 
+        public static UserBoolArray WHM_AsylumOptions =
             new("WHM_AsylumOptions", [true, true]);
-        
+
         /// <summary>
         ///     Hard target Retargeting Options for Liturgy Of The Bell
         ///     Standalone Feature
-        /// </summary> 
+        /// </summary>
         /// <value>
         ///     <b>Default</b>: True True
         /// </value>
         /// <seealso cref="Preset.WHM_Re_LiturgyOfTheBell" />
-        public static UserBoolArray WHM_LiturgyOfTheBellOptions = 
+        public static UserBoolArray WHM_LiturgyOfTheBellOptions =
             new ("WHM_LiturgyOfTheBellOptions", [true, true]);
-        
+
         /// <summary>
         ///     Options for Aquaveil Standalone Feature
-        /// </summary> 
+        /// </summary>
         /// <value>
         ///     <b>Default</b>: True True
         /// </value>
         /// <seealso cref="Preset.WHM_Mit_ST" />
-        public static UserBoolArray WHM_AquaveilOptions = 
+        public static UserBoolArray WHM_AquaveilOptions =
             new ("WHM_AquaveilOptions", [true, true]);
-        
+
         /// <summary>
         ///     Tetra threshold for Aquaveil standalone feature
         /// </summary>
@@ -1268,9 +1269,9 @@ internal partial class WHM
         ///     <b>Step</b>: <see cref="SliderIncrements.Ones" />
         /// </value>
         /// <seealso cref="Preset.WHM_Mit_ST" />
-        public static UserInt WHM_Aquaveil_TetraThreshold 
+        public static UserInt WHM_Aquaveil_TetraThreshold
             = new("WHM_Aquaveil_TetraThreshold", 100);
-        
+
         #endregion
 
         #endregion
