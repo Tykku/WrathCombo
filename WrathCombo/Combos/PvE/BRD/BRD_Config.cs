@@ -136,17 +136,17 @@ internal partial class BRD
 
                 #region Standalone
                 case Preset.BRD_StraightShotUpgrade_OGCDs:
-                    DrawHorizontalMultiChoice(BRD_StraightShotUpgrade_OGCDs_Options, "Empyreal Arrow", "Adds Empyreal Arrow", 4, 0);
-                    DrawHorizontalMultiChoice(BRD_StraightShotUpgrade_OGCDs_Options, "Pitch Perfect", "Adds Pitch Perfect", 4, 1);
-                    DrawHorizontalMultiChoice(BRD_StraightShotUpgrade_OGCDs_Options, "Bloodletter", "Adds Bloodletter when at max charges", 4, 2);
-                    DrawHorizontalMultiChoice(BRD_StraightShotUpgrade_OGCDs_Options, "Sidewinder", "Adds Sidewinder", 4, 3);
+                    DrawHorizontalMultiChoice(BRD_StraightShotUpgrade_OGCDs_Options, EmpyrealArrow.ActionName(), "Adds Empyreal Arrow", 4, 0);
+                    DrawHorizontalMultiChoice(BRD_StraightShotUpgrade_OGCDs_Options, PitchPerfect.ActionName(), "Adds Pitch Perfect", 4, 1);
+                    DrawHorizontalMultiChoice(BRD_StraightShotUpgrade_OGCDs_Options, Bloodletter.ActionName(), "Adds Bloodletter when at max charges", 4, 2);
+                    DrawHorizontalMultiChoice(BRD_StraightShotUpgrade_OGCDs_Options, Sidewinder.ActionName(), "Adds Sidewinder", 4, 3);
                     break;
 
                 case Preset.BRD_WideVolleyUpgrade_OGCDs:
-                    DrawHorizontalMultiChoice(BRD_WideVolleyUpgrade_OGCDs_Options, "Empyreal Arrow", "Adds Empyreal Arrow", 4, 0);
-                    DrawHorizontalMultiChoice(BRD_WideVolleyUpgrade_OGCDs_Options, "Pitch Perfect", "Adds Pitch Perfect", 4, 1);
-                    DrawHorizontalMultiChoice(BRD_WideVolleyUpgrade_OGCDs_Options, "Rain Of Death", "Adds Rain of Death when at max charges, or bloodletter below level.", 4, 2);
-                    DrawHorizontalMultiChoice(BRD_WideVolleyUpgrade_OGCDs_Options, "Sidewinder", "Adds Sidewinder", 4, 3);
+                    DrawHorizontalMultiChoice(BRD_WideVolleyUpgrade_OGCDs_Options, EmpyrealArrow.ActionName(), "Adds Empyreal Arrow", 4, 0);
+                    DrawHorizontalMultiChoice(BRD_WideVolleyUpgrade_OGCDs_Options, PitchPerfect.ActionName(), "Adds Pitch Perfect", 4, 1);
+                    DrawHorizontalMultiChoice(BRD_WideVolleyUpgrade_OGCDs_Options, RainOfDeath.ActionName(), "Adds Rain of Death when at max charges, or bloodletter below level.", 4, 2);
+                    DrawHorizontalMultiChoice(BRD_WideVolleyUpgrade_OGCDs_Options, Sidewinder.ActionName(), "Adds Sidewinder", 4, 3);
                     break;
 
                 case Preset.BRD_IronJaws:
