@@ -32,7 +32,7 @@ internal partial class SCH
                     break;
 
                 case Preset.SCH_ST_ADV_DPS_Lucid:
-                    DrawSliderInt(4000, 9500, SCH_ST_DPS_LucidOption, "MP Threshold", 150, Hundreds);
+                    DrawSliderInt(4000, 9500, SCH_ST_DPS_LucidOption, Generics.LucidMP, 150, Hundreds);
                     break;
 
                 case Preset.SCH_ST_ADV_DPS_Bio:
@@ -71,7 +71,7 @@ internal partial class SCH
                     break;
 
                 case Preset.SCH_AoE_ADV_DPS_Lucid:
-                    DrawSliderInt(4000, 9500, SCH_AoE_DPS_LucidOption, "MP Threshold", 150, Hundreds);
+                    DrawSliderInt(4000, 9500, SCH_AoE_DPS_LucidOption, Generics.LucidMP, 150, Hundreds);
                     break;
 
                 case Preset.SCH_AoE_ADV_DPS_ChainStrat:
@@ -120,7 +120,7 @@ internal partial class SCH
                     break;
 
                 case Preset.SCH_ST_Heal_Lucid:
-                    DrawSliderInt(4000, 9500, SCH_ST_Heal_LucidOption, "MP Threshold", 150, Hundreds);
+                    DrawSliderInt(4000, 9500, SCH_ST_Heal_LucidOption, Generics.LucidMP, 150, Hundreds);
                     break;
 
                 case Preset.SCH_ST_Heal_Lustrate:
@@ -215,7 +215,7 @@ internal partial class SCH
 
                 #region AoE Healing
                 case Preset.SCH_AoE_Heal_Lucid:
-                    DrawSliderInt(4000, 9500, SCH_AoE_Heal_LucidOption, "MP Threshold", 150, Hundreds);
+                    DrawSliderInt(4000, 9500, SCH_AoE_Heal_LucidOption, Generics.LucidMP, 150, Hundreds);
                     break;
 
                 case Preset.SCH_AoE_Heal:
@@ -223,8 +223,8 @@ internal partial class SCH
                     ImGui.TextUnformatted("These options are to provide optional priority to Succor or to set up Emergency tactics option.");
                     DrawSliderInt(0, 100, SCH_AoE_Heal_SuccorShieldOption, "Shield Check: Will use when less than set percentage of party have shields.", sliderIncrement: 25);
                     DrawPriorityInput(SCH_AoE_Heals_Priority, 8, 7, FormatAndCache(Generics.Action_Priority, Succor.ActionName()));
-                    DrawHorizontalMultiChoice(SCH_AoE_Heal_Succor_Options, "Emergency Tactics", "If more than the set percentage of the party has shields, will use Emergency Tactics before Succor", 2, 0);
-                    DrawHorizontalMultiChoice(SCH_AoE_Heal_Succor_Options, "Recitation", "Will use Recitation to buff Succor", 2, 1);
+                    DrawHorizontalMultiChoice(SCH_AoE_Heal_Succor_Options, EmergencyTactics.ActionName(), "If more than the set percentage of the party has shields, will use Emergency Tactics before Succor", 2, 0);
+                    DrawHorizontalMultiChoice(SCH_AoE_Heal_Succor_Options, Recitation.ActionName(), "Will use Recitation to buff Succor", 2, 1);
                     break;
 
                 case Preset.SCH_AoE_Heal_WhisperingDawn:

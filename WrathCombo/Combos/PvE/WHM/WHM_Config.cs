@@ -112,7 +112,7 @@ internal partial class WHM
                     DrawAdditionalBoolChoice(WHM_STHeals_BenedictionWeave,
                         Generics.OnlyWeave, "");
                     DrawSliderInt(1, 100, WHM_STHeals_BenedictionHP,
-                        targetStartUsingAtDescription);
+                        Generics.StopFriendlyHpPercent100);
                     DrawPriorityInput(WHM_ST_Heals_Priority, 9, 0,
                         FormatAndCache(Generics.Action_Priority, Benediction.ActionName()));
                     break;
@@ -123,7 +123,7 @@ internal partial class WHM
                     DrawAdditionalBoolChoice(WHM_STHeals_TetraWeave,
                         Generics.OnlyWeave, "");
                     DrawSliderInt(1, 100, WHM_STHeals_TetraHP,
-                        targetStartUsingAtDescription);
+                        Generics.StopFriendlyHpPercent100);
                     DrawPriorityInput(WHM_ST_Heals_Priority, 9, 1,
                         FormatAndCache(Generics.Action_Priority, Tetragrammaton.ActionName()));
                     break;
@@ -136,24 +136,24 @@ internal partial class WHM
                     DrawSliderInt(0, 1, WHM_STHeals_BenisonCharges,
                         chargesToKeepDescription);
                     DrawSliderInt(1, 100, WHM_STHeals_BenisonHP,
-                        targetStartUsingAtDescription);
+                        Generics.StopFriendlyHpPercent100);
                     DrawPriorityInput(WHM_ST_Heals_Priority, 9, 2,
                         FormatAndCache(Generics.Action_Priority, DivineBenison.ActionName()));
                     break;
 
                 case Preset.WHM_STHeals_Aquaveil:
-                    DrawHorizontalMultiChoice(WHM_STHeals_AquaveilOptions,Generics.OnlyWeave, Generics.OnlyWeave, 3, 0);
-                    DrawHorizontalMultiChoice(WHM_STHeals_AquaveilOptions,"Not On Bosses", nonBossesDescription, 3, 1);
-                    DrawHorizontalMultiChoice(WHM_STHeals_AquaveilOptions,Generics.TanksOnly, "Only on Tanks", 3, 2);
+                    DrawHorizontalMultiChoice(Generics.NonBosses,Generics.OnlyWeave, Generics.OnlyWeave, 3, 0);
+                    DrawHorizontalMultiChoice(Generics.NonBosses,Generics.NonBosses, Generics.NonBosses, 3, 1);
+                    DrawHorizontalMultiChoice(Generics.NonBosses,Generics.TanksOnly, Generics.NonBosses, 3, 2);
                     DrawSliderInt(1, 100, WHM_STHeals_AquaveilHP,
-                        targetStartUsingAtDescription);
+                        Generics.StopFriendlyHpPercent100);
                     DrawPriorityInput(WHM_ST_Heals_Priority, 9, 3,
                         FormatAndCache(Generics.Action_Priority, Aquaveil.ActionName()));
                     break;
 
                 case Preset.WHM_STHeals_Solace:
                     DrawSliderInt(1, 100, WHM_STHeals_SolaceHP,
-                        targetStartUsingAtDescription);
+                        Generics.StopFriendlyHpPercent100);
                     DrawPriorityInput(WHM_ST_Heals_Priority, 9, 4,
                         FormatAndCache(Generics.Action_Priority, AfflatusSolace.ActionName()));
                     break;
@@ -167,34 +167,34 @@ internal partial class WHM
                     DrawSliderInt(0, 100, WHM_STHeals_RegenHPLower,
                         targetStopUsingAtDescription);
                     DrawSliderInt(0, 100, WHM_STHeals_RegenHPUpper,
-                        targetStartUsingAtDescription);
+                        Generics.StopFriendlyHpPercent100);
                     DrawPriorityInput(WHM_ST_Heals_Priority, 9, 5,
                         FormatAndCache(Generics.Action_Priority, Regen.ActionName()));
                     break;
 
                 case Preset.WHM_STHeals_Temperance:
                     DrawSliderInt(1, 100, WHM_STHeals_TemperanceHP,
-                        targetStartUsingAtDescription);
-                    DrawHorizontalMultiChoice(WHM_STHeals_TemperanceOptions,Generics.OnlyWeave, Generics.OnlyWeave, 2, 0);
-                    DrawHorizontalMultiChoice(WHM_STHeals_TemperanceOptions,"Not On Bosses", nonBossesDescription, 2, 1);
+                        Generics.StopFriendlyHpPercent100);
+                    DrawHorizontalMultiChoice(Generics.NonBosses,Generics.OnlyWeave, Generics.OnlyWeave, 2, 0);
+                    DrawHorizontalMultiChoice(Generics.NonBosses,Generics.NonBosses, Generics.NonBosses, 2, 1);
                     DrawPriorityInput(WHM_ST_Heals_Priority, 9, 6,
                         FormatAndCache(Generics.Action_Priority, Temperance.ActionName()));
                     break;
 
                 case Preset.WHM_STHeals_Asylum:
                     DrawSliderInt(1, 100, WHM_STHeals_AsylumHP,
-                        targetStartUsingAtDescription);
-                    DrawHorizontalMultiChoice(WHM_STHeals_AsylumOptions,Generics.OnlyWeave, Generics.OnlyWeave, 2, 0);
-                    DrawHorizontalMultiChoice(WHM_STHeals_AsylumOptions,"Not On Bosses", nonBossesDescription, 2, 1);
+                        Generics.StopFriendlyHpPercent100);
+                    DrawHorizontalMultiChoice(Generics.NonBosses,Generics.OnlyWeave, Generics.OnlyWeave, 2, 0);
+                    DrawHorizontalMultiChoice(Generics.NonBosses,Generics.NonBosses, Generics.NonBosses, 2, 1);
                     DrawPriorityInput(WHM_ST_Heals_Priority, 9, 7,
                         FormatAndCache(Generics.Action_Priority, Asylum.ActionName()));
                     break;
 
                 case Preset.WHM_STHeals_LiturgyOfTheBell:
                     DrawSliderInt(1, 100, WHM_STHeals_LiturgyOfTheBellHP,
-                        targetStartUsingAtDescription);
-                    DrawHorizontalMultiChoice(WHM_STHeals_LiturgyOfTheBellOptions,Generics.OnlyWeave, Generics.OnlyWeave, 2, 0);
-                    DrawHorizontalMultiChoice(WHM_STHeals_LiturgyOfTheBellOptions,"Not On Bosses", nonBossesDescription, 2, 1);
+                        Generics.StopFriendlyHpPercent100);
+                    DrawHorizontalMultiChoice(Generics.NonBosses,Generics.OnlyWeave, Generics.OnlyWeave, 2, 0);
+                    DrawHorizontalMultiChoice(Generics.NonBosses, Generics.NonBosses, Generics.NonBosses, 2, 1);
                     DrawPriorityInput(WHM_ST_Heals_Priority, 9, 8,
                         FormatAndCache(Generics.Action_Priority, LiturgyOfTheBell.ActionName()));
                     break;
@@ -333,11 +333,11 @@ internal partial class WHM
                 #region Mitigation Features
 
                 case Preset.WHM_Mit_ST:
-                    DrawHorizontalMultiChoice(WHM_AquaveilOptions,
-                        "Include Divine Benison", "Will add Divine Benison for more mitigation.", 2, 0);
+                    DrawHorizontalMultiChoice(Generics.NonBosses,
+                        Generics.NonBosses, Generics.NonBosses, 2, 0);
                     ImGui.NewLine();
-                    DrawHorizontalMultiChoice(WHM_AquaveilOptions,
-                        "Include Tetragrammaton", "Will add Tetragrammaton to top off targets health.", 2, 1);
+                    DrawHorizontalMultiChoice(Generics.NonBosses,
+                        Generics.NonBosses, Generics.NonBosses, 2, 1);
                     if (WHM_AquaveilOptions[1])
                     {
                         ImGui.Indent();
@@ -355,20 +355,20 @@ internal partial class WHM
                     ImGui.Indent();
                     ImGui.TextColored(ImGuiColors.DalamudGrey, "Options to try to Retarget Asylum to before Self:");
                     ImGui.Unindent();
-                    DrawHorizontalMultiChoice(WHM_AsylumOptions,
-                        Generics.EnemyHardTarget, "Will place at hard target if enemy", 3, 0);
-                    DrawHorizontalMultiChoice(WHM_AsylumOptions,
-                        Generics.AllyHardTarget, "Will place at hard target if ally", 3, 1);
+                    DrawHorizontalMultiChoice(Generics.NonBosses,
+                        Generics.EnemyHardTarget, Generics.NonBosses, 3, 0);
+                    DrawHorizontalMultiChoice(Generics.NonBosses,
+                        Generics.AllyHardTarget, Generics.NonBosses, 3, 1);
                     break;
 
                 case Preset.WHM_Re_LiturgyOfTheBell:
                     ImGui.Indent();
                     ImGui.TextColored(ImGuiColors.DalamudGrey, "Options to try to Retarget Liturgy of the Bell to before Self:");
                     ImGui.Unindent();
-                    DrawHorizontalMultiChoice(WHM_LiturgyOfTheBellOptions,
-                        Generics.EnemyHardTarget, "Will place at hard target if enemy", 2, 0);
-                    DrawHorizontalMultiChoice(WHM_LiturgyOfTheBellOptions,
-                        Generics.AllyHardTarget, "Will place at hard target if ally", 2, 1);
+                    DrawHorizontalMultiChoice(Generics.NonBosses,
+                        Generics.EnemyHardTarget, Generics.NonBosses, 2, 0);
+                    DrawHorizontalMultiChoice(Generics.NonBosses,
+                        Generics.AllyHardTarget, Generics.NonBosses, 2, 1);
                     break;
 
 
@@ -384,10 +384,6 @@ internal partial class WHM
         /// 2nd smallest bar width
         private const float medium = 150f;
 
-        /// Bar Description for target HP% to start using plus disable text
-        private const string targetStartUsingAtDescription =
-            "Target HP% to use at or below (100 = Disable check)";
-
         /// Bar Description for Party HP%  Average to start using plus disable text
         private const string partyStartUsingAtDescription =
             "Start using when below party average HP% (100 = Disable check)";
@@ -395,10 +391,6 @@ internal partial class WHM
         /// Bar Description for target HP% to start using plus disable text
         private const string targetStopUsingAtDescription =
             " Target HP% to stop using (0 = Use Always, 100 = Never)";
-
-        /// Bar Description for target HP% to start using plus disable text
-        private const string targetStopUsingOnBossAtDescription =
-            " Bosses HP% to stop using (0 = Use Always, 100 = Never)";
 
         /// Description for MP threshold
         private const string mpThresholdDescription =
