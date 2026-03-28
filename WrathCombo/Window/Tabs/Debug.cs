@@ -829,6 +829,23 @@ internal class Debug : ConfigWindow, IDisposable
                         CustomStyleText("Number of Targets Hit:", $"{NumberOfEnemiesInRange(_debugSpell.Value.RowId, target)}");
                 }
 
+                if (_debugSpell.Value.CastType != 1)
+                {
+                    ImGui.Spacing();
+                    if (ImGui.CollapsingHeader("Enemies in Range"))
+                    {
+                        ImGui.Indent();
+                        foreach (var e in EnemiesInRange(_debugSpell.Value.RowId))
+                        {
+                            if (ImGui.CollapsingHeader($"{e?.Name}###{e?.SafeGameObjectId}"))
+                            {
+                                DrawTargetInfo(e);
+                            }
+                        }
+                        ImGui.Unindent();
+                    }
+                }
+
                 if (ImGui.TreeNode("Data Dump"))
                 {
                     Util.ShowObject(_debugSpell.Value);
