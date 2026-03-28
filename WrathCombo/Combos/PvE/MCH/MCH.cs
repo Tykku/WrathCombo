@@ -89,7 +89,7 @@ internal partial class MCH : PhysicalRanged
                     if (ActionReady(Dismantle) &&
                         !HasStatusEffect(Debuffs.Dismantled, CurrentTarget, true) &&
                         CanApplyStatus(CurrentTarget, Debuffs.Dismantled) &&
-                        GroupDamageIncoming())
+                        !JustUsed(Tactician, 6) && GroupDamageIncoming())
                         return Dismantle;
 
                     // Healing
@@ -357,14 +357,14 @@ internal partial class MCH : PhysicalRanged
                     }
 
                     if (IsEnabled(Preset.MCH_ST_Dismantle) &&
-                        ActionReady(Dismantle) &&
-                        GetStatusEffectRemainingTime(Debuffs.Dismantled, CurrentTarget, true) > MCH_DismantledDuration &&
-                        GroupDamageIncoming())
+                        ActionReady(Dismantle) && GroupDamageIncoming() &&
+                        !JustUsed(Tactician, 6) && CanApplyStatus(CurrentTarget, Debuffs.Dismantled) &&
+                        GetStatusEffectRemainingTime(Debuffs.Dismantled, CurrentTarget, true) > MCH_DismantledDuration)
                         return Dismantle;
 
                     if (IsEnabled(Preset.MCH_ST_Adv_Tactician) &&
-                        ActionReady(Tactician) && GroupDamageIncoming() && !JustUsed(Dismantle, 6) &&
-                        NumberOfAlliesInRange(Tactician) >= GetPartyMembers().Count * .75 &&
+                        ActionReady(Tactician) && GroupDamageIncoming() &&
+                        !JustUsed(Dismantle, 6) && NumberOfAlliesInRange(Tactician) >= GetPartyMembers().Count * .75 &&
                         !HasAnyStatusEffects([BRD.Buffs.Troubadour, DNC.Buffs.ShieldSamba, Buffs.Tactician], anyOwner: true))
                         return Tactician;
 
