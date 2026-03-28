@@ -81,7 +81,7 @@ internal partial class WHM
                         targetStopUsingAtDescription);
                     ImGui.Indent();
                     DrawRoundedSliderFloat(0, 5, WHM_AoE_MainCombo_DoT_Reapply,
-                        reapplyTimeRemainingDescription,
+                        Generics.StopSeconds,
                         itemWidth: little, digits: 1);
                     ImGui.Unindent();
                     DrawSliderInt(0, 10, WHM_AoE_MainCombo_DoT_MaxTargets,
@@ -109,7 +109,7 @@ internal partial class WHM
 
                 case Preset.WHM_STHeals_Benediction:
                     DrawAdditionalBoolChoice(WHM_STHeals_BenedictionWeave,
-                        weaveDescription, "");
+                        Generics.OnlyWeave, "");
                     DrawSliderInt(1, 100, WHM_STHeals_BenedictionHP,
                         targetStartUsingAtDescription);
                     DrawPriorityInput(WHM_ST_Heals_Priority, 9, 0,
@@ -120,7 +120,7 @@ internal partial class WHM
                     DrawAdditionalBoolChoice(WHM_STHeals_TetraBalance,
                         "Balance Charges Option", "Will only use if Tetra Charges are greater than or equal to Divine Benison Charges.");
                     DrawAdditionalBoolChoice(WHM_STHeals_TetraWeave,
-                        weaveDescription, "");
+                        Generics.OnlyWeave, "");
                     DrawSliderInt(1, 100, WHM_STHeals_TetraHP,
                         targetStartUsingAtDescription);
                     DrawPriorityInput(WHM_ST_Heals_Priority, 9, 1,
@@ -131,7 +131,7 @@ internal partial class WHM
                     DrawAdditionalBoolChoice(WHM_STHeals_BenisonBalance,
                         "Balance Charges Option", "Will only use if Divine Benison Charges are greater than or equal to Tetragrammaton Charges.");
                     DrawAdditionalBoolChoice(WHM_STHeals_BenisonWeave,
-                        weaveDescription, "");
+                        Generics.OnlyWeave, "");
                     DrawSliderInt(0, 1, WHM_STHeals_BenisonCharges,
                         chargesToKeepDescription);
                     DrawSliderInt(1, 100, WHM_STHeals_BenisonHP,
@@ -141,7 +141,7 @@ internal partial class WHM
                     break;
 
                 case Preset.WHM_STHeals_Aquaveil:
-                    DrawHorizontalMultiChoice(WHM_STHeals_AquaveilOptions,Generics.OnlyWeave, weaveDescription, 3, 0);
+                    DrawHorizontalMultiChoice(WHM_STHeals_AquaveilOptions,Generics.OnlyWeave, Generics.OnlyWeave, 3, 0);
                     DrawHorizontalMultiChoice(WHM_STHeals_AquaveilOptions,"Not On Bosses", nonBossesDescription, 3, 1);
                     DrawHorizontalMultiChoice(WHM_STHeals_AquaveilOptions,Generics.TanksOnly, "Only on Tanks", 3, 2);
                     DrawSliderInt(1, 100, WHM_STHeals_AquaveilHP,
@@ -160,7 +160,7 @@ internal partial class WHM
                 case Preset.WHM_STHeals_Regen:
                     ImGui.Indent();
                     DrawRoundedSliderFloat(0f, 6f, WHM_STHeals_RegenTimer,
-                        reapplyTimeRemainingDescription,
+                        Generics.StopSeconds,
                         itemWidth: little);
                     ImGui.Unindent();
                     DrawSliderInt(0, 100, WHM_STHeals_RegenHPLower,
@@ -174,7 +174,7 @@ internal partial class WHM
                 case Preset.WHM_STHeals_Temperance:
                     DrawSliderInt(1, 100, WHM_STHeals_TemperanceHP,
                         targetStartUsingAtDescription);
-                    DrawHorizontalMultiChoice(WHM_STHeals_TemperanceOptions,Generics.OnlyWeave, weaveDescription, 2, 0);
+                    DrawHorizontalMultiChoice(WHM_STHeals_TemperanceOptions,Generics.OnlyWeave, Generics.OnlyWeave, 2, 0);
                     DrawHorizontalMultiChoice(WHM_STHeals_TemperanceOptions,"Not On Bosses", nonBossesDescription, 2, 1);
                     DrawPriorityInput(WHM_ST_Heals_Priority, 9, 6,
                         $"{Temperance.ActionName()} Priority: ");
@@ -183,7 +183,7 @@ internal partial class WHM
                 case Preset.WHM_STHeals_Asylum:
                     DrawSliderInt(1, 100, WHM_STHeals_AsylumHP,
                         targetStartUsingAtDescription);
-                    DrawHorizontalMultiChoice(WHM_STHeals_AsylumOptions,Generics.OnlyWeave, weaveDescription, 2, 0);
+                    DrawHorizontalMultiChoice(WHM_STHeals_AsylumOptions,Generics.OnlyWeave, Generics.OnlyWeave, 2, 0);
                     DrawHorizontalMultiChoice(WHM_STHeals_AsylumOptions,"Not On Bosses", nonBossesDescription, 2, 1);
                     DrawPriorityInput(WHM_ST_Heals_Priority, 9, 7,
                         $"{Asylum.ActionName()} Priority: ");
@@ -192,7 +192,7 @@ internal partial class WHM
                 case Preset.WHM_STHeals_LiturgyOfTheBell:
                     DrawSliderInt(1, 100, WHM_STHeals_LiturgyOfTheBellHP,
                         targetStartUsingAtDescription);
-                    DrawHorizontalMultiChoice(WHM_STHeals_LiturgyOfTheBellOptions,Generics.OnlyWeave, weaveDescription, 2, 0);
+                    DrawHorizontalMultiChoice(WHM_STHeals_LiturgyOfTheBellOptions,Generics.OnlyWeave, Generics.OnlyWeave, 2, 0);
                     DrawHorizontalMultiChoice(WHM_STHeals_LiturgyOfTheBellOptions,"Not On Bosses", nonBossesDescription, 2, 1);
                     DrawPriorityInput(WHM_ST_Heals_Priority, 9, 8,
                         $"{LiturgyOfTheBell.ActionName()} Priority: ");
@@ -223,7 +223,7 @@ internal partial class WHM
                         partyStartUsingAtDescription);
                     ImGui.Indent();
                     DrawRoundedSliderFloat(0f, 6f, WHM_AoEHeals_MedicaTime,
-                        reapplyTimeRemainingDescription,
+                        Generics.StopSeconds,
                         itemWidth: little);
                     ImGui.Unindent();
                     DrawPriorityInput(WHM_AoE_Heals_Priority, 9, 0,
@@ -246,7 +246,7 @@ internal partial class WHM
                     DrawSliderInt(1, 100, WHM_AoEHeals_PlenaryHP,
                         partyStartUsingAtDescription);
                     DrawAdditionalBoolChoice(WHM_AoEHeals_PlenaryWeave,
-                        weaveDescription,
+                        Generics.OnlyWeave,
                         "");
                     DrawPriorityInput(WHM_AoE_Heals_Priority, 9, 2,
                         $"{PlenaryIndulgence.ActionName()} Priority: ");
@@ -256,7 +256,7 @@ internal partial class WHM
                     DrawSliderInt(1, 100, WHM_AoEHeals_TemperanceHP,
                         partyStartUsingAtDescription);
                     DrawAdditionalBoolChoice(WHM_AoEHeals_TemperanceWeave,
-                        weaveDescription,
+                        Generics.OnlyWeave,
                         "");
                     DrawDifficultyMultiChoice(WHM_AoEHeals_TemperanceDifficulty,
                         WHM_AoEHeals_TemperanceDifficultyListSet,
@@ -269,7 +269,7 @@ internal partial class WHM
                     DrawSliderInt(1, 100, WHM_AoEHeals_AsylumHP,
                         partyStartUsingAtDescription);
                     DrawAdditionalBoolChoice(WHM_AoEHeals_AsylumWeave,
-                        weaveDescription,
+                        Generics.OnlyWeave,
                         "");
                     DrawDifficultyMultiChoice(WHM_AoEHeals_AsylumDifficulty,
                         WHM_AoEHeals_AsylumDifficultyListSet,
@@ -282,7 +282,7 @@ internal partial class WHM
                     DrawSliderInt(1, 100, WHM_AoEHeals_LiturgyHP,
                         partyStartUsingAtDescription);
                     DrawAdditionalBoolChoice(WHM_AoEHeals_LiturgyWeave,
-                        weaveDescription,
+                        Generics.OnlyWeave,
                         "");
                     DrawDifficultyMultiChoice(WHM_AoEHeals_LiturgyDifficulty,
                         WHM_AoEHeals_LiturgyDifficultyListSet,
@@ -302,7 +302,7 @@ internal partial class WHM
                     DrawSliderInt(1, 100, WHM_AoEHeals_AssizeHP,
                         partyStartUsingAtDescription);
                     DrawAdditionalBoolChoice(WHM_AoEHeals_AssizeWeave,
-                        weaveDescription, "");
+                        Generics.OnlyWeave, "");
                     DrawPriorityInput(WHM_AoE_Heals_Priority, 9, 7,
                         $"{Assize.ActionName()} Priority: ");
                     break;
@@ -311,7 +311,7 @@ internal partial class WHM
                     DrawSliderInt(1, 100, WHM_AoEHeals_DivineCaressHP,
                         partyStartUsingAtDescription);
                     DrawAdditionalBoolChoice(WHM_AoEHeals_DivineCaressWeave,
-                        weaveDescription, "");
+                        Generics.OnlyWeave, "");
                     DrawPriorityInput(WHM_AoE_Heals_Priority, 9, 8,
                         $"{DivineCaress.ActionName()} Priority: ");
                     break;
@@ -403,17 +403,9 @@ internal partial class WHM
         private const string mpThresholdDescription =
             "MP to be at or below";
 
-        /// Description for reapplication of Buff/DoT time remaining
-        private const string reapplyTimeRemainingDescription =
-            Generics.StopSeconds;
-
         /// Description for charges to keep
         private const string chargesToKeepDescription =
             "# charges to keep (0 = Use All)";
-
-        /// Description for only weaving
-        private const string weaveDescription =
-            Generics.OnlyWeave;
 
         private const string nonBossesDescription =
             "Will not use on ST in Boss encounters.";

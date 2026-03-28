@@ -215,6 +215,15 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Disables the use of mitigations..
+        /// </summary>
+        internal static string DisablesTheUseOfMitigations {
+            get {
+                return ResourceManager.GetString("DisablesTheUseOfMitigations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Don&apos;t Use {0}.
         /// </summary>
         internal static string DontUse0 {
@@ -233,6 +242,15 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enables the use of mitigations..
+        /// </summary>
+        internal static string EnablesTheUseOfMitigations {
+            get {
+                return ResourceManager.GetString("EnablesTheUseOfMitigations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enemy Hard Target.
         /// </summary>
         internal static string EnemyHardTarget {
@@ -247,6 +265,24 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         internal static string EnemyTypeCheck {
             get {
                 return ResourceManager.GetString("EnemyTypeCheck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exclude Advanced Mitigations.
+        /// </summary>
+        internal static string ExcludeAdvancedMitigations {
+            get {
+                return ResourceManager.GetString("ExcludeAdvancedMitigations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exclude Simple Mitigations.
+        /// </summary>
+        internal static string ExcludeSimpleMitigations {
+            get {
+                return ResourceManager.GetString("ExcludeSimpleMitigations", resourceCulture);
             }
         }
         
@@ -324,11 +360,29 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Include Advanced Mitigations.
+        /// </summary>
+        internal static string IncludeAdvancedMitigations {
+            get {
+                return ResourceManager.GetString("IncludeAdvancedMitigations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Include Shields in HP Percent Sliders.
         /// </summary>
         internal static string IncludeShields {
             get {
                 return ResourceManager.GetString("IncludeShields", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Include Simple Mitigations.
+        /// </summary>
+        internal static string IncludeSimpleMitigations {
+            get {
+                return ResourceManager.GetString("IncludeSimpleMitigations", resourceCulture);
             }
         }
         
