@@ -48,7 +48,7 @@ internal partial class WHM
                     ImGui.Indent();
                     DrawRoundedSliderFloat(0, 4, WHM_ST_DPS_AeroUptime_Threshold, Generics.DoTSecondsRemainingZeroDisable, digits: 1);
                     ImGui.Unindent();
-                    DrawAdditionalBoolChoice(WHM_ST_MainCombo_DoT_TwoTarget, "Two target dotting", "Will maintain Damage over time spells on two targets if applicable.");
+                    DrawAdditionalBoolChoice(WHM_ST_MainCombo_DoT_TwoTarget, Generics.TwoTargetDotting, Generics.TwoTargetDottingDescription);
                     break;
 
                 case Preset.WHM_ST_MainCombo_Misery:
@@ -85,7 +85,7 @@ internal partial class WHM
                         itemWidth: little, digits: 1);
                     ImGui.Unindent();
                     DrawSliderInt(0, 10, WHM_AoE_MainCombo_DoT_MaxTargets,
-                        "Maximum number of targets to employ multi-dotting ");
+                        Generics.MaxTargetsMultiDot);
                     break;
 
                 case Preset.WHM_AoE_DPS_Misery:
@@ -103,7 +103,7 @@ internal partial class WHM
 
                 case Preset.WHM_STHeals:
                     DrawAdditionalBoolChoice(WHM_STHeals_IncludeShields,
-                        "Include Shields in HP Percent Sliders",
+                        Generics.IncludeShields,
                         "");
                     break;
 
@@ -141,9 +141,9 @@ internal partial class WHM
                     break;
 
                 case Preset.WHM_STHeals_Aquaveil:
-                    DrawHorizontalMultiChoice(WHM_STHeals_AquaveilOptions,"Only Weave", weaveDescription, 3, 0);
+                    DrawHorizontalMultiChoice(WHM_STHeals_AquaveilOptions,Generics.OnlyWeave, weaveDescription, 3, 0);
                     DrawHorizontalMultiChoice(WHM_STHeals_AquaveilOptions,"Not On Bosses", nonBossesDescription, 3, 1);
-                    DrawHorizontalMultiChoice(WHM_STHeals_AquaveilOptions,"Tanks Only", "Only on Tanks", 3, 2);
+                    DrawHorizontalMultiChoice(WHM_STHeals_AquaveilOptions,Generics.TanksOnly, "Only on Tanks", 3, 2);
                     DrawSliderInt(1, 100, WHM_STHeals_AquaveilHP,
                         targetStartUsingAtDescription);
                     DrawPriorityInput(WHM_ST_Heals_Priority, 9, 3,
@@ -174,7 +174,7 @@ internal partial class WHM
                 case Preset.WHM_STHeals_Temperance:
                     DrawSliderInt(1, 100, WHM_STHeals_TemperanceHP,
                         targetStartUsingAtDescription);
-                    DrawHorizontalMultiChoice(WHM_STHeals_TemperanceOptions,"Only Weave", weaveDescription, 2, 0);
+                    DrawHorizontalMultiChoice(WHM_STHeals_TemperanceOptions,Generics.OnlyWeave, weaveDescription, 2, 0);
                     DrawHorizontalMultiChoice(WHM_STHeals_TemperanceOptions,"Not On Bosses", nonBossesDescription, 2, 1);
                     DrawPriorityInput(WHM_ST_Heals_Priority, 9, 6,
                         $"{Temperance.ActionName()} Priority: ");
@@ -183,7 +183,7 @@ internal partial class WHM
                 case Preset.WHM_STHeals_Asylum:
                     DrawSliderInt(1, 100, WHM_STHeals_AsylumHP,
                         targetStartUsingAtDescription);
-                    DrawHorizontalMultiChoice(WHM_STHeals_AsylumOptions,"Only Weave", weaveDescription, 2, 0);
+                    DrawHorizontalMultiChoice(WHM_STHeals_AsylumOptions,Generics.OnlyWeave, weaveDescription, 2, 0);
                     DrawHorizontalMultiChoice(WHM_STHeals_AsylumOptions,"Not On Bosses", nonBossesDescription, 2, 1);
                     DrawPriorityInput(WHM_ST_Heals_Priority, 9, 7,
                         $"{Asylum.ActionName()} Priority: ");
@@ -192,7 +192,7 @@ internal partial class WHM
                 case Preset.WHM_STHeals_LiturgyOfTheBell:
                     DrawSliderInt(1, 100, WHM_STHeals_LiturgyOfTheBellHP,
                         targetStartUsingAtDescription);
-                    DrawHorizontalMultiChoice(WHM_STHeals_LiturgyOfTheBellOptions,"Only Weave", weaveDescription, 2, 0);
+                    DrawHorizontalMultiChoice(WHM_STHeals_LiturgyOfTheBellOptions,Generics.OnlyWeave, weaveDescription, 2, 0);
                     DrawHorizontalMultiChoice(WHM_STHeals_LiturgyOfTheBellOptions,"Not On Bosses", nonBossesDescription, 2, 1);
                     DrawPriorityInput(WHM_ST_Heals_Priority, 9, 8,
                         $"{LiturgyOfTheBell.ActionName()} Priority: ");
@@ -355,9 +355,9 @@ internal partial class WHM
                     ImGui.TextColored(ImGuiColors.DalamudGrey, "Options to try to Retarget Asylum to before Self:");
                     ImGui.Unindent();
                     DrawHorizontalMultiChoice(WHM_AsylumOptions,
-                        "Enemy Hard Target", "Will place at hard target if enemy", 3, 0);
+                        Generics.EnemyHardTarget, "Will place at hard target if enemy", 3, 0);
                     DrawHorizontalMultiChoice(WHM_AsylumOptions,
-                        "Ally Hard Target", "Will place at hard target if ally", 3, 1);
+                        Generics.AllyHardTarget, "Will place at hard target if ally", 3, 1);
                     break;
 
                 case Preset.WHM_Re_LiturgyOfTheBell:
@@ -365,9 +365,9 @@ internal partial class WHM
                     ImGui.TextColored(ImGuiColors.DalamudGrey, "Options to try to Retarget Liturgy of the Bell to before Self:");
                     ImGui.Unindent();
                     DrawHorizontalMultiChoice(WHM_LiturgyOfTheBellOptions,
-                        "Enemy Hard Target", "Will place at hard target if enemy", 2, 0);
+                        Generics.EnemyHardTarget, "Will place at hard target if enemy", 2, 0);
                     DrawHorizontalMultiChoice(WHM_LiturgyOfTheBellOptions,
-                        "Ally Hard Target", "Will place at hard target if ally", 2, 1);
+                        Generics.AllyHardTarget, "Will place at hard target if ally", 2, 1);
                     break;
 
 
@@ -405,7 +405,7 @@ internal partial class WHM
 
         /// Description for reapplication of Buff/DoT time remaining
         private const string reapplyTimeRemainingDescription =
-            "Seconds remaining before reapplying (0 = Do not reapply early)";
+            Generics.StopSeconds;
 
         /// Description for charges to keep
         private const string chargesToKeepDescription =
@@ -413,7 +413,7 @@ internal partial class WHM
 
         /// Description for only weaving
         private const string weaveDescription =
-            "Only Weave";
+            Generics.OnlyWeave;
 
         private const string nonBossesDescription =
             "Will not use on ST in Boss encounters.";
