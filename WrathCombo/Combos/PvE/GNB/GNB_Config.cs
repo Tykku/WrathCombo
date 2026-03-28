@@ -80,23 +80,23 @@ internal partial class GNB
                 #region Combo Mitigations
 
                 case Preset.GNB_ST_Simple:
-                    DrawHorizontalRadioButton(GNB_ST_MitOptions, "Include Simple Mitigations", "Enables the use of mitigations.", 0);
-                    DrawHorizontalRadioButton(GNB_ST_MitOptions, "Exclude Simple Mitigations", "Disables the use of mitigations.", 1);
+                    DrawHorizontalRadioButton(GNB_ST_MitOptions, Generics.IncludeSimpleMitigations, Generics.EnablesTheUseOfMitigations, 0);
+                    DrawHorizontalRadioButton(GNB_ST_MitOptions, Generics.ExcludeSimpleMitigations, Generics.DisablesTheUseOfMitigations, 1);
                     break;
 
                 case Preset.GNB_AoE_Simple:
-                    DrawHorizontalRadioButton(GNB_AoE_MitOptions, "Include Simple Mitigations", "Enables the use of mitigations.", 0);
-                    DrawHorizontalRadioButton(GNB_AoE_MitOptions, "Exclude Simple Mitigations", "Disables the use of mitigations.", 1);
+                    DrawHorizontalRadioButton(GNB_AoE_MitOptions, Generics.IncludeSimpleMitigations, Generics.EnablesTheUseOfMitigations, 0);
+                    DrawHorizontalRadioButton(GNB_AoE_MitOptions, Generics.ExcludeSimpleMitigations, Generics.DisablesTheUseOfMitigations, 1);
                     break;
 
                 case Preset.GNB_ST_Advanced:
-                    DrawHorizontalRadioButton(GNB_ST_Advanced_MitOptions, "Include Advanced Mitigations", "Enables the use of mitigations.", 0);
-                    DrawHorizontalRadioButton(GNB_ST_Advanced_MitOptions, "Exclude Advanced Mitigations", "Disables the use of mitigations.", 1);
+                    DrawHorizontalRadioButton(GNB_ST_Advanced_MitOptions, Generics.IncludeAdvancedMitigations , Generics.EnablesTheUseOfMitigations, 0);
+                    DrawHorizontalRadioButton(GNB_ST_Advanced_MitOptions, Generics.ExcludeAdvancedMitigations, Generics.DisablesTheUseOfMitigations, 1);
                     break;
 
                 case Preset.GNB_AoE_Advanced:
-                    DrawHorizontalRadioButton(GNB_AoE_Advanced_MitOptions, "Include Advanced Mitigations", "Enables the use of mitigations.", 0);
-                    DrawHorizontalRadioButton(GNB_AoE_Advanced_MitOptions, "Exclude Advanced Mitigations", "Disables the use of mitigations.", 1);
+                    DrawHorizontalRadioButton(GNB_AoE_Advanced_MitOptions, Generics.IncludeAdvancedMitigations , Generics.EnablesTheUseOfMitigations, 0);
+                    DrawHorizontalRadioButton(GNB_AoE_Advanced_MitOptions, Generics.ExcludeAdvancedMitigations, Generics.DisablesTheUseOfMitigations, 1);
                     break;
 
                 case Preset.GNB_Mitigation_NonBoss:

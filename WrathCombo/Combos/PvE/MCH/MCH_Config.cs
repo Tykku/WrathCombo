@@ -2,6 +2,7 @@ using Dalamud.Interface.Colors;
 using WrathCombo.CustomComboNS.Functions;
 using WrathCombo.Extensions;
 using WrathCombo.Resources.Localization.JobConfigs;
+using static WrathCombo.Window.Text;
 using static WrathCombo.Window.Functions.UserConfig;
 namespace WrathCombo.Combos.PvE;
 
@@ -215,10 +216,10 @@ internal partial class MCH
                 case Preset.MCH_AoE_Adv_FlameThrower:
 
                     DrawHorizontalRadioButton(MCH_AoE_FlamethrowerMovement,
-                        Generics.StationaryOnly, $"Use {Flamethrower.ActionName()} only while stationary", 0);
+                        Generics.StationaryOnly, FormatAndCache(Generics.UseActionOnlyWhileStationary, Flamethrower.ActionName()), 0);
 
                     DrawHorizontalRadioButton(MCH_AoE_FlamethrowerMovement,
-                        Generics.AnyMovement, $"Use {Flamethrower.ActionName()} regardless of any movement conditions.", 1);
+                        Generics.AnyMovement, FormatAndCache(Generics.Uses0RegardlessOfAnyMovementConditions, Flamethrower.ActionName()), 1);
 
                     ImGui.Spacing();
                     if (MCH_AoE_FlamethrowerMovement == 0)

@@ -341,4 +341,35 @@
   <data name="InMeleeRange" xml:space="preserve">
     <value>In Melee Range</value>
   </data>
+  <data name="IncludeSimpleMitigations" xml:space="preserve">
+    <value>Include Simple Mitigations</value>
+  </data>
+  <data name="ExcludeSimpleMitigations" xml:space="preserve">
+    <value>Exclude Simple Mitigations</value>
+  </data>
+  <data name="EnablesTheUseOfMitigations" xml:space="preserve">
+    <value>Enables the use of mitigations.</value>
+  </data>
+  <data name="DisablesTheUseOfMitigations" xml:space="preserve">
+    <value>Disables the use of mitigations.</value>
+  </data>
+  <data name="IncludeAdvancedMitigations" xml:space="preserve">
+    <value>Include Advanced Mitigations</value>
+  </data>
+  <data name="ExcludeAdvancedMitigations" xml:space="preserve">
+    <value>Exclude Advanced Mitigations</value>
+  </data>
+  <data name="ActionHPPercentageThreshold" xml:space="preserve">
+    <value>{0} HP % Threshold</value>
+  </data>
+  <data name="UseActionOnlyWhileStationary" xml:space="preserve">
+    <value>Use {0} only while stationary</value>
+  </data>
+  <data name="UseWhenDistanceFromTargetIsLessThanOrEqualTo" xml:space="preserve">
+    <value> Use when Distance from target is less than or equal to:</value>
+  </data>
+  <data name="Uses0RegardlessOfAnyMovementConditions" xml:space="preserve">
+    <value>Uses {0} regardless of any movement conditions.
+NOTE: This could possibly get you killed</value>
+  </data>
 </root>

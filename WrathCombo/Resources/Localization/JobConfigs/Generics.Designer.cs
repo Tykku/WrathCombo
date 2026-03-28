@@ -88,6 +88,15 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} HP % Threshold.
+        /// </summary>
+        internal static string ActionHPPercentageThreshold {
+            get {
+                return ResourceManager.GetString("ActionHPPercentageThreshold", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to All Content.
         /// </summary>
         internal static string AllContent {
@@ -215,6 +224,15 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Disables the use of mitigations..
+        /// </summary>
+        internal static string DisablesTheUseOfMitigations {
+            get {
+                return ResourceManager.GetString("DisablesTheUseOfMitigations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Don&apos;t Use {0}.
         /// </summary>
         internal static string DontUse0 {
@@ -233,6 +251,15 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enables the use of mitigations..
+        /// </summary>
+        internal static string EnablesTheUseOfMitigations {
+            get {
+                return ResourceManager.GetString("EnablesTheUseOfMitigations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enemy Hard Target.
         /// </summary>
         internal static string EnemyHardTarget {
@@ -247,6 +274,24 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         internal static string EnemyTypeCheck {
             get {
                 return ResourceManager.GetString("EnemyTypeCheck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exclude Advanced Mitigations.
+        /// </summary>
+        internal static string ExcludeAdvancedMitigations {
+            get {
+                return ResourceManager.GetString("ExcludeAdvancedMitigations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exclude Simple Mitigations.
+        /// </summary>
+        internal static string ExcludeSimpleMitigations {
+            get {
+                return ResourceManager.GetString("ExcludeSimpleMitigations", resourceCulture);
             }
         }
         
@@ -324,11 +369,29 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Include Advanced Mitigations.
+        /// </summary>
+        internal static string IncludeAdvancedMitigations {
+            get {
+                return ResourceManager.GetString("IncludeAdvancedMitigations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Include Shields in HP Percent Sliders.
         /// </summary>
         internal static string IncludeShields {
             get {
                 return ResourceManager.GetString("IncludeShields", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Include Simple Mitigations.
+        /// </summary>
+        internal static string IncludeSimpleMitigations {
+            get {
+                return ResourceManager.GetString("IncludeSimpleMitigations", resourceCulture);
             }
         }
         
@@ -677,11 +740,39 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Use {0} only while stationary.
+        /// </summary>
+        internal static string UseActionOnlyWhileStationary {
+            get {
+                return ResourceManager.GetString("UseActionOnlyWhileStationary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uses {0} regardless of any movement conditions.
+        ///NOTE: This could possibly get you killed.
+        /// </summary>
+        internal static string Uses0RegardlessOfAnyMovementConditions {
+            get {
+                return ResourceManager.GetString("Uses0RegardlessOfAnyMovementConditions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Uses Standard opener.
         /// </summary>
         internal static string UsesStandardOpener {
             get {
                 return ResourceManager.GetString("UsesStandardOpener", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  Use when Distance from target is less than or equal to:.
+        /// </summary>
+        internal static string UseWhenDistanceFromTargetIsLessThanOrEqualTo {
+            get {
+                return ResourceManager.GetString("UseWhenDistanceFromTargetIsLessThanOrEqualTo", resourceCulture);
             }
         }
         

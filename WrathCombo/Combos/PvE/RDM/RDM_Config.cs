@@ -117,7 +117,7 @@ internal partial class RDM
 
                 case Preset.RDM_ST_Corpsacorps:
                     DrawSliderInt(0, 25, RDM_ST_Corpsacorps_Distance,
-                        " Use when Distance from target is less than or equal to:");
+                        Generics.UseWhenDistanceFromTargetIsLessThanOrEqualTo);
 
                     DrawSliderInt(0, 5, RDM_ST_Corpsacorps_Time,
                         " How long you need to be stationary to use. Zero to disable");
@@ -138,7 +138,7 @@ internal partial class RDM
                 #region AOE
                 case Preset.RDM_AoE_Corpsacorps:
                     DrawSliderInt(0, 25, RDM_AoE_Corpsacorps_Distance,
-                        " Use when Distance from target is less than or equal to:");
+                        Generics.UseWhenDistanceFromTargetIsLessThanOrEqualTo);
                     DrawSliderInt(0, 5, RDM_AoE_Corpsacorps_Time,
                         " How long you need to be stationary to use. Zero to disable");
                     break;

@@ -5,6 +5,7 @@ using WrathCombo.Data;
 using WrathCombo.Extensions;
 using WrathCombo.Resources.Localization.JobConfigs;
 using WrathCombo.Window.Functions;
+using static WrathCombo.Window.Text;
 using static WrathCombo.Window.Functions.UserConfig;
 using BossAvoidance = WrathCombo.Combos.PvE.All.Enums.BossAvoidance;
 using PartyRequirement = WrathCombo.Combos.PvE.All.Enums.PartyRequirement;
@@ -20,23 +21,23 @@ internal partial class WAR
             {
                 #region Combo Mitigations
                 case Preset.WAR_ST_Simple:
-                    DrawHorizontalRadioButton(WAR_ST_MitsOptions, "Include Simple Mitigations", "Enables the use of mitigations.", 0);
-                    DrawHorizontalRadioButton(WAR_ST_MitsOptions, "Exclude Simple Mitigations", "Disables the use of mitigations.", 1);
+                    DrawHorizontalRadioButton(WAR_ST_MitsOptions, Generics.IncludeSimpleMitigations, Generics.EnablesTheUseOfMitigations, 0);
+                    DrawHorizontalRadioButton(WAR_ST_MitsOptions, Generics.ExcludeSimpleMitigations, Generics.DisablesTheUseOfMitigations, 1);
                     break;
 
                 case Preset.WAR_AoE_Simple:
-                    DrawHorizontalRadioButton(WAR_AoE_MitsOptions, "Include Simple Mitigations", "Enables the use of mitigations.", 0);
-                    DrawHorizontalRadioButton(WAR_AoE_MitsOptions, "Exclude Simple Mitigations", "Disables the use of mitigations.", 1);
+                    DrawHorizontalRadioButton(WAR_AoE_MitsOptions, Generics.IncludeSimpleMitigations, Generics.EnablesTheUseOfMitigations, 0);
+                    DrawHorizontalRadioButton(WAR_AoE_MitsOptions, Generics.ExcludeSimpleMitigations, Generics.DisablesTheUseOfMitigations, 1);
                     break;
 
                 case Preset.WAR_ST_Advanced:
-                    DrawHorizontalRadioButton(WAR_ST_Advanced_MitsOptions, "Include Advanced Mitigations", "Enables the use of mitigations.", 0);
-                    DrawHorizontalRadioButton(WAR_ST_Advanced_MitsOptions, "Exclude Advanced Mitigations", "Disables the use of mitigations.", 1);
+                    DrawHorizontalRadioButton(WAR_ST_Advanced_MitsOptions, Generics.IncludeAdvancedMitigations , Generics.EnablesTheUseOfMitigations, 0);
+                    DrawHorizontalRadioButton(WAR_ST_Advanced_MitsOptions, Generics.ExcludeAdvancedMitigations, Generics.DisablesTheUseOfMitigations, 1);
                     break;
 
                 case Preset.WAR_AoE_Advanced:
-                    DrawHorizontalRadioButton(WAR_AoE_Advanced_MitsOptions, "Include Advanced Mitigations", "Enables the use of advanced mitigations.", 0);
-                    DrawHorizontalRadioButton(WAR_AoE_Advanced_MitsOptions, "Exclude Advanced Mitigations", "Disables the use of mitigations.", 1);
+                    DrawHorizontalRadioButton(WAR_AoE_Advanced_MitsOptions, Generics.IncludeAdvancedMitigations , Generics.EnablesTheUseOfMitigations, 0);
+                    DrawHorizontalRadioButton(WAR_AoE_Advanced_MitsOptions, Generics.ExcludeAdvancedMitigations, Generics.DisablesTheUseOfMitigations, 1);
                     break;
 
                 case Preset.WAR_Mitigation_NonBoss:
@@ -128,9 +129,9 @@ internal partial class WAR
 
                 case Preset.WAR_ST_Onslaught:
                     DrawHorizontalRadioButton(WAR_ST_Onslaught_Movement,
-                        Generics.StationaryOnly, "Uses Onslaught only while stationary", 0);
+                        Generics.StationaryOnly, FormatAndCache(Generics.UseActionOnlyWhileStationary, Onslaught.ActionName()), 0);
                     DrawHorizontalRadioButton(WAR_ST_Onslaught_Movement,
-                        Generics.AnyMovement, "Uses Onslaught regardless of any movement conditions.\nNOTE: This could possibly get you killed", 1);
+                        Generics.AnyMovement, FormatAndCache(Generics.Uses0RegardlessOfAnyMovementConditions, Onslaught.ActionName()), 1);
                     ImGui.Spacing();
                     if (WAR_ST_Onslaught_Movement == 0)
                     {
@@ -143,7 +144,7 @@ internal partial class WAR
                         Generics.HowManyChargesToKeepReady);
                     ImGui.SetCursorPosX(48);
                     DrawSliderFloat(1, 20, WAR_ST_Onslaught_Distance,
-                        " Use when Distance from target is less than or equal to:", decimals: 1);
+                        Generics.UseWhenDistanceFromTargetIsLessThanOrEqualTo, decimals: 1);
                     break;
 
                 case Preset.WAR_ST_Infuriate:
@@ -173,9 +174,9 @@ internal partial class WAR
                         "Late", "Uses Primal Rend after consumption of all Inner Release stacks", 1);
                     ImGui.NewLine();
                     DrawHorizontalRadioButton(WAR_ST_PrimalRend_Movement,
-                        Generics.StationaryOnly, "Uses Primal Rend only while stationary", 0);
+                        Generics.StationaryOnly, FormatAndCache(Generics.UseActionOnlyWhileStationary, PrimalRend.ActionName()), 0);
                     DrawHorizontalRadioButton(WAR_ST_PrimalRend_Movement,
-                        Generics.AnyMovement, "Uses Primal Rend regardless of any movement conditions.\nNOTE: This could possibly get you killed", 1);
+                        Generics.AnyMovement, FormatAndCache(Generics.Uses0RegardlessOfAnyMovementConditions, PrimalRend.ActionName()), 1);
                     ImGui.Spacing();
                     if (WAR_ST_PrimalRend_Movement == 0)
                     {
@@ -185,7 +186,7 @@ internal partial class WAR
                     }
                     ImGui.SetCursorPosX(48);
                     DrawSliderFloat(1, 20, WAR_ST_PrimalRend_Distance,
-                        " Use when Distance from target is less than or equal to:", decimals: 1);
+                        Generics.UseWhenDistanceFromTargetIsLessThanOrEqualTo, decimals: 1);
                     break;
                 #endregion
 
@@ -226,9 +227,9 @@ internal partial class WAR
 
                 case Preset.WAR_AoE_Onslaught:
                     DrawHorizontalRadioButton(WAR_AoE_Onslaught_Movement,
-                        Generics.StationaryOnly, "Uses Onslaught only while stationary", 0);
+                        Generics.StationaryOnly, FormatAndCache(Generics.UseActionOnlyWhileStationary, Onslaught.ActionName()), 0);
                     DrawHorizontalRadioButton(WAR_AoE_Onslaught_Movement,
-                        Generics.AnyMovement, "Uses Onslaught regardless of any movement conditions.\nNOTE: This could possibly get you killed", 1);
+                        Generics.AnyMovement, FormatAndCache(Generics.Uses0RegardlessOfAnyMovementConditions, Onslaught.ActionName()), 1);
                     ImGui.Spacing();
                     if (WAR_AoE_Onslaught_Movement == 0)
                     {
@@ -240,7 +241,7 @@ internal partial class WAR
                         Generics.HowManyChargesToKeepReady);
                     ImGui.SetCursorPosX(48);
                     DrawSliderFloat(1, 20, WAR_AoE_Onslaught_Distance,
-                        " Use when Distance from target is less than or equal to:", decimals: 1);
+                        Generics.UseWhenDistanceFromTargetIsLessThanOrEqualTo, decimals: 1);
                     break;
 
                 case Preset.WAR_AoE_PrimalRend:
@@ -250,9 +251,9 @@ internal partial class WAR
                         "Late", "Uses Primal Rend after consumption of all Inner Release stacks", 1);
                     ImGui.NewLine();
                     DrawHorizontalRadioButton(WAR_AoE_PrimalRend_Movement,
-                        Generics.StationaryOnly, "Uses Primal Rend only while stationary", 0);
+                        Generics.StationaryOnly, FormatAndCache(Generics.UseActionOnlyWhileStationary, PrimalRend.ActionName()), 0);
                     DrawHorizontalRadioButton(WAR_AoE_PrimalRend_Movement,
-                        Generics.AnyMovement, "Uses Primal Rend regardless of any movement conditions.\nNOTE: This could possibly get you killed", 1);
+                        Generics.AnyMovement, FormatAndCache(Generics.Uses0RegardlessOfAnyMovementConditions, PrimalRend.ActionName()), 1);
                     ImGui.Spacing();
                     if (WAR_AoE_PrimalRend_Movement == 0)
                     {
@@ -262,7 +263,7 @@ internal partial class WAR
                     }
                     ImGui.SetCursorPosX(48);
                     DrawSliderFloat(1, 20, WAR_AoE_PrimalRend_Distance,
-                        " Use when Distance from target is less than or equal to:", decimals: 1);
+                        Generics.UseWhenDistanceFromTargetIsLessThanOrEqualTo, decimals: 1);
                     break;
                 #endregion
 
@@ -351,9 +352,9 @@ internal partial class WAR
 
                 case Preset.WAR_FC_Onslaught:
                     DrawHorizontalRadioButton(WAR_FC_Onslaught_Movement,
-                        Generics.StationaryOnly, "Uses Onslaught only while stationary", 0);
+                        Generics.StationaryOnly, FormatAndCache(Generics.UseActionOnlyWhileStationary, Onslaught.ActionName()), 0);
                     DrawHorizontalRadioButton(WAR_FC_Onslaught_Movement,
-                        Generics.AnyMovement, "Uses Onslaught regardless of any movement conditions.\nNOTE: This could possibly get you killed", 1);
+                        Generics.AnyMovement, FormatAndCache(Generics.Uses0RegardlessOfAnyMovementConditions, Onslaught.ActionName()), 1);
                     ImGui.Spacing();
                     if (WAR_FC_Onslaught_Movement == 0)
                     {
@@ -365,7 +366,7 @@ internal partial class WAR
                         Generics.HowManyChargesToKeepReady);
                     ImGui.SetCursorPosX(48);
                     DrawSliderFloat(1, 20, WAR_FC_Onslaught_Distance,
-                        " Use when Distance from target is less than or equal to:", decimals: 1);
+                        Generics.UseWhenDistanceFromTargetIsLessThanOrEqualTo, decimals: 1);
                     break;
 
                 case Preset.WAR_FC_Infuriate:
@@ -382,9 +383,9 @@ internal partial class WAR
                         "Late", "Uses Primal Rend after consumption of all Inner Release stacks", 1);
                     ImGui.NewLine();
                     DrawHorizontalRadioButton(WAR_FC_PrimalRend_Movement,
-                        Generics.StationaryOnly, "Uses Primal Rend only while stationary", 0);
+                        Generics.StationaryOnly, FormatAndCache(Generics.UseActionOnlyWhileStationary, PrimalRend.ActionName()), 0);
                     DrawHorizontalRadioButton(WAR_FC_PrimalRend_Movement,
-                        Generics.AnyMovement, "Uses Primal Rend regardless of any movement conditions.\nNOTE: This could possibly get you killed", 1);
+                        Generics.AnyMovement, FormatAndCache(Generics.Uses0RegardlessOfAnyMovementConditions, PrimalRend.ActionName()), 1);
                     ImGui.Spacing();
                     if (WAR_FC_PrimalRend_Movement == 0)
                     {
@@ -394,7 +395,7 @@ internal partial class WAR
                     }
                     ImGui.SetCursorPosX(48);
                     DrawSliderFloat(1, 20, WAR_FC_PrimalRend_Distance,
-                        " Use when Distance from target is less than or equal to:", decimals: 1);
+                        Generics.UseWhenDistanceFromTargetIsLessThanOrEqualTo, decimals: 1);
                     break;
 
                 case Preset.WAR_InfuriateFellCleave:
