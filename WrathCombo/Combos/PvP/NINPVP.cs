@@ -61,7 +61,9 @@ internal static class NINPvP
     {
         public static UserInt
             NINPvP_Meisui_ST = new("NINPvP_Meisui_ST"),
+            NINPvP_ST_FumaShuriken_RangedCharges = new("NINPvP_ST_FumaShuriken_RangedCharges"),
             NINPvP_Meisui_AoE = new("NINPvP_Meisui_AoE"),
+            NINPvP_AoE_FumaShuriken_RangedCharges = new("NINPvP_AoE_FumaShuriken_RangedCharges"),
             NINPVP_SeitonTenchu = new("NINPVP_SeitonTenchu"),
             NINPVP_SeitonTenchuAoE = new("NINPVP_SeitonTenchuAoE"),
             NINPvP_SmiteThreshold = new("NINPvP_SmiteThreshold");
@@ -104,6 +106,15 @@ internal static class NINPvP
                 case Preset.NINPvP_Smite:
                     DrawSliderInt(0, 100, NINPvP_SmiteThreshold,
                         "Target HP% to smite, Max damage below 25%");
+                    break;
+                case Preset.NINPvP_ST_FumaShuriken:
+                    DrawSliderInt(0, 3, NINPvP_ST_FumaShuriken_RangedCharges,
+                        "How many charges to retain for Ranged only. Set 0 to use all in melee. Set 3 use at range only.");
+                    break;
+                
+                case Preset.NINPvP_AoE_FumaShuriken:
+                    DrawSliderInt(0, 3, NINPvP_AoE_FumaShuriken_RangedCharges,
+                        "How many charges to retain for Ranged only. Set 0 to use all in melee. Set 3 use at range only.");
                     break;
 
                 case Preset.NINPvP_ST_Meisui:
@@ -152,50 +163,45 @@ internal static class NINPvP
                 return actionID;
             
             // Cached variables for repeated conditions
-            var threeMudrasCD = GetCooldown(ThreeMudra);
-            var fumaCD = GetCooldown(FumaShuriken);
             var bunshinStacks = HasStatusEffect(Buffs.Bunshin) ? GetStatusEffectStacks(Buffs.Bunshin) : 0;
-            bool canWeave = CanWeave();
             bool mudraMode = HasStatusEffect(Buffs.ThreeMudra);
-            bool inMeleeRange = InMeleeRange();
-            bool isHidden = HasStatusEffect(Buffs.Hidden);
             var jobMaxHp = LocalPlayer.MaxHp;
             var maxHPThreshold = jobMaxHp - 8000;
             float remainingPercentage = (float)LocalPlayer.CurrentHp / maxHPThreshold;
-            bool inMeisuiRange = (NINPvP_Meisui_ST) >= (remainingPercentage * 100);
+            bool inMeisuiRange = NINPvP_Meisui_ST >= remainingPercentage * 100;
 
             // Hidden state actions
-            if (isHidden)
+            if (HasStatusEffect(Buffs.Hidden))
                 return OriginalHook(Assassinate);
 
             if (!PvPCommon.TargetImmuneToDamage())
             {
                 // Seiton Tenchu priority for targets below 50% HP
-                if (IsEnabled(Preset.NINPvP_ST_SeitonTenchu) && GetTargetHPPercent() < (NINPVP_SeitonTenchu) &&
+                if (IsEnabled(Preset.NINPvP_ST_SeitonTenchu) && GetTargetHPPercent() < NINPVP_SeitonTenchu &&
                     (IsLB1Ready || HasStatusEffect(Buffs.SeitonUnsealed)))  // Limit Break or Unsealed buff
                     return OriginalHook(SeitonTenchu);
 
                 //Smite
                 if (IsEnabled(Preset.NINPvP_Smite) && PvPMelee.CanSmite() && InActionRange(PvPMelee.Smite) && HasTarget() &&
-                    GetTargetHPPercent() <= (NINPvP_SmiteThreshold))
+                    GetTargetHPPercent() <= NINPvP_SmiteThreshold)
                     return PvPMelee.Smite;
 
                 // Zesho Meppo
                 if (HasStatusEffect(Buffs.ZeshoMeppoReady) && InMeleeRange())
                     return ZeshoMeppo;
 
-                if (canWeave)
+                if (CanWeave())
                 {
                     // Melee range actions
-                    if (IsEnabled(Preset.NINPvP_ST_Dokumori) && inMeleeRange && !GetCooldown(Dokumori).IsCooldown)
+                    if (IsEnabled(Preset.NINPvP_ST_Dokumori) && InActionRange(Dokumori) && ActionReady(Dokumori))
                         return OriginalHook(Dokumori);
 
                     // Bunshin
-                    if (IsEnabled(Preset.NINPvP_ST_Bunshin) && !GetCooldown(Bunshin).IsCooldown)
+                    if (IsEnabled(Preset.NINPvP_ST_Bunshin) && ActionReady(Bunshin))
                         return OriginalHook(Bunshin);
 
                     // Three Mudra
-                    if (IsEnabled(Preset.NINPvP_ST_ThreeMudra) && threeMudrasCD.RemainingCharges > 0 && !mudraMode)
+                    if (IsEnabled(Preset.NINPvP_ST_ThreeMudra) && HasCharges(ThreeMudra) && !mudraMode)
                     {
                         if (!IsEnabled(Preset.NINPvP_ST_ThreeMudraPool) || HasStatusEffect(Buffs.Bunshin))
                             return OriginalHook(ThreeMudra);
@@ -233,7 +239,9 @@ internal static class NINPvP
                     else return actionID;
                 }
                 // Fuma Shuriken
-                if (IsEnabled(Preset.NINPvP_ST_FumaShuriken) && fumaCD.RemainingCharges > 0 && !HasStatusEffect(Buffs.FleetingRaijuReady))
+                if (IsEnabled(Preset.NINPvP_ST_FumaShuriken) && !HasStatusEffect(Buffs.FleetingRaijuReady) && HasCharges(FumaShuriken) &&
+                    (!InMeleeRange() && GetRemainingCharges(FumaShuriken) > 0 || 
+                     InMeleeRange() && GetRemainingCharges(FumaShuriken) > NINPvP_ST_FumaShuriken_RangedCharges))
                     return OriginalHook(FumaShuriken);
             }
             return actionID;
@@ -249,18 +257,11 @@ internal static class NINPvP
             if (actionID is not FumaShuriken) 
                 return actionID;
             
-            var threeMudrasCD = GetCooldown(ThreeMudra);
-            var fumaCD = GetCooldown(FumaShuriken);
-            bool meisuiLocked = HasStatusEffect(Debuffs.SealedMeisui);
-            bool dotonLocked = HasStatusEffect(Debuffs.SealedDoton);
-            bool gokaLocked = HasStatusEffect(Debuffs.SealedGokaMekkyaku);
             bool mudraMode = HasStatusEffect(Buffs.ThreeMudra);
-            bool canWeave = CanWeave();
             var jobMaxHp = LocalPlayer.MaxHp;
-            var threshold = NINPvP_Meisui_AoE;
             var maxHPThreshold = jobMaxHp - 8000;
             var remainingPercentage = (float)LocalPlayer.CurrentHp / (float)maxHPThreshold;
-            bool inMeisuiRange = threshold >= (remainingPercentage * 100);
+            bool inMeisuiRange = NINPvP_Meisui_AoE >= remainingPercentage * 100;
             bool hasBunshin = HasStatusEffect(Buffs.Bunshin);
 
             if (HasStatusEffect(Buffs.Hidden))
@@ -272,7 +273,7 @@ internal static class NINPvP
                 if (IsEnabled(Preset.NINPvP_AoE_SeitonTenchu) && GetTargetHPPercent() < (NINPVP_SeitonTenchu) && IsLB1Ready)
                     return OriginalHook(SeitonTenchu);
 
-                if (canWeave)
+                if (CanWeave())
                 {
                     // Overarching Priority: Bunshin first
                     if (IsEnabled(Preset.NINPvP_AoE_Bunshin) && !GetCooldown(Bunshin).IsCooldown)
@@ -283,7 +284,7 @@ internal static class NINPvP
                         return OriginalHook(Dokumori);
 
                     // Three Mudra waits for Bunshin
-                    if (IsEnabled(Preset.NINPvP_AoE_ThreeMudra) && threeMudrasCD.RemainingCharges > 0 && !mudraMode)
+                    if (IsEnabled(Preset.NINPvP_AoE_ThreeMudra) && HasCharges(ThreeMudra) && !mudraMode)
                     {
                         if (!IsEnabled(Preset.NINPvP_AoE_ThreeMudraPool) || hasBunshin)
                             return OriginalHook(ThreeMudra);
@@ -294,7 +295,7 @@ internal static class NINPvP
                 {
                     if (IsEnabled(Preset.NINPvP_AoE_MudraMode))
                     {
-                        if (IsEnabled(Preset.NINPvP_AoE_Meisui) && inMeisuiRange && !meisuiLocked)
+                        if (IsEnabled(Preset.NINPvP_AoE_Meisui) && inMeisuiRange && !HasStatusEffect(Debuffs.SealedMeisui))
                             return OriginalHook(Meisui);
 
                         (uint Action, ushort SealedDebuff, Func<bool> Logic)[] PrioritizedMudras =
@@ -322,7 +323,9 @@ internal static class NINPvP
                     else return actionID;  // if automatic is not enabled and in mudra mode, ensures fuma shuriken is the option so mudras can be properly chosen
                 }
 
-                if (IsEnabled(Preset.NINPvP_AoE_FumaShuriken) && fumaCD.RemainingCharges > 0)
+                if (IsEnabled(Preset.NINPvP_AoE_FumaShuriken) && !HasStatusEffect(Buffs.FleetingRaijuReady) && HasCharges(FumaShuriken) &&
+                    (!InMeleeRange() && GetRemainingCharges(FumaShuriken) > 0 || 
+                     InMeleeRange() && GetRemainingCharges(FumaShuriken) > NINPvP_AoE_FumaShuriken_RangedCharges))
                     return OriginalHook(FumaShuriken);
 
                 if (InMeleeRange()) // Melee Combo
