@@ -329,8 +329,8 @@ public static class ActionWatching
                 token = source.Token;
                 UpdatingActions = true;
                 UpdateActionTask = Svc.Framework.RunOnTick(() =>
-                UpdateLastUsedAction(actionId, actionType, targetObjectId, castTime),
-                TimeSpan.FromMilliseconds(castTime), cancellationToken: token);
+                UpdateLastUsedAction(actionId, actionType, targetObjectId, Math.Max(castTime - 480, 0)),
+                TimeSpan.FromMilliseconds(Math.Max(castTime - 480, 0)), cancellationToken: token);
 
                 // Update Helpers
                 NIN.InMudra = NIN.MudraSigns.Contains(actionId);

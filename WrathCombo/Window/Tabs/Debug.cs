@@ -414,7 +414,7 @@ internal class Debug : ConfigWindow, IDisposable
                     $"content:{Content.ContentName ?? "??"}, territory:{Content.TerritoryName ?? "??"}");
                 CustomStyleText("Content IDs:",
                     $"territory:{Content.TerritoryID}, cfc:{Content.ContentFinderConditionRow?.RowId.ToString() ?? "??"}, map:{Content.MapID}");
-                CustomStyleText("Content Type:", Content.ContentType?.ToString() ?? "??");
+                CustomStyleText("Content Type:", $"{(Content.ContentType.ToString() ?? "??")} {Content.ContentTypeRowId}");
                 CustomStyleText("Intended Use:", Content.TerritoryIntendedUse?.ToString() ?? "??");
                 CustomStyleText("Difficulty:",
                     $"from name:{Content.ContentDifficultyFromName ?? "??"}, determined:{Content.ContentDifficulty?.ToString() ?? "??"}");
@@ -827,6 +827,23 @@ internal class Debug : ConfigWindow, IDisposable
 
                     if (_debugSpell.Value.EffectRange > 0)
                         CustomStyleText("Number of Targets Hit:", $"{NumberOfEnemiesInRange(_debugSpell.Value.RowId, target)}");
+                }
+
+                if (_debugSpell.Value.CastType != 1)
+                {
+                    ImGui.Spacing();
+                    if (ImGui.CollapsingHeader("Enemies in Range"))
+                    {
+                        ImGui.Indent();
+                        foreach (var e in EnemiesInRange(_debugSpell.Value.RowId))
+                        {
+                            if (ImGui.CollapsingHeader($"{e?.Name}###{e?.SafeGameObjectId}"))
+                            {
+                                DrawTargetInfo(e);
+                            }
+                        }
+                        ImGui.Unindent();
+                    }
                 }
 
                 if (ImGui.TreeNode("Data Dump"))
