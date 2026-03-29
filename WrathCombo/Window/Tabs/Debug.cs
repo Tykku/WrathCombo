@@ -414,7 +414,7 @@ internal class Debug : ConfigWindow, IDisposable
                     $"content:{Content.ContentName ?? "??"}, territory:{Content.TerritoryName ?? "??"}");
                 CustomStyleText("Content IDs:",
                     $"territory:{Content.TerritoryID}, cfc:{Content.ContentFinderConditionRow?.RowId.ToString() ?? "??"}, map:{Content.MapID}");
-                CustomStyleText("Content Type:", Content.ContentType?.ToString() ?? "??");
+                CustomStyleText("Content Type:", $"{(Content.ContentType.ToString() ?? "??")} {Content.ContentTypeRowId}");
                 CustomStyleText("Intended Use:", Content.TerritoryIntendedUse?.ToString() ?? "??");
                 CustomStyleText("Difficulty:",
                     $"from name:{Content.ContentDifficultyFromName ?? "??"}, determined:{Content.ContentDifficulty?.ToString() ?? "??"}");
