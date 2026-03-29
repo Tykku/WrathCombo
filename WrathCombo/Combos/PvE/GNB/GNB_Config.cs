@@ -21,17 +21,15 @@ internal partial class GNB
             GNB_Mitigation_NonBoss_SuperBolide_Health = new("GNB_Mitigation_NonBoss_SuperBolide_Health", 20),
             GNB_Mitigation_Boss_Aurora_Health = new("GNB_Mitigation_Boss_Aurora_Health", 99),
             GNB_Mitigation_Boss_HeartOfStone_Health = new("GNB_Mitigation_Boss_HeartOfStone_Health", 80),
-            GNB_Opener_StartChoice = new("GNB_Opener_StartChoice"),
             GNB_Opener_NM = new("GNB_Opener_NM"),
             GNB_ST_NM_BossOption = new("GNB_ST_NM_BossOption"),
-            GNB_ST_NM_HPOption = new("GNB_ST_NM_HPOption", 10),
-            GNB_ST_NoMercy_SubOption = new("GNB_ST_NoMercy_SubOption", 1),
+            GNB_ST_NM_HPOption = new("GNB_ST_NM_HPOption", 25),
             GNB_ST_Overcap_Choice = new("GNB_ST_Overcap_Choice"),
             GNB_ST_HoldLightningShot = new("GNB_ST_HoldLightningShot"),
             GNB_ST_BurstStrike_Setup = new("GNB_ST_BurstStrike_Setup"),
             GNB_AoE_FatedCircle_BurstStrike = new("GNB_AoE_FatedCircle_BurstStrike", 1),
             GNB_AoE_Overcap_Choice = new("GNB_AoE_Overcap_Choice"),
-            GNB_AoE_NoMercyStop = new("GNB_AoE_NoMercyStop", 5),
+            GNB_AoE_NoMercyStop = new("GNB_AoE_NoMercyStop", 25),
             GNB_AoE_FatedCircle_Setup = new("GNB_AoE_FatedCircle_Setup"),
             GNB_AoE_SonicBreak_EarlyOrLate = new("GNB_AoE_SonicBreak_EarlyOrLate"),
             GNB_NM_Features_Weave = new("GNB_NM_Feature_Weave"),
@@ -158,16 +156,6 @@ internal partial class GNB
                         $"Normal {NoMercy.ActionName()}", $"Uses {NoMercy.ActionName()} normally in all openers", 0);
                     DrawHorizontalRadioButton(GNB_Opener_NM,
                         $"Early {NoMercy.ActionName()}", $"Uses {NoMercy.ActionName()} as soon as possible in all openers", 1);
-                    ImGui.Spacing();
-                    if (DrawHorizontalRadioButton(GNB_Opener_StartChoice,
-                        "Normal Opener", $"Starts opener with {LightningShot.ActionName()}", 0))
-                    {
-                        if (!CustomComboFunctions.InCombat())
-                            Opener().OpenerStep = 1;
-                    }
-                    DrawHorizontalRadioButton(GNB_Opener_StartChoice,
-                        "Early Opener", $"Starts opener with {KeenEdge.ActionName()} instead, skipping {LightningShot.ActionName()}", 1);
-                    ImGui.Spacing();
                     DrawBossOnlyChoice(GNB_ST_Balance_Content);
                     break;
 
