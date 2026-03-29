@@ -359,8 +359,8 @@
   <data name="ExcludeAdvancedMitigations" xml:space="preserve">
     <value>Exclude Advanced Mitigations</value>
   </data>
-  <data name="ActionHPPercentageThreshold" xml:space="preserve">
-    <value>{0} HP % Threshold</value>
+  <data name="PlayerHPToUseAction" xml:space="preserve">
+    <value>Player HP% to use {0} at or below.  Set to 100 to disable this check</value>
   </data>
   <data name="UseActionOnlyWhileStationary" xml:space="preserve">
     <value>Use {0} only while stationary</value>
@@ -371,5 +371,9 @@
   <data name="Uses0RegardlessOfAnyMovementConditions" xml:space="preserve">
     <value>Uses {0} regardless of any movement conditions.
 NOTE: This could possibly get you killed</value>
+  </data>
+  <data name="StopBelowAverageEnemyHP" xml:space="preserve">
+    <value>Stop using when average health percentage of nearby enemies is below set.
+(Set to 0 to disable this check)</value>
   </data>
 </root>

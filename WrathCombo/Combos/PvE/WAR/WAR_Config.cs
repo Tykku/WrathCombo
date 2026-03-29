@@ -41,30 +41,30 @@ internal partial class WAR
                     break;
 
                 case Preset.WAR_Mitigation_NonBoss:
-                    DrawSliderFloat(0, 100, WAR_Mitigation_NonBoss_MitigationThreshold, "Stop using when average health percentage of nearby enemies is below set. \n(Set to 0 to disable this check) ", decimals: 0);
+                    DrawSliderFloat(0, 100, WAR_Mitigation_NonBoss_MitigationThreshold, Generics.StopBelowAverageEnemyHP, decimals: 0);
                     break;
 
                 case Preset.WAR_Mitigation_NonBoss_ShakeItOff:
-                    DrawSliderInt(1, 100, WAR_Mitigation_NonBoss_ShakeItOff_Health, "Player HP% to use Shake It Off at or below");
+                    DrawSliderInt(1, 100, WAR_Mitigation_NonBoss_ShakeItOff_Health, FormatAndCache(Generics.PlayerHPToUseAction, ShakeItOff.ActionName()));
                     break;
 
                 case Preset.WAR_Mitigation_NonBoss_Equilibrium:
-                    DrawSliderInt(1, 100, WAR_Mitigation_NonBoss_Equilibrium_Health, "Player HP% to use Equilibrium at or below");
+                    DrawSliderInt(1, 100, WAR_Mitigation_NonBoss_Equilibrium_Health, FormatAndCache(Generics.PlayerHPToUseAction, Equilibrium.ActionName()));
                     break;
 
                 case Preset.WAR_Mitigation_NonBoss_Holmgang:
-                    DrawSliderInt(1, 100, WAR_Mitigation_NonBoss_Holmgang_Health, "Player HP% to use Holmgang at or below");
+                    DrawSliderInt(1, 100, WAR_Mitigation_NonBoss_Holmgang_Health, FormatAndCache(Generics.PlayerHPToUseAction, Holmgang.ActionName()));
                     break;
 
                 case Preset.WAR_Mitigation_Boss_Equilibrium:
-                    DrawSliderInt(1, 100, WAR_Mitigation_Boss_Equilibrium_Health, "Player HP% to use Equilibrium at or below.");
+                    DrawSliderInt(1, 100, WAR_Mitigation_Boss_Equilibrium_Health, FormatAndCache(Generics.PlayerHPToUseAction, Equilibrium.ActionName()));
                     DrawSliderInt(1, 100, WAR_Mitigation_Boss_Tankbuster_Equilibrium_Health, "Player HP% to use Equilibrium at or below when incoming tankbuster is detected.");
                     break;
 
                 case Preset.WAR_Mitigation_Boss_RawIntuition_OnCD:
                     DrawDifficultyMultiChoice(WAR_Mitigation_Boss_RawIntuition_OnCD_Difficulty, WAR_Boss_Mit_DifficultyListSet ,
                         Generics.SelectWhatKindOfContentThisOptionAppliesTo);
-                    DrawSliderInt(1, 100, WAR_Mitigation_Boss_RawIntuition_Health, "Player HP% to use Raw Intuition/Bloodwhetting at or below");
+                    DrawSliderInt(1, 100, WAR_Mitigation_Boss_RawIntuition_Health, FormatAndCache(Generics.PlayerHPToUseAction, $"{RawIntuition.ActionName()}/{Bloodwhetting.ActionName()}"));
                     break;
 
                 case Preset.WAR_Mitigation_Boss_RawIntuition_TankBuster:
@@ -116,7 +116,7 @@ internal partial class WAR
 
                 case Preset.WAR_ST_InnerRelease:
                     DrawSliderInt(0, 75, WAR_ST_InnerRelease_Threshold,
-                        "Stop usage if Target HP% is below set value.\n To disable this, set value to 0");
+                        Generics.StopEnemyHpPercent);
                     ImGui.Indent();
                     ImGui.TextColored(ImGuiColors.DalamudYellow, Generics.EnemyTypeCheck);
                     ImGui.NewLine();
@@ -207,7 +207,7 @@ internal partial class WAR
 
                 case Preset.WAR_AoE_InnerRelease:
                     DrawSliderInt(0, 75, WAR_AoE_InnerRelease_Threshold,
-                        " Stop usage if Target HP% is below set value.\n To disable this, set value to 0");
+                        Generics.StopEnemyHpPercent);
                     ImGui.Indent();
                     ImGui.TextColored(ImGuiColors.DalamudYellow, Generics.EnemyTypeCheck);
                     ImGui.NewLine();

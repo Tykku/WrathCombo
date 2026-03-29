@@ -42,13 +42,13 @@ internal partial class PLD
                     break;
 
                 case Preset.PLD_Mitigation_NonBoss:
-                    DrawSliderFloat(0, 100, PLD_Mitigation_NonBoss_MitigationThreshold, "Stop using when average health percentage of nearby enemies is below set. \n(Set to 0 to disable this check) ", decimals: 0);
+                    DrawSliderFloat(0, 100, PLD_Mitigation_NonBoss_MitigationThreshold, Generics.StopBelowAverageEnemyHP, decimals: 0);
                     break;
                 case Preset.PLD_Mitigation_NonBoss_HallowedGroundEmergency:
-                    DrawSliderInt(1, 100, PLD_Mitigation_NonBoss_HallowedGround_Health, "Player HP% to use Emergency Hallowed Ground at or below.");
+                    DrawSliderInt(1, 100, PLD_Mitigation_NonBoss_HallowedGround_Health, FormatAndCache(Generics.PlayerHPToUseAction, HallowedGround.ActionName()));
                     break;
                 case Preset.PLD_Mitigation_NonBoss_DivineVeil:
-                    DrawSliderInt(1, 100, PLD_Mitigation_NonBoss_DivineVeil_Health, "Player HP% to use Divine Veil at or below (100 = Disable check)");
+                    DrawSliderInt(1, 100, PLD_Mitigation_NonBoss_DivineVeil_Health, FormatAndCache(Generics.PlayerHPToUseAction, DivineVeil.ActionName()));
                     break;
                 case Preset.PLD_Mitigation_Boss_SheltronOvercap:
                     DrawSliderInt(50, 100, PLD_Mitigation_Boss_SheltronOvercap_Threshold, "Oath Gauge required to Use Sheltron and prevent Overcap.");

@@ -88,15 +88,6 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} HP % Threshold.
-        /// </summary>
-        internal static string ActionHPPercentageThreshold {
-            get {
-                return ResourceManager.GetString("ActionHPPercentageThreshold", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to All Content.
         /// </summary>
         internal static string AllContent {
@@ -513,6 +504,15 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Player HP% to use {0} at or below.  Set to 100 to disable this check.
+        /// </summary>
+        internal static string PlayerHPToUseAction {
+            get {
+                return ResourceManager.GetString("PlayerHPToUseAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Priority: .
         /// </summary>
         internal static string Priority {
@@ -599,6 +599,16 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         internal static string StationaryOnly {
             get {
                 return ResourceManager.GetString("StationaryOnly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stop using when average health percentage of nearby enemies is below set.
+        ///(Set to 0 to disable this check).
+        /// </summary>
+        internal static string StopBelowAverageEnemyHP {
+            get {
+                return ResourceManager.GetString("StopBelowAverageEnemyHP", resourceCulture);
             }
         }
         

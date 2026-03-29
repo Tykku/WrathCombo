@@ -5,6 +5,7 @@ using WrathCombo.Extensions;
 using WrathCombo.Resources.Localization.JobConfigs;
 using WrathCombo.Window.Functions;
 using static WrathCombo.Window.Functions.UserConfig;
+using static WrathCombo.Window.Text;
 using BossAvoidance = WrathCombo.Combos.PvE.All.Enums.BossAvoidance;
 using PartyRequirement = WrathCombo.Combos.PvE.All.Enums.PartyRequirement;
 namespace WrathCombo.Combos.PvE;
@@ -100,21 +101,21 @@ internal partial class GNB
                     break;
 
                 case Preset.GNB_Mitigation_NonBoss:
-                    DrawSliderFloat(0, 100, GNB_Mitigation_NonBoss_MitigationThreshold, "Stop using when average health percentage of nearby enemies is below set. \n(Set to 0 to disable this check) ", decimals: 0);
+                    DrawSliderFloat(0, 100, GNB_Mitigation_NonBoss_MitigationThreshold, Generics.StopBelowAverageEnemyHP, decimals: 0);
                     break;
 
                 case Preset.GNB_Mitigation_NonBoss_SuperBolideEmergency:
-                    DrawSliderInt(1, 100, GNB_Mitigation_NonBoss_SuperBolide_Health, "Player HP% to use Emergency Superbolide at or below.");
+                    DrawSliderInt(1, 100, GNB_Mitigation_NonBoss_SuperBolide_Health, FormatAndCache(Generics.PlayerHPToUseAction, Superbolide.ActionName()));
                     break;
 
                 case Preset.GNB_Mitigation_Boss_Aurora:
-                    DrawSliderInt(1, 100, GNB_Mitigation_Boss_Aurora_Health, "Player HP% to use Aurora at or below. (100 = Disable check)");
+                    DrawSliderInt(1, 100, GNB_Mitigation_Boss_Aurora_Health, FormatAndCache(Generics.PlayerHPToUseAction, Aurora.ActionName()));
                     break;
 
                 case Preset.GNB_Mitigation_Boss_HeartOfStone_OnCD:
                     DrawDifficultyMultiChoice(GNB_Mitigation_Boss_HeartOfStone_OnCD_Difficulty, GNB_Boss_Mit_DifficultyListSet,
                         Generics.SelectWhatKindOfContentThisOptionAppliesTo);
-                    DrawSliderInt(1, 100, GNB_Mitigation_Boss_HeartOfStone_Health, "Player HP% to use Heart of Stone/Corundum at or below (100 = Disable check)");
+                    DrawSliderInt(1, 100, GNB_Mitigation_Boss_HeartOfStone_Health, FormatAndCache(Generics.PlayerHPToUseAction, $"{HeartOfStone.ActionName()} / {HeartOfCorundum.ActionName()}"));
                     break;
 
                 case Preset.GNB_Mitigation_Boss_HeartOfStone_TankBuster:
