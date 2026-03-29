@@ -63,7 +63,7 @@ internal partial class WHM
 
                 case Preset.WHM_ST_MainCombo_Lucid:
                     DrawSliderInt(4000, 9500, WHM_STDPS_Lucid,
-                        mpThresholdDescription,
+                        Generics.LucidMP,
                         itemWidth: medium, SliderIncrements.Hundreds);
                     break;
 
@@ -73,13 +73,13 @@ internal partial class WHM
 
                 case Preset.WHM_AoE_DPS_Lucid:
                     DrawSliderInt(4000, 9500, WHM_AoEDPS_Lucid,
-                        mpThresholdDescription,
+                        Generics.LucidMP,
                         itemWidth: medium, SliderIncrements.Hundreds);
                     break;
 
                 case Preset.WHM_AoE_MainCombo_DoT:
                     DrawSliderInt(0, 100, WHM_AoE_MainCombo_DoT_HPThreshold,
-                        targetStopUsingAtDescription);
+                        Generics.StopEnemyHpPercent);
                     ImGui.Indent();
                     DrawRoundedSliderFloat(0, 5, WHM_AoE_MainCombo_DoT_Reapply,
                         Generics.StopSeconds,
@@ -134,7 +134,7 @@ internal partial class WHM
                     DrawAdditionalBoolChoice(WHM_STHeals_BenisonWeave,
                         Generics.OnlyWeave, "");
                     DrawSliderInt(0, 1, WHM_STHeals_BenisonCharges,
-                        chargesToKeepDescription);
+                        Generics.HowManyChargesToKeepReady);
                     DrawSliderInt(1, 100, WHM_STHeals_BenisonHP,
                         Generics.StopFriendlyHpPercent100);
                     DrawPriorityInput(WHM_ST_Heals_Priority, 9, 2,
@@ -165,7 +165,7 @@ internal partial class WHM
                         itemWidth: little);
                     ImGui.Unindent();
                     DrawSliderInt(0, 100, WHM_STHeals_RegenHPLower,
-                        targetStopUsingAtDescription);
+                        Generics.StopFriendlyHpPercentZero);
                     DrawSliderInt(0, 100, WHM_STHeals_RegenHPUpper,
                         Generics.StopFriendlyHpPercent100);
                     DrawPriorityInput(WHM_ST_Heals_Priority, 9, 5,
@@ -201,18 +201,18 @@ internal partial class WHM
 
                 case Preset.WHM_STHeals_ThinAir:
                     DrawSliderInt(0, 1, WHM_STHeals_ThinAir,
-                        chargesToKeepDescription);
+                        Generics.HowManyChargesToKeepReady);
                     break;
 
                 case Preset.WHM_STHeals_Lucid:
                     DrawSliderInt(4000, 9500, WHM_STHeals_Lucid,
-                        mpThresholdDescription,
+                        Generics.LucidMP,
                         itemWidth: medium, SliderIncrements.Hundreds);
                     break;
 
                 case Preset.WHM_STHeals_Esuna:
                     DrawSliderInt(0, 100, WHM_STHeals_Esuna,
-                        targetStopUsingAtDescription);
+                        Generics.StopFriendlyHpPercentZero);
                     break;
 
                 #endregion
@@ -221,7 +221,7 @@ internal partial class WHM
 
                 case Preset.WHM_AoEHeals_Medica2:
                     DrawSliderInt(1, 100, WHM_AoEHeals_Medica2HP,
-                        partyStartUsingAtDescription);
+                        Generics.StartUsingWhenBelowPartyAverageHPSetTo100ToDisableThisCheck);
                     ImGui.Indent();
                     DrawRoundedSliderFloat(0f, 6f, WHM_AoEHeals_MedicaTime,
                         Generics.StopSeconds,
@@ -233,7 +233,7 @@ internal partial class WHM
 
                 case Preset.WHM_AoEHeals_Cure3:
                     DrawSliderInt(1, 100, WHM_AoEHeals_Cure3HP,
-                        partyStartUsingAtDescription);
+                        Generics.StartUsingWhenBelowPartyAverageHPSetTo100ToDisableThisCheck);
                     DrawSliderInt(2, 8, WHM_AoEHeals_Cure3Allies,
                         "Minimum Number of allies in range of Cure 3 target");
                     DrawSliderInt(1500, 8500, WHM_AoEHeals_Cure3MP,
@@ -245,7 +245,7 @@ internal partial class WHM
 
                 case Preset.WHM_AoEHeals_Plenary:
                     DrawSliderInt(1, 100, WHM_AoEHeals_PlenaryHP,
-                        partyStartUsingAtDescription);
+                        Generics.StartUsingWhenBelowPartyAverageHPSetTo100ToDisableThisCheck);
                     DrawAdditionalBoolChoice(WHM_AoEHeals_PlenaryWeave,
                         Generics.OnlyWeave,
                         "");
@@ -255,7 +255,7 @@ internal partial class WHM
 
                 case Preset.WHM_AoEHeals_Temperance:
                     DrawSliderInt(1, 100, WHM_AoEHeals_TemperanceHP,
-                        partyStartUsingAtDescription);
+                        Generics.StartUsingWhenBelowPartyAverageHPSetTo100ToDisableThisCheck);
                     DrawAdditionalBoolChoice(WHM_AoEHeals_TemperanceWeave,
                         Generics.OnlyWeave,
                         "");
@@ -268,7 +268,7 @@ internal partial class WHM
 
                 case Preset.WHM_AoEHeals_Asylum:
                     DrawSliderInt(1, 100, WHM_AoEHeals_AsylumHP,
-                        partyStartUsingAtDescription);
+                        Generics.StartUsingWhenBelowPartyAverageHPSetTo100ToDisableThisCheck);
                     DrawAdditionalBoolChoice(WHM_AoEHeals_AsylumWeave,
                         Generics.OnlyWeave,
                         "");
@@ -281,7 +281,7 @@ internal partial class WHM
 
                 case Preset.WHM_AoEHeals_LiturgyOfTheBell:
                     DrawSliderInt(1, 100, WHM_AoEHeals_LiturgyHP,
-                        partyStartUsingAtDescription);
+                        Generics.StartUsingWhenBelowPartyAverageHPSetTo100ToDisableThisCheck);
                     DrawAdditionalBoolChoice(WHM_AoEHeals_LiturgyWeave,
                         Generics.OnlyWeave,
                         "");
@@ -294,14 +294,14 @@ internal partial class WHM
 
                 case Preset.WHM_AoEHeals_Rapture:
                     DrawSliderInt(1, 100, WHM_AoEHeals_RaptureHP,
-                        partyStartUsingAtDescription);
+                        Generics.StartUsingWhenBelowPartyAverageHPSetTo100ToDisableThisCheck);
                     DrawPriorityInput(WHM_AoE_Heals_Priority, 9, 6,
                         FormatAndCache(Generics.Action_Priority, AfflatusRapture.ActionName()));
                     break;
 
                 case Preset.WHM_AoEHeals_Assize:
                     DrawSliderInt(1, 100, WHM_AoEHeals_AssizeHP,
-                        partyStartUsingAtDescription);
+                        Generics.StartUsingWhenBelowPartyAverageHPSetTo100ToDisableThisCheck);
                     DrawAdditionalBoolChoice(WHM_AoEHeals_AssizeWeave,
                         Generics.OnlyWeave, "");
                     DrawPriorityInput(WHM_AoE_Heals_Priority, 9, 7,
@@ -310,7 +310,7 @@ internal partial class WHM
 
                 case Preset.WHM_AoEHeals_DivineCaress:
                     DrawSliderInt(1, 100, WHM_AoEHeals_DivineCaressHP,
-                        partyStartUsingAtDescription);
+                        Generics.StartUsingWhenBelowPartyAverageHPSetTo100ToDisableThisCheck);
                     DrawAdditionalBoolChoice(WHM_AoEHeals_DivineCaressWeave,
                         Generics.OnlyWeave, "");
                     DrawPriorityInput(WHM_AoE_Heals_Priority, 9, 8,
@@ -319,12 +319,12 @@ internal partial class WHM
 
                 case Preset.WHM_AoEHeals_ThinAir:
                     DrawSliderInt(0, 1, WHM_AoEHeals_ThinAir,
-                        chargesToKeepDescription);
+                        Generics.HowManyChargesToKeepReady);
                     break;
 
                 case Preset.WHM_AoEHeals_Lucid:
                     DrawSliderInt(4000, 9500, WHM_AoEHeals_Lucid,
-                        mpThresholdDescription,
+                        Generics.LucidMP,
                         itemWidth: medium, SliderIncrements.Hundreds);
                     break;
 
@@ -383,25 +383,6 @@ internal partial class WHM
 
         /// 2nd smallest bar width
         private const float medium = 150f;
-
-        /// Bar Description for Party HP%  Average to start using plus disable text
-        private static readonly string partyStartUsingAtDescription =
-            Generics.StartUsingWhenBelowPartyAverageHPSetTo100ToDisableThisCheck;
-
-        /// Bar Description for target HP% to start using plus disable text
-        private const string targetStopUsingAtDescription =
-            " Target HP% to stop using (0 = Use Always, 100 = Never)";
-
-        /// Description for MP threshold
-        private const string mpThresholdDescription =
-            "MP to be at or below";
-
-        /// Description for charges to keep
-        private const string chargesToKeepDescription =
-            "# charges to keep (0 = Use All)";
-
-        private static readonly string nonBossesDescription =
-            Generics.WillNotUseInBossEncounters;
 
         /// <summary>
         ///     Whether abilities should be restricted to bosses or not.
