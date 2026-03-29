@@ -155,7 +155,7 @@ internal partial class VPR
 
                 case Preset.VPR_Retarget_Slither:
                     DrawAdditionalBoolChoice(VPR_Slither_FieldMouseover,
-                        "Add Field Mouseover", "Add Field Mouseover targetting");
+                        Generics.FieldMouseover, "Add Field Mouseover targetting");
                     break;
 
                 #endregion

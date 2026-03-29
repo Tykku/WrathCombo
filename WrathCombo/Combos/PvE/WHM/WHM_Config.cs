@@ -385,8 +385,8 @@ internal partial class WHM
         private const float medium = 150f;
 
         /// Bar Description for Party HP%  Average to start using plus disable text
-        private const string partyStartUsingAtDescription =
-            "Start using when below party average HP% (100 = Disable check)";
+        private static readonly string partyStartUsingAtDescription =
+            Generics.StartUsingWhenBelowPartyAverageHPSetTo100ToDisableThisCheck;
 
         /// Bar Description for target HP% to start using plus disable text
         private const string targetStopUsingAtDescription =
@@ -400,8 +400,8 @@ internal partial class WHM
         private const string chargesToKeepDescription =
             "# charges to keep (0 = Use All)";
 
-        private const string nonBossesDescription =
-            "Will not use on ST in Boss encounters.";
+        private static readonly string nonBossesDescription =
+            Generics.WillNotUseInBossEncounters;
 
         /// <summary>
         ///     Whether abilities should be restricted to bosses or not.
