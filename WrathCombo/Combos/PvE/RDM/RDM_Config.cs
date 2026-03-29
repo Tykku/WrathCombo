@@ -185,7 +185,7 @@ internal partial class RDM
                     break;
 
                 case Preset.RDM_ST_Acceleration:
-                    DrawSliderInt(0, 1, RDM_ST_Acceleration_Charges, " How many charges to keep ready\n (0 = Use All)");
+                    DrawSliderInt(0, 1, RDM_ST_Acceleration_Charges, Generics.HowManyChargesToKeepReady);
                     break;
 
                 case Preset.RDM_AoE_Acceleration:
@@ -236,12 +236,12 @@ internal partial class RDM
 
                 case Preset.RDM_MagickBarrierAddle:
                     DrawSliderInt(0, 5, RDM_AddleDuration,
-                        "Time Remaining on others Addle to allow within\n(0 = Addle must not be on the target)");
+                        FormatAndCache(Generics.TimeRemainingOnOthers, Role.Addle.ActionName()));
                     break;
 
                 case Preset.RDM_MagickProtection:
                     DrawSliderInt(0, 5, RDM_MagickProtectionDuration,
-                        "Time Remaining on others Magick Barrier to allow within\n(0 = Magick Barrier must not be on the target)");
+                        FormatAndCache(Generics.TimeRemainingOnOthers, MagickBarrier.ActionName()));
                     break;
 
                 case Preset.RDM_OGCDs:

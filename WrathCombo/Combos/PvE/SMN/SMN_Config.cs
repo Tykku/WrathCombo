@@ -87,7 +87,7 @@ internal partial class SMN
                     break;
 
                 case Preset.SMN_ST_Advanced_Combo_Lucid:
-                    DrawSliderInt(4000, 9500, SMN_ST_Lucid, "Set value for your MP to be at or under for this feature to take effect.", 150,
+                    DrawSliderInt(4000, 9500, SMN_ST_Lucid, Generics.LucidMP, 150,
                         SliderIncrements.Hundreds);
                     break;
 
@@ -128,7 +128,7 @@ internal partial class SMN
                     break;
 
                 case Preset.SMN_AoE_Advanced_Combo_Lucid:
-                    DrawSliderInt(4000, 9500, SMN_AoE_Lucid, "Set value for your MP to be at or under for this feature to take effect.", 150,
+                    DrawSliderInt(4000, 9500, SMN_AoE_Lucid, Generics.LucidMP, 150,
                         SliderIncrements.Hundreds);
                     break;
 

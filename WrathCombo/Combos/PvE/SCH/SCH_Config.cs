@@ -131,14 +131,14 @@ internal partial class SCH
                 case Preset.SCH_ST_Heal_Excogitation:
                     DrawSliderInt(0, 100, SCH_ST_Heal_ExcogitationOption, Generics.StopFriendlyHpPercent100);
                     DrawAdditionalBoolChoice(SCH_ST_Heal_ExcogitationBossOption, Generics.NotInBossEncounters, Generics.WillNotUseInBossEncounters);
-                    DrawAdditionalBoolChoice(SCH_ST_Heal_ExcogitationTankOption, "Only on Tanks", "Will only use on a Tank.");
+                    DrawAdditionalBoolChoice(SCH_ST_Heal_ExcogitationTankOption, Generics.TanksOnly, Generics.WillOnlyUseOnTanks);
                     DrawPriorityInput(SCH_ST_Heals_Priority, 12, 1, FormatAndCache(Generics.Action_Priority, Excogitation.ActionName()));
                     break;
 
                 case Preset.SCH_ST_Heal_Protraction:
                     DrawSliderInt(0, 100, SCH_ST_Heal_ProtractionOption, Generics.StopFriendlyHpPercent100);
                     DrawAdditionalBoolChoice(SCH_ST_Heal_ProtractionBossOption, Generics.NotInBossEncounters, Generics.WillNotUseInBossEncounters);
-                    DrawAdditionalBoolChoice(SCH_ST_Heal_ProtractionTankOption, "Only on Tanks", "Will only use on a Tank.");
+                    DrawAdditionalBoolChoice(SCH_ST_Heal_ProtractionTankOption, Generics.TanksOnly, Generics.WillOnlyUseOnTanks);
                     DrawPriorityInput(SCH_ST_Heals_Priority, 12, 2, FormatAndCache(Generics.Action_Priority, Protraction.ActionName()));
                     break;
 
@@ -192,9 +192,9 @@ internal partial class SCH
                     break;
 
                 case Preset.SCH_ST_Heal_Adloquium:
-                    DrawSliderInt(0, 100, SCH_ST_Heal_AdloquiumOption, "Start using when below HP %. Set to 100 to disable this check.");
-                    DrawHorizontalMultiChoice(SCH_ST_Heal_AldoquimOpts, "Scholar Shield Check", "Enable to not override an existing Scholar's shield.", 3, 0);
-                    DrawHorizontalMultiChoice(SCH_ST_Heal_AldoquimOpts, "Sage Shield Check", "Enable to not override an existing Sage's shield.", 3, 1);
+                    DrawSliderInt(0, 100, SCH_ST_Heal_AdloquiumOption, Generics.StopFriendlyHpPercent100);
+                    DrawHorizontalMultiChoice(SCH_ST_Heal_AldoquimOpts, FormatAndCache(Generics.Job0ShieldCheck, "Scholar"), FormatAndCache(Generics.Job0ShieldCheckDesc, "Scholar"), 3, 0);
+                    DrawHorizontalMultiChoice(SCH_ST_Heal_AldoquimOpts, FormatAndCache(Generics.Job0ShieldCheck, "Sage"), FormatAndCache(Generics.Job0ShieldCheckDesc, "Sage"), 3, 1);
                     DrawHorizontalMultiChoice(SCH_ST_Heal_AldoquimOpts, "Emergency Tactics", "Will use Emergency tactics before Adloquim when below set threshold", 3, 2);
 
                     if (SCH_ST_Heal_AldoquimOpts[2])

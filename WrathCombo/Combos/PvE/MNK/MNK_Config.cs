@@ -150,7 +150,7 @@ internal partial class MNK
 
                 case Preset.MNK_Retarget_Thunderclap:
                     DrawAdditionalBoolChoice(MNK_Thunderclap_FieldMouseover,
-                        "Add Field Mouseover", "Add Field Mouseover targeting.");
+                        Generics.FieldMouseover, "Add Field Mouseover targeting.");
                     break;
 
                 case Preset.MNK_Basic_BeastChakras:
