@@ -193,8 +193,14 @@ internal partial class SCH
 
                 case Preset.SCH_ST_Heal_Adloquium:
                     DrawSliderInt(0, 100, SCH_ST_Heal_AdloquiumOption, Generics.StopFriendlyHpPercent100);
-                    DrawHorizontalMultiChoice(SCH_ST_Heal_AldoquimOpts, FormatAndCache(Generics.Job0ShieldCheck, "Scholar"), FormatAndCache(Generics.Job0ShieldCheckDesc, "Scholar"), 3, 0);
-                    DrawHorizontalMultiChoice(SCH_ST_Heal_AldoquimOpts, FormatAndCache(Generics.Job0ShieldCheck, "Sage"), FormatAndCache(Generics.Job0ShieldCheckDesc, "Sage"), 3, 1);
+                    DrawHorizontalMultiChoice(SCH_ST_Heal_AldoquimOpts, 
+                        FormatAndCache(Generics.Job0ShieldCheck, Job.SCH.Name()), 
+                        FormatAndCache(Generics.Job0ShieldCheckDesc, Job.SCH.Name()), 3, 0
+                    );
+                    DrawHorizontalMultiChoice(SCH_ST_Heal_AldoquimOpts,
+                        FormatAndCache(Generics.Job0ShieldCheck, Job.SGE.Name()), 
+                        FormatAndCache(Generics.Job0ShieldCheckDesc, Job.SGE.Name()), 3, 1
+                    );
                     DrawHorizontalMultiChoice(SCH_ST_Heal_AldoquimOpts, "Emergency Tactics", "Will use Emergency tactics before Adloquim when below set threshold", 3, 2);
 
                     if (SCH_ST_Heal_AldoquimOpts[2])
