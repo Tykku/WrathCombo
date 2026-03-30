@@ -471,7 +471,10 @@ public static class ActionWatching
 
                 var targetObject = targetId.GetObject();
                 if (targetObject is null)
+                {
+                    Service.ActionReplacer.EnableActionReplacingIfRequired();
                     return UseActionHook.Original(actionManager, actionType, actionId, targetId, extraParam, mode, comboRouteId, outOptAreaTargeted);
+                }
 
                 //if (changed && !areaTargeted) //Check if the action can be used on the target, and if not revert to original
                 if (!ActionManager.CanUseActionOnTarget(replacedWith,
@@ -493,8 +496,12 @@ public static class ActionWatching
                              newLoc is not null)
                         location = (Vector3)newLoc;
 
-                    return ActionManager.Instance()->UseActionLocation
+                    var ret = ActionManager.Instance()->UseActionLocation
                         (actionType, replacedWith, location: &location);
+
+                    Service.ActionReplacer.EnableActionReplacingIfRequired();
+
+                    return ret;
                 }
 
                 if (Service.Configuration.OverwriteQueue && actionManager->QueuedActionId != 0 && CanQueueCS(replacedWith))
