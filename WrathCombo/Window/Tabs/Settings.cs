@@ -58,25 +58,24 @@ internal class Settings : ConfigWindow
             if (field.Count > 0)
                 return field;
 
-            Setting.CachedSettings.Clear();
-              return typeof(Configuration)
-             .GetFields()
-             .Select(rawSetting =>
-             {
-                 try
-                 {
-                     return new Setting(rawSetting.Name);
-                 }
-                 catch (Exception e)
-                 {
-                     // Skip raw settings that fail to construct.
-                     PluginLog.Verbose(e.Message);
-                     return null;
-                 }
-             })
-             .Where(setting => setting != null)
-             .Select(s => s!)
-             .ToList();
+            return typeof(Configuration)
+           .GetFields()
+           .Select(rawSetting =>
+           {
+               try
+               {
+                   return new Setting(rawSetting.Name);
+               }
+               catch (Exception e)
+               {
+                   // Skip raw settings that fail to construct.
+                   PluginLog.Verbose(e.Message);
+                   return null;
+               }
+           })
+           .Where(setting => setting != null)
+           .Select(s => s!)
+           .ToList();
         }
     }
 
@@ -292,6 +291,9 @@ internal class Settings : ConfigWindow
         {
             case Attributes.Setting.Type.Toggle:
                 {
+                    if (setting.FieldName == "AprilFools2026" && !IsAprilFools)
+                        return;
+
                     var value = (bool)setting.Value;
 
                     // Update group value if applicable
@@ -301,7 +303,11 @@ internal class Settings : ConfigWindow
 
                     changed = ImGui.Checkbox(label, ref value);
                     if (changed)
+                    {
                         setting.Value = value;
+                        if (setting.FieldName == "ActionChanging")
+                            Service.Configuration.SetActionChanging(value);
+                    }
 
                     break;
                 }

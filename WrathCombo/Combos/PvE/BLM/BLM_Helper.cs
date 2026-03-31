@@ -50,7 +50,7 @@ internal partial class BLM
     private static bool CanFireParadox =>
         ActiveParadox && MP.Cur >= MP.FireParadox &&
         (!HasStatusEffect(Buffs.Firestarter) && AstralFireStacks < 3 ||
-         JustUsed(FlareStar) ||
+         JustUsed(FlareStar, GCD * 4) ||
          !LevelChecked(FlareStar) && ActionReady(Despair));
 
     private static bool EndOfFirePhase =>
@@ -124,7 +124,7 @@ internal partial class BLM
         // Paradox
         (OriginalHook(Fire), Preset.BLM_ST_Movement,
             () => BLM_ST_MovementOption[1] &&
-                  ActionReady(Paradox) &&
+                  ActionReady(OriginalHook(Paradox)) &&
                   FirePhase && ActiveParadox &&
                   MP.Cur >= MP.FireParadox &&
                   !HasStatusEffect(Buffs.Firestarter) &&

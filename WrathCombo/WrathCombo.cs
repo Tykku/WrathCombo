@@ -63,6 +63,8 @@ public sealed partial class WrathCombo : IDalamudPlugin
     internal ActionRetargeting ActionRetargeting = null!;
     internal MovementHook MoveHook;
 
+    internal static bool IsAprilFools => DateTime.UtcNow.Day == 1 && DateTime.UtcNow.Month == 4;
+
     private readonly TextPayload starterMotd = new("[Wrath Message of the Day] ");
     private static Job? jobID;
     private static bool EnteringInstancedContent
@@ -316,7 +318,6 @@ public sealed partial class WrathCombo : IDalamudPlugin
         {
             #region Checks that don't require the Player to be loaded
 
-            Service.Configuration.SetActionChanging();
             Configuration.ProcessSaveQueue();
 
             //Hacky workaround to ensure it's always running

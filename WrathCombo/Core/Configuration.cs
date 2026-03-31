@@ -37,6 +37,13 @@ public partial class Configuration : IPluginConfiguration
 
     #region UI Settings
 
+    /// <summary>
+    /// For the Oops all MNK gag
+    /// </summary>
+    [SettingCategory(Main_UI_Options)]
+    [Setting(Setting.Type.Toggle)]
+    public bool AprilFools2026 = true;
+
     /// Whether to hide the children of a feature if it is disabled. Default: false.
     /// <seealso cref="Presets.DrawPreset"/>
     [SettingCategory(Main_UI_Options)]

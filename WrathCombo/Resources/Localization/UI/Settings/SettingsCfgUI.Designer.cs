@@ -151,6 +151,42 @@ namespace WrathCombo.Resources.Localization.UI.Settings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to On, cause it&apos;s that type of day y&apos;know.
+        /// </summary>
+        internal static string AprilFools2026_defaultValue {
+            get {
+                return ResourceManager.GetString("AprilFools2026_defaultValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to For when you can&apos;t get enough MNK in your plugin..
+        /// </summary>
+        internal static string AprilFools2026_helpMark {
+            get {
+                return ResourceManager.GetString("AprilFools2026_helpMark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to April Fools 2026 Feature.
+        /// </summary>
+        internal static string AprilFools2026_Name {
+            get {
+                return ResourceManager.GetString("AprilFools2026_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Off, unless your name starts with Beep.
+        /// </summary>
+        internal static string AprilFools2026_recommendedValue {
+            get {
+                return ResourceManager.GetString("AprilFools2026_recommendedValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Off.
         /// </summary>
         internal static string BlockSpellOnMove_defaultValue {
@@ -457,7 +493,7 @@ namespace WrathCombo.Resources.Localization.UI.Settings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 46056.
+        ///   Looks up a localized string similar to 2-3.
         /// </summary>
         internal static string MaximumWeavesPerWindow_recommendedValue {
             get {

@@ -259,7 +259,7 @@ Triple weaving is already done in a manner where we try to avoid clipping GCDs, 
     <value>Maximum Number of Weaves</value>
   </data>
   <data name="MaximumWeavesPerWindow_recommendedValue" xml:space="preserve">
-    <value>46056</value>
+    <value>2-3</value>
   </data>
   <data name="MaximumWeavesPerWindow_unitLabel" xml:space="preserve">
     <value># of oGCDs</value>
@@ -677,5 +677,17 @@ It is recommended to enable this if you are a keyboard+mouse user and enable Ret
   </data>
   <data name="TroubleshootingOptions_Category" xml:space="preserve">
     <value>Troubleshooting Options</value>
+  </data>
+  <data name="AprilFools2026_Name" xml:space="preserve">
+    <value>April Fools 2026 Feature</value>
+  </data>
+  <data name="AprilFools2026_helpMark" xml:space="preserve">
+    <value>For when you can't get enough MNK in your plugin.</value>
+  </data>
+  <data name="AprilFools2026_recommendedValue" xml:space="preserve">
+    <value>Off, unless your name starts with Beep</value>
+  </data>
+  <data name="AprilFools2026_defaultValue" xml:space="preserve">
+    <value>On, cause it's that type of day y'know</value>
   </data>
 </root>

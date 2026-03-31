@@ -48,6 +48,8 @@ internal unsafe class AutoRotationController
     public static bool PausedForError;
 
     public static IGameObject? AutorotHealTarget;
+    public static bool AutorotRaidwiding;
+    public static int AutorotRaidwides = 0;
 
     public AutoRotationController()
     {
@@ -146,6 +148,26 @@ internal unsafe class AutoRotationController
 
         // Healer logic
         bool isHealer = Player.Object?.Role is CombatRole.Healer;
+
+        if (cfg.HealerSettings.HandleRaidwides)
+        {
+            if (isHealer && GroupDamageIncoming())
+            {
+                AutorotRaidwiding = true;
+                HandleRaidwide();
+            }
+            else
+            {
+                if (AutorotRaidwides > 0)
+                {
+                    Svc.Log.Debug($"Used {AutorotRaidwides} raidwides {string.Join(", ", BlacklistedRaidwides.Select(x => x.ActionName()))}");
+                    BlacklistedRaidwides.Clear();
+                }
+                AutorotRaidwides = 0;
+                AutorotRaidwiding = false;
+            }
+        }
+
         var healTarget = isHealer ? AutoRotationHelper.GetSingleTarget(cfg.HealerRotationMode) : null;
 
         bool aoeheal = isHealer
@@ -205,6 +227,59 @@ internal unsafe class AutoRotationController
         }
 
         ProcessAutoActions(autoActions, ref _, canHeal, false);
+    }
+
+    public static IEnumerable<(uint Action, bool MultiHitOnly)> RaidwideActions =
+    [
+        (WHM.LiturgyOfTheBell.Retarget(SimpleTarget.Self), true),
+        (WHM.PlenaryIndulgence, false),
+        (WHM.Temperance, false),
+        (WHM.DivineCaress, false),
+        (WHM.Asylum.Retarget(SimpleTarget.Self), false),
+        (WHM.Medica2, false),
+        (WHM.Medica3, false),
+        (SCH.Expedient, false),
+        (SCH.Seraphism, false),
+        (SCH.Succor, false),
+        (SCH.Concitation, false),
+        (AST.CollectiveUnconscious, false),
+        (AST.SunSign, false),
+        (AST.CelestialOpposition, false),
+        (AST.AspectedHelios, false),
+        (AST.HeliosConjuction, false),
+        (SGE.Panhaima, true),
+        (SGE.Kerachole, false),
+        (SGE.Physis, false),
+        (SGE.Physis2, false),
+        (SGE.Holos, false),
+        (SGE.Eukrasia, false),
+        (SGE.EukrasianPrognosis, false),
+        (SGE.EukrasianPrognosis2, false),
+    ];
+
+    public static List<uint> BlacklistedRaidwides = [];
+    private static void HandleRaidwide()
+    {
+        GroupDamageIncoming(out bool isMultiHit);
+        foreach (var (spell, multihitter) in RaidwideActions)
+        {
+            if (AutorotRaidwides >= 2)
+                return;
+
+            if (!isMultiHit && multihitter)
+                continue;
+
+            if (BlacklistedRaidwides.Contains(spell))
+                continue;
+
+            if (ActionReady(spell) && !JustUsed(spell, 10) && LocalPlayer.CastActionId != spell && (!IsMoving(true) || ActionManager.GetAdjustedCastTime(ActionType.Action, spell) == 0))
+            {
+                WouldLikeToGroundTarget = ActionSheet[spell].TargetArea;
+                ActionManager.Instance()->UseAction(ActionType.Action, spell);
+                WouldLikeToGroundTarget = false;
+                return;
+            }
+        }
     }
 
     private static bool ProcessAutoActions(Dictionary<Preset, bool> autoActions, ref uint _, bool canHeal, bool stOnly)
@@ -294,7 +369,7 @@ internal unsafe class AutoRotationController
 
                 if (Player.Object is not null && ActionManager.CanUseActionOnTarget(spell, SimpleTarget.FocusTarget.Struct()) && !OutOfRange(spell, Player.Object, SimpleTarget.FocusTarget) && ActionManager.Instance()->GetActionStatus(ActionType.Action, spell) == 0)
                 {
-                    ActionManager.Instance()->UseAction(ActionType.Action, regenSpell);
+                    ActionManager.Instance()->UseAction(ActionType.Action, regenSpell, SimpleTarget.FocusTarget.GameObjectId);
                     return;
                 }
             }
@@ -359,7 +434,7 @@ internal unsafe class AutoRotationController
 
                 if (Player.Object is not null && ActionManager.CanUseActionOnTarget(spell, SimpleTarget.FocusTarget.Struct()) && !OutOfRange(spell, Player.Object, SimpleTarget.FocusTarget) && ActionManager.Instance()->GetActionStatus(ActionType.Action, spell) == 0)
                 {
-                    ActionManager.Instance()->UseAction(ActionType.Action, shieldSpell);
+                    ActionManager.Instance()->UseAction(ActionType.Action, spell, SimpleTarget.FocusTarget.GameObjectId);
                     return;
                 }
             }
@@ -490,7 +565,7 @@ internal unsafe class AutoRotationController
             if (res is 0 or 565)
             {
                 Svc.Log.Debug($"Cleansing {memberBC.Name}");
-                ActionManager.Instance()->UseAction(ActionType.Action, RoleActions.Healer.Esuna, memberBC.GameObjectId);
+                ActionManager.Instance()->UseAction(ActionType.Action, RoleActions.Healer.Esuna.Retarget(memberBC), memberBC.GameObjectId);
             }
         }
     }
@@ -511,7 +586,7 @@ internal unsafe class AutoRotationController
             var enemiesTargeting = Svc.Objects.Count(x => x.IsTargetable && x.IsHostile() && x.TargetObjectId == member.BattleChara.GameObjectId);
             if (enemiesTargeting > 0 && !HasStatusEffect(SGE.Buffs.Kardion, member.BattleChara))
             {
-                ActionManager.Instance()->UseAction(ActionType.Action, SGE.Kardia, member.BattleChara.GameObjectId);
+                ActionManager.Instance()->UseAction(ActionType.Action, SGE.Kardia.Retarget(member.BattleChara), member.BattleChara.GameObjectId);
                 return;
             }
         }
@@ -870,7 +945,7 @@ internal unsafe class AutoRotationController
             !chara.IsDead &&
             chara.IsTargetable &&
             chara.IsHostile() &&
-            IsInRange(chara, InBossEncounter() && cfg.DPSSettings.IgnoreRangeInBoss ? 100f : cfg.DPSSettings.MaxDistance) &&
+            IsInRange(chara, InBossEncounter() && cfg.DPSSettings.IgnoreRangeInBoss ? 50f : cfg.DPSSettings.MaxDistance) &&
             GetTargetHeightDifference(chara) <= (InBossEncounter() && cfg.DPSSettings.IgnoreRangeInBoss ? 100f : cfg.DPSSettings.MaxDistance) &&
             !TargetIsInvincible(chara) &&
             !Service.Configuration.IgnoredNPCs.ContainsKey(chara.BaseId) &&

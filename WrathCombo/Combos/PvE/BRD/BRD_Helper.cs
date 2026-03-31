@@ -69,7 +69,7 @@ internal partial class BRD
 
     // Charge Tracking
     internal static uint RainOfDeathCharges => LevelChecked(RainOfDeath) ? GetRemainingCharges(RainOfDeath) : 0;
-    internal static uint BloodletterCharges => GetRemainingCharges(Bloodletter);
+    internal static uint BloodletterCharges => GetRemainingCharges(OriginalHook(Bloodletter));
     #endregion
 
     #region Functions
@@ -131,12 +131,12 @@ internal partial class BRD
         //Blue dot application and low level refresh
         internal static bool ApplyBlueDot()
         {
-            return ActionReady(Windbite) && DebuffCapCanBlue && (Blue is null || !CanIronJaws && BlueRemaining < computeRefresh());
+            return ActionReady(OriginalHook(Windbite)) && DebuffCapCanBlue && (Blue is null || !CanIronJaws && BlueRemaining < computeRefresh());
         }
         //Purple dot application and low level refresh
         internal static bool ApplyPurpleDot()
         {
-            return ActionReady(VenomousBite) && DebuffCapCanPurple && (Purple is null || !CanIronJaws && PurpleRemaining < computeRefresh());
+            return ActionReady(OriginalHook(VenomousBite)) && DebuffCapCanPurple && (Purple is null || !CanIronJaws && PurpleRemaining < computeRefresh());
         }
         //Raging jaws option dot refresh for snapshot
         internal static bool RagingJawsRefresh()

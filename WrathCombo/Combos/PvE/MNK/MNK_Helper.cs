@@ -66,8 +66,8 @@ internal partial class MNK
                 HasBattleTarget() && !JustUsed(PerfectBalance):
             {
                 // Odd window
-                if ((JustUsed(OriginalHook(Bootshine), GCD) || JustUsed(DragonKick, GCD)) &&
-                    !JustUsed(PerfectBalance, 20) && HasStatusEffect(Buffs.RiddleOfFire) && !HasStatusEffect(Buffs.Brotherhood))
+                if ((JustUsed(OriginalHook(Bootshine), GCD * 2) || JustUsed(DragonKick, GCD * 2)) &&
+                    !JustUsed(PerfectBalance, 20) && GetCooldownRemainingTime(RiddleOfFire) <= GCD * 2 && !HasStatusEffect(Buffs.Brotherhood))
                     return true;
 
                 // Even window first use
@@ -77,7 +77,8 @@ internal partial class MNK
 
                 // Even window second use
                 if ((JustUsed(OriginalHook(Bootshine), GCD) || JustUsed(DragonKick, GCD)) &&
-                    HasStatusEffect(Buffs.Brotherhood) && HasStatusEffect(Buffs.RiddleOfFire) && !HasStatusEffect(Buffs.FiresRumination))
+                    HasStatusEffect(Buffs.Brotherhood) && HasStatusEffect(Buffs.RiddleOfFire) &&
+                    (!HasStatusEffect(Buffs.FiresRumination) || IsNotEnabled(Preset.MNK_STUseFiresReply)))
                     return true;
 
                 // Low level
@@ -275,7 +276,7 @@ internal partial class MNK
         GroupDamageIncoming(3f);
 
     private static bool CanRoE() =>
-        ActionReady(RiddleOfEarth) &&
+        ActionReady(OriginalHook(RiddleOfEarth)) &&
         GroupDamageIncoming(2f) &&
         !HasStatusEffect(Buffs.RiddleOfEarth) &&
         !HasStatusEffect(Buffs.EarthsRumination);
@@ -408,7 +409,7 @@ internal partial class MNK
         !HasStatusEffect(Buffs.FormlessFist) &&
         IsOriginal(MasterfulBlitz) &&
         InActionRange(FiresReply) &&
-        !JustUsed(RiddleOfFire, GCD * 3) && 
+        !JustUsed(RiddleOfFire, GCD) &&
         !HasStatusEffect(Buffs.PerfectBalance) &&
         (JustUsed(OriginalHook(Bootshine), GCD * 1.5f) ||
          JustUsed(DragonKick, GCD * 1.5f) ||
@@ -429,6 +430,7 @@ internal partial class MNK
     private static bool CanWindsReply() =>
         HasStatusEffect(Buffs.WindsRumination) &&
         InActionRange(WindsReply) &&
+        !HasStatusEffect(Buffs.FiresRumination) &&
         (GetCooldownRemainingTime(RiddleOfFire) > 10 ||
          HasStatusEffect(Buffs.RiddleOfFire) ||
          GetStatusEffectRemainingTime(Buffs.WindsRumination) < GCD * 2 ||
