@@ -58,7 +58,7 @@ internal partial class BLM
 
                 case Preset.BLM_ST_Movement:
                     DrawHorizontalMultiChoice(BLM_ST_MovementOption,
-                        $"Use {Despair.ActionName()}", "Use Despair when below 1500 MP.", 7, 0);
+                        $"Use {Despair.ActionName()}", "Use Despair when below 1500 MP and when it is an instant cast (lvl 100 only).", 7, 0);
 
                     DrawPriorityInput(BLM_ST_MovementPriority,
                         6, 0, $"{Triplecast.ActionName()} Priority: ");

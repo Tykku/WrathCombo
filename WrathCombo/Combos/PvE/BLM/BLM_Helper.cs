@@ -112,10 +112,11 @@ internal partial class BLM
     private static (uint Action, Preset Preset, System.Func<bool> Logic)[]
         PrioritizedMovement =>
     [
-        //Despair
+        //Despair at lvl 100
         (Despair, Preset.BLM_ST_Movement,
             () => BLM_ST_MovementOption[0] &&
                   ActionReady(Despair) &&
+                  TraitLevelChecked(Traits.EnhancedAstralFire) &&
                   FirePhase && MP.Cur is >= 800 and < 1500 &&
                   !HasStatusEffect(Buffs.Triplecast) &&
                   !HasStatusEffect(Role.Buffs.Swiftcast)),
