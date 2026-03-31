@@ -76,7 +76,7 @@ internal partial class RPR
             {
                 //Double enshroud
                 if (LevelChecked(PlentifulHarvest) && HasStatusEffect(Buffs.Enshrouded) &&
-                    (GetCooldownRemainingTime(ArcaneCircle) <= GCD || IsOffCooldown(ArcaneCircle)) &&
+                    GetCooldownRemainingTime(ArcaneCircle) <= GCD && GetStatusEffectRemainingTime(Debuffs.DeathsDesign, CurrentTarget) < 15 &&
                     (JustUsed(VoidReaping, 2f) || JustUsed(CrossReaping, 2f)))
                     return true;
 
