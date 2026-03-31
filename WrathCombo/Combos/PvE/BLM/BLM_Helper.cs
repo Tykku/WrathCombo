@@ -112,9 +112,17 @@ internal partial class BLM
     private static (uint Action, Preset Preset, System.Func<bool> Logic)[]
         PrioritizedMovement =>
     [
+        //Despair
+        (Despair, Preset.BLM_ST_Movement,
+            () => BLM_ST_MovementOption[0] &&
+                  ActionReady(Despair) &&
+                  FirePhase && MP.Cur is >= 800 and < 1500 &&
+                  !HasStatusEffect(Buffs.Triplecast) &&
+                  !HasStatusEffect(Role.Buffs.Swiftcast)),
+
         //Triplecast
         (Triplecast, Preset.BLM_ST_Movement,
-            () => BLM_ST_MovementOption[0] &&
+            () => BLM_ST_MovementOption[1] &&
                   ActionReady(Triplecast) &&
                   !HasStatusEffect(Buffs.Triplecast) &&
                   !HasStatusEffect(Role.Buffs.Swiftcast) &&
@@ -123,7 +131,7 @@ internal partial class BLM
 
         // Paradox
         (OriginalHook(Fire), Preset.BLM_ST_Movement,
-            () => BLM_ST_MovementOption[1] &&
+            () => BLM_ST_MovementOption[2] &&
                   ActionReady(OriginalHook(Paradox)) &&
                   FirePhase && ActiveParadox &&
                   MP.Cur >= MP.FireParadox &&
@@ -133,13 +141,13 @@ internal partial class BLM
 
         //Swiftcast
         (Role.Swiftcast, Preset.BLM_ST_Movement,
-            () => BLM_ST_MovementOption[2] &&
+            () => BLM_ST_MovementOption[3] &&
                   ActionReady(Role.Swiftcast) &&
                   !HasStatusEffect(Buffs.Triplecast)),
 
         //Xeno
         (Xenoglossy, Preset.BLM_ST_Movement,
-            () => BLM_ST_MovementOption[3] &&
+            () => BLM_ST_MovementOption[4] &&
                   ActionReady(Xenoglossy) &&
                   HasPolyglotStacks() &&
                   !HasStatusEffect(Buffs.Triplecast) &&
@@ -147,7 +155,7 @@ internal partial class BLM
 
         // Firestarter
         (Fire3, Preset.BLM_ST_Movement,
-            () => BLM_ST_MovementOption[4] &&
+            () => BLM_ST_MovementOption[5] &&
                   ActionReady(Fire3) &&
                   FirePhase &&
                   HasStatusEffect(Buffs.Firestarter) &&
@@ -156,7 +164,7 @@ internal partial class BLM
 
         //Scathe
         (Scathe, Preset.BLM_ST_Movement,
-            () => BLM_ST_MovementOption[5] &&
+            () => BLM_ST_MovementOption[6] &&
                   ActionReady(Scathe) &&
                   !HasStatusEffect(Buffs.Triplecast) &&
                   !HasStatusEffect(Role.Buffs.Swiftcast))
