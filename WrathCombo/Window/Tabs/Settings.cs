@@ -291,6 +291,9 @@ internal class Settings : ConfigWindow
         {
             case Attributes.Setting.Type.Toggle:
                 {
+                    if (setting.FieldName == "AprilFools2026" && !IsAprilFools)
+                        return;
+
                     var value = (bool)setting.Value;
 
                     // Update group value if applicable
