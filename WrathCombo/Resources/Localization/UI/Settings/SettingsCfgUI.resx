@@ -702,4 +702,16 @@ It is recommended to enable this if you are a keyboard+mouse user and enable Ret
   <data name="TankbusterTTS_defaultValue" xml:space="preserve">
     <value>Off</value>
   </data>
+  <data name="AoEDamageTTS_Name" xml:space="preserve">
+    <value>Play TTS on Group Damage</value>
+  </data>
+  <data name="AoEDamageTTS_helpMark" xml:space="preserve">
+    <value>Will play a text-to-speech sound clip whenever a stack/group damage cast is detected, including who it is targeting if applicable.</value>
+  </data>
+  <data name="AoEDamageTTS_recommendedValue" xml:space="preserve">
+    <value>Preference</value>
+  </data>
+  <data name="AoEDamageTTS_defaultValue" xml:space="preserve">
+    <value>Off</value>
+  </data>
 </root>

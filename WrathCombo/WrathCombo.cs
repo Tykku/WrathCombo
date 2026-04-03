@@ -383,9 +383,10 @@ public sealed partial class WrathCombo : IDalamudPlugin
                 OpenerDtr.Text = "";
 
             if (Service.Configuration.TankbusterTTS)
-            {
-               CustomComboFunctions.PlayTankbusterTTS();
-            }
+                CustomComboFunctions.PlayTankbusterTTS();
+
+            if (Service.Configuration.AoEDamageTTS)
+                CustomComboFunctions.PlayGroupwideTTS();
         }
         catch (Exception ex)
         {

@@ -129,6 +129,13 @@ public partial class Configuration : IPluginConfiguration
     [Setting(Setting.Type.Toggle)]
     public bool TankbusterTTS = false;
 
+    /// <summary>
+    /// Whether to play TTS when Raidwides/Group Damages are detected. Default: false.
+    /// </summary>
+    [SettingCategory(Main_UI_Options)]
+    [Setting(Setting.Type.Toggle)]
+    public bool AoEDamageTTS = false;
+
     #region Future Search Settings
 
     /// The preferred search behavior. Default: Filter.

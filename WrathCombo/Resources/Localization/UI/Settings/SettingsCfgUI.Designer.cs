@@ -151,6 +151,42 @@ namespace WrathCombo.Resources.Localization.UI.Settings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Off.
+        /// </summary>
+        internal static string AoEDamageTTS_defaultValue {
+            get {
+                return ResourceManager.GetString("AoEDamageTTS_defaultValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Will play a text-to-speech sound clip whenever a stack/group damage cast is detected, including who it is targeting if applicable..
+        /// </summary>
+        internal static string AoEDamageTTS_helpMark {
+            get {
+                return ResourceManager.GetString("AoEDamageTTS_helpMark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Play TTS on Group Damage.
+        /// </summary>
+        internal static string AoEDamageTTS_Name {
+            get {
+                return ResourceManager.GetString("AoEDamageTTS_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preference.
+        /// </summary>
+        internal static string AoEDamageTTS_recommendedValue {
+            get {
+                return ResourceManager.GetString("AoEDamageTTS_recommendedValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to On, cause it&apos;s that type of day y&apos;know.
         /// </summary>
         internal static string AprilFools2026_defaultValue {

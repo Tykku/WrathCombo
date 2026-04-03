@@ -24,6 +24,8 @@ internal abstract partial class CustomComboFunctions
     private static uint? CurrentCFC => Content.ContentFinderConditionRowId;
 
     private static List<TTSData> TTSTankbusters = [];
+    private static List<TTSData> TTSGroupwides = [];
+    private static bool CurrentRaidwideHandled = false;
 
     /// <summary>
     /// Determines whether a VFX path matches any list of VFX paths.<br/>
@@ -232,6 +234,9 @@ internal abstract partial class CustomComboFunctions
 
     public static void PlayTankbusterTTS()
     {
+        if (!EzThrottler.Throttle("TankbusterTTS", 100))
+            return;
+
         foreach (var vfx in VfxManager.TrackedEffects.FilterToTargeted().Where(x => IsTankBusterEffectPath(x) && x.TargetID.GetObject().IsInParty()))
         {
             if (!TTSTankbusters.Any(x => x.VFX == vfx))
@@ -240,11 +245,44 @@ internal abstract partial class CustomComboFunctions
 
         if (TTSTankbusters.Any(x => !x.TTSHandled))
         {
-            var targets = TTSTankbusters.Where(x => !x.TTSHandled).Select(x => x.VFX.TargetID.GetObject()?.Name.ToString()).ToList();
+            var targets = TTSTankbusters.Where(x => !x.TTSHandled).Select(x => x.VFX.TargetID == Player.Object.GameObjectId ? "You" : x.VFX.TargetID.GetObject()?.Name.ToString()).ToList();
             TTS.SpeakAsync($"Tankbuster on {JoinNaturally(targets)}");
             TTSTankbusters.ForEach(x => x.TTSHandled = true);
         }
 
+        TTSTankbusters.RemoveAll(x => x.VFX.AgeSeconds >= 10);
+    }
+
+    public static void PlayGroupwideTTS()
+    {
+        if (!EzThrottler.Throttle("RaidwideTTS", 100))
+            return;
+
+        foreach (var vfx in VfxManager.TrackedEffects.Where(v => v.VfxID != 0 && (CheckPath(MHSharedDmgPaths, v.Path)) || CheckPath(SharedDmgPaths, v.Path)))
+        {
+            if (!TTSGroupwides.Any(x => x.VFX == vfx))
+                TTSGroupwides.Add(new TTSData() { VFX = vfx });
+        }
+
+        if (TTSGroupwides.Any(x => !x.TTSHandled))
+        {
+            var multiHit = TTSGroupwides.Any(x => CheckPath(MHSharedDmgPaths, x.VFX.Path));
+            var targets = TTSGroupwides.Where(x => !x.TTSHandled).Select(x => x.VFX.TargetID == Player.Object.GameObjectId ? "You" : x.VFX.TargetID.GetObject()?.Name.ToString()).ToList();
+            TTS.SpeakAsync($"{(multiHit ? "Multi-hit " : "")}Stack marker on {JoinNaturally(targets)}");
+            TTSGroupwides.ForEach(x => x.TTSHandled = true);
+        }
+
+        TTSGroupwides.RemoveAll(x => x.VFX.AgeSeconds >= 10);
+
+        if (RaidwideCasting())
+        {
+            if (!CurrentRaidwideHandled)
+                TTS.SpeakAsync("Group damage incoming");
+
+            CurrentRaidwideHandled = true;
+        }
+        else
+            CurrentRaidwideHandled = false;
     }
 
     public static string JoinNaturally(IList<string?> items)
