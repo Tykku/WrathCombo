@@ -8,18 +8,22 @@ using System;
 using System.Collections.Frozen;
 using System.Collections.Generic;
 using System.Linq;
+using System.Speech.Synthesis;
 using WrathCombo.Extensions;
 
 namespace WrathCombo.CustomComboNS.Functions;
 
 internal abstract partial class CustomComboFunctions
 {
+    public static SpeechSynthesizer TTS = new();
     private const StringComparison Lower = StringComparison.OrdinalIgnoreCase;
 
     private static readonly StringComparer Lowerer =
         StringComparer.FromComparison(Lower);
 
     private static uint? CurrentCFC => Content.ContentFinderConditionRowId;
+
+    private static List<TTSData> TTSTankbusters = [];
 
     /// <summary>
     /// Determines whether a VFX path matches any list of VFX paths.<br/>
@@ -147,10 +151,10 @@ internal abstract partial class CustomComboFunctions
         if (AoEEffects.Count == 0)
             return false;
 
-        #if DEBUG
+#if DEBUG
         if (EzThrottler.Throttle("DebugSharedDamageEffectVFX1", 5000))
             Svc.Log.Debug($"Found Incoming Shared Damage Effects {AoEEffects.Count}");
-		#endif
+#endif
 
         // Expected Outcome from the LINQ:
         // Multi - hit on party member, Closest in your party
@@ -166,9 +170,9 @@ internal abstract partial class CustomComboFunctions
             bestTarget = AoEEffects[0].TargetID.GetObject();
         else
         {
-            #if DEBUG
+#if DEBUG
             if (Svc.Condition[ConditionFlag.DutyRecorderPlayback]) PlaybackClosest = true; //Trick to allow alliance targets during ARR recording Playback.
-            #endif
+#endif
             bestTarget = AoEEffects //Note this will fail on Player based ARR Recordings. Trust Recordings are fine
                 .Select(vfx => vfx.TargetID.GetObject())
                 .OfType<IBattleChara>()
@@ -183,12 +187,12 @@ internal abstract partial class CustomComboFunctions
         if (bestTarget is null)
             return false;
 
-        #if DEBUG
+#if DEBUG
         if (EzThrottler.Throttle("DebugSharedDamageEffectVFX2", 5000))
         {
             Svc.Log.Debug($"Found Shared Damage Effects. Name:{bestTarget.Name} MH:{MH} Party:{bestTarget.IsInParty()}");
         }
-        #endif
+#endif
 
         //return only party member object (Don't want to illegally dash to Alliance or NPCs)
         isMultiHit = MH;
@@ -222,7 +226,46 @@ internal abstract partial class CustomComboFunctions
             return false;
 
         target = battleChara;
+
         return true;
+    }
+
+    public static void PlayTankbusterTTS()
+    {
+        foreach (var vfx in VfxManager.TrackedEffects.FilterToTargeted().Where(x => IsTankBusterEffectPath(x) && x.TargetID.GetObject().IsInParty()))
+        {
+            if (!TTSTankbusters.Any(x => x.VFX == vfx))
+                TTSTankbusters.Add(new TTSData() { VFX = vfx });
+        }
+
+        if (TTSTankbusters.Any(x => !x.TTSHandled))
+        {
+            var targets = TTSTankbusters.Where(x => !x.TTSHandled).Select(x => x.VFX.TargetID.GetObject()?.Name.ToString()).ToList();
+            TTS.SpeakAsync($"Tankbuster on {JoinNaturally(targets)}");
+            TTSTankbusters.ForEach(x => x.TTSHandled = true);
+        }
+
+    }
+
+    public static string JoinNaturally(IList<string?> items)
+    {
+        if (items == null || items.Count == 0)
+            return string.Empty;
+
+        if (items.Count == 1)
+            return items[0]!;
+
+        if (items.Count == 2)
+            return $"{items[0]} and {items[1]}";
+
+        return string.Join(", ", items.Take(items.Count - 1))
+               + " and " + items.Last();
+    }
+
+    private class TTSData
+    {
+        public VfxInfo VFX;
+        public bool TTSHandled;
     }
 
     /// <summary>

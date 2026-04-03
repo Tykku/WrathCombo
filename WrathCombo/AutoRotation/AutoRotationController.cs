@@ -50,6 +50,7 @@ internal unsafe class AutoRotationController
     public static IGameObject? AutorotHealTarget;
     public static bool AutorotRaidwiding;
     public static int AutorotRaidwides = 0;
+    public static bool TankbusterHandled = false;
 
     public AutoRotationController()
     {
@@ -151,10 +152,10 @@ internal unsafe class AutoRotationController
 
         if (cfg.HealerSettings.HandleRaidwides)
         {
-            if (isHealer && GroupDamageIncoming())
+            if (isHealer && GroupDamageIncoming(out var multi))
             {
                 AutorotRaidwiding = true;
-                HandleRaidwide();
+                HandleRaidwide(multi);
             }
             else
             {
@@ -167,6 +168,13 @@ internal unsafe class AutoRotationController
                 AutorotRaidwiding = false;
             }
         }
+
+        if (isHealer && TryGetTankBusterTarget(out var tbtarget))
+        {
+            HandleTankbuster(tbtarget.SafeGameObjectId);
+        }
+        else
+            TankbusterHandled = false;
 
         var healTarget = isHealer ? AutoRotationHelper.GetSingleTarget(cfg.HealerRotationMode) : null;
 
@@ -229,6 +237,39 @@ internal unsafe class AutoRotationController
         ProcessAutoActions(autoActions, ref _, canHeal, false);
     }
 
+    public static IEnumerable<uint> TankbusterActions =
+    [
+        WHM.Aquaveil,
+        WHM.DivineBenison,
+
+    ];
+
+    private static void HandleTankbuster(ulong? safeGameObjectId)
+    {
+        if (safeGameObjectId == null)
+            return;
+
+        foreach (var spell in TankbusterActions)
+        {
+            if (TankbusterHandled)
+                return;
+
+            if (AbleToCast(spell))
+            {
+                WouldLikeToGroundTarget = ActionSheet[spell].TargetArea;
+                ActionManager.Instance()->UseAction(ActionType.Action, spell, safeGameObjectId!.Value);
+                WouldLikeToGroundTarget = false;
+                TankbusterHandled = true;
+                return;
+            }
+        }
+    }
+
+    private static bool AbleToCast(uint spell)
+    {
+        return ActionReady(spell) && !JustUsed(spell, 10) && LocalPlayer.CastActionId != spell && (!IsMoving(true) || ActionManager.GetAdjustedCastTime(ActionType.Action, spell) == 0);
+    }
+
     public static IEnumerable<(uint Action, bool MultiHitOnly)> RaidwideActions =
     [
         (WHM.LiturgyOfTheBell.Retarget(SimpleTarget.Self), true),
@@ -258,21 +299,20 @@ internal unsafe class AutoRotationController
     ];
 
     public static List<uint> BlacklistedRaidwides = [];
-    private static void HandleRaidwide()
+    private static void HandleRaidwide(bool multihit)
     {
-        GroupDamageIncoming(out bool isMultiHit);
         foreach (var (spell, multihitter) in RaidwideActions)
         {
             if (AutorotRaidwides >= 2)
                 return;
 
-            if (!isMultiHit && multihitter)
+            if (!multihit && multihitter)
                 continue;
 
             if (BlacklistedRaidwides.Contains(spell))
                 continue;
 
-            if (ActionReady(spell) && !JustUsed(spell, 10) && LocalPlayer.CastActionId != spell && (!IsMoving(true) || ActionManager.GetAdjustedCastTime(ActionType.Action, spell) == 0))
+            if (AbleToCast(spell))
             {
                 WouldLikeToGroundTarget = ActionSheet[spell].TargetArea;
                 ActionManager.Instance()->UseAction(ActionType.Action, spell);

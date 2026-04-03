@@ -1292,6 +1292,42 @@ namespace WrathCombo.Resources.Localization.UI.Settings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Off.
+        /// </summary>
+        internal static string TankbusterTTS_defaultValue {
+            get {
+                return ResourceManager.GetString("TankbusterTTS_defaultValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Will play a text-to-speech sound clip whenever a tankbuster is detected, including who it is targeting..
+        /// </summary>
+        internal static string TankbusterTTS_helpMark {
+            get {
+                return ResourceManager.GetString("TankbusterTTS_helpMark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Play TTS on Tankbuster.
+        /// </summary>
+        internal static string TankbusterTTS_Name {
+            get {
+                return ResourceManager.GetString("TankbusterTTS_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preference.
+        /// </summary>
+        internal static string TankbusterTTS_recommendedValue {
+            get {
+                return ResourceManager.GetString("TankbusterTTS_recommendedValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to #808080FF.
         /// </summary>
         internal static string TargetHighlightColor_defaultValue {
