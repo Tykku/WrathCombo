@@ -711,16 +711,16 @@ internal partial class WHM : Healer
 
         protected override uint Invoke(uint actionID)
         {
-            if (actionID != RoleActions.Magic.Swiftcast)
+            if (actionID != Role.Swiftcast)
                 return actionID;
 
-            if (IsOnCooldown(actionID) || HasStatusEffect(RoleActions.Magic.Buffs.Swiftcast))
+            if (IsOnCooldown(Role.Swiftcast) || HasStatusEffect(Role.Buffs.Swiftcast))
             {
                 if (IsEnabled(Preset.WHM_ThinAirRaise) && !HasStatusEffect(Buffs.ThinAir) && ActionReady(ThinAir))
                     return ThinAir;
 
                 return IsEnabled(Preset.WHM_Raise_Retarget)
-                    ? Raise.Retarget(actionID, SimpleTarget.Stack.AllyToRaise)
+                    ? Raise.Retarget(Role.Swiftcast, SimpleTarget.Stack.AllyToRaise)
                     : Raise;
             }
 
