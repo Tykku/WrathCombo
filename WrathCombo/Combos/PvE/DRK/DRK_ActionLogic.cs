@@ -266,9 +266,11 @@ internal partial class DRK
                 (flags.HasFlag(Combo.Simple) ||
                  IsEnabled(Preset.DRK_AoE_CD_Drain)) &&
                 ActionReady(AbyssalDrain) &&
-                !HasStatusEffect(Buffs.LivingDead) ||  // Trying to die
-                !HasStatusEffect(Buffs.WalkingDead) || // Has better healing
-                PlayerHealthPercentageHp() <= drainHPThreshold)
+                PlayerHealthPercentageHp() <= drainHPThreshold &&
+                // Trying to die (unless it's the final moments)
+                GetStatusEffectRemainingTime(Buffs.LivingDead) < 1 &&
+                // Has better healing
+                !HasStatusEffect(Buffs.WalkingDead))
                 return (action = AbyssalDrain) != 0;
 
             #endregion
