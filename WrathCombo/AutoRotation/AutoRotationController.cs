@@ -268,10 +268,13 @@ internal unsafe class AutoRotationController
 
             if (AbleToCast(spell, safeGameObjectId))
             {
-                WouldLikeToGroundTarget = ActionSheet[spell].TargetArea;
-                ActionManager.Instance()->UseAction(ActionType.Action, spell is SGE.Eukrasia ? spell.Retarget(SimpleTarget.Self) : spell.Retarget(safeGameObjectId.GetObject()), safeGameObjectId!.Value);
+                var act = spell;
+                if (act == AST.Bole) act = AST.Play2;
+                if (act == AST.Spire) act = AST.Play3;
+                WouldLikeToGroundTarget = ActionSheet[act].TargetArea;
+                ActionManager.Instance()->UseAction(ActionType.Action, act is SGE.Eukrasia ? act.Retarget(SimpleTarget.Self) : act.Retarget(safeGameObjectId.GetObject()), safeGameObjectId!.Value);
                 WouldLikeToGroundTarget = false;
-                if (spell != SGE.Eukrasia)
+                if (act != SGE.Eukrasia)
                     TankbusterHandled = true;
                 return;
             }
@@ -280,7 +283,7 @@ internal unsafe class AutoRotationController
 
     private static bool AbleToCast(uint spell, ulong? safeGameObjectId = null)
     {
-        return ActionReady(spell) && (safeGameObjectId != null ? JustUsedOn(spell, safeGameObjectId.GetObject(), 5) : !JustUsed(spell, 10)) && LocalPlayer.CastActionId != spell && (!IsMoving(true) || ActionManager.GetAdjustedCastTime(ActionType.Action, spell) == 0);
+        return ActionReady(spell) && (safeGameObjectId != null ? !JustUsedOn(spell, safeGameObjectId.GetObject(), 5) : !JustUsed(spell, 10)) && LocalPlayer.CastActionId != spell && (!IsMoving(true) || ActionManager.GetAdjustedCastTime(ActionType.Action, spell) == 0);
     }
 
     public static IEnumerable<(uint Action, bool MultiHitOnly)> RaidwideActions =
