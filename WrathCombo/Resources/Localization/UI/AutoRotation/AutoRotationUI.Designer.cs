@@ -214,6 +214,15 @@ namespace WrathCombo.Resources.Localization.UI.AutoRotation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Handle Detected Tankbusters.
+        /// </summary>
+        internal static string Checkbox_HandleTankbusters {
+            get {
+                return ResourceManager.GetString("Checkbox_HandleTankbusters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Always Set Hard Target###HealerHardTarget.
         /// </summary>
         internal static string Checkbox_HealerAlwaysHardTarget {
@@ -461,6 +470,15 @@ namespace WrathCombo.Resources.Localization.UI.AutoRotation {
         internal static string HelpText_HandleRaidwides {
             get {
                 return ResourceManager.GetString("HelpText_HandleRaidwides", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Will try to use actions before detected tankbusters to mitigate damage on targeted member. Max 1 action (excluding {0} for setup).
+        /// </summary>
+        internal static string HelpText_HandleTankbusters {
+            get {
+                return ResourceManager.GetString("HelpText_HandleTankbusters", resourceCulture);
             }
         }
         

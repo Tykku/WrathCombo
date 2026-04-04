@@ -169,12 +169,15 @@ internal unsafe class AutoRotationController
             }
         }
 
-        if (isHealer && TryGetTankBusterTarget(out var tbtarget))
+        if (cfg.HealerSettings.HandleTankbusters)
         {
-            HandleTankbuster(tbtarget.SafeGameObjectId);
+            if (isHealer && TryGetTankBusterTarget(out var tbtarget))
+            {
+                HandleTankbuster(tbtarget.SafeGameObjectId);
+            }
+            else
+                TankbusterHandled = false;
         }
-        else
-            TankbusterHandled = false;
 
         var healTarget = isHealer ? AutoRotationHelper.GetSingleTarget(cfg.HealerRotationMode) : null;
 
@@ -241,7 +244,16 @@ internal unsafe class AutoRotationController
     [
         WHM.Aquaveil,
         WHM.DivineBenison,
-
+        SCH.Protraction,
+        SCH.Adloquium,
+        SCH.Manifestation,
+        AST.Spire,
+        AST.Bole,
+        AST.CelestialIntersection,
+        AST.Exaltation,
+        SGE.Taurochole,
+        SGE.Eukrasia,
+        SGE.EukrasianDiagnosis,
     ];
 
     private static void HandleTankbuster(ulong? safeGameObjectId)
@@ -254,20 +266,21 @@ internal unsafe class AutoRotationController
             if (TankbusterHandled)
                 return;
 
-            if (AbleToCast(spell))
+            if (AbleToCast(spell, safeGameObjectId))
             {
                 WouldLikeToGroundTarget = ActionSheet[spell].TargetArea;
-                ActionManager.Instance()->UseAction(ActionType.Action, spell, safeGameObjectId!.Value);
+                ActionManager.Instance()->UseAction(ActionType.Action, spell is SGE.Eukrasia ? spell.Retarget(SimpleTarget.Self) : spell.Retarget(safeGameObjectId.GetObject()), safeGameObjectId!.Value);
                 WouldLikeToGroundTarget = false;
-                TankbusterHandled = true;
+                if (spell != SGE.Eukrasia)
+                    TankbusterHandled = true;
                 return;
             }
         }
     }
 
-    private static bool AbleToCast(uint spell)
+    private static bool AbleToCast(uint spell, ulong? safeGameObjectId = null)
     {
-        return ActionReady(spell) && !JustUsed(spell, 10) && LocalPlayer.CastActionId != spell && (!IsMoving(true) || ActionManager.GetAdjustedCastTime(ActionType.Action, spell) == 0);
+        return ActionReady(spell) && (safeGameObjectId != null ? JustUsedOn(spell, safeGameObjectId.GetObject(), 5) : !JustUsed(spell, 10)) && LocalPlayer.CastActionId != spell && (!IsMoving(true) || ActionManager.GetAdjustedCastTime(ActionType.Action, spell) == 0);
     }
 
     public static IEnumerable<(uint Action, bool MultiHitOnly)> RaidwideActions =
@@ -282,6 +295,7 @@ internal unsafe class AutoRotationController
         (SCH.Expedient, false),
         (SCH.Seraphism, false),
         (SCH.Succor, false),
+        (SCH.Accession, false),
         (SCH.Concitation, false),
         (AST.CollectiveUnconscious, false),
         (AST.SunSign, false),
