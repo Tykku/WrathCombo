@@ -220,8 +220,11 @@ internal partial class DRK
                 flags.HasFlag(Combo.Simple) || flags.HasFlag(Combo.AoE) ||
                 (flags.HasFlag(Combo.Adv) && flags.HasFlag(Combo.ST) &&
                  !IsEnabled(Preset.DRK_ST_CD_BringerBurst)) ||
-                (flags.HasFlag(Combo.Adv) && flags.HasFlag(Combo.ST) &&
-                 IsEnabled(Preset.DRK_ST_CD_BringerBurst) &&
+                (flags.HasFlag(Combo.Adv) && flags.HasFlag(Combo.AoE) &&
+                 !IsEnabled(Preset.DRK_AoE_CD_BringerBurst)) ||
+                (flags.HasFlag(Combo.Adv) &&
+                 (IsSTEnabled(flags, Preset.DRK_ST_CD_BringerBurst) ||
+                  IsAoEEnabled(flags, Preset.DRK_AoE_CD_BringerBurst)) &&
                  GetCooldownRemainingTime(LivingShadow) >= 90 &&
                  !HasStatusEffect(Buffs.Scorn));
 

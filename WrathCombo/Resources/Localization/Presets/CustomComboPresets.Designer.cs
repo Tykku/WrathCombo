@@ -7914,6 +7914,24 @@ namespace WrathCombo.Resources.Localization.Presets {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pools Shadowbringer to use during even minute window bursts (after Disesteem)..
+        /// </summary>
+        internal static string DRK_AoE_CD_BringerBurst_Desc {
+            get {
+                return ResourceManager.GetString("DRK_AoE_CD_BringerBurst_Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shadowbringer Burst Option.
+        /// </summary>
+        internal static string DRK_AoE_CD_BringerBurst_Name {
+            get {
+                return ResourceManager.GetString("DRK_AoE_CD_BringerBurst_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Adds Delirium (or Blood Weapon at lower levels) to the rotation on cooldown and when Darkside is up..
         /// </summary>
         internal static string DRK_AoE_CD_Delirium_Desc {
@@ -14971,8 +14989,7 @@ namespace WrathCombo.Resources.Localization.Presets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Uses the mudra from three mudra, automatically on ST burst mode. 
-        /// Will use Hyosho Ranryu &gt; Forked Raiju IF YOU HAVE BUNSHIN STACKS &gt; Huton.
+        ///   Looks up a localized string similar to Allows for a custom priority and selection of mudras when under the Three Mudra effect..
         /// </summary>
         internal static string NINPvP_ST_MudraMode_Desc {
             get {
@@ -14981,7 +14998,7 @@ namespace WrathCombo.Resources.Localization.Presets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Automatic Mudra Mode.
+        ///   Looks up a localized string similar to Customizable Mudra Mode.
         /// </summary>
         internal static string NINPvP_ST_MudraMode_Name {
             get {

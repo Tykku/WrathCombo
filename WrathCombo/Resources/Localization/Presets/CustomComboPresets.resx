@@ -11319,4 +11319,10 @@ Only uses Crimson Cyclone when in melee range.</value>
   <data name="WAR_NascentFlash_TT_Desc" xml:space="preserve">
     <value>If your target's target is not you or in your party, will Retarget Nascent Flash onto them.</value>
   </data>
+  <data name="DRK_AoE_CD_BringerBurst_Name" xml:space="preserve">
+      <value>Shadowbringer Burst Option</value>
+  </data>
+  <data name="DRK_AoE_CD_BringerBurst_Desc" xml:space="preserve">
+      <value>Pools Shadowbringer to use during even minute window bursts (after Disesteem).</value>
+  </data>
 </root>

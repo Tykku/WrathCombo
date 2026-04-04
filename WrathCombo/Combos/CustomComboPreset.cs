@@ -2548,9 +2548,17 @@ public enum Preset
 
     #endregion
 
+    #region Shadowbringer Options
+
     [ParentCombo(DRK_AoE_CDs)]
     [JobInfo(Job.DRK)]
     DRK_AoE_CD_Bringer = 5057,
+    
+    [ParentCombo(DRK_AoE_CD_Bringer)]
+    [JobInfo(Job.DRK)]
+    DRK_AoE_CD_BringerBurst = 5076,
+
+    #endregion
 
     #region Salt Options
 
@@ -2607,7 +2615,7 @@ public enum Preset
     #endregion
 
     #endregion
-    // Last value = 5075
+    // Last value = 5076
 
     #region Advanced Mitigation
     [JobInfo(Job.DRK)]
