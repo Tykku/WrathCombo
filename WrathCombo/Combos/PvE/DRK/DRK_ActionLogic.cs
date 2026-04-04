@@ -217,7 +217,7 @@ internal partial class DRK
             #region Variables
 
             var bringerInBurst =
-                flags.HasFlag(Combo.Simple) || flags.HasFlag(Combo.AoE) ||
+                flags.HasFlag(Combo.Simple) ||
                 (flags.HasFlag(Combo.Adv) && flags.HasFlag(Combo.ST) &&
                  !IsEnabled(Preset.DRK_ST_CD_BringerBurst)) ||
                 (flags.HasFlag(Combo.Adv) && flags.HasFlag(Combo.AoE) &&
