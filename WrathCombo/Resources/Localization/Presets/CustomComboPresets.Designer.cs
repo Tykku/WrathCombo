@@ -8184,7 +8184,7 @@ namespace WrathCombo.Resources.Localization.Presets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adds Quietus to the rotation when under Delirium, or just after Burst...
+        ///   Looks up a localized string similar to Adds Quietus to the rotation when under Delirium, or just after Burst..
         /// </summary>
         internal static string DRK_AoE_Sp_Quietus_Desc {
             get {

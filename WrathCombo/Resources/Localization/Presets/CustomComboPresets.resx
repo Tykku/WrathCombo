@@ -3113,7 +3113,7 @@ These features are ideal if you want to customize the rotation.</value>
     <value>Quietus Option</value>
   </data>
   <data name="DRK_AoE_Sp_Quietus_Desc" xml:space="preserve">
-    <value>Adds Quietus to the rotation when under Delirium, or just after Burst..</value>
+      <value>Adds Quietus to the rotation when under Delirium, or just after Burst.</value>
   </data>
   <data name="DRK_AoE_Sp_BloodOvercap_Name" xml:space="preserve">
     <value>Blood Gauge Overcap Option</value>
