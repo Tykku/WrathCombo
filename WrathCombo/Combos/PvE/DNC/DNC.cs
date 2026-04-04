@@ -360,15 +360,19 @@ internal partial class DNC : PhysicalRanged
             if (IsEnabled(Preset.DNC_ST_Adv_DawnDance) &&
                 HasStatusEffect(Buffs.DanceOfTheDawnReady) &&
                 ActionReady(DanceOfTheDawn) &&
+                // Tech is up
                 (GetCooldownRemainingTime(TechnicalStep) > 5 ||
-                 IsOffCooldown(TechnicalStep)) && // Tech is up
-                (Gauge.Esprit >=
-                 DNC_ST_Adv_SaberThreshold || // >esprit threshold use
-                 (HasStatusEffect(Buffs
-                      .TechnicalFinish) && // will overcap with Tillana if not used
-                  !tillanaDriftProtectionActive && Gauge.Esprit >= 50) ||
-                 (GetStatusEffectRemainingTime(Buffs.DanceOfTheDawnReady) < 5 &&
-                  Gauge.Esprit >= 50))) // emergency use
+                 IsOffCooldown(TechnicalStep)) &&
+                (
+                    // >Esprit threshold use
+                    Gauge.Esprit >= DNC_ST_Adv_SaberThreshold ||
+                    // Will overcap with Tillana if not used
+                    (HasStatusEffect(Buffs.TechnicalFinish) &&
+                     !tillanaDriftProtectionActive && Gauge.Esprit >= 50) ||
+                    // Emergency use
+                    (GetStatusEffectRemainingTime(Buffs.DanceOfTheDawnReady) < 5 &&
+                     Gauge.Esprit >= 50)
+                ))
                 return OriginalHook(DanceOfTheDawn);
 
             // ST Saber Dance (Emergency Use)
@@ -674,13 +678,16 @@ internal partial class DNC : PhysicalRanged
                 ActionReady(DanceOfTheDawn) &&
                 (GetCooldownRemainingTime(TechnicalStep) > 5 ||
                  IsOffCooldown(TechnicalStep)) && // Tech is up
-                (Gauge.Esprit >=
-                 DNC_ST_Adv_SaberThreshold || // >esprit threshold use
-                 (HasStatusEffect(Buffs
-                      .TechnicalFinish) && // will overcap with Tillana if not used
-                  Gauge.Esprit >= 50) ||
-                 (GetStatusEffectRemainingTime(Buffs.DanceOfTheDawnReady) < 5 &&
-                  Gauge.Esprit >= 50))) // emergency use
+                (
+                    // >Esprit threshold use
+                    Gauge.Esprit >= 50 ||
+                    // Will overcap with Tillana if not used
+                    (HasStatusEffect(Buffs.TechnicalFinish) &&
+                     Gauge.Esprit >= 50) ||
+                    // Emergency use
+                    (GetStatusEffectRemainingTime(Buffs.DanceOfTheDawnReady) < 5 &&
+                     Gauge.Esprit >= 50)
+                ))
                 return OriginalHook(DanceOfTheDawn);
 
             // ST Saber Dance
