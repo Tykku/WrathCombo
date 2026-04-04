@@ -2570,6 +2570,10 @@ public enum Preset
     [JobInfo(Job.DRK)]
     DRK_AoE_CD_SaltStill = 5059,
 
+    [ParentCombo(DRK_AoE_CDs)]
+    [JobInfo(Job.DRK)]
+    DRK_AoE_CD_Darkness = 5077,
+
     #endregion
 
     [ParentCombo(DRK_AoE_CDs)]
@@ -2615,7 +2619,7 @@ public enum Preset
     #endregion
 
     #endregion
-    // Last value = 5076
+    // Last value = 5077
 
     #region Advanced Mitigation
     [JobInfo(Job.DRK)]

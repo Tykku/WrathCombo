@@ -11325,4 +11325,10 @@ Only uses Crimson Cyclone when in melee range.</value>
   <data name="DRK_AoE_CD_BringerBurst_Desc" xml:space="preserve">
       <value>Pools Shadowbringer to use during even minute window bursts (after Disesteem).</value>
   </data>
+  <data name="DRK_AoE_CD_Darkness_Desc" xml:space="preserve">
+      <value>Adds Salt and Darkness to the rotation in the latter half of its duration.</value>
+  </data>
+  <data name="DRK_AoE_CD_Darkness_Name" xml:space="preserve">
+      <value>Salt and Darkness Option</value>
+  </data>
 </root>

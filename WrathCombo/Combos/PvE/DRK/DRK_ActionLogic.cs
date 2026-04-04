@@ -202,8 +202,8 @@ internal partial class DRK
             #region Salt and Darkness
 
             if ((flags.HasFlag(Combo.Simple) ||
-                 flags.HasFlag(Combo.AoE) ||
-                 IsEnabled(Preset.DRK_ST_CD_Darkness)) &&
+                 IsAoEEnabled(flags, Preset.DRK_AoE_CD_Darkness) ||
+                 IsSTEnabled(flags, Preset.DRK_ST_CD_Darkness)) &&
                 LevelChecked(SaltAndDarkness) &&
                 IsOffCooldown(SaltAndDarkness) &&
                 HasStatusEffect(Buffs.SaltedEarth) &&

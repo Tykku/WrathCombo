@@ -7932,6 +7932,24 @@ namespace WrathCombo.Resources.Localization.Presets {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adds Salt and Darkness to the rotation in the latter half of its duration..
+        /// </summary>
+        internal static string DRK_AoE_CD_Darkness_Desc {
+            get {
+                return ResourceManager.GetString("DRK_AoE_CD_Darkness_Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Salt and Darkness Option.
+        /// </summary>
+        internal static string DRK_AoE_CD_Darkness_Name {
+            get {
+                return ResourceManager.GetString("DRK_AoE_CD_Darkness_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Adds Delirium (or Blood Weapon at lower levels) to the rotation on cooldown and when Darkside is up..
         /// </summary>
         internal static string DRK_AoE_CD_Delirium_Desc {
