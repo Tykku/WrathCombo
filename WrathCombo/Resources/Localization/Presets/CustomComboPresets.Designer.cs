@@ -8657,7 +8657,8 @@ namespace WrathCombo.Resources.Localization.Presets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adds The Blackest Night when available. Will overlap with others..
+        ///   Looks up a localized string similar to Adds The Blackest Night when available. Will overlap with others.
+        ///(does not respect the HP% slider above).
         /// </summary>
         internal static string DRK_Mitigation_NonBoss_BlackestNight_Desc {
             get {

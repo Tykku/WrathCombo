@@ -3152,7 +3152,8 @@ Will not use mitigation in the first 15 seconds of a pull unless you are not mov
     <value>The Blackest Night Option</value>
   </data>
   <data name="DRK_Mitigation_NonBoss_BlackestNight_Desc" xml:space="preserve">
-    <value>Adds The Blackest Night when available. Will overlap with others.</value>
+      <value>Adds The Blackest Night when available. Will overlap with others.
+(does not respect the HP% slider above)</value>
   </data>
   <data name="DRK_Mitigation_NonBoss_LivingDead_Name" xml:space="preserve">
     <value>Living Dead Option</value>
