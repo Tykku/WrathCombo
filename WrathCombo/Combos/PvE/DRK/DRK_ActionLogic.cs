@@ -247,7 +247,9 @@ internal partial class DRK
                 ActionReady(CarveAndSpit) &&
                 (int)LocalPlayer.CurrentMp <= 9400 &&
                 (!LevelChecked(LivingShadow) ||
-                 GetCooldownRemainingTime(LivingShadow) > 20))
+                 GetCooldownRemainingTime(LivingShadow) > 20) &&
+                (!LevelChecked(BloodWeapon) ||
+                 GetCooldownRemainingTime(BloodWeapon) > 10))
                 return (action = CarveAndSpit) != 0;
 
             #endregion
