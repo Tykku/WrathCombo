@@ -58,43 +58,43 @@ internal partial class BLM
 
                 case Preset.BLM_ST_Movement:
                     DrawHorizontalMultiChoice(BLM_ST_MovementOption,
-                        $"Use {Despair.ActionName()}", "Use Despair when below 1500 MP and when it is an instant cast (lvl 100 only).", 7, 0);
+                        $"Use {Despair.ActionName()}", $"Use {Despair.ActionName()} when below 1500 MP and when it is an instant cast (lvl 100 only).", 7, 0);
 
                     DrawPriorityInput(BLM_ST_MovementPriority,
                         6, 0, $"{Triplecast.ActionName()} Priority: ");
 
                     DrawHorizontalMultiChoice(BLM_ST_MovementOption,
-                        $"Use {Triplecast.ActionName()}", "Use triplecast when you don't have swiftcast active.", 7, 1);
+                        $"Use {Triplecast.ActionName()}", $"Use {Triplecast.ActionName()} when you don't have swiftcast active.", 7, 1);
 
                     DrawPriorityInput(BLM_ST_MovementPriority,
                         6, 0, $"{Triplecast.ActionName()} Priority: ");
 
                     DrawHorizontalMultiChoice(BLM_ST_MovementOption,
-                        $"Use {Paradox.ActionName()}", "Use Paradox when in AF 3.", 7, 2);
+                        $"Use {Paradox.ActionName()}", $"Use {Paradox.ActionName()} when in AF 3.", 7, 2);
 
                     DrawPriorityInput(BLM_ST_MovementPriority,
                         6, 1, $"{Paradox.ActionName()} Priority: ");
 
                     DrawHorizontalMultiChoice(BLM_ST_MovementOption,
-                        $"Use {Role.Swiftcast.ActionName()}", "Use swiftcast when you don't have Triplecast.", 7, 3);
+                        $"Use {Role.Swiftcast.ActionName()}", $"Use {Role.Swiftcast.ActionName()} when you don't have {Triplecast.ActionName()}.", 7, 3);
 
                     DrawPriorityInput(BLM_ST_MovementPriority,
                         6, 2, $"{Role.Swiftcast.ActionName()} Priority: ");
 
                     DrawHorizontalMultiChoice(BLM_ST_MovementOption,
-                        $"Use {Foul.ActionName()} / {Xenoglossy.ActionName()}", "Use Foul/Xenoglossy.", 7, 4);
+                        $"Use {Foul.ActionName()} / {Xenoglossy.ActionName()}", $"Use {Foul.ActionName()} / {Xenoglossy.ActionName()}.", 7, 4);
 
                     DrawPriorityInput(BLM_ST_MovementPriority,
                         6, 3, $"{Xenoglossy.ActionName()} Priority: ");
 
                     DrawHorizontalMultiChoice(BLM_ST_MovementOption,
-                        $"Use {Fire3.ActionName()}", "Use Fire III when you have firestarter proc.", 7, 5);
+                        $"Use {Fire3.ActionName()}", $"Use {Fire3.ActionName()} when you have firestarter proc.", 7, 5);
 
                     DrawPriorityInput(BLM_ST_MovementPriority,
                         6, 4, $"{Fire3.ActionName()} Priority: ");
 
                     DrawHorizontalMultiChoice(BLM_ST_MovementOption,
-                        $"Use {Scathe.ActionName()}", "Use Scathe.", 7, 6);
+                        $"Use {Scathe.ActionName()}", $"Use {Scathe.ActionName()}.", 7, 6);
 
                     DrawPriorityInput(BLM_ST_MovementPriority,
                         6, 5, $"{Scathe.ActionName()} Priority: ");
