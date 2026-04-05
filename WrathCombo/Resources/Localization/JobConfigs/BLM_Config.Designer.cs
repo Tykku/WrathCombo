@@ -60,7 +60,7 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adds Blizzard I / III / IV in Umbral Ice depending on stacks and level.
+        ///   Looks up a localized string similar to Adds {0} / {1} / {2} in {3} depending on stacks and level.
         /// </summary>
         internal static string AddBlizzardOr3Or4DependingOnStackAndLevel {
             get {
@@ -69,7 +69,7 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adds Despair when in Astral Fire and below 2400 MP..
+        ///   Looks up a localized string similar to Adds {0} when in {1} and below 2400 MP..
         /// </summary>
         internal static string AddDespairWhenBelow2400MP {
             get {
@@ -78,7 +78,7 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adds Despair when in Astral Fire and above 800 MP..
+        ///   Looks up a localized string similar to Adds {0} when in {1} and above 800 MP..
         /// </summary>
         internal static string AddDespairWhenInAFAndAbove800MP {
             get {
@@ -87,7 +87,7 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adds Fire I / III when in Astral Fire and stack is less than 3.
+        ///   Looks up a localized string similar to Adds {0} / {1} when in {2} and stack is less than 3.
         /// </summary>
         internal static string AddFireOrFire3WhenInAF {
             get {
@@ -96,7 +96,7 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adds Flarestar in Astral Fire when ready..
+        ///   Looks up a localized string similar to Adds {0} in {1} when ready..
         /// </summary>
         internal static string AddFlarestarinAF {
             get {
@@ -105,7 +105,7 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Do not use while under the effect of Leylines.
+        ///   Looks up a localized string similar to Do not use while under the effect of {0}.
         ///This is the recommended behaviour..
         /// </summary>
         internal static string DoNotUseUnderLeylines {
@@ -115,8 +115,8 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Leaves Fire in Umbral Ice 
-        ///Will Use Fire I / III if selected above..
+        ///   Looks up a localized string similar to Leaves {0} in {2} 
+        ///Will Use {0} / {1} if selected above..
         /// </summary>
         internal static string DontChangeFireInUmbralIce {
             get {
@@ -143,7 +143,7 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to How many charges of Triplecast to keep ready? (0 = Use all).
+        ///   Looks up a localized string similar to How many charges of {0} to keep ready? (0 = Use all).
         /// </summary>
         internal static string HowManyChargesTriplecast {
             get {
@@ -152,7 +152,7 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Manaward HP percentage threshold.
+        ///   Looks up a localized string similar to {0} HP percentage threshold.
         /// </summary>
         internal static string ManawardHPThreshold {
             get {
@@ -161,7 +161,7 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Not under Leylines.
+        ///   Looks up a localized string similar to Not under {0}.
         /// </summary>
         internal static string NotUnderLeylines {
             get {
@@ -170,7 +170,7 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Replaces Blizzard3 with Blizzard when in Umbral Ice III..
+        ///   Looks up a localized string similar to Replaces {0} with {1} when in {2}..
         /// </summary>
         internal static string ReplaceBlizzard3WithBlizzardWhenInUI3 {
             get {
@@ -179,7 +179,7 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Replaces Blizzard with Blizzard3 when out of Umbral Ice III..
+        ///   Looks up a localized string similar to Replaces {0} with {1} when out of {2}..
         /// </summary>
         internal static string ReplaceBlizzardWithBlizzard3WhenNotInUI3 {
             get {
@@ -188,7 +188,7 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Replaces Fire3 with Fire when in Astral Fire III..
+        ///   Looks up a localized string similar to Replaces {0} with {1} when in {2}..
         /// </summary>
         internal static string ReplaceFire3WithFireWhenInAF3 {
             get {
@@ -197,7 +197,7 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Replaces Fire with Fire3 when out of Astral Fire III or not in combat..
+        ///   Looks up a localized string similar to Replaces {0} with {1} when out of {2} or not in combat..
         /// </summary>
         internal static string ReplaceFireWithFire3WhenNotInAF3OrCombat {
             get {
@@ -206,7 +206,7 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Makes it so that Xenoglossy also shows when Amplifier is on cooldown..
+        ///   Looks up a localized string similar to Makes it so that {0} also shows when {1} is on cooldown..
         /// </summary>
         internal static string ShowXenoglossyWhenAmplifierIsOnCooldown {
             get {
@@ -215,7 +215,7 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Show Xenoglossy when Amplifier is on cooldown.
+        ///   Looks up a localized string similar to Show {0} when {1} is on cooldown.
         /// </summary>
         internal static string ShowXenoglossyWhenAmplifierOnCD {
             get {
@@ -224,7 +224,7 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Stop Using Thunder2 When Target HP% is at or Below (Set to 0 to Disable This Check).
+        ///   Looks up a localized string similar to Stop Using {0} When Target HP% is at or Below (Set to 0 to Disable This Check).
         /// </summary>
         internal static string StopUsingThunder2 {
             get {
@@ -233,7 +233,7 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use Despair when below 1500 MP and when it is an instant cast (lvl 100 only)..
+        ///   Looks up a localized string similar to Use {0} when below 1500 MP and when it is an instant cast (lvl 100 only)..
         /// </summary>
         internal static string UseDespairWhenBelow1500MP {
             get {
@@ -242,7 +242,7 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use Fire III when you have firestarter proc..
+        ///   Looks up a localized string similar to Use {0} when you have {1} proc..
         /// </summary>
         internal static string UseFire3WhenYouHaveFirestarterProc {
             get {
@@ -251,7 +251,7 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use Foul/Xenoglossy..
+        ///   Looks up a localized string similar to Use {0}/{1}..
         /// </summary>
         internal static string UseFoulOrXenoglossy {
             get {
@@ -260,7 +260,7 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use Paradox when in AF 3..
+        ///   Looks up a localized string similar to Use {0} when in {1}..
         /// </summary>
         internal static string UseParadoxWhenInAF3 {
             get {
@@ -269,7 +269,7 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use Scathe..
+        ///   Looks up a localized string similar to Use {0}..
         /// </summary>
         internal static string UseScathe {
             get {
@@ -278,7 +278,7 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use Swiftcast when you don&apos;t have Triplecast..
+        ///   Looks up a localized string similar to Use {0} when you don&apos;t have {1}..
         /// </summary>
         internal static string UseSwiftcastWhenNoTriplecast {
             get {
@@ -287,7 +287,7 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use Triplecast when you don&apos;t have swiftcast active..
+        ///   Looks up a localized string similar to Use {0} when you don&apos;t have {1} active..
         /// </summary>
         internal static string UseTriplecastWhenNoSwiftcast {
             get {
