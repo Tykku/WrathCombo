@@ -3141,12 +3141,6 @@ Lv.70以下で可能な限り羽を織ります。</value>
     <value>ボスとの遭遇時以外のコンボに緩和を追加します。記載がない限り、個別のオプションが重複することはありません。 
 移動していない限り、プルの最初の 15 秒間は緩和を使用しません。</value>
   </data>
-  <data name="DRK_Mitigation_NonBoss_BlackestNight_Name" xml:space="preserve">
-    <value>ブラックナイトオプション</value>
-  </data>
-  <data name="DRK_Mitigation_NonBoss_BlackestNight_Desc" xml:space="preserve">
-    <value>利用可能な場合は、ブラックナイト を追加します。他と重なってしまいます。</value>
-  </data>
   <data name="DRK_Mitigation_NonBoss_LivingDead_Name" xml:space="preserve">
     <value>リビングデッドオプション</value>
   </data>
@@ -11300,5 +11294,17 @@ POST 94: バーストウィンドウ中に使用します。</value>
   </data>
   <data name="WAR_NascentFlash_TT_Desc" xml:space="preserve">
     <value>あなたのターゲットのターゲットがあなたまたはあなたのパーティーにいない場合、原初の猛りを彼らにリターゲットします。</value>
+  </data>
+  <data name="DRK_AoE_CD_BringerBurst_Desc" xml:space="preserve">
+      <value>偶数分のウィンドウバースト中に使用するシャドウブリンガーをプールします（ディセスティーム後）。</value>
+  </data>
+  <data name="DRK_AoE_CD_BringerBurst_Name" xml:space="preserve">
+      <value>シャドウブリンガー バーストオプション</value>
+  </data>
+  <data name="DRK_AoE_CD_Darkness_Name" xml:space="preserve">
+      <value>ソルト・アンド・ダークオプション</value>
+  </data>
+  <data name="DRK_AoE_CD_Darkness_Desc" xml:space="preserve">
+      <value>持続時間後半のローテーションにソルト・アンド・ダークを追加します。</value>
   </data>
 </root>

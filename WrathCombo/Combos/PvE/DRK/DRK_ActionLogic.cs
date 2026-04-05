@@ -202,8 +202,8 @@ internal partial class DRK
             #region Salt and Darkness
 
             if ((flags.HasFlag(Combo.Simple) ||
-                 flags.HasFlag(Combo.AoE) ||
-                 IsEnabled(Preset.DRK_ST_CD_Darkness)) &&
+                 IsAoEEnabled(flags, Preset.DRK_AoE_CD_Darkness) ||
+                 IsSTEnabled(flags, Preset.DRK_ST_CD_Darkness)) &&
                 LevelChecked(SaltAndDarkness) &&
                 IsOffCooldown(SaltAndDarkness) &&
                 HasStatusEffect(Buffs.SaltedEarth) &&
@@ -217,11 +217,18 @@ internal partial class DRK
             #region Variables
 
             var bringerInBurst =
-                flags.HasFlag(Combo.Simple) || flags.HasFlag(Combo.AoE) ||
+                flags.HasFlag(Combo.Simple) ||
+                // ST without pooling
                 (flags.HasFlag(Combo.Adv) && flags.HasFlag(Combo.ST) &&
                  !IsEnabled(Preset.DRK_ST_CD_BringerBurst)) ||
-                (flags.HasFlag(Combo.Adv) && flags.HasFlag(Combo.ST) &&
-                 IsEnabled(Preset.DRK_ST_CD_BringerBurst) &&
+                // AoE without pooling
+                (flags.HasFlag(Combo.Adv) && flags.HasFlag(Combo.AoE) &&
+                 !IsEnabled(Preset.DRK_AoE_CD_BringerBurst)) ||
+                // Advanced, with pooling
+                (flags.HasFlag(Combo.Adv) &&
+                 (IsSTEnabled(flags, Preset.DRK_ST_CD_BringerBurst) ||
+                  IsAoEEnabled(flags, Preset.DRK_AoE_CD_BringerBurst)) &&
+                 // Burst, to send the pooled ShB's
                  GetCooldownRemainingTime(LivingShadow) >= 90 &&
                  !HasStatusEffect(Buffs.Scorn));
 
@@ -244,7 +251,9 @@ internal partial class DRK
                 ActionReady(CarveAndSpit) &&
                 (int)LocalPlayer.CurrentMp <= 9400 &&
                 (!LevelChecked(LivingShadow) ||
-                 GetCooldownRemainingTime(LivingShadow) > 20))
+                 GetCooldownRemainingTime(LivingShadow) > 20) &&
+                (!LevelChecked(BloodWeapon) ||
+                 GetCooldownRemainingTime(BloodWeapon) > 10))
                 return (action = CarveAndSpit) != 0;
 
             #endregion
@@ -263,7 +272,11 @@ internal partial class DRK
                 (flags.HasFlag(Combo.Simple) ||
                  IsEnabled(Preset.DRK_AoE_CD_Drain)) &&
                 ActionReady(AbyssalDrain) &&
-                PlayerHealthPercentageHp() <= drainHPThreshold)
+                PlayerHealthPercentageHp() <= drainHPThreshold &&
+                // Trying to die (unless it's the final moments)
+                GetStatusEffectRemainingTime(Buffs.LivingDead) < 1 &&
+                // Has better healing
+                !HasStatusEffect(Buffs.WalkingDead))
                 return (action = AbyssalDrain) != 0;
 
             #endregion
