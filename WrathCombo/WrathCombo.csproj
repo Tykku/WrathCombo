@@ -136,6 +136,21 @@
         <AutoGen>True</AutoGen>
         <DependentUpon>AST_Config.resx</DependentUpon>
       </Compile>
+      <Compile Update="Resources\Localization\JobConfigs\BLM_Config.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>BLM_Config.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Localization\JobConfigs\BRD_Config.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>BRD_Config.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Localization\JobConfigs\DNC_Config.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>DNC_Config.resx</DependentUpon>
+      </Compile>
       <Compile Update="Resources\Localization\JobConfigs\Generics.Designer.cs">
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
@@ -186,6 +201,18 @@
       <EmbeddedResource Update="Resources\Localization\JobConfigs\AST_Config.resx">
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>AST_Config.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Localization\JobConfigs\BLM_Config.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>BLM_Config.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Localization\JobConfigs\BRD_Config.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>BRD_Config.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Localization\JobConfigs\DNC_Config.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>DNC_Config.Designer.cs</LastGenOutput>
       </EmbeddedResource>
       <EmbeddedResource Update="Resources\Localization\JobConfigs\Generics.resx">
         <Generator>ResXFileCodeGenerator</Generator>
