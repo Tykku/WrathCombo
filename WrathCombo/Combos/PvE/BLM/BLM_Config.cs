@@ -1,6 +1,8 @@
 using WrathCombo.CustomComboNS.Functions;
 using WrathCombo.Extensions;
+using WrathCombo.Resources.Localization.JobConfigs;
 using static WrathCombo.Window.Functions.UserConfig;
+using static WrathCombo.Window.Text;
 namespace WrathCombo.Combos.PvE;
 
 internal partial class BLM
@@ -15,11 +17,11 @@ internal partial class BLM
 
                 case Preset.BLM_ST_Opener:
                     DrawHorizontalRadioButton(BLM_SelectedOpener,
-                        "Standard opener", "Uses Standard opener",
+                        Generics.StandardOpener, Generics.UsesStandardOpener,
                         0);
 
                     DrawHorizontalRadioButton(BLM_SelectedOpener,
-                        $"{Flare.ActionName()} opener", $"Uses {Flare.ActionName()} opener",
+                        FormatAndCache(Generics.Action_Opener, Flare.ActionName()), FormatAndCache(Generics.Use_0_Opener, Flare.ActionName()),
                         1);
 
                     DrawBossOnlyChoice(BLM_Balance_Content);
@@ -28,32 +30,32 @@ internal partial class BLM
                 case Preset.BLM_ST_LeyLines:
 
                     DrawHorizontalRadioButton(BLM_ST_LeyLinesMovement,
-                        "Stationary Only", "Uses Leylines only while stationary", 0);
+                        Generics.StationaryOnly, FormatAndCache(Generics.UseActionOnlyWhileStationary, LeyLines.ActionName()), 0);
 
                     DrawHorizontalRadioButton(BLM_ST_LeyLinesMovement,
-                        "Any Movement", "Uses Leylines regardless of any movement conditions.\nNOTE: This could possibly get you killed", 1);
+                        Generics.AnyMovement, FormatAndCache(Generics.Uses0RegardlessOfAnyMovementConditions, LeyLines.ActionName()), 1);
 
                     ImGui.Spacing();
                     if (BLM_ST_LeyLinesMovement == 0)
                     {
                         ImGui.SetCursorPosX(48);
                         DrawSliderFloat(0, 3, BLM_ST_LeyLinesTimeStill,
-                            " Stationary Delay Check (in seconds):", decimals: 1);
+                            Generics.StationaryDelayCheck, decimals: 1);
                     }
 
                     ImGui.SetCursorPosX(48);
                     DrawSliderInt(0, 2, BLM_ST_LeyLinesCharges,
-                        " How many charges to keep ready?\n (0 = Use All)");
+                        Generics.HowManyChargesToKeepReady);
 
                     DrawSliderInt(0, 50, BLM_ST_LeyLinesHPOption,
-                        "Stop using at Enemy HP %. Set to Zero to disable this check.");
+                        Generics.StopEnemyHpPercent);
                     ImGui.Indent();
 
                     DrawHorizontalRadioButton(BLM_ST_LeyLinesBossOption,
-                        "Non-Bosses", "Only applies the HP check above to non-bosses.", 0);
+                        Generics.NonBosses, Generics.HPCheckNonBosses, 0);
 
                     DrawHorizontalRadioButton(BLM_ST_LeyLinesBossOption,
-                        "All Enemies", "Applies the HP check above to all enemies.", 1);
+                        Generics.AllEnemies, Generics.HPCheckAllEnemies, 1);
                     break;
 
                 case Preset.BLM_ST_Movement:
@@ -61,7 +63,7 @@ internal partial class BLM
                         $"Use {Despair.ActionName()}", $"Use {Despair.ActionName()} when below 1500 MP and when it is an instant cast (lvl 100 only).", 7, 0);
 
                     DrawPriorityInput(BLM_ST_MovementPriority,
-                        6, 0, $"{Triplecast.ActionName()} Priority: ");
+                        6, 0, FormatAndCache(Generics.Action_Priority, Triplecast.ActionName()));
 
                     DrawHorizontalMultiChoice(BLM_ST_MovementOption,
                         $"Use {Triplecast.ActionName()}", $"Use {Triplecast.ActionName()} when you don't have swiftcast active.", 7, 1);
@@ -73,31 +75,31 @@ internal partial class BLM
                         $"Use {Paradox.ActionName()}", $"Use {Paradox.ActionName()} when in AF 3.", 7, 2);
 
                     DrawPriorityInput(BLM_ST_MovementPriority,
-                        6, 1, $"{Paradox.ActionName()} Priority: ");
+                        6, 1, FormatAndCache(Generics.Action_Priority, Paradox.ActionName()));
 
                     DrawHorizontalMultiChoice(BLM_ST_MovementOption,
                         $"Use {Role.Swiftcast.ActionName()}", $"Use {Role.Swiftcast.ActionName()} when you don't have {Triplecast.ActionName()}.", 7, 3);
 
                     DrawPriorityInput(BLM_ST_MovementPriority,
-                        6, 2, $"{Role.Swiftcast.ActionName()} Priority: ");
+                        6, 2, FormatAndCache(Generics.Action_Priority, Role.Swiftcast.ActionName()));
 
                     DrawHorizontalMultiChoice(BLM_ST_MovementOption,
                         $"Use {Foul.ActionName()} / {Xenoglossy.ActionName()}", $"Use {Foul.ActionName()} / {Xenoglossy.ActionName()}.", 7, 4);
 
                     DrawPriorityInput(BLM_ST_MovementPriority,
-                        6, 3, $"{Xenoglossy.ActionName()} Priority: ");
+                        6, 3, FormatAndCache(Generics.Action_Priority, Xenoglossy.ActionName()));
 
                     DrawHorizontalMultiChoice(BLM_ST_MovementOption,
                         $"Use {Fire3.ActionName()}", $"Use {Fire3.ActionName()} when you have firestarter proc.", 7, 5);
 
                     DrawPriorityInput(BLM_ST_MovementPriority,
-                        6, 4, $"{Fire3.ActionName()} Priority: ");
+                        6, 4, FormatAndCache(Generics.Action_Priority, Fire3.ActionName()));
 
                     DrawHorizontalMultiChoice(BLM_ST_MovementOption,
                         $"Use {Scathe.ActionName()}", $"Use {Scathe.ActionName()}.", 7, 6);
 
                     DrawPriorityInput(BLM_ST_MovementPriority,
-                        6, 5, $"{Scathe.ActionName()} Priority: ");
+                        6, 5, FormatAndCache(Generics.Action_Priority, Scathe.ActionName()));
                     break;
 
                 case Preset.BLM_ST_UsePolyglot:
@@ -128,16 +130,16 @@ internal partial class BLM
                 case Preset.BLM_ST_Thunder:
 
                     DrawSliderInt(0, 100, BLM_ST_ThunderBossOption,
-                        "Bosses Only. Stop using at Enemy HP %.");
+                        Generics.BossOnlyHpPercent);
 
                     DrawSliderInt(0, 100, BLM_ST_ThunderBossAddsOption,
-                        "Boss Encounter Non Bosses. Stop using at Enemy HP %.");
+                        Generics.BossEncounterNonBossHpPercent);
 
                     DrawSliderInt(0, 100, BLM_ST_ThunderTrashOption,
-                        "Non boss encounter. Stop using at Enemy HP %.");
+                        Generics.NonBossHpPercent);
 
                     DrawRoundedSliderFloat(0, 5, BLM_ST_ThunderRefresh,
-                        "Seconds remaining before reapplying the DoT. Set to Zero to disable this check.");
+                        Generics.DoTSecondsRemainingZeroDisable);
                     break;
 
                 case Preset.BLM_ST_Manaward:
@@ -152,25 +154,25 @@ internal partial class BLM
                 case Preset.BLM_AoE_LeyLines:
 
                     DrawHorizontalRadioButton(BLM_AoE_LeyLinesMovement,
-                        "Stationary Only", "Uses Leylines only while stationary", 0);
+                        Generics.StationaryOnly, FormatAndCache(Generics.UseActionOnlyWhileStationary, LeyLines.ActionName()), 0);
 
                     DrawHorizontalRadioButton(BLM_AoE_LeyLinesMovement,
-                        "Any Movement", "Uses Leylines regardless of any movement conditions.\nNOTE: This could possibly get you killed", 1);
+                        Generics.AnyMovement, FormatAndCache(Generics.Uses0RegardlessOfAnyMovementConditions, LeyLines.ActionName()), 1);
 
                     ImGui.Spacing();
                     if (BLM_AoE_LeyLinesMovement == 0)
                     {
                         ImGui.SetCursorPosX(48);
                         DrawSliderFloat(0, 3, BLM_AoE_LeyLinesTimeStill,
-                            " Stationary Delay Check (in seconds):", decimals: 1);
+                            Generics.StationaryDelayCheck, decimals: 1);
                     }
 
                     ImGui.SetCursorPosX(48);
                     DrawSliderInt(0, 2, BLM_AoE_LeyLinesCharges,
-                        " How many charges to keep ready?\n (0 = Use All)");
+                        Generics.HowManyChargesToKeepReady);
 
                     DrawSliderInt(0, 50, BLM_AoE_LeyLinesOption,
-                        "Stop using at Enemy HP %. Set to Zero to disable this check.");
+                        Generics.StopEnemyHpPercent);
                     break;
 
                 case Preset.BLM_AoE_Triplecast:
@@ -185,7 +187,7 @@ internal partial class BLM
 
                 case Preset.BLM_Retargetting_Aetherial_Manipulation:
                     DrawAdditionalBoolChoice(BLM_AM_FieldMouseover,
-                        "Add Field Mouseover", "Adds Field mouseover targetting.");
+                        Generics.FieldMouseover, "Adds Field mouseover targetting.");
                     break;
 
                 #endregion
@@ -199,7 +201,7 @@ internal partial class BLM
                     if (BLM_F1to3 == 0)
                     {
                         DrawAdditionalBoolChoice(BLM_Fire1_Despair,
-                            "Despair", "Adds Despair when in Astral Fire and below 2400 MP.");
+                            Despair.ActionName(), "Adds Despair when in Astral Fire and below 2400 MP.");
                     }
 
                     DrawRadioButton(BLM_F1to3,
@@ -208,7 +210,7 @@ internal partial class BLM
 
                 case Preset.BLM_Fire4:
                     DrawAdditionalBoolChoice(BLM_Fire4_FlareStar,
-                        "Flarestar", "Adds Flarestar in Astral Fire when ready.");
+                        FlareStar.ActionName(), "Adds Flarestar in Astral Fire when ready.");
 
                     DrawAdditionalBoolChoice(BLM_Fire4_Fire3,
                         "Fire I / III", "Adds Fire I / III when in Astral Fire and stack is less than 3");
@@ -222,7 +224,7 @@ internal partial class BLM
 
                 case Preset.BLM_Flare:
                     DrawAdditionalBoolChoice(BLM_Flare_FlareStar,
-                        "Flarestar", "Adds Flarestar in Astral Fire when ready.");
+                        FlareStar.ActionName(), "Adds Flarestar in Astral Fire when ready.");
                     break;
 
                 case Preset.BLM_Blizzard1and3:
@@ -236,7 +238,7 @@ internal partial class BLM
                     if (BLM_B1to3 == 1)
                     {
                         DrawAdditionalBoolChoice(BLM_Blizzard3_Despair,
-                            "Despair", "Adds Despair when in Astral Fire and above 800 MP.");
+                            Despair.ActionName(), "Adds Despair when in Astral Fire and above 800 MP.");
                     }
                     break;
 
