@@ -377,6 +377,11 @@ internal class AutoRotationTab : ConfigWindow
                 ref cfg.HealerSettings.HandleRaidwides);
             ImGuiComponents.HelpMarker(Text.FormatAndCache(AutoRotationUI.HelpText_HandleRaidwides, SGE.Eukrasia.ActionName()));
 
+            changed |= P.UIHelper.ShowIPCControlledCheckboxIfNeeded(
+                AutoRotationUI.Checkbox_HandleTankbusters,
+                ref cfg.HealerSettings.HandleTankbusters);
+            ImGuiComponents.HelpMarker(Text.FormatAndCache(AutoRotationUI.HelpText_HandleTankbusters, SGE.Eukrasia.ActionName()));
+
         }
 
         ImGuiEx.TextUnderlined(AutoRotationUI.Label_Advanced);
