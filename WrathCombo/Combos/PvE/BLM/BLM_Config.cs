@@ -60,7 +60,7 @@ internal partial class BLM
 
                 case Preset.BLM_ST_Movement:
                     DrawHorizontalMultiChoice(BLM_ST_MovementOption,
-                        FormatAndCache("use[0]", Despair.ActionName()), BLM_Config.UseDespairWhenBelow1500MP, 7, 0);
+                        FormatAndCache("Use {0}", Despair.ActionName()), BLM_Config.UseDespairWhenBelow1500MP, 7, 0);
 
                     DrawPriorityInput(BLM_ST_MovementPriority,
                         7, 0, FormatAndCache(Generics.Action_Priority, Despair.ActionName()));
