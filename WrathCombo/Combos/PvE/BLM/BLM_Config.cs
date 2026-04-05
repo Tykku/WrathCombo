@@ -224,7 +224,7 @@ internal partial class BLM
 
                 case Preset.BLM_Flare:
                     DrawAdditionalBoolChoice(BLM_Flare_FlareStar,
-                        FormatAndCache(FlareStar.ActionName()), BLM_Config.AddFlarestarinAF);
+                        FormatAndCache(FlareStar.ActionName()), FormatAndCache(BLM_Config.AddFlarestarinAF, FlareStar.ActionName(), Buffs.AstralFire3.StatusName()));
                     break;
 
                 case Preset.BLM_Blizzard1and3:
