@@ -11,8 +11,6 @@ namespace WrathCombo.Combos.PvE;
 
 internal partial class OccultCrescent
 {
-    public static string ContentName => Svc.Data.GetExcelSheet<BannerBg>().GetRow(312).Name.ToString();
-
     /// In Occult Crescent (in the field or a field raid).
     public static bool IsInOccult => ContentHelper.Content.TerritoryIntendedUse == IntendedUse.Occult_Crescent && (ContentCheck.IsInFieldOperations || ContentCheck.IsInFieldRaids);
 
@@ -82,7 +80,7 @@ internal partial class OccultCrescent
 
         // Skip things we want to weave, if not in a weave window
         if (!CanWeaveNow) return false;
-        
+
         if (IsEnabledAndUsable(Preset.Phantom_Knight_PhantomGuard, PhantomGuard) &&
             PlayerHP <= Phantom_Knight_PhantomGuard_Health)
         {
@@ -121,7 +119,7 @@ internal partial class OccultCrescent
 
         // Skip things we want to weave, if not in a weave window
         if (!CanWeaveNow) return false;
-        
+
         if (IsEnabledAndUsable(Preset.Phantom_Monk_OccultChakra, OccultChakra) &&
             PlayerHP <= Phantom_Monk_OccultChakra_Health)
         {
@@ -160,7 +158,7 @@ internal partial class OccultCrescent
 
         // Skip things we want to weave, if not in a weave window
         if (!CanWeaveNow) return false;
-        
+
         if (IsEnabledAndUsable(Preset.Phantom_Thief_OccultSprint, OccultSprint) &&
             IsMovingNow)
         {
@@ -234,7 +232,7 @@ internal partial class OccultCrescent
             return false;
 
         if (!HasTargetNow) return false;
-        
+
         if (IsEnabledAndUsable(Preset.Phantom_Berserker_Rage, Rage) &&
             InActionRange(Rage) && CanWeaveNow)
         {
@@ -259,7 +257,7 @@ internal partial class OccultCrescent
 
         // Skip things we want to weave, if not in a weave window
         if (!CanWeaveNow) return false;
-        
+
         if (IsEnabledAndUsable(Preset.Phantom_Ranger_OccultUnicorn, OccultUnicorn) &&
             !HasStatusEffect(Buffs.OccultUnicorn, anyOwner: true) && PlayerHP <= Phantom_Ranger_OccultUnicorn_Health)
         {
@@ -292,7 +290,7 @@ internal partial class OccultCrescent
         }
 
         if (CanWeaveNow) return false;
-        
+
         if (IsEnabledAndUsable(Preset.Phantom_TimeMage_OccultQuick, OccultQuick) &&
             !HasStatusEffect(Buffs.OccultQuick) && ActionWatching.NumberOfGcdsUsed > 3)
         {
@@ -362,7 +360,7 @@ internal partial class OccultCrescent
             return false;
 
         if (CanWeaveNow) return false;
-        
+
         if (IsEnabledAndUsable(Preset.Phantom_Chemist_Revive, Revive) &&
             CurrentTarget.IfCanUseOn(Revive).IfDead() is not null)
         {
@@ -401,7 +399,7 @@ internal partial class OccultCrescent
             return false;
 
         if (!CanWeaveNow) return false;
-        
+
         if (IsEnabledAndUsable(Preset.Phantom_Bard_HerosRime, HerosRime))
         {
             actionID = HerosRime; // burst song
@@ -447,7 +445,7 @@ internal partial class OccultCrescent
 
         // Skip things we want to weave, if not in a weave window
         if (!CanWeaveNow) return false;
-        
+
         if (IsEnabledAndUsable(Preset.Phantom_Oracle_Blessing, Blessing) &&
             HasStatusEffect(Buffs.PredictionOfBlessing) && PlayerHP <= Phantom_Oracle_Blessing_Health)
         {
@@ -486,7 +484,7 @@ internal partial class OccultCrescent
 
         // GCDs
         if (CanWeaveNow || !HasTargetNow) return false;
-        
+
         if (IsEnabledAndUsable(Preset.Phantom_Cannoneer_SilverCannon, SilverCannon) &&
             ((!HasStatusEffect(Debuffs.SilverSickness, CurrentTarget, anyOwner: true) ||
               GetStatusEffectRemainingTime(Debuffs.SilverSickness, CurrentTarget, anyOwner: true) < 30f) ||
@@ -518,7 +516,7 @@ internal partial class OccultCrescent
     {
         if (!IsEnabled(Preset.Phantom_Geomancer))
             return false;
-        
+
         if (IsEnabled(Preset.Phantom_Geomancer_Weather) && !CanWeaveNow)
         {
             if (IsEnabledAndUsable(Preset.Phantom_Geomancer_Sunbath, Sunbath) &&
@@ -563,10 +561,10 @@ internal partial class OccultCrescent
                 return true;
             }
         }
-        
+
         // Skip things we want to weave, if not in a weave window
         if (!CanWeaveNow) return false;
-        
+
         if (IsEnabledAndUsable(Preset.Phantom_Geomancer_BattleBell, BattleBell) &&
             !HasStatusEffect(Buffs.BattleBell))
         {
@@ -592,20 +590,20 @@ internal partial class OccultCrescent
 
         return false;
     }
-    
+
     private static bool TryGetMysticKnightAction(ref uint actionID)
     {
         if (!IsEnabled(Preset.Phantom_MysticKnight))
             return false;
-        
+
         if (IsEnabledAndUsable(Preset.Phantom_MysticKnight_MagicShell, MagicShell) && CanWeave() && InCombat())
         {
             actionID = MagicShell;
             return true;
         }
-      
+
         if (CanWeaveNow) return false;
-        
+
         if (IsEnabledAndUsable(Preset.Phantom_MysticKnight_BlazingSpellblade, BlazingSpellblade) && !CanWeave() &&
             (!HasStatusEffect(Buffs.BlazingSpellblade) || GetStatusEffectRemainingTime(Buffs. BlazingSpellblade) <= 15))
         {
@@ -624,29 +622,29 @@ internal partial class OccultCrescent
             actionID = SunderingSpellblade;
             return true;
         }
-        
+
         return false;
     }
-    
+
     private static bool TryGetDancerAction(ref uint actionID)
     {
         if (!IsEnabled(Preset.Phantom_Dancer))
             return false;
-        
+
         if (IsEnabledAndUsable(Preset.Phantom_Dancer_Dance, Dance) && CanWeave())
         {
             actionID = Dance;
             return true;
         }
-        
+
         if (IsEnabledAndUsable(Preset.Phantom_Dancer_Mesmerize, Mesmerize) && InCombat() && CanWeave())
         {
             actionID = Mesmerize; //Damage Debuff
             return true;
         }
-        
+
         if (CanWeaveNow) return false;
-        
+
         #region Dances
         if (IsEnabled(Preset.Phantom_Dancer_Dance) && HasStatusEffect(Buffs.PoisedToSwordDance))
         {
@@ -669,20 +667,20 @@ internal partial class OccultCrescent
             return true;
         }
         #endregion
-        
+
         if (IsEnabledAndUsable(Preset.Phantom_Dancer_QuickStep, Quickstep) && !HasStatusEffect(Buffs.Quickstep))
         {
             actionID = Quickstep; //Evasion self buff
             return true;
         }
-        
+
         return false;
     }
-    
+
     private static bool TryGetGladiatorAction(ref uint actionID)
     {
         if (CanWeaveNow) return false;
-        
+
         if (IsEnabledAndUsable(Preset.Phantom_Gladiator_Finisher, Finisher) && HasBattleTarget() && InMeleeRange())
         {
             actionID = Finisher;
@@ -703,7 +701,7 @@ internal partial class OccultCrescent
             actionID = BladeBlitz;
             return true;
         }
-        
+
         return false;
     }
 }

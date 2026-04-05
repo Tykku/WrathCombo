@@ -23,26 +23,8 @@ namespace WrathCombo.Window
 {
     internal static class Text
     {
-        // Cache for localized preset info, keyed by preset
-        private sealed record LocalizedPresetInfo(string Name, string Description);
-        private static FrozenDictionary<Preset, LocalizedPresetInfo>? _presetCache;
-        private static readonly Lock PresetCacheLock = new();
-
-        // Cache for Job names, keyed by Job enum.
-        private sealed record LocalizedJobInfo(string Name, string ShortName);
-        private static readonly ConcurrentDictionary<Job, LocalizedJobInfo> JobNameCache = new();
-
         // Cache for localized strings with format parameters that read game data
         private static readonly ConcurrentDictionary<string, string> FormatCache = new();
-
-        // Cache for action names, keyed by ID
-        private static readonly ConcurrentDictionary<uint, string> ActionNameCache = new();
-
-        // Cache for trait names, keyed by ID
-        private static readonly ConcurrentDictionary<uint, string> TraitNameCache = new();
-
-        // Cache for status names, keyed by ID
-        private static readonly ConcurrentDictionary<uint, string> StatusNameCache = new();
 
         // For Reference: Dalamud supports these languages, and Ottercorp (CN)
         // https://github.com/goatcorp/Dalamud/blob/master/Dalamud/Localization.cs#L21
@@ -84,8 +66,6 @@ namespace WrathCombo.Window
             MiscUI.Culture = _gameCulture;
             SettingsUI.Culture = _gameCulture;
             SettingsCfgUI.Culture = _gameCulture;
-            Generics.Culture = _gameCulture;
-            AST_Config.Culture = _gameCulture;
 
             // Job Configs
             Generics.Culture = _gameCulture;
@@ -126,17 +106,13 @@ namespace WrathCombo.Window
             Svc.Log.Debug($"LangFromCulture {LangFromCulture}");
 
             // Invalidate the caches safely
-            lock (PresetCacheLock)
-            {
-                _presetCache = null;
-            }
-            JobNameCache.Clear();
-            FormatCache.Clear();
-            ActionNameCache.Clear();
-            TraitNameCache.Clear();
-            StatusNameCache.Clear();
+            PresetLocalization.Clear();
+            Misc.Clear();
+            JobNameLocalization.Clear();
+            ActionAndStatusLocalization.Clear();
             Settings.SettingsList.Clear();
             Setting.CachedSettings.Clear();
+            FormatCache.Clear();
         }
 
         /// <summary>
@@ -165,6 +141,10 @@ namespace WrathCombo.Window
 
         internal static class PresetLocalization
         {
+            private sealed record LocalizedPresetInfo(string Name, string Description);
+            private static FrozenDictionary<Preset, LocalizedPresetInfo>? _presetCache;
+            private static readonly Lock PresetCacheLock = new();
+
             public static string GetName(Preset preset)
                 => GetCache()[preset].Name;
 
@@ -177,6 +157,14 @@ namespace WrathCombo.Window
                 {
                     _presetCache ??= BuildCache();
                     return _presetCache;
+                }
+            }
+
+            public static void Clear()
+            {
+                lock (PresetCacheLock)
+                {
+                    _presetCache = null;
                 }
             }
 
@@ -193,8 +181,8 @@ namespace WrathCombo.Window
                 {
                     dict[preset] = new LocalizedPresetInfo(
                         // To Do: process string for magic placeholders that'll pull from sheets
-                        GetLocalizedString($"{preset}_Name", CustomComboPresets.ResourceManager).ProcessSheetLookups(),
-                        GetLocalizedString($"{preset}_Desc", CustomComboPresets.ResourceManager).ProcessSheetLookups()
+                        GetLocalizedString($"{preset}_Name", CustomComboPresets.ResourceManager)!.ProcessSheetLookups(),
+                        GetLocalizedString($"{preset}_Desc", CustomComboPresets.ResourceManager)!.ProcessSheetLookups()
                     );
                 }
 
@@ -204,11 +192,14 @@ namespace WrathCombo.Window
 
         internal static class JobNameLocalization
         {
+            private sealed record LocalizedJobInfo(string Name, string ShortName);
+            private static readonly ConcurrentDictionary<Job, LocalizedJobInfo> _jobNameCache = [];
+
             public static string GetJobName(Job job)
-                => JobNameCache.GetOrAdd(job, BuildEntry).Name;
+                => _jobNameCache.GetOrAdd(job, BuildEntry).Name;
 
             public static string GetJobShortName(Job job)
-                => JobNameCache.GetOrAdd(job, BuildEntry).ShortName;
+                => _jobNameCache.GetOrAdd(job, BuildEntry).ShortName;
 
             private static LocalizedJobInfo BuildEntry(Job job)
             {
@@ -234,19 +225,74 @@ namespace WrathCombo.Window
 
                 return new LocalizedJobInfo(jobName, shortName);
             }
+
+            public static void Clear() => _jobNameCache.Clear();
         }
 
         internal static class ActionAndStatusLocalization
         {
+            private static readonly ConcurrentDictionary<uint, string> _actionNameCache = new();
+            private static readonly ConcurrentDictionary<uint, string> _traitNameCache = new();
+            private static readonly ConcurrentDictionary<uint, string> _statusNameCache = new();
+
             public static string GetActionName(uint actionId)
-                => ActionNameCache.GetOrAdd(actionId, Svc.Data.GetExcelSheet<Action>(LangFromCulture).GetRowOrDefault(actionId)?.Name.ToString() ?? "Unknown Action");
+                => _actionNameCache.GetOrAdd(actionId, Svc.Data.GetExcelSheet<Action>(LangFromCulture).GetRowOrDefault(actionId)?.Name.ToString() ?? "Unknown Action");
 
             public static string GetTraitName(uint traitId)
-                => TraitNameCache.GetOrAdd(traitId, Svc.Data.GetExcelSheet<Trait>(LangFromCulture).GetRowOrDefault(traitId)?.Name.ToString() ?? "Unknown Trait");
+                => _traitNameCache.GetOrAdd(traitId, Svc.Data.GetExcelSheet<Trait>(LangFromCulture).GetRowOrDefault(traitId)?.Name.ToString() ?? "Unknown Trait");
 
             public static string GetStatusName(uint statusId)
-                => StatusNameCache.GetOrAdd(statusId, Svc.Data.GetExcelSheet<Status>(LangFromCulture).GetRowOrDefault(statusId)?.Name.ToString() ?? "Unknown Status");
+                => _statusNameCache.GetOrAdd(statusId, Svc.Data.GetExcelSheet<Status>(LangFromCulture).GetRowOrDefault(statusId)?.Name.ToString() ?? "Unknown Status");
 
+            public static void Clear()
+            {
+                _actionNameCache.Clear();
+                _traitNameCache.Clear();
+                _statusNameCache.Clear();
+            }
+        }
+
+        internal static class Misc
+        {
+            private static FrozenDictionary<Strings, string>? _miscCache;
+            private static readonly Lock MiscCacheLock = new();
+
+            public enum Strings
+            {
+                OccultCrescentContentName,
+                OccultPhantomChemist,
+            }
+
+            public static string GetString(Strings key)
+                => GetCache()[key];
+
+            private static FrozenDictionary<Strings, string> GetCache()
+            {
+                lock (MiscCacheLock)
+                {
+                    _miscCache ??= BuildCache();
+                    return _miscCache;
+                }
+            }
+
+            public static void Clear()
+            {
+                lock (MiscCacheLock)
+                {
+                    _miscCache = null;
+                }
+            }
+
+            private static FrozenDictionary<Strings, string> BuildCache()
+            {
+                var dict = new Dictionary<Strings, string>
+                {
+                    [Strings.OccultCrescentContentName] = Svc.Data.GetExcelSheet<BannerBg>(LangFromCulture).GetRow(312).Name.ToString(),
+                    [Strings.OccultPhantomChemist]      = Svc.Data.GetExcelSheet<MKDSupportJob>(LangFromCulture).GetRow(10).Name.ToString(),
+                };
+
+                return dict.ToFrozenDictionary();
+            }
         }
 
         /// <summary>
