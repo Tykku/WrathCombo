@@ -212,6 +212,21 @@
         <AutoGen>True</AutoGen>
         <DependentUpon>MNK_Config.resx</DependentUpon>
       </Compile>
+      <Compile Update="Resources\Localization\JobConfigs\RPR_Config.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>RPR_Config.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Localization\JobConfigs\SAM_Config.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>SAM_Config.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Localization\JobConfigs\VPR_Config.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>VPR_Config.resx</DependentUpon>
+      </Compile>
     </ItemGroup>
     <ItemGroup>
       <EmbeddedResource Update="Resources\Localization\JobConfigs\AST_Config.resx">
@@ -277,6 +292,18 @@
       <EmbeddedResource Update="Resources\Localization\JobConfigs\MNK_Config.resx">
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>MNK_Config.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Localization\JobConfigs\RPR_Config.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>RPR_Config.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Localization\JobConfigs\SAM_Config.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>SAM_Config.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Localization\JobConfigs\VPR_Config.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>VPR_Config.Designer.cs</LastGenOutput>
       </EmbeddedResource>
     </ItemGroup>
 
