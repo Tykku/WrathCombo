@@ -207,6 +207,11 @@
         <AutoGen>True</AutoGen>
         <DependentUpon>MCH_Config.resx</DependentUpon>
       </Compile>
+      <Compile Update="Resources\Localization\JobConfigs\MNK_Config.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>MNK_Config.resx</DependentUpon>
+      </Compile>
     </ItemGroup>
     <ItemGroup>
       <EmbeddedResource Update="Resources\Localization\JobConfigs\AST_Config.resx">
@@ -268,6 +273,10 @@
       <EmbeddedResource Update="Resources\Localization\JobConfigs\MCH_Config.resx">
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>MCH_Config.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Localization\JobConfigs\MNK_Config.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>MNK_Config.Designer.cs</LastGenOutput>
       </EmbeddedResource>
     </ItemGroup>
 
