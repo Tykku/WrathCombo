@@ -2,7 +2,7 @@ using Dalamud.Interface.Colors;
 using WrathCombo.CustomComboNS.Functions;
 using WrathCombo.Extensions;
 using WrathCombo.Resources.Localization.JobConfigs;
-using WrathCombo.Window;
+using static WrathCombo.Window.Text;
 using static WrathCombo.Window.Functions.UserConfig;
 namespace WrathCombo.Combos.PvE;
 
@@ -19,8 +19,8 @@ internal partial class DRG
                         Generics.StandardOpener, Generics.UsesStandardOpener, 0);
 
                     DrawHorizontalRadioButton(DRG_SelectedOpener,
-                        Text.FormatAndCache(Generics.Action_Opener, PiercingTalon.ActionName()),
-                        Text.FormatAndCache(Generics.Use_0_Opener, PiercingTalon.ActionName()), 1);
+                        FormatAndCache(Generics.Action_Opener, PiercingTalon.ActionName()),
+                        FormatAndCache(Generics.Use_0_Opener, PiercingTalon.ActionName()), 1);
                     ImGui.NewLine();
                     DrawBossOnlyChoice(DRG_BalanceContent);
                     break;
@@ -59,15 +59,16 @@ internal partial class DRG
 
                 case Preset.DRG_ST_HighJump:
                     DrawHorizontalMultiChoice(DRG_ST_JumpMovingOrInRanged,
-                        Generics.NoMovement, $"Only uses {Jump.ActionName()} when not moving.", 2, 0);
+                        Generics.NoMovement, FormatAndCache(DRG_Config.OnlyUseWhenNotMoving, Jump.ActionName()), 2, 0);
 
                     DrawHorizontalMultiChoice(DRG_ST_JumpMovingOrInRanged,
-                        Generics.InMeleeRange, $"Only uses {Jump.ActionName()} when in melee range.", 2, 1);
+                        Generics.InMeleeRange, FormatAndCache(DRG_Config.OnlyUseWhenInMeleeRange, Jump.ActionName()), 2, 1);
                     break;
 
                 case Preset.DRG_ST_Mirage:
                     DrawAdditionalBoolChoice(DRG_ST_DoubleMirage,
-                        "Burst Mirage Dive During LotD", "Adds Mirage Dive to the rotation when under Life of the Dragon.\nWorks best on 2.50 GCD.");
+                        FormatAndCache(DRG_Config.BurstMirageDuringLoTD, MirageDive.ActionName(), Buffs.LifeOfTheDragon.StatusName()),
+                        FormatAndCache(DRG_Config.AddMirageDiveUnderLOTD, MirageDive.ActionName(), Buffs.LifeOfTheDragon.StatusName()));
                     break;
 
                 case Preset.DRG_ST_Geirskogul:
@@ -97,18 +98,18 @@ internal partial class DRG
                     ImGui.Unindent();
 
                     DrawHorizontalMultiChoice(DRG_ST_DragonfireDiveMovingOrInRanged,
-                        Generics.NoMovement, $"Only uses {DragonfireDive.ActionName()} when not moving.", 2, 0);
+                        Generics.NoMovement, DRG_Config.OnlyUseWhenNotMoving, 2, 0);
 
                     DrawHorizontalMultiChoice(DRG_ST_DragonfireDiveMovingOrInRanged,
-                        Generics.InMeleeRange, $"Only uses {DragonfireDive.ActionName()} when in melee range.", 2, 1);
+                        Generics.InMeleeRange, DRG_Config.OnlyUseWhenInMeleeRange, 2, 1);
                     break;
 
                 case Preset.DRG_ST_Stardiver:
                     DrawHorizontalMultiChoice(DRG_ST_StardiverMovingOrInRanged,
-                        Generics.NoMovement, $"Only uses {Stardiver.ActionName()} when not moving.", 2, 0);
+                        Generics.NoMovement, FormatAndCache(DRG_Config.OnlyUseWhenNotMoving, Stardiver.ActionName()), 2, 0);
 
                     DrawHorizontalMultiChoice(DRG_ST_StardiverMovingOrInRanged,
-                        Generics.InMeleeRange, $"Only uses {Stardiver.ActionName()} when in melee range.", 2, 1);
+                        Generics.InMeleeRange, FormatAndCache(DRG_Config.OnlyUseWhenInMeleeRange, Stardiver.ActionName()), 2, 1);
                     break;
 
                 case Preset.DRG_TrueNorthDynamic:
@@ -118,10 +119,10 @@ internal partial class DRG
 
                 case Preset.DRG_ST_ComboHeals:
                     DrawSliderInt(0, 100, DRG_ST_SecondWindHPThreshold,
-                        $"{Role.SecondWind.ActionName()} HP percentage threshold");
+                        FormatAndCache(Generics.HpPercentage, Role.SecondWind.ActionName()));
 
                     DrawSliderInt(0, 100, DRG_ST_BloodbathHPThreshold,
-                        $"{Role.Bloodbath.ActionName()} HP percentage threshold");
+                        FormatAndCache(Generics.HpPercentage, Role.Bloodbath.ActionName()));
                     break;
 
                 case Preset.DRG_AoE_BattleLitany:
@@ -141,10 +142,10 @@ internal partial class DRG
 
                 case Preset.DRG_AoE_HighJump:
                     DrawHorizontalMultiChoice(DRG_AoE_JumpMovingOrInRanged,
-                        Generics.NoMovement, $"Only uses {Jump.ActionName()} when not moving.", 2, 0);
+                        Generics.NoMovement, FormatAndCache(DRG_Config.OnlyUseWhenNotMoving, Jump.ActionName()), 2, 0);
 
                     DrawHorizontalMultiChoice(DRG_AoE_JumpMovingOrInRanged,
-                        Generics.InMeleeRange, $"Only uses {Jump.ActionName()} when in melee range.", 2, 1);
+                        Generics.InMeleeRange, FormatAndCache(DRG_Config.OnlyUseWhenInMeleeRange, Jump.ActionName()), 2, 1);
                     break;
 
                 case Preset.DRG_AoE_DragonfireDive:
@@ -152,31 +153,31 @@ internal partial class DRG
                         Generics.StopEnemyHpPercent);
 
                     DrawHorizontalMultiChoice(DRG_AoE_DragonfireDiveMovingOrInRanged,
-                        Generics.NoMovement, $"Only uses {DragonfireDive.ActionName()} when not moving.", 2, 0);
+                        Generics.NoMovement, FormatAndCache(DRG_Config.OnlyUseWhenNotMoving, DragonfireDive.ActionName()), 2, 0);
 
                     DrawHorizontalMultiChoice(DRG_AoE_DragonfireDiveMovingOrInRanged,
-                        Generics.InMeleeRange, $"Only uses {DragonfireDive.ActionName()} when in melee range.", 2, 1);
+                        Generics.InMeleeRange, FormatAndCache(DRG_Config.OnlyUseWhenInMeleeRange, DragonfireDive.ActionName()), 2, 1);
                     break;
 
                 case Preset.DRG_AoE_Stardiver:
                     DrawHorizontalMultiChoice(DRG_AoE_StardiverMovingOrInRanged,
-                        Generics.NoMovement, $"Only uses {Stardiver.ActionName()} when not moving.", 2, 0);
+                        Generics.NoMovement, FormatAndCache(DRG_Config.OnlyUseWhenNotMoving, Stardiver.ActionName()), 2, 0);
 
                     DrawHorizontalMultiChoice(DRG_AoE_StardiverMovingOrInRanged,
-                        Generics.InMeleeRange, $"Only uses {Stardiver.ActionName()} when in melee range.", 2, 1);
+                        Generics.InMeleeRange, FormatAndCache(DRG_Config.OnlyUseWhenInMeleeRange, Stardiver.ActionName()), 2, 1);
                     break;
 
                 case Preset.DRG_AoE_ComboHeals:
                     DrawSliderInt(0, 100, DRG_AoE_SecondWindHPThreshold,
-                        $"{Role.SecondWind.ActionName()} HP percentage threshold");
+                        FormatAndCache(Generics.HpPercentage, Role.SecondWind.ActionName()));
 
                     DrawSliderInt(0, 100, DRG_AoE_BloodbathHPThreshold,
-                        $"{Role.Bloodbath.ActionName()} HP percentage threshold");
+                        FormatAndCache(Generics.HpPercentage, Role.Bloodbath.ActionName()));
                     break;
 
                 case Preset.DRG_HeavensThrust:
                     DrawAdditionalBoolChoice(DRG_ChaoticCombo,
-                        "Add Chaos Combo", "Adds Chaos combo when applicable.");
+                        DRG_Config.AddChaosCombo, DRG_Config.AddChaosComboWhenApplicable);
                     break;
             }
         }

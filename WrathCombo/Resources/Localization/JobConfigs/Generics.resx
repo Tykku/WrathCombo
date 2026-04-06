@@ -224,6 +224,12 @@
   <data name="HPCheckNonBosses" xml:space="preserve">
     <value>Only applies the HP check above to non-bosses.</value>
   </data>
+  <data name="HpPercentage" xml:space="preserve">
+    <value>{0} HP percentage threshold</value>
+  </data>
+  <data name="HPPercentageThreshold" xml:space="preserve">
+    <value>{0} HP percentage threshold</value>
+  </data>
   <data name="Include0" xml:space="preserve">
     <value>Include {0}</value>
   </data>
@@ -284,6 +290,9 @@
   </data>
   <data name="ReplaceFireWithFire3WhenNotInAF3OrCombat" xml:space="preserve">
     <value>Replaces Fire with Fire3 when out of Astral Fire III or not in combat.</value>
+  </data>
+  <data name="Replaces0" xml:space="preserve">
+    <value>Replaces {0}</value>
   </data>
   <data name="Save0ChargesForBurst" xml:space="preserve">
     <value>Save {0} charges for burst.</value>
@@ -354,6 +363,9 @@
   <data name="Use0" xml:space="preserve">
     <value>Use {0}</value>
   </data>
+  <data name="Use0In1" xml:space="preserve">
+    <value>Use {0} in {1}</value>
+  </data>
   <data name="Use0Or1" xml:space="preserve">
     <value>Use {0} / {1}</value>
   </data>
@@ -393,11 +405,5 @@ NOTE: This could possibly get you killed</value>
   </data>
   <data name="WillOnlyWeaveThisAction" xml:space="preserve">
     <value>Will only weave this action.</value>
-  </data>
-  <data name="Replaces0" xml:space="preserve">
-    <value>Replaces {0}</value>
-  </data>
-  <data name="Use0In1" xml:space="preserve">
-    <value>Use {0} in {1}</value>
   </data>
 </root>

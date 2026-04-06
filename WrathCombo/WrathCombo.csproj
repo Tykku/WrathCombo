@@ -197,6 +197,11 @@
         <AutoGen>True</AutoGen>
         <DependentUpon>SettingsUI.resx</DependentUpon>
       </Compile>
+      <Compile Update="Resources\Localization\JobConfigs\DRG_Config.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>DRG_Config.resx</DependentUpon>
+      </Compile>
     </ItemGroup>
     <ItemGroup>
       <EmbeddedResource Update="Resources\Localization\JobConfigs\AST_Config.resx">
@@ -250,6 +255,10 @@
       <EmbeddedResource Update="Resources\Localization\UI\Settings\SettingsUI.resx">
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>SettingsUI.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Localization\JobConfigs\DRG_Config.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>DRG_Config.Designer.cs</LastGenOutput>
       </EmbeddedResource>
     </ItemGroup>
 
