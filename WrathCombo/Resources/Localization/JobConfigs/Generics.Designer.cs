@@ -368,6 +368,15 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} HP percentage threshold..
+        /// </summary>
+        internal static string HPPercentageThreshold {
+            get {
+                return ResourceManager.GetString("HPPercentageThreshold", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Include {0}.
         /// </summary>
         internal static string Include0 {
