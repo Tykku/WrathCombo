@@ -89,15 +89,6 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         /// <summary>
         ///   Looks up a localized string similar to Adds Field mouseover targetting..
         /// </summary>
-        internal static string AddFieldMouseoverRetargetting {
-            get {
-                return ResourceManager.GetString("AddFieldMouseoverRetargetting", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Adds Field mouseover targetting..
-        /// </summary>
         internal static string AddFieldMouseoverTargetting {
             get {
                 return ResourceManager.GetString("AddFieldMouseoverTargetting", resourceCulture);
@@ -373,15 +364,6 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         internal static string HPCheckNonBosses {
             get {
                 return ResourceManager.GetString("HPCheckNonBosses", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0} HP percentage threshold.
-        /// </summary>
-        internal static string HPPercentageThreshold {
-            get {
-                return ResourceManager.GetString("HPPercentageThreshold", resourceCulture);
             }
         }
         

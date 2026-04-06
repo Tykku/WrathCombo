@@ -133,10 +133,10 @@ Works best on 2.50 GCD.</value>
   <data name="BurstMirageDuringLoTD" xml:space="preserve">
     <value>Burst {0} During {1}</value>
   </data>
-  <data name="OnlyUseWhenInMeleeRange" xml:space="preserve">
+  <data name="OnlyUse0WhenInMeleeRange" xml:space="preserve">
     <value>Only uses {0} when in melee range.</value>
   </data>
-  <data name="OnlyUseWhenNotMoving" xml:space="preserve">
+  <data name="OnlyUse0WhenNotMoving" xml:space="preserve">
     <value>Only uses {0} when not moving.</value>
   </data>
 </root>

@@ -59,10 +59,10 @@ internal partial class DRG
 
                 case Preset.DRG_ST_HighJump:
                     DrawHorizontalMultiChoice(DRG_ST_JumpMovingOrInRanged,
-                        Generics.NoMovement, FormatAndCache(DRG_Config.OnlyUseWhenNotMoving, Jump.ActionName()), 2, 0);
+                        Generics.NoMovement, FormatAndCache(DRG_Config.OnlyUse0WhenNotMoving, Jump.ActionName()), 2, 0);
 
                     DrawHorizontalMultiChoice(DRG_ST_JumpMovingOrInRanged,
-                        Generics.InMeleeRange, FormatAndCache(DRG_Config.OnlyUseWhenInMeleeRange, Jump.ActionName()), 2, 1);
+                        Generics.InMeleeRange, FormatAndCache(DRG_Config.OnlyUse0WhenInMeleeRange, Jump.ActionName()), 2, 1);
                     break;
 
                 case Preset.DRG_ST_Mirage:
@@ -98,18 +98,18 @@ internal partial class DRG
                     ImGui.Unindent();
 
                     DrawHorizontalMultiChoice(DRG_ST_DragonfireDiveMovingOrInRanged,
-                        Generics.NoMovement, DRG_Config.OnlyUseWhenNotMoving, 2, 0);
+                        Generics.NoMovement, DRG_Config.OnlyUse0WhenNotMoving, 2, 0);
 
                     DrawHorizontalMultiChoice(DRG_ST_DragonfireDiveMovingOrInRanged,
-                        Generics.InMeleeRange, DRG_Config.OnlyUseWhenInMeleeRange, 2, 1);
+                        Generics.InMeleeRange, DRG_Config.OnlyUse0WhenInMeleeRange, 2, 1);
                     break;
 
                 case Preset.DRG_ST_Stardiver:
                     DrawHorizontalMultiChoice(DRG_ST_StardiverMovingOrInRanged,
-                        Generics.NoMovement, FormatAndCache(DRG_Config.OnlyUseWhenNotMoving, Stardiver.ActionName()), 2, 0);
+                        Generics.NoMovement, FormatAndCache(DRG_Config.OnlyUse0WhenNotMoving, Stardiver.ActionName()), 2, 0);
 
                     DrawHorizontalMultiChoice(DRG_ST_StardiverMovingOrInRanged,
-                        Generics.InMeleeRange, FormatAndCache(DRG_Config.OnlyUseWhenInMeleeRange, Stardiver.ActionName()), 2, 1);
+                        Generics.InMeleeRange, FormatAndCache(DRG_Config.OnlyUse0WhenInMeleeRange, Stardiver.ActionName()), 2, 1);
                     break;
 
                 case Preset.DRG_TrueNorthDynamic:
@@ -119,10 +119,10 @@ internal partial class DRG
 
                 case Preset.DRG_ST_ComboHeals:
                     DrawSliderInt(0, 100, DRG_ST_SecondWindHPThreshold,
-                        FormatAndCache(Generics.HPPercentageThreshold, Role.SecondWind.ActionName()));
+                        FormatAndCache(Generics.PlayerHPToUseAction, Role.SecondWind.ActionName()));
 
                     DrawSliderInt(0, 100, DRG_ST_BloodbathHPThreshold,
-                        FormatAndCache(Generics.HPPercentageThreshold, Role.Bloodbath.ActionName()));
+                        FormatAndCache(Generics.PlayerHPToUseAction, Role.Bloodbath.ActionName()));
                     break;
 
                 case Preset.DRG_AoE_BattleLitany:
@@ -142,10 +142,10 @@ internal partial class DRG
 
                 case Preset.DRG_AoE_HighJump:
                     DrawHorizontalMultiChoice(DRG_AoE_JumpMovingOrInRanged,
-                        Generics.NoMovement, FormatAndCache(DRG_Config.OnlyUseWhenNotMoving, Jump.ActionName()), 2, 0);
+                        Generics.NoMovement, FormatAndCache(DRG_Config.OnlyUse0WhenNotMoving, Jump.ActionName()), 2, 0);
 
                     DrawHorizontalMultiChoice(DRG_AoE_JumpMovingOrInRanged,
-                        Generics.InMeleeRange, FormatAndCache(DRG_Config.OnlyUseWhenInMeleeRange, Jump.ActionName()), 2, 1);
+                        Generics.InMeleeRange, FormatAndCache(DRG_Config.OnlyUse0WhenInMeleeRange, Jump.ActionName()), 2, 1);
                     break;
 
                 case Preset.DRG_AoE_DragonfireDive:
@@ -153,26 +153,26 @@ internal partial class DRG
                         Generics.StopEnemyHpPercent);
 
                     DrawHorizontalMultiChoice(DRG_AoE_DragonfireDiveMovingOrInRanged,
-                        Generics.NoMovement, FormatAndCache(DRG_Config.OnlyUseWhenNotMoving, DragonfireDive.ActionName()), 2, 0);
+                        Generics.NoMovement, FormatAndCache(DRG_Config.OnlyUse0WhenNotMoving, DragonfireDive.ActionName()), 2, 0);
 
                     DrawHorizontalMultiChoice(DRG_AoE_DragonfireDiveMovingOrInRanged,
-                        Generics.InMeleeRange, FormatAndCache(DRG_Config.OnlyUseWhenInMeleeRange, DragonfireDive.ActionName()), 2, 1);
+                        Generics.InMeleeRange, FormatAndCache(DRG_Config.OnlyUse0WhenInMeleeRange, DragonfireDive.ActionName()), 2, 1);
                     break;
 
                 case Preset.DRG_AoE_Stardiver:
                     DrawHorizontalMultiChoice(DRG_AoE_StardiverMovingOrInRanged,
-                        Generics.NoMovement, FormatAndCache(DRG_Config.OnlyUseWhenNotMoving, Stardiver.ActionName()), 2, 0);
+                        Generics.NoMovement, FormatAndCache(DRG_Config.OnlyUse0WhenNotMoving, Stardiver.ActionName()), 2, 0);
 
                     DrawHorizontalMultiChoice(DRG_AoE_StardiverMovingOrInRanged,
-                        Generics.InMeleeRange, FormatAndCache(DRG_Config.OnlyUseWhenInMeleeRange, Stardiver.ActionName()), 2, 1);
+                        Generics.InMeleeRange, FormatAndCache(DRG_Config.OnlyUse0WhenInMeleeRange, Stardiver.ActionName()), 2, 1);
                     break;
 
                 case Preset.DRG_AoE_ComboHeals:
                     DrawSliderInt(0, 100, DRG_AoE_SecondWindHPThreshold,
-                        FormatAndCache(Generics.HPPercentageThreshold, Role.SecondWind.ActionName()));
+                        FormatAndCache(Generics.PlayerHPToUseAction, Role.SecondWind.ActionName()));
 
                     DrawSliderInt(0, 100, DRG_AoE_BloodbathHPThreshold,
-                        FormatAndCache(Generics.HPPercentageThreshold, Role.Bloodbath.ActionName()));
+                        FormatAndCache(Generics.PlayerHPToUseAction, Role.Bloodbath.ActionName()));
                     break;
 
                 case Preset.DRG_HeavensThrust:
