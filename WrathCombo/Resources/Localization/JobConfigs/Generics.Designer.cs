@@ -141,6 +141,15 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adds {0} to {1}..
+        /// </summary>
+        internal static string Adds0To1 {
+            get {
+                return ResourceManager.GetString("Adds0To1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to All Content.
         /// </summary>
         internal static string AllContent {
@@ -376,6 +385,15 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hold {0} for {1}.
+        /// </summary>
+        internal static string Hold0For1 {
+            get {
+                return ResourceManager.GetString("Hold0For1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to How many charges to save for movement?.
         /// </summary>
         internal static string HowManyChargesForMovement {
@@ -427,6 +445,15 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         internal static string HPCheckNonBosses {
             get {
                 return ResourceManager.GetString("HPCheckNonBosses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set a HP% Threshold for when {0} will not be automatically applied to the target..
+        /// </summary>
+        internal static string HPPercentageFor0NotBeApplied {
+            get {
+                return ResourceManager.GetString("HPPercentageFor0NotBeApplied", resourceCulture);
             }
         }
         
@@ -589,6 +616,15 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         internal static string OnlyUseWhenTargetIsBoss {
             get {
                 return ResourceManager.GetString("OnlyUseWhenTargetIsBoss", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Only use with {0}.
+        /// </summary>
+        internal static string OnlyUseWith0 {
+            get {
+                return ResourceManager.GetString("OnlyUseWith0", resourceCulture);
             }
         }
         

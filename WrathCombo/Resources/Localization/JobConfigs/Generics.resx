@@ -144,6 +144,9 @@
   <data name="AddFieldMouseoverTargetting" xml:space="preserve">
     <value>Adds Field mouseover targetting.</value>
   </data>
+  <data name="Adds0To1" xml:space="preserve">
+    <value>Adds {0} to {1}.</value>
+  </data>
   <data name="AllContent" xml:space="preserve">
     <value>All Content</value>
   </data>
@@ -223,6 +226,9 @@
   <data name="FocusTarget" xml:space="preserve">
     <value>Focus Target</value>
   </data>
+  <data name="Hold0For1" xml:space="preserve">
+    <value>Hold {0} for {1}</value>
+  </data>
   <data name="HowManyChargesForMovement" xml:space="preserve">
     <value>How many charges to save for movement?</value>
   </data>
@@ -241,6 +247,9 @@
   </data>
   <data name="HPCheckNonBosses" xml:space="preserve">
     <value>Only applies the HP check above to non-bosses.</value>
+  </data>
+  <data name="HPPercentageFor0NotBeApplied" xml:space="preserve">
+    <value>Set a HP% Threshold for when {0} will not be automatically applied to the target.</value>
   </data>
   <data name="HPPercentageThreshold" xml:space="preserve">
     <value>{0} HP percentage threshold.</value>
@@ -296,6 +305,9 @@
   </data>
   <data name="OnlyUseWhenTargetIsBoss" xml:space="preserve">
     <value>Only use {0} when the targeted enemy is a boss.</value>
+  </data>
+  <data name="OnlyUseWith0" xml:space="preserve">
+    <value>Only use with {0}</value>
   </data>
   <data name="OnlyWeave" xml:space="preserve">
     <value>Only Weave</value>

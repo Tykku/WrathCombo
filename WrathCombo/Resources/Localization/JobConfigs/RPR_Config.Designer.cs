@@ -58,5 +58,70 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to First positional: {0}..
+        /// </summary>
+        internal static string FirstPositional0 {
+            get {
+                return ResourceManager.GetString("FirstPositional0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Flank First.
+        /// </summary>
+        internal static string FlankFirst {
+            get {
+                return ResourceManager.GetString("FlankFirst", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}.
+        /// </summary>
+        internal static string On0 {
+            get {
+                return ResourceManager.GetString("On0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Only uses {0} while u got {1}..
+        /// </summary>
+        internal static string OnlyUse0WhileUGot1 {
+            get {
+                return ResourceManager.GetString("OnlyUse0WhileUGot1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rear First.
+        /// </summary>
+        internal static string RearFirst {
+            get {
+                return ResourceManager.GetString("RearFirst", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Seconds remaining before refreshing {0}.
+        ///Recommended is 6..
+        /// </summary>
+        internal static string SecondsBeforeRefreshing0 {
+            get {
+                return ResourceManager.GetString("SecondsBeforeRefreshing0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Will hold the last charge of {0} for use with {1}, even when out of position for {2}/{3}.
+        ///If Above Slider is set to 1, it will NOT use the remaining charge for {1}, but for manual use..
+        /// </summary>
+        internal static string WillHoldTNforGluttony {
+            get {
+                return ResourceManager.GetString("WillHoldTNforGluttony", resourceCulture);
+            }
+        }
     }
 }
