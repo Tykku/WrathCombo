@@ -106,7 +106,9 @@
     </xsd:element>
   </xsd:schema>
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:element name="root" msdata:IsDataSet="true"></xsd:element>
+    <xsd:element name="root">
+      <msdata:IsDataSet>true</msdata:IsDataSet>
+    </xsd:element>
   </xsd:schema>
   <resheader name="resmimetype">
     <value>text/microsoft-resx</value>
@@ -120,4 +122,76 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Add0And1WhenNotMoving" xml:space="preserve">
+    <value>Adds {0} and {1} when you're not moving.</value>
+  </data>
+  <data name="Add0IfSeneiNotUnlocked" xml:space="preserve">
+    <value>Adds {0} to the rotation if Senei is not unlocked.</value>
+  </data>
+  <data name="DelaySavageBlade" xml:space="preserve">
+    <value>Delay is enforced by replacing your button with Savage Blade.</value>
+  </data>
+  <data name="GurenOption" xml:space="preserve">
+    <value>Guren Option</value>
+  </data>
+  <data name="HPPercentKenki" xml:space="preserve">
+    <value>HP percent threshold to not save Kenki</value>
+  </data>
+  <data name="HPPercentMeikyo" xml:space="preserve">
+    <value>HP percent threshold to use {0} on cooldown.</value>
+  </data>
+  <data name="HPPercentThreholdKenki" xml:space="preserve">
+    <value>HP percent threshold to not save Kenki</value>
+  </data>
+  <data name="Include2x0" xml:space="preserve">
+    <value>Include 2x {0}</value>
+  </data>
+  <data name="IncludeBoth0" xml:space="preserve">
+    <value>Includes both usages of {0}</value>
+  </data>
+  <data name="KenkiAmount" xml:space="preserve">
+    <value>Kenki Amount</value>
+  </data>
+  <data name="KenkiOvercapAmount" xml:space="preserve">
+    <value>Spends Kenki when at the set value or above.</value>
+  </data>
+  <data name="KenkiOvercapProtection" xml:space="preserve">
+    <value>Kenki Overcap Protection</value>
+  </data>
+  <data name="PrioBuffUpkeep" xml:space="preserve">
+    <value>Prio buff upkeep</value>
+  </data>
+  <data name="PrioBuffUpkeepDesc" xml:space="preserve">
+    <value>Will prioritise having both buffs before finishing sens.</value>
+  </data>
+  <data name="PrioSenGen" xml:space="preserve">
+    <value>Prio sen generation</value>
+  </data>
+  <data name="PrioSenGenDesc" xml:space="preserve">
+    <value>Will prioritise generating all 3 sens before checking buffs.</value>
+  </data>
+  <data name="SecondsDelayFromFirstStep" xml:space="preserve">
+    <value>Seconds to delay from first {0} to next step (hover for details)</value>
+  </data>
+  <data name="SecondsRemainingBeforeReapplying0" xml:space="preserve">
+    <value>Seconds remaining before reapplying {0}. Set to Zero to disable this check.</value>
+  </data>
+  <data name="SkipBoth" xml:space="preserve">
+    <value>Skip Both</value>
+  </data>
+  <data name="SkipBothUsageOf0" xml:space="preserve">
+    <value>Skips both usages of {0} in the opener.</value>
+  </data>
+  <data name="SkipFirst" xml:space="preserve">
+    <value>Skip First</value>
+  </data>
+  <data name="SkipFirstUseOf0" xml:space="preserve">
+    <value>Skips first usage of {0} in the opener, keeps the second.</value>
+  </data>
+  <data name="SkipSecond" xml:space="preserve">
+    <value>Skip Second</value>
+  </data>
+  <data name="SkipSecondUseOf0" xml:space="preserve">
+    <value>Skips second usage of {0} in the opener, keeps the first.</value>
+  </data>
 </root>

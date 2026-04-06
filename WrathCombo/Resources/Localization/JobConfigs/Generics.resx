@@ -132,6 +132,12 @@
   <data name="Add0" xml:space="preserve">
     <value>Add {0}</value>
   </data>
+  <data name="Add0Combo" xml:space="preserve">
+    <value>Add {0} Combo</value>
+  </data>
+  <data name="Add0ComboWhenApplicable" xml:space="preserve">
+    <value>Adds {0} combo when applicable.</value>
+  </data>
   <data name="Add0Or1" xml:space="preserve">
     <value>Add {0} / {1}.</value>
   </data>
@@ -280,6 +286,9 @@
   </data>
   <data name="MaxTargetsMultiDot" xml:space="preserve">
     <value>Maximum number of targets to employ multi-dotting </value>
+  </data>
+  <data name="MovementOption" xml:space="preserve">
+    <value>Movement Option</value>
   </data>
   <data name="NoMovement" xml:space="preserve">
     <value>No Movement</value>

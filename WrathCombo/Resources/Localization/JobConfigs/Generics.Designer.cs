@@ -105,6 +105,24 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add {0} Combo.
+        /// </summary>
+        internal static string Add0Combo {
+            get {
+                return ResourceManager.GetString("Add0Combo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adds {0} combo when applicable..
+        /// </summary>
+        internal static string Add0ComboWhenApplicable {
+            get {
+                return ResourceManager.GetString("Add0ComboWhenApplicable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add {0} / {1}..
         /// </summary>
         internal static string Add0Or1 {
@@ -544,6 +562,15 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         internal static string MaxTargetsMultiDot {
             get {
                 return ResourceManager.GetString("MaxTargetsMultiDot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Movement Option.
+        /// </summary>
+        internal static string MovementOption {
+            get {
+                return ResourceManager.GetString("MovementOption", resourceCulture);
             }
         }
         

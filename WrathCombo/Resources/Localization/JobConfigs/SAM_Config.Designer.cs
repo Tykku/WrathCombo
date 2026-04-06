@@ -58,5 +58,221 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adds {0} and {1} when you&apos;re not moving..
+        /// </summary>
+        internal static string Add0And1WhenNotMoving {
+            get {
+                return ResourceManager.GetString("Add0And1WhenNotMoving", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adds {0} to the rotation if Senei is not unlocked..
+        /// </summary>
+        internal static string Add0IfSeneiNotUnlocked {
+            get {
+                return ResourceManager.GetString("Add0IfSeneiNotUnlocked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delay is enforced by replacing your button with Savage Blade..
+        /// </summary>
+        internal static string DelaySavageBlade {
+            get {
+                return ResourceManager.GetString("DelaySavageBlade", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Guren Option.
+        /// </summary>
+        internal static string GurenOption {
+            get {
+                return ResourceManager.GetString("GurenOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HP percent threshold to not save Kenki.
+        /// </summary>
+        internal static string HPPercentKenki {
+            get {
+                return ResourceManager.GetString("HPPercentKenki", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HP percent threshold to use {0} on cooldown..
+        /// </summary>
+        internal static string HPPercentMeikyo {
+            get {
+                return ResourceManager.GetString("HPPercentMeikyo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HP percent threshold to not save Kenki.
+        /// </summary>
+        internal static string HPPercentThreholdKenki {
+            get {
+                return ResourceManager.GetString("HPPercentThreholdKenki", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Include 2x {0}.
+        /// </summary>
+        internal static string Include2x0 {
+            get {
+                return ResourceManager.GetString("Include2x0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Includes both usages of {0}.
+        /// </summary>
+        internal static string IncludeBoth0 {
+            get {
+                return ResourceManager.GetString("IncludeBoth0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kenki Amount.
+        /// </summary>
+        internal static string KenkiAmount {
+            get {
+                return ResourceManager.GetString("KenkiAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Spends Kenki when at the set value or above..
+        /// </summary>
+        internal static string KenkiOvercapAmount {
+            get {
+                return ResourceManager.GetString("KenkiOvercapAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kenki Overcap Protection.
+        /// </summary>
+        internal static string KenkiOvercapProtection {
+            get {
+                return ResourceManager.GetString("KenkiOvercapProtection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prio buff upkeep.
+        /// </summary>
+        internal static string PrioBuffUpkeep {
+            get {
+                return ResourceManager.GetString("PrioBuffUpkeep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Will prioritise having both buffs before finishing sens..
+        /// </summary>
+        internal static string PrioBuffUpkeepDesc {
+            get {
+                return ResourceManager.GetString("PrioBuffUpkeepDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prio sen generation.
+        /// </summary>
+        internal static string PrioSenGen {
+            get {
+                return ResourceManager.GetString("PrioSenGen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Will prioritise generating all 3 sens before checking buffs..
+        /// </summary>
+        internal static string PrioSenGenDesc {
+            get {
+                return ResourceManager.GetString("PrioSenGenDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Seconds to delay from first {0} to next step (hover for details).
+        /// </summary>
+        internal static string SecondsDelayFromFirstStep {
+            get {
+                return ResourceManager.GetString("SecondsDelayFromFirstStep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Seconds remaining before reapplying {0}. Set to Zero to disable this check..
+        /// </summary>
+        internal static string SecondsRemainingBeforeReapplying0 {
+            get {
+                return ResourceManager.GetString("SecondsRemainingBeforeReapplying0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skip Both.
+        /// </summary>
+        internal static string SkipBoth {
+            get {
+                return ResourceManager.GetString("SkipBoth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skips both usages of {0} in the opener..
+        /// </summary>
+        internal static string SkipBothUsageOf0 {
+            get {
+                return ResourceManager.GetString("SkipBothUsageOf0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skip First.
+        /// </summary>
+        internal static string SkipFirst {
+            get {
+                return ResourceManager.GetString("SkipFirst", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skips first usage of {0} in the opener, keeps the second..
+        /// </summary>
+        internal static string SkipFirstUseOf0 {
+            get {
+                return ResourceManager.GetString("SkipFirstUseOf0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skip Second.
+        /// </summary>
+        internal static string SkipSecond {
+            get {
+                return ResourceManager.GetString("SkipSecond", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skips second usage of {0} in the opener, keeps the first..
+        /// </summary>
+        internal static string SkipSecondUseOf0 {
+            get {
+                return ResourceManager.GetString("SkipSecondUseOf0", resourceCulture);
+            }
+        }
     }
 }
