@@ -18,20 +18,24 @@ internal partial class MCH
 
                 case Preset.MCH_ST_Adv_Opener:
                     DrawHorizontalRadioButton(MCH_SelectedOpener,
-                        Generics.StandardOpener, Generics.UsesStandardOpener, 0);
+                        Generics.StandardOpener,
+                        Generics.UsesStandardOpener, 0);
 
                     DrawHorizontalRadioButton(MCH_SelectedOpener,
-                        FormatAndCache(MCH_Config.Early0Opener, Wildfire.ActionName()), FormatAndCache(MCH_Config.UseEarly0Opener, Wildfire.ActionName()), 1);
+                        FormatAndCache(MCH_Config.Early0Opener, Wildfire.ActionName()),
+                        FormatAndCache(MCH_Config.UseEarly0Opener, Wildfire.ActionName()), 1);
 
                     DrawBossOnlyChoice(MCH_Balance_Content);
                     break;
 
                 case Preset.MCH_ST_Adv_WildFire:
                     DrawHorizontalRadioButton(MCH_ST_WildfireBossOption,
-                        Generics.AllContent, FormatAndCache(Generics.Use0RegardlessOfContent, Wildfire.ActionName()), 0);
+                        Generics.AllContent,
+                        FormatAndCache(Generics.Use0RegardlessOfContent, Wildfire.ActionName()), 0);
 
                     DrawHorizontalRadioButton(MCH_ST_WildfireBossOption,
-                        Generics.BossOnlyContent, FormatAndCache(Generics.OnlyUseWhenTargetIsBoss, Wildfire.ActionName()), 1);
+                        Generics.BossOnlyContent,
+                        FormatAndCache(Generics.OnlyUseWhenTargetIsBoss, Wildfire.ActionName()), 1);
 
                     if (MCH_ST_WildfireBossOption == 0)
                     {
@@ -43,20 +47,24 @@ internal partial class MCH
                             Generics.EnemyTypeCheck);
 
                         DrawHorizontalRadioButton(MCH_ST_WildfireBossHPOption,
-                            Generics.NonBosses, Generics.HPCheckNonBosses, 0);
+                            Generics.NonBosses,
+                            Generics.HPCheckNonBosses, 0);
 
                         DrawHorizontalRadioButton(MCH_ST_WildfireBossHPOption,
-                            Generics.AllEnemies, Generics.HPCheckAllEnemies, 1);
+                            Generics.AllEnemies,
+                            Generics.HPCheckAllEnemies, 1);
                         ImGui.Unindent();
                     }
                     break;
 
                 case Preset.MCH_ST_Adv_Stabilizer:
                     DrawHorizontalRadioButton(MCH_ST_BarrelStabilizerBossOption,
-                        Generics.AllContent, FormatAndCache(Generics.Use0RegardlessOfContent, BarrelStabilizer.ActionName()), 0);
+                        Generics.AllContent,
+                        FormatAndCache(Generics.Use0RegardlessOfContent, BarrelStabilizer.ActionName()), 0);
 
                     DrawHorizontalRadioButton(MCH_ST_BarrelStabilizerBossOption,
-                        Generics.BossOnlyContent, FormatAndCache(Generics.OnlyUseWhenTargetIsBoss, BarrelStabilizer.ActionName()), 1);
+                        Generics.BossOnlyContent,
+                        FormatAndCache(Generics.OnlyUseWhenTargetIsBoss, BarrelStabilizer.ActionName()), 1);
 
                     if (MCH_ST_BarrelStabilizerBossOption == 0)
                     {
@@ -68,10 +76,12 @@ internal partial class MCH
                             Generics.EnemyTypeCheck);
 
                         DrawHorizontalRadioButton(MCH_ST_BarrelStabilizerHPBossOption,
-                            Generics.NonBosses, Generics.HPCheckNonBosses, 0);
+                            Generics.NonBosses,
+                            Generics.HPCheckNonBosses, 0);
 
                         DrawHorizontalRadioButton(MCH_ST_BarrelStabilizerHPBossOption,
-                            Generics.AllEnemies, Generics.HPCheckAllEnemies, 1);
+                            Generics.AllEnemies,
+                            Generics.HPCheckAllEnemies, 1);
                         ImGui.Unindent();
                     }
                     break;
@@ -85,10 +95,12 @@ internal partial class MCH
                         Generics.EnemyTypeCheck);
 
                     DrawHorizontalRadioButton(MCH_ST_HyperchargeBossOption,
-                        Generics.NonBosses, Generics.HPCheckNonBosses, 0);
+                        Generics.NonBosses,
+                        Generics.HPCheckNonBosses, 0);
 
                     DrawHorizontalRadioButton(MCH_ST_HyperchargeBossOption,
-                        Generics.AllEnemies, Generics.HPCheckAllEnemies, 1);
+                        Generics.AllEnemies,
+                        Generics.HPCheckAllEnemies, 1);
                     ImGui.Unindent();
                     break;
 
@@ -105,10 +117,12 @@ internal partial class MCH
                         Generics.EnemyTypeCheck);
 
                     DrawHorizontalRadioButton(MCH_ST_QueenBossOption,
-                        Generics.NonBosses, Generics.HPCheckNonBosses, 0);
+                        Generics.NonBosses,
+                        Generics.HPCheckNonBosses, 0);
 
                     DrawHorizontalRadioButton(MCH_ST_QueenBossOption,
-                        Generics.AllEnemies, Generics.HPCheckAllEnemies, 1);
+                        Generics.AllEnemies,
+                        Generics.HPCheckAllEnemies, 1);
 
 
                     ImGui.Unindent();
@@ -122,10 +136,12 @@ internal partial class MCH
                 case Preset.MCH_ST_Adv_Reassemble:
 
                     DrawHorizontalRadioButton(MCH_ST_Adv_ReassembleChoice,
-                        MCH_Config.SaveForEvenWindows, FormatAndCache(MCH_Config.Save0ForEvenWindows, Reassemble.ActionName()), 0);
+                        MCH_Config.SaveForEvenWindows,
+                        FormatAndCache(MCH_Config.Save0ForEvenWindows, Reassemble.ActionName()), 0);
 
                     DrawHorizontalRadioButton(MCH_ST_Adv_ReassembleChoice,
-                        MCH_Config.UseEveryMinute, FormatAndCache(MCH_Config.Use0EveryMinute, Reassemble.ActionName()), 1);
+                        MCH_Config.UseEveryMinute,
+                        FormatAndCache(MCH_Config.Use0EveryMinute, Reassemble.ActionName()), 1);
 
                     DrawSliderInt(0, 50, MCH_ST_ReassembleHPOption,
                         Generics.StopEnemyHpPercent);
@@ -136,10 +152,12 @@ internal partial class MCH
                         Generics.EnemyTypeCheck);
 
                     DrawHorizontalRadioButton(MCH_ST_ReassembleBossOption,
-                        Generics.NonBosses, Generics.HPCheckNonBosses, 0);
+                        Generics.NonBosses,
+                        Generics.HPCheckNonBosses, 0);
 
                     DrawHorizontalRadioButton(MCH_ST_ReassembleBossOption,
-                        Generics.AllEnemies, Generics.HPCheckAllEnemies, 1);
+                        Generics.AllEnemies,
+                        Generics.HPCheckAllEnemies, 1);
 
                     ImGui.Unindent();
 
@@ -159,10 +177,12 @@ internal partial class MCH
                         Generics.EnemyTypeCheck);
 
                     DrawHorizontalRadioButton(MCH_ST_ToolsBossOption,
-                        Generics.NonBosses, Generics.HPCheckNonBosses, 0);
+                        Generics.NonBosses,
+                        Generics.HPCheckNonBosses, 0);
 
                     DrawHorizontalRadioButton(MCH_ST_ToolsBossOption,
-                        Generics.AllEnemies, Generics.HPCheckAllEnemies, 1);
+                        Generics.AllEnemies,
+                        Generics.HPCheckAllEnemies, 1);
 
                     ImGui.Unindent();
                     break;
@@ -210,10 +230,12 @@ internal partial class MCH
                 case Preset.MCH_AoE_Adv_FlameThrower:
 
                     DrawHorizontalRadioButton(MCH_AoE_FlamethrowerMovement,
-                        Generics.StationaryOnly, FormatAndCache(Generics.UseActionOnlyWhileStationary, Flamethrower.ActionName()), 0);
+                        Generics.StationaryOnly,
+                        FormatAndCache(Generics.UseActionOnlyWhileStationary, Flamethrower.ActionName()), 0);
 
                     DrawHorizontalRadioButton(MCH_AoE_FlamethrowerMovement,
-                        Generics.AnyMovement, FormatAndCache(Generics.Uses0RegardlessOfAnyMovementConditions, Flamethrower.ActionName()), 1);
+                        Generics.AnyMovement,
+                        FormatAndCache(Generics.Uses0RegardlessOfAnyMovementConditions, Flamethrower.ActionName()), 1);
 
                     ImGui.Spacing();
                     if (MCH_AoE_FlamethrowerMovement == 0)
@@ -237,7 +259,8 @@ internal partial class MCH
                     DrawSliderInt(0, 100, MCH_AoE_ToolsHPThreshold,
                         MCH_Config.StopUsingToolsBelowHpPercentage);
 
-                    DrawAdditionalBoolChoice(MCH_AoE_AirAnchor, FormatAndCache(Generics.Add0Or1, HotShot.ActionName(), AirAnchor.ActionName()),
+                    DrawAdditionalBoolChoice(MCH_AoE_AirAnchor,
+                        FormatAndCache(Generics.Add0Or1, HotShot.ActionName(), AirAnchor.ActionName()),
                         FormatAndCache(MCH_Config.AlsoUse0Or1OnCooldown, HotShot.ActionName(), AirAnchor.ActionName()));
                     break;
 

@@ -34,10 +34,12 @@ internal partial class DRG
                         Generics.EnemyTypeCheck);
 
                     DrawHorizontalRadioButton(DRG_ST_BattleLitanyBossOption,
-                        Generics.NonBosses, Generics.HPCheckNonBosses, 0);
+                        Generics.NonBosses,
+                        Generics.HPCheckNonBosses, 0);
 
                     DrawHorizontalRadioButton(DRG_ST_BattleLitanyBossOption,
-                        Generics.AllEnemies, Generics.HPCheckAllEnemies, 1);
+                        Generics.AllEnemies,
+                        Generics.HPCheckAllEnemies, 1);
                     ImGui.Unindent();
                     break;
 
@@ -50,19 +52,23 @@ internal partial class DRG
                         Generics.EnemyTypeCheck);
 
                     DrawHorizontalRadioButton(DRG_ST_LanceChargeBossOption,
-                        Generics.NonBosses, Generics.HPCheckNonBosses, 0);
+                        Generics.NonBosses,
+                        Generics.HPCheckNonBosses, 0);
 
                     DrawHorizontalRadioButton(DRG_ST_LanceChargeBossOption,
-                        Generics.AllEnemies, Generics.HPCheckAllEnemies, 1);
+                        Generics.AllEnemies,
+                        Generics.HPCheckAllEnemies, 1);
                     ImGui.Unindent();
                     break;
 
                 case Preset.DRG_ST_HighJump:
                     DrawHorizontalMultiChoice(DRG_ST_JumpMovingOrInRanged,
-                        Generics.NoMovement, FormatAndCache(DRG_Config.OnlyUse0WhenNotMoving, Jump.ActionName()), 2, 0);
+                        Generics.NoMovement,
+                        FormatAndCache(DRG_Config.OnlyUse0WhenNotMoving, Jump.ActionName()), 2, 0);
 
                     DrawHorizontalMultiChoice(DRG_ST_JumpMovingOrInRanged,
-                        Generics.InMeleeRange, FormatAndCache(DRG_Config.OnlyUse0WhenInMeleeRange, Jump.ActionName()), 2, 1);
+                        Generics.InMeleeRange,
+                        FormatAndCache(DRG_Config.OnlyUse0WhenInMeleeRange, Jump.ActionName()), 2, 1);
                     break;
 
                 case Preset.DRG_ST_Mirage:
@@ -91,25 +97,31 @@ internal partial class DRG
                         Generics.EnemyTypeCheck);
 
                     DrawHorizontalRadioButton(DRG_ST_DragonfireDiveBossOption,
-                        Generics.NonBosses, Generics.HPCheckNonBosses, 0);
+                        Generics.NonBosses,
+                        Generics.HPCheckNonBosses, 0);
 
                     DrawHorizontalRadioButton(DRG_ST_DragonfireDiveBossOption,
-                        Generics.AllEnemies, Generics.HPCheckAllEnemies, 1);
+                        Generics.AllEnemies,
+                        Generics.HPCheckAllEnemies, 1);
                     ImGui.Unindent();
 
                     DrawHorizontalMultiChoice(DRG_ST_DragonfireDiveMovingOrInRanged,
-                        Generics.NoMovement, DRG_Config.OnlyUse0WhenNotMoving, 2, 0);
+                        Generics.NoMovement,
+                        DRG_Config.OnlyUse0WhenNotMoving, 2, 0);
 
                     DrawHorizontalMultiChoice(DRG_ST_DragonfireDiveMovingOrInRanged,
-                        Generics.InMeleeRange, DRG_Config.OnlyUse0WhenInMeleeRange, 2, 1);
+                        Generics.InMeleeRange,
+                        DRG_Config.OnlyUse0WhenInMeleeRange, 2, 1);
                     break;
 
                 case Preset.DRG_ST_Stardiver:
                     DrawHorizontalMultiChoice(DRG_ST_StardiverMovingOrInRanged,
-                        Generics.NoMovement, FormatAndCache(DRG_Config.OnlyUse0WhenNotMoving, Stardiver.ActionName()), 2, 0);
+                        Generics.NoMovement,
+                        FormatAndCache(DRG_Config.OnlyUse0WhenNotMoving, Stardiver.ActionName()), 2, 0);
 
                     DrawHorizontalMultiChoice(DRG_ST_StardiverMovingOrInRanged,
-                        Generics.InMeleeRange, FormatAndCache(DRG_Config.OnlyUse0WhenInMeleeRange, Stardiver.ActionName()), 2, 1);
+                        Generics.InMeleeRange,
+                        FormatAndCache(DRG_Config.OnlyUse0WhenInMeleeRange, Stardiver.ActionName()), 2, 1);
                     break;
 
                 case Preset.DRG_TrueNorthDynamic:
@@ -142,10 +154,12 @@ internal partial class DRG
 
                 case Preset.DRG_AoE_HighJump:
                     DrawHorizontalMultiChoice(DRG_AoE_JumpMovingOrInRanged,
-                        Generics.NoMovement, FormatAndCache(DRG_Config.OnlyUse0WhenNotMoving, Jump.ActionName()), 2, 0);
+                        Generics.NoMovement,
+                        FormatAndCache(DRG_Config.OnlyUse0WhenNotMoving, Jump.ActionName()), 2, 0);
 
                     DrawHorizontalMultiChoice(DRG_AoE_JumpMovingOrInRanged,
-                        Generics.InMeleeRange, FormatAndCache(DRG_Config.OnlyUse0WhenInMeleeRange, Jump.ActionName()), 2, 1);
+                        Generics.InMeleeRange,
+                        FormatAndCache(DRG_Config.OnlyUse0WhenInMeleeRange, Jump.ActionName()), 2, 1);
                     break;
 
                 case Preset.DRG_AoE_DragonfireDive:
@@ -153,18 +167,22 @@ internal partial class DRG
                         Generics.StopEnemyHpPercent);
 
                     DrawHorizontalMultiChoice(DRG_AoE_DragonfireDiveMovingOrInRanged,
-                        Generics.NoMovement, FormatAndCache(DRG_Config.OnlyUse0WhenNotMoving, DragonfireDive.ActionName()), 2, 0);
+                        Generics.NoMovement,
+                        FormatAndCache(DRG_Config.OnlyUse0WhenNotMoving, DragonfireDive.ActionName()), 2, 0);
 
                     DrawHorizontalMultiChoice(DRG_AoE_DragonfireDiveMovingOrInRanged,
-                        Generics.InMeleeRange, FormatAndCache(DRG_Config.OnlyUse0WhenInMeleeRange, DragonfireDive.ActionName()), 2, 1);
+                        Generics.InMeleeRange,
+                        FormatAndCache(DRG_Config.OnlyUse0WhenInMeleeRange, DragonfireDive.ActionName()), 2, 1);
                     break;
 
                 case Preset.DRG_AoE_Stardiver:
                     DrawHorizontalMultiChoice(DRG_AoE_StardiverMovingOrInRanged,
-                        Generics.NoMovement, FormatAndCache(DRG_Config.OnlyUse0WhenNotMoving, Stardiver.ActionName()), 2, 0);
+                        Generics.NoMovement,
+                        FormatAndCache(DRG_Config.OnlyUse0WhenNotMoving, Stardiver.ActionName()), 2, 0);
 
                     DrawHorizontalMultiChoice(DRG_AoE_StardiverMovingOrInRanged,
-                        Generics.InMeleeRange, FormatAndCache(DRG_Config.OnlyUse0WhenInMeleeRange, Stardiver.ActionName()), 2, 1);
+                        Generics.InMeleeRange,
+                        FormatAndCache(DRG_Config.OnlyUse0WhenInMeleeRange, Stardiver.ActionName()), 2, 1);
                     break;
 
                 case Preset.DRG_AoE_ComboHeals:
@@ -177,7 +195,8 @@ internal partial class DRG
 
                 case Preset.DRG_HeavensThrust:
                     DrawAdditionalBoolChoice(DRG_ChaoticCombo,
-                        DRG_Config.AddChaosCombo, DRG_Config.AddChaosComboWhenApplicable);
+                        DRG_Config.AddChaosCombo,
+                        DRG_Config.AddChaosComboWhenApplicable);
                     break;
             }
         }

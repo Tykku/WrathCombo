@@ -18,17 +18,21 @@ internal partial class MNK
 
                 case Preset.MNK_STUseOpener:
                     DrawHorizontalRadioButton(MNK_SelectedOpener,
-                        MNK_Config.DoubleLunarOpener, MNK_Config.DoubleLunarOpenerDesc, 0);
+                        MNK_Config.DoubleLunarOpener,
+                        MNK_Config.DoubleLunarOpenerDesc, 0);
 
                     DrawHorizontalRadioButton(MNK_SelectedOpener,
-                        MNK_Config.SolarLunarOpener, MNK_Config.SolarLunarOpenerDesc, 1);
+                        MNK_Config.SolarLunarOpener,
+                        MNK_Config.SolarLunarOpenerDesc, 1);
                     ImGui.NewLine();
 
                     DrawHorizontalRadioButton(MNK_OpenerCountdown,
-                        MNK_Config.OnlyWithCountdown, MNK_Config.OnlyUseOpenerWhenCountdownActive, 0);
+                        MNK_Config.OnlyWithCountdown,
+                        MNK_Config.OnlyUseOpenerWhenCountdownActive, 0);
 
                     DrawHorizontalRadioButton(MNK_OpenerCountdown,
-                        Generics.Always, Generics.UseAlways, 1);
+                        Generics.Always,
+                        Generics.UseAlways, 1);
 
                     ImGui.NewLine();
                     DrawBossOnlyChoice(MNK_Balance_Content);
@@ -44,10 +48,12 @@ internal partial class MNK
                         Generics.EnemyTypeCheck);
 
                     DrawHorizontalRadioButton(MNK_ST_BHBossOption,
-                        Generics.NonBosses, Generics.HPCheckNonBosses, 0);
+                        Generics.NonBosses,
+                        Generics.HPCheckNonBosses, 0);
 
                     DrawHorizontalRadioButton(MNK_ST_BHBossOption,
-                        Generics.AllEnemies, Generics.HPCheckAllEnemies, 1);
+                        Generics.AllEnemies,
+                        Generics.HPCheckAllEnemies, 1);
                     ImGui.Unindent();
                     break;
 
@@ -61,10 +67,12 @@ internal partial class MNK
                         Generics.EnemyTypeCheck);
 
                     DrawHorizontalRadioButton(MNK_ST_RoFBossOption,
-                        Generics.NonBosses, Generics.HPCheckNonBosses, 0);
+                        Generics.NonBosses,
+                        Generics.HPCheckNonBosses, 0);
 
                     DrawHorizontalRadioButton(MNK_ST_RoFBossOption,
-                        Generics.AllEnemies, Generics.HPCheckAllEnemies, 1);
+                        Generics.AllEnemies,
+                        Generics.HPCheckAllEnemies, 1);
                     ImGui.Unindent();
                     break;
 
@@ -78,10 +86,12 @@ internal partial class MNK
                         Generics.EnemyTypeCheck);
 
                     DrawHorizontalRadioButton(MNK_ST_RoWBossOption,
-                        Generics.NonBosses, Generics.HPCheckNonBosses, 0);
+                        Generics.NonBosses,
+                        Generics.HPCheckNonBosses, 0);
 
                     DrawHorizontalRadioButton(MNK_ST_RoWBossOption,
-                        Generics.AllEnemies, Generics.HPCheckAllEnemies, 1);
+                        Generics.AllEnemies,
+                        Generics.HPCheckAllEnemies, 1);
                     ImGui.Unindent();
                     break;
 
@@ -122,7 +132,8 @@ internal partial class MNK
 
                 case Preset.MNK_ST_UseRoE:
                     DrawAdditionalBoolChoice(MNK_ST_EarthsReply,
-                        FormatAndCache(Generics.Add0, EarthsReply.ActionName()), FormatAndCache(Generics.Add0ToTheRotation, EarthsReply.ActionName()));
+                        FormatAndCache(Generics.Add0, EarthsReply.ActionName()),
+                        FormatAndCache(Generics.Add0ToTheRotation, EarthsReply.ActionName()));
 
                     if (MNK_ST_EarthsReply)
                     {
@@ -147,7 +158,8 @@ internal partial class MNK
 
                 case Preset.MNK_Retarget_Thunderclap:
                     DrawAdditionalBoolChoice(MNK_Thunderclap_FieldMouseover,
-                        Generics.FieldMouseover, Generics.AddFieldMouseoverTargetting);
+                        Generics.FieldMouseover,
+                        Generics.AddFieldMouseoverTargetting);
                     break;
 
                 case Preset.MNK_Basic_BeastChakras:

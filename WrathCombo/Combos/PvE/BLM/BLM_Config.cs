@@ -17,7 +17,8 @@ internal partial class BLM
 
                 case Preset.BLM_ST_Opener:
                     DrawHorizontalRadioButton(BLM_SelectedOpener,
-                        Generics.StandardOpener, Generics.UsesStandardOpener,
+                        Generics.StandardOpener,
+                        Generics.UsesStandardOpener,
                         0);
 
                     DrawHorizontalRadioButton(BLM_SelectedOpener,
@@ -128,7 +129,8 @@ internal partial class BLM
 
                 case Preset.BLM_ST_Triplecast:
                     DrawHorizontalRadioButton(BLM_ST_Triplecast_WhenToUse,
-                        Generics.Always, Generics.UseAlways, 0);
+                        Generics.Always,
+                        Generics.UseAlways, 0);
 
                     DrawHorizontalRadioButton(BLM_ST_Triplecast_WhenToUse,
                         FormatAndCache(BLM_Config.NotUnderLeylines, LeyLines.ActionName()),
@@ -196,12 +198,14 @@ internal partial class BLM
                     break;
 
                 case Preset.BLM_AoE_Thunder:
-                    DrawSliderInt(0, 50, BLM_AoE_ThunderHP, Generics.StopEnemyHpPercent);
+                    DrawSliderInt(0, 50, BLM_AoE_ThunderHP,
+                        Generics.StopEnemyHpPercent);
                     break;
 
                 case Preset.BLM_Retargetting_Aetherial_Manipulation:
                     DrawAdditionalBoolChoice(BLM_AM_FieldMouseover,
-                        Generics.FieldMouseover, Generics.AddFieldMouseoverTargetting);
+                        Generics.FieldMouseover,
+                        Generics.AddFieldMouseoverTargetting);
                     break;
 
                 #endregion
