@@ -409,8 +409,12 @@ internal partial class BLM
             LeyLines = 737,
             CircleOfPower = 738,
             Triplecast = 1211,
-            AstralFire3 = 3381,
-            UmbralIce3 = 3382,
+            AstralFire = 173, // Do not use, for translation only
+            AstralFire2 = 174, // Do not use, for translation only
+            AstralFire3 = 175, // Do not use, for translation only
+            UmbralIce = 176, // Do not use, for translation only
+            UmbralIce2 = 177, // Do not use, for translation only
+            UmbralIce3 = 178, // Do not use, for translation only
             Thunderhead = 3870;
     }
 

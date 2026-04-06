@@ -394,4 +394,10 @@ NOTE: This could possibly get you killed</value>
   <data name="WillOnlyWeaveThisAction" xml:space="preserve">
     <value>Will only weave this action.</value>
   </data>
+  <data name="Replaces0" xml:space="preserve">
+    <value>Replaces {0}</value>
+  </data>
+  <data name="Use0In1" xml:space="preserve">
+    <value>Use {0} in {1}</value>
+  </data>
 </root>

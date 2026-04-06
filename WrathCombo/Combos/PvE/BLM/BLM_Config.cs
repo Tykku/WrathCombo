@@ -60,25 +60,25 @@ internal partial class BLM
 
                 case Preset.BLM_ST_Movement:
                     DrawHorizontalMultiChoice(BLM_ST_MovementOption,
-                        FormatAndCache("Use {0}", Despair.ActionName()), FormatAndCache(BLM_Config.UseDespairWhenBelow1500MP, Despair.ActionName()), 7, 0);
+                        FormatAndCache(Generics.Use0, Despair.ActionName()), FormatAndCache(BLM_Config.UseDespairWhenBelow1500MP, Despair.ActionName()), 7, 0);
 
                     DrawPriorityInput(BLM_ST_MovementPriority,
                         7, 0, FormatAndCache(Generics.Action_Priority, Despair.ActionName()));
 
                     DrawHorizontalMultiChoice(BLM_ST_MovementOption,
-                        FormatAndCache("Use {0}", Triplecast.ActionName()), FormatAndCache(BLM_Config.UseTriplecastWhenNoSwiftcast, Triplecast.ActionName(), Role.Swiftcast.ActionName()), 7, 1);
+                        FormatAndCache(Generics.Use0, Triplecast.ActionName()), FormatAndCache(BLM_Config.UseTriplecastWhenNoSwiftcast, Triplecast.ActionName(), Role.Swiftcast.ActionName()), 7, 1);
 
                     DrawPriorityInput(BLM_ST_MovementPriority,
                         7, 1, FormatAndCache(Generics.Action_Priority, Triplecast.ActionName()));
 
                     DrawHorizontalMultiChoice(BLM_ST_MovementOption,
-                        FormatAndCache("Use {0}", Paradox.ActionName()), FormatAndCache(BLM_Config.UseParadoxWhenInAF3, Paradox.ActionName(), Buffs.AstralFire3.StatusName()), 7, 2);
+                        FormatAndCache(Generics.Use0, Paradox.ActionName()), FormatAndCache(BLM_Config.UseParadoxWhenInAF3, Paradox.ActionName(), Buffs.AstralFire3.StatusName()), 7, 2);
 
                     DrawPriorityInput(BLM_ST_MovementPriority,
                         7, 2, FormatAndCache(Generics.Action_Priority, Paradox.ActionName()));
 
                     DrawHorizontalMultiChoice(BLM_ST_MovementOption,
-                        FormatAndCache("Use {0}", Role.Swiftcast.ActionName()), FormatAndCache(BLM_Config.UseSwiftcastWhenNoTriplecast, Role.Swiftcast.ActionName(), Triplecast.ActionName()), 7, 3);
+                        FormatAndCache(Generics.Use0, Role.Swiftcast.ActionName()), FormatAndCache(BLM_Config.UseSwiftcastWhenNoTriplecast, Role.Swiftcast.ActionName(), Triplecast.ActionName()), 7, 3);
 
                     DrawPriorityInput(BLM_ST_MovementPriority,
                         7, 3, FormatAndCache(Generics.Action_Priority, Role.Swiftcast.ActionName()));
@@ -90,13 +90,13 @@ internal partial class BLM
                         7, 4, FormatAndCache(Generics.Action_Priority, Xenoglossy.ActionName()));
 
                     DrawHorizontalMultiChoice(BLM_ST_MovementOption,
-                        FormatAndCache("Use {0}", Fire3.ActionName()), FormatAndCache(BLM_Config.UseFire3WhenYouHaveFirestarterProc, Fire3.ActionName(), Buffs.Firestarter.StatusName()), 7, 5);
+                        FormatAndCache(Generics.Use0, Fire3.ActionName()), FormatAndCache(BLM_Config.UseFire3WhenYouHaveFirestarterProc, Fire3.ActionName(), Buffs.Firestarter.StatusName()), 7, 5);
 
                     DrawPriorityInput(BLM_ST_MovementPriority,
                         7, 5, FormatAndCache(Generics.Action_Priority, Fire3.ActionName()));
 
                     DrawHorizontalMultiChoice(BLM_ST_MovementOption,
-                        FormatAndCache("Use {0}", Scathe.ActionName()), FormatAndCache(BLM_Config.UseScathe, Scathe.ActionName()), 7, 6);
+                        FormatAndCache(Generics.Use0, Scathe.ActionName()), FormatAndCache(Generics.Use0, Scathe.ActionName()), 7, 6);
 
                     DrawPriorityInput(BLM_ST_MovementPriority,
                         7, 6, FormatAndCache(Generics.Action_Priority, Scathe.ActionName()));
@@ -119,7 +119,7 @@ internal partial class BLM
                         Generics.Always, Generics.UseAlways, 0);
 
                     DrawHorizontalRadioButton(BLM_ST_Triplecast_WhenToUse,
-                        BLM_Config.NotUnderLeylines, FormatAndCache(BLM_Config.DoNotUseUnderLeylines, LeyLines.ActionName()), 1);
+                        FormatAndCache(BLM_Config.NotUnderLeylines, LeyLines.ActionName()), FormatAndCache(BLM_Config.DoNotUseUnderLeylines, LeyLines.ActionName()), 1);
 
                     if (BLM_ST_MovementOption[0])
                         DrawSliderInt(1, 2, BLM_ST_TriplecastMovementCharges,
@@ -181,8 +181,7 @@ internal partial class BLM
                     break;
 
                 case Preset.BLM_AoE_Thunder:
-                    DrawSliderInt(0, 50, BLM_AoE_ThunderHP,
-                        FormatAndCache(BLM_Config.StopUsingThunder2, Thunder2.ActionName()));
+                    DrawSliderInt(0, 50, BLM_AoE_ThunderHP, Generics.StopEnemyHpPercent);
                     break;
 
                 case Preset.BLM_Retargetting_Aetherial_Manipulation:
@@ -196,7 +195,7 @@ internal partial class BLM
 
                 case Preset.BLM_Fire1and3:
                     DrawRadioButton(BLM_F1to3,
-                        FormatAndCache("Replaces {0}", Fire.ActionName()), FormatAndCache(BLM_Config.ReplaceFireWithFire3WhenNotInAF3OrCombat, Fire.ActionName(), Fire3.ActionName(), Buffs.AstralFire3.StatusName()), 0);
+                        FormatAndCache(Generics.Replaces0, Fire.ActionName()), FormatAndCache(BLM_Config.ReplaceFireWithFire3WhenNotInAF3OrCombat, Fire.ActionName(), Fire3.ActionName(), Buffs.AstralFire3.StatusName()), 0);
 
                     if (BLM_F1to3 == 0)
                     {
@@ -205,7 +204,7 @@ internal partial class BLM
                     }
 
                     DrawRadioButton(BLM_F1to3,
-                        FormatAndCache("Replaces {0}", Fire3.ActionName()), FormatAndCache(BLM_Config.ReplaceFire3WithFireWhenInAF3, Fire3.ActionName(), Fire.ActionName(), Buffs.AstralFire3.StatusName()), 1);
+                        FormatAndCache(Generics.Use0, Fire3.ActionName()), FormatAndCache(BLM_Config.ReplaceFire3WithFireWhenInAF3, Fire3.ActionName(), Fire.ActionName(), Buffs.AstralFire3.StatusName()), 1);
                     break;
 
                 case Preset.BLM_Fire4:
@@ -216,10 +215,10 @@ internal partial class BLM
                         FormatAndCache(Generics.Use0Or1, Fire.ActionName(), Fire3.ActionName()), FormatAndCache(BLM_Config.AddFireOrFire3WhenInAF, Fire.ActionName(), Fire3.ActionName(), Buffs.AstralFire3.StatusName()));
 
                     DrawRadioButton(BLM_Fire4_FireAndIce,
-                        FormatAndCache("Use {0} in Umbral Ice", Blizzard.ActionName()), FormatAndCache(BLM_Config.AddBlizzardOr3Or4DependingOnStackAndLevel, Blizzard.ActionName(), Blizzard3.ActionName(), Blizzard4.ActionName(), Buffs.UmbralIce3.StatusName()), 0);
+                        FormatAndCache(Generics.Use0In1, Blizzard.ActionName(), Buffs.UmbralIce.StatusName()), FormatAndCache(BLM_Config.AddBlizzardOr3Or4DependingOnStackAndLevel, Blizzard.ActionName(), Blizzard3.ActionName(), Blizzard4.ActionName(), Buffs.UmbralIce3.StatusName()), 0);
 
                     DrawRadioButton(BLM_Fire4_FireAndIce,
-                        FormatAndCache("Use {0} in Umbral Ice", Fire.ActionName()), FormatAndCache(BLM_Config.DontChangeFireInUmbralIce, Fire.ActionName(), Fire3.ActionName(), Buffs.UmbralIce3.StatusName()), 1);
+                        FormatAndCache(Generics.Use0In1, Fire.ActionName(), Buffs.UmbralIce.StatusName()), FormatAndCache(BLM_Config.DontChangeFireInUmbralIce, Fire.ActionName(), Fire3.ActionName(), Buffs.UmbralIce3.StatusName()), 1);
                     break;
 
                 case Preset.BLM_Flare:
@@ -229,11 +228,11 @@ internal partial class BLM
 
                 case Preset.BLM_Blizzard1and3:
                     DrawRadioButton(BLM_B1to3,
-                        FormatAndCache("Replaces {0}", Blizzard.ActionName()),
+                        FormatAndCache(Generics.Use0, Blizzard.ActionName()),
                         FormatAndCache(BLM_Config.ReplaceBlizzardWithBlizzard3WhenNotInUI3, Blizzard.ActionName(), Blizzard3.ActionName(), Buffs.UmbralIce3.StatusName()), 0);
 
                     DrawRadioButton(BLM_B1to3,
-                        FormatAndCache("Replaces {0}", Blizzard3.ActionName()),
+                        FormatAndCache(Generics.Use0, Blizzard3.ActionName()),
                         FormatAndCache(BLM_Config.ReplaceBlizzard3WithBlizzardWhenInUI3, Blizzard3.ActionName(), Blizzard.ActionName(), Buffs.UmbralIce3.StatusName()), 1);
                     if (BLM_B1to3 == 1)
                     {
