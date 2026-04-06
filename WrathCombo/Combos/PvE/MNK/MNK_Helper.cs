@@ -479,27 +479,21 @@ internal partial class MNK
         [
             ForbiddenMeditation,
             FormShift,
-            TwinSnakes,
-            Demolish,
-            TheForbiddenChakra,
             DragonKick,
-            Brotherhood,
             PerfectBalance,
             Bootshine,
-            RiddleOfWind,
+            DragonKick,
+            Bootshine,
             RiddleOfFire,
+            Brotherhood,
+            ElixirField,
+            DragonKick,
+            PerfectBalance,
+            Bootshine,
             DragonKick,
             Bootshine,
             ElixirField,
-            DragonKick,
-            TwinSnakes,
-            Demolish,
-            Bootshine,
-            PerfectBalance,
-            DragonKick,
-            Bootshine,
-            DragonKick,
-            ElixirField
+            DragonKick
         ];
 
         public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
@@ -532,27 +526,21 @@ internal partial class MNK
         [
             ForbiddenMeditation,
             FormShift,
-            TwinSnakes,
-            Demolish,
-            TheForbiddenChakra,
             DragonKick,
+            PerfectBalance,
+            Bootshine,
+            DragonKick,
+            Bootshine,
             Brotherhood,
-            PerfectBalance,
-            TwinSnakes,
-            RiddleOfWind,
             RiddleOfFire,
-            Demolish,
-            Bootshine,
-            RisingPhoenix,
+            ElixirField,
             DragonKick,
+            PerfectBalance,
+            Bootshine,
             TwinSnakes,
             Demolish,
-            Bootshine,
-            PerfectBalance,
-            DragonKick,
-            Bootshine,
-            DragonKick,
-            ElixirField
+            RisingPhoenix,
+            DragonKick
         ];
 
         public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
