@@ -224,9 +224,6 @@
   <data name="HPCheckNonBosses" xml:space="preserve">
     <value>Only applies the HP check above to non-bosses.</value>
   </data>
-  <data name="HpPercentage" xml:space="preserve">
-    <value>{0} HP percentage threshold</value>
-  </data>
   <data name="HPPercentageThreshold" xml:space="preserve">
     <value>{0} HP percentage threshold</value>
   </data>

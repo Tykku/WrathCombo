@@ -119,10 +119,10 @@ internal partial class DRG
 
                 case Preset.DRG_ST_ComboHeals:
                     DrawSliderInt(0, 100, DRG_ST_SecondWindHPThreshold,
-                        FormatAndCache(Generics.HpPercentage, Role.SecondWind.ActionName()));
+                        FormatAndCache(Generics.HPPercentageThreshold, Role.SecondWind.ActionName()));
 
                     DrawSliderInt(0, 100, DRG_ST_BloodbathHPThreshold,
-                        FormatAndCache(Generics.HpPercentage, Role.Bloodbath.ActionName()));
+                        FormatAndCache(Generics.HPPercentageThreshold, Role.Bloodbath.ActionName()));
                     break;
 
                 case Preset.DRG_AoE_BattleLitany:
@@ -169,10 +169,10 @@ internal partial class DRG
 
                 case Preset.DRG_AoE_ComboHeals:
                     DrawSliderInt(0, 100, DRG_AoE_SecondWindHPThreshold,
-                        FormatAndCache(Generics.HpPercentage, Role.SecondWind.ActionName()));
+                        FormatAndCache(Generics.HPPercentageThreshold, Role.SecondWind.ActionName()));
 
                     DrawSliderInt(0, 100, DRG_AoE_BloodbathHPThreshold,
-                        FormatAndCache(Generics.HpPercentage, Role.Bloodbath.ActionName()));
+                        FormatAndCache(Generics.HPPercentageThreshold, Role.Bloodbath.ActionName()));
                     break;
 
                 case Preset.DRG_HeavensThrust:
