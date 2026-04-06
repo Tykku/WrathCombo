@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="0Option" xml:space="preserve">
+    <value>{0} Option</value>
+  </data>
   <data name="Action_Opener" xml:space="preserve">
     <value>{0} Opener</value>
   </data>
@@ -126,8 +129,17 @@
   <data name="Action_Threshold" xml:space="preserve">
     <value>{0} Threshold</value>
   </data>
+  <data name="Add0" xml:space="preserve">
+    <value>Add {0}</value>
+  </data>
   <data name="Add0Or1" xml:space="preserve">
     <value>Add {0} / {1}.</value>
+  </data>
+  <data name="Add0ToTheRotation" xml:space="preserve">
+    <value>Add {0} to the rotation.</value>
+  </data>
+  <data name="Add0WhenAverageHpPercentofPartyIsAtOrBelow" xml:space="preserve">
+    <value>Add {0} when average HP% of the party is at or below.</value>
   </data>
   <data name="AddFieldMouseoverTargetting" xml:space="preserve">
     <value>Adds Field mouseover targetting.</value>
@@ -291,6 +303,9 @@
   <data name="Priority" xml:space="preserve">
     <value>Priority: </value>
   </data>
+  <data name="Replace0With1Or2" xml:space="preserve">
+    <value>Replace {0} with {1} / {2}.</value>
+  </data>
   <data name="ReplaceFireWithFire3WhenNotInAF3OrCombat" xml:space="preserve">
     <value>Replaces Fire with Fire3 when out of Astral Fire III or not in combat.</value>
   </data>
@@ -345,6 +360,9 @@
   </data>
   <data name="StopUsingWhenBelowSetPercentage" xml:space="preserve">
     <value>Stop using when below set percentage</value>
+  </data>
+  <data name="StopUsingWhenBelowTargetHPPercent" xml:space="preserve">
+    <value>Stop Using when Target HP% is at or Below (Set to 0 to Disable This Check)</value>
   </data>
   <data name="TanksOnly" xml:space="preserve">
     <value>Tanks Only</value>

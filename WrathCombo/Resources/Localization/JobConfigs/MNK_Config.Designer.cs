@@ -58,5 +58,68 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Double Lunar.
+        /// </summary>
+        internal static string DoubleLunarOpener {
+            get {
+                return ResourceManager.GetString("DoubleLunarOpener", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uses Lunar/Lunar opener..
+        /// </summary>
+        internal static string DoubleLunarOpenerDesc {
+            get {
+                return ResourceManager.GetString("DoubleLunarOpenerDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Only use the opener when a countdown is active..
+        /// </summary>
+        internal static string OnlyUseOpenerWhenCountdownActive {
+            get {
+                return ResourceManager.GetString("OnlyUseOpenerWhenCountdownActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Only with countdown.
+        /// </summary>
+        internal static string OnlyWithCountdown {
+            get {
+                return ResourceManager.GetString("OnlyWithCountdown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Replaces {0} with {1} when {2} is on cooldown..
+        /// </summary>
+        internal static string Repalce0With1When2IsOnCooldown {
+            get {
+                return ResourceManager.GetString("Repalce0With1When2IsOnCooldown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Solar Lunar.
+        /// </summary>
+        internal static string SolarLunarOpener {
+            get {
+                return ResourceManager.GetString("SolarLunarOpener", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uses Solar/Lunar opener..
+        /// </summary>
+        internal static string SolarLunarOpenerDesc {
+            get {
+                return ResourceManager.GetString("SolarLunarOpenerDesc", resourceCulture);
+            }
+        }
     }
 }

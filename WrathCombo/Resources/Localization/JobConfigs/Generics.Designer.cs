@@ -60,6 +60,15 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} Option.
+        /// </summary>
+        internal static string _0Option {
+            get {
+                return ResourceManager.GetString("0Option", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} Opener.
         /// </summary>
         internal static string Action_Opener {
@@ -87,11 +96,38 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add {0}.
+        /// </summary>
+        internal static string Add0 {
+            get {
+                return ResourceManager.GetString("Add0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add {0} / {1}..
         /// </summary>
         internal static string Add0Or1 {
             get {
                 return ResourceManager.GetString("Add0Or1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add {0} to the rotation..
+        /// </summary>
+        internal static string Add0ToTheRotation {
+            get {
+                return ResourceManager.GetString("Add0ToTheRotation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add {0} when average HP% of the party is at or below..
+        /// </summary>
+        internal static string Add0WhenAverageHpPercentofPartyIsAtOrBelow {
+            get {
+                return ResourceManager.GetString("Add0WhenAverageHpPercentofPartyIsAtOrBelow", resourceCulture);
             }
         }
         
@@ -575,6 +611,15 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Replace {0} with {1} / {2}..
+        /// </summary>
+        internal static string Replace0With1Or2 {
+            get {
+                return ResourceManager.GetString("Replace0With1Or2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Replaces Fire with Fire3 when out of Astral Fire III or not in combat..
         /// </summary>
         internal static string ReplaceFireWithFire3WhenNotInAF3OrCombat {
@@ -734,6 +779,15 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         internal static string StopUsingWhenBelowSetPercentage {
             get {
                 return ResourceManager.GetString("StopUsingWhenBelowSetPercentage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stop Using when Target HP% is at or Below (Set to 0 to Disable This Check).
+        /// </summary>
+        internal static string StopUsingWhenBelowTargetHPPercent {
+            get {
+                return ResourceManager.GetString("StopUsingWhenBelowTargetHPPercent", resourceCulture);
             }
         }
         
