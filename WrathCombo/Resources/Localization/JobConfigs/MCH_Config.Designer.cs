@@ -60,6 +60,33 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Also use {0} / {1} on cooldown..
+        /// </summary>
+        internal static string AlsoUse0Or1OnCooldown {
+            get {
+                return ResourceManager.GetString("AlsoUse0Or1OnCooldown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Battery threshold.
+        /// </summary>
+        internal static string BatteryThreshold {
+            get {
+                return ResourceManager.GetString("BatteryThreshold", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Changes to {0} / {1} depending on charges and what was used last.
+        /// </summary>
+        internal static string ChangesTo0Or1 {
+            get {
+                return ResourceManager.GetString("ChangesTo0Or1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Early {0} opener.
         /// </summary>
         internal static string Early0Opener {
@@ -69,11 +96,66 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Saves {0} for 2 minute windows
+        ///THIS WILL OVERCAP UR REASSEMBLE..
+        /// </summary>
+        internal static string Save0ForEvenWindows {
+            get {
+                return ResourceManager.GetString("Save0ForEvenWindows", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save for 2 minute windows.
+        /// </summary>
+        internal static string SaveForEvenWindows {
+            get {
+                return ResourceManager.GetString("SaveForEvenWindows", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stop Using Tools When Target HP% is at or Below (Set to 0 to Disable This Check).
+        /// </summary>
+        internal static string StopUsingToolsBelowHpPercentage {
+            get {
+                return ResourceManager.GetString("StopUsingToolsBelowHpPercentage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uses {0} every minute/whenever ur highest lvl tool is off cooldown..
+        /// </summary>
+        internal static string Use0EveryMinute {
+            get {
+                return ResourceManager.GetString("Use0EveryMinute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Uses Early {0} Lvl 100 opener.
         /// </summary>
         internal static string UseEarly0Opener {
             get {
                 return ResourceManager.GetString("UseEarly0Opener", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use every minute.
+        /// </summary>
+        internal static string UseEveryMinute {
+            get {
+                return ResourceManager.GetString("UseEveryMinute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use {0} at this battery threshold outside of Boss encounter..
+        /// </summary>
+        internal static string UseQueenOutsideOfBoss {
+            get {
+                return ResourceManager.GetString("UseQueenOutsideOfBoss", resourceCulture);
             }
         }
     }

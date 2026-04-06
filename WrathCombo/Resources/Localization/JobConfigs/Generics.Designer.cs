@@ -87,6 +87,15 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add {0} / {1}..
+        /// </summary>
+        internal static string Add0Or1 {
+            get {
+                return ResourceManager.GetString("Add0Or1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Adds Field mouseover targetting..
         /// </summary>
         internal static string AddFieldMouseoverTargetting {
@@ -219,6 +228,15 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         internal static string BurstOption {
             get {
                 return ResourceManager.GetString("BurstOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change {0} / {1}.
+        /// </summary>
+        internal static string Change0Or1 {
+            get {
+                return ResourceManager.GetString("Change0Or1", resourceCulture);
             }
         }
         
@@ -521,6 +539,15 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Only use {0} when the targeted enemy is a boss..
+        /// </summary>
+        internal static string OnlyUseWhenTargetIsBoss {
+            get {
+                return ResourceManager.GetString("OnlyUseWhenTargetIsBoss", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Only Weave.
         /// </summary>
         internal static string OnlyWeave {
@@ -693,6 +720,15 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Stop Using {0} When Target HP% is at or Below (Set to 0 to Disable This Check).
+        /// </summary>
+        internal static string StopUsing0WhenBelowTargetHPPercentage {
+            get {
+                return ResourceManager.GetString("StopUsing0WhenBelowTargetHPPercentage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Stop using when below set percentage.
         /// </summary>
         internal static string StopUsingWhenBelowSetPercentage {
@@ -716,6 +752,16 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         internal static string TargetHPUse0AtOrBelow {
             get {
                 return ResourceManager.GetString("TargetHPUse0AtOrBelow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time Remaining on {0} to allow within
+        ///(0 = Dismantled must not be on the target).
+        /// </summary>
+        internal static string TimeRemainingOn0 {
+            get {
+                return ResourceManager.GetString("TimeRemainingOn0", resourceCulture);
             }
         }
         
@@ -790,6 +836,15 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         internal static string Use0Or1 {
             get {
                 return ResourceManager.GetString("Use0Or1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use {0} regardless of content..
+        /// </summary>
+        internal static string Use0RegardlessOfContent {
+            get {
+                return ResourceManager.GetString("Use0RegardlessOfContent", resourceCulture);
             }
         }
         

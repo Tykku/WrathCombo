@@ -126,6 +126,9 @@
   <data name="Action_Threshold" xml:space="preserve">
     <value>{0} Threshold</value>
   </data>
+  <data name="Add0Or1" xml:space="preserve">
+    <value>Add {0} / {1}.</value>
+  </data>
   <data name="AddFieldMouseoverTargetting" xml:space="preserve">
     <value>Adds Field mouseover targetting.</value>
   </data>
@@ -171,6 +174,9 @@
   </data>
   <data name="BurstOption" xml:space="preserve">
     <value>BurstOption</value>
+  </data>
+  <data name="Change0Or1" xml:space="preserve">
+    <value>Change {0} / {1}</value>
   </data>
   <data name="ChargePool" xml:space="preserve">
     <value>How many charges to retain for manual use. Set to 0 to disable this check.</value>
@@ -273,6 +279,9 @@
     <value>On {0}</value>
     <comment>Used for simple "On {Action}" strings</comment>
   </data>
+  <data name="OnlyUseWhenTargetIsBoss" xml:space="preserve">
+    <value>Only use {0} when the targeted enemy is a boss.</value>
+  </data>
   <data name="OnlyWeave" xml:space="preserve">
     <value>Only Weave</value>
   </data>
@@ -331,6 +340,9 @@
   <data name="StopSeconds" xml:space="preserve">
     <value>Seconds remaining before reapplying (0 = Do not reapply early)</value>
   </data>
+  <data name="StopUsing0WhenBelowTargetHPPercentage" xml:space="preserve">
+    <value>Stop Using {0} When Target HP% is at or Below (Set to 0 to Disable This Check)</value>
+  </data>
   <data name="StopUsingWhenBelowSetPercentage" xml:space="preserve">
     <value>Stop using when below set percentage</value>
   </data>
@@ -339,6 +351,10 @@
   </data>
   <data name="TargetHPUse0AtOrBelow" xml:space="preserve">
     <value>Target HP% to use {0} at or below. Set to 100 to disable this check.</value>
+  </data>
+  <data name="TimeRemainingOn0" xml:space="preserve">
+    <value>Time Remaining on {0} to allow within
+(0 = Dismantled must not be on the target)</value>
   </data>
   <data name="TimeRemainingOnOthers" xml:space="preserve">
     <value>Time Remaining on others {0} to allow within
@@ -362,6 +378,9 @@
   </data>
   <data name="Use0Or1" xml:space="preserve">
     <value>Use {0} / {1}</value>
+  </data>
+  <data name="Use0RegardlessOfContent" xml:space="preserve">
+    <value>Use {0} regardless of content.</value>
   </data>
   <data name="Use0When1ChargesAreAvailable" xml:space="preserve">
     <value>Use {0} when {1} charges are available.</value>

@@ -120,10 +120,38 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AlsoUse0Or1OnCooldown" xml:space="preserve">
+    <value>Also use {0} / {1} on cooldown.</value>
+  </data>
+  <data name="BatteryThreshold" xml:space="preserve">
+    <value>Battery threshold</value>
+  </data>
+  <data name="ChangesTo0Or1" xml:space="preserve">
+    <value>Changes to {0} / {1} depending on charges and what was used last</value>
+  </data>
   <data name="Early0Opener" xml:space="preserve">
     <value>Early {0} opener</value>
   </data>
+  <data name="Save0ForEvenWindows" xml:space="preserve">
+    <value>Saves {0} for 2 minute windows
+THIS WILL OVERCAP UR REASSEMBLE.</value>
+  </data>
+  <data name="SaveForEvenWindows" xml:space="preserve">
+    <value>Save for 2 minute windows</value>
+  </data>
+  <data name="StopUsingToolsBelowHpPercentage" xml:space="preserve">
+    <value>Stop Using Tools When Target HP% is at or Below (Set to 0 to Disable This Check)</value>
+  </data>
+  <data name="Use0EveryMinute" xml:space="preserve">
+    <value>Uses {0} every minute/whenever ur highest lvl tool is off cooldown.</value>
+  </data>
   <data name="UseEarly0Opener" xml:space="preserve">
     <value>Uses Early {0} Lvl 100 opener</value>
+  </data>
+  <data name="UseEveryMinute" xml:space="preserve">
+    <value>Use every minute</value>
+  </data>
+  <data name="UseQueenOutsideOfBoss" xml:space="preserve">
+    <value>Use {0} at this battery threshold outside of Boss encounter.</value>
   </data>
 </root>
