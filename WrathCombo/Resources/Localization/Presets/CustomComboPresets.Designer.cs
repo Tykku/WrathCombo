@@ -14827,8 +14827,7 @@ namespace WrathCombo.Resources.Localization.Presets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Uses the mudra from three mudra, automatically on AoE burst mode. 
-        /// Will use Doton &gt; GokaMekkyaku.
+        ///   Looks up a localized string similar to Allows for a custom priority and selection of mudras when under the Three Mudra effect..
         /// </summary>
         internal static string NINPvP_AoE_MudraMode_Desc {
             get {
@@ -14837,7 +14836,7 @@ namespace WrathCombo.Resources.Localization.Presets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Automatic Mudra Mode.
+        ///   Looks up a localized string similar to Customizable Mudra Mode.
         /// </summary>
         internal static string NINPvP_AoE_MudraMode_Name {
             get {

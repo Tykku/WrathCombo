@@ -192,8 +192,14 @@ internal class Presets : ConfigWindow
             }
         }
 
+        bool debugConfig =
+#if DEBUG
+        true;
+#else
+        false;      
+#endif
         // Draw UserOpts
-        if (enabled)
+        if (enabled || debugConfig)
         {
             if (!presetData.IsPvP)
             {

@@ -60,64 +60,70 @@ internal partial class BLM
 
                 case Preset.BLM_ST_Movement:
                     DrawHorizontalMultiChoice(BLM_ST_MovementOption,
-                        $"Use {Triplecast.ActionName()}", "Use triplecast when you don't have swiftcast active.", 6, 0);
+                        FormatAndCache(Generics.Use0, Despair.ActionName()), FormatAndCache(BLM_Config.UseDespairWhenBelow1500MP, Despair.ActionName()), 7, 0);
 
                     DrawPriorityInput(BLM_ST_MovementPriority,
-                        6, 0, FormatAndCache(Generics.Action_Priority, Triplecast.ActionName()));
+                        7, 0, FormatAndCache(Generics.Action_Priority, Despair.ActionName()));
 
                     DrawHorizontalMultiChoice(BLM_ST_MovementOption,
-                        $"Use {Paradox.ActionName()}", "Use Paradox when in AF 3.", 6, 1);
+                        FormatAndCache(Generics.Use0, Triplecast.ActionName()), FormatAndCache(BLM_Config.UseTriplecastWhenNoSwiftcast, Triplecast.ActionName(), Role.Swiftcast.ActionName()), 7, 1);
 
                     DrawPriorityInput(BLM_ST_MovementPriority,
-                        6, 1, FormatAndCache(Generics.Action_Priority, Paradox.ActionName()));
+                        7, 1, FormatAndCache(Generics.Action_Priority, Triplecast.ActionName()));
 
                     DrawHorizontalMultiChoice(BLM_ST_MovementOption,
-                        $"Use {Role.Swiftcast.ActionName()}", "Use swiftcast when you don't have Triplecast.", 6, 2);
+                        FormatAndCache(Generics.Use0, Paradox.ActionName()), FormatAndCache(BLM_Config.UseParadoxWhenInAF3, Paradox.ActionName(), Buffs.AstralFire3.StatusName()), 7, 2);
 
                     DrawPriorityInput(BLM_ST_MovementPriority,
-                        6, 2, FormatAndCache(Generics.Action_Priority, Role.Swiftcast.ActionName()));
+                        7, 2, FormatAndCache(Generics.Action_Priority, Paradox.ActionName()));
 
                     DrawHorizontalMultiChoice(BLM_ST_MovementOption,
-                        $"Use {Foul.ActionName()} / {Xenoglossy.ActionName()}", "Use Foul/Xenoglossy.", 6, 3);
+                        FormatAndCache(Generics.Use0, Role.Swiftcast.ActionName()), FormatAndCache(BLM_Config.UseSwiftcastWhenNoTriplecast, Role.Swiftcast.ActionName(), Triplecast.ActionName()), 7, 3);
 
                     DrawPriorityInput(BLM_ST_MovementPriority,
-                        6, 3, FormatAndCache(Generics.Action_Priority, Xenoglossy.ActionName()));
+                        7, 3, FormatAndCache(Generics.Action_Priority, Role.Swiftcast.ActionName()));
 
                     DrawHorizontalMultiChoice(BLM_ST_MovementOption,
-                        $"Use {Fire3.ActionName()}", "Use Fire III when you have firestarter proc.", 6, 4);
+                        FormatAndCache(Generics.Use0Or1, Foul.ActionName(), Xenoglossy.ActionName()), FormatAndCache(BLM_Config.UseFoulOrXenoglossy, Foul.ActionName(), Xenoglossy.ActionName()), 7, 4);
 
                     DrawPriorityInput(BLM_ST_MovementPriority,
-                        6, 4, FormatAndCache(Generics.Action_Priority, Fire3.ActionName()));
+                        7, 4, FormatAndCache(Generics.Action_Priority, Xenoglossy.ActionName()));
 
                     DrawHorizontalMultiChoice(BLM_ST_MovementOption,
-                        $"Use {Scathe.ActionName()}", "Use Scathe.", 6, 5);
+                        FormatAndCache(Generics.Use0, Fire3.ActionName()), FormatAndCache(BLM_Config.UseFire3WhenYouHaveFirestarterProc, Fire3.ActionName(), Buffs.Firestarter.StatusName()), 7, 5);
 
                     DrawPriorityInput(BLM_ST_MovementPriority,
-                        6, 5, FormatAndCache(Generics.Action_Priority, Scathe.ActionName()));
+                        7, 5, FormatAndCache(Generics.Action_Priority, Fire3.ActionName()));
+
+                    DrawHorizontalMultiChoice(BLM_ST_MovementOption,
+                        FormatAndCache(Generics.Use0, Scathe.ActionName()), FormatAndCache(Generics.Use0, Scathe.ActionName()), 7, 6);
+
+                    DrawPriorityInput(BLM_ST_MovementPriority,
+                        7, 6, FormatAndCache(Generics.Action_Priority, Scathe.ActionName()));
                     break;
 
                 case Preset.BLM_ST_UsePolyglot:
                     if (DrawSliderInt(0, 3, BLM_ST_PolyglotSaveUsage,
-                        "How many charges to save for manual use?"))
+                        BLM_Config.HowManyChargesForManualUse))
                         if (BLM_ST_PolyglotMovement > 3 - BLM_ST_PolyglotSaveUsage)
                             BLM_ST_PolyglotMovement.Value = 3 - BLM_ST_PolyglotSaveUsage;
 
                     if (DrawSliderInt(0, 3, BLM_ST_PolyglotMovement,
-                        "How many charges to save for movement?"))
+                        BLM_Config.HowManyChargesForMovement))
                         if (BLM_ST_PolyglotSaveUsage > 3 - BLM_ST_PolyglotMovement)
                             BLM_ST_PolyglotSaveUsage.Value = 3 - BLM_ST_PolyglotMovement;
                     break;
 
                 case Preset.BLM_ST_Triplecast:
                     DrawHorizontalRadioButton(BLM_ST_Triplecast_WhenToUse,
-                        "Always", "Use always.", 0);
+                        Generics.Always, Generics.UseAlways, 0);
 
                     DrawHorizontalRadioButton(BLM_ST_Triplecast_WhenToUse,
-                        "Not under Leylines", "Do not use while under the effect of Leylines.\nThis is the recommended behaviour.", 1);
+                        FormatAndCache(BLM_Config.NotUnderLeylines, LeyLines.ActionName()), FormatAndCache(BLM_Config.DoNotUseUnderLeylines, LeyLines.ActionName()), 1);
 
                     if (BLM_ST_MovementOption[0])
                         DrawSliderInt(1, 2, BLM_ST_TriplecastMovementCharges,
-                            "How many charges to save for movement?");
+                            BLM_Config.HowManyChargesForMovement);
                     break;
 
 
@@ -138,7 +144,7 @@ internal partial class BLM
 
                 case Preset.BLM_ST_Manaward:
                     DrawSliderInt(0, 100, BLM_ST_ManawardHPThreshold,
-                        $"{Manaward.ActionName()} HP percentage threshold");
+                        FormatAndCache(BLM_Config.ManawardHPThreshold, Manaward.ActionName()));
                     break;
 
                 #endregion
@@ -171,17 +177,16 @@ internal partial class BLM
 
                 case Preset.BLM_AoE_Triplecast:
                     DrawSliderInt(0, 1, BLM_AoE_TriplecastHoldCharges,
-                        $"How many charges of {Triplecast.ActionName()} to keep ready? (0 = Use all)");
+                        FormatAndCache(BLM_Config.HowManyChargesTriplecast, Triplecast.ActionName()));
                     break;
 
                 case Preset.BLM_AoE_Thunder:
-                    DrawSliderInt(0, 50, BLM_AoE_ThunderHP,
-                        $"Stop Using {Thunder2.ActionName()} When Target HP% is at or Below (Set to 0 to Disable This Check)");
+                    DrawSliderInt(0, 50, BLM_AoE_ThunderHP, Generics.StopEnemyHpPercent);
                     break;
 
                 case Preset.BLM_Retargetting_Aetherial_Manipulation:
                     DrawAdditionalBoolChoice(BLM_AM_FieldMouseover,
-                        Generics.FieldMouseover, "Adds Field mouseover targetting.");
+                        Generics.FieldMouseover, Generics.AddFieldMouseoverTargetting);
                     break;
 
                 #endregion
@@ -190,55 +195,55 @@ internal partial class BLM
 
                 case Preset.BLM_Fire1and3:
                     DrawRadioButton(BLM_F1to3,
-                        $"Replaces {Fire.ActionName()}", $"Replaces {Fire.ActionName()} with {Fire3.ActionName()} when out of Astral Fire III or not in combat.", 0);
+                        FormatAndCache(Generics.Replaces0, Fire.ActionName()), FormatAndCache(BLM_Config.ReplaceFireWithFire3WhenNotInAF3OrCombat, Fire.ActionName(), Fire3.ActionName(), Buffs.AstralFire3.StatusName()), 0);
 
                     if (BLM_F1to3 == 0)
                     {
                         DrawAdditionalBoolChoice(BLM_Fire1_Despair,
-                            Despair.ActionName(), "Adds Despair when in Astral Fire and below 2400 MP.");
+                            FormatAndCache(Despair.ActionName()), FormatAndCache(BLM_Config.AddDespairWhenBelow2400MP, Despair.ActionName(), Buffs.AstralFire3.StatusName()));
                     }
 
                     DrawRadioButton(BLM_F1to3,
-                        $"Replaces {Fire3.ActionName()}", $"Replaces {Fire3.ActionName()} with {Fire.ActionName()} when in Astral Fire III.", 1);
+                        FormatAndCache(Generics.Use0, Fire3.ActionName()), FormatAndCache(BLM_Config.ReplaceFire3WithFireWhenInAF3, Fire3.ActionName(), Fire.ActionName(), Buffs.AstralFire3.StatusName()), 1);
                     break;
 
                 case Preset.BLM_Fire4:
                     DrawAdditionalBoolChoice(BLM_Fire4_FlareStar,
-                        FlareStar.ActionName(), "Adds Flarestar in Astral Fire when ready.");
+                        FormatAndCache(FlareStar.ActionName()), FormatAndCache(BLM_Config.AddFlarestarinAF, FlareStar.ActionName(), Buffs.AstralFire3.StatusName()));
 
                     DrawAdditionalBoolChoice(BLM_Fire4_Fire3,
-                        "Fire I / III", "Adds Fire I / III when in Astral Fire and stack is less than 3");
+                        FormatAndCache(Generics.Use0Or1, Fire.ActionName(), Fire3.ActionName()), FormatAndCache(BLM_Config.AddFireOrFire3WhenInAF, Fire.ActionName(), Fire3.ActionName(), Buffs.AstralFire3.StatusName()));
 
                     DrawRadioButton(BLM_Fire4_FireAndIce,
-                        "Use Ice in Umbral Ice", "Adds Blizzard I / III / IV in Umbral Ice depending on stacks and level", 0);
+                        FormatAndCache(Generics.Use0In1, Blizzard.ActionName(), Buffs.UmbralIce.StatusName()), FormatAndCache(BLM_Config.AddBlizzardOr3Or4DependingOnStackAndLevel, Blizzard.ActionName(), Blizzard3.ActionName(), Blizzard4.ActionName(), Buffs.UmbralIce3.StatusName()), 0);
 
                     DrawRadioButton(BLM_Fire4_FireAndIce,
-                        "Use Fire in Umbral Ice", "Leaves Fire in Umbral Ice \nWill Use Fire I / III if selected above.", 1);
+                        FormatAndCache(Generics.Use0In1, Fire.ActionName(), Buffs.UmbralIce.StatusName()), FormatAndCache(BLM_Config.DontChangeFireInUmbralIce, Fire.ActionName(), Fire3.ActionName(), Buffs.UmbralIce3.StatusName()), 1);
                     break;
 
                 case Preset.BLM_Flare:
                     DrawAdditionalBoolChoice(BLM_Flare_FlareStar,
-                        FlareStar.ActionName(), "Adds Flarestar in Astral Fire when ready.");
+                        FormatAndCache(FlareStar.ActionName()), FormatAndCache(BLM_Config.AddFlarestarinAF, FlareStar.ActionName(), Buffs.AstralFire3.StatusName()));
                     break;
 
                 case Preset.BLM_Blizzard1and3:
                     DrawRadioButton(BLM_B1to3,
-                        $"Replaces {Blizzard.ActionName()}",
-                        $"Replaces {Blizzard.ActionName()} with {Blizzard3.ActionName()} when out of Umbral Ice III.", 0);
+                        FormatAndCache(Generics.Use0, Blizzard.ActionName()),
+                        FormatAndCache(BLM_Config.ReplaceBlizzardWithBlizzard3WhenNotInUI3, Blizzard.ActionName(), Blizzard3.ActionName(), Buffs.UmbralIce3.StatusName()), 0);
 
                     DrawRadioButton(BLM_B1to3,
-                        $"Replaces {Blizzard3.ActionName()}",
-                        $"Replaces {Blizzard3.ActionName()} with {Blizzard.ActionName()} when in Umbral Ice III.", 1);
+                        FormatAndCache(Generics.Use0, Blizzard3.ActionName()),
+                        FormatAndCache(BLM_Config.ReplaceBlizzard3WithBlizzardWhenInUI3, Blizzard3.ActionName(), Blizzard.ActionName(), Buffs.UmbralIce3.StatusName()), 1);
                     if (BLM_B1to3 == 1)
                     {
                         DrawAdditionalBoolChoice(BLM_Blizzard3_Despair,
-                            Despair.ActionName(), "Adds Despair when in Astral Fire and above 800 MP.");
+                            FormatAndCache(Despair.ActionName()), FormatAndCache(BLM_Config.AddDespairWhenInAFAndAbove800MP, Despair.ActionName(), Buffs.AstralFire3.StatusName()));
                     }
                     break;
 
                 case Preset.BLM_AmplifierXeno:
                     DrawAdditionalBoolChoice(BLM_AmplifierXenoCD,
-                        "Show Xenoglossy when Amplifier is on cooldown", "Makes it so that Xenoglossy also shows when Amplifier is on cooldown.");
+                        FormatAndCache(BLM_Config.ShowXenoglossyWhenAmplifierOnCD, Xenoglossy.ActionName(), Amplifier.ActionName()), FormatAndCache(BLM_Config.ShowXenoglossyWhenAmplifierIsOnCooldown, Xenoglossy.ActionName(), Amplifier.ActionName()));
                     break;
 
                 #endregion

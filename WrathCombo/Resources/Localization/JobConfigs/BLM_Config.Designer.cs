@@ -59,5 +59,223 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adds {0} / {1} / {2} in {3} depending on stacks and level.
+        /// </summary>
+        internal static string AddBlizzardOr3Or4DependingOnStackAndLevel {
+            get {
+                return ResourceManager.GetString("AddBlizzardOr3Or4DependingOnStackAndLevel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adds {0} when in {1} and below 2400 MP..
+        /// </summary>
+        internal static string AddDespairWhenBelow2400MP {
+            get {
+                return ResourceManager.GetString("AddDespairWhenBelow2400MP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adds {0} when in {1} and above 800 MP..
+        /// </summary>
+        internal static string AddDespairWhenInAFAndAbove800MP {
+            get {
+                return ResourceManager.GetString("AddDespairWhenInAFAndAbove800MP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adds {0} / {1} when in {2} and stack is less than 3.
+        /// </summary>
+        internal static string AddFireOrFire3WhenInAF {
+            get {
+                return ResourceManager.GetString("AddFireOrFire3WhenInAF", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adds {0} in {1} when ready..
+        /// </summary>
+        internal static string AddFlarestarinAF {
+            get {
+                return ResourceManager.GetString("AddFlarestarinAF", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do not use while under the effect of {0}.
+        ///This is the recommended behaviour..
+        /// </summary>
+        internal static string DoNotUseUnderLeylines {
+            get {
+                return ResourceManager.GetString("DoNotUseUnderLeylines", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Leaves {0} in {2} 
+        ///Will Use {0} / {1} if selected above..
+        /// </summary>
+        internal static string DontChangeFireInUmbralIce {
+            get {
+                return ResourceManager.GetString("DontChangeFireInUmbralIce", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to How many charges to save for manual use?.
+        /// </summary>
+        internal static string HowManyChargesForManualUse {
+            get {
+                return ResourceManager.GetString("HowManyChargesForManualUse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to How many charges to save for movement?.
+        /// </summary>
+        internal static string HowManyChargesForMovement {
+            get {
+                return ResourceManager.GetString("HowManyChargesForMovement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to How many charges of {0} to keep ready? (0 = Use all).
+        /// </summary>
+        internal static string HowManyChargesTriplecast {
+            get {
+                return ResourceManager.GetString("HowManyChargesTriplecast", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} HP percentage threshold.
+        /// </summary>
+        internal static string ManawardHPThreshold {
+            get {
+                return ResourceManager.GetString("ManawardHPThreshold", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not under {0}.
+        /// </summary>
+        internal static string NotUnderLeylines {
+            get {
+                return ResourceManager.GetString("NotUnderLeylines", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Replaces {0} with {1} when in {2}..
+        /// </summary>
+        internal static string ReplaceBlizzard3WithBlizzardWhenInUI3 {
+            get {
+                return ResourceManager.GetString("ReplaceBlizzard3WithBlizzardWhenInUI3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Replaces {0} with {1} when out of {2}..
+        /// </summary>
+        internal static string ReplaceBlizzardWithBlizzard3WhenNotInUI3 {
+            get {
+                return ResourceManager.GetString("ReplaceBlizzardWithBlizzard3WhenNotInUI3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Replaces {0} with {1} when in {2}..
+        /// </summary>
+        internal static string ReplaceFire3WithFireWhenInAF3 {
+            get {
+                return ResourceManager.GetString("ReplaceFire3WithFireWhenInAF3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Replaces {0} with {1} when out of {2} or not in combat..
+        /// </summary>
+        internal static string ReplaceFireWithFire3WhenNotInAF3OrCombat {
+            get {
+                return ResourceManager.GetString("ReplaceFireWithFire3WhenNotInAF3OrCombat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Makes it so that {0} also shows when {1} is on cooldown..
+        /// </summary>
+        internal static string ShowXenoglossyWhenAmplifierIsOnCooldown {
+            get {
+                return ResourceManager.GetString("ShowXenoglossyWhenAmplifierIsOnCooldown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show {0} when {1} is on cooldown.
+        /// </summary>
+        internal static string ShowXenoglossyWhenAmplifierOnCD {
+            get {
+                return ResourceManager.GetString("ShowXenoglossyWhenAmplifierOnCD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use {0} when below 1500 MP and when it is an instant cast (lvl 100 only)..
+        /// </summary>
+        internal static string UseDespairWhenBelow1500MP {
+            get {
+                return ResourceManager.GetString("UseDespairWhenBelow1500MP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use {0} when you have {1} proc..
+        /// </summary>
+        internal static string UseFire3WhenYouHaveFirestarterProc {
+            get {
+                return ResourceManager.GetString("UseFire3WhenYouHaveFirestarterProc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use {0}/{1}..
+        /// </summary>
+        internal static string UseFoulOrXenoglossy {
+            get {
+                return ResourceManager.GetString("UseFoulOrXenoglossy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use {0} when in {1}..
+        /// </summary>
+        internal static string UseParadoxWhenInAF3 {
+            get {
+                return ResourceManager.GetString("UseParadoxWhenInAF3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use {0} when you don&apos;t have {1}..
+        /// </summary>
+        internal static string UseSwiftcastWhenNoTriplecast {
+            get {
+                return ResourceManager.GetString("UseSwiftcastWhenNoTriplecast", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use {0} when you don&apos;t have {1} active..
+        /// </summary>
+        internal static string UseTriplecastWhenNoSwiftcast {
+            get {
+                return ResourceManager.GetString("UseTriplecastWhenNoSwiftcast", resourceCulture);
+            }
+        }
     }
 }

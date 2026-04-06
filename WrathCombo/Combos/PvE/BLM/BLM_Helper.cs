@@ -112,9 +112,18 @@ internal partial class BLM
     private static (uint Action, Preset Preset, System.Func<bool> Logic)[]
         PrioritizedMovement =>
     [
+        //Despair at lvl 100
+        (Despair, Preset.BLM_ST_Movement,
+            () => BLM_ST_MovementOption[0] &&
+                  ActionReady(Despair) &&
+                  TraitLevelChecked(Traits.EnhancedAstralFire) &&
+                  FirePhase && MP.Cur is >= 800 and < 1500 &&
+                  !HasStatusEffect(Buffs.Triplecast) &&
+                  !HasStatusEffect(Role.Buffs.Swiftcast)),
+
         //Triplecast
         (Triplecast, Preset.BLM_ST_Movement,
-            () => BLM_ST_MovementOption[0] &&
+            () => BLM_ST_MovementOption[1] &&
                   ActionReady(Triplecast) &&
                   !HasStatusEffect(Buffs.Triplecast) &&
                   !HasStatusEffect(Role.Buffs.Swiftcast) &&
@@ -123,7 +132,7 @@ internal partial class BLM
 
         // Paradox
         (OriginalHook(Fire), Preset.BLM_ST_Movement,
-            () => BLM_ST_MovementOption[1] &&
+            () => BLM_ST_MovementOption[2] &&
                   ActionReady(OriginalHook(Paradox)) &&
                   FirePhase && ActiveParadox &&
                   MP.Cur >= MP.FireParadox &&
@@ -133,13 +142,13 @@ internal partial class BLM
 
         //Swiftcast
         (Role.Swiftcast, Preset.BLM_ST_Movement,
-            () => BLM_ST_MovementOption[2] &&
+            () => BLM_ST_MovementOption[3] &&
                   ActionReady(Role.Swiftcast) &&
                   !HasStatusEffect(Buffs.Triplecast)),
 
         //Xeno
         (Xenoglossy, Preset.BLM_ST_Movement,
-            () => BLM_ST_MovementOption[3] &&
+            () => BLM_ST_MovementOption[4] &&
                   ActionReady(Xenoglossy) &&
                   HasPolyglotStacks() &&
                   !HasStatusEffect(Buffs.Triplecast) &&
@@ -147,7 +156,7 @@ internal partial class BLM
 
         // Firestarter
         (Fire3, Preset.BLM_ST_Movement,
-            () => BLM_ST_MovementOption[4] &&
+            () => BLM_ST_MovementOption[5] &&
                   ActionReady(Fire3) &&
                   FirePhase &&
                   HasStatusEffect(Buffs.Firestarter) &&
@@ -156,7 +165,7 @@ internal partial class BLM
 
         //Scathe
         (Scathe, Preset.BLM_ST_Movement,
-            () => BLM_ST_MovementOption[5] &&
+            () => BLM_ST_MovementOption[6] &&
                   ActionReady(Scathe) &&
                   !HasStatusEffect(Buffs.Triplecast) &&
                   !HasStatusEffect(Role.Buffs.Swiftcast))
@@ -400,6 +409,12 @@ internal partial class BLM
             LeyLines = 737,
             CircleOfPower = 738,
             Triplecast = 1211,
+            AstralFire = 173, // Do not use, for translation only
+            AstralFire2 = 174, // Do not use, for translation only
+            AstralFire3 = 175, // Do not use, for translation only
+            UmbralIce = 176, // Do not use, for translation only
+            UmbralIce2 = 177, // Do not use, for translation only
+            UmbralIce3 = 178, // Do not use, for translation only
             Thunderhead = 3870;
     }
 

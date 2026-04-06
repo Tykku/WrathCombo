@@ -66,8 +66,9 @@ internal partial class MNK
                 HasBattleTarget() && !JustUsed(PerfectBalance):
             {
                 // Odd window
-                if ((JustUsed(OriginalHook(Bootshine), GCD * 2) || JustUsed(DragonKick, GCD * 2)) &&
-                    !JustUsed(PerfectBalance, 20) && GetCooldownRemainingTime(RiddleOfFire) <= GCD * 2 && !HasStatusEffect(Buffs.Brotherhood))
+                if ((JustUsed(OriginalHook(Bootshine), GCD) || JustUsed(DragonKick, GCD)) &&
+                    !JustUsed(PerfectBalance, 20) && !HasStatusEffect(Buffs.Brotherhood) &&
+                    (GetCooldownRemainingTime(RiddleOfFire) <= GCD * 3 || HasStatusEffect(Buffs.RiddleOfFire)))
                     return true;
 
                 // Even window first use

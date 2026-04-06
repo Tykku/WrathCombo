@@ -88,6 +88,24 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adds Field mouseover targetting..
+        /// </summary>
+        internal static string AddFieldMouseoverRetargetting {
+            get {
+                return ResourceManager.GetString("AddFieldMouseoverRetargetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adds Field mouseover targetting..
+        /// </summary>
+        internal static string AddFieldMouseoverTargetting {
+            get {
+                return ResourceManager.GetString("AddFieldMouseoverTargetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to All Content.
         /// </summary>
         internal static string AllContent {
@@ -129,6 +147,15 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         internal static string AllyHardTarget {
             get {
                 return ResourceManager.GetString("AllyHardTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Always.
+        /// </summary>
+        internal static string Always {
+            get {
+                return ResourceManager.GetString("Always", resourceCulture);
             }
         }
         
@@ -522,6 +549,24 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Replaces Fire with Fire3 when out of Astral Fire III or not in combat..
+        /// </summary>
+        internal static string ReplaceFireWithFire3WhenNotInAF3OrCombat {
+            get {
+                return ResourceManager.GetString("ReplaceFireWithFire3WhenNotInAF3OrCombat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Replaces {0}.
+        /// </summary>
+        internal static string Replaces0 {
+            get {
+                return ResourceManager.GetString("Replaces0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save {0} charges for burst..
         /// </summary>
         internal static string Save0ChargesForBurst {
@@ -732,6 +777,24 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Use {0} in {1}.
+        /// </summary>
+        internal static string Use0In1 {
+            get {
+                return ResourceManager.GetString("Use0In1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use {0} / {1}.
+        /// </summary>
+        internal static string Use0Or1 {
+            get {
+                return ResourceManager.GetString("Use0Or1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Use {0} when {1} charges are available..
         /// </summary>
         internal static string Use0When1ChargesAreAvailable {
@@ -755,6 +818,15 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         internal static string UseActionOnlyWhileStationary {
             get {
                 return ResourceManager.GetString("UseActionOnlyWhileStationary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use always..
+        /// </summary>
+        internal static string UseAlways {
+            get {
+                return ResourceManager.GetString("UseAlways", resourceCulture);
             }
         }
         

@@ -200,7 +200,7 @@ internal partial class VPR
 
                     //2min burst
                     if (!JustUsed(SerpentsIre, GCD) && HasStatusEffect(Buffs.ReadyToReawaken) ||
-                        JustUsed(Ouroboros, GCD) && IreCD >= 90)
+                        JustUsed(Ouroboros) && IreCD >= 90)
                         return true;
 
                     //1min
@@ -305,8 +305,8 @@ internal partial class VPR
     private static bool CanUseVicewinder =>
         ActionReady(Vicewinder) && InActionRange(Vicewinder) && InCombat() &&
         !IsComboExpiring(6) && !IsVenomExpiring(4) && !IsHoningExpiring(4) &&
-        !UsedVicewinder && !UsedHuntersCoil && !UsedSwiftskinsCoil && 
-        !JustUsed(SerpentsIre, GCD * 4) && !JustUsed(Vicewinder) && 
+        !UsedVicewinder && !UsedHuntersCoil && !UsedSwiftskinsCoil &&
+        !JustUsed(SerpentsIre, GCD * 4) && !JustUsed(Vicewinder) &&
         !JustUsed(Ouroboros) && !HasStatusEffect(Buffs.Reawakened) &&
         (IreCD >= GCD * 3 && InBossEncounter() || !InBossEncounter() || !LevelChecked(SerpentsIre));
 
