@@ -67,7 +67,7 @@ internal partial class MNK
             {
                 // Odd window
                 if ((JustUsed(OriginalHook(Bootshine), GCD) || JustUsed(DragonKick, GCD)) &&
-                    !JustUsed(PerfectBalance, 20) && !HasStatusEffect(Buffs.Brotherhood) &&
+                    !JustUsed(PerfectBalance, 20 + GCD * 5) && !HasStatusEffect(Buffs.Brotherhood) &&
                     (GetCooldownRemainingTime(RiddleOfFire) <= GCD * 3 || HasStatusEffect(Buffs.RiddleOfFire)))
                     return true;
 
