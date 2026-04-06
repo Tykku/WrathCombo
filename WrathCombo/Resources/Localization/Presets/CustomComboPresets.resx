@@ -11040,11 +11040,11 @@ Will be used in all 4 main combos.</value>
 This will work for most, but not all raidwide attacks and is no substitute for learning the fight</value>
   </data>
   <data name="WHM_Raidwide_LiturgyOfTheBell_Desc" xml:space="preserve">
-    <value>Will try to weave LiturgyOfTheBell when a raidwide casting. 
+    <value>Will try to weave Liturgy of the Bell when a raidwide casting. 
 Will be used in all 4 main combos.</value>
   </data>
   <data name="WHM_Raidwide_LiturgyOfTheBell_Name" xml:space="preserve">
-    <value>RaidWide LiturgyOfTheBell Option</value>
+    <value>RaidWide Liturgy of the Bell Option</value>
   </data>
   <data name="WHM_Raidwide_Name" xml:space="preserve">
     <value>Boss Raidwide Options</value>
@@ -11130,10 +11130,10 @@ Will be used in all 4 main combos.</value>
     <value>Divine Benison Option</value>
   </data>
   <data name="WHM_Re_LiturgyOfTheBell_Desc" xml:space="preserve">
-    <value>Retargets Liturgy Of The Bell to yourself.</value>
+    <value>Retargets Liturgy of the Bell to yourself.</value>
   </data>
   <data name="WHM_Re_LiturgyOfTheBell_Name" xml:space="preserve">
-    <value>Liturgy Of The Bell Option</value>
+    <value>Liturgy of the Bell Option</value>
   </data>
   <data name="WHM_Re_Regen_Desc" xml:space="preserve">
     <value>Retargets Regen to the heal stack.</value>
@@ -11208,10 +11208,10 @@ Solace can be Retargeted with the Retargeting Features below.</value>
     <value>Esuna Option</value>
   </data>
   <data name="WHM_STHeals_LiturgyOfTheBell_Desc" xml:space="preserve">
-    <value>Adds LiturgyOfTheBell.</value>
+    <value>Adds Liturgy of the Bell.</value>
   </data>
   <data name="WHM_STHeals_LiturgyOfTheBell_Name" xml:space="preserve">
-    <value>LiturgyOfTheBell Option</value>
+    <value>Liturgy of the Bell Option</value>
   </data>
   <data name="WHM_STHeals_Lucid_Desc" xml:space="preserve">
     <value>Adds Lucid Dreaming.</value>

@@ -287,7 +287,7 @@ internal partial class WHM
                         "");
                     DrawDifficultyMultiChoice(WHM_AoEHeals_LiturgyDifficulty,
                         WHM_AoEHeals_LiturgyDifficultyListSet,
-                        "Select what content difficulties LiturgyOfTheBell should be used in:");
+                        "Select what content difficulties Liturgy of the Bell should be used in:");
                     DrawPriorityInput(WHM_AoE_Heals_Priority, 9, 5,
                         FormatAndCache(Generics.Action_Priority, LiturgyOfTheBell.ActionName()));
                     break;
