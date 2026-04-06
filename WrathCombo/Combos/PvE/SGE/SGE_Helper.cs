@@ -32,7 +32,7 @@ internal partial class SGE
         SimpleTarget.Stack.AllyToHeal;
 
     private static bool HasAddersgall() => Addersgall > 0;
-    
+
     private static bool AdvancedHasAddersgall() => Addersgall > SGE_Heal_HoldAddersgall;
 
     private static bool HasAddersting() =>
@@ -95,7 +95,7 @@ internal partial class SGE
     {
         if (x is null)
             return 0;
-        
+
         if (InBossEncounter())
             return x.IsBoss() ? SGE_ST_DPS_EukrasianDosisBossOption : SGE_ST_DPS_EukrasianDosisBossAddsOption;
 
@@ -300,7 +300,7 @@ internal partial class SGE
 
     #region Movement Prio
 
-    private static (uint Action, Preset Preset, Func<bool> Logic)[]
+    private static (uint Action, Preset Preset, System.Func<bool> Logic)[]
         PrioritizedMovement =>
     [
         //Toxikon
