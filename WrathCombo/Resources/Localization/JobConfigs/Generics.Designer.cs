@@ -376,6 +376,15 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to How many charges to save for movement?.
+        /// </summary>
+        internal static string HowManyChargesForMovement {
+            get {
+                return ResourceManager.GetString("HowManyChargesForMovement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to  How many charges to keep ready?
         ///(0 = Use All).
         /// </summary>

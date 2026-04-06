@@ -223,6 +223,9 @@
   <data name="FocusTarget" xml:space="preserve">
     <value>Focus Target</value>
   </data>
+  <data name="HowManyChargesForMovement" xml:space="preserve">
+    <value>How many charges to save for movement?</value>
+  </data>
   <data name="HowManyChargesToKeepReady" xml:space="preserve">
     <value> How many charges to keep ready?
 (0 = Use All)</value>
