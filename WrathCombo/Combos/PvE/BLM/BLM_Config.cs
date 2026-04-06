@@ -18,13 +18,11 @@ internal partial class BLM
                 case Preset.BLM_ST_Opener:
                     DrawHorizontalRadioButton(BLM_SelectedOpener,
                         Generics.StandardOpener,
-                        Generics.UsesStandardOpener,
-                        0);
+                        Generics.UsesStandardOpener, 0);
 
                     DrawHorizontalRadioButton(BLM_SelectedOpener,
                         FormatAndCache(Generics.Action_Opener, Flare.ActionName()),
-                        FormatAndCache(Generics.Use_0_Opener, Flare.ActionName()),
-                        1);
+                        FormatAndCache(Generics.Use_0_Opener, Flare.ActionName()), 1);
 
                     DrawBossOnlyChoice(BLM_Balance_Content);
                     break;

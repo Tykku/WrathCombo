@@ -34,7 +34,6 @@ internal partial class MNK
                         Generics.Always,
                         Generics.UseAlways, 1);
 
-                    ImGui.NewLine();
                     DrawBossOnlyChoice(MNK_Balance_Content);
                     break;
 
