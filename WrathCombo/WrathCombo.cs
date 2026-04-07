@@ -382,11 +382,11 @@ public sealed partial class WrathCombo : IDalamudPlugin
             else
                 OpenerDtr.Text = "";
 
-            if (Service.Configuration.TankbusterTTS)
-                CustomComboFunctions.PlayTankbusterTTS();
+            if (Service.Configuration.TankbusterTTS || Service.Configuration.TankbusterToast)
+                CustomComboFunctions.PlayTankbusterAlert();
 
-            if (Service.Configuration.AoEDamageTTS)
-                CustomComboFunctions.PlayGroupwideTTS();
+            if (Service.Configuration.AoEDamageTTS || Service.Configuration.AoEDamageToast)
+                CustomComboFunctions.PlayGroupwideAlert();
         }
         catch (Exception ex)
         {

@@ -136,6 +136,20 @@ public partial class Configuration : IPluginConfiguration
     [Setting(Setting.Type.Toggle)]
     public bool AoEDamageTTS = false;
 
+    /// <summary>
+    /// Whether to show a toast whenever Tankbusters are detected. Default: false.
+    /// </summary>
+    [SettingCategory(Main_UI_Options)]
+    [Setting(Setting.Type.Toggle)]
+    public bool TankbusterToast = false;
+
+    /// <summary>
+    /// Whether to show a toast when Raidwides/Group Damages are detected. Default: false.
+    /// </summary>
+    [SettingCategory(Main_UI_Options)]
+    [Setting(Setting.Type.Toggle)]
+    public bool AoEDamageToast = false;
+
     #region Future Search Settings
 
     /// The preferred search behavior. Default: Filter.
