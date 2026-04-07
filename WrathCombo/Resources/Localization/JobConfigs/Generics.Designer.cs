@@ -313,6 +313,15 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Disable range check.
+        /// </summary>
+        internal static string DisableRangeCheck {
+            get {
+                return ResourceManager.GetString("DisableRangeCheck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Disables the use of mitigations..
         /// </summary>
         internal static string DisablesTheUseOfMitigations {
@@ -363,6 +372,15 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         internal static string EnemyTypeCheck {
             get {
                 return ResourceManager.GetString("EnemyTypeCheck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exclude {0}.
+        /// </summary>
+        internal static string Exclude0 {
+            get {
+                return ResourceManager.GetString("Exclude0", resourceCulture);
             }
         }
         
@@ -485,6 +503,15 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to HP% Threshold to use all charges of {0}..
+        /// </summary>
+        internal static string HPPercentThresholdUseAllCharges0 {
+            get {
+                return ResourceManager.GetString("HPPercentThresholdUseAllCharges0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Include {0}.
         /// </summary>
         internal static string Include0 {
@@ -526,6 +553,15 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         internal static string InMeleeRange {
             get {
                 return ResourceManager.GetString("InMeleeRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to In range.
+        /// </summary>
+        internal static string InRange {
+            get {
+                return ResourceManager.GetString("InRange", resourceCulture);
             }
         }
         
@@ -674,6 +710,15 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Prio buff upkeep.
+        /// </summary>
+        internal static string PrioBuffUpkeep {
+            get {
+                return ResourceManager.GetString("PrioBuffUpkeep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Priority: .
         /// </summary>
         internal static string Priority {
@@ -801,7 +846,8 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Stop using at Enemy HP %. Set to Zero to disable this check..
+        ///   Looks up a localized string similar to Stop using when below Enemy HP %.
+        ///        Set to Zero to disable this check..
         /// </summary>
         internal static string StopEnemyHpPercent {
             get {
@@ -810,7 +856,8 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Start using when below HP %. Set to 100 to disable this check.
+        ///   Looks up a localized string similar to Start using when below HP %.
+        ///       Set to 100 to disable this check.
         /// </summary>
         internal static string StopFriendlyHpPercent100 {
             get {

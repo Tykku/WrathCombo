@@ -158,9 +158,6 @@
   <data name="KenkiOvercapProtection" xml:space="preserve">
     <value>Kenki Overcap Protection</value>
   </data>
-  <data name="PrioBuffUpkeep" xml:space="preserve">
-    <value>Prio buff upkeep</value>
-  </data>
   <data name="PrioBuffUpkeepDesc" xml:space="preserve">
     <value>Will prioritise having both buffs before finishing sens.</value>
   </data>

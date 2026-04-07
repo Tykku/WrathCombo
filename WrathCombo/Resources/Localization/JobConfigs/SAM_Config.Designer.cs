@@ -168,15 +168,6 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Prio buff upkeep.
-        /// </summary>
-        internal static string PrioBuffUpkeep {
-            get {
-                return ResourceManager.GetString("PrioBuffUpkeep", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Will prioritise having both buffs before finishing sens..
         /// </summary>
         internal static string PrioBuffUpkeepDesc {

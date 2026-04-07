@@ -58,5 +58,88 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adds {0} when available.
+        /// Respects the manual {0} charge..
+        /// </summary>
+        internal static string Add0WhenAvailableRespectManualCharge {
+            get {
+                return ResourceManager.GetString("Add0WhenAvailableRespectManualCharge", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adds range check for {0}, so it is used only when in range..
+        /// </summary>
+        internal static string AddRangeCheckFor0 {
+            get {
+                return ResourceManager.GetString("AddRangeCheckFor0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adds range check for {0} and {1}, so it is used only when in range..
+        /// </summary>
+        internal static string AddRangeCheckFor0And1 {
+            get {
+                return ResourceManager.GetString("AddRangeCheckFor0And1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disables the range check for {0}, so it will be used even without a target selected..
+        /// </summary>
+        internal static string DisableRangeCheckFor0 {
+            get {
+                return ResourceManager.GetString("DisableRangeCheckFor0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disables the range check for {0} and {1}, so it will be used even without a target selected..
+        /// </summary>
+        internal static string DisableRangeCheckFor0And1 {
+            get {
+                return ResourceManager.GetString("DisableRangeCheckFor0And1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Forces {0} or {1} if buff needs to be reapplied..
+        /// </summary>
+        internal static string Forces0Or1ForBuffs {
+            get {
+                return ResourceManager.GetString("Forces0Or1ForBuffs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set a HP% threshold to use {0} whenever available. (Bosses Only).
+        /// </summary>
+        internal static string HPPThresholdWheneverAvailableBossesOnly {
+            get {
+                return ResourceManager.GetString("HPPThresholdWheneverAvailableBossesOnly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Replaces {0} with Full Generation - Legacy combo..
+        /// </summary>
+        internal static string Replace0WithFullCombo {
+            get {
+                return ResourceManager.GetString("Replace0WithFullCombo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Will hold the last charge of {0} for use with {1}, even when out of position for normal GCD.
+        ///If Above Slider is set to 1, it will NOT use the remaining charge for {1}, but for manual use..
+        /// </summary>
+        internal static string WillHoldLastChargeOf0For1 {
+            get {
+                return ResourceManager.GetString("WillHoldLastChargeOf0For1", resourceCulture);
+            }
+        }
     }
 }

@@ -202,6 +202,9 @@
   <data name="ChargePool" xml:space="preserve">
     <value>How many charges to retain for manual use. Set to 0 to disable this check.</value>
   </data>
+  <data name="DisableRangeCheck" xml:space="preserve">
+    <value>Disable range check</value>
+  </data>
   <data name="DisablesTheUseOfMitigations" xml:space="preserve">
     <value>Disables the use of mitigations.</value>
   </data>
@@ -219,6 +222,9 @@
   </data>
   <data name="EnemyTypeCheck" xml:space="preserve">
     <value>Select what kind of enemies the HP check should be applied to:</value>
+  </data>
+  <data name="Exclude0" xml:space="preserve">
+    <value>Exclude {0}</value>
   </data>
   <data name="ExcludeAdvancedMitigations" xml:space="preserve">
     <value>Exclude Advanced Mitigations</value>
@@ -260,6 +266,9 @@
   <data name="HPPercentageThreshold" xml:space="preserve">
     <value>{0} HP percentage threshold.</value>
   </data>
+  <data name="HPPercentThresholdUseAllCharges0" xml:space="preserve">
+    <value>HP% Threshold to use all charges of {0}.</value>
+  </data>
   <data name="Include0" xml:space="preserve">
     <value>Include {0}</value>
   </data>
@@ -274,6 +283,9 @@
   </data>
   <data name="InMeleeRange" xml:space="preserve">
     <value>In Melee Range</value>
+  </data>
+  <data name="InRange" xml:space="preserve">
+    <value>In range</value>
   </data>
   <data name="Job0ShieldCheck" xml:space="preserve">
     <value>{0} Shield Check</value>
@@ -324,6 +336,9 @@
   <data name="PlayerHPToUseAction" xml:space="preserve">
     <value>Player HP% to use {0} at or below.  Set to 100 to disable this check</value>
   </data>
+  <data name="PrioBuffUpkeep" xml:space="preserve">
+    <value>Prio buff upkeep</value>
+  </data>
   <data name="Priority" xml:space="preserve">
     <value>Priority: </value>
   </data>
@@ -368,10 +383,12 @@
 (Set to 0 to disable this check)</value>
   </data>
   <data name="StopEnemyHpPercent" xml:space="preserve">
-    <value>Stop using at Enemy HP %. Set to Zero to disable this check.</value>
+    <value>Stop using when below Enemy HP %.
+        Set to Zero to disable this check.</value>
   </data>
   <data name="StopFriendlyHpPercent100" xml:space="preserve">
-    <value>Start using when below HP %. Set to 100 to disable this check</value>
+    <value>Start using when below HP %.
+       Set to 100 to disable this check</value>
   </data>
   <data name="StopFriendlyHpPercentZero" xml:space="preserve">
     <value>Stop using when below HP %. Set to Zero to disable this check</value>

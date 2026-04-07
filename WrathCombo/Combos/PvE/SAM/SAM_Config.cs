@@ -118,7 +118,7 @@ internal partial class SAM
                         SAM_Config.PrioSenGenDesc, 0);
 
                     DrawHorizontalRadioButton(SAM_ST_YukikazeCombo_Prio,
-                        SAM_Config.PrioBuffUpkeep,
+                        Generics.PrioBuffUpkeep,
                         SAM_Config.PrioBuffUpkeepDesc, 1);
 
                     DrawAdditionalBoolChoice(SAM_Yukaze_Gekko,
