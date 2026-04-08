@@ -162,10 +162,10 @@
         <AutoGen>True</AutoGen>
         <DependentUpon>SGE_Config.resx</DependentUpon>
       </Compile>
-      <Compile Update="Resources\Localization\Misc\Misc.Designer.cs">
+      <Compile Update="Resources\Localization\Misc\MiscStrings.Designer.cs">
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
-        <DependentUpon>Misc.resx</DependentUpon>
+        <DependentUpon>MiscStrings.resx</DependentUpon>
       </Compile>
       <Compile Update="Resources\Localization\Presets\CustomComboPresets.Designer.cs">
         <DesignTime>True</DesignTime>
@@ -228,9 +228,9 @@
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>SGE_Config.Designer.cs</LastGenOutput>
       </EmbeddedResource>
-      <EmbeddedResource Update="Resources\Localization\Misc\Misc.resx">
+      <EmbeddedResource Update="Resources\Localization\Misc\MiscStrings.resx">
         <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>Misc.Designer.cs</LastGenOutput>
+        <LastGenOutput>MiscStrings.Designer.cs</LastGenOutput>
       </EmbeddedResource>
       <EmbeddedResource Update="Resources\Localization\Presets\CustomComboPresets.resx">
         <Generator>ResXFileCodeGenerator</Generator>
