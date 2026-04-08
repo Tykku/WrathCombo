@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Speech.Synthesis;
 using WrathCombo.Extensions;
+using WrathCombo.Resources.Localization.Misc;
 using WrathCombo.Services;
 
 namespace WrathCombo.CustomComboNS.Functions;
@@ -250,9 +251,9 @@ internal abstract partial class CustomComboFunctions
         {
             var targets = TTSTankbusters.Where(x => !x.TTSHandled).Select(x => x.VFX.TargetID == Player.Object.GameObjectId ? "You" : x.VFX.TargetID.GetObject()?.Name.ToString()).ToList();
             if (Service.Configuration.TankbusterTTS)
-                TTS.SpeakAsync($"Tankbuster on {JoinNaturally(targets)}!");
+                TTS.SpeakAsync(string.Format(Misc.TankbusterTTS, JoinNaturally(targets)));
             if (Service.Configuration.TankbusterToast)
-                Svc.Toasts.ShowQuest($"Tankbuster on {JoinNaturally(targets)}!", opts);
+                Svc.Toasts.ShowQuest(string.Format(Misc.TankbusterTTS, JoinNaturally(targets)), opts);
 
             TTSTankbusters.ForEach(x => x.TTSHandled = true);
         }
@@ -277,9 +278,9 @@ internal abstract partial class CustomComboFunctions
             var multiHit = TTSGroupwides.Any(x => CheckPath(MHSharedDmgPaths, x.VFX.Path));
             var targets = TTSGroupwides.Where(x => !x.TTSHandled).Select(x => x.VFX.TargetID == Player.Object.GameObjectId ? "You" : x.VFX.TargetID.GetObject()?.Name.ToString()).ToList();
             if (Service.Configuration.AoEDamageTTS)
-                TTS.SpeakAsync($"{(multiHit ? "Multi-hit " : "")}Stack marker on {JoinNaturally(targets)}!");
+                TTS.SpeakAsync(string.Format(Misc.StackTTS, (multiHit ? Misc.MultiHit : ""), JoinNaturally(targets)));
             if (Service.Configuration.AoEDamageToast)
-                Svc.Toasts.ShowQuest($"{(multiHit ? "Multi-hit " : "")}Stack marker on {JoinNaturally(targets)}!", opts);
+                Svc.Toasts.ShowQuest(string.Format(Misc.StackTTS, (multiHit ? Misc.MultiHit : ""), JoinNaturally(targets)), opts);
 
             TTSGroupwides.ForEach(x => x.TTSHandled = true);
         }
@@ -291,9 +292,9 @@ internal abstract partial class CustomComboFunctions
             if (!CurrentRaidwideHandled)
             {
                 if (Service.Configuration.AoEDamageTTS)
-                    TTS.SpeakAsync("Group damage incoming");
+                    TTS.SpeakAsync(Misc.RaidwideTTS);
                 if (Service.Configuration.AoEDamageToast)
-                    Svc.Toasts.ShowQuest("Group damage incoming!", opts);
+                    Svc.Toasts.ShowQuest(Misc.RaidwideTTS, opts);
 
                 CurrentRaidwideHandled = true;
             }
