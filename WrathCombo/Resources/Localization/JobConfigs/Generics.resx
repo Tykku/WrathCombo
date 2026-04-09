@@ -302,6 +302,9 @@
   <data name="MovementOption" xml:space="preserve">
     <value>Movement Option</value>
   </data>
+  <data name="MPLessOrEqual" xml:space="preserve">
+    <value>Player MP to be less than or equal to:</value>
+  </data>
   <data name="NoMovement" xml:space="preserve">
     <value>No Movement</value>
   </data>
@@ -332,6 +335,9 @@
   </data>
   <data name="OnlyWeave" xml:space="preserve">
     <value>Only Weave</value>
+  </data>
+  <data name="PlayerHPGreaterOrEqual" xml:space="preserve">
+    <value>Player HP% to be greater than or equal to:</value>
   </data>
   <data name="PlayerHPToUseAction" xml:space="preserve">
     <value>Player HP% to use {0} at or below.  Set to 100 to disable this check</value>

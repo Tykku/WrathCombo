@@ -611,6 +611,15 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Player MP to be less than or equal to:.
+        /// </summary>
+        internal static string MPLessOrEqual {
+            get {
+                return ResourceManager.GetString("MPLessOrEqual", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No Movement.
         /// </summary>
         internal static string NoMovement {
@@ -697,6 +706,15 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         internal static string OnlyWeave {
             get {
                 return ResourceManager.GetString("OnlyWeave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Player HP% to be greater than or equal to:.
+        /// </summary>
+        internal static string PlayerHPGreaterOrEqual {
+            get {
+                return ResourceManager.GetString("PlayerHPGreaterOrEqual", resourceCulture);
             }
         }
         
