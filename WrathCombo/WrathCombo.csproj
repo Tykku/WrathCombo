@@ -142,6 +142,11 @@
         <AutoGen>True</AutoGen>
         <DependentUpon>BLM_Config.resx</DependentUpon>
       </Compile>
+      <Compile Update="Resources\Localization\JobConfigs\BLU_Config.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>BLU_Config.resx</DependentUpon>
+      </Compile>
       <Compile Update="Resources\Localization\JobConfigs\BRD_Config.Designer.cs">
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
@@ -152,15 +157,70 @@
         <AutoGen>True</AutoGen>
         <DependentUpon>DNC_Config.resx</DependentUpon>
       </Compile>
+      <Compile Update="Resources\Localization\JobConfigs\DOL_Config.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>DOL_Config.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Localization\JobConfigs\DRK_Config.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>DRK_Config.resx</DependentUpon>
+      </Compile>
       <Compile Update="Resources\Localization\JobConfigs\Generics.Designer.cs">
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
         <DependentUpon>Generics.resx</DependentUpon>
       </Compile>
+      <Compile Update="Resources\Localization\JobConfigs\GNB_Config.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>GNB_Config.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Localization\JobConfigs\NIN_Config.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>NIN_Config.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Localization\JobConfigs\PCT_Config.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>PCT_Config.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Localization\JobConfigs\PLD_Config.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>PLD_Config.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Localization\JobConfigs\RDM_Config.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>RDM_Config.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Localization\JobConfigs\SCH_Config.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>SCH_Config.resx</DependentUpon>
+      </Compile>
       <Compile Update="Resources\Localization\JobConfigs\SGE_Config.Designer.cs">
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
         <DependentUpon>SGE_Config.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Localization\JobConfigs\SMN_Config.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>SMN_Config.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Localization\JobConfigs\WAR_Config.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>WAR_Config.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\Localization\JobConfigs\WHM_Config.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>WHM_Config.resx</DependentUpon>
       </Compile>
       <Compile Update="Resources\Localization\Presets\CustomComboPresets.Designer.cs">
         <DesignTime>True</DesignTime>
@@ -242,6 +302,10 @@
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>BLM_Config.Designer.cs</LastGenOutput>
       </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Localization\JobConfigs\BLU_Config.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>BLU_Config.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
       <EmbeddedResource Update="Resources\Localization\JobConfigs\BRD_Config.resx">
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>BRD_Config.Designer.cs</LastGenOutput>
@@ -250,13 +314,57 @@
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>DNC_Config.Designer.cs</LastGenOutput>
       </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Localization\JobConfigs\DOL_Config.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>DOL_Config.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Localization\JobConfigs\DRK_Config.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>DRK_Config.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
       <EmbeddedResource Update="Resources\Localization\JobConfigs\Generics.resx">
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>Generics.Designer.cs</LastGenOutput>
       </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Localization\JobConfigs\GNB_Config.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>GNB_Config.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Localization\JobConfigs\NIN_Config.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>NIN_Config.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Localization\JobConfigs\PCT_Config.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>PCT_Config.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Localization\JobConfigs\PLD_Config.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>PLD_Config.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Localization\JobConfigs\RDM_Config.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>RDM_Config.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Localization\JobConfigs\SCH_Config.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>SCH_Config.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
       <EmbeddedResource Update="Resources\Localization\JobConfigs\SGE_Config.resx">
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>SGE_Config.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Localization\JobConfigs\SMN_Config.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>SMN_Config.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Localization\JobConfigs\WAR_Config.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>WAR_Config.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\Localization\JobConfigs\WHM_Config.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>WHM_Config.Designer.cs</LastGenOutput>
       </EmbeddedResource>
       <EmbeddedResource Update="Resources\Localization\Presets\CustomComboPresets.resx">
         <Generator>ResXFileCodeGenerator</Generator>
