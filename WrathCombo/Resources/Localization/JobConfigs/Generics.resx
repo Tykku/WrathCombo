@@ -120,9 +120,6 @@
   <data name="0Option" xml:space="preserve">
     <value>{0} Option</value>
   </data>
-  <data name="Action_Opener" xml:space="preserve">
-    <value>{0} Opener</value>
-  </data>
   <data name="Action_Priority" xml:space="preserve">
     <value>{0} Priority: </value>
   </data>
@@ -495,5 +492,8 @@ NOTE: This could possibly get you killed</value>
   </data>
   <data name="OnlyUseOpenerWhenCountdownActive" xml:space="preserve">
     <value>Only use the opener when a countdown is active.</value>
+  </data>
+  <data name="Action_Opener" xml:space="preserve">
+    <value>{0} Opener</value>
   </data>
 </root>

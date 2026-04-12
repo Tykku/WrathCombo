@@ -4,11 +4,10 @@ using WrathCombo.CustomComboNS.Functions;
 using static WrathCombo.Extensions.UIntExtensions;
 using static WrathCombo.Extensions.JobExtensions;
 using static WrathCombo.Extensions.UShortExtensions;
-using static WrathCombo.Resources.Localization.JobConfigs.Generics;
-using static WrathCombo.Resources.Localization.JobConfigs.SGE_Config;
 using static WrathCombo.Window.Functions.SliderIncrements;
 using static WrathCombo.Window.Functions.UserConfig;
 using static WrathCombo.Window.Text;
+using WrathCombo.Resources.Localization.JobConfigs;
 namespace WrathCombo.Combos.PvE;
 
 internal partial class SGE
@@ -23,112 +22,112 @@ internal partial class SGE
 
                 case Preset.SGE_ST_DPS_Opener:
                     DrawHorizontalRadioButton(SGE_SelectedOpener,
-                        FormatAndCache(Action_Opener, Toxikon.ActionName()),
-                        FormatAndCache(Use_0_Opener, Toxikon.ActionName()), 0);
+                        FormatAndCache(Generics.Action_Opener, Toxikon.ActionName()),
+                        FormatAndCache(Generics.Use_0_Opener, Toxikon.ActionName()), 0);
 
                     DrawHorizontalRadioButton(SGE_SelectedOpener,
-                        FormatAndCache(Action_Opener, Pneuma.ActionName()),
-                        FormatAndCache(Use_0_Opener, Pneuma.ActionName()), 1);
+                        FormatAndCache(Generics.Action_Opener, Pneuma.ActionName()),
+                        FormatAndCache(Generics.Use_0_Opener, Pneuma.ActionName()), 1);
 
                     DrawBossOnlyChoice(SGE_Balance_Content);
                     break;
 
                 case Preset.SGE_ST_DPS:
                     DrawHorizontalRadioButton(SGE_ST_DPS_Adv,
-                        FormatAndCache(On0, Dosis.ActionName()),
+                        FormatAndCache(Generics.On0, Dosis.ActionName()),
                         // EukrasianDosisList is not a mistake.
-                        FormatAndCache(ApplyToAll0, string.Join("\r\n", EukrasianDosisList.Select(x => x.Key.ActionName()))), 0);
+                        FormatAndCache(Generics.ApplyToAll0, string.Join("\r\n", EukrasianDosisList.Select(x => x.Key.ActionName()))), 0);
 
                     DrawHorizontalRadioButton(SGE_ST_DPS_Adv,
-                        FormatAndCache(On0, Dosis2.ActionName()),
-                        FormatAndCache(ApplyOnlyTo0, Dosis2.ActionName()), 1);
+                        FormatAndCache(Generics.On0, Dosis2.ActionName()),
+                        FormatAndCache(Generics.ApplyOnlyTo0, Dosis2.ActionName()), 1);
                     break;
 
                 case Preset.SGE_ST_DPS_EDosis:
                     DrawSliderInt(0, 100, SGE_ST_DPS_EukrasianDosisBossOption,
-                        BossOnlyHpPercent);
+                        Generics.BossOnlyHpPercent);
 
                     DrawSliderInt(0, 100, SGE_ST_DPS_EukrasianDosisBossAddsOption,
-                        BossEncounterNonBossHpPercent);
+                        Generics.BossEncounterNonBossHpPercent);
 
                     DrawSliderInt(0, 100, SGE_ST_DPS_EukrasianDosisTrashOption,
-                        NonBossHpPercent);
+                        Generics.NonBossHpPercent);
 
                     ImGui.Indent();
                     DrawRoundedSliderFloat(0, 4,
                         SGE_ST_DPS_EukrasianDosisUptime_Threshold,
-                        DoTSecondsRemainingZeroDisable, digits: 1);
+                        Generics.DoTSecondsRemainingZeroDisable, digits: 1);
                     ImGui.Unindent();
                     DrawAdditionalBoolChoice(SGE_ST_DPS_EDosis_TwoTarget,
-                        TwoTargetDotting, TwoTargetDottingDescription);
+                        Generics.TwoTargetDotting, Generics.TwoTargetDottingDescription);
                     break;
 
                 case Preset.SGE_ST_DPS_Lucid:
                     DrawSliderInt(4000, 9500, SGE_ST_DPS_Lucid,
-                        LucidMP, 150, Hundreds);
+                        Generics.LucidMP, 150, Hundreds);
                     break;
 
                 case Preset.SGE_ST_DPS_Rhizo:
                     DrawSliderInt(1, 3, SGE_ST_DPS_Rhizo,
-                        FormatAndCache(Action_Threshold, Traits.Addersgall.TraitName()));
+                        FormatAndCache(Generics.Action_Threshold, Traits.Addersgall.TraitName()));
                     break;
 
                 case Preset.SGE_ST_DPS_Phlegma:
                     if (!SGE_ST_DPS_Phlegma_Burst)
                     {
                         DrawSliderInt(0, 1, SGE_ST_DPS_Phlegma,
-                            ChargePool);
+                            Generics.ChargePool);
                     }
 
                     DrawAdditionalBoolChoice(SGE_ST_DPS_Phlegma_Burst,
-                        BurstOption,
-                        FormatAndCache(Save0ChargesForBurst, Phlegma.ActionName()));
+                        Generics.BurstOption,
+                        FormatAndCache(Generics.Save0ChargesForBurst, Phlegma.ActionName()));
                     break;
 
                 case Preset.SGE_ST_DPS_AddersgallProtect:
                     DrawSliderInt(1, 3,
                         SGE_ST_DPS_AddersgallProtect,
-                        FormatAndCache(Action_Threshold, Traits.Addersgall.TraitName()));
+                        FormatAndCache(Generics.Action_Threshold, Traits.Addersgall.TraitName()));
                     break;
 
                 case Preset.SGE_ST_DPS_Movement:
                     DrawHorizontalMultiChoice(SGE_ST_DPS_Movement, Toxikon.ActionName(),
-                        FormatAndCache(Use0When1ChargesAreAvailable, Toxikon.ActionName(), Traits.Addersting.TraitName()), 3, 0);
+                        FormatAndCache(Generics.Use0When1ChargesAreAvailable, Toxikon.ActionName(), Traits.Addersting.TraitName()), 3, 0);
 
-                    DrawPriorityInput(SGE_ST_DPS_Movement_Priority, 3, 0, FormatAndCache(Action_Priority, Toxikon.ActionName()));
+                    DrawPriorityInput(SGE_ST_DPS_Movement_Priority, 3, 0, FormatAndCache(Generics.Action_Priority, Toxikon.ActionName()));
 
                     DrawHorizontalMultiChoice(SGE_ST_DPS_Movement, Dyskrasia.ActionName(),
-                        FormatAndCache(Use0WhenInRangeOfEnemy, Dyskrasia.ActionName()), 3, 1);
+                        FormatAndCache(Generics.Use0WhenInRangeOfEnemy, Dyskrasia.ActionName()), 3, 1);
 
-                    DrawPriorityInput(SGE_ST_DPS_Movement_Priority, 3, 1, FormatAndCache(Action_Priority, Dyskrasia.ActionName()));
+                    DrawPriorityInput(SGE_ST_DPS_Movement_Priority, 3, 1, FormatAndCache(Generics.Action_Priority, Dyskrasia.ActionName()));
 
                     DrawHorizontalMultiChoice(SGE_ST_DPS_Movement, Eukrasia.ActionName(),
-                        FormatAndCache(Use0, Eukrasia.ActionName()), 3, 2);
+                        FormatAndCache(Generics.Use0, Eukrasia.ActionName()), 3, 2);
 
-                    DrawPriorityInput(SGE_ST_DPS_Movement_Priority, 3, 2, FormatAndCache(Action_Priority, Eukrasia.ActionName()));
+                    DrawPriorityInput(SGE_ST_DPS_Movement_Priority, 3, 2, FormatAndCache(Generics.Action_Priority, Eukrasia.ActionName()));
                     break;
 
                 case Preset.SGE_AoE_DPS_Lucid:
                     DrawSliderInt(4000, 9500, SGE_AoE_DPS_Lucid,
-                        LucidMP, 150, Hundreds);
+                        Generics.LucidMP, 150, Hundreds);
                     break;
 
                 case Preset.SGE_AoE_DPS_Pneuma:
                     DrawHorizontalRadioButton(SGE_AoE_DPS_PneumaBossOption,
-                        AllContent, AllContentDescription, 0);
+                        Generics.AllContent, Generics.AllContentDescription, 0);
 
                     DrawHorizontalRadioButton(SGE_AoE_DPS_PneumaBossOption,
-                        BossOnlyContent, BossOnlyDescription, 1);
+                        Generics.BossOnlyContent, Generics.BossOnlyDescription, 1);
                     break;
 
                 case Preset.SGE_AoE_DPS_Rhizo:
                     DrawSliderInt(1, 3, SGE_AoE_DPS_Rhizo,
-                        FormatAndCache(Action_Threshold, Traits.Addersgall.TraitName()));
+                        FormatAndCache(Generics.Action_Threshold, Traits.Addersgall.TraitName()));
                     break;
 
                 case Preset.SGE_AoE_DPS_AddersgallProtect:
                     DrawSliderInt(1, 3, SGE_AoE_DPS_AddersgallProtect,
-                        FormatAndCache(Action_Threshold, Traits.Addersgall.TraitName()));
+                        FormatAndCache(Generics.Action_Threshold, Traits.Addersgall.TraitName()));
                     break;
 
                 #endregion
@@ -137,226 +136,226 @@ internal partial class SGE
 
                 case Preset.SGE_ST_Heal:
                     DrawSliderInt(0, 2, SGE_Heal_HoldAddersgall,
-                        ChargePool);
+                        Generics.ChargePool);
 
                     DrawAdditionalBoolChoice(SGE_ST_Heal_IncludeShields,
-                        IncludeShields, "");
+                        Generics.IncludeShields, "");
                     break;
 
                 case Preset.SGE_ST_Heal_Esuna:
                     DrawSliderInt(0, 100, SGE_ST_Heal_Esuna,
-                        StopFriendlyHpPercentZero);
+                        Generics.StopFriendlyHpPercentZero);
                     break;
 
                 case Preset.SGE_ST_Heal_Lucid:
                     DrawSliderInt(4000, 9500, SGE_ST_Heal_LucidOption,
-                        LucidMP, 150, Hundreds);
+                        Generics.LucidMP, 150, Hundreds);
                     break;
 
                 case Preset.SGE_ST_Heal_Soteria:
-                    DrawSliderInt(0, 100, SGE_ST_Heal_Soteria, StopFriendlyHpPercent100);
-                    DrawPriorityInput(SGE_ST_Heals_Priority, 12, 0, FormatAndCache(Action_Priority, Soteria.ActionName()));
+                    DrawSliderInt(0, 100, SGE_ST_Heal_Soteria, Generics.StopFriendlyHpPercent100);
+                    DrawPriorityInput(SGE_ST_Heals_Priority, 12, 0, FormatAndCache(Generics.Action_Priority, Soteria.ActionName()));
                     break;
 
                 case Preset.SGE_ST_Heal_Zoe:
                     DrawSliderInt(0, 100, SGE_ST_Heal_Zoe,
-                        StopFriendlyHpPercent100);
+                        Generics.StopFriendlyHpPercent100);
 
-                    DrawPriorityInput(SGE_ST_Heals_Priority, 12, 1, FormatAndCache(Action_Priority, Zoe.ActionName()));
+                    DrawPriorityInput(SGE_ST_Heals_Priority, 12, 1, FormatAndCache(Generics.Action_Priority, Zoe.ActionName()));
                     break;
 
                 case Preset.SGE_ST_Heal_Pepsis:
                     DrawSliderInt(0, 100, SGE_ST_Heal_Pepsis,
-                        StopFriendlyHpPercent100);
+                        Generics.StopFriendlyHpPercent100);
 
-                    DrawPriorityInput(SGE_ST_Heals_Priority, 12, 2, FormatAndCache(Action_Priority, Pepsis.ActionName()));
+                    DrawPriorityInput(SGE_ST_Heals_Priority, 12, 2, FormatAndCache(Generics.Action_Priority, Pepsis.ActionName()));
                     break;
 
                 case Preset.SGE_ST_Heal_Taurochole:
                     DrawSliderInt(0, 100, SGE_ST_Heal_Taurochole,
-                        StopFriendlyHpPercent100);
+                        Generics.StopFriendlyHpPercent100);
 
                     DrawAdditionalBoolChoice(SGE_ST_Heal_Taurochole_TankOnly,
-                        TanksOnly,
-                        WillOnlyUseOnTanks);
+                        Generics.TanksOnly,
+                        Generics.WillOnlyUseOnTanks);
 
-                    DrawPriorityInput(SGE_ST_Heals_Priority, 12, 3, FormatAndCache(Action_Priority, Taurochole.ActionName()));
+                    DrawPriorityInput(SGE_ST_Heals_Priority, 12, 3, FormatAndCache(Generics.Action_Priority, Taurochole.ActionName()));
                     break;
 
                 case Preset.SGE_ST_Heal_Haima:
                     DrawSliderInt(0, 100, SGE_ST_Heal_Haima,
-                        StopFriendlyHpPercent100);
+                        Generics.StopFriendlyHpPercent100);
 
                     DrawAdditionalBoolChoice(SGE_ST_Heal_HaimaBossOption,
-                        NotInBossEncounters,
-                        WillNotUseInBossEncounters);
+                        Generics.NotInBossEncounters,
+                        Generics.WillNotUseInBossEncounters);
 
                     DrawAdditionalBoolChoice(SGE_ST_Heal_Haima_TankOnly,
-                        TanksOnly,
-                        WillOnlyUseOnTanks);
+                        Generics.TanksOnly,
+                        Generics.WillOnlyUseOnTanks);
 
-                    DrawPriorityInput(SGE_ST_Heals_Priority, 12, 4, FormatAndCache(Action_Priority, Haima.ActionName()));
+                    DrawPriorityInput(SGE_ST_Heals_Priority, 12, 4, FormatAndCache(Generics.Action_Priority, Haima.ActionName()));
                     break;
 
                 case Preset.SGE_ST_Heal_Krasis:
                     DrawSliderInt(0, 100, SGE_ST_Heal_Krasis,
-                        StopFriendlyHpPercent100);
+                        Generics.StopFriendlyHpPercent100);
 
                     DrawAdditionalBoolChoice(SGE_ST_Heal_KrasisBossOption,
-                        NotInBossEncounters,
-                        WillNotUseInBossEncounters);
+                        Generics.NotInBossEncounters,
+                        Generics.WillNotUseInBossEncounters);
 
                     DrawAdditionalBoolChoice(SGE_ST_Heal_Krasis_TankOnly,
-                        TanksOnly,
-                        WillOnlyUseOnTanks);
+                        Generics.TanksOnly,
+                        Generics.WillOnlyUseOnTanks);
 
-                    DrawPriorityInput(SGE_ST_Heals_Priority, 12, 5, FormatAndCache(Action_Priority, Krasis.ActionName()));
+                    DrawPriorityInput(SGE_ST_Heals_Priority, 12, 5, FormatAndCache(Generics.Action_Priority, Krasis.ActionName()));
                     break;
 
                 case Preset.SGE_ST_Heal_Druochole:
                     DrawSliderInt(0, 100, SGE_ST_Heal_Druochole,
-                        StopFriendlyHpPercent100);
+                        Generics.StopFriendlyHpPercent100);
 
-                    DrawPriorityInput(SGE_ST_Heals_Priority, 12, 6, FormatAndCache(Action_Priority, Druochole.ActionName()));
+                    DrawPriorityInput(SGE_ST_Heals_Priority, 12, 6, FormatAndCache(Generics.Action_Priority, Druochole.ActionName()));
                     break;
 
                 case Preset.SGE_ST_Heal_EDiagnosis:
                     DrawSliderInt(0, 100, SGE_ST_Heal_EDiagnosisHP,
-                        StopFriendlyHpPercent100);
+                        Generics.StopFriendlyHpPercent100);
 
                     DrawHorizontalMultiChoice(SGE_ST_Heal_EDiagnosisOpts,
-                        FormatAndCache(Job0ShieldCheck, Job.SGE.Name()),
-                        FormatAndCache(Job0ShieldCheckDesc, Job.SGE.Name()), 2, 0);
+                        FormatAndCache(Generics.Job0ShieldCheck, Job.SGE.Name()),
+                        FormatAndCache(Generics.Job0ShieldCheckDesc, Job.SGE.Name()), 2, 0);
 
                     DrawHorizontalMultiChoice(SGE_ST_Heal_EDiagnosisOpts,
-                        FormatAndCache(Job0ShieldCheck, Job.SCH.Name()),
-                        FormatAndCache(Job0ShieldCheckDesc, Job.SCH.Name()), 2, 1);
+                        FormatAndCache(Generics.Job0ShieldCheck, Job.SCH.Name()),
+                        FormatAndCache(Generics.Job0ShieldCheckDesc, Job.SCH.Name()), 2, 1);
 
-                    DrawPriorityInput(SGE_ST_Heals_Priority, 12, 7, FormatAndCache(Action_Priority, EukrasianDiagnosis.ActionName()));
+                    DrawPriorityInput(SGE_ST_Heals_Priority, 12, 7, FormatAndCache(Generics.Action_Priority, EukrasianDiagnosis.ActionName()));
                     break;
 
 
                 case Preset.SGE_ST_Heal_Kerachole:
                     DrawSliderInt(0, 100, SGE_ST_Heal_KeracholeHP,
-                        StopFriendlyHpPercent100);
+                        Generics.StopFriendlyHpPercent100);
 
                     DrawAdditionalBoolChoice(SGE_ST_Heal_KeracholeBossOption,
-                        NotInBossEncounters,
-                        WillNotUseInBossEncounters);
+                        Generics.NotInBossEncounters,
+                        Generics.WillNotUseInBossEncounters);
 
-                    DrawPriorityInput(SGE_ST_Heals_Priority, 12, 8, FormatAndCache(Action_Priority, Kerachole.ActionName()));
+                    DrawPriorityInput(SGE_ST_Heals_Priority, 12, 8, FormatAndCache(Generics.Action_Priority, Kerachole.ActionName()));
                     break;
 
                 case Preset.SGE_ST_Heal_Physis:
                     DrawSliderInt(0, 100, SGE_ST_Heal_PhysisHP,
-                        StopFriendlyHpPercent100);
+                        Generics.StopFriendlyHpPercent100);
 
                     DrawAdditionalBoolChoice(SGE_ST_Heal_PhysisBossOption,
-                        NotInBossEncounters,
-                        WillNotUseInBossEncounters);
+                        Generics.NotInBossEncounters,
+                        Generics.WillNotUseInBossEncounters);
 
-                    DrawPriorityInput(SGE_ST_Heals_Priority, 12, 9, FormatAndCache(Action_Priority, Physis.ActionName()));
+                    DrawPriorityInput(SGE_ST_Heals_Priority, 12, 9, FormatAndCache(Generics.Action_Priority, Physis.ActionName()));
                     break;
 
                 case Preset.SGE_ST_Heal_Panhaima:
                     DrawSliderInt(0, 100, SGE_ST_Heal_PanhaimaHP,
-                        StopFriendlyHpPercent100);
+                        Generics.StopFriendlyHpPercent100);
 
                     DrawAdditionalBoolChoice(SGE_ST_Heal_PanhaimaBossOption,
-                        NotInBossEncounters,
-                        WillNotUseInBossEncounters);
+                        Generics.NotInBossEncounters,
+                        Generics.WillNotUseInBossEncounters);
 
-                    DrawPriorityInput(SGE_ST_Heals_Priority, 12, 10, FormatAndCache(Action_Priority, Panhaima.ActionName()));
+                    DrawPriorityInput(SGE_ST_Heals_Priority, 12, 10, FormatAndCache(Generics.Action_Priority, Panhaima.ActionName()));
                     break;
 
                 case Preset.SGE_ST_Heal_Holos:
                     DrawSliderInt(0, 100, SGE_ST_Heal_HolosHP,
-                        StopFriendlyHpPercent100);
+                        Generics.StopFriendlyHpPercent100);
 
                     DrawAdditionalBoolChoice(SGE_ST_Heal_HolosBossOption,
-                        NotInBossEncounters, WillNotUseInBossEncounters);
+                        Generics.NotInBossEncounters, Generics.WillNotUseInBossEncounters);
 
                     DrawPriorityInput(SGE_ST_Heals_Priority,
-                        12, 11, FormatAndCache(Action_Priority, Holos.ActionName()));
+                        12, 11, FormatAndCache(Generics.Action_Priority, Holos.ActionName()));
                     break;
                 case Preset.SGE_AoE_Heal:
-                    DrawSliderInt(0, 2, SGE_Heal_HoldAddersgall, FormatAndCache(ChargePool, Traits.Addersgall.TraitName()));
+                    DrawSliderInt(0, 2, SGE_Heal_HoldAddersgall, FormatAndCache(Generics.ChargePool, Traits.Addersgall.TraitName()));
                     break;
 
                 case Preset.SGE_AoE_Heal_Lucid:
                     DrawSliderInt(4000, 9500, SGE_AoE_Heal_LucidOption,
-                        LucidMP, 150, Hundreds);
+                        Generics.LucidMP, 150, Hundreds);
                     break;
 
                 case Preset.SGE_AoE_Heal_Kerachole:
                     DrawSliderInt(0, 100, SGE_AoE_Heal_KeracholeOption,
-                        StartUsingWhenBelowPartyAverageHPSetTo100ToDisableThisCheck);
+                        Generics.StartUsingWhenBelowPartyAverageHPSetTo100ToDisableThisCheck);
 
                     DrawAdditionalBoolChoice(SGE_AoE_Heal_KeracholeTrait,
-                        FormatAndCache(KerecholeTraitCheck, Traits.EnhancedKerachole.TraitName()),
-                        FormatAndCache(KerecholeTraitCheckDesc, Kerachole.ActionName()));
+                        FormatAndCache(SGE_Config.KerecholeTraitCheck, Traits.EnhancedKerachole.TraitName()),
+                        FormatAndCache(SGE_Config.KerecholeTraitCheckDesc, Kerachole.ActionName()));
 
-                    DrawPriorityInput(SGE_AoE_Heals_Priority, 9, 0, FormatAndCache(Action_Priority, Kerachole.ActionName()));
+                    DrawPriorityInput(SGE_AoE_Heals_Priority, 9, 0, FormatAndCache(Generics.Action_Priority, Kerachole.ActionName()));
                     break;
 
                 case Preset.SGE_AoE_Heal_Ixochole:
                     DrawSliderInt(0, 100, SGE_AoE_Heal_IxocholeOption
-                        , StartUsingWhenBelowPartyAverageHPSetTo100ToDisableThisCheck);
+                        , Generics.StartUsingWhenBelowPartyAverageHPSetTo100ToDisableThisCheck);
 
-                    DrawPriorityInput(SGE_AoE_Heals_Priority, 9, 1, FormatAndCache(Action_Priority, Ixochole.ActionName()));
+                    DrawPriorityInput(SGE_AoE_Heals_Priority, 9, 1, FormatAndCache(Generics.Action_Priority, Ixochole.ActionName()));
                     break;
 
                 case Preset.SGE_AoE_Heal_Physis:
                     DrawSliderInt(0, 100, SGE_AoE_Heal_PhysisOption,
-                        StartUsingWhenBelowPartyAverageHPSetTo100ToDisableThisCheck);
+                        Generics.StartUsingWhenBelowPartyAverageHPSetTo100ToDisableThisCheck);
 
-                    DrawPriorityInput(SGE_AoE_Heals_Priority, 9, 2, FormatAndCache(Action_Priority, Physis.ActionName()));
+                    DrawPriorityInput(SGE_AoE_Heals_Priority, 9, 2, FormatAndCache(Generics.Action_Priority, Physis.ActionName()));
                     break;
 
                 case Preset.SGE_AoE_Heal_Holos:
                     DrawSliderInt(0, 100, SGE_AoE_Heal_HolosOption,
-                        StartUsingWhenBelowPartyAverageHPSetTo100ToDisableThisCheck);
+                        Generics.StartUsingWhenBelowPartyAverageHPSetTo100ToDisableThisCheck);
 
-                    DrawPriorityInput(SGE_AoE_Heals_Priority, 9, 3, FormatAndCache(Action_Priority, Holos.ActionName()));
+                    DrawPriorityInput(SGE_AoE_Heals_Priority, 9, 3, FormatAndCache(Generics.Action_Priority, Holos.ActionName()));
                     break;
 
                 case Preset.SGE_AoE_Heal_Panhaima:
                     DrawSliderInt(0, 100, SGE_AoE_Heal_PanhaimaOption,
-                        StartUsingWhenBelowPartyAverageHPSetTo100ToDisableThisCheck);
+                        Generics.StartUsingWhenBelowPartyAverageHPSetTo100ToDisableThisCheck);
 
                     DrawHorizontalMultiChoice(SGE_ST_Heal_PanhaimaOpts,
-                        FormatAndCache(AnyPanhaimaCheck, Panhaima.ActionName()),
-                        FormatAndCache(AnyPanhaimaCheckDesc, Panhaima.ActionName()), 1, 0);
+                        FormatAndCache(SGE_Config.AnyPanhaimaCheck, Panhaima.ActionName()),
+                        FormatAndCache(SGE_Config.AnyPanhaimaCheckDesc, Panhaima.ActionName()), 1, 0);
 
-                    DrawPriorityInput(SGE_AoE_Heals_Priority, 9, 4, FormatAndCache(Action_Priority, Panhaima.ActionName()));
+                    DrawPriorityInput(SGE_AoE_Heals_Priority, 9, 4, FormatAndCache(Generics.Action_Priority, Panhaima.ActionName()));
                     break;
 
                 case Preset.SGE_AoE_Heal_Pepsis:
                     DrawSliderInt(0, 100, SGE_AoE_Heal_PepsisOption,
-                        StartUsingWhenBelowPartyAverageHPSetTo100ToDisableThisCheck);
+                        Generics.StartUsingWhenBelowPartyAverageHPSetTo100ToDisableThisCheck);
 
-                    DrawPriorityInput(SGE_AoE_Heals_Priority, 9, 5, FormatAndCache(Action_Priority, Pepsis.ActionName()));
+                    DrawPriorityInput(SGE_AoE_Heals_Priority, 9, 5, FormatAndCache(Generics.Action_Priority, Pepsis.ActionName()));
                     break;
 
                 case Preset.SGE_AoE_Heal_Philosophia:
                     DrawSliderInt(0, 100, SGE_AoE_Heal_PhilosophiaOption,
-                        StartUsingWhenBelowPartyAverageHPSetTo100ToDisableThisCheck);
+                        Generics.StartUsingWhenBelowPartyAverageHPSetTo100ToDisableThisCheck);
 
-                    DrawPriorityInput(SGE_AoE_Heals_Priority, 9, 6, FormatAndCache(Action_Priority, Philosophia.ActionName()));
+                    DrawPriorityInput(SGE_AoE_Heals_Priority, 9, 6, FormatAndCache(Generics.Action_Priority, Philosophia.ActionName()));
                     break;
 
                 case Preset.SGE_AoE_Heal_Zoe:
                     DrawSliderInt(0, 100, SGE_AoE_Heal_ZoeOption,
-                        StartUsingWhenBelowPartyAverageHPSetTo100ToDisableThisCheck);
+                        Generics.StartUsingWhenBelowPartyAverageHPSetTo100ToDisableThisCheck);
 
-                    DrawPriorityInput(SGE_AoE_Heals_Priority, 9, 7, FormatAndCache(Action_Priority, Zoe.ActionName()));
+                    DrawPriorityInput(SGE_AoE_Heals_Priority, 9, 7, FormatAndCache(Generics.Action_Priority, Zoe.ActionName()));
                     break;
 
                 case Preset.SGE_AoE_Heal_EPrognosis:
                     DrawSliderInt(0, 100, SGE_AoE_Heal_EPrognosisOption,
-                        ShieldCheckPartyMemberNeedPercent);
+                        Generics.ShieldCheckPartyMemberNeedPercent);
 
-                    DrawPriorityInput(SGE_AoE_Heals_Priority, 9, 8, FormatAndCache(Action_Priority, EukrasianPrognosis.ActionName()));
+                    DrawPriorityInput(SGE_AoE_Heals_Priority, 9, 8, FormatAndCache(Generics.Action_Priority, EukrasianPrognosis.ActionName()));
                     break;
 
                 case Preset.SGE_Eukrasia:
@@ -375,42 +374,42 @@ internal partial class SGE
 
                 case Preset.SGE_Mit_ST:
                     DrawHorizontalMultiChoice(SGE_Mit_ST_Options,
-                        FormatAndCache(Include0, Haima.ActionName()),
-                        FormatAndCache(SGE_Mit_ST_Haima_Help, Haima.ActionName()), 2, 0);
+                        FormatAndCache(Generics.Include0, Haima.ActionName()),
+                        FormatAndCache(SGE_Config.SGE_Mit_ST_Haima_Help, Haima.ActionName()), 2, 0);
                     ImGui.NewLine();
                     DrawHorizontalMultiChoice(SGE_Mit_ST_Options,
-                        FormatAndCache(Include0, Taurochole.ActionName()),
-                        FormatAndCache(SGE_Mit_ST_Taurochole_Help, Taurochole.ActionName()), 2, 1);
+                        FormatAndCache(Generics.Include0, Taurochole.ActionName()),
+                        FormatAndCache(SGE_Config.SGE_Mit_ST_Taurochole_Help, Taurochole.ActionName()), 2, 1);
 
                     if (SGE_Mit_ST_Options[1])
                     {
                         ImGui.Indent();
                         DrawSliderInt(1, 100, SGE_Mit_ST_TaurocholeThreshold,
-                            FormatAndCache(TargetHPUse0AtOrBelow, Taurochole.ActionName()));
+                            FormatAndCache(Generics.TargetHPUse0AtOrBelow, Taurochole.ActionName()));
                         ImGui.Unindent();
                     }
                     break;
 
                 case Preset.SGE_Mit_AoE:
                     DrawSliderInt(0, 100, SGE_Mit_AoE_PrognosisOption,
-                        FormatAndCache(SGE_Mit_AoE_PrognosisOption_Name, Prognosis.ActionName()), sliderIncrement: 25);
+                        FormatAndCache(SGE_Config.SGE_Mit_AoE_PrognosisOption_Name, Prognosis.ActionName()), sliderIncrement: 25);
 
                     DrawHorizontalMultiChoice(SGE_Mit_AoE_Options,
-                        FormatAndCache(Include0, Philosophia.ActionName()),
-                        FormatAndCache(SGE_Mit_AoE_Philosophia_Help, Philosophia.ActionName(), EukrasianPrognosis.ActionName()), 3, 0);
+                        FormatAndCache(Generics.Include0, Philosophia.ActionName()),
+                        FormatAndCache(SGE_Config.SGE_Mit_AoE_Philosophia_Help, Philosophia.ActionName(), EukrasianPrognosis.ActionName()), 3, 0);
 
                     DrawHorizontalMultiChoice(SGE_Mit_AoE_Options,
-                        FormatAndCache(Include0, Kerachole.ActionName()),
-                        FormatAndCache(SGE_Mit_AoE_Kerachole_Help, Kerachole.ActionName()), 3, 1);
+                        FormatAndCache(Generics.Include0, Kerachole.ActionName()),
+                        FormatAndCache(SGE_Config.SGE_Mit_AoE_Kerachole_Help, Kerachole.ActionName()), 3, 1);
 
                     DrawHorizontalMultiChoice(SGE_Mit_AoE_Options,
-                        FormatAndCache(Include0, Panhaima.ActionName()),
-                        FormatAndCache(SGE_Mit_AoE_Panhaima_Help, Panhaima.ActionName()), 3, 2);
+                        FormatAndCache(Generics.Include0, Panhaima.ActionName()),
+                        FormatAndCache(SGE_Config.SGE_Mit_AoE_Panhaima_Help, Panhaima.ActionName()), 3, 2);
                     break;
 
                 case Preset.SGE_Raidwide_Holos:
                     DrawSliderInt(0, 100, SGE_Raidwide_HolosOption,
-                        StartUsingWhenBelowPartyAverageHPSetTo100ToDisableThisCheck);
+                        Generics.StartUsingWhenBelowPartyAverageHPSetTo100ToDisableThisCheck);
                     break;
 
                     #endregion
