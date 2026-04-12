@@ -10,6 +10,7 @@ using System.Resources;
 using System.Threading;
 using WrathCombo.Core;
 using WrathCombo.Resources.Localization.JobConfigs;
+using WrathCombo.Resources.Localization.Misc;
 using WrathCombo.Resources.Localization.Presets;
 using WrathCombo.Resources.Localization.UI.AutoRotation;
 using WrathCombo.Resources.Localization.UI.Features;
@@ -66,14 +67,15 @@ namespace WrathCombo.Window
             MiscUI.Culture = _gameCulture;
             SettingsUI.Culture = _gameCulture;
             SettingsCfgUI.Culture = _gameCulture;
+            MiscStrings.Culture = _gameCulture;
 
             // Job Configs
             Generics.Culture = _gameCulture;
             AST_Config.Culture = _gameCulture;
-            //BLM_Config.Culture = _gameCulture;
+            BLM_Config.Culture = _gameCulture;
             //BLU_Config.Culture = _gameCulture;
-            //BRD_Config.Culture = _gameCulture;
-            //DNC_Config.Culture = _gameCulture;
+            BRD_Config.Culture = _gameCulture;
+            DNC_Config.Culture = _gameCulture;
             //DOL_Config.Culture = _gameCulture;
             //DRG_Config.Culture = _gameCulture;
             //DRK_Config.Culture = _gameCulture;

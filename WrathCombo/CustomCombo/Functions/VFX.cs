@@ -1,5 +1,6 @@
 ﻿using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.Types;
+using Dalamud.Game.Gui.Toast;
 using ECommons.DalamudServices;
 using ECommons.GameFunctions;
 using ECommons.GameHelpers;
@@ -10,6 +11,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Speech.Synthesis;
 using WrathCombo.Extensions;
+using WrathCombo.Resources.Localization.Misc;
+using WrathCombo.Services;
 
 namespace WrathCombo.CustomComboNS.Functions;
 
@@ -232,11 +235,12 @@ internal abstract partial class CustomComboFunctions
         return true;
     }
 
-    public static void PlayTankbusterTTS()
+    public static void PlayTankbusterAlert()
     {
         if (!EzThrottler.Throttle("TankbusterTTS", 100))
             return;
 
+        QuestToastOptions opts = new() { Position = QuestToastPosition.Centre, DisplayCheckmark = false };
         foreach (var vfx in VfxManager.TrackedEffects.FilterToTargeted().Where(x => IsTankBusterEffectPath(x) && x.TargetID.GetObject().IsInParty()))
         {
             if (!TTSTankbusters.Any(x => x.VFX == vfx))
@@ -246,18 +250,23 @@ internal abstract partial class CustomComboFunctions
         if (TTSTankbusters.Any(x => !x.TTSHandled))
         {
             var targets = TTSTankbusters.Where(x => !x.TTSHandled).Select(x => x.VFX.TargetID == Player.Object.GameObjectId ? "You" : x.VFX.TargetID.GetObject()?.Name.ToString()).ToList();
-            TTS.SpeakAsync($"Tankbuster on {JoinNaturally(targets)}");
+            if (Service.Configuration.TankbusterTTS)
+                TTS.SpeakAsync(string.Format(Misc.TankbusterTTS, JoinNaturally(targets)));
+            if (Service.Configuration.TankbusterToast)
+                Svc.Toasts.ShowQuest(string.Format(Misc.TankbusterTTS, JoinNaturally(targets)), opts);
+
             TTSTankbusters.ForEach(x => x.TTSHandled = true);
         }
 
         TTSTankbusters.RemoveAll(x => x.VFX.AgeSeconds >= 10);
     }
 
-    public static void PlayGroupwideTTS()
+    public static void PlayGroupwideAlert()
     {
         if (!EzThrottler.Throttle("RaidwideTTS", 100))
             return;
 
+        QuestToastOptions opts = new() { Position = QuestToastPosition.Centre, DisplayCheckmark = false };
         foreach (var vfx in VfxManager.TrackedEffects.Where(v => v.VfxID != 0 && (CheckPath(MHSharedDmgPaths, v.Path)) || CheckPath(SharedDmgPaths, v.Path)))
         {
             if (!TTSGroupwides.Any(x => x.VFX == vfx))
@@ -268,7 +277,11 @@ internal abstract partial class CustomComboFunctions
         {
             var multiHit = TTSGroupwides.Any(x => CheckPath(MHSharedDmgPaths, x.VFX.Path));
             var targets = TTSGroupwides.Where(x => !x.TTSHandled).Select(x => x.VFX.TargetID == Player.Object.GameObjectId ? "You" : x.VFX.TargetID.GetObject()?.Name.ToString()).ToList();
-            TTS.SpeakAsync($"{(multiHit ? "Multi-hit " : "")}Stack marker on {JoinNaturally(targets)}");
+            if (Service.Configuration.AoEDamageTTS)
+                TTS.SpeakAsync(string.Format(Misc.StackTTS, (multiHit ? Misc.MultiHit : ""), JoinNaturally(targets)));
+            if (Service.Configuration.AoEDamageToast)
+                Svc.Toasts.ShowQuest(string.Format(Misc.StackTTS, (multiHit ? Misc.MultiHit : ""), JoinNaturally(targets)), opts);
+
             TTSGroupwides.ForEach(x => x.TTSHandled = true);
         }
 
@@ -277,13 +290,18 @@ internal abstract partial class CustomComboFunctions
         if (RaidwideCasting())
         {
             if (!CurrentRaidwideHandled)
-                TTS.SpeakAsync("Group damage incoming");
+            {
+                if (Service.Configuration.AoEDamageTTS)
+                    TTS.SpeakAsync(Misc.RaidwideTTS);
+                if (Service.Configuration.AoEDamageToast)
+                    Svc.Toasts.ShowQuest(Misc.RaidwideTTS, opts);
 
-            CurrentRaidwideHandled = true;
+                CurrentRaidwideHandled = true;
+            }
         }
         else
             CurrentRaidwideHandled = false;
-    }
+    }   
 
     public static string JoinNaturally(IList<string?> items)
     {
