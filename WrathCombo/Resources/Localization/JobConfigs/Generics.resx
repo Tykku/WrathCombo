@@ -117,7 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="0Option" xml:space="preserve">
+  <data name="_0Option" xml:space="preserve">
     <value>{0} Option</value>
   </data>
   <data name="Action_Priority" xml:space="preserve">
@@ -347,9 +347,6 @@
   </data>
   <data name="Replace0With1Or2" xml:space="preserve">
     <value>Replace {0} with {1} / {2}.</value>
-  </data>
-  <data name="ReplaceFireWithFire3WhenNotInAF3OrCombat" xml:space="preserve">
-    <value>Replaces Fire with Fire3 when out of Astral Fire III or not in combat.</value>
   </data>
   <data name="Replaces0" xml:space="preserve">
     <value>Replaces {0}</value>

@@ -65,7 +65,7 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         /// </summary>
         internal static string _0Option {
             get {
-                return ResourceManager.GetString("0Option", resourceCulture);
+                return ResourceManager.GetString("_0Option", resourceCulture);
             }
         }
         
@@ -788,15 +788,6 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         internal static string Replace0With1Or2 {
             get {
                 return ResourceManager.GetString("Replace0With1Or2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Replaces Fire with Fire3 when out of Astral Fire III or not in combat..
-        /// </summary>
-        internal static string ReplaceFireWithFire3WhenNotInAF3OrCombat {
-            get {
-                return ResourceManager.GetString("ReplaceFireWithFire3WhenNotInAF3OrCombat", resourceCulture);
             }
         }
         
