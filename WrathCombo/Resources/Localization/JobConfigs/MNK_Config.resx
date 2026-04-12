@@ -126,12 +126,6 @@
   <data name="DoubleLunarOpenerDesc" xml:space="preserve">
     <value>Uses Lunar/Lunar opener.</value>
   </data>
-  <data name="OnlyUseOpenerWhenCountdownActive" xml:space="preserve">
-    <value>Only use the opener when a countdown is active.</value>
-  </data>
-  <data name="OnlyWithCountdown" xml:space="preserve">
-    <value>Only with countdown</value>
-  </data>
   <data name="Repalce0With1When2IsOnCooldown" xml:space="preserve">
     <value>Replaces {0} with {1} when {2} is on cooldown.</value>
   </data>

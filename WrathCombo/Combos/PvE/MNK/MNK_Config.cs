@@ -27,8 +27,8 @@ internal partial class MNK
                     ImGui.NewLine();
 
                     DrawHorizontalRadioButton(MNK_OpenerCountdown,
-                        MNK_Config.OnlyWithCountdown,
-                        MNK_Config.OnlyUseOpenerWhenCountdownActive, 0);
+                        Generics.OnlyWithCountdown,
+                        Generics.OnlyUseOpenerWhenCountdownActive, 0);
 
                     DrawHorizontalRadioButton(MNK_OpenerCountdown,
                         Generics.Always,

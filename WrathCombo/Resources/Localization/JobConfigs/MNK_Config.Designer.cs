@@ -78,24 +78,6 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Only use the opener when a countdown is active..
-        /// </summary>
-        internal static string OnlyUseOpenerWhenCountdownActive {
-            get {
-                return ResourceManager.GetString("OnlyUseOpenerWhenCountdownActive", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Only with countdown.
-        /// </summary>
-        internal static string OnlyWithCountdown {
-            get {
-                return ResourceManager.GetString("OnlyWithCountdown", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Replaces {0} with {1} when {2} is on cooldown..
         /// </summary>
         internal static string Repalce0With1When2IsOnCooldown {

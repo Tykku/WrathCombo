@@ -87,7 +87,7 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Only uses {0} while u got {1}..
+        ///   Looks up a localized string similar to Only uses {0} while you have {1}..
         /// </summary>
         internal static string OnlyUse0WhileUGot1 {
             get {
@@ -116,7 +116,7 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         
         /// <summary>
         ///   Looks up a localized string similar to Will hold the last charge of {0} for use with {1}, even when out of position for {2}/{3}.
-        ///If Above Slider is set to 1, it will NOT use the remaining charge for {1}, but for manual use..
+        ///If above slider is set to 1, it will NOT use the remaining charge for {1}, but for manual use..
         /// </summary>
         internal static string WillHoldTNforGluttony {
             get {

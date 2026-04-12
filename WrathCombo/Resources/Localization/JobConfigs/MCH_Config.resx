@@ -134,7 +134,7 @@
   </data>
   <data name="Save0ForEvenWindows" xml:space="preserve">
     <value>Saves {0} for 2 minute windows
-THIS WILL OVERCAP UR REASSEMBLE.</value>
+THIS WILL CAUSE IT TO OVERCAP!</value>
   </data>
   <data name="SaveForEvenWindows" xml:space="preserve">
     <value>Save for 2 minute windows</value>
@@ -143,10 +143,10 @@ THIS WILL OVERCAP UR REASSEMBLE.</value>
     <value>Stop Using Tools When Target HP% is at or Below (Set to 0 to Disable This Check)</value>
   </data>
   <data name="Use0EveryMinute" xml:space="preserve">
-    <value>Uses {0} every minute/whenever ur highest lvl tool is off cooldown.</value>
+    <value>Uses {0} every minute/whenever your highest level tool is off cooldown.</value>
   </data>
   <data name="UseEarly0Opener" xml:space="preserve">
-    <value>Uses Early {0} Lvl 100 opener</value>
+    <value>Uses Early {0} level 100 opener</value>
   </data>
   <data name="UseEveryMinute" xml:space="preserve">
     <value>Use every minute</value>

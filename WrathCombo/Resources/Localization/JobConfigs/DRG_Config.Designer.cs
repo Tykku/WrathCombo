@@ -95,23 +95,5 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
                 return ResourceManager.GetString("BurstMirageDuringLoTD", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Only uses {0} when in melee range..
-        /// </summary>
-        internal static string OnlyUse0WhenInMeleeRange {
-            get {
-                return ResourceManager.GetString("OnlyUse0WhenInMeleeRange", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Only uses {0} when not moving..
-        /// </summary>
-        internal static string OnlyUse0WhenNotMoving {
-            get {
-                return ResourceManager.GetString("OnlyUse0WhenNotMoving", resourceCulture);
-            }
-        }
     }
 }

@@ -134,7 +134,7 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         
         /// <summary>
         ///   Looks up a localized string similar to Will hold the last charge of {0} for use with {1}, even when out of position for normal GCD.
-        ///If Above Slider is set to 1, it will NOT use the remaining charge for {1}, but for manual use..
+        ///If above slider is set to 1, it will NOT use the remaining charge for {1}, but for manual use..
         /// </summary>
         internal static string WillHoldLastChargeOf0For1 {
             get {

@@ -130,7 +130,7 @@
     <value>{0}</value>
   </data>
   <data name="OnlyUse0WhileUGot1" xml:space="preserve">
-    <value>Only uses {0} while u got {1}.</value>
+    <value>Only uses {0} while you have {1}.</value>
   </data>
   <data name="RearFirst" xml:space="preserve">
     <value>Rear First</value>
@@ -141,6 +141,6 @@ Recommended is 6.</value>
   </data>
   <data name="WillHoldTNforGluttony" xml:space="preserve">
     <value>Will hold the last charge of {0} for use with {1}, even when out of position for {2}/{3}.
-If Above Slider is set to 1, it will NOT use the remaining charge for {1}, but for manual use.</value>
+If above slider is set to 1, it will NOT use the remaining charge for {1}, but for manual use.</value>
   </data>
 </root>

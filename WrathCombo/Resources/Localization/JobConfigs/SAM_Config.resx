@@ -126,13 +126,10 @@
     <value>Adds {0} and {1} when you're not moving.</value>
   </data>
   <data name="Add0IfSeneiNotUnlocked" xml:space="preserve">
-    <value>Adds {0} to the rotation if Senei is not unlocked.</value>
+    <value>Adds {0} to the rotation if {1} is not unlocked.</value>
   </data>
   <data name="DelaySavageBlade" xml:space="preserve">
-    <value>Delay is enforced by replacing your button with Savage Blade.</value>
-  </data>
-  <data name="GurenOption" xml:space="preserve">
-    <value>Guren Option</value>
+    <value>Delay is enforced by replacing your button with {0}.</value>
   </data>
   <data name="HPPercentKenki" xml:space="preserve">
     <value>HP percent threshold to not save Kenki</value>
@@ -162,10 +159,10 @@
     <value>Will prioritise having both buffs before finishing sens.</value>
   </data>
   <data name="PrioSenGen" xml:space="preserve">
-    <value>Prio sen generation</value>
+    <value>Priortise Sen generation</value>
   </data>
   <data name="PrioSenGenDesc" xml:space="preserve">
-    <value>Will prioritise generating all 3 sens before checking buffs.</value>
+    <value>Will prioritise generating all 3 Sens before checking buffs.</value>
   </data>
   <data name="SecondsDelayFromFirstStep" xml:space="preserve">
     <value>Seconds to delay from first {0} to next step (hover for details)</value>

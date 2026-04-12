@@ -162,7 +162,7 @@ Will Use {0} / {1} if selected above.</value>
     <value>Show {0} when {1} is on cooldown</value>
   </data>
   <data name="UseDespairWhenBelow1500MP" xml:space="preserve">
-    <value>Use {0} when below 1500 MP and when it is an instant cast (lvl 100 only).</value>
+    <value>Use {0} when below 1500 MP and when it is an instant cast (level 100 only).</value>
   </data>
   <data name="UseFire3WhenYouHaveFirestarterProc" xml:space="preserve">
     <value>Use {0} when you have {1} proc.</value>

@@ -97,7 +97,7 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         
         /// <summary>
         ///   Looks up a localized string similar to Saves {0} for 2 minute windows
-        ///THIS WILL OVERCAP UR REASSEMBLE..
+        ///THIS WILL CAUSE IT TO OVERCAP!.
         /// </summary>
         internal static string Save0ForEvenWindows {
             get {
@@ -124,7 +124,7 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Uses {0} every minute/whenever ur highest lvl tool is off cooldown..
+        ///   Looks up a localized string similar to Uses {0} every minute/whenever your highest level tool is off cooldown..
         /// </summary>
         internal static string Use0EveryMinute {
             get {
@@ -133,7 +133,7 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Uses Early {0} Lvl 100 opener.
+        ///   Looks up a localized string similar to Uses Early {0} level 100 opener.
         /// </summary>
         internal static string UseEarly0Opener {
             get {

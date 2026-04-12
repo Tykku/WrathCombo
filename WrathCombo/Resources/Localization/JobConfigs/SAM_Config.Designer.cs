@@ -69,7 +69,7 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adds {0} to the rotation if Senei is not unlocked..
+        ///   Looks up a localized string similar to Adds {0} to the rotation if {1} is not unlocked..
         /// </summary>
         internal static string Add0IfSeneiNotUnlocked {
             get {
@@ -78,20 +78,11 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Delay is enforced by replacing your button with Savage Blade..
+        ///   Looks up a localized string similar to Delay is enforced by replacing your button with {0}..
         /// </summary>
         internal static string DelaySavageBlade {
             get {
                 return ResourceManager.GetString("DelaySavageBlade", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Guren Option.
-        /// </summary>
-        internal static string GurenOption {
-            get {
-                return ResourceManager.GetString("GurenOption", resourceCulture);
             }
         }
         
@@ -177,7 +168,7 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Prio sen generation.
+        ///   Looks up a localized string similar to Priortise Sen generation.
         /// </summary>
         internal static string PrioSenGen {
             get {
@@ -186,7 +177,7 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Will prioritise generating all 3 sens before checking buffs..
+        ///   Looks up a localized string similar to Will prioritise generating all 3 Sens before checking buffs..
         /// </summary>
         internal static string PrioSenGenDesc {
             get {

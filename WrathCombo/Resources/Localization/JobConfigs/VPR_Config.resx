@@ -147,6 +147,6 @@
   </data>
   <data name="WillHoldLastChargeOf0For1" xml:space="preserve">
     <value>Will hold the last charge of {0} for use with {1}, even when out of position for normal GCD.
-If Above Slider is set to 1, it will NOT use the remaining charge for {1}, but for manual use.</value>
+If above slider is set to 1, it will NOT use the remaining charge for {1}, but for manual use.</value>
   </data>
 </root>

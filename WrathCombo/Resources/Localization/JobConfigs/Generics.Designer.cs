@@ -683,6 +683,33 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Only uses {0} when in melee range..
+        /// </summary>
+        internal static string OnlyUse0WhenInMeleeRange {
+            get {
+                return ResourceManager.GetString("OnlyUse0WhenInMeleeRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Only uses {0} when not moving..
+        /// </summary>
+        internal static string OnlyUse0WhenNotMoving {
+            get {
+                return ResourceManager.GetString("OnlyUse0WhenNotMoving", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Only use the opener when a countdown is active..
+        /// </summary>
+        internal static string OnlyUseOpenerWhenCountdownActive {
+            get {
+                return ResourceManager.GetString("OnlyUseOpenerWhenCountdownActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Only use {0} when the targeted enemy is a boss..
         /// </summary>
         internal static string OnlyUseWhenTargetIsBoss {
@@ -706,6 +733,15 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         internal static string OnlyWeave {
             get {
                 return ResourceManager.GetString("OnlyWeave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Only with countdown.
+        /// </summary>
+        internal static string OnlyWithCountdown {
+            get {
+                return ResourceManager.GetString("OnlyWithCountdown", resourceCulture);
             }
         }
         

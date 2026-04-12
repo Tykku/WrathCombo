@@ -28,7 +28,7 @@ internal partial class SAM
                         FormatAndCache(SAM_Config.SecondsDelayFromFirstStep, MeikyoShisui.ActionName()), 75f.Scale());
 
                     if (ImGui.IsItemHovered())
-                        ImGui.SetTooltip(SAM_Config.DelaySavageBlade);
+                        ImGui.SetTooltip(FormatAndCache(SAM_Config.DelaySavageBlade, All.SavageBlade.ActionName()));
 
                     ImGuiEx.Spacing(new Vector2(0, 10));
                     ImGui.NewLine();
@@ -62,14 +62,14 @@ internal partial class SAM
 
                     ImGui.Indent();
                     DrawSliderInt(0, 15, SAM_ST_HiganbanaRefresh,
-                        FormatAndCache(SAM_Config.SecondsRemainingBeforeReapplying0, Higanbana.ActionName()));
+                        FormatAndCache(Generics.DoTSecondsRemainingZeroDisable, Higanbana.ActionName()));
                     ImGui.Unindent();
                     break;
 
                 case Preset.SAM_ST_CDs_Senei:
                     DrawAdditionalBoolChoice(SAM_ST_CDs_Guren,
-                        SAM_Config.GurenOption,
-                        FormatAndCache(SAM_Config.Add0IfSeneiNotUnlocked, Guren.ActionName()));
+                        FormatAndCache(Generics._0Option, Guren.ActionName()),
+                        FormatAndCache(SAM_Config.Add0IfSeneiNotUnlocked, Guren.ActionName(), Senei.ActionName()));
                     break;
 
                 case Preset.SAM_ST_CDs_OgiNamikiri:
