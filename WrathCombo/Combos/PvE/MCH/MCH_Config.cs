@@ -18,20 +18,24 @@ internal partial class MCH
 
                 case Preset.MCH_ST_Adv_Opener:
                     DrawHorizontalRadioButton(MCH_SelectedOpener,
-                        Generics.StandardOpener, "Uses Standard Lvl 100 opener", 0);
+                        Generics.StandardOpener,
+                        Generics.UsesStandardOpener, 0);
 
                     DrawHorizontalRadioButton(MCH_SelectedOpener,
-                        $"Early {Wildfire.ActionName()} opener", $"Uses Early {Wildfire.ActionName()} Lvl 100 opener", 1);
+                        FormatAndCache(MCH_Config.Early0Opener, Wildfire.ActionName()),
+                        FormatAndCache(MCH_Config.UseEarly0Opener, Wildfire.ActionName()), 1);
 
                     DrawBossOnlyChoice(MCH_Balance_Content);
                     break;
 
                 case Preset.MCH_ST_Adv_WildFire:
                     DrawHorizontalRadioButton(MCH_ST_WildfireBossOption,
-                        Generics.AllContent, $"Use {Wildfire.ActionName()} regardless of content.", 0);
+                        Generics.AllContent,
+                        FormatAndCache(Generics.Use0RegardlessOfContent, Wildfire.ActionName()), 0);
 
                     DrawHorizontalRadioButton(MCH_ST_WildfireBossOption,
-                        Generics.BossOnlyContent, $"Only use {Wildfire.ActionName()} when the targeted enemy is a boss.", 1);
+                        Generics.BossOnlyContent,
+                        FormatAndCache(Generics.OnlyUseWhenTargetIsBoss, Wildfire.ActionName()), 1);
 
                     if (MCH_ST_WildfireBossOption == 0)
                     {
@@ -39,26 +43,28 @@ internal partial class MCH
                             Generics.StopEnemyHpPercent);
 
                         ImGui.Indent();
-
                         ImGui.TextColored(ImGuiColors.DalamudYellow,
                             Generics.EnemyTypeCheck);
 
                         DrawHorizontalRadioButton(MCH_ST_WildfireBossHPOption,
-                            Generics.NonBosses, Generics.HPCheckNonBosses, 0);
+                            Generics.NonBosses,
+                            Generics.HPCheckNonBosses, 0);
 
                         DrawHorizontalRadioButton(MCH_ST_WildfireBossHPOption,
-                            Generics.AllEnemies, Generics.HPCheckAllEnemies, 1);
-
+                            Generics.AllEnemies,
+                            Generics.HPCheckAllEnemies, 1);
                         ImGui.Unindent();
                     }
                     break;
 
                 case Preset.MCH_ST_Adv_Stabilizer:
                     DrawHorizontalRadioButton(MCH_ST_BarrelStabilizerBossOption,
-                        Generics.AllContent, $"Use {BarrelStabilizer.ActionName()} regardless of content.", 0);
+                        Generics.AllContent,
+                        FormatAndCache(Generics.Use0RegardlessOfContent, BarrelStabilizer.ActionName()), 0);
 
                     DrawHorizontalRadioButton(MCH_ST_BarrelStabilizerBossOption,
-                        Generics.BossOnlyContent, $"Only use {BarrelStabilizer.ActionName()} when the targeted enemy is a boss.", 1);
+                        Generics.BossOnlyContent,
+                        FormatAndCache(Generics.OnlyUseWhenTargetIsBoss, BarrelStabilizer.ActionName()), 1);
 
                     if (MCH_ST_BarrelStabilizerBossOption == 0)
                     {
@@ -66,16 +72,16 @@ internal partial class MCH
                             Generics.StopEnemyHpPercent);
 
                         ImGui.Indent();
-
                         ImGui.TextColored(ImGuiColors.DalamudYellow,
                             Generics.EnemyTypeCheck);
 
                         DrawHorizontalRadioButton(MCH_ST_BarrelStabilizerHPBossOption,
-                            Generics.NonBosses, Generics.HPCheckNonBosses, 0);
+                            Generics.NonBosses,
+                            Generics.HPCheckNonBosses, 0);
 
                         DrawHorizontalRadioButton(MCH_ST_BarrelStabilizerHPBossOption,
-                            Generics.AllEnemies, Generics.HPCheckAllEnemies, 1);
-
+                            Generics.AllEnemies,
+                            Generics.HPCheckAllEnemies, 1);
                         ImGui.Unindent();
                     }
                     break;
@@ -85,22 +91,22 @@ internal partial class MCH
                         Generics.StopEnemyHpPercent);
 
                     ImGui.Indent();
-
                     ImGui.TextColored(ImGuiColors.DalamudYellow,
                         Generics.EnemyTypeCheck);
 
                     DrawHorizontalRadioButton(MCH_ST_HyperchargeBossOption,
-                        Generics.NonBosses, Generics.HPCheckNonBosses, 0);
+                        Generics.NonBosses,
+                        Generics.HPCheckNonBosses, 0);
 
                     DrawHorizontalRadioButton(MCH_ST_HyperchargeBossOption,
-                        Generics.AllEnemies, Generics.HPCheckAllEnemies, 1);
-
+                        Generics.AllEnemies,
+                        Generics.HPCheckAllEnemies, 1);
                     ImGui.Unindent();
                     break;
 
                 case Preset.MCH_ST_Adv_TurretQueen:
                     DrawSliderInt(50, 100, MCH_ST_TurretUsage,
-                        $"Use {AutomatonQueen.ActionName()} at this battery threshold outside of Boss encounter.");
+                        FormatAndCache(MCH_Config.UseQueenOutsideOfBoss, AutomatonQueen.ActionName()));
 
                     DrawSliderInt(0, 50, MCH_ST_QueenHPOption,
                         Generics.StopEnemyHpPercent);
@@ -111,10 +117,12 @@ internal partial class MCH
                         Generics.EnemyTypeCheck);
 
                     DrawHorizontalRadioButton(MCH_ST_QueenBossOption,
-                        Generics.NonBosses, Generics.HPCheckNonBosses, 0);
+                        Generics.NonBosses,
+                        Generics.HPCheckNonBosses, 0);
 
                     DrawHorizontalRadioButton(MCH_ST_QueenBossOption,
-                        Generics.AllEnemies, Generics.HPCheckAllEnemies, 1);
+                        Generics.AllEnemies,
+                        Generics.HPCheckAllEnemies, 1);
 
 
                     ImGui.Unindent();
@@ -128,10 +136,12 @@ internal partial class MCH
                 case Preset.MCH_ST_Adv_Reassemble:
 
                     DrawHorizontalRadioButton(MCH_ST_Adv_ReassembleChoice,
-                        "Save for 2 minute windows", "Saves Reassemble for 2 minute windows\nTHIS WILL OVERCAP UR REASSEMBLE.", 0);
+                        MCH_Config.SaveForEvenWindows,
+                        FormatAndCache(MCH_Config.Save0ForEvenWindows, Reassemble.ActionName()), 0);
 
                     DrawHorizontalRadioButton(MCH_ST_Adv_ReassembleChoice,
-                        "Use every minute", "Uses Reassemble every minute/whenever ur highest lvl tool is off cooldown.", 1);
+                        MCH_Config.UseEveryMinute,
+                        FormatAndCache(MCH_Config.Use0EveryMinute, Reassemble.ActionName()), 1);
 
                     DrawSliderInt(0, 50, MCH_ST_ReassembleHPOption,
                         Generics.StopEnemyHpPercent);
@@ -142,10 +152,12 @@ internal partial class MCH
                         Generics.EnemyTypeCheck);
 
                     DrawHorizontalRadioButton(MCH_ST_ReassembleBossOption,
-                        Generics.NonBosses, Generics.HPCheckNonBosses, 0);
+                        Generics.NonBosses,
+                        Generics.HPCheckNonBosses, 0);
 
                     DrawHorizontalRadioButton(MCH_ST_ReassembleBossOption,
-                        Generics.AllEnemies, Generics.HPCheckAllEnemies, 1);
+                        Generics.AllEnemies,
+                        Generics.HPCheckAllEnemies, 1);
 
                     ImGui.Unindent();
 
@@ -165,10 +177,12 @@ internal partial class MCH
                         Generics.EnemyTypeCheck);
 
                     DrawHorizontalRadioButton(MCH_ST_ToolsBossOption,
-                        Generics.NonBosses, Generics.HPCheckNonBosses, 0);
+                        Generics.NonBosses,
+                        Generics.HPCheckNonBosses, 0);
 
                     DrawHorizontalRadioButton(MCH_ST_ToolsBossOption,
-                        Generics.AllEnemies, Generics.HPCheckAllEnemies, 1);
+                        Generics.AllEnemies,
+                        Generics.HPCheckAllEnemies, 1);
 
                     ImGui.Unindent();
                     break;
@@ -180,7 +194,7 @@ internal partial class MCH
 
                 case Preset.MCH_ST_Adv_SecondWind:
                     DrawSliderInt(0, 100, MCH_ST_SecondWindHPThreshold,
-                        $"{Role.SecondWind.ActionName()} HP percentage threshold");
+                        FormatAndCache(Generics.HPPercentageThreshold, Role.SecondWind.ActionName()));
                     break;
 
                 #endregion
@@ -189,7 +203,7 @@ internal partial class MCH
 
                 case Preset.MCH_AoE_Adv_Reassemble:
                     DrawSliderInt(0, 100, MCH_AoE_ReassembleHPThreshold,
-                        $"Stop Using {Reassemble.ActionName()} When Target HP% is at or Below (Set to 0 to Disable This Check)");
+                        FormatAndCache(Generics.StopUsing0WhenBelowTargetHPPercentage, Reassemble.ActionName()));
 
                     DrawSliderInt(0, 2, MCH_AoE_ReassemblePool,
                         Generics.ChargePool);
@@ -202,24 +216,26 @@ internal partial class MCH
 
                 case Preset.MCH_AoE_Adv_SecondWind:
                     DrawSliderInt(0, 100, MCH_AoE_SecondWindHPThreshold,
-                        $"{Role.SecondWind.ActionName()} HP percentage threshold");
+                        FormatAndCache(Generics.HPPercentageThreshold, Role.SecondWind.ActionName()));
                     break;
 
                 case Preset.MCH_AoE_Adv_Queen:
                     DrawSliderInt(0, 100, MCH_AoE_QueenHpThreshold,
-                        $"Stop Using {RookAutoturret.ActionName()} When Target HP% is at or Below (Set to 0 to Disable This Check)");
+                        FormatAndCache(Generics.StopUsing0WhenBelowTargetHPPercentage, RookAutoturret.ActionName()));
 
                     DrawSliderInt(50, 100, MCH_AoE_TurretBatteryUsage,
-                        "Battery threshold", sliderIncrement: 5);
+                        MCH_Config.BatteryThreshold, sliderIncrement: 5);
                     break;
 
                 case Preset.MCH_AoE_Adv_FlameThrower:
 
                     DrawHorizontalRadioButton(MCH_AoE_FlamethrowerMovement,
-                        Generics.StationaryOnly, FormatAndCache(Generics.UseActionOnlyWhileStationary, Flamethrower.ActionName()), 0);
+                        Generics.StationaryOnly,
+                        FormatAndCache(Generics.UseActionOnlyWhileStationary, Flamethrower.ActionName()), 0);
 
                     DrawHorizontalRadioButton(MCH_AoE_FlamethrowerMovement,
-                        Generics.AnyMovement, FormatAndCache(Generics.Uses0RegardlessOfAnyMovementConditions, Flamethrower.ActionName()), 1);
+                        Generics.AnyMovement,
+                        FormatAndCache(Generics.Uses0RegardlessOfAnyMovementConditions, Flamethrower.ActionName()), 1);
 
                     ImGui.Spacing();
                     if (MCH_AoE_FlamethrowerMovement == 0)
@@ -236,19 +252,21 @@ internal partial class MCH
 
                 case Preset.MCH_AoE_Adv_Hypercharge:
                     DrawSliderInt(0, 100, MCH_AoE_HyperchargeHPThreshold,
-                        $"Stop Using {Hypercharge.ActionName()} When Target HP% is at or Below (Set to 0 to Disable This Check)");
+                        FormatAndCache(Generics.StopUsing0WhenBelowTargetHPPercentage, Hypercharge.ActionName()));
                     break;
 
                 case Preset.MCH_AoE_Adv_Tools:
                     DrawSliderInt(0, 100, MCH_AoE_ToolsHPThreshold,
-                        "Stop Using Tools When Target HP% is at or Below (Set to 0 to Disable This Check)");
+                        MCH_Config.StopUsingToolsBelowHpPercentage);
 
-                    DrawAdditionalBoolChoice(MCH_AoE_AirAnchor, "Add Hotshot / Air Anchor to tools.", "Also use Hotshot / Air Anchor on cooldown.");
+                    DrawAdditionalBoolChoice(MCH_AoE_AirAnchor,
+                        FormatAndCache(Generics.Add0Or1, HotShot.ActionName(), AirAnchor.ActionName()),
+                        FormatAndCache(MCH_Config.AlsoUse0Or1OnCooldown, HotShot.ActionName(), AirAnchor.ActionName()));
                     break;
 
                 case Preset.MCH_AoE_Adv_Stabilizer:
                     DrawSliderInt(0, 100, MCH_AoE_BarrelStabilizerHPThreshold,
-                        $"Stop Using {BarrelStabilizer.ActionName()} When Target HP% is at or Below (Set to 0 to Disable This Check)");
+                        FormatAndCache(Generics.StopUsing0WhenBelowTargetHPPercentage, BarrelStabilizer.ActionName()));
                     break;
 
                 #endregion
@@ -257,15 +275,17 @@ internal partial class MCH
 
                 case Preset.MCH_GaussRoundRicochet:
                     DrawHorizontalRadioButton(MCH_GaussRico,
-                        $"Change {GaussRound.ActionName()} / {DoubleCheck.ActionName()}", $"Changes to {Ricochet.ActionName()} / {CheckMate.ActionName()} depending on charges and what was used last", 0);
+                        FormatAndCache(Generics.Change0Or1, GaussRound.ActionName(), DoubleCheck.ActionName()),
+                        FormatAndCache(MCH_Config.ChangesTo0Or1, Ricochet.ActionName(), CheckMate.ActionName()), 0);
 
                     DrawHorizontalRadioButton(MCH_GaussRico,
-                        $"Change {Ricochet.ActionName()} / {CheckMate.ActionName()}", $"Changes to {GaussRound.ActionName()} / {DoubleCheck.ActionName()} depending on charges and what was used last", 1);
+                        FormatAndCache(Generics.Change0Or1, Ricochet.ActionName(), CheckMate.ActionName()),
+                        FormatAndCache(MCH_Config.ChangesTo0Or1, GaussRound.ActionName(), DoubleCheck.ActionName()), 1);
                     break;
 
                 case Preset.MCH_ST_Dismantle:
                     DrawSliderInt(0, 5, MCH_DismantledDuration,
-                        "Time Remaining on Dismantled to allow within\n(0 = Dismantled must not be on the target)");
+                        FormatAndCache(Generics.TimeRemainingOn0, Debuffs.Dismantled.StatusName()));
                     break;
 
                 #endregion

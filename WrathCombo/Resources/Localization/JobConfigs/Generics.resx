@@ -117,8 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Action_Opener" xml:space="preserve">
-    <value>{0} Opener</value>
+  <data name="_0Option" xml:space="preserve">
+    <value>{0} Option</value>
   </data>
   <data name="Action_Priority" xml:space="preserve">
     <value>{0} Priority: </value>
@@ -126,11 +126,29 @@
   <data name="Action_Threshold" xml:space="preserve">
     <value>{0} Threshold</value>
   </data>
-  <data name="AddFieldMouseoverRetargetting" xml:space="preserve">
-    <value>Adds Field mouseover targetting.</value>
+  <data name="Add0" xml:space="preserve">
+    <value>Add {0}</value>
+  </data>
+  <data name="Add0Combo" xml:space="preserve">
+    <value>Add {0} Combo</value>
+  </data>
+  <data name="Add0ComboWhenApplicable" xml:space="preserve">
+    <value>Adds {0} combo when applicable.</value>
+  </data>
+  <data name="Add0Or1" xml:space="preserve">
+    <value>Add {0} / {1}.</value>
+  </data>
+  <data name="Add0ToTheRotation" xml:space="preserve">
+    <value>Add {0} to the rotation.</value>
+  </data>
+  <data name="Add0WhenAverageHpPercentofPartyIsAtOrBelow" xml:space="preserve">
+    <value>Add {0} when average HP% of the party is at or below.</value>
   </data>
   <data name="AddFieldMouseoverTargetting" xml:space="preserve">
     <value>Adds Field mouseover targetting.</value>
+  </data>
+  <data name="Adds0To1" xml:space="preserve">
+    <value>Adds {0} to {1}.</value>
   </data>
   <data name="AllContent" xml:space="preserve">
     <value>All Content</value>
@@ -175,8 +193,14 @@
   <data name="BurstOption" xml:space="preserve">
     <value>BurstOption</value>
   </data>
+  <data name="Change0Or1" xml:space="preserve">
+    <value>Change {0} / {1}</value>
+  </data>
   <data name="ChargePool" xml:space="preserve">
     <value>How many charges to retain for manual use. Set to 0 to disable this check.</value>
+  </data>
+  <data name="DisableRangeCheck" xml:space="preserve">
+    <value>Disable range check</value>
   </data>
   <data name="DisablesTheUseOfMitigations" xml:space="preserve">
     <value>Disables the use of mitigations.</value>
@@ -196,6 +220,9 @@
   <data name="EnemyTypeCheck" xml:space="preserve">
     <value>Select what kind of enemies the HP check should be applied to:</value>
   </data>
+  <data name="Exclude0" xml:space="preserve">
+    <value>Exclude {0}</value>
+  </data>
   <data name="ExcludeAdvancedMitigations" xml:space="preserve">
     <value>Exclude Advanced Mitigations</value>
   </data>
@@ -207,6 +234,12 @@
   </data>
   <data name="FocusTarget" xml:space="preserve">
     <value>Focus Target</value>
+  </data>
+  <data name="Hold0For1" xml:space="preserve">
+    <value>Hold {0} for {1}</value>
+  </data>
+  <data name="HowManyChargesForMovement" xml:space="preserve">
+    <value>How many charges to save for movement?</value>
   </data>
   <data name="HowManyChargesToKeepReady" xml:space="preserve">
     <value> How many charges to keep ready?
@@ -224,6 +257,15 @@
   <data name="HPCheckNonBosses" xml:space="preserve">
     <value>Only applies the HP check above to non-bosses.</value>
   </data>
+  <data name="HPPercentageFor0NotBeApplied" xml:space="preserve">
+    <value>Set a HP% Threshold for when {0} will not be automatically applied to the target.</value>
+  </data>
+  <data name="HPPercentageThreshold" xml:space="preserve">
+    <value>{0} HP percentage threshold.</value>
+  </data>
+  <data name="HPPercentThresholdUseAllCharges0" xml:space="preserve">
+    <value>HP% Threshold to use all charges of {0}.</value>
+  </data>
   <data name="Include0" xml:space="preserve">
     <value>Include {0}</value>
   </data>
@@ -239,6 +281,9 @@
   <data name="InMeleeRange" xml:space="preserve">
     <value>In Melee Range</value>
   </data>
+  <data name="InRange" xml:space="preserve">
+    <value>In range</value>
+  </data>
   <data name="Job0ShieldCheck" xml:space="preserve">
     <value>{0} Shield Check</value>
   </data>
@@ -250,6 +295,12 @@
   </data>
   <data name="MaxTargetsMultiDot" xml:space="preserve">
     <value>Maximum number of targets to employ multi-dotting </value>
+  </data>
+  <data name="MovementOption" xml:space="preserve">
+    <value>Movement Option</value>
+  </data>
+  <data name="MPLessOrEqual" xml:space="preserve">
+    <value>Player MP to be less than or equal to:</value>
   </data>
   <data name="NoMovement" xml:space="preserve">
     <value>No Movement</value>
@@ -273,17 +324,32 @@
     <value>On {0}</value>
     <comment>Used for simple "On {Action}" strings</comment>
   </data>
+  <data name="OnlyUseWhenTargetIsBoss" xml:space="preserve">
+    <value>Only use {0} when the targeted enemy is a boss.</value>
+  </data>
+  <data name="OnlyUseWith0" xml:space="preserve">
+    <value>Only use with {0}</value>
+  </data>
   <data name="OnlyWeave" xml:space="preserve">
     <value>Only Weave</value>
+  </data>
+  <data name="PlayerHPGreaterOrEqual" xml:space="preserve">
+    <value>Player HP% to be greater than or equal to:</value>
   </data>
   <data name="PlayerHPToUseAction" xml:space="preserve">
     <value>Player HP% to use {0} at or below.  Set to 100 to disable this check</value>
   </data>
+  <data name="PrioBuffUpkeep" xml:space="preserve">
+    <value>Prio buff upkeep</value>
+  </data>
   <data name="Priority" xml:space="preserve">
     <value>Priority: </value>
   </data>
-  <data name="ReplaceFireWithFire3WhenNotInAF3OrCombat" xml:space="preserve">
-    <value>Replaces Fire with Fire3 when out of Astral Fire III or not in combat.</value>
+  <data name="Replace0With1Or2" xml:space="preserve">
+    <value>Replace {0} with {1} / {2}.</value>
+  </data>
+  <data name="Replaces0" xml:space="preserve">
+    <value>Replaces {0}</value>
   </data>
   <data name="Save0ChargesForBurst" xml:space="preserve">
     <value>Save {0} charges for burst.</value>
@@ -317,10 +383,12 @@
 (Set to 0 to disable this check)</value>
   </data>
   <data name="StopEnemyHpPercent" xml:space="preserve">
-    <value>Stop using at Enemy HP %. Set to Zero to disable this check.</value>
+    <value>Stop using when below Enemy HP %.
+        Set to Zero to disable this check.</value>
   </data>
   <data name="StopFriendlyHpPercent100" xml:space="preserve">
-    <value>Start using when below HP %. Set to 100 to disable this check</value>
+    <value>Start using when below HP %.
+       Set to 100 to disable this check</value>
   </data>
   <data name="StopFriendlyHpPercentZero" xml:space="preserve">
     <value>Stop using when below HP %. Set to Zero to disable this check</value>
@@ -328,14 +396,24 @@
   <data name="StopSeconds" xml:space="preserve">
     <value>Seconds remaining before reapplying (0 = Do not reapply early)</value>
   </data>
+  <data name="StopUsing0WhenBelowTargetHPPercentage" xml:space="preserve">
+    <value>Stop Using {0} When Target HP% is at or Below (Set to 0 to Disable This Check)</value>
+  </data>
   <data name="StopUsingWhenBelowSetPercentage" xml:space="preserve">
     <value>Stop using when below set percentage</value>
+  </data>
+  <data name="StopUsingWhenBelowTargetHPPercent" xml:space="preserve">
+    <value>Stop Using when Target HP% is at or Below (Set to 0 to Disable This Check)</value>
   </data>
   <data name="TanksOnly" xml:space="preserve">
     <value>Tanks Only</value>
   </data>
   <data name="TargetHPUse0AtOrBelow" xml:space="preserve">
     <value>Target HP% to use {0} at or below. Set to 100 to disable this check.</value>
+  </data>
+  <data name="TimeRemainingOn0" xml:space="preserve">
+    <value>Time Remaining on {0} to allow within
+(0 = Dismantled must not be on the target)</value>
   </data>
   <data name="TimeRemainingOnOthers" xml:space="preserve">
     <value>Time Remaining on others {0} to allow within
@@ -354,8 +432,14 @@
   <data name="Use0" xml:space="preserve">
     <value>Use {0}</value>
   </data>
+  <data name="Use0In1" xml:space="preserve">
+    <value>Use {0} in {1}</value>
+  </data>
   <data name="Use0Or1" xml:space="preserve">
     <value>Use {0} / {1}</value>
+  </data>
+  <data name="Use0RegardlessOfContent" xml:space="preserve">
+    <value>Use {0} regardless of content.</value>
   </data>
   <data name="Use0When1ChargesAreAvailable" xml:space="preserve">
     <value>Use {0} when {1} charges are available.</value>
@@ -394,10 +478,19 @@ NOTE: This could possibly get you killed</value>
   <data name="WillOnlyWeaveThisAction" xml:space="preserve">
     <value>Will only weave this action.</value>
   </data>
-  <data name="Replaces0" xml:space="preserve">
-    <value>Replaces {0}</value>
+  <data name="OnlyUse0WhenInMeleeRange" xml:space="preserve">
+    <value>Only uses {0} when in melee range.</value>
   </data>
-  <data name="Use0In1" xml:space="preserve">
-    <value>Use {0} in {1}</value>
+  <data name="OnlyUse0WhenNotMoving" xml:space="preserve">
+    <value>Only uses {0} when not moving.</value>
+  </data>
+  <data name="OnlyWithCountdown" xml:space="preserve">
+    <value>Only with countdown</value>
+  </data>
+  <data name="OnlyUseOpenerWhenCountdownActive" xml:space="preserve">
+    <value>Only use the opener when a countdown is active.</value>
+  </data>
+  <data name="Action_Opener" xml:space="preserve">
+    <value>{0} Opener</value>
   </data>
 </root>

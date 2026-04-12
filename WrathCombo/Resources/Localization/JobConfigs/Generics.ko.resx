@@ -117,17 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Action_Opener" xml:space="preserve">
-    <value>{0} 오프너</value>
-  </data>
   <data name="Action_Priority" xml:space="preserve">
     <value>{0} 우선순위: </value>
   </data>
   <data name="Action_Threshold" xml:space="preserve">
     <value>{0} 임계값</value>
-  </data>
-  <data name="AddFieldMouseoverRetargetting" xml:space="preserve">
-    <value>필드 캐릭터 마우스 오버 타겟팅 추가</value>
   </data>
   <data name="AddFieldMouseoverTargetting" xml:space="preserve">
     <value>필드 캐릭터 마우스 오버 타겟팅 추가</value>
@@ -283,8 +277,8 @@
   <data name="Priority" xml:space="preserve">
     <value>우선순위:</value>
   </data>
-  <data name="ReplaceFireWithFire3WhenNotInAF3OrCombat" xml:space="preserve">
-    <value>천상의 화염 3단계 상태가 아니거나 전투 상태가 아닐 시, 파이어를 파이가로 교체</value>
+  <data name="Replaces0" xml:space="preserve">
+    <value>{0} 교체</value>
   </data>
   <data name="Save0ChargesForBurst" xml:space="preserve">
     <value>시너지 타임을 위해 {0} 아끼기</value>
@@ -355,6 +349,9 @@
   <data name="Use0" xml:space="preserve">
     <value>{0} 사용</value>
   </data>
+  <data name="Use0In1" xml:space="preserve">
+    <value>{1} 시 {0} 사용</value>
+  </data>
   <data name="Use0Or1" xml:space="preserve">
     <value>{0} / {1} 사용</value>
   </data>
@@ -395,10 +392,7 @@
   <data name="WillOnlyWeaveThisAction" xml:space="preserve">
     <value>이 기술은 끼워넣기 타이밍에만 사용합니다.</value>
   </data>
-  <data name="Replaces0" xml:space="preserve">
-    <value>{0} 교체</value>
-  </data>
-  <data name="Use0In1" xml:space="preserve">
-    <value>{1} 시 {0} 사용</value>
+  <data name="Action_Opener" xml:space="preserve">
+    <value>{0} 오프너</value>
   </data>
 </root>

@@ -117,15 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddDespairWhenBelow2400MP" xml:space="preserve">
-    <value>{1} 상태에서 MP 2400 미만일 때 {0} 추가</value>
-  </data>
-  <data name="AddDespairWhenInAFAndAbove800MP" xml:space="preserve">
-    <value>{1} 상태에서 MP 800 이상일 때 {0} 추가</value>
-  </data>
-  <data name="AddFireOrFire3WhenInAF" xml:space="preserve">
-    <value>{2} 상태에서 스택 3개 미만일 때 {0} / {1} 추가</value>
-  </data>
   <data name="AddFlarestarinAF" xml:space="preserve">
     <value>{1} 시 사용 가능하면 {0} 발동</value>
   </data>
@@ -136,18 +127,6 @@
   <data name="DontChangeFireInUmbralIce" xml:space="preserve">
     <value>{2} 상태에서 {0} 보존
 위 항목 선택 시 {0} / {1} 사용</value>
-  </data>
-  <data name="HowManyChargesForManualUse" xml:space="preserve">
-    <value>수동 사용을 위해 충전 횟수를 얼마나 남겨두시겠습니까?</value>
-  </data>
-  <data name="HowManyChargesForMovement" xml:space="preserve">
-    <value>이동 시 사용을 위해 충전 횟수를 얼마나 남겨두시겠습니까?</value>
-  </data>
-  <data name="HowManyChargesTriplecast" xml:space="preserve">
-    <value>보존할 {0} 충전 횟수를 얼마나 남겨두시겠습니까? (0 = 모두 사용)</value>
-  </data>
-  <data name="ManawardHPThreshold" xml:space="preserve">
-    <value>{0} 발동 HP% 임계값</value>
   </data>
   <data name="NotUnderLeylines" xml:space="preserve">
     <value>{0} 효과가 없을 때</value>
@@ -176,9 +155,6 @@
   <data name="UseFire3WhenYouHaveFirestarterProc" xml:space="preserve">
     <value>{1} 효과 발동 시 {0} 우선 사용</value>
   </data>
-  <data name="UseFoulOrXenoglossy" xml:space="preserve">
-    <value>{0}/{1} 사용</value>
-  </data>
   <data name="UseParadoxWhenInAF3" xml:space="preserve">
     <value>{1} 상태에서 {0} 사용</value>
   </data>
@@ -187,8 +163,5 @@
   </data>
   <data name="UseTriplecastWhenNoSwiftcast" xml:space="preserve">
     <value>{1} 효과가 활성화되어 있지 않을 때 {0} 사용</value>
-  </data>
-  <data name="AddBlizzardOr3Or4DependingOnStackAndLevel" xml:space="preserve">
-    <value>레벨 및 스택에 따라 {3}에서 {0} / {1} / {2} 추가</value>
   </data>
 </root>

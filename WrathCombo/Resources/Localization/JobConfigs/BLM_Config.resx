@@ -117,14 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddDespairWhenBelow2400MP" xml:space="preserve">
+  <data name="Add0or1or2or3DependingonStackAndLevel" xml:space="preserve">
+    <value>Adds {0} / {1} / {2} in {3} depending on stacks and level</value>
+  </data>
+  <data name="Add0Or1WhenIn2" xml:space="preserve">
+    <value>Adds {0} / {1} when in {2} and stack is less than 3</value>
+  </data>
+  <data name="Add0WhenBelow2400MP" xml:space="preserve">
     <value>Adds {0} when in {1} and below 2400 MP.</value>
   </data>
-  <data name="AddDespairWhenInAFAndAbove800MP" xml:space="preserve">
+  <data name="Add0WhenIn1AndAbove800MP" xml:space="preserve">
     <value>Adds {0} when in {1} and above 800 MP.</value>
-  </data>
-  <data name="AddFireOrFire3WhenInAF" xml:space="preserve">
-    <value>Adds {0} / {1} when in {2} and stack is less than 3</value>
   </data>
   <data name="AddFlarestarinAF" xml:space="preserve">
     <value>Adds {0} in {1} when ready.</value>
@@ -136,18 +139,6 @@ This is the recommended behaviour.</value>
   <data name="DontChangeFireInUmbralIce" xml:space="preserve">
     <value>Leaves {0} in {2} 
 Will Use {0} / {1} if selected above.</value>
-  </data>
-  <data name="HowManyChargesForManualUse" xml:space="preserve">
-    <value>How many charges to save for manual use?</value>
-  </data>
-  <data name="HowManyChargesForMovement" xml:space="preserve">
-    <value>How many charges to save for movement?</value>
-  </data>
-  <data name="HowManyChargesTriplecast" xml:space="preserve">
-    <value>How many charges of {0} to keep ready? (0 = Use all)</value>
-  </data>
-  <data name="ManawardHPThreshold" xml:space="preserve">
-    <value>{0} HP percentage threshold</value>
   </data>
   <data name="NotUnderLeylines" xml:space="preserve">
     <value>Not under {0}</value>
@@ -171,13 +162,10 @@ Will Use {0} / {1} if selected above.</value>
     <value>Show {0} when {1} is on cooldown</value>
   </data>
   <data name="UseDespairWhenBelow1500MP" xml:space="preserve">
-    <value>Use {0} when below 1500 MP and when it is an instant cast (lvl 100 only).</value>
+    <value>Use {0} when below 1500 MP and when it is an instant cast (level 100 only).</value>
   </data>
   <data name="UseFire3WhenYouHaveFirestarterProc" xml:space="preserve">
     <value>Use {0} when you have {1} proc.</value>
-  </data>
-  <data name="UseFoulOrXenoglossy" xml:space="preserve">
-    <value>Use {0}/{1}.</value>
   </data>
   <data name="UseParadoxWhenInAF3" xml:space="preserve">
     <value>Use {0} when in {1}.</value>
@@ -187,8 +175,5 @@ Will Use {0} / {1} if selected above.</value>
   </data>
   <data name="UseTriplecastWhenNoSwiftcast" xml:space="preserve">
     <value>Use {0} when you don't have {1} active.</value>
-  </data>
-  <data name="AddBlizzardOr3Or4DependingOnStackAndLevel" xml:space="preserve">
-    <value>Adds {0} / {1} / {2} in {3} depending on stacks and level</value>
   </data>
 </root>

@@ -144,9 +144,6 @@
   <data name="Emergency0Priority" xml:space="preserve">
     <value>긴급 {0} 사용 우선순위:</value>
   </data>
-  <data name="AlternativeAOEModeLeavesAspectedHeliosAloneForManualHoTs" xml:space="preserve">
-    <value>대체 광역 공격 모드. 수동 지속 회복용으로 별읽기: 헬리오스는 그대로 둡니다.</value>
-  </data>
   <data name="AlternativeAoEModeLeaves0AloneForManualHoTs" xml:space="preserve">
     <value>대체 광역 공격 모드. 수동 지속 회복 관리를 위해 {0}은 그대로 둡니다.</value>
   </data>

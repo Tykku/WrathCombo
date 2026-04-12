@@ -79,15 +79,6 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Alternative AOE Mode. Leaves Aspected Helios alone for manual HoTs.
-        /// </summary>
-        internal static string AlternativeAOEModeLeavesAspectedHeliosAloneForManualHoTs {
-            get {
-                return ResourceManager.GetString("AlternativeAOEModeLeavesAspectedHeliosAloneForManualHoTs", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Any Mouseover Override.
         /// </summary>
         internal static string AnyMouseoverOverride {

@@ -3,6 +3,7 @@ using WrathCombo.CustomComboNS.Functions;
 using WrathCombo.Extensions;
 using WrathCombo.Resources.Localization.JobConfigs;
 using static WrathCombo.Window.Functions.UserConfig;
+using static WrathCombo.Window.Text;
 namespace WrathCombo.Combos.PvE;
 
 internal partial class MNK
@@ -17,19 +18,22 @@ internal partial class MNK
 
                 case Preset.MNK_STUseOpener:
                     DrawHorizontalRadioButton(MNK_SelectedOpener,
-                        "Double Lunar", "Uses Lunar/Lunar opener.", 0);
+                        MNK_Config.DoubleLunarOpener,
+                        MNK_Config.DoubleLunarOpenerDesc, 0);
 
                     DrawHorizontalRadioButton(MNK_SelectedOpener,
-                        "Solar Lunar", "Uses Solar/Lunar opener.", 1);
+                        MNK_Config.SolarLunarOpener,
+                        MNK_Config.SolarLunarOpenerDesc, 1);
                     ImGui.NewLine();
 
                     DrawHorizontalRadioButton(MNK_OpenerCountdown,
-                        "Only with countdown", "Only use the opener when a countdown is active.", 0);
+                        Generics.OnlyWithCountdown,
+                        Generics.OnlyUseOpenerWhenCountdownActive, 0);
 
                     DrawHorizontalRadioButton(MNK_OpenerCountdown,
-                        "Always", "Always use opener.", 1);
+                        Generics.Always,
+                        Generics.UseAlways, 1);
 
-                    ImGui.NewLine();
                     DrawBossOnlyChoice(MNK_Balance_Content);
                     break;
 
@@ -39,16 +43,16 @@ internal partial class MNK
                         Generics.StopEnemyHpPercent);
 
                     ImGui.Indent();
-
                     ImGui.TextColored(ImGuiColors.DalamudYellow,
                         Generics.EnemyTypeCheck);
 
                     DrawHorizontalRadioButton(MNK_ST_BHBossOption,
-                        Generics.NonBosses, Generics.HPCheckNonBosses, 0);
+                        Generics.NonBosses,
+                        Generics.HPCheckNonBosses, 0);
 
                     DrawHorizontalRadioButton(MNK_ST_BHBossOption,
-                        Generics.AllEnemies, Generics.HPCheckAllEnemies, 1);
-
+                        Generics.AllEnemies,
+                        Generics.HPCheckAllEnemies, 1);
                     ImGui.Unindent();
                     break;
 
@@ -58,16 +62,16 @@ internal partial class MNK
                         Generics.StopEnemyHpPercent);
 
                     ImGui.Indent();
-
                     ImGui.TextColored(ImGuiColors.DalamudYellow,
                         Generics.EnemyTypeCheck);
 
                     DrawHorizontalRadioButton(MNK_ST_RoFBossOption,
-                        Generics.NonBosses, Generics.HPCheckNonBosses, 0);
+                        Generics.NonBosses,
+                        Generics.HPCheckNonBosses, 0);
 
                     DrawHorizontalRadioButton(MNK_ST_RoFBossOption,
-                        Generics.AllEnemies, Generics.HPCheckAllEnemies, 1);
-
+                        Generics.AllEnemies,
+                        Generics.HPCheckAllEnemies, 1);
                     ImGui.Unindent();
                     break;
 
@@ -77,16 +81,16 @@ internal partial class MNK
                         Generics.StopEnemyHpPercent);
 
                     ImGui.Indent();
-
                     ImGui.TextColored(ImGuiColors.DalamudYellow,
                         Generics.EnemyTypeCheck);
 
                     DrawHorizontalRadioButton(MNK_ST_RoWBossOption,
-                        Generics.NonBosses, Generics.HPCheckNonBosses, 0);
+                        Generics.NonBosses,
+                        Generics.HPCheckNonBosses, 0);
 
                     DrawHorizontalRadioButton(MNK_ST_RoWBossOption,
-                        Generics.AllEnemies, Generics.HPCheckAllEnemies, 1);
-
+                        Generics.AllEnemies,
+                        Generics.HPCheckAllEnemies, 1);
                     ImGui.Unindent();
                     break;
 
@@ -97,10 +101,10 @@ internal partial class MNK
 
                 case Preset.MNK_ST_ComboHeals:
                     DrawSliderInt(0, 100, MNK_ST_SecondWindHPThreshold,
-                        $"{Role.SecondWind.ActionName()} HP percentage threshold");
+                        FormatAndCache(Generics.HPPercentageThreshold, Role.SecondWind.ActionName()));
 
                     DrawSliderInt(0, 100, MNK_ST_BloodbathHPThreshold,
-                        $"{Role.Bloodbath.ActionName()} HP percentage threshold");
+                        FormatAndCache(Generics.HPPercentageThreshold, Role.Bloodbath.ActionName()));
                     break;
 
                 #endregion
@@ -109,30 +113,31 @@ internal partial class MNK
 
                 case Preset.MNK_AoEUseBuffs:
                     DrawSliderInt(0, 100, MNK_AoE_BuffsHPThreshold,
-                        "Stop Using Buffs When Target HP% is at or Below (Set to 0 to Disable This Check)");
+                        Generics.StopUsingWhenBelowTargetHPPercent);
                     break;
 
                 case Preset.MNK_AoEUsePerfectBalance:
                     DrawSliderInt(0, 100, MNK_AoE_PerfectBalanceHPThreshold,
-                        $"Stop Using {PerfectBalance.ActionName()} When Target HP% is at or Below (Set to 0 to Disable This Check)");
+                        FormatAndCache(Generics.StopUsing0WhenBelowTargetHPPercentage, PerfectBalance.ActionName()));
                     break;
 
                 case Preset.MNK_AoE_ComboHeals:
                     DrawSliderInt(0, 100, MNK_AoE_SecondWindHPThreshold,
-                        $"{Role.SecondWind.ActionName()} HP percentage threshold");
+                        FormatAndCache(Generics.HPPercentageThreshold, Role.SecondWind.ActionName()));
 
                     DrawSliderInt(0, 100, MNK_AoE_BloodbathHPThreshold,
-                        $"{Role.Bloodbath.ActionName()} HP percentage threshold");
+                        FormatAndCache(Generics.HPPercentageThreshold, Role.Bloodbath.ActionName()));
                     break;
 
                 case Preset.MNK_ST_UseRoE:
                     DrawAdditionalBoolChoice(MNK_ST_EarthsReply,
-                        $"Add {EarthsReply.ActionName()}", $"Add {EarthsReply.ActionName()} to the rotation.");
+                        FormatAndCache(Generics.Add0, EarthsReply.ActionName()),
+                        FormatAndCache(Generics.Add0ToTheRotation, EarthsReply.ActionName()));
 
                     if (MNK_ST_EarthsReply)
                     {
                         DrawSliderInt(0, 100, MNK_ST_EarthsReplyHPThreshold,
-                            $"Add {EarthsReply.ActionName()} when average HP% of the party is at or below.");
+                            FormatAndCache(Generics.Add0WhenAverageHpPercentofPartyIsAtOrBelow, EarthsReply.ActionName()));
                     }
                     break;
 
@@ -142,26 +147,32 @@ internal partial class MNK
 
                 case Preset.MNK_Brotherhood_Riddle:
                     DrawRadioButton(MNK_BH_RoF,
-                        $"Replaces {Brotherhood.ActionName()}", $"Replaces {Brotherhood.ActionName()} with {RiddleOfFire.ActionName()} when {Brotherhood.ActionName()} is on cooldown.", 0);
+                        FormatAndCache(Generics.Replaces0, Brotherhood.ActionName()),
+                        FormatAndCache(MNK_Config.Repalce0With1When2IsOnCooldown, Brotherhood.ActionName(), RiddleOfFire.ActionName(), Brotherhood.ActionName()), 0);
 
                     DrawRadioButton(MNK_BH_RoF,
-                        $"Replaces {RiddleOfFire.ActionName()}", $"Replaces {RiddleOfFire.ActionName()} with {Brotherhood.ActionName()}when {RiddleOfFire.ActionName()} is on cooldown.", 1);
+                        FormatAndCache(Generics.Replaces0, RiddleOfFire.ActionName()),
+                        FormatAndCache(MNK_Config.Repalce0With1When2IsOnCooldown, RiddleOfFire.ActionName(), Brotherhood.ActionName(), RiddleOfFire.ActionName()), 1);
                     break;
 
                 case Preset.MNK_Retarget_Thunderclap:
                     DrawAdditionalBoolChoice(MNK_Thunderclap_FieldMouseover,
-                        Generics.FieldMouseover, "Add Field Mouseover targeting.");
+                        Generics.FieldMouseover,
+                        Generics.AddFieldMouseoverTargetting);
                     break;
 
                 case Preset.MNK_Basic_BeastChakras:
                     DrawHorizontalMultiChoice(MNK_BasicCombo,
-                        "Opo-opo Option", "Replace Dragon Kick with Bootshine / Leaping Opo.", 3, 0);
+                        FormatAndCache(Generics._0Option, Buffs.OpoOpoForm.StatusName()),
+                        FormatAndCache(Generics.Replace0With1Or2, DragonKick.ActionName(), Bootshine.ActionName(), LeapingOpo.ActionName()), 3, 0);
 
                     DrawHorizontalMultiChoice(MNK_BasicCombo,
-                        "Raptor Option", "Replace Twin Snakes with True Strike/Rising Raptor.", 3, 1);
+                        FormatAndCache(Generics._0Option, Buffs.RaptorForm.StatusName()),
+                        FormatAndCache(Generics.Replace0With1Or2, TwinSnakes.ActionName(), TrueStrike.ActionName(), RisingRaptor.ActionName()), 3, 1);
 
                     DrawHorizontalMultiChoice(MNK_BasicCombo,
-                        "Coeurl Option", "Replace Demolish with Snap Punch/Pouncing Coeurl.", 3, 2);
+                        FormatAndCache(Generics._0Option, Buffs.CoeurlForm.StatusName()),
+                        FormatAndCache(Generics.Replace0With1Or2, Demolish.ActionName(), SnapPunch.ActionName(), PouncingCoeurl.ActionName()), 3, 2);
                     break;
 
                   #endregion
