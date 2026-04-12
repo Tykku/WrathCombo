@@ -67,7 +67,7 @@ internal partial class BLM : Caster
                 }
 
                 if (ActionReady(Manaward) &&
-                    PlayerHealthPercentageHp() < 40 && GroupDamageIncoming())
+                    PlayerHealthPercentageHp() < 40)
                     return Manaward;
 
                 if (Role.CanAddle() && GroupDamageIncoming())
@@ -393,7 +393,7 @@ internal partial class BLM : Caster
 
                 if (IsEnabled(Preset.BLM_ST_Manaward) &&
                     ActionReady(Manaward) &&
-                    PlayerHealthPercentageHp() < BLM_ST_ManawardHPThreshold && GroupDamageIncoming())
+                    PlayerHealthPercentageHp() < BLM_ST_ManawardHPThreshold)
                     return Manaward;
 
                 if (IsEnabled(Preset.BLM_ST_Addle) &&
