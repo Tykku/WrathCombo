@@ -251,9 +251,9 @@ internal abstract partial class CustomComboFunctions
         {
             var targets = TTSTankbusters.Where(x => !x.TTSHandled).Select(x => x.VFX.TargetID == Player.Object.GameObjectId ? "You" : x.VFX.TargetID.GetObject()?.Name.ToString()).ToList();
             if (Service.Configuration.TankbusterTTS)
-                TTS.SpeakAsync(string.Format(Misc.TankbusterTTS, JoinNaturally(targets)));
+                TTS.SpeakAsync(string.Format(MiscStrings.TankbusterTTS, JoinNaturally(targets)));
             if (Service.Configuration.TankbusterToast)
-                Svc.Toasts.ShowQuest(string.Format(Misc.TankbusterTTS, JoinNaturally(targets)), opts);
+                Svc.Toasts.ShowQuest(string.Format(MiscStrings.TankbusterTTS, JoinNaturally(targets)), opts);
 
             TTSTankbusters.ForEach(x => x.TTSHandled = true);
         }
@@ -278,9 +278,9 @@ internal abstract partial class CustomComboFunctions
             var multiHit = TTSGroupwides.Any(x => CheckPath(MHSharedDmgPaths, x.VFX.Path));
             var targets = TTSGroupwides.Where(x => !x.TTSHandled).Select(x => x.VFX.TargetID == Player.Object.GameObjectId ? "You" : x.VFX.TargetID.GetObject()?.Name.ToString()).ToList();
             if (Service.Configuration.AoEDamageTTS)
-                TTS.SpeakAsync(string.Format(Misc.StackTTS, (multiHit ? Misc.MultiHit : ""), JoinNaturally(targets)));
+                TTS.SpeakAsync(string.Format(MiscStrings.StackTTS, (multiHit ? MiscStrings.MultiHit : ""), JoinNaturally(targets)));
             if (Service.Configuration.AoEDamageToast)
-                Svc.Toasts.ShowQuest(string.Format(Misc.StackTTS, (multiHit ? Misc.MultiHit : ""), JoinNaturally(targets)), opts);
+                Svc.Toasts.ShowQuest(string.Format(MiscStrings.StackTTS, (multiHit ? MiscStrings.MultiHit : ""), JoinNaturally(targets)), opts);
 
             TTSGroupwides.ForEach(x => x.TTSHandled = true);
         }
@@ -292,9 +292,9 @@ internal abstract partial class CustomComboFunctions
             if (!CurrentRaidwideHandled)
             {
                 if (Service.Configuration.AoEDamageTTS)
-                    TTS.SpeakAsync(Misc.RaidwideTTS);
+                    TTS.SpeakAsync(MiscStrings.RaidwideTTS);
                 if (Service.Configuration.AoEDamageToast)
-                    Svc.Toasts.ShowQuest(Misc.RaidwideTTS, opts);
+                    Svc.Toasts.ShowQuest(MiscStrings.RaidwideTTS, opts);
 
                 CurrentRaidwideHandled = true;
             }
