@@ -1093,8 +1093,7 @@ These features are ideal if you want to customize the rotation.</value>
     <value>Manafont Option</value>
   </data>
   <data name="BLM_ST_Manaward_Desc" xml:space="preserve">
-    <value>Adds Manaward to the rotation when below HP Treshold and when a raidwide is casting.
-    Will use on HP Threshold when solo.</value>
+    <value>Adds Manaward to the rotation when Solo and below HP Treshold or when a raidwide is casting.</value>
   </data>
   <data name="BLM_ST_Manaward_Name" xml:space="preserve">
     <value>Manaward Option</value>

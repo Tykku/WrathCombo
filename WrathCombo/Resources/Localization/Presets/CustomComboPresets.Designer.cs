@@ -2766,8 +2766,7 @@ namespace WrathCombo.Resources.Localization.Presets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adds Manaward to the rotation when below HP Treshold and when a raidwide is casting.
-        ///    Will use on HP Threshold when solo..
+        ///   Looks up a localized string similar to Adds Manaward to the rotation when Solo and below HP Treshold or when a raidwide is casting..
         /// </summary>
         internal static string BLM_ST_Manaward_Desc {
             get {
