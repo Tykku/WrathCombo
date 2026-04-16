@@ -100,6 +100,7 @@ internal partial class SMN
         Ruin2 = 172,
         Ruin3 = 3579,
         Ruin4 = 7426,
+        Physick = 16230,
         Tridisaster = 25826,
 
         // Summoner AoE

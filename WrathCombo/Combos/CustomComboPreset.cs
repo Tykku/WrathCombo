@@ -6984,6 +6984,9 @@ public enum Preset
 
     [JobInfo(Job.SMN)]
     SMN_Searing = 17072,
+    
+    [JobInfo(Job.SMN)]
+    SMN_Rekindle = 17083,
     #endregion
 
     // Last Used 17080
