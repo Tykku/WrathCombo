@@ -200,7 +200,7 @@ internal partial class VPR
 
                     //2min burst
                     if (!JustUsed(SerpentsIre, GCD) && HasStatusEffect(Buffs.ReadyToReawaken) ||
-                        JustUsed(Ouroboros) && IreCD >= 90)
+                        JustUsed(Ouroboros, 6f) && IreCD >= 90)
                         return true;
 
                     //1min
