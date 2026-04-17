@@ -176,4 +176,28 @@ Will Use {0} / {1} if selected above.</value>
   <data name="UseTriplecastWhenNoSwiftcast" xml:space="preserve">
     <value>Use {0} when you don't have {1} active.</value>
   </data>
+  <data name="RequireHPandGroupwide" xml:space="preserve">
+    <value>Require both HP check and groupwide damage incoming</value>
+  </data>
+  <data name="ManawardHPThresholdAndGroupwideDesc" xml:space="preserve">
+    <value>Will only use {0} when both HP is under the slider threshold, and when groupwide damage is incoming</value>
+  </data>
+  <data name="OnlySolo" xml:space="preserve">
+    <value>Only require HP threshold for solo play</value>
+  </data>
+  <data name="OnlySoloDesc" xml:space="preserve">
+    <value>When solo (Chocobos do not count), will only require to meet the HP threshold. In a party, it will require both the HP threshold and groupwide damage incoming.</value>
+  </data>
+  <data name="OnlyTriggerGroupwide" xml:space="preserve">
+    <value>Trigger only on groupwide damage incoming</value>
+  </data>
+  <data name="OnlyTriggerHP" xml:space="preserve">
+    <value>Trigger only on HP threshold</value>
+  </data>
+  <data name="OnlyTriggerHPDesc" xml:space="preserve">
+    <value>Will only use {0} when HP is under the slider threshold, and will not wait for any groupwide damage to be detected (mostly for solo-play)</value>
+  </data>
+  <data name="OnlyTriggerGroupwideDesc" xml:space="preserve">
+    <value>Will only use {0} when groupwide damage is incoming</value>
+  </data>
 </root>

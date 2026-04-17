@@ -156,8 +156,20 @@ internal partial class BLM
                     break;
 
                 case Preset.BLM_ST_Manaward:
-                    DrawSliderInt(0, 100, BLM_ST_ManawardHPThreshold,
+
+                    if ((int)(BLM_ST_ManawardTrigger) is 0 or 1)
+                        DrawSliderInt(0, 100, BLM_ST_ManawardHPThreshold,
                         FormatAndCache(Generics.HPPercentageThreshold, Manaward.ActionName()));
+
+                    ImGui.NewLine();
+                    DrawRadioButton(BLM_ST_ManawardTrigger, BLM_Config.RequireHPandGroupwide, FormatAndCache(BLM_Config.ManawardHPThresholdAndGroupwideDesc, Manaward.ActionName()), 0, descriptionAsTooltip: true);
+                    if (BLM_ST_ManawardTrigger == 0)
+                    {
+                        ImGui.Spacing();
+                        DrawAdditionalBoolChoice(BLM_ST_ManawardSolo, BLM_Config.OnlySolo, BLM_Config.OnlySoloDesc);
+                    }
+                    DrawRadioButton(BLM_ST_ManawardTrigger, BLM_Config.OnlyTriggerHP, FormatAndCache(BLM_Config.OnlyTriggerHPDesc, Manaward.ActionName()), 1, descriptionAsTooltip: true);
+                    DrawRadioButton(BLM_ST_ManawardTrigger, BLM_Config.OnlyTriggerGroupwide, FormatAndCache(BLM_Config.OnlyTriggerGroupwideDesc, Manaward.ActionName()), 2, descriptionAsTooltip: true);
                     break;
 
                 #endregion
@@ -296,6 +308,7 @@ internal partial class BLM
             BLM_ST_PolyglotMovement = new("BLM_ST_PolyglotMovement", 1),
             BLM_ST_PolyglotSaveUsage = new("BLM_ST_PolyglotSaveUsage"),
             BLM_ST_ManawardHPThreshold = new("BLM_ST_ManawardHPThreshold", 25),
+            BLM_ST_ManawardTrigger = new("BLM_ST_ManawardTrigger", 0),
 
             //AoE
             BLM_AoE_TriplecastHoldCharges = new("BLM_AoE_TriplecastHoldCharges"),
@@ -321,7 +334,8 @@ internal partial class BLM
             BLM_Flare_FlareStar = new("BLM_Flare_FlareStar"),
             BLM_Fire1_Despair = new("BLM_Fire1_Despair"),
             BLM_Blizzard3_Despair = new("BLM_Blizzard3_Despair"),
-            BLM_Fire4_Fire3 = new("BLM_Fire4_Fire3");
+            BLM_Fire4_Fire3 = new("BLM_Fire4_Fire3"),
+            BLM_ST_ManawardSolo = new("BLM_ST_ManawardSolo");
 
         public static UserBoolArray
             BLM_ST_MovementOption = new("BLM_ST_MovementOption");
