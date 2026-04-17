@@ -159,7 +159,7 @@ internal partial class BLM
 
                     if ((int)(BLM_ST_ManawardTrigger) is 0 or 1)
                         DrawSliderInt(0, 100, BLM_ST_ManawardHPThreshold,
-                        FormatAndCache(Generics.HPPercentageThreshold, Manaward.ActionName()));
+                            FormatAndCache(Generics.HPPercentageThreshold, Manaward.ActionName()));
 
                     ImGui.NewLine();
                     DrawRadioButton(BLM_ST_ManawardTrigger, BLM_Config.RequireHPandGroupwide, FormatAndCache(BLM_Config.ManawardHPThresholdAndGroupwideDesc, Manaward.ActionName()), 0, descriptionAsTooltip: true);
@@ -308,7 +308,7 @@ internal partial class BLM
             BLM_ST_PolyglotMovement = new("BLM_ST_PolyglotMovement", 1),
             BLM_ST_PolyglotSaveUsage = new("BLM_ST_PolyglotSaveUsage"),
             BLM_ST_ManawardHPThreshold = new("BLM_ST_ManawardHPThreshold", 25),
-            BLM_ST_ManawardTrigger = new("BLM_ST_ManawardTrigger", 0),
+            BLM_ST_ManawardTrigger = new("BLM_ST_ManawardTrigger"),
 
             //AoE
             BLM_AoE_TriplecastHoldCharges = new("BLM_AoE_TriplecastHoldCharges"),
