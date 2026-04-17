@@ -374,9 +374,13 @@ internal partial class PLD
 
         #region Sheltron
 
-        int sheltronThreshold = rotationFlags.HasFlag(RotationMode.Simple)
+        int sheltronOathThreshold = rotationFlags.HasFlag(RotationMode.Simple)
             ? 95
             : PLD_Mitigation_Boss_SheltronOvercap_Threshold;
+        
+        int sheltronHealthThreshold = rotationFlags.HasFlag(RotationMode.Simple)
+            ? 100
+            : PLD_Mitigation_Boss_SheltronOvercap_HealthThreshold;
         
         int sheltronDelay= rotationFlags.HasFlag(RotationMode.Simple)
             ? 0
@@ -385,7 +389,8 @@ internal partial class PLD
         bool sheltronInMitigationContent = rotationFlags.HasFlag(RotationMode.Simple) ||
                                            ContentCheck.IsInConfiguredContent(PLD_Mitigation_Boss_SheltronTankbuster_Difficulty, PLD_Boss_Mit_DifficultyListSet);
 
-        bool sheltronOvercap = IsEnabled(Preset.PLD_Mitigation_Boss_SheltronOvercap) && Gauge.OathGauge >= sheltronThreshold && IsPlayerTargeted();
+        bool sheltronOvercap = IsEnabled(Preset.PLD_Mitigation_Boss_SheltronOvercap) && 
+                               Gauge.OathGauge >= sheltronOathThreshold && IsPlayerTargeted() && PlayerHealthPercentageHp() <= sheltronHealthThreshold;
         bool sheltronTankbuster = IsEnabled(Preset.PLD_Mitigation_Boss_SheltronTankbuster) && Gauge.OathGauge >= 50 && sheltronInMitigationContent &&
                                   HasIncomingTankBusterEffect(out var incomingBusterAge) && incomingBusterAge >= sheltronDelay;
 

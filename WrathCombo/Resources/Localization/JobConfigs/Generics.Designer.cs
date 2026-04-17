@@ -611,6 +611,15 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Minimum Gauge Required to use {0} .
+        /// </summary>
+        internal static string MinimumGauge {
+            get {
+                return ResourceManager.GetString("MinimumGauge", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Movement Option.
         /// </summary>
         internal static string MovementOption {

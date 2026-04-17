@@ -299,6 +299,9 @@
   <data name="MaxTargetsMultiDot" xml:space="preserve">
     <value>Maximum number of targets to employ multi-dotting </value>
   </data>
+  <data name="MinimumGauge" xml:space="preserve">
+    <value>Minimum Gauge Required to use {0} </value>
+  </data>  
   <data name="MovementOption" xml:space="preserve">
     <value>Movement Option</value>
   </data>
