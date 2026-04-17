@@ -485,11 +485,15 @@ internal partial class DRK
                     DRK_Mit_Boss_BlackestNight_TankBuster_Difficulty,
                     DRK_Boss_Mit_DifficultyListSet);
 
+            var blackestNightDelay = flags.HasFlag(Combo.Simple)
+                ? 0
+                : DRK_Mitigation_Boss_BlackestNightDelay;
+
             #endregion
 
             if (ActionReady(BlackestNight) &&
                 IsEnabled(Preset.DRK_Mitigation_Boss_BlackestNight_TB) &&
-                HasIncomingTankBusterEffect() &&
+                HasIncomingTankBusterEffect(out var incomingBusterAge) && incomingBusterAge >= blackestNightDelay &&
                 blackestNightInMitigationContent)
                 return (action = BlackestNight) != 0;
 
