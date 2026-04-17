@@ -7299,6 +7299,24 @@ To start the melee combo, you must be within melee range.</value>
   <data name="RDM_VerAero_Name" xml:space="preserve">
     <value>Spell Combo on Veraero</value>
   </data>
+  <data name="RDM_RetargetVercure_Desc" xml:space="preserve">
+    <value>Will retarget Vercure according to following Suboptions</value>
+  </data>
+    <data name="RDM_RetargetVercure_LowHP_Desc" xml:space="preserve">
+    <value>Will Heal Lowest Health Party member until you fall below set threshold</value>
+  </data>
+    <data name="RDM_RetargetVercure_LowHP_Name" xml:space="preserve">
+    <value>Low hp Vercure Option</value>
+  </data>
+    <data name="RDM_RetargetVercure_MO_Desc" xml:space="preserve">
+    <value>Adds UI mouseover to the priority. Above LowHP option.</value>
+  </data>
+    <data name="RDM_RetargetVercure_MO_Name" xml:space="preserve">
+    <value>Mouseover Vercure Option</value>
+  </data>
+    <data name="RDM_RetargetVercure_Name" xml:space="preserve">
+    <value>Retarget Vercure Feature</value>
+  </data>
   <data name="RDM_VerThunder2_Desc" xml:space="preserve">
     <value>Replaces Verthunder 2 with options.</value>
   </data>
