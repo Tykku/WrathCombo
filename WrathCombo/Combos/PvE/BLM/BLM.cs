@@ -1,6 +1,7 @@
 using System;
 using WrathCombo.Core;
 using WrathCombo.CustomComboNS;
+using WrathCombo.Extensions;
 using static WrathCombo.Combos.PvE.BLM.Config;
 namespace WrathCombo.Combos.PvE;
 
@@ -66,8 +67,9 @@ internal partial class BLM : Caster
                         return Role.Swiftcast;
                 }
 
-                if (ActionReady(Manaward) &&
-                    PlayerHealthPercentageHp() < 40 && GroupDamageIncoming())
+                if (ActionReady(Manaward) && !LocalPlayer!.HasShield() &&
+                    (PlayerHealthPercentageHp() < 60 && !IsInParty() ||
+                     GroupDamageIncoming()))
                     return Manaward;
 
                 if (Role.CanAddle() && GroupDamageIncoming())
@@ -317,6 +319,12 @@ internal partial class BLM : Caster
             if (ContentSpecificActions.TryGet(out uint contentAction))
                 return contentAction;
 
+            if (IsEnabled(Preset.BLM_ST_Manaward) && !LocalPlayer!.HasShield() &&
+                (BLM_ST_ManawardTrigger == 0 && PlayerHealthPercentageHp() <= BLM_ST_ManawardHPThreshold && GroupDamageIncoming()) ||
+                ((BLM_ST_ManawardTrigger == 1 || (BLM_ST_ManawardTrigger == 0 && BLM_ST_ManawardSolo && !IsInParty())) && PlayerHealthPercentageHp() <= BLM_ST_ManawardHPThreshold) ||
+                (BLM_ST_ManawardTrigger == 2 && GroupDamageIncoming()))
+                return Manaward;
+
             if (CanWeave())
             {
                 if (IsEnabled(Preset.BLM_ST_Amplifier) &&
@@ -390,11 +398,6 @@ internal partial class BLM : Caster
                             return Triplecast;
                     }
                 }
-
-                if (IsEnabled(Preset.BLM_ST_Manaward) &&
-                    ActionReady(Manaward) &&
-                    PlayerHealthPercentageHp() < BLM_ST_ManawardHPThreshold && GroupDamageIncoming())
-                    return Manaward;
 
                 if (IsEnabled(Preset.BLM_ST_Addle) &&
                     Role.CanAddle() && GroupDamageIncoming())
