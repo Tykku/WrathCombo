@@ -229,7 +229,7 @@ internal partial class OccultCrescent
         }
 
         if (IsEnabledAndUsable(Preset.Phantom_Berserker_DeadlyBlow, DeadlyBlow) &&
-            GetStatusEffectRemainingTime(Buffs.PentupRage) <= 3f && HasStatusEffect(Buffs.PentupRage) && InActionRange(DeadlyBlow) && !CanWeaveNow)
+            GetStatusEffectRemainingTime(Buffs.PentupRage) <= 3f && (HasStatusEffect(Buffs.PentupRage) || CurrentJobLevel < 3) && InActionRange(DeadlyBlow) && !CanWeaveNow)
         {
             actionID = DeadlyBlow; // better when buff timer is low
             return true;
