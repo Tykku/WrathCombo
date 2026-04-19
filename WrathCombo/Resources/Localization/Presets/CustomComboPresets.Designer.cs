@@ -20267,6 +20267,60 @@ namespace WrathCombo.Resources.Localization.Presets {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Will retarget Vercure according to following Suboptions.
+        /// </summary>
+        internal static string RDM_RetargetVercure_Desc {
+            get {
+                return ResourceManager.GetString("RDM_RetargetVercure_Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Will Heal Lowest Health Party member until you fall below set threshold.
+        /// </summary>
+        internal static string RDM_RetargetVercure_LowHP_Desc {
+            get {
+                return ResourceManager.GetString("RDM_RetargetVercure_LowHP_Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Low hp Vercure Option.
+        /// </summary>
+        internal static string RDM_RetargetVercure_LowHP_Name {
+            get {
+                return ResourceManager.GetString("RDM_RetargetVercure_LowHP_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adds UI mouseover to the priority. Above LowHP option..
+        /// </summary>
+        internal static string RDM_RetargetVercure_MO_Desc {
+            get {
+                return ResourceManager.GetString("RDM_RetargetVercure_MO_Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mouseover Vercure Option.
+        /// </summary>
+        internal static string RDM_RetargetVercure_MO_Name {
+            get {
+                return ResourceManager.GetString("RDM_RetargetVercure_MO_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Retarget Vercure Feature.
+        /// </summary>
+        internal static string RDM_RetargetVercure_Name {
+            get {
+                return ResourceManager.GetString("RDM_RetargetVercure_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Replaces Riposte with the basic melee combo..
         /// </summary>
         internal static string RDM_Riposte_Desc {
@@ -27564,6 +27618,24 @@ namespace WrathCombo.Resources.Localization.Presets {
         internal static string SMN_Raise_Retarget_Name {
             get {
                 return ResourceManager.GetString("SMN_Raise_Retarget_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Retargets Rekindle to Target&apos;s Target &gt; Tank in need &gt; A party member in need &gt; Self.
+        /// </summary>
+        internal static string SMN_Rekindle_Desc {
+            get {
+                return ResourceManager.GetString("SMN_Rekindle_Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rekindle Retarget.
+        /// </summary>
+        internal static string SMN_Rekindle_Name {
+            get {
+                return ResourceManager.GetString("SMN_Rekindle_Name", resourceCulture);
             }
         }
         

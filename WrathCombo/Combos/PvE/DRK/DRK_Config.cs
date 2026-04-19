@@ -4,10 +4,12 @@ using Dalamud.Interface.Colors;
 using ECommons.ImGuiMethods;
 using WrathCombo.CustomComboNS.Functions;
 using WrathCombo.Data;
+using WrathCombo.Extensions;
 using WrathCombo.Resources.Localization.JobConfigs;
 using WrathCombo.Window.Functions;
 using BossAvoidance = WrathCombo.Combos.PvE.All.Enums.BossAvoidance;
 using PartyRequirement = WrathCombo.Combos.PvE.All.Enums.PartyRequirement;
+using static WrathCombo.Window.Text;
 
 // ReSharper disable RedundantArgumentDefaultValue
 // ReSharper disable AccessToStaticMemberViaDerivedType
@@ -119,6 +121,9 @@ internal partial class DRK
                         DRK_Mit_Boss_BlackestNight_TankBuster_Difficulty,
                         DRK_Boss_Mit_DifficultyListSet,
                         Generics.SelectWhatKindOfContentThisOptionAppliesTo);
+                    UserConfig.DrawSliderInt(
+                        0, 4, DRK_Mitigation_Boss_BlackestNightDelay, 
+                        FormatAndCache(Generics.DelayMit, BlackestNight.ActionName()), sliderIncrement: 1);
                     break;
 
                 case Preset.DRK_Mitigation_Boss_Rampart:
@@ -575,31 +580,21 @@ internal partial class DRK
             new("DRK_AoE_AdvancedMitigation", (int)SimpleMitigation.On);
 
         public static readonly ContentCheck.ListSet DRK_Boss_Mit_DifficultyListSet = ContentCheck.ListSet.CasualVSHard;
-
         public static readonly UserFloat DRK_Mit_NonBoss_Threshold = new("DRK_Mit_NonBoss_Threshold", 10f);
-
         public static readonly UserInt DRK_Mit_NonBoss_LivingDead_Health = new("DRK_Mit_NonBoss_LivingDead_Health", 15);
-
         public static readonly UserBoolArray DRK_Mit_Boss_BlackestNight_OnCD_Difficulty = new("DRK_Mit_Boss_BlackestNight_OnCD_Difficulty",  [true, false]);
         public static readonly UserInt DRK_Mit_Boss_BlackestNight_Health = new("DRK_Mit_Boss_BlackestNight_Health", 30);
-
         public static readonly UserBoolArray DRK_Mit_Boss_BlackestNight_TankBuster_Difficulty = new("DRK_Mit_Boss_BlackestNight_TankBuster_Difficulty",  [true, false]);
-
+        public static readonly UserInt DRK_Mitigation_Boss_BlackestNightDelay = new("DRK_Mitigation_Boss_BlackestNightDelay");
         public static readonly UserBoolArray DRK_Mit_Boss_Rampart_Difficulty = new("DRK_Mit_Boss_Rampart_Difficulty",  [true, false]);
-
         public static readonly UserBoolArray DRK_Mit_Boss_ShadowWall_Difficulty = new("DRK_Mit_Boss_ShadowWall_Difficulty",  [true, false]);
         public static readonly UserBool DRK_Mit_Boss_ShadowWall_First = new("DRK_Mit_Boss_ShadowWall_First", true);
-
         public static readonly UserBoolArray DRK_Mit_Boss_DarkMind_Difficulty = new("DRK_Mit_Boss_DarkMind_Difficulty",  [true, false]);
         public static readonly UserFloat DRK_Mit_Boss_DarkMind_Threshold = new("DRK_Mit_Boss_DarkMind_Threshold", 80f);
         public static readonly UserBool DRK_Mit_Boss_DarkMind_Align= new("DRK_Mit_Boss_DarkMind_Align", true);
-
         public static readonly UserBoolArray DRK_Mit_Boss_Oblation_TankBuster_Difficulty = new("DRK_Mit_Boss_Oblation_TankBuster_Difficulty",  [true, false]);
-
         public static readonly UserBoolArray DRK_Mit_Boss_DarkMissionary_Difficulty = new("DRK_Mit_Boss_DarkMissionary_Difficulty",  [true, false]);
-
         public static readonly UserBoolArray DRK_Mit_Boss_Reprisal_Difficulty = new("DRK_Mit_Boss_Reprisal_Difficulty",  [true, false]);
-
 
         #endregion
 

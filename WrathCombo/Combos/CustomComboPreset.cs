@@ -5514,6 +5514,21 @@ public enum Preset
     [ParentCombo(RDM_Raise)]
     [JobInfo(Job.RDM)]
     RDM_Raise_Vercure = 13407,
+    
+    [ReplaceSkill(RDM.Vercure)]
+    [JobInfo(Job.RDM)]
+    [Retargeted]
+    RDM_RetargetVercure = 13435,
+
+    [ParentCombo(RDM_RetargetVercure)]
+    [JobInfo(Job.RDM)]
+    [Retargeted(RDM.Vercure)]
+    RDM_RetargetVercure_MO = 13436,
+
+    [ParentCombo(RDM_RetargetVercure)]
+    [JobInfo(Job.RDM)]
+    [Retargeted(RDM.Vercure)]
+    RDM_RetargetVercure_LowHP = 13437,
 
     [ParentCombo(RDM_Raise)]
     [JobInfo(Job.RDM)]
@@ -6984,6 +6999,9 @@ public enum Preset
 
     [JobInfo(Job.SMN)]
     SMN_Searing = 17072,
+    
+    [JobInfo(Job.SMN)]
+    SMN_Rekindle = 17083,
     #endregion
 
     // Last Used 17080

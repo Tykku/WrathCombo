@@ -70,6 +70,7 @@ internal partial class WAR
                 case Preset.WAR_Mitigation_Boss_RawIntuition_TankBuster:
                     DrawDifficultyMultiChoice(WAR_Mitigation_Boss_RawIntuition_TankBuster_Difficulty, WAR_Boss_Mit_DifficultyListSet ,
                         Generics.SelectWhatKindOfContentThisOptionAppliesTo);
+                    DrawSliderInt(0, 4, WAR_Mitigation_Boss_RawIntuitionDelay, FormatAndCache(Generics.DelayMit, RawIntuition.ActionName()), sliderIncrement: 1);
                     break;
 
                 case Preset.WAR_Mitigation_Boss_Rampart:
@@ -441,6 +442,7 @@ internal partial class WAR
             WAR_Mitigation_NonBoss_Equilibrium_Health = new("WAR_Mitigation_NonBoss_Equilibrium_Health", 50),
             WAR_Mitigation_NonBoss_Holmgang_Health = new("WAR_Mitigation_NonBoss_Holmgang_Health", 20),
             WAR_Mitigation_Boss_RawIntuition_Health = new("WAR_Mitigation_Boss_RawIntuition_Health", 99),
+            WAR_Mitigation_Boss_RawIntuitionDelay = new("WAR_Mitigation_Boss_RawIntuitionDelay"),
             WAR_Mitigation_Boss_Equilibrium_Health = new("WAR_Mitigation_Boss_Equilibrium_Health", 30),
             WAR_Mitigation_Boss_Tankbuster_Equilibrium_Health = new("WAR_Mitigation_Boss_Tankbuster_Equilibrium_Health", 80),
 

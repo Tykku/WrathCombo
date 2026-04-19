@@ -46,6 +46,7 @@ internal partial class RDM
             RDM_OGCDs_Options_CorpsCharges = new("RDM_OGCDs_Options_CorpsCharges", 0),
             RDM_OGCDs_Options_EngagementCharges = new("RDM_OGCDs_Options_EngagementCharges", 0),
             RDM_OGCDs_Options_Corpsacorps_Distance = new("RDM_OGCDs_Options_Corpsacorps_Distance", 25),
+            RDM_RetargetVercure_Health = new("RDM_RetargetVercure_Health", 50),
             RDM_MagickProtectionDuration = new("RDM_MagickProtectionDuration"),
             RDM_AddleDuration = new("RDM_AddleDuration");
 
@@ -195,6 +196,10 @@ internal partial class RDM
                 #endregion
 
                 #region Standalones
+                case Preset.RDM_RetargetVercure_LowHP:
+                    DrawSliderInt(1, 100, RDM_RetargetVercure_Health, FormatAndCache(Generics.HPPercentageThreshold, Vercure.ActionName()), 200);
+                    break;
+                
                 case Preset.RDM_Riposte_Weaves:
                     DrawHorizontalMultiChoice(RDM_Riposte_Weaves_Options, Fleche.ActionName(), "Adds to the OGCD button", 6, 0);
                     DrawHorizontalMultiChoice(RDM_Riposte_Weaves_Options, ContreSixte.ActionName(), "Adds to the OGCD button", 6, 1);

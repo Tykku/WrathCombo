@@ -23,6 +23,7 @@ internal partial class GNB
             GNB_Mitigation_NonBoss_SuperBolide_Health = new("GNB_Mitigation_NonBoss_SuperBolide_Health", 20),
             GNB_Mitigation_Boss_Aurora_Health = new("GNB_Mitigation_Boss_Aurora_Health", 99),
             GNB_Mitigation_Boss_HeartOfStone_Health = new("GNB_Mitigation_Boss_HeartOfStone_Health", 80),
+            GNB_Mitigation_Boss_HeartOfStoneDelay = new("GNB_Mitigation_Boss_HeartOfStoneDelay"),
             GNB_Opener_NM = new("GNB_Opener_NM"),
             GNB_ST_NM_BossOption = new("GNB_ST_NM_BossOption"),
             GNB_ST_NM_HPOption = new("GNB_ST_NM_HPOption", 25),
@@ -119,6 +120,7 @@ internal partial class GNB
                 case Preset.GNB_Mitigation_Boss_HeartOfStone_TankBuster:
                     DrawDifficultyMultiChoice(GNB_Mitigation_Boss_HeartOfStone_TankBuster_Difficulty, GNB_Boss_Mit_DifficultyListSet,
                         Generics.SelectWhatKindOfContentThisOptionAppliesTo);
+                    DrawSliderInt(0, 4, GNB_Mitigation_Boss_HeartOfStoneDelay, FormatAndCache(Generics.DelayMit, HeartOfStone.ActionName()), sliderIncrement: 1);
                     break;
 
                 case Preset.GNB_Mitigation_Boss_Rampart:

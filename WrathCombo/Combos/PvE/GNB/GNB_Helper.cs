@@ -259,10 +259,14 @@ internal partial class GNB : Tank
             ? 50
             : GNB_Mitigation_Boss_HeartOfStone_Health;
 
+        var heartOfStoneDelay = rotationFlags.HasFlag(RotationMode.simple)
+            ? 0
+            : GNB_Mitigation_Boss_HeartOfStoneDelay;
+
         bool heartOfStoneOnCD = IsEnabled(Preset.GNB_Mitigation_Boss_HeartOfStone_OnCD) &&  
                                 PlayerHealthPercentageHp() <= HeartOfStoneHealthThreshold && IsPlayerTargeted() && HeartOfStoneOnCDInMitigationContent;
-        bool heartOfStoneTankBuster = IsEnabled(Preset.GNB_Mitigation_Boss_HeartOfStone_TankBuster) &&
-                                      HasIncomingTankBusterEffect() && HeartOfStoneTankBusterInMitigationContent;
+        bool heartOfStoneTankBuster = IsEnabled(Preset.GNB_Mitigation_Boss_HeartOfStone_TankBuster) && HeartOfStoneTankBusterInMitigationContent &&
+                                      HasIncomingTankBusterEffect(out var incomingBusterAge) && incomingBusterAge >= heartOfStoneDelay;;
             
         if (ActionReady(OriginalHook(HeartOfStone)) && (heartOfStoneOnCD || heartOfStoneTankBuster))
         {

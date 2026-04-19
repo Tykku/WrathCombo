@@ -51,11 +51,13 @@ internal partial class PLD
                     DrawSliderInt(1, 100, PLD_Mitigation_NonBoss_DivineVeil_Health, FormatAndCache(Generics.PlayerHPToUseAction, DivineVeil.ActionName()));
                     break;
                 case Preset.PLD_Mitigation_Boss_SheltronOvercap:
-                    DrawSliderInt(50, 100, PLD_Mitigation_Boss_SheltronOvercap_Threshold, "Oath Gauge required to Use Sheltron and prevent Overcap.");
+                    DrawSliderInt(50, 100, PLD_Mitigation_Boss_SheltronOvercap_Threshold, FormatAndCache(Generics.MinimumGauge, Sheltron.ActionName()));
+                    DrawSliderInt(1, 100, PLD_Mitigation_Boss_SheltronOvercap_HealthThreshold, FormatAndCache(Generics.PlayerHPToUseAction, Sheltron.ActionName()));
                     break;
                 case Preset.PLD_Mitigation_Boss_SheltronTankbuster:
                     DrawDifficultyMultiChoice(PLD_Mitigation_Boss_SheltronTankbuster_Difficulty, PLD_Boss_Mit_DifficultyListSet,
                         Generics.SelectWhatKindOfContentThisOptionAppliesTo);
+                    DrawSliderInt(0, 4, PLD_Mitigation_Boss_SheltronDelay, FormatAndCache(Generics.DelayMit, Sheltron.ActionName()), sliderIncrement: 1);
                     break;
 
                 case Preset.PLD_Mitigation_Boss_DivineVeil:
@@ -360,6 +362,8 @@ internal partial class PLD
             PLD_Mitigation_NonBoss_HallowedGround_Health = new("PLD_Mitigation_NonBoss_HallowedGround_Health", 20),
             PLD_Mitigation_NonBoss_DivineVeil_Health = new("PLD_Mitigation_NonBoss_DivineVeil_Health", 80),
             PLD_Mitigation_Boss_SheltronOvercap_Threshold = new("PLD_Mitigation_Boss_SheltronOvercap_Threshold", 100),
+            PLD_Mitigation_Boss_SheltronOvercap_HealthThreshold = new("PLD_Mitigation_Boss_SheltronOvercap_HealthThreshold", 100),
+            PLD_Mitigation_Boss_SheltronDelay = new("PLD_Mitigation_Boss_SheltronDelay"),
 
             //ST
             PLD_Balance_Content = new("PLD_Balance_Content", 1),
