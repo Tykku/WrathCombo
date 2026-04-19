@@ -651,6 +651,11 @@ internal partial class NIN
         public override List<(int[] Steps, Func<bool> Condition)> SkipSteps 
         { get; set; } = [([1,2,3], () => OriginalHook(Ninjutsu) == Suiton)];
        
+        public override List<int> DelayedWeaveSteps { get; set; } =
+        [
+            12
+        ];
+
         public override int MinOpenerLevel => 100;
         public override int MaxOpenerLevel => 109;
         internal override UserData? ContentCheckConfig => NIN_Balance_Content;
@@ -713,6 +718,11 @@ internal partial class NIN
         
         public override List<(int[] Steps, Func<bool> Condition)> SkipSteps 
         { get; set; } = [([1,2,3], () => OriginalHook(Ninjutsu) == Suiton)];
+        
+        public override List<int> DelayedWeaveSteps { get; set; } =
+        [
+            12
+        ];
 
         public override Preset Preset => Preset.NIN_ST_AdvancedMode_BalanceOpener;
         public override int MinOpenerLevel => 100;
@@ -775,6 +785,11 @@ internal partial class NIN
         
         public override List<(int[] Steps, Func<bool> Condition)> SkipSteps 
         { get; set; } = [([1,2,3], () => OriginalHook(Ninjutsu) == Suiton)];
+        
+        public override List<int> DelayedWeaveSteps { get; set; } =
+        [
+            11
+        ];
 
         public override Preset Preset => Preset.NIN_ST_AdvancedMode_BalanceOpener;
         internal override UserData? ContentCheckConfig => NIN_Balance_Content;
