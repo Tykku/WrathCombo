@@ -31,6 +31,31 @@ public partial class WrathCombo
     private const string Command = "/wrath";
     private const string OldCommand = "/scombo";
 
+    private static readonly Dictionary<uint, uint[]> BurstPresetMap = new()
+    {
+        { 19, [11003, 11016, 11010, 11019] }, // PLD
+        { 21, [18003, 18019, 18007, 18018] }, // WAR
+        { 32, [5015, 5054, 5016, 5055, 5018, 5057] }, // DRK
+        { 37, [7008, 7201, 7011, 7204] }, // GNB
+        { 24, [19008, 19195] }, // WHM
+        { 28, [16003, 16054] }, // SCH
+        { 33, [1043, 1016] }, // AST
+        { 40, [14051, 14010, 14008, 14005] }, // SGE
+        { 22, [6103, 6104, 6203, 6204, 6107, 6207, 6106, 6206] }, // DRG
+        { 20, [9009, 9030, 9032, 9011] }, // MNK
+        { 30, [10006, 10007, 10022, 10023] }, // NIN
+        { 34, [15012, 15108, 15018, 15114] }, // SAM
+        { 39, [12009, 12108, 12006, 12105] }, // RPR
+        { 41, [30005, 30011, 30104, 30110, 30112] }, // VPR
+        { 23, [3017, 3032] }, // BRD
+        { 31, [8110, 8108, 8107, 8103, 8119, 8301, 8304, 8307, 8315] }, // MCH
+        { 38, [4015, 4018, 4028, 4021, 4022, 4046, 4047, 4055, 4048, 4049, 4052] }, // DNC
+        { 25, [2103, 2202, 2102, 2201] }, // BLM
+        { 27, [17053, 17017, 17020, 17061] }, // SMN
+        { 35, [13010, 13207, 13011, 13208] }, // RDM
+        { 42, [20021, 20054, 20027, 20060] }, // PCT
+    };
+
     /// <summary>
     ///     Registers the base commands for the plugin.<br />
     ///     Also displays the biggest commands in Dalamud.
@@ -40,6 +65,8 @@ public partial class WrathCombo
         EzCmd.Add(Command, OnCommand,
             "Open a window to edit custom combo settings.\n" +
             $"{Command} auto → Toggle Auto-rotation on/off.\n" +
+            $"{Command} hold → Disables all burst presets for your current job.\n" +
+            $"{Command} resume → Enables all burst presets for your current job.\n" +
             $"{Command} debug → Dumps a debug log onto your desktop for developers.\n" +
             $"{OldCommand} → Old alias from XIVSlothCombo, still works!");
         EzCmd.Add(OldCommand, OnCommand);
@@ -66,6 +93,10 @@ public partial class WrathCombo
         var argumentParts = arguments.ToLowerInvariant().Split();
         switch (argumentParts[0])
         {
+            case "hold":
+            case "resume":
+                HandleBurstControl(argumentParts); break;
+
             case "unsetall":
             case "set":
             case "toggle":
@@ -785,5 +816,39 @@ public partial class WrathCombo
         DuoLog.Warning("Please do not play Classes with other people, " +
                        "it is objectively worse in every way, and you will lack " +
                        "a significant amount of functionality anyway.");
+    }
+
+    /// <summary>
+    ///     Handles the burst control command, which enables or disables all burst presets for the current job.
+    /// </summary>
+    /// <param name="argument">
+    ///     The action to take (hold or resume).
+    /// </param>
+    private void HandleBurstControl(string[] argument)
+    {
+        if (Svc.ClientState.LocalPlayer is null) return;
+
+        var job = Svc.ClientState.LocalPlayer.ClassJob.RowId;
+        var enable = argument[0] == "resume";
+
+        if (BurstPresetMap.TryGetValue(job, out var presets))
+        {
+            foreach (var presetId in presets)
+            {
+                var preset = (Preset)presetId;
+                if (enable)
+                    PresetStorage.EnablePreset(preset, ConfigChangeSource.Command);
+                else
+                    PresetStorage.DisablePreset(preset, ConfigChangeSource.Command);
+            }
+
+            var action = enable ? "RESUMED" : "HELD";
+            var jobName = Svc.ClientState.LocalPlayer.ClassJob.Value.Name();
+            DuoLog.Information($"{jobName} Burst {action}");
+        }
+        else
+        {
+            DuoLog.Error("No burst presets defined for your current job.");
+        }
     }
 }
