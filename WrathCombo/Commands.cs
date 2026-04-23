@@ -31,29 +31,29 @@ public partial class WrathCombo
     private const string Command = "/wrath";
     private const string OldCommand = "/scombo";
 
-    private static readonly Dictionary<uint, uint[]> BurstPresetMap = new()
+    private static readonly Dictionary<Job, Preset[]> BurstPresetMap = new()
     {
-        { 19, [11003, 11016, 11010, 11019] }, // PLD
-        { 21, [18003, 18019, 18007, 18018] }, // WAR
-        { 32, [5015, 5054, 5016, 5055, 5018, 5057] }, // DRK
-        { 37, [7008, 7201, 7011, 7204] }, // GNB
-        { 24, [19008, 19195] }, // WHM
-        { 28, [16003, 16054] }, // SCH
-        { 33, [1043, 1016] }, // AST
-        { 40, [14051, 14010, 14008, 14005] }, // SGE
-        { 22, [6103, 6104, 6203, 6204, 6107, 6207, 6106, 6206] }, // DRG
-        { 20, [9009, 9030, 9032, 9011] }, // MNK
-        { 30, [10006, 10007, 10022, 10023] }, // NIN
-        { 34, [15012, 15108, 15018, 15114] }, // SAM
-        { 39, [12009, 12108, 12006, 12105] }, // RPR
-        { 41, [30005, 30011, 30104, 30110, 30112] }, // VPR
-        { 23, [3017, 3032] }, // BRD
-        { 31, [8110, 8108, 8107, 8103, 8119, 8301, 8304, 8307, 8315] }, // MCH
-        { 38, [4015, 4018, 4028, 4021, 4022, 4046, 4047, 4055, 4048, 4049, 4052] }, // DNC
-        { 25, [2103, 2202, 2102, 2201] }, // BLM
-        { 27, [17053, 17017, 17020, 17061] }, // SMN
-        { 35, [13010, 13207, 13011, 13208] }, // RDM
-        { 42, [20021, 20054, 20027, 20060] }, // PCT
+        { Job.PLD, [Preset.PLD_ST_AdvancedMode_FoF, Preset.PLD_AoE_AdvancedMode_FoF, Preset.PLD_ST_AdvancedMode_Requiescat, Preset.PLD_AoE_AdvancedMode_Requiescat] }, // PLD
+        { Job.WAR, [Preset.WAR_ST_InnerRelease, Preset.WAR_AoE_InnerRelease, Preset.WAR_ST_Infuriate, Preset.WAR_AoE_Infuriate] }, // WAR
+        { Job.DRK, [Preset.DRK_ST_CD_Delirium, Preset.DRK_AoE_CD_Delirium, Preset.DRK_ST_CD_Shadow, Preset.DRK_AoE_CD_Shadow, Preset.DRK_ST_CD_Bringer, Preset.DRK_AoE_CD_Bringer] }, // DRK
+        { Job.GNB, [Preset.GNB_ST_NoMercy, Preset.GNB_AoE_NoMercy, Preset.GNB_ST_Bloodfest, Preset.GNB_AoE_Bloodfest] }, // GNB
+        { Job.WHM, [Preset.WHM_ST_MainCombo_PresenceOfMind, Preset.WHM_AoE_DPS_PresenceOfMind] }, // WHM
+        { Job.SCH, [Preset.SCH_ST_ADV_DPS_ChainStrat, Preset.SCH_AoE_ADV_DPS_ChainStrat] }, // SCH
+        { Job.AST, [Preset.AST_AOE_Divination, Preset.AST_DPS_Divination] }, // AST
+        { Job.SGE, [Preset.SGE_AoE_DPS_Psyche, Preset.SGE_AoE_DPS_Phlegma, Preset.SGE_ST_DPS_Psyche, Preset.SGE_ST_DPS_Phlegma] }, // SGE
+        { Job.DRG, [Preset.DRG_ST_BattleLitany, Preset.DRG_ST_LanceCharge, Preset.DRG_AoE_BattleLitany, Preset.DRG_AoE_LanceCharge, Preset.DRG_ST_DragonfireDive, Preset.DRG_AoE_DragonfireDive, Preset.DRG_ST_LifeSurge, Preset.DRG_AoE_LifeSurge] }, // DRG
+        { Job.MNK, [Preset.MNK_STUseBrotherhood, Preset.MNK_AoEUseBrotherhood, Preset.MNK_AoEUseROF, Preset.MNK_STUseROF] }, // MNK
+        { Job.NIN, [Preset.NIN_ST_AdvancedMode_TrickAttack, Preset.NIN_ST_AdvancedMode_Mug, Preset.NIN_AoE_AdvancedMode_TrickAttack, Preset.NIN_AoE_AdvancedMode_Mug] }, // NIN
+        { Job.SAM, [Preset.SAM_ST_CDs_Ikishoten, Preset.SAM_AOE_CDs_Ikishoten, Preset.SAM_ST_CDs_MeikyoShisui, Preset.SAM_AoE_MeikyoShisui] }, // SAM
+        { Job.RPR, [Preset.RPR_ST_Gluttony, Preset.RPR_AoE_Gluttony, Preset.RPR_ST_ArcaneCircle, Preset.RPR_AoE_ArcaneCircle] }, // RPR
+        { Job.VPR, [Preset.VPR_ST_SerpentsIre, Preset.VPR_ST_Reawaken, Preset.VPR_AoE_SerpentsIre, Preset.VPR_AoE_Reawaken, Preset.VPR_AoE_ReawakenCombo] }, // VPR
+        { Job.BRD, [Preset.BRD_Adv_Buffs, Preset.BRD_AoE_Adv_Buffs] }, // BRD
+        { Job.MCH, [Preset.MCH_ST_Adv_Stabilizer, Preset.MCH_ST_Adv_WildFire, Preset.MCH_ST_Adv_TurretQueen, Preset.MCH_ST_Adv_Reassemble, Preset.MCH_ST_Adv_Tools, Preset.MCH_AoE_Adv_Reassemble, Preset.MCH_AoE_Adv_Queen, Preset.MCH_AoE_Adv_Stabilizer, Preset.MCH_AoE_Adv_Tools] }, // MCH
+        { Job.DNC, [Preset.DNC_ST_Adv_SS, Preset.DNC_ST_Adv_TS, Preset.DNC_ST_Adv_FanProccs, Preset.DNC_ST_Adv_Feathers, Preset.DNC_ST_Adv_Improvisation, Preset.DNC_AoE_Adv_Devilment, Preset.DNC_AoE_Adv_Flourish, Preset.DNC_AoE_Adv_FanProccs, Preset.DNC_AoE_Adv_Feathers, Preset.DNC_AoE_Adv_Improvisation, Preset.DNC_AoE_Adv_DawnDance] }, // DNC
+        { Job.BLM, [Preset.BLM_ST_LeyLines, Preset.BLM_AoE_LeyLines, Preset.BLM_ST_Amplifier, Preset.BLM_AoE_Amplifier] }, // BLM
+        { Job.SMN, [Preset.SMN_AoE_Advanced_Combo_SearingLight, Preset.SMN_ST_Advanced_Combo_SearingLight, Preset.SMN_ST_Advanced_Combo_DemiSummons, Preset.SMN_AoE_Advanced_Combo_DemiSummons] }, // SMN
+        { Job.RDM, [Preset.RDM_ST_Embolden, Preset.RDM_AoE_Embolden, Preset.RDM_ST_Manafication, Preset.RDM_AoE_Manafication] }, // RDM
+        { Job.PCT, [Preset.PCT_ST_AdvancedMode_ScenicMuse, Preset.PCT_AoE_AdvancedMode_ScenicMuse, Preset.PCT_ST_AdvancedMode_HammerStampCombo, Preset.PCT_AoE_AdvancedMode_HammerStampCombo] }, // PCT
     };
 
     /// <summary>
@@ -65,8 +65,6 @@ public partial class WrathCombo
         EzCmd.Add(Command, OnCommand,
             "Open a window to edit custom combo settings.\n" +
             $"{Command} auto → Toggle Auto-rotation on/off.\n" +
-            $"{Command} hold → Disables all burst presets for your current job.\n" +
-            $"{Command} resume → Enables all burst presets for your current job.\n" +
             $"{Command} debug → Dumps a debug log onto your desktop for developers.\n" +
             $"{OldCommand} → Old alias from XIVSlothCombo, still works!");
         EzCmd.Add(OldCommand, OnCommand);
@@ -93,8 +91,7 @@ public partial class WrathCombo
         var argumentParts = arguments.ToLowerInvariant().Split();
         switch (argumentParts[0])
         {
-            case "hold":
-            case "resume":
+            case "burst":
                 HandleBurstControl(argumentParts); break;
 
             case "unsetall":
@@ -819,36 +816,35 @@ public partial class WrathCombo
     }
 
     /// <summary>
-    ///     Handles the burst control command, which enables or disables all burst presets for the current job.
+    ///     Handles the burst control command, toggling, holding, or resuming all burst presets for the current job.
     /// </summary>
     /// <param name="argument">
-    ///     The action to take (hold or resume).
+    ///     The subcommand: <c>hold</c>, <c>resume</c>, or blank to toggle based on current state.
     /// </param>
     private void HandleBurstControl(string[] argument)
     {
-        if (Svc.ClientState.LocalPlayer is null) return;
-
-        var job = Svc.ClientState.LocalPlayer.ClassJob.RowId;
-        var enable = argument[0] == "resume";
-
-        if (BurstPresetMap.TryGetValue(job, out var presets))
-        {
-            foreach (var presetId in presets)
-            {
-                var preset = (Preset)presetId;
-                if (enable)
-                    PresetStorage.EnablePreset(preset, ConfigChangeSource.Command);
-                else
-                    PresetStorage.DisablePreset(preset, ConfigChangeSource.Command);
-            }
-
-            var action = enable ? "RESUMED" : "HELD";
-            var jobName = Svc.ClientState.LocalPlayer.ClassJob.Value.Name();
-            DuoLog.Information($"{jobName} Burst {action}");
-        }
-        else
+        if (!BurstPresetMap.TryGetValue(Player.Job, out var presets))
         {
             DuoLog.Error("No burst presets defined for your current job.");
+            return;
         }
+
+        var sub = argument.Length > 1 ? argument[1] : "";
+        var enable = sub switch
+        {
+            "hold" => false,
+            "resume" => true,
+            _ => !PresetStorage.IsEnabled(presets[0]),
+        };
+
+        foreach (var preset in presets)
+        {
+            if (enable)
+                PresetStorage.EnablePreset(preset, ConfigChangeSource.Command);
+            else
+                PresetStorage.DisablePreset(preset, ConfigChangeSource.Command);
+        }
+
+        DuoLog.Information($"{Player.Job} Burst {(enable ? "RESUMED" : "HELD")}");
     }
 }
