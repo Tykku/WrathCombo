@@ -29,12 +29,17 @@ internal partial class GNB
             GNB_ST_NM_HPOption = new("GNB_ST_NM_HPOption", 25),
             GNB_ST_Overcap_Choice = new("GNB_ST_Overcap_Choice"),
             GNB_ST_HoldLightningShot = new("GNB_ST_HoldLightningShot"),
+            GNB_ST_HoldLightningShotInBurst = new("GNB_ST_HoldLightningShotInBurst"),
+            GNB_ST_HoldGFCharge = new("GNB_ST_HoldGFCharge", 0),
             GNB_ST_BurstStrike_Setup = new("GNB_ST_BurstStrike_Setup"),
             GNB_AoE_FatedCircle_BurstStrike = new("GNB_AoE_FatedCircle_BurstStrike", 1),
             GNB_AoE_Overcap_Choice = new("GNB_AoE_Overcap_Choice"),
             GNB_AoE_NoMercyStop = new("GNB_AoE_NoMercyStop", 25),
             GNB_AoE_FatedCircle_Setup = new("GNB_AoE_FatedCircle_Setup"),
             GNB_AoE_SonicBreak_EarlyOrLate = new("GNB_AoE_SonicBreak_EarlyOrLate"),
+            GNB_FC_DoubleDown_NMOnly = new("GNB_FC_DoubleDown_NMOnly", 0),
+            GNB_BS_DoubleDown_NMOnly = new("GNB_BS_DoubleDown_NMOnly", 0),
+            GNB_BS_Continuation_Procs = new("GNB_BS_Continuation_Procs", 0),
             GNB_NM_Features_Weave = new("GNB_NM_Feature_Weave"),
             GNB_GF_Features_Choice = new("GNB_GF_Choice"),
             GNB_GF_Overcap_Choice = new("GNB_GF_Overcap_Choice"),
@@ -186,16 +191,29 @@ internal partial class GNB
                         "Exclude Overcap Protection", $"Excludes {BurstStrike.ActionName()}, regardless of cartridge count", 1);
                     ImGui.Spacing();
                     DrawHorizontalRadioButton(GNB_ST_BurstStrike_Setup,
-                        "Precede No Mercy", $"Allow preceding {NoMercy.ActionName()} with {BurstStrike.ActionName()} for a buffed {Hypervelocity.ActionName()} (BS->NM->HV) - ONLY APPLIES TO 2.50", 0);
+                        $"Precede {NoMercy.ActionName()}", $"Allow preceding {NoMercy.ActionName()} with {BurstStrike.ActionName()} for a buffed {Hypervelocity.ActionName()} (BS->NM->HV) - ONLY APPLIES TO 2.50", 0);
                     DrawHorizontalRadioButton(GNB_ST_BurstStrike_Setup,
-                        "Don't Precede No Mercy", $"Forbid preceding {NoMercy.ActionName()} with {BurstStrike.ActionName()}", 1);
+                        $"Don't Precede {NoMercy.ActionName()}", $"Forbid preceding {NoMercy.ActionName()} with {BurstStrike.ActionName()}", 1);
+                    break;
+
+                case Preset.GNB_ST_GnashingFang:
+                    DrawHorizontalRadioButton(GNB_ST_HoldGFCharge,
+                        "Hold for Burst", $"Holds one charge of {GnashingFang.ActionName()} for at least one usage inside of {NoMercy.ActionName()}", 0);
+                    DrawHorizontalRadioButton(GNB_ST_HoldGFCharge,
+                        "Don't Hold for Burst", $"Does not hold any charges of {GnashingFang.ActionName()} for {NoMercy.ActionName()}", 1);
                     break;
 
                 case Preset.GNB_ST_RangedUptime:
                     DrawHorizontalRadioButton(GNB_ST_HoldLightningShot,
-                        "Hold for Continuation", "Holds Lightning Shot if you have any Continuation procs available to avoid loss", 1);
+                        $"Hold for {Continuation.ActionName()}", $"Holds {LightningShot.ActionName()} if you have any {Continuation.ActionName()} procs available to avoid loss", 1);
                     DrawHorizontalRadioButton(GNB_ST_HoldLightningShot,
-                        "Don't Hold for Continuation", "Uses Lightning Shot regardless of any Continuation procs currently available", 0);
+                        $"Don't Hold for {Continuation.ActionName()}", $"Uses {LightningShot.ActionName()} regardless of any {Continuation.ActionName()} procs currently available", 0);
+                    ImGui.Spacing();
+                    DrawHorizontalRadioButton(GNB_ST_HoldLightningShotInBurst,
+                        $"Hold under {NoMercy.ActionName()}", $"Holds {LightningShot.ActionName()} when under {NoMercy.ActionName()} buff", 1);
+                    DrawHorizontalRadioButton(GNB_ST_HoldLightningShotInBurst,
+                        $"Don't Hold under {NoMercy.ActionName()}", $"Uses {LightningShot.ActionName()} regardless of {NoMercy.ActionName()} buff", 0);
+
                     break;
 
                 #endregion
@@ -338,6 +356,26 @@ internal partial class GNB
                         "Don't Precede No Mercy", $"Forbid preceding {NoMercy.ActionName()} with {BurstStrike.ActionName()}", 1);
                     break;
 
+                case Preset.GNB_FC_DoubleDown:
+                    DrawHorizontalRadioButton(GNB_FC_DoubleDown_NMOnly,
+                        "Hold for Burst", $"Holds {DoubleDown.ActionName()} until buffed by {NoMercy.ActionName()}", 0);
+                    DrawHorizontalRadioButton(GNB_FC_DoubleDown_NMOnly,
+                        "Don't Hold for Burst", $"Uses {DoubleDown.ActionName()} regardless of {NoMercy.ActionName()} buff", 1);
+                    break;
+
+                case Preset.GNB_BS_DoubleDown:
+                    DrawHorizontalRadioButton(GNB_BS_DoubleDown_NMOnly,
+                        "Hold for Burst", $"Holds {DoubleDown.ActionName()} until buffed by {NoMercy.ActionName()}", 0);
+                    DrawHorizontalRadioButton(GNB_BS_DoubleDown_NMOnly,
+                        "Don't Hold for Burst", $"Uses {DoubleDown.ActionName()} regardless of {NoMercy.ActionName()} buff", 1);
+                    break;
+
+                case Preset.GNB_BS_Continuation:
+                    DrawHorizontalRadioButton(GNB_BS_Continuation_Procs,
+                        "All Procs", $"Uses all {Continuation.ActionName()} procs available as soon as possible", 0);
+                    DrawHorizontalRadioButton(GNB_BS_Continuation_Procs,
+                        "Only Hypervelocity", $"Only uses {Hypervelocity.ActionName()} regardless of other {Continuation.ActionName()} procs currently available", 1);
+                    break;
                     #endregion
             }
         }

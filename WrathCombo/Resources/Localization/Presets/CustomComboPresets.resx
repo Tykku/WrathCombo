@@ -3601,10 +3601,10 @@ This is the ideal option for newcomers to the job.</value>
   <data name="GNB_AoE_Zone_Name" xml:space="preserve">
     <value>Danger/Blasting Zone Option</value>
   </data>
-  <data name="GNB_AuroraProtection_Desc" xml:space="preserve">
+  <data name="GNB_AuroraFeatures_Desc" xml:space="preserve">
     <value>Locks out Aurora if Aurora's effect is on the target by replacing it with Savage Blade.</value>
   </data>
-  <data name="GNB_AuroraProtection_Name" xml:space="preserve">
+  <data name="GNB_AuroraFeatures_Name" xml:space="preserve">
     <value>Aurora Protection Feature</value>
   </data>
   <data name="GNB_BS_Bloodfest_Desc" xml:space="preserve">
