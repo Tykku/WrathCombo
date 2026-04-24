@@ -840,7 +840,9 @@ public partial class WrathCombo
         var enable = sub switch
         {
             "hold" => false,
+            "disable" => false,
             "resume" => true,
+            "enable" => true,
             _ => !PresetStorage.IsEnabled(presets[0]),
         };
 
