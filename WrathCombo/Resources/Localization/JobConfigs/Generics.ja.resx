@@ -308,13 +308,13 @@
     <value>パーティ平均HP%が指定値以下のときに {0} を追加します。</value>
   </data>
   <data name="AddFieldMouseoverTargetting" xml:space="preserve">
-    <value>フィールドマウスオーバー対象を追加します。</value>
+    <value>マウスオーバーしている対象を追加します。</value>
   </data>
   <data name="Adds0To1" xml:space="preserve">
     <value>{1} に {0} を追加します。</value>
   </data>
   <data name="AllHealerRetargetting" xml:space="preserve">
-    <value>UIマウスオーバー &gt; フィールドマウスオーバー &gt; フォーカスターゲット &gt; ソフトターゲット &gt; ハードターゲット</value>
+    <value>UIマウスオーバー &gt; マウスオーバーしている対象 &gt; フォーカスターゲット &gt; ソフトターゲット &gt; ハードターゲット</value>
   </data>
   <data name="Always" xml:space="preserve">
     <value>常に</value>
@@ -347,7 +347,7 @@
     <value>簡易軽減を除外</value>
   </data>
   <data name="FieldMouseover" xml:space="preserve">
-    <value>フィールドマウスオーバー</value>
+    <value>マウスオーバーしている対象</value>
   </data>
   <data name="FocusTarget" xml:space="preserve">
     <value>フォーカスターゲット</value>

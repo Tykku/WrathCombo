@@ -611,7 +611,7 @@ Redirect や Reaction に近い挙動です。
 キーボード＋マウス操作で、上の「単体回復をリターゲット」または Redirect / Reaction のマウスオーバー設定を使うなら、有効化を推奨します。</value>
   </data>
   <data name="UseFieldMouseoverOverridesInDefaultHealStack_Name" xml:space="preserve">
-    <value>既定の回復優先順にフィールドマウスオーバーを追加</value>
+    <value>既定の回復優先順にマウスオーバー対象を追加</value>
   </data>
   <data name="UseFieldMouseoverOverridesInDefaultHealStack_recommendedValue" xml:space="preserve">
     <value>任意</value>

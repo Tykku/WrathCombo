@@ -1164,7 +1164,7 @@
     <value>シンプル DPS モード - 単体</value>
   </data>
   <data name="AST_ST_Simple_DPS_Desc" xml:space="preserve">
-    <value>マレフィックを、自動 DPS カード割り当てを含む完全な 1 ボタンの単体ローテーションに置き換えます。
+    <value>マレフィクを、自動DPSカード割り当てを含む完全な1ボタンの単体ローテーションに置き換えます。
 ジョブに不慣れなプレイヤー向けの推奨設定です。</value>
   </data>
   <data name="AST_AOE_Simple_DPS_Name" xml:space="preserve">
@@ -1394,7 +1394,7 @@
     <value>アドバンスト ヒーリング モード - 単体</value>
   </data>
   <data name="AST_ST_Heals_Desc" xml:space="preserve">
-    <value>ベネフィックをワンボタン回復の代替品に置き換えます。</value>
+    <value>ベネフィクをワンボタン回復アクションに置き換えます。</value>
   </data>
   <data name="AST_ST_Heals_Esuna_Name" xml:space="preserve">
     <value>エスナオプション</value>
@@ -1484,7 +1484,7 @@
     <value>アドバンストヒーリングモード - AoE</value>
   </data>
   <data name="AST_AoE_Heals_Desc" xml:space="preserve">
-    <value>アスペクト・ヘリオス／コンジャンクション・ヘリオスまたはヘリオスをワンボタン回復の代替品に置き換えます。この呪文は、以下の設定に関係なく、チェックなしで最下位の優先順位とみなされます。</value>
+    <value>アスペクト・ヘリオス／コンジャンクション・ヘリオスまたはヘリオスをワンボタン回復アクションに置き換えます。この魔法は、以下の設定に関係なく、チェックなしで最下位の優先順位として扱われます。</value>
   </data>
   <data name="AST_AoE_Heals_Aspected_Name" xml:space="preserve">
     <value>アスペクト・ヘリオスオプション</value>
@@ -1505,10 +1505,10 @@
     <value>星天対抗を追加します。</value>
   </data>
   <data name="AST_AoE_Heals_LazyLady_Name" xml:space="preserve">
-    <value>怠惰な女性のオプション</value>
+    <value>クラウンレディ簡易使用オプション</value>
   </data>
   <data name="AST_AoE_Heals_LazyLady_Desc" xml:space="preserve">
-    <value>カードが引かれると、クラウンレディが追加されます。</value>
+    <value>カードを引いたとき、クラウンレディを追加します。</value>
   </data>
   <data name="AST_AoE_Heals_Horoscope_Name" xml:space="preserve">
     <value>ホロスコープオプション</value>
@@ -1559,7 +1559,7 @@
     <value>代替レイズ機能</value>
   </data>
   <data name="AST_Raise_Alternative_Desc" xml:space="preserve">
-    <value>迅速魔をアセンドに変更します</value>
+    <value>迅速魔をアセンドに置き換えます。</value>
   </data>
   <data name="AST_Raise_Alternative_Retarget_Name" xml:space="preserve">
     <value>蘇生リターゲット</value>
@@ -1630,7 +1630,7 @@
     <value>アスペクト・ベネフィクオプション</value>
   </data>
   <data name="AST_Retargets_AspectedBenefic_Desc" xml:space="preserve">
-    <value>アスペクト・ベネフィクをヒール・スタックにリターゲットする。</value>
+    <value>アスペクト・ベネフィクを回復優先順へリターゲットします。</value>
   </data>
   <data name="AST_Retargets_EssentialDignity_Name" xml:space="preserve">
     <value>ディグニティオプション</value>
@@ -1666,7 +1666,7 @@
     <value>アーサリースターオプション</value>
   </data>
   <data name="AST_Retargets_EarthlyStar_Desc" xml:space="preserve">
-    <value>アーサリースターを自分の下の地面にリターゲットします。</value>
+    <value>アーサリースターを自分の足元へリターゲットします。</value>
   </data>
   <data name="BLM_ST_SimpleMode_Name" xml:space="preserve">
     <value>シンプルモード - 単体</value>
@@ -1851,19 +1851,19 @@
     <value>三連魔 重複防止</value>
   </data>
   <data name="BLM_TriplecastProtection_Desc" xml:space="preserve">
-    <value>すでに三連魔がアクティブになっている場合は、三連魔をサベッジブレードに置き換えます。</value>
+    <value>すでに三連魔が有効な場合は、三連魔をサベッジブレードに置き換えます。</value>
   </data>
   <data name="BLM_Fire1and3_Name" xml:space="preserve">
-    <value>ファイア I／III 機能</value>
+    <value>ファイア／ファイガ機能</value>
   </data>
   <data name="BLM_Fire1and3_Desc" xml:space="preserve">
-    <value>ファイア I または ファイガを以下のオプションに置き換えます。</value>
+    <value>ファイアまたはファイガを以下のオプションに置き換えます。</value>
   </data>
   <data name="BLM_F1toF4_Name" xml:space="preserve">
-    <value>ファイアI→ファイジャ機能</value>
+    <value>ファイア→ファイジャ機能</value>
   </data>
   <data name="BLM_F1toF4_Desc" xml:space="preserve">
-    <value>利用可能な場合は、ファイア I を ファイジャに置き換えます。</value>
+    <value>使用可能な場合は、ファイアをファイジャに置き換えます。</value>
   </data>
   <data name="BLM_Fire4_Name" xml:space="preserve">
     <value>ファイジャ機能</value>
@@ -1878,16 +1878,16 @@
     <value>フレアを以下のオプションに置き換えます。</value>
   </data>
   <data name="BLM_Blizzard1and3_Name" xml:space="preserve">
-    <value>ブリザド I／III機能</value>
+    <value>ブリザド／ブリザガ機能</value>
   </data>
   <data name="BLM_Blizzard1and3_Desc" xml:space="preserve">
-    <value>ブリザド I または ブリザガを以下のオプションに置き換えます。</value>
+    <value>ブリザドまたはブリザガを以下のオプションに置き換えます。</value>
   </data>
   <data name="BLM_B1toB4_Name" xml:space="preserve">
-    <value>ブリザド I から ブリザジャへの機能</value>
+    <value>ブリザド→ブリザジャ機能</value>
   </data>
   <data name="BLM_B1toB4_Desc" xml:space="preserve">
-    <value>利用可能な場合は、ブリザド I を ブリザジャに置き換えます。</value>
+    <value>使用可能な場合は、ブリザドをブリザジャに置き換えます。</value>
   </data>
   <data name="BLM_Blizzard4toDespair_Name" xml:space="preserve">
     <value>ブリザジャ→デスペア機能</value>
@@ -1900,7 +1900,7 @@
   </data>
   <data name="BLM_Freeze_Desc" xml:space="preserve">
     <value>アンブラルハートスタックが 3 つある場合、フリーズをアイスパラドックスに置き換えます。
-同期ダウン時にフリーズをブリザラに変更します。</value>
+レベルシンク時にフリーズをブリザラに置き換えます。</value>
   </data>
   <data name="BLM_FlareParadox_Name" xml:space="preserve">
     <value>フレアスターからパラドックスへ</value>
@@ -1912,7 +1912,7 @@
     <value>アンプリファイア→ゼノグロシー機能</value>
   </data>
   <data name="BLM_AmplifierXeno_Desc" xml:space="preserve">
-    <value>ポリグロット スタックが最大の場合、アンプリファイアリファイアを ゼノグロシーに置き換えます。</value>
+    <value>ポリグロットスタックが最大の場合、アンプリファイアをゼノグロシーに置き換えます。</value>
   </data>
   <data name="BLM_XenoThunder_Name" xml:space="preserve">
     <value>ゼノグロシー→サンダー機能</value>
@@ -1956,7 +1956,7 @@
   <data name="BLU_NewMoonFluteOpener_Desc" xml:space="preserve">
     <value>月の笛をフルオープナーに置き換えます。
 オープナーを再度開始する前に、断罪の飛翔の残り 2 チャージを使用してください。
-呪文速度2.50で実行可能。
+スペルスピード2.50で実行可能。
 フェザーレインはターゲットにリターゲットされるため、配置する必要はありません。</value>
   </data>
   <data name="BLU_NewMoonFluteOpener_DoTOpener_Name" xml:space="preserve">
@@ -2077,7 +2077,7 @@
     <value>パーペチュアルレイ→とぎたて</value>
   </data>
   <data name="BLU_PerpetualRayStunCombo_Desc" xml:space="preserve">
-    <value>ターゲットが気絶していて近接範囲にいる場合、パーペチュアルレイをとぎたてに変えます。</value>
+    <value>対象がスタン中かつ近接範囲内にいる場合、パーペチュアルレイをとぎたてに置き換えます。</value>
   </data>
   <data name="BLU_MeleeCombo_Name" xml:space="preserve">
     <value>ソニックブーム近接コンボ</value>
@@ -2731,7 +2731,7 @@ Lv.70以下では可能な限りフェザーを使用します。</value>
     <value>扇の舞い【序】オーバーキャップ重複防止オプション</value>
   </data>
   <data name="DNC_ST_FanDanceOvercap_Desc" xml:space="preserve">
-    <value>四重の羽根がいっぱいになると扇踊り1が追加されます。</value>
+    <value>幻扇が上限に達した場合、扇の舞い【序】を追加します。</value>
   </data>
   <data name="DNC_ST_FanDance34_Name" xml:space="preserve">
     <value>扇の舞いオプション</value>
@@ -2755,13 +2755,13 @@ Lv.70以下では可能な限りフェザーを使用します。</value>
     <value>範囲 扇の舞い【序】オーバーキャップ重複防止オプション</value>
   </data>
   <data name="DNC_AoE_FanDanceOvercap_Desc" xml:space="preserve">
-    <value>四重の羽根がいっぱいになると扇踊り2が追加されます。</value>
+    <value>幻扇が上限に達した場合、扇の舞い【破】を追加します。</value>
   </data>
   <data name="DNC_AoE_FanDance34_Name" xml:space="preserve">
     <value>範囲 扇の舞い【序】オプション</value>
   </data>
   <data name="DNC_AoE_FanDance34_Desc" xml:space="preserve">
-    <value>利用可能な場合は扇の舞い【急】／4 を追加します。</value>
+    <value>使用可能な場合は扇の舞い【急】／扇の舞い【終】を追加します。</value>
   </data>
   <data name="DNC_DesirablePartner_Name" xml:space="preserve">
     <value>クローズドポジション［被］推奨パートナー機能</value>
@@ -2774,14 +2774,14 @@ Lv.70以下では可能な限りフェザーを使用します。</value>
     <value>カスタムダンスステップ機能</value>
   </data>
   <data name="DNC_CustomDanceSteps_Desc" xml:space="preserve">
-    <value>ダンス中にカスタムアクションをダンスステップに変更します。
-上記のステップ コンボ機能を使用しなくても、コンボをオンにしたままダンスを行うことができます。</value>
+    <value>ダンス中にカスタムアクションをダンスステップに置き換えます。
+上記のステップコンボ機能を使用しなくても、コンボを有効にしたままダンスできます。</value>
   </data>
   <data name="DNC_CustomDanceSteps_Conflicts_Name" xml:space="preserve">
-    <value>より小さな機能をオーバーライドする</value>
+    <value>下位機能を上書き</value>
   </data>
   <data name="DNC_CustomDanceSteps_Conflicts_Desc" xml:space="preserve">
-    <value>有効にすると、以下にリストされている小さな機能で置き換えられるアクションを選択できるようになり、ダンス時に設定したステップが返されます。</value>
+    <value>有効にすると、下記の下位機能で置き換えられるアクションを選択できるようになり、ダンス中は設定したステップを返します。</value>
   </data>
   <data name="DNC_DanceFeatures_Name" xml:space="preserve">
     <value>ダンス機能</value>
@@ -2793,25 +2793,25 @@ Lv.70以下では可能な限りフェザーを使用します。</value>
     <value>スタンダードステップコンボ機能</value>
   </data>
   <data name="DNC_StandardStepCombo_Desc" xml:space="preserve">
-    <value>ダンス中にスタンダードステップを各ダンスステップに変更します。</value>
+    <value>ダンス中にスタンダードステップを各ダンスステップに置き換えます。</value>
   </data>
   <data name="DNC_StandardStep_LastDance_Name" xml:space="preserve">
     <value>スタンダードステップ→ラストダンス機能</value>
   </data>
   <data name="DNC_StandardStep_LastDance_Desc" xml:space="preserve">
-    <value>可能な場合は、スタンダードステップまたはフィニシングムーブをラストダンスに変更します。</value>
+    <value>使用可能な場合は、スタンダードステップまたはフィニシングムーブをラストダンスに置き換えます。</value>
   </data>
   <data name="DNC_TechnicalStepCombo_Name" xml:space="preserve">
     <value>テクニカルステップコンボ機能</value>
   </data>
   <data name="DNC_TechnicalStepCombo_Desc" xml:space="preserve">
-    <value>ダンス中にテクニカルステップを各ダンスステップに変更します。</value>
+    <value>ダンス中にテクニカルステップを各ダンスステップに置き換えます。</value>
   </data>
   <data name="DNC_TechnicalStep_Devilment_Name" xml:space="preserve">
     <value>テクニカルステップ→攻めのタンゴ機能</value>
   </data>
   <data name="DNC_TechnicalStep_Devilment_Desc" xml:space="preserve">
-    <value>できるだけ早くテクニカルステップを攻めのタンゴに変更してください。</value>
+    <value>可能な限り早く、テクニカルステップを攻めのタンゴに置き換えます。</value>
   </data>
   <data name="DNC_FlourishingFanDances_Name" xml:space="preserve">
     <value>扇の舞い【急】実行機能</value>
@@ -2857,16 +2857,16 @@ Lv.70以下では可能な限りフェザーを使用します。</value>
     <value>利用可能な場合、扇の舞い【破】を扇の舞い【急】に置き換えます。</value>
   </data>
   <data name="DNC_Procc_Bladeshower_Name" xml:space="preserve">
-    <value>ブレードシャワーからブラッドシャワーまでの機能</value>
+    <value>ブレードシャワー→ブラッドシャワー機能</value>
   </data>
   <data name="DNC_Procc_Bladeshower_Desc" xml:space="preserve">
-    <value>利用可能な場合は、ブレードシャワーをブラッドシャワーに変更します。</value>
+    <value>使用可能な場合は、ブレードシャワーをブラッドシャワーに置き換えます。</value>
   </data>
   <data name="DNC_Procc_Windmill_Name" xml:space="preserve">
     <value>ウィンドミル→ライジングウィンドミル機能</value>
   </data>
   <data name="DNC_Procc_Windmill_Desc" xml:space="preserve">
-    <value>利用可能な場合は、風車を上昇風車に変更します。</value>
+    <value>使用可能な場合は、ウィンドミルをライジングウィンドミルに置き換えます。</value>
   </data>
   <data name="DRK_ST_Simple_Name" xml:space="preserve">
     <value>シンプルモード - 単体</value>
@@ -3345,7 +3345,7 @@ Lv.70以下では可能な限りフェザーを使用します。</value>
     <value>影身具現オプション</value>
   </data>
   <data name="DRK_oGCD_Shadow_Desc" xml:space="preserve">
-    <value>影身具現をフィーチャーに追加します。</value>
+    <value>影身具現を機能に追加します。</value>
   </data>
   <data name="DRK_oGCD_Disesteem_Name" xml:space="preserve">
     <value>ディセスティームオプション</value>
@@ -3363,7 +3363,7 @@ Lv.70以下では可能な限りフェザーを使用します。</value>
     <value>ソルト・アンド・ダークオプション</value>
   </data>
   <data name="DRK_oGCD_SaltAndDarkness_Desc" xml:space="preserve">
-    <value>塩漬けの大地の影響下にある場合、フィーチャーにソルト・アンド・ダークを追加します。</value>
+    <value>ソルトアースの効果範囲内にいる場合、機能にソルト・アンド・ダークを追加します。</value>
   </data>
   <data name="DRK_oGCD_Shadowbringer_Name" xml:space="preserve">
     <value>シャドウブリンガーオプション</value>
@@ -4175,7 +4175,7 @@ Lv.70以下では可能な限りフェザーを使用します。</value>
     <value>コンティニュエーションオプション</value>
   </data>
   <data name="GNB_BS_Continuation_Desc" xml:space="preserve">
-    <value>利用可能な場合、すべての単体コンティニュエーションプロシージャをバーストストライクに追加します。</value>
+    <value>使用可能な場合、単体用のコンティニュエーション派生アクションをすべてバーストストライクに追加します。</value>
   </data>
   <data name="GNB_BS_Hypervelocity_Name" xml:space="preserve">
     <value>ハイパーヴェロシティのみオプション</value>
@@ -4539,7 +4539,7 @@ Lv.70以下では可能な限りフェザーを使用します。</value>
     <value>アクティブな間、オートタレット・ルークとオートマトン・クイーンをオーバードライブに置き換えます。</value>
   </data>
   <data name="MCH_BigHitter_Name" xml:space="preserve">
-    <value>ビッグヒッター特集</value>
+    <value>ビッグヒッター機能</value>
   </data>
   <data name="MCH_BigHitter_Desc" xml:space="preserve">
     <value>ホットショット、ドリル、エアアンカー、チェーンソー、エクスカベーターのどれがリキャストしているかに応じて交換します。</value>
@@ -5151,10 +5151,10 @@ Lv.70以下では可能な限りフェザーを使用します。</value>
 人＝土遁の術</value>
   </data>
   <data name="NIN_TCJ_Name" xml:space="preserve">
-    <value>天地人特集</value>
+    <value>天地人機能</value>
   </data>
   <data name="NIN_TCJ_Desc" xml:space="preserve">
-    <value>天地人（動き）を 天の印、地の印、人の印に変えます。</value>
+    <value>天地人（移動）を天の印、地の印、人の印に置き換えます。</value>
   </data>
   <data name="PCT_ST_SimpleMode_Name" xml:space="preserve">
     <value>シンプルモード - 単体</value>
@@ -6258,10 +6258,10 @@ Lv.70以下では可能な限りフェザーを使用します。</value>
     <value>ソウルサイズをローテーションに追加します。</value>
   </data>
   <data name="RPR_AoE_GrimSwathe_Name" xml:space="preserve">
-    <value>シーフスウェーズオプション</value>
+    <value>グリムスウェーズオプション</value>
   </data>
   <data name="RPR_AoE_GrimSwathe_Desc" xml:space="preserve">
-    <value>シーフスウェーズをローテーションに追加します。</value>
+    <value>グリムスウェーズをローテーションに追加します。</value>
   </data>
   <data name="RPR_AoE_Gluttony_Name" xml:space="preserve">
     <value>グラトニーオプション</value>
@@ -6337,35 +6337,35 @@ Lv.70以下では可能な限りフェザーを使用します。</value>
     <value>シャドウ・オブ・デスをローテーションに追加します。</value>
   </data>
   <data name="RPR_GluttonyBloodSwathe_Name" xml:space="preserve">
-    <value>グラトニーをストークスウェーズ／シーフスウェーズで使用機能</value>
+    <value>ストークスウェーズ／グリムスウェーズでグラトニーを使用する機能</value>
   </data>
   <data name="RPR_GluttonyBloodSwathe_Desc" xml:space="preserve">
-    <value>ストークスウェーズと シーフスウェーズは、利用可能になるとグラトニーに変わります。</value>
+    <value>グラトニーが使用可能な場合、ストークスウェーズとグリムスウェーズをグラトニーに置き換えます。</value>
   </data>
   <data name="RPR_GluttonyBloodSwathe_BloodSwatheCombo_Name" xml:space="preserve">
-    <value>ジビトゥとギャロウズ／ギロティンをストークスウェーズ／シーフスウェーズで使用機能</value>
+    <value>ストークスウェーズ／グリムスウェーズでジビトゥ・ギャロウズ／ギロティンを使用する機能</value>
   </data>
   <data name="RPR_GluttonyBloodSwathe_BloodSwatheCombo_Desc" xml:space="preserve">
-    <value>ブラッドスウェーズに（処刑人の）ギャロウズを追加します。
-グラトニーに（処刑人の）ギロチンを追加します。</value>
+    <value>ストークスウェーズに（処刑人の）ジビトゥ／ギャロウズを追加します。
+グリムスウェーズに（処刑人の）ギロティンを追加します。</value>
   </data>
   <data name="RPR_GluttonyBloodSwathe_Enshroud_Name" xml:space="preserve">
     <value>レムールシュラウドコンボオプション</value>
   </data>
   <data name="RPR_GluttonyBloodSwathe_Enshroud_Desc" xml:space="preserve">
-    <value>ブラッドストークとグリムスワスにレムールシュラウドのコンボ（ヴォイド／クロスリーパー、コムニオ、レムールスライス、サクリフィシウム、パーフェクティオ）を追加します。</value>
+    <value>ストークスウェーズとグリムスウェーズに、レムールシュラウド中のコンボ（ヴォイド／クロスリーパー、コムニオ、レムールスライス、サクリフィキウム、ペルフェクティオ）を追加します。</value>
   </data>
   <data name="RPR_GluttonyBloodSwathe_OGCD_Name" xml:space="preserve">
     <value>アビリティオプション</value>
   </data>
   <data name="RPR_GluttonyBloodSwathe_OGCD_Desc" xml:space="preserve">
-    <value>レムールシュラウド、レムールスライス、サクリフィシウムを追加します。</value>
+    <value>レムールシュラウド、レムールスライス、サクリフィキウムを追加します。</value>
   </data>
   <data name="RPR_GluttonyBloodSwathe_Sacrificium_Name" xml:space="preserve">
     <value>サクリフィキウムのみオプション</value>
   </data>
   <data name="RPR_GluttonyBloodSwathe_Sacrificium_Desc" xml:space="preserve">
-    <value>包まれている間、血の茎とグリムスワスに犠牲のみを追加します。</value>
+    <value>レムールシュラウド中、ストークスウェーズとグリムスウェーズにサクリフィキウムのみを追加します。</value>
   </data>
   <data name="RPR_TrueNorthGluttony_Name" xml:space="preserve">
     <value>トゥルーノース機能</value>
@@ -6387,7 +6387,7 @@ Lv.70以下では可能な限りフェザーを使用します。</value>
     <value>ターゲットが選択されていない場合、戦闘中にハルパーにソウルソウを追加します。</value>
   </data>
   <data name="RPR_ArcaneCirclePlentifulHarvest_Name" xml:space="preserve">
-    <value>アルケインサークル 吸魂機能</value>
+    <value>アルケインサークル→プレンティフルハーベスト機能</value>
   </data>
   <data name="RPR_ArcaneCirclePlentifulHarvest_Desc" xml:space="preserve">
     <value>サクリファイスのスタックがある場合、アルケインサークルを プレンティフルハーベストに置き換えます。</value>
@@ -6402,7 +6402,7 @@ Lv.70以下では可能な限りフェザーを使用します。</value>
     <value>レムールシュラウド 重複防止機能</value>
   </data>
   <data name="RPR_EnshroudProtection_Desc" xml:space="preserve">
-    <value>ソウルリーバーの廃棄物を保護するためにレムールシュラウドをジビトゥ／ギャロウズに変えます。</value>
+    <value>ソウルリーバーの消費漏れを防ぐため、レムールシュラウドをジビトゥ／ギャロウズに置き換えます。</value>
   </data>
   <data name="RPR_TrueNorthEnshroud_Name" xml:space="preserve">
     <value>トゥルーノース機能</value>
@@ -6420,13 +6420,13 @@ Lv.70以下では可能な限りフェザーを使用します。</value>
     <value>コムニオをジビトゥ／ギャロウズとギロティンで使用機能</value>
   </data>
   <data name="RPR_CommunioOnGGG_Desc" xml:space="preserve">
-    <value>コムニオをジビトゥ／ギャロウズとギロチンに追加します。</value>
+    <value>コムニオをジビトゥ／ギャロウズとギロティンに追加します。</value>
   </data>
   <data name="RPR_LemureOnGGG_Name" xml:space="preserve">
     <value>レムールスライス／レムールサイズオプション</value>
   </data>
   <data name="RPR_LemureOnGGG_Desc" xml:space="preserve">
-    <value>ジビトゥ／ギャロウズにレムールスライスを、ギロチンにレムールサイズを追加します。</value>
+    <value>ジビトゥ／ギャロウズにレムールスライスを、ギロティンにレムールサイズを追加します。</value>
   </data>
   <data name="RDM_ST_SimpleMode_Name" xml:space="preserve">
     <value>シンプルモード - 単体</value>
@@ -6475,7 +6475,7 @@ Lv.70以下では可能な限りフェザーを使用します。</value>
     <value>ヴァルフレア／ヴァルホーリーオプション</value>
   </data>
   <data name="RDM_ST_HolyFlare_Desc" xml:space="preserve">
-    <value>入手可能な場合はヴァルフレアとヴァルホーリーを追加します。</value>
+    <value>使用可能な場合はヴァルフレアとヴァルホーリーを追加します。</value>
   </data>
   <data name="RDM_ST_MeleeCombo_Name" xml:space="preserve">
     <value>近接コンボオプション</value>
@@ -6803,7 +6803,7 @@ Lv.70以下では可能な限りフェザーを使用します。</value>
     <value>ヴァーホリー／ヴァーフレア、スコーチ、レゾリューションを追加</value>
   </data>
   <data name="RDM_Riposte_NoWaste_Name" xml:space="preserve">
-    <value>リポスト 廃棄物防止オプション</value>
+    <value>リポスト消費漏れ防止オプション</value>
   </data>
   <data name="RDM_Riposte_NoWaste_Desc" xml:space="preserve">
     <value>リソースが不足していてコンボを完走できない場合、リポストをサベッジブレードに置き換えます。</value>
@@ -8181,7 +8181,7 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>リキャストが戻ったときに秘策を追加し、パーティメンバーにクリティカルなガルバナイズバフを強制します。</value>
   </data>
   <data name="SCH_FairyReminder_Name" xml:space="preserve">
-    <value>妖精特集</value>
+    <value>フェアリー機能</value>
   </data>
   <data name="SCH_FairyReminder_Desc" xml:space="preserve">
     <value>フェアリーが召喚されていないとき、すべてのフェアリーアクションをサモン・エオスに置き換えます。</value>
@@ -9531,7 +9531,7 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>アドバンスト DPS モード - AoE</value>
   </data>
   <data name="WHM_AoE_DPS_Desc" xml:space="preserve">
-    <value>ホーリー／ホーリガのリキャストと呪文機能群。</value>
+    <value>ホーリー／ホーリガのリキャストと魔法機能群。</value>
   </data>
   <data name="WHM_AoE_DPS_SwiftHoly_Name" xml:space="preserve">
     <value>スウィフトホーリープル「オープナー」オプション</value>
@@ -9975,7 +9975,7 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>緊急ガード機能</value>
   </data>
   <data name="PvP_EmergencyGuard_Desc" xml:space="preserve">
-    <value>HPが設定値以下の場合にガードを使用する。</value>
+    <value>HPが設定値以下の場合にガードを使用します。</value>
   </data>
   <data name="PvP_QuickPurify_Name" xml:space="preserve">
     <value>クイック浄化機能</value>
@@ -9984,7 +9984,7 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>選択したデバフにかかった場合、浄化を使用します。</value>
   </data>
   <data name="PvP_MashCancel_Name" xml:space="preserve">
-    <value>防止 ぶちのめす キャンセル機能</value>
+    <value>連打キャンセル防止機能</value>
   </data>
   <data name="PvP_MashCancel_Desc" xml:space="preserve">
     <value>ボタンをサベッジブレードに置き換えることで、ボタンを素早く押している場合にガードがキャンセルされなくなります。</value>
@@ -9999,7 +9999,7 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>バーストモード</value>
   </data>
   <data name="ASTPvP_Burst_Desc" xml:space="preserve">
-    <value>フォールマレフィクをオールインワンのダメージ ボタンに変えます。</value>
+    <value>フォールマレフィクをワンボタン攻撃アクションに置き換えます。</value>
   </data>
   <data name="ASTPvP_Burst_DrawCard_Name" xml:space="preserve">
     <value>カードドローオプション</value>
@@ -10011,25 +10011,25 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>カードプレイオプション</value>
   </data>
   <data name="ASTPvP_Burst_PlayCard_Desc" xml:space="preserve">
-    <value>バーストモードにトランプを追加します。</value>
+    <value>バーストモードにカードプレイを追加します。</value>
   </data>
   <data name="ASTPvP_Burst_DoubleMalefic_Name" xml:space="preserve">
-    <value>ダブル マレフィク キャスティングオプション</value>
+    <value>ダブルマレフィク詠唱オプション</value>
   </data>
   <data name="ASTPvP_Burst_DoubleMalefic_Desc" xml:space="preserve">
-    <value>バーストモードにダブルマレフィックの詠唱を追加します。</value>
+    <value>バーストモードにダブルマレフィクの詠唱を追加します。</value>
   </data>
   <data name="ASTPvP_Burst_DoubleGravity_Name" xml:space="preserve">
-    <value>ダブル グラビデ キャスティングオプション</value>
+    <value>ダブルグラビデ詠唱オプション</value>
   </data>
   <data name="ASTPvP_Burst_DoubleGravity_Desc" xml:space="preserve">
-    <value>バーストモードにダブルグラビティの詠唱を追加します。</value>
+    <value>バーストモードにダブルグラビデの詠唱を追加します。</value>
   </data>
   <data name="ASTPvP_Burst_Gravity_Name" xml:space="preserve">
     <value>グラビデバーストオプション</value>
   </data>
   <data name="ASTPvP_Burst_Gravity_Desc" xml:space="preserve">
-    <value>バーストモードにグラビティの詠唱を追加します。</value>
+    <value>バーストモードにグラビデの詠唱を追加します。</value>
   </data>
   <data name="ASTPvP_Burst_Macrocosmos_Name" xml:space="preserve">
     <value>マクロコスモスオプション</value>
@@ -10039,7 +10039,7 @@ POST 94: バーストウィンドウ中に使用します。</value>
  ダブルグラビデが有効な場合、ダブルグラビデバーストに合わせるためマクロコスモスを温存します。</value>
   </data>
   <data name="ASTPvP_Diabrosis_Name" xml:space="preserve">
-    <value>役割 アクション ディアグノシスオプション</value>
+    <value>ロールアクション ディアブロシスオプション</value>
   </data>
   <data name="ASTPvP_Diabrosis_Desc" xml:space="preserve">
     <value>選択したHPを下回ると、バーストモードにロールアクションのディアブロシスを追加します。</value>
@@ -10048,7 +10048,7 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>アスペクト・ベネフィクオプション</value>
   </data>
   <data name="ASTPvP_Burst_Heal_Desc" xml:space="preserve">
-    <value>ターゲットが設定されたHPを下回っている場合、アスペクト・ベネフィクを追加します</value>
+    <value>対象のHPが設定値を下回っている場合、アスペクト・ベネフィクを追加します。</value>
   </data>
   <data name="ASTPvP_Epicycle_Name" xml:space="preserve">
     <value>周転円バースト機能</value>
@@ -10066,16 +10066,16 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>バーストモード</value>
   </data>
   <data name="BLMPvP_BurstMode_Desc" xml:space="preserve">
-    <value>ファイアをオールインワンのボタンに変えます。
-- 移動中にブリザード呪文を使用します (ワンボタンモードのみ)。
-- 必要に応じて パラドックスを使用します。</value>
+    <value>ファイアをワンボタン攻撃アクションに置き換えます。
+- 移動中はブリザド系魔法を使用します（ワンボタンモードのみ）。
+- 必要に応じてパラドックスを使用します。</value>
   </data>
   <data name="BLMPvP_Burst_Name" xml:space="preserve">
     <value>バーストオプション</value>
   </data>
   <data name="BLMPvP_Burst_Desc" xml:space="preserve">
-    <value>利用可能な場合はバーストを使用します。
-- ターゲットが範囲内にある必要があります。</value>
+    <value>使用可能な場合はバーストを使用します。
+- 対象が射程内にいる必要があります。</value>
   </data>
   <data name="BLMPvP_Xenoglossy_Name" xml:space="preserve">
     <value>ゼノグロシーオプション</value>
@@ -10088,7 +10088,7 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>レサージーオプション</value>
   </data>
   <data name="BLMPvP_Lethargy_Desc" xml:space="preserve">
-    <value>利用可能な場合は無気力を使用します。
+    <value>使用可能な場合はレサージーを使用します。
 - プレイヤー以外に対しては使用できません。
 - 対象のHPが以下である必要があります:</value>
   </data>
@@ -10096,7 +10096,7 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>エレメントギフトオプション</value>
   </data>
   <data name="BLMPvP_ElementalWeave_Desc" xml:space="preserve">
-    <value>利用可能な場合は火の花輪を使用します。
+    <value>使用可能な場合はエレメントギフトを使用します。
 - プレイヤーのHPが以下の値以上である必要があります。</value>
   </data>
   <data name="BLMPvP_ElementalStar_Name" xml:space="preserve">
@@ -10116,14 +10116,14 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>エーテリアルステップ機能</value>
   </data>
   <data name="BLMPvP_Manipulation_Feature_Desc" xml:space="preserve">
-    <value>クラウドコントロールの影響を受けると浄化を追加します。
-- 利用するには 浄化が必要です。</value>
+    <value>行動妨害を受けた場合に浄化を追加します。
+- 使用するには浄化が必要です。</value>
   </data>
   <data name="BRDPvP_BurstMode_Name" xml:space="preserve">
     <value>バーストモード</value>
   </data>
   <data name="BRDPvP_BurstMode_Desc" xml:space="preserve">
-    <value>パワフルショットをオールインワンのダメージボタンに変えます。</value>
+    <value>パワフルショットをワンボタン攻撃アクションに置き換えます。</value>
   </data>
   <data name="BRDPvP_SilentNocturne_Name" xml:space="preserve">
     <value>黙者のノクターンオプション</value>
@@ -10163,25 +10163,25 @@ POST 94: バーストウィンドウ中に使用します。</value>
 半眠り、ヘヴィ、バインドに対応します。</value>
   </data>
   <data name="BRDPvP_Eagle_Name" xml:space="preserve">
-    <value>ロール アクション イーグル アイ ショット オプション</value>
+    <value>ロールアクション イーグルアイショットオプション</value>
   </data>
   <data name="BRDPvP_Eagle_Desc" xml:space="preserve">
-    <value>ターゲットがガードされているか、選択したHP割合を下回っている場合、イーグルアイショットをバーストモードに自動的に追加します
- 大規模PVPでのみ機能します</value>
+    <value>対象がガード中、または選択したHP割合を下回っている場合、イーグルアイショットをバーストモードに自動で追加します。
+大規模PvPでのみ機能します。</value>
   </data>
   <data name="DNCPvP_BurstMode_Name" xml:space="preserve">
     <value>バーストモード</value>
   </data>
   <data name="DNCPvP_BurstMode_Desc" xml:space="preserve">
-    <value>ファウンテン コンボをオールインワンのダメージ ボタンに変えます。</value>
+    <value>ファウンテンコンボをワンボタン攻撃アクションに置き換えます。</value>
   </data>
   <data name="DNCPvP_BurstMode_HoningDance_Name" xml:space="preserve">
     <value>刃の舞いオプション</value>
   </data>
   <data name="DNCPvP_BurstMode_HoningDance_Desc" xml:space="preserve">
-    <value>近接範囲にいる場合、メインコンボにホーニングダンスを追加します（グローバルオフセットを考慮）。
+    <value>近接範囲にいる場合、メインコンボに刃の舞いを追加します（グローバルオフセットを考慮）。
 このオプションにより、刃の舞い【終】の早期使用が防止されます。
-早く終了したい場合は、ホーニング ダンスを別のキーにバインドしたままにしてください。</value>
+早く終了したい場合は、刃の舞いを別のキーに割り当てたままにしてください。</value>
   </data>
   <data name="DNCPvP_BurstMode_CuringWaltz_Name" xml:space="preserve">
     <value>癒やしのワルツオプション</value>
@@ -10193,26 +10193,26 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>クローズドポジション［被］ リマインダーオプション</value>
   </data>
   <data name="DNCPvP_BurstMode_Partner_Desc" xml:space="preserve">
-    <value>何もない場合にクローズドポジションリマインダーを追加します</value>
+    <value>クローズドポジションが付与されていない場合、リマインダーを追加します。</value>
   </data>
   <data name="DNCPvP_BurstMode_Dash_Name" xml:space="preserve">
     <value>アン・アヴァンオプション</value>
   </data>
   <data name="DNCPvP_BurstMode_Dash_Desc" xml:space="preserve">
-    <value>利用可能な場合はアン・アヴァンを使用し、バフが不足している場合は 1 2 コンボ ダメージをブーストします。</value>
+    <value>使用可能な場合はアン・アヴァンを使用し、バフが不足している場合は1-2コンボの与ダメージを補強します。</value>
   </data>
   <data name="DNCPvP_Eagle_Name" xml:space="preserve">
-    <value>ロール アクション イーグル アイ ショット オプション</value>
+    <value>ロールアクション イーグルアイショットオプション</value>
   </data>
   <data name="DNCPvP_Eagle_Desc" xml:space="preserve">
-    <value>ターゲットがガードされているか、選択したHP割合を下回っている場合、イーグルアイショットをバーストモードに自動的に追加します
- 大規模PVPでのみ機能します</value>
+    <value>対象がガード中、または選択したHP割合を下回っている場合、イーグルアイショットをバーストモードに自動で追加します。
+大規模PvPでのみ機能します。</value>
   </data>
   <data name="DRKPvP_Burst_Name" xml:space="preserve">
     <value>バーストモード</value>
   </data>
   <data name="DRKPvP_Burst_Desc" xml:space="preserve">
-    <value>ソウルイーター コンボをオールインワンのダメージ ボタンに変えます。</value>
+    <value>ソウルイーターコンボをワンボタン攻撃アクションに置き換えます。</value>
   </data>
   <data name="DRKPvP_Plunge_Name" xml:space="preserve">
     <value>プランジカットオプション</value>
@@ -10224,7 +10224,7 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>近接 プランジカットオプション</value>
   </data>
   <data name="DRKPvP_PlungeMelee_Desc" xml:space="preserve">
-    <value>ギャップを埋めるためだけでなく、近接範囲内でプランジを使用します。</value>
+    <value>接近目的だけでなく、近接範囲内でもプランジカットを使用します。</value>
   </data>
   <data name="DRKPvP_SaltedEarth_Name" xml:space="preserve">
     <value>ソルトアースオプション</value>
@@ -10260,7 +10260,7 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>ディセスティーム実行可オプション</value>
   </data>
   <data name="DRKPvP_Scorn_Desc" xml:space="preserve">
-    <value>バーストモードにスコーンを追加します。</value>
+    <value>バーストモードにディセスティームを追加します。</value>
   </data>
   <data name="DRKPvP_Rampart_Name" xml:space="preserve">
     <value>ロールアクション ランパートオプション</value>
@@ -10272,7 +10272,7 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>バーストモード</value>
   </data>
   <data name="DRGPvP_Burst_Desc" xml:space="preserve">
-    <value>ドレイクスベイン コンボをオールインワンのダメージ ボタンに変えます。</value>
+    <value>ドレイクスベインコンボをワンボタン攻撃アクションに置き換えます。</value>
   </data>
   <data name="DRGPvP_Geirskogul_Name" xml:space="preserve">
     <value>ゲイルスコグルオプション</value>
@@ -10320,11 +10320,11 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>イルーシブジャンプバーストオプション</value>
   </data>
   <data name="DRGPvP_BurstProtection_Desc" xml:space="preserve">
-    <value>すべてのアビリティが使用可能な状態でイルーシブジャンプを使用すると、雲蒸竜変コンボをオールインワンのバーストダメージボタンに変更します。
+    <value>すべてのアビリティが使用可能な状態でイルーシブジャンプを使用すると、雲蒸竜変コンボをワンボタンのバースト攻撃アクションに置き換えます。
  バーストの準備ができていない場合は、イルーシブジャンプを無効にします。</value>
   </data>
   <data name="DRGPvP_Smite_Name" xml:space="preserve">
-    <value>ロール アクション スマイト オプション</value>
+    <value>ロールアクション スマイトオプション</value>
   </data>
   <data name="DRGPvP_Smite_Desc" xml:space="preserve">
     <value>選択したHPを下回ると、バーストモードにロールアクションのスマイトを追加します。</value>
@@ -10333,7 +10333,7 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>バーストモード</value>
   </data>
   <data name="GNBPvP_Burst_Desc" xml:space="preserve">
-    <value>ソリッド バレル コンボをオールインワンのダメージ ボタンに変えます。</value>
+    <value>ソリッドバレルコンボをワンボタン攻撃アクションに置き換えます。</value>
   </data>
   <data name="GNBPvP_FatedCircle_Name" xml:space="preserve">
     <value>フェイテッドサークルオプション</value>
@@ -10381,13 +10381,13 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>コンティニュエーション機能</value>
   </data>
   <data name="GNBPvP_GnashingFang_Desc" xml:space="preserve">
-    <value>歯ぎしりの牙にコンティニュエーションを追加します。</value>
+    <value>ビートファングにコンティニュエーションを追加します。</value>
   </data>
   <data name="MCHPvP_BurstMode_Name" xml:space="preserve">
     <value>バーストモード</value>
   </data>
   <data name="MCHPvP_BurstMode_Desc" xml:space="preserve">
-    <value>ブラストチャージをオールインワンのダメージボタンに変えます。</value>
+    <value>ブラストチャージをワンボタン攻撃アクションに置き換えます。</value>
   </data>
   <data name="MCHPvP_BurstMode_AirAnchor_Name" xml:space="preserve">
     <value>エアアンカーオプション</value>
@@ -10402,10 +10402,10 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>バーストモードにアナライズを追加します。</value>
   </data>
   <data name="MCHPvP_BurstMode_AltAnalysis_Name" xml:space="preserve">
-    <value>代替 アナライズオプション</value>
+    <value>代替アナライズオプション</value>
   </data>
   <data name="MCHPvP_BurstMode_AltAnalysis_Desc" xml:space="preserve">
-    <value>チェーンソーの代わりにエアアンカーを使用した分析を使用します。</value>
+    <value>チェーンソーの代わりに、エアアンカーでアナライズを使用します。</value>
   </data>
   <data name="MCHPvP_BurstMode_Drill_Name" xml:space="preserve">
     <value>ドリルオプション</value>
@@ -10417,7 +10417,7 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>代替ドリルオプション</value>
   </data>
   <data name="MCHPvP_BurstMode_AltDrill_Desc" xml:space="preserve">
-    <value>ワイルドファイア 後に使用するためにドリルを保存します。</value>
+    <value>ワイルドファイア後に使用するため、ドリルを温存します。</value>
   </data>
   <data name="MCHPvP_BurstMode_BioBlaster_Name" xml:space="preserve">
     <value>バイオブラストオプション</value>
@@ -10447,20 +10447,20 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>魔弾の射手オプション</value>
   </data>
   <data name="MCHPvP_BurstMode_MarksmanSpite_Desc" xml:space="preserve">
-    <value>ターゲットが指定されたHPを下回っている場合、マークスマンスパイトをバーストモードに追加します。</value>
+    <value>対象のHPが指定値を下回っている場合、魔弾の射手をバーストモードに追加します。</value>
   </data>
   <data name="MCHPvP_Eagle_Name" xml:space="preserve">
-    <value>ロール アクション イーグル アイ ショット オプション</value>
+    <value>ロールアクション イーグルアイショットオプション</value>
   </data>
   <data name="MCHPvP_Eagle_Desc" xml:space="preserve">
-    <value>ターゲットがガードされているか、選択したHP割合を下回っている場合、イーグルアイショットをバーストモードに自動的に追加します
- 大規模PVPでのみ機能します</value>
+    <value>対象がガード中、または選択したHP割合を下回っている場合、イーグルアイショットをバーストモードに自動で追加します。
+大規模PvPでのみ機能します。</value>
   </data>
   <data name="MNKPvP_Burst_Name" xml:space="preserve">
     <value>バーストモード</value>
   </data>
   <data name="MNKPvP_Burst_Desc" xml:space="preserve">
-    <value>ファントム ラッシュ コンボをオールインワンのダメージ ボタンに変えます。</value>
+    <value>ファントムラッシュコンボをワンボタン攻撃アクションに置き換えます。</value>
   </data>
   <data name="MNKPvP_Burst_Meteodrive_Name" xml:space="preserve">
     <value>メテオドライヴオプション</value>
@@ -10499,7 +10499,7 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>バーストモードに絶空拳を追加します。</value>
   </data>
   <data name="MNKPvP_Smite_Name" xml:space="preserve">
-    <value>ロール アクション スマイト オプション</value>
+    <value>ロールアクション スマイトオプション</value>
   </data>
   <data name="MNKPvP_Smite_Desc" xml:space="preserve">
     <value>選択したHPを下回ると、バーストモードにロールアクションのスマイトを追加します。</value>
@@ -10508,25 +10508,25 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>バーストモード</value>
   </data>
   <data name="NINPvP_ST_BurstMode_Desc" xml:space="preserve">
-    <value>エオリアンエッジコンボをオールインワンのダメージボタンに変えます。</value>
+    <value>エオリアンエッジコンボをワンボタン攻撃アクションに置き換えます。</value>
   </data>
   <data name="NINPvP_AoE_BurstMode_Name" xml:space="preserve">
     <value>AoEバーストモード</value>
   </data>
   <data name="NINPvP_AoE_BurstMode_Desc" xml:space="preserve">
-    <value>風魔手裏剣をオールインワンの範囲ダメージ ボタンに変えます。</value>
+    <value>風魔手裏剣をワンボタン範囲攻撃アクションに置き換えます。</value>
   </data>
   <data name="NINPvP_ST_Meisui_Name" xml:space="preserve">
     <value>命水オプション</value>
   </data>
   <data name="NINPvP_ST_Meisui_Desc" xml:space="preserve">
-    <value>HPが設定値以下の場合、メイスイにスリームドラを使用します。</value>
+    <value>HPが設定値以下の場合、命水時にスリームドラを使用します。</value>
   </data>
   <data name="NINPvP_ST_MudraMode_Name" xml:space="preserve">
     <value>自動 印モード</value>
   </data>
   <data name="NINPvP_ST_MudraMode_Desc" xml:space="preserve">
-    <value>3つのムドラからムドラを使用し、自動的に単体バーストモードになります。
+    <value>3つの印から忍術を使用し、自動的に単体バーストモードになります。
 文心スタックがある場合は、氷翔乱龍 ＞ フォーク雷獣 ＞ 風遁の術を使用します。</value>
   </data>
   <data name="NINPvP_ST_FumaShuriken_Name" xml:space="preserve">
@@ -10545,7 +10545,7 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>三印自在 温存オプション</value>
   </data>
   <data name="NINPvP_ST_ThreeMudraPool_Desc" xml:space="preserve">
-    <value>ブンシンがバーストするときの両方のチャージを節約します</value>
+    <value>分身の術バーストに合わせるため、両方のチャージを温存します。</value>
   </data>
   <data name="NINPvP_ST_Dokumori_Name" xml:space="preserve">
     <value>毒盛の術オプション</value>
@@ -10563,20 +10563,20 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>星遁天誅オプション</value>
   </data>
   <data name="NINPvP_ST_SeitonTenchu_Desc" xml:space="preserve">
-    <value>ターゲットがHP閾値%を下回った場合、聖遁天誅をバーストモードに追加します。</value>
+    <value>対象のHPが閾値を下回った場合、星遁天誅をバーストモードに追加します。</value>
   </data>
   <data name="NINPvP_AoE_Meisui_Name" xml:space="preserve">
     <value>命水オプション</value>
   </data>
   <data name="NINPvP_AoE_Meisui_Desc" xml:space="preserve">
-    <value>HPが設定値以下の場合、メイスイにスリームドラを使用します。</value>
+    <value>HPが設定値以下の場合、命水時にスリームドラを使用します。</value>
   </data>
   <data name="NINPvP_AoE_MudraMode_Name" xml:space="preserve">
     <value>自動 印モード</value>
   </data>
   <data name="NINPvP_AoE_MudraMode_Desc" xml:space="preserve">
     <value>AoEバーストモードで、3つの印から自動で忍術を使用します。
- 道遁&gt;五箇目脚を使用します</value>
+道遁&gt;五箇目脚を使用します。</value>
   </data>
   <data name="NINPvP_AoE_FumaShuriken_Name" xml:space="preserve">
     <value>風魔手裏剣オプション</value>
@@ -10594,7 +10594,7 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>三印自在 温存オプション</value>
   </data>
   <data name="NINPvP_AoE_ThreeMudraPool_Desc" xml:space="preserve">
-    <value>ブンシンがバーストするときの両方のチャージを節約します</value>
+    <value>分身の術バーストに合わせるため、両方のチャージを温存します。</value>
   </data>
   <data name="NINPvP_AoE_Dokumori_Name" xml:space="preserve">
     <value>毒盛の術オプション</value>
@@ -10612,10 +10612,10 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>星遁天誅オプション</value>
   </data>
   <data name="NINPvP_AoE_SeitonTenchu_Desc" xml:space="preserve">
-    <value>ターゲットがHP閾値%を下回った場合、聖遁天誅をバーストモードに追加します。</value>
+    <value>対象のHPが閾値を下回った場合、星遁天誅をバーストモードに追加します。</value>
   </data>
   <data name="NINPvP_Smite_Name" xml:space="preserve">
-    <value>ロール アクション スマイト オプション</value>
+    <value>ロールアクション スマイトオプション</value>
   </data>
   <data name="NINPvP_Smite_Desc" xml:space="preserve">
     <value>選択したHPを下回ると、バーストモードにロールアクションのスマイトを追加します。</value>
@@ -10624,7 +10624,7 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>バーストモード</value>
   </data>
   <data name="PLDPvP_Burst_Desc" xml:space="preserve">
-    <value>ロイヤルアソリティ コンボをオールインワンのダメージ ボタンに変えます。</value>
+    <value>ロイヤルアソリティコンボをワンボタン攻撃アクションに置き換えます。</value>
   </data>
   <data name="PLDPvP_ShieldSmite_Name" xml:space="preserve">
     <value>シールドスマイトオプション</value>
@@ -10756,20 +10756,20 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>バーストモード</value>
   </data>
   <data name="RPRPvP_Burst_Desc" xml:space="preserve">
-    <value>スライスコンボをオールインワンのダメージボタンに変えます。
-メインコンボにソウルスライスを追加。</value>
+    <value>スライスコンボをワンボタン攻撃アクションに置き換えます。
+メインコンボにソウルスライスを追加します。</value>
   </data>
   <data name="RPRPvP_Burst_GrimSwathe_Name" xml:space="preserve">
-    <value>シーフスウェーズオプション</value>
+    <value>グリムスウェーズオプション</value>
   </data>
   <data name="RPRPvP_Burst_GrimSwathe_Desc" xml:space="preserve">
-    <value>CD のメインコンボに シーフスウェーズを追加</value>
+    <value>リキャストごとにメインコンボへグリムスウェーズを追加します。</value>
   </data>
   <data name="RPRPvP_Burst_DeathWarrant_Name" xml:space="preserve">
     <value>デスワラントオプション</value>
   </data>
   <data name="RPRPvP_Burst_DeathWarrant_Desc" xml:space="preserve">
-    <value>プレンティフルハーベストを使用する準備ができているとき、または プレンティフルハーベストのリキャストが デスワラントのリキャストよりも長い場合、デスワラントをメインコンボに追加します。 サクリファイス 温存 オプションを尊重します。</value>
+    <value>プレンティフルハーベストを使用する準備ができているとき、またはプレンティフルハーベストのリキャストがデスワラントより長い場合、デスワラントをメインコンボに追加します。イモータルサクリファイス温存オプションを尊重します。</value>
   </data>
   <data name="RPRPvP_Burst_ImmortalPooling_Name" xml:space="preserve">
     <value>プレンティフルハーベスト＋イモータルサクリファイス温存オプション</value>
@@ -10803,16 +10803,16 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>遠隔 ハーベストムーンオプション</value>
   </data>
   <data name="RPRPvP_Burst_RangedHarvest_Desc" xml:space="preserve">
-    <value>近接攻撃範囲外にいて、GCD がローテーションしておらず、使用できる場合に、ハーベスト ムーンをメインコンボに追加します。敵のHPが12,000を下回ったときにも投げます。</value>
+    <value>近接攻撃範囲外にいて、GCDが回っておらず、使用可能な場合に、ハーベストムーンをメインコンボに追加します。敵のHPが12,000を下回った場合にも使用します。</value>
   </data>
   <data name="RPRPvP_Burst_ArcaneCircle_Name" xml:space="preserve">
     <value>アルケインクレストオプション</value>
   </data>
   <data name="RPRPvP_Burst_ArcaneCircle_Desc" xml:space="preserve">
-    <value>設定されたHPパーセント未満の場合、メインコンボにアルケインクレストを追加します。</value>
+    <value>HP割合が設定値未満の場合、メインコンボにアルケインクレストを追加します。</value>
   </data>
   <data name="RPRPvP_Smite_Name" xml:space="preserve">
-    <value>ロール アクション スマイト オプション</value>
+    <value>ロールアクション スマイトオプション</value>
   </data>
   <data name="RPRPvP_Smite_Desc" xml:space="preserve">
     <value>選択したHPを下回ると、バーストモードにロールアクションのスマイトを追加します。</value>
@@ -10821,7 +10821,7 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>バーストモード</value>
   </data>
   <data name="RDMPvP_BurstMode_Desc" xml:space="preserve">
-    <value>ジョルガをオールインワン ボタンに変えます。
+    <value>ジョルガをワンボタン攻撃アクションに置き換えます。
 - ジョルガをサベッジブレードに置き換えることで、移動中にジョルガを詠唱しないようにします。</value>
   </data>
   <data name="RDMPvP_Riposte_Name" xml:space="preserve">
@@ -10829,13 +10829,13 @@ POST 94: バーストウィンドウ中に使用します。</value>
   </data>
   <data name="RDMPvP_Riposte_Desc" xml:space="preserve">
     <value>利用可能な場合はリポストとスコーチを使用します。
-- リポスト コンボには近接範囲が必要です。</value>
+- リポストコンボには近接範囲が必要です。</value>
   </data>
   <data name="RDMPvP_Resolution_Name" xml:space="preserve">
     <value>レゾリューションオプション</value>
   </data>
   <data name="RDMPvP_Resolution_Desc" xml:space="preserve">
-    <value>使用可能な場合は解像度を使用します。
+    <value>使用可能な場合はレゾリューションを使用します。
 - プレイヤー以外に対しては使用できません。
 - 対象のHPが以下である必要があります:</value>
   </data>
@@ -10844,7 +10844,7 @@ POST 94: バーストウィンドウ中に使用します。</value>
   </data>
   <data name="RDMPvP_Embolden_Desc" xml:space="preserve">
     <value>利用可能な場合はエンボルデンを使用します。
-- エンチャントされたリポストが利用可能である必要があります。
+- エンリポストが使用可能である必要があります。
 - 有効にすると、コル・ア・コルと一緒に使用されます。</value>
   </data>
   <data name="RDMPvP_Corps_Name" xml:space="preserve">
@@ -10852,16 +10852,16 @@ POST 94: バーストウィンドウ中に使用します。</value>
   </data>
   <data name="RDMPvP_Corps_Desc" xml:space="preserve">
     <value>可能な場合はコル・ア・コルを使用します。
-- 最大範囲内に留まらなければなりません。
-- エンチャントされたリポストが利用可能である必要があります。</value>
+- 射程内にいる必要があります。
+- エンリポストが使用可能である必要があります。</value>
   </data>
   <data name="RDMPvP_Displacement_Name" xml:space="preserve">
     <value>デプラスマンオプション</value>
   </data>
   <data name="RDMPvP_Displacement_Desc" xml:space="preserve">
-    <value>可能な場合はディスプレイスメントを使用します。
+    <value>可能な場合はデプラスマンを使用します。
 - スコーチが利用可能になったときに使用します。
-- ターゲットが近接攻撃範囲内にある必要があります。</value>
+- 対象が近接攻撃範囲内にいる必要があります。</value>
   </data>
   <data name="RDMPvP_Forte_Name" xml:space="preserve">
     <value>フォルテオプション</value>
@@ -10875,8 +10875,8 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>コル・ア・コル／デプラスマン機能</value>
   </data>
   <data name="RDMPvP_Dash_Feature_Desc" xml:space="preserve">
-    <value>クラウドコントロールの影響を受けると浄化を追加します。
-- 利用するには 浄化が必要です。</value>
+    <value>行動妨害を受けた場合に浄化を追加します。
+- 使用するには浄化が必要です。</value>
   </data>
   <data name="RDMPvP_PhantomDart_Name" xml:space="preserve">
     <value>ファントムダートオプション</value>
@@ -10888,7 +10888,7 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>バーストモード</value>
   </data>
   <data name="SGEPvP_BurstMode_Desc" xml:space="preserve">
-    <value>ドシスIII をオールインワンのダメージ ボタンに変えます。</value>
+    <value>ドシスIIIをワンボタン攻撃アクションに置き換えます。</value>
   </data>
   <data name="SGEPvP_BurstMode_Pneuma_Name" xml:space="preserve">
     <value>プネウマオプション</value>
@@ -10933,7 +10933,7 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>バフが不足している場合にカルディアリマインダーをバーストモードに追加します</value>
   </data>
   <data name="SGEPvP_Diabrosis_Name" xml:space="preserve">
-    <value>役割 アクション ディアグノシスオプション</value>
+    <value>ロールアクション ディアブロシスオプション</value>
   </data>
   <data name="SGEPvP_Diabrosis_Desc" xml:space="preserve">
     <value>選択したHPを下回ると、バーストモードにロールアクションのディアブロシスを追加します。</value>
@@ -10942,27 +10942,27 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>カルディアのリターゲット</value>
   </data>
   <data name="SGEPvP_RetargetKardia_Desc" xml:space="preserve">
-    <value>カルディアをバースト機能の外の回復優先順（怒り設定で）にリターゲットします</value>
+    <value>バースト機能外では、Wrath設定の回復優先順に基づいてカルディアをリターゲットします。</value>
   </data>
   <data name="SAMPvP_Burst_Name" xml:space="preserve">
     <value>バーストモード</value>
   </data>
   <data name="SAMPvP_Burst_Desc" xml:space="preserve">
-    <value>カシャコンボをオールインワンボタンにします。
+    <value>花車コンボをワンボタン攻撃アクションに置き換えます。
 - 移動中は詠唱時間のあるアクションを使用しません。</value>
   </data>
   <data name="SAMPvP_Meikyo_Name" xml:space="preserve">
     <value>明鏡止水オプション</value>
   </data>
   <data name="SAMPvP_Meikyo_Desc" xml:space="preserve">
-    <value>入手可能な場合は明鏡止水を使用します。
-- ターゲットが近接範囲内にある必要があります。</value>
+    <value>使用可能な場合は明鏡止水を使用します。
+- 対象が近接範囲内にいる必要があります。</value>
   </data>
   <data name="SAMPvP_Chiten_Name" xml:space="preserve">
     <value>必殺剣・地天オプション</value>
   </data>
   <data name="SAMPvP_Chiten_Desc" xml:space="preserve">
-    <value>可能な場合は地点を使用します。
+    <value>可能な場合は必殺剣・地天を使用します。
 - 戦闘以外では使用しません。
 - プレイヤーのHPが以下である必要があります:</value>
   </data>
@@ -10970,15 +10970,17 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>峰打ちオプション</value>
   </data>
   <data name="SAMPvP_Mineuchi_Desc" xml:space="preserve">
-    <value>使える場合は峰打ちを使用。 - プレイヤー以外に対しては使用できません。 - 対象のHPが以下である必要があります:</value>
+    <value>使用可能な場合は峰打ちを使用します。
+- プレイヤー以外に対しては使用できません。
+- 対象のHPが以下である必要があります:</value>
   </data>
   <data name="SAMPvP_Soten_Name" xml:space="preserve">
     <value>蒼天オプション</value>
   </data>
   <data name="SAMPvP_Soten_Desc" xml:space="preserve">
-    <value>蒼天があれば使用します。
-- 最大範囲内に留まらなければなりません。
-・既に回天の効果を受けている場合は使用不可。</value>
+    <value>使用可能な場合は蒼天を使用します。
+- 射程内にいる必要があります。
+- 既に回天の効果中の場合は使用しません。</value>
   </data>
   <data name="SAMPvP_Zantetsuken_Name" xml:space="preserve">
     <value>斬鉄剣オプション</value>
@@ -10986,10 +10988,10 @@ POST 94: バーストウィンドウ中に使用します。</value>
   <data name="SAMPvP_Zantetsuken_Desc" xml:space="preserve">
     <value>使用可能な場合は斬鉄剣を使用します。
 - ターゲットが無敵の場合は使用しません。
-- ターゲットがプレイヤーのくずしを持っている必要があります。</value>
+- 対象に自身のくずしが付与されている必要があります。</value>
   </data>
   <data name="SAMPvP_Smite_Name" xml:space="preserve">
-    <value>ロール アクション スマイト オプション</value>
+    <value>ロールアクション スマイトオプション</value>
   </data>
   <data name="SAMPvP_Smite_Desc" xml:space="preserve">
     <value>選択したHPを下回ると、バーストモードにロールアクションのスマイトを追加します。</value>
@@ -10998,7 +11000,7 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>バーストモード</value>
   </data>
   <data name="SCHPvP_Burst_Desc" xml:space="preserve">
-    <value>極炎法をオールインワンのダメージ ボタンに変えます。</value>
+    <value>極炎法をワンボタン攻撃アクションに置き換えます。</value>
   </data>
   <data name="SCHPvP_Expedient_Name" xml:space="preserve">
     <value>疾風怒濤の計オプション</value>
@@ -11025,16 +11027,16 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>使用可能なとき、バーストモードに連環計を追加します。</value>
   </data>
   <data name="SCHPvP_Diabrosis_Name" xml:space="preserve">
-    <value>役割 アクション ディアグノシスオプション</value>
+    <value>ロールアクション ディアブロシスオプション</value>
   </data>
   <data name="SCHPvP_Diabrosis_Desc" xml:space="preserve">
     <value>選択したHPを下回ると、バーストモードにロールアクションのディアブロシスを追加します。</value>
   </data>
   <data name="SCHPvP_Adlo_Name" xml:space="preserve">
-    <value>アドロオプション</value>
+    <value>鼓舞激励の策オプション</value>
   </data>
   <data name="SCHPvP_Adlo_Desc" xml:space="preserve">
-    <value>ターゲットが設定されたHPを下回っている場合、鼓舞激励の策を追加します</value>
+    <value>対象のHPが設定値を下回っている場合、鼓舞激励の策を追加します。</value>
   </data>
   <data name="SCHPvP_RetargetAdlo_Name" xml:space="preserve">
     <value>鼓舞激励の策 リターゲット</value>
@@ -11046,7 +11048,7 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>バーストモード</value>
   </data>
   <data name="SMNPvP_BurstMode_Desc" xml:space="preserve">
-    <value>ルインガをオールインワンのダメージ ボタンに変えます。
+    <value>ルインガをワンボタン攻撃アクションに置き換えます。
 クリムゾンサイクロンは近接範囲にいる場合にのみ使用します。</value>
   </data>
   <data name="SMNPvP_BurstMode_RadiantAegis_Name" xml:space="preserve">
@@ -11107,13 +11109,13 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>バーストモード</value>
   </data>
   <data name="VPRPvP_Burst_Desc" xml:space="preserve">
-    <value>デュアル ファング コンボをオールインワン ボタンに変えます。</value>
+    <value>デュアルファングコンボをワンボタン攻撃アクションに置き換えます。</value>
   </data>
   <data name="VPRPvP_Bloodcoil_Name" xml:space="preserve">
     <value>壱の蛇【血宴】オプション</value>
   </data>
   <data name="VPRPvP_Bloodcoil_Desc" xml:space="preserve">
-    <value>使用可能な場合はブラッドコイルを使用します。
+    <value>使用可能な場合は壱の蛇【血宴】を使用します。
 - 対象または自身のHPが以下である必要があります:</value>
   </data>
   <data name="VPRPvP_UncoiledFury_Name" xml:space="preserve">
@@ -11127,7 +11129,7 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>蛇鱗撃オプション</value>
   </data>
   <data name="VPRPvP_Backlash_Desc" xml:space="preserve">
-    <value>利用可能な場合はバックラッシュを使用します。</value>
+    <value>使用可能な場合は蛇鱗撃を使用します。</value>
   </data>
   <data name="VPRPvP_RattlingCoil_Name" xml:space="preserve">
     <value>飛蛇の魂オプション</value>
@@ -11139,9 +11141,9 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>蛇行オプション</value>
   </data>
   <data name="VPRPvP_Slither_Desc" xml:space="preserve">
-    <value>近接攻撃以外ではスリザーを使用します。
-- 最大範囲内に留まらなければなりません。
-- すでにスリザーの影響下にある場合は使用できません。</value>
+    <value>近接攻撃以外では蛇行を使用します。
+- 射程内にいる必要があります。
+- すでに蛇行の効果中の場合は使用しません。</value>
   </data>
   <data name="VPRPvP_SnakeScales_Feature_Name" xml:space="preserve">
     <value>蛇鱗術 初期化機能</value>
@@ -11151,7 +11153,7 @@ POST 94: バーストウィンドウ中に使用します。</value>
 - 蛇鱗術がリキャスト中である必要があります。</value>
   </data>
   <data name="VPRPvP_Smite_Name" xml:space="preserve">
-    <value>ロール アクション スマイト オプション</value>
+    <value>ロールアクション スマイトオプション</value>
   </data>
   <data name="VPRPvP_Smite_Desc" xml:space="preserve">
     <value>選択したHPを下回ると、バーストモードにロールアクションのスマイトを追加します。</value>
@@ -11160,7 +11162,7 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>バーストモード</value>
   </data>
   <data name="WARPvP_BurstMode_Desc" xml:space="preserve">
-    <value>ヘビースイングをオールインワンのダメージボタンに変えます。</value>
+    <value>ヘビースイングをワンボタン攻撃アクションに置き換えます。</value>
   </data>
   <data name="WARPvP_BurstMode_Bloodwhetting_Name" xml:space="preserve">
     <value>原初の血気オプション</value>
@@ -11214,10 +11216,10 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>バーストモード</value>
   </data>
   <data name="WHMPvP_Burst_Desc" xml:space="preserve">
-    <value>グレアをオールインワンのダメージ ボタンに変えます。</value>
+    <value>グレアをワンボタン攻撃アクションに置き換えます。</value>
   </data>
   <data name="WHMPvP_Afflatus_Misery_Name" xml:space="preserve">
-    <value>悲嘆オプション</value>
+    <value>ハート・オブ・ミゼリオプション</value>
   </data>
   <data name="WHMPvP_Afflatus_Misery_Desc" xml:space="preserve">
     <value>バーストモードにハート・オブ・ミゼリを追加します。</value>
@@ -11238,10 +11240,10 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>ハート・オブ・パーゲーションオプション</value>
   </data>
   <data name="WHMPvP_AfflatusPurgation_Desc" xml:space="preserve">
-    <value>バーストモードにアフラトゥス・パーゲーション（リミットブレイク）を追加。</value>
+    <value>バーストモードにハート・オブ・パーゲーション（リミットブレイク）を追加します。</value>
   </data>
   <data name="WHMPvP_Diabrosis_Name" xml:space="preserve">
-    <value>役割 アクション ディアグノシスオプション</value>
+    <value>ロールアクション ディアブロシスオプション</value>
   </data>
   <data name="WHMPvP_Diabrosis_Desc" xml:space="preserve">
     <value>選択したHPを下回ると、バーストモードにロールアクションのディアブロシスを追加します。</value>
@@ -11262,20 +11264,20 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>ケアルガ 優先オプション</value>
   </data>
   <data name="WHMPvP_Cure3_Desc" xml:space="preserve">
-    <value>ケアルガをアクアヴェールより優先する。
- SE がそのように作成したため、この設定に関係なく ケアルガ が ケアルラ を置き換えます。</value>
+    <value>ケアルガをアクアヴェールより優先します。
+仕様上、この設定に関係なくケアルガがケアルラを置き換えます。</value>
   </data>
   <data name="WHMPvP_Aquaveil_Name" xml:space="preserve">
     <value>アクアヴェールオプション</value>
   </data>
   <data name="WHMPvP_Aquaveil_Desc" xml:space="preserve">
-    <value>利用可能な場合、ケアルラ にアクアヴェールを追加します。</value>
+    <value>使用可能な場合、ケアルラにアクアヴェールを追加します。</value>
   </data>
   <data name="WHMPvP_Seraphstrike_Name" xml:space="preserve">
     <value>セラフストライク→グレアIV</value>
   </data>
   <data name="WHMPvP_Seraphstrike_Desc" xml:space="preserve">
-    <value>セラフストライクを グレアジャ に置き換えます</value>
+    <value>セラフストライクをグレアジャに置き換えます。</value>
   </data>
   <data name="MNK_ST_BasicCombo_Name" xml:space="preserve">
     <value>基本コンボ</value>
@@ -11336,6 +11338,6 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>再生の炎リターゲット</value>
   </data>
   <data name="SMN_Rekindle_Desc" xml:space="preserve">
-    <value>再生の炎を ターゲットのターゲット &gt; 回復が必要なタンク &gt; 回復が必要なパーティメンバー &gt; 自身の順にリターゲットします</value>
+    <value>再生の炎をターゲットのターゲット &gt; 回復が必要なタンク &gt; 回復が必要なパーティメンバー &gt; 自身の順にリターゲットします。</value>
   </data>
 </root>
