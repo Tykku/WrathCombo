@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using WrathCombo.API.Enum;
+using WrathCombo.Attributes;
 using WrathCombo.Core;
 using WrathCombo.CustomComboNS;
 using WrathCombo.Data;
@@ -823,6 +824,12 @@ public partial class WrathCombo
     /// </param>
     private void HandleBurstControl(string[] argument)
     {
+        if (!PresetStorage.AllPresets.Any(p => p.Value.JobInfo?.Job == Player.Job && p.Value.ComboType == ComboType.Advanced && PresetStorage.IsEnabled(p.Key)))
+        {
+            DuoLog.Error("This feature is for Advanced Mode Combos.");
+            return;
+        }
+
         if (!BurstPresetMap.TryGetValue(Player.Job, out var presets))
         {
             DuoLog.Error("No burst presets defined for your current job.");
