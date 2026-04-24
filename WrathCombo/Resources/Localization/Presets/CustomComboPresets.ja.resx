@@ -1222,7 +1222,7 @@
     <value>ライトスピードホールドオプション</value>
   </data>
   <data name="AST_DPS_LightSpeedHold_Desc" xml:space="preserve">
-    <value>手動使用の場合、ライトスピード チャージを 1 回保持します</value>
+    <value>手動使用のため、ライトスピードのチャージを1つ温存します。</value>
   </data>
   <data name="AST_DPS_Divination_Name" xml:space="preserve">
     <value>ディヴィネーション差し込みオプション</value>
@@ -1247,13 +1247,13 @@
     <value>カードプレイウィーブオプション</value>
   </data>
   <data name="AST_DPS_AutoPlay_Desc" xml:space="preserve">
-    <value>天秤カードまたは槍カードを編みます (クイック ターゲット カードと併用するのが最適です)</value>
+    <value>アーゼマの均衡またはハルオーネの槍をプレイします（クイックターゲットカードとの併用を推奨）。</value>
   </data>
   <data name="AST_DPS_CardPool_Name" xml:space="preserve">
-    <value>カードプレイプーリングオプション</value>
+    <value>カード温存オプション</value>
   </data>
   <data name="AST_DPS_CardPool_Desc" xml:space="preserve">
-    <value>ディヴィネーションウィンドウ用に DPS カードをプールします</value>
+    <value>ディヴィネーションに合わせるため、DPSカードを温存します。</value>
   </data>
   <data name="AST_DPS_LazyLord_Name" xml:space="preserve">
     <value>クラウンロード ウィーブ オプション</value>
@@ -1262,10 +1262,10 @@
     <value>クラウンロードを追加</value>
   </data>
   <data name="AST_DPS_LordPool_Name" xml:space="preserve">
-    <value>クラウンロード プーリング オプション</value>
+    <value>クラウンロード温存オプション</value>
   </data>
   <data name="AST_DPS_LordPool_Desc" xml:space="preserve">
-    <value>ディヴィネーションウィンドウでクラウンロードを保持</value>
+    <value>ディヴィネーションに合わせてクラウンロードを温存します。</value>
   </data>
   <data name="AST_DPS_Oracle_Name" xml:space="preserve">
     <value>オラクル使用オプション</value>
@@ -1314,7 +1314,7 @@
     <value>ライトスピードホールドオプション</value>
   </data>
   <data name="AST_AOE_LightSpeedHold_Desc" xml:space="preserve">
-    <value>手動使用の場合、ライトスピード チャージを 1 回保持します</value>
+    <value>手動使用のため、ライトスピードのチャージを1つ温存します。</value>
   </data>
   <data name="AST_AOE_Divination_Name" xml:space="preserve">
     <value>ディヴィネーション差し込みオプション</value>
@@ -1339,13 +1339,13 @@
     <value>カードプレイウィーブオプション</value>
   </data>
   <data name="AST_AOE_AutoPlay_Desc" xml:space="preserve">
-    <value>天秤カードまたは槍カードを編みます (クイック ターゲット カードと併用するのが最適です)</value>
+    <value>アーゼマの均衡またはハルオーネの槍をプレイします（クイックターゲットカードとの併用を推奨）。</value>
   </data>
   <data name="AST_AOE_CardPool_Name" xml:space="preserve">
-    <value>カードプレイプーリングオプション</value>
+    <value>カード温存オプション</value>
   </data>
   <data name="AST_AOE_CardPool_Desc" xml:space="preserve">
-    <value>ディヴィネーションウィンドウ用に DPS カードをプールします</value>
+    <value>ディヴィネーションに合わせるため、DPSカードを温存します。</value>
   </data>
   <data name="AST_AOE_LazyLord_Name" xml:space="preserve">
     <value>クラウンロード ウィーブ オプション</value>
@@ -1354,10 +1354,10 @@
     <value>クラウンロードを追加</value>
   </data>
   <data name="AST_AOE_LordPool_Name" xml:space="preserve">
-    <value>クラウンロード プーリング オプション</value>
+    <value>クラウンロード温存オプション</value>
   </data>
   <data name="AST_AOE_LordPool_Desc" xml:space="preserve">
-    <value>ディヴィネーションウィンドウでクラウンロードを保持</value>
+    <value>ディヴィネーションに合わせてクラウンロードを温存します。</value>
   </data>
   <data name="AST_AOE_Oracle_Name" xml:space="preserve">
     <value>オラクル使用オプション</value>
@@ -1418,7 +1418,7 @@
     <value>緊急ディグニティオプション</value>
   </data>
   <data name="AST_ST_Heals_EssentialDignity_Emergency_Desc" xml:space="preserve">
-    <value>別の閾値で使用するための ディグニティのチャージが保持されます。</value>
+    <value>別の閾値で使用するため、ディグニティのチャージを温存します。</value>
   </data>
   <data name="AST_ST_Heals_CelestialIntersection_Name" xml:space="preserve">
     <value>星天交差オプション</value>
@@ -1954,7 +1954,7 @@
     <value>青魔道士 月の笛オープナー（レベル80）</value>
   </data>
   <data name="BLU_NewMoonFluteOpener_Desc" xml:space="preserve">
-    <value>月の笛をフルオープナーに変える。
+    <value>月の笛をフルオープナーに置き換えます。
 オープナーを再度開始する前に、断罪の飛翔の残り 2 チャージを使用してください。
 呪文速度2.50で実行可能。
 フェザーレインはターゲットにリターゲットされるため、配置する必要はありません。</value>
@@ -1970,14 +1970,14 @@
     <value>青魔道士 月の笛オープナー（レベル70）</value>
   </data>
   <data name="BLU_Opener_Desc" xml:space="preserve">
-    <value>月の笛をフルオープナーに変える。歴史的価値についてはこちら。レベル80のオープナーはより強力です。
+    <value>月の笛をフルオープナーに置き換えます。レベル80用オープナーの方が強力です。
 フェザーレインはターゲットにリターゲットされるため、配置する必要はありません。</value>
   </data>
   <data name="BLU_FinalSting_Name" xml:space="preserve">
     <value>ファイナルスピアコンボ</value>
   </data>
   <data name="BLU_FinalSting_Desc" xml:space="preserve">
-    <value>ファイナルスピアを次のバフ コンボに変更します: 月の笛 &gt; チンクル &gt; ホイッスル &gt; ファイナルスピア。
+    <value>ファイナルスピアを次のバフコンボに置き換えます: 月の笛 &gt; チンクル &gt; ホイッスル &gt; ファイナルスピア。
 フェザーレインはターゲットにリターゲットされるため、配置する必要はありません。</value>
   </data>
   <data name="BLU_Primals_Name" xml:space="preserve">
@@ -1997,13 +1997,13 @@
     <value>バイブコンボ</value>
   </data>
   <data name="BLU_Ultravibrate_Desc" xml:space="preserve">
-    <value>ディープフリーズがターゲットにない場合、超振動をラムの声に変えます。利用可能な場合は、ウルトラバイブレーションを迅速魔で使用します。</value>
+    <value>対象に氷結が付与されていない場合、超振動を氷結の咆哮に置き換えます。使用可能であれば、超振動を迅速魔で使用します。</value>
   </data>
   <data name="BLU_HydroPull_Name" xml:space="preserve">
     <value>ハイドロプルセットアップ</value>
   </data>
   <data name="BLU_HydroPull_Desc" xml:space="preserve">
-    <value>ラムズボイスを使用する前にハイドロプルを使用します。</value>
+    <value>氷結の咆哮を使用する前にハイドロプルを使用します。</value>
   </data>
   <data name="BLU_PrimalCombo_Name" xml:space="preserve">
     <value>蛮神コンボ機能</value>
@@ -2017,7 +2017,7 @@
     <value>月の笛バースト温存オプション</value>
   </data>
   <data name="BLU_PrimalCombo_Pool_Desc" xml:space="preserve">
-    <value>月の笛のバーストが発生しようとしており、呪文がリキャスト中ではない場合、呪文を保持します。</value>
+    <value>月の笛バーストが近く、対象の魔法がリキャスト中でない場合、その魔法を温存します。</value>
   </data>
   <data name="BLU_PrimalCombo_JKick_Name" xml:space="preserve">
     <value>ジャスティスキックオプション</value>
@@ -2062,10 +2062,10 @@
     <value>月下彼岸花をコンボに追加します。</value>
   </data>
   <data name="BLU_BuffedSoT_Name" xml:space="preserve">
-    <value>強化 苦悶の歌</value>
+    <value>怒髪天付き苦悶の歌</value>
   </data>
   <data name="BLU_BuffedSoT_Desc" xml:space="preserve">
-    <value>苦悶の歌を剛毛に変えて、苦悶の歌をバフします。</value>
+    <value>苦悶の歌を強化するため、苦悶の歌を怒髪天に置き換えます。</value>
   </data>
   <data name="BLU_LightHeadedCombo_Name" xml:space="preserve">
     <value>プリントアウト→マスタードボム</value>
@@ -2180,16 +2180,16 @@
     <value>使用可能なサイドワインダー、エンピリアルアロー、ブラッドレター、ピッチパーフェクトを挟みます。</value>
   </data>
   <data name="BRD_Adv_Pooling_Name" xml:space="preserve">
-    <value>プーリングオプション</value>
+    <value>温存オプション</value>
   </data>
   <data name="BRD_Adv_Pooling_Desc" xml:space="preserve">
-    <value>ブラッドレター チャージと サイドワインダーをプールして、最適なバーストフェーズを可能にします</value>
+    <value>ブラッドレターのチャージとサイドワインダーを温存し、バーストに合わせて使用します。</value>
   </data>
   <data name="BRD_Adv_ApexPooling_Name" xml:space="preserve">
-    <value>エイペックス プーリング オプション</value>
+    <value>エイペックスアロー温存オプション</value>
   </data>
   <data name="BRD_Adv_ApexPooling_Desc" xml:space="preserve">
-    <value>リキャストでバフが 50 ～ 60 秒の間にある場合、エイペックスアローをバフ ウィンドウにプールします。</value>
+    <value>バフのリキャスト残りが50～60秒の場合、エイペックスアローをバフウィンドウに合わせて温存します。</value>
   </data>
   <data name="BRD_Adv_Interrupt_Name" xml:space="preserve">
     <value>割り込みオプション</value>
@@ -2219,7 +2219,7 @@
     <value>地神のミンネ 全体攻撃 オプション</value>
   </data>
   <data name="BRD_Adv_NaturesMinne_Desc" xml:space="preserve">
-    <value>全体攻撃の詠唱を検知し、トルバドゥールがまだアップされていない場合に、地神のミンネを追加します。</value>
+    <value>全体攻撃の詠唱を検知し、トルバドゥールがまだ付与されていない場合に、地神のミンネを追加します。</value>
   </data>
   <data name="BRD_AoE_AdvMode_Name" xml:space="preserve">
     <value>アドバンストモード - AoE</value>
@@ -2238,7 +2238,7 @@
     <value>吟遊詩人の歌オプション</value>
   </data>
   <data name="BRD_AoE_Adv_Songs_Desc" xml:space="preserve">
-    <value>高度な AoE で歌を織り交ぜます。</value>
+    <value>アドバンストAoEローテーションに歌を追加します。</value>
   </data>
   <data name="BRD_AoE_Adv_Buffs_Name" xml:space="preserve">
     <value>AoEバフオプション</value>
@@ -2254,16 +2254,16 @@
     <value>使用可能なサイドワインダー、エンピリアルアロー、レイン・オブ・デス、ピッチパーフェクトを挟みます。</value>
   </data>
   <data name="BRD_AoE_Pooling_Name" xml:space="preserve">
-    <value>プーリングオプション</value>
+    <value>温存オプション</value>
   </data>
   <data name="BRD_AoE_Pooling_Desc" xml:space="preserve">
-    <value>最適なバーストフェーズを可能にするための死のチャージの雨をプールします。</value>
+    <value>レイン・オブ・デスのチャージを温存し、バーストに合わせて使用します。</value>
   </data>
   <data name="BRD_AoE_ApexPooling_Name" xml:space="preserve">
-    <value>エイペックス プーリング オプション</value>
+    <value>エイペックスアロー温存オプション</value>
   </data>
   <data name="BRD_AoE_ApexPooling_Desc" xml:space="preserve">
-    <value>リキャストでバフが 50 ～ 60 秒の間にある場合、エイペックスアローをバフ ウィンドウにプールします。</value>
+    <value>バフのリキャスト残りが50～60秒の場合、エイペックスアローをバフウィンドウに合わせて温存します。</value>
   </data>
   <data name="BRD_AoE_Adv_Interrupt_Name" xml:space="preserve">
     <value>割り込みオプション</value>
@@ -2323,8 +2323,8 @@
     <value>アイアンジョーズ機能</value>
   </data>
   <data name="BRD_IronJaws_Desc" xml:space="preserve">
-    <value>一方または両方がアップしていない場合、アイアン ジョーズはコースティック バイト／ストームバイトに置き換えられます。
-アイアンジョーが利用できない場合は、この 2 つを交互に使用します。</value>
+    <value>いずれか、または両方が付与されていない場合、アイアンジョーズをコースティックバイト／ストームバイトに置き換えます。
+アイアンジョーズが利用できない場合は、この2つを交互に使用します。</value>
   </data>
   <data name="BRD_WideVolleyUpgrade_Name" xml:space="preserve">
     <value>ワイドボレー機能</value>
@@ -2548,10 +2548,10 @@
     <value>フェザーオプション</value>
   </data>
   <data name="DNC_ST_Adv_Feathers_Desc" xml:space="preserve">
-    <value>キャップがかぶせられ、対称投擲：フラリッシュ または 非対称投擲：フラリッシュの影響下にある場合、次に利用可能なウィーブ ウィンドウでフェザーを消費します。
-テクニカルフィニッシュ中に可能な限り羽毛を織り込みます。
-ターゲットが設定された HP割合を下回っている場合、バーストの外側で羽を織ります (無効にするには 0 に設定します)。
-Lv.70以下で可能な限り羽を織ります。</value>
+    <value>フェザーが上限に近い、または対称投擲：フラリッシュ／非対称投擲：フラリッシュの効果中の場合、次のアビリティ使用可能タイミングでフェザーを消費します。
+テクニカルフィニッシュ中は可能な限りフェザーを使用します。
+対象のHP割合が設定値を下回っている場合、バースト外でフェザーを使用します（0で無効）。
+Lv.70以下では可能な限りフェザーを使用します。</value>
   </data>
   <data name="DNC_ST_Adv_Improvisation_Name" xml:space="preserve">
     <value>インプロビゼーションオプション</value>
@@ -2668,9 +2668,9 @@ Lv.70以下で可能な限り羽を織ります。</value>
     <value>フェザーオプション</value>
   </data>
   <data name="DNC_AoE_Adv_Feathers_Desc" xml:space="preserve">
-    <value>キャップがかぶせられ、対称投擲：フラリッシュ または 非対称投擲：フラリッシュの影響下にある場合、次に利用可能なウィーブ ウィンドウでフェザーを消費します。
-テクニカルフィニッシュ中に可能な限り羽毛を織り込みます。
-Lv.70以下で可能な限り羽を織ります。</value>
+    <value>フェザーが上限に近い、または対称投擲：フラリッシュ／非対称投擲：フラリッシュの効果中の場合、次のアビリティ使用可能タイミングでフェザーを消費します。
+テクニカルフィニッシュ中は可能な限りフェザーを使用します。
+Lv.70以下では可能な限りフェザーを使用します。</value>
   </data>
   <data name="DNC_AoE_Adv_Improvisation_Name" xml:space="preserve">
     <value>インプロビゼーションオプション</value>
@@ -2955,7 +2955,7 @@ Lv.70以下で可能な限り羽を織ります。</value>
     <value>シャドウブリンガー バーストオプション</value>
   </data>
   <data name="DRK_ST_CD_BringerBurst_Desc" xml:space="preserve">
-    <value>偶数分のウィンドウバースト中に使用するシャドウブリンガーをプールします（ディセスティーム後）。</value>
+    <value>偶数分バースト中、ディセスティーム後に使用するためシャドウブリンガーを温存します。</value>
   </data>
   <data name="DRK_ST_CD_Salt_Name" xml:space="preserve">
     <value>ソルトアースオプション</value>
@@ -2985,7 +2985,7 @@ Lv.70以下で可能な限り羽を織ります。</value>
     <value>レッドデリリアムコンボオプション</value>
   </data>
   <data name="DRK_ST_Sp_ScarletChain_Desc" xml:space="preserve">
-    <value>デリリアムブレードがアクティブになったときに、レッドデリリアム コンボ チェーンをローテーションに追加します。</value>
+    <value>デリリアムブレードが有効になったときに、レッドデリリアムコンボチェーンをローテーションに追加します。</value>
   </data>
   <data name="DRK_ST_Sp_Bloodspiller_Name" xml:space="preserve">
     <value>ブラッドスピラーオプション</value>
@@ -3100,7 +3100,7 @@ Lv.70以下で可能な限り羽を織ります。</value>
     <value>インペイルメントオプション</value>
   </data>
   <data name="DRK_AoE_Sp_ImpalementChain_Desc" xml:space="preserve">
-    <value>デリリアムブレードがアクティブな場合、ローテーションに インペイルメントを追加します。</value>
+    <value>デリリアムブレードが有効な場合、ローテーションにインペイルメントを追加します。</value>
   </data>
   <data name="DRK_AoE_Sp_Quietus_Name" xml:space="preserve">
     <value>クワイタスオプション</value>
@@ -3655,10 +3655,10 @@ Lv.70以下で可能な限り羽を織ります。</value>
     <value>近接攻撃の射程外にいる場合、ピアシングタロンをローテーションに追加します。</value>
   </data>
   <data name="DRG_AoE_Disembowel_Name" xml:space="preserve">
-    <value>低レベル ディセムボウル</value>
+    <value>低レベル用ディセムボウル</value>
   </data>
   <data name="DRG_AoE_Disembowel_Desc" xml:space="preserve">
-    <value>レベル 62 未満または同期している場合に、腹抜きコンボをローテーションに追加します。</value>
+    <value>レベル62未満、またはレベルシンク時に、ディセムボウルコンボをローテーションに追加します。</value>
   </data>
   <data name="DRG_AoE_StunInterupt_Name" xml:space="preserve">
     <value>レッグスウィープオプション</value>
@@ -4241,7 +4241,7 @@ Lv.70以下で可能な限り羽を織ります。</value>
     <value>ノー・マーシー中オプション</value>
   </data>
   <data name="GNB_FC_DoubleDown_NM_Desc" xml:space="preserve">
-    <value>ノー・マーシーがアクティブな場合にのみ、フェイテッドサークルにダブルダウンを追加します。</value>
+    <value>ノー・マーシーが有効な場合にのみ、フェイテッドサークルにダブルダウンを追加します。</value>
   </data>
   <data name="GNB_FC_Reign_Name" xml:space="preserve">
     <value>統治オプション</value>
@@ -6396,7 +6396,7 @@ Lv.70以下で可能な限り羽を織ります。</value>
     <value>リターン機能</value>
   </data>
   <data name="RPR_Regress_Desc" xml:space="preserve">
-    <value>リターン実行可がアクティブな場合、ヘルズイングレスと ヘルズイーグレスの両方が リターンに変わります。</value>
+    <value>リターン実行可が有効な場合、ヘルズイングレスとヘルズイーグレスの両方をリターンに置き換えます。</value>
   </data>
   <data name="RPR_EnshroudProtection_Name" xml:space="preserve">
     <value>レムールシュラウド 重複防止機能</value>
@@ -6495,7 +6495,7 @@ Lv.70以下で可能な限り羽を織ります。</value>
     <value>ルプリーズを含む</value>
   </data>
   <data name="RDM_ST_MeleeCombo_IncludeReprise_Desc" xml:space="preserve">
-    <value>近接コンボ中に範囲外にいる場合にリプライズを追加します。現在のコンボを完了するのに十分なマナを保持します。</value>
+    <value>近接コンボ中に射程外へ出た場合、ルプリーズを追加します。現在のコンボを完了できるだけのマナは温存します。</value>
   </data>
   <data name="RDM_ST_MeleeCombo_GapCloser_Name" xml:space="preserve">
     <value>コル・ア・コルによる接近オプション</value>
@@ -7286,7 +7286,7 @@ Lv.70以下で可能な限り羽を織ります。</value>
     <value>エウクラシア機能</value>
   </data>
   <data name="SGE_Eukrasia_Desc" xml:space="preserve">
-    <value>エウクラシアは、アクティブになると、選択されたエウクラシア タイプのアクションに変わります。</value>
+    <value>エウクラシアが有効な場合、選択したエウクラシア系アクションに置き換えます。</value>
   </data>
   <data name="SGE_TauroDruo_Name" xml:space="preserve">
     <value>タウロコレ→ドルオコレ機能</value>
@@ -10036,7 +10036,7 @@ POST 94: バーストウィンドウ中に使用します。</value>
   </data>
   <data name="ASTPvP_Burst_Macrocosmos_Desc" xml:space="preserve">
     <value>バーストモードにマクロコスモスを追加します。
- ダブル グラビデが有効な場合、ダブル グラビデ バーストのためにマクロコスモスを保持します。</value>
+ ダブルグラビデが有効な場合、ダブルグラビデバーストに合わせるためマクロコスモスを温存します。</value>
   </data>
   <data name="ASTPvP_Diabrosis_Name" xml:space="preserve">
     <value>役割 アクション ディアグノシスオプション</value>
@@ -10772,11 +10772,11 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>プレンティフルハーベストを使用する準備ができているとき、または プレンティフルハーベストのリキャストが デスワラントのリキャストよりも長い場合、デスワラントをメインコンボに追加します。 サクリファイス 温存 オプションを尊重します。</value>
   </data>
   <data name="RPRPvP_Burst_ImmortalPooling_Name" xml:space="preserve">
-    <value>プレンティフルハーベスト+ イモータルサクリファイス プーリングオプション</value>
+    <value>プレンティフルハーベスト＋イモータルサクリファイス温存オプション</value>
   </data>
   <data name="RPRPvP_Burst_ImmortalPooling_Desc" xml:space="preserve">
-    <value>プレンティフルハーベストを使用する前に、サクリファイスのスタックをプールします。
-デスワラントがリキャスト中の場合は、プレンティフルハーベストも保持します。
+    <value>プレンティフルハーベストを使用する前に、イモータルサクリファイスのスタックを温存します。
+デスワラントがリキャスト中の場合は、プレンティフルハーベストも温存します。
 プレンティフルハーベストが利用可能になったらすぐに使用するには、値を 3 以下に設定します。</value>
   </data>
   <data name="RPRPvP_Burst_Enshrouded_Name" xml:space="preserve">
@@ -11296,7 +11296,7 @@ POST 94: バーストウィンドウ中に使用します。</value>
     <value>ターゲットのターゲットが自分またはパーティメンバーではない場合、原初の猛りをその対象へリターゲットします。</value>
   </data>
   <data name="DRK_AoE_CD_BringerBurst_Desc" xml:space="preserve">
-      <value>偶数分のウィンドウバースト中に使用するシャドウブリンガーをプールします（ディセスティーム後）。</value>
+      <value>偶数分バースト中、ディセスティーム後に使用するためシャドウブリンガーを温存します。</value>
   </data>
   <data name="DRK_AoE_CD_BringerBurst_Name" xml:space="preserve">
       <value>シャドウブリンガー バーストオプション</value>
