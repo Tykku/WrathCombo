@@ -1,17 +1,17 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
+  <!--
+    Microsoft ResX Schema
+
     Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
     associated with the data types.
-    
+
     Example:
-    
+
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,36 +26,36 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-                
-    There are any number of "resheader" rows that contain simple 
+
+    There are any number of "resheader" rows that contain simple
     name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
     mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
     extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
     read any of the formats listed below.
-    
+
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
+    value   : The object must be serialized into a byte array
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
@@ -339,7 +339,7 @@
   </data>
   <data name="OpenToPvE_helpMark" xml:space="preserve">
     <value>/wrath で開いたとき、最後に開いていたタブではなく PvE 機能タブを表示します。
-常に /wrath pve を使うのと同じ動作です。</value>
+常に/wrath pve を使うのと同じ動作です。</value>
   </data>
   <data name="OpenToPvE_Name" xml:space="preserve">
     <value>Wrath を PvE 機能タブで開く</value>
@@ -681,5 +681,53 @@ Redirect や Reaction に近い挙動です。
   </data>
   <data name="AprilFools2026_defaultValue" xml:space="preserve">
     <value>オン（そういう日なので）</value>
+  </data>
+  <data name="TankbusterTTS_Name" xml:space="preserve">
+    <value>タンク強攻撃でTTSを再生</value>
+  </data>
+  <data name="TankbusterTTS_helpMark" xml:space="preserve">
+    <value>タンク強攻撃を検知したとき、対象者を含めてTTS音声を再生します。</value>
+  </data>
+  <data name="TankbusterTTS_recommendedValue" xml:space="preserve">
+    <value>任意</value>
+  </data>
+  <data name="TankbusterTTS_defaultValue" xml:space="preserve">
+    <value>オフ</value>
+  </data>
+  <data name="AoEDamageTTS_Name" xml:space="preserve">
+    <value>全体攻撃でTTSを再生</value>
+  </data>
+  <data name="AoEDamageTTS_helpMark" xml:space="preserve">
+    <value>頭割りまたは全体攻撃の詠唱を検知したとき、対象者がいる場合は対象者も含めてTTS音声を再生します。</value>
+  </data>
+  <data name="AoEDamageTTS_recommendedValue" xml:space="preserve">
+    <value>任意</value>
+  </data>
+  <data name="AoEDamageTTS_defaultValue" xml:space="preserve">
+    <value>オフ</value>
+  </data>
+  <data name="TankbusterToast_Name" xml:space="preserve">
+    <value>タンク強攻撃でトースト通知を表示</value>
+  </data>
+  <data name="TankbusterToast_helpMark" xml:space="preserve">
+    <value>タンク強攻撃を検知したとき、対象者を含めて画面上にメッセージを表示します。</value>
+  </data>
+  <data name="TankbusterToast_recommendedValue" xml:space="preserve">
+    <value>任意</value>
+  </data>
+  <data name="TankbusterToast_defaultValue" xml:space="preserve">
+    <value>オフ</value>
+  </data>
+  <data name="AoEDamageToast_Name" xml:space="preserve">
+    <value>全体攻撃でトースト通知を表示</value>
+  </data>
+  <data name="AoEDamageToast_helpMark" xml:space="preserve">
+    <value>頭割りまたは全体攻撃の詠唱を検知したとき、対象者がいる場合は対象者も含めて画面上にメッセージを表示します。</value>
+  </data>
+  <data name="AoEDamageToast_recommendedValue" xml:space="preserve">
+    <value>任意</value>
+  </data>
+  <data name="AoEDamageToast_defaultValue" xml:space="preserve">
+    <value>オフ</value>
   </data>
 </root>
