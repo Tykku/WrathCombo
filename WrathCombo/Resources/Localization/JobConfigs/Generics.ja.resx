@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
+  <!--
+    Microsoft ResX Schema
+
     Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
     associated with the data types.
-    
+
     Example:
-    
+
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,36 +26,36 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-                
-    There are any number of "resheader" rows that contain simple 
+
+    There are any number of "resheader" rows that contain simple
     name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
     mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
     extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
     read any of the formats listed below.
-    
+
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
+    value   : The object must be serialized into a byte array
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
@@ -149,7 +149,7 @@
     <value>ボス戦のみ</value>
   </data>
   <data name="BossOnlyDescription" xml:space="preserve">
-    <value>ボスと直接戦うコンテンツでのみ適用します。雑魚が含まれる一部の新生 / 蒼天レイドは対象外です。</value>
+    <value>ボスと直接戦うコンテンツでのみ適用します。雑魚が含まれる一部の新生/蒼天レイドは対象外です。</value>
   </data>
   <data name="BossOnlyHpPercent" xml:space="preserve">
     <value>ボスのみ: 敵HP%で停止</value>
@@ -285,5 +285,215 @@
   </data>
   <data name="Action_Opener" xml:space="preserve">
     <value>{0} オープナー</value>
+  </data>
+  <data name="_0Option" xml:space="preserve">
+    <value>{0} オプション</value>
+  </data>
+  <data name="Add0" xml:space="preserve">
+    <value>{0} を追加</value>
+  </data>
+  <data name="Add0Combo" xml:space="preserve">
+    <value>{0} コンボを追加</value>
+  </data>
+  <data name="Add0ComboWhenApplicable" xml:space="preserve">
+    <value>条件を満たすときに {0} コンボを追加します。</value>
+  </data>
+  <data name="Add0Or1" xml:space="preserve">
+    <value>{0} / {1} を追加します。</value>
+  </data>
+  <data name="Add0ToTheRotation" xml:space="preserve">
+    <value>{0} をローテーションに追加します。</value>
+  </data>
+  <data name="Add0WhenAverageHpPercentofPartyIsAtOrBelow" xml:space="preserve">
+    <value>パーティ平均HP%が指定値以下のときに {0} を追加します。</value>
+  </data>
+  <data name="AddFieldMouseoverTargetting" xml:space="preserve">
+    <value>マウスオーバーしている対象を追加します。</value>
+  </data>
+  <data name="Adds0To1" xml:space="preserve">
+    <value>{1} に {0} を追加します。</value>
+  </data>
+  <data name="AllHealerRetargetting" xml:space="preserve">
+    <value>UIマウスオーバー &gt; マウスオーバーしている対象 &gt; フォーカスターゲット &gt; ソフトターゲット &gt; ハードターゲット</value>
+  </data>
+  <data name="Always" xml:space="preserve">
+    <value>常に</value>
+  </data>
+  <data name="AnyMovement" xml:space="preserve">
+    <value>移動中を含む</value>
+  </data>
+  <data name="Change0Or1" xml:space="preserve">
+    <value>{0} / {1} を変更</value>
+  </data>
+  <data name="DelayMit" xml:space="preserve">
+    <value>タンク強攻撃の検知後、{0} を使用するまでの遅延時間。0でこの判定を無効化します。</value>
+  </data>
+  <data name="DisableRangeCheck" xml:space="preserve">
+    <value>射程判定を無効化</value>
+  </data>
+  <data name="DisablesTheUseOfMitigations" xml:space="preserve">
+    <value>軽減アクションを使用しないようにします。</value>
+  </data>
+  <data name="EnablesTheUseOfMitigations" xml:space="preserve">
+    <value>軽減アクションを使用するようにします。</value>
+  </data>
+  <data name="Exclude0" xml:space="preserve">
+    <value>{0} を除外</value>
+  </data>
+  <data name="ExcludeAdvancedMitigations" xml:space="preserve">
+    <value>高度な軽減を除外</value>
+  </data>
+  <data name="ExcludeSimpleMitigations" xml:space="preserve">
+    <value>簡易軽減を除外</value>
+  </data>
+  <data name="FieldMouseover" xml:space="preserve">
+    <value>マウスオーバーしている対象</value>
+  </data>
+  <data name="FocusTarget" xml:space="preserve">
+    <value>フォーカスターゲット</value>
+  </data>
+  <data name="Hold0For1" xml:space="preserve">
+    <value>{1} のために {0} を温存</value>
+  </data>
+  <data name="HowManyChargesForMovement" xml:space="preserve">
+    <value>移動用に温存するチャージ数</value>
+  </data>
+  <data name="HowManyChargesToKeepReady" xml:space="preserve">
+    <value>温存するチャージ数
+（0 = すべて使用）</value>
+  </data>
+  <data name="HPCheckAllContent" xml:space="preserve">
+    <value>すべてのコンテンツでHP判定を適用</value>
+  </data>
+  <data name="HPCheckNonBossEncountersOnly" xml:space="preserve">
+    <value>ボス以外の戦闘にのみHP判定を適用</value>
+  </data>
+  <data name="HPPercentageFor0NotBeApplied" xml:space="preserve">
+    <value>{0} を対象に自動付与しないHP%閾値を設定します。</value>
+  </data>
+  <data name="HPPercentageThreshold" xml:space="preserve">
+    <value>{0} のHP%閾値。</value>
+  </data>
+  <data name="HPPercentThresholdUseAllCharges0" xml:space="preserve">
+    <value>{0} の全チャージを使用するHP%閾値。</value>
+  </data>
+  <data name="IncludeAdvancedMitigations" xml:space="preserve">
+    <value>高度な軽減を含める</value>
+  </data>
+  <data name="IncludeSimpleMitigations" xml:space="preserve">
+    <value>簡易軽減を含める</value>
+  </data>
+  <data name="InMeleeRange" xml:space="preserve">
+    <value>近接射程内</value>
+  </data>
+  <data name="InRange" xml:space="preserve">
+    <value>射程内</value>
+  </data>
+  <data name="MinimumGauge" xml:space="preserve">
+    <value>{0} を使用するために必要な最低ゲージ量</value>
+  </data>
+  <data name="MovementOption" xml:space="preserve">
+    <value>移動時オプション</value>
+  </data>
+  <data name="MPLessOrEqual" xml:space="preserve">
+    <value>プレイヤーのMPが次以下:</value>
+  </data>
+  <data name="NoMovement" xml:space="preserve">
+    <value>移動していない</value>
+  </data>
+  <data name="OnlyUseWhenTargetIsBoss" xml:space="preserve">
+    <value>ターゲット中の敵がボスのときのみ {0} を使います。</value>
+  </data>
+  <data name="OnlyUseWith0" xml:space="preserve">
+    <value>{0} と併用時のみ使用</value>
+  </data>
+  <data name="PlayerHPGreaterOrEqual" xml:space="preserve">
+    <value>プレイヤーのHP%が次以上:</value>
+  </data>
+  <data name="PlayerHPToUseAction" xml:space="preserve">
+    <value>{0} を使用するプレイヤーHP%の上限。100でこの判定を無効化します</value>
+  </data>
+  <data name="PrioBuffUpkeep" xml:space="preserve">
+    <value>バフ維持を優先</value>
+  </data>
+  <data name="Replace0With1Or2" xml:space="preserve">
+    <value>{0} を {1} / {2} に置き換えます。</value>
+  </data>
+  <data name="Replaces0" xml:space="preserve">
+    <value>{0} を置き換えます</value>
+  </data>
+  <data name="SoftTarget" xml:space="preserve">
+    <value>ソフトターゲット</value>
+  </data>
+  <data name="StandardOpener" xml:space="preserve">
+    <value>標準オープナー</value>
+  </data>
+  <data name="StationaryDelayCheck" xml:space="preserve">
+    <value>静止判定の遅延時間（秒）:</value>
+  </data>
+  <data name="StationaryOnly" xml:space="preserve">
+    <value>静止時のみ</value>
+  </data>
+  <data name="StopBelowAverageEnemyHP" xml:space="preserve">
+    <value>周囲の敵の平均HP%が指定値未満になったら使用を停止します。
+（0でこの判定を無効化）</value>
+  </data>
+  <data name="StopUsing0WhenBelowTargetHPPercentage" xml:space="preserve">
+    <value>対象HP%が指定値以下になったら {0} の使用を停止（0でこの判定を無効化）</value>
+  </data>
+  <data name="StopUsingWhenBelowTargetHPPercent" xml:space="preserve">
+    <value>対象HP%が指定値以下になったら使用を停止（0でこの判定を無効化）</value>
+  </data>
+  <data name="TimeRemainingOn0" xml:space="preserve">
+    <value>許可する {0} の残り時間
+（0 = 対象にウェポンブレイクが付与されていない場合のみ）</value>
+  </data>
+  <data name="TimeRemainingOnOthers" xml:space="preserve">
+    <value>許可する他者の {0} の残り時間
+（0 = 対象に {0} が付与されていない場合のみ）</value>
+  </data>
+  <data name="TimeRemainingOnOthers3" xml:space="preserve">
+    <value>許可する他者の {0} / {1} / {2} の残り時間
+（0 = 対象に {0} / {1} / {2} が付与されていない場合のみ）</value>
+  </data>
+  <data name="Use0In1" xml:space="preserve">
+    <value>{1} 中に {0} を使用</value>
+  </data>
+  <data name="Use0Or1" xml:space="preserve">
+    <value>{0} / {1} を使用</value>
+  </data>
+  <data name="Use0RegardlessOfContent" xml:space="preserve">
+    <value>コンテンツに関係なく {0} を使用します。</value>
+  </data>
+  <data name="UseActionOnlyWhileStationary" xml:space="preserve">
+    <value>静止時のみ {0} を使用</value>
+  </data>
+  <data name="UseAlways" xml:space="preserve">
+    <value>常に使用します。</value>
+  </data>
+  <data name="Uses0RegardlessOfAnyMovementConditions" xml:space="preserve">
+    <value>移動条件に関係なく {0} を使用します。
+注意: 戦闘不能につながる可能性があります</value>
+  </data>
+  <data name="UsesStandardOpener" xml:space="preserve">
+    <value>標準オープナーを使用</value>
+  </data>
+  <data name="UseWhenDistanceFromTargetIsLessThanOrEqualTo" xml:space="preserve">
+    <value>対象との距離が次以下のときに使用:</value>
+  </data>
+  <data name="WillAdd_0_ToThePriorityStack" xml:space="preserve">
+    <value>{0} を優先順に追加します</value>
+  </data>
+  <data name="OnlyUse0WhenInMeleeRange" xml:space="preserve">
+    <value>近接射程内のときのみ {0} を使用します。</value>
+  </data>
+  <data name="OnlyUse0WhenNotMoving" xml:space="preserve">
+    <value>移動していないときのみ {0} を使用します。</value>
+  </data>
+  <data name="OnlyWithCountdown" xml:space="preserve">
+    <value>カウントダウン中のみ</value>
+  </data>
+  <data name="OnlyUseOpenerWhenCountdownActive" xml:space="preserve">
+    <value>カウントダウンが有効なときのみオープナーを使用します。</value>
   </data>
 </root>

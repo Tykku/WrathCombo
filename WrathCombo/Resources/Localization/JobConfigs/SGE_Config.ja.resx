@@ -59,7 +59,7 @@
   </data>
   <data name="SGE_Mit_AoE_PrognosisOption_Name" xml:space="preserve">
     <value>バリア判定: {0} のバリアが必要なパーティメンバー割合。
-0 = 使用しない / 100 = 全員にバリアが必要</value>
+0 = 使用しない/ 100 = 全員にバリアが必要</value>
   </data>
   <data name="SGE_Mit_AoE_Philosophia_Help" xml:space="preserve">
       <value>回復量アップのため、{1} の前に {0} を追加します。</value>
