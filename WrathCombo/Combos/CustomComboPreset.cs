@@ -4277,14 +4277,14 @@ public enum Preset
 
     [AutoAction(false, false)]
     [ReplaceSkill(PCT.FireInRed)]
-    [ConflictingCombos(CombinedAetherhues, PCT_ST_AdvancedMode)]
+    [ConflictingCombos(PCT_ST_AdvancedMode)]
     [JobInfo(Job.PCT)]
     [SimpleCombo]
     PCT_ST_SimpleMode = 20000,
 
     [AutoAction(true, false)]
     [ReplaceSkill(PCT.FireIIinRed)]
-    [ConflictingCombos(CombinedAetherhues, PCT_AoE_AdvancedMode)]
+    [ConflictingCombos(PCT_AoE_AdvancedMode)]
     [JobInfo(Job.PCT)]
     [SimpleCombo]
     PCT_AoE_SimpleMode = 20001,
@@ -4295,7 +4295,7 @@ public enum Preset
 
     [AutoAction(false, false)]
     [ReplaceSkill(PCT.FireInRed)]
-    [ConflictingCombos(CombinedAetherhues, PCT_ST_SimpleMode)]
+    [ConflictingCombos(PCT_ST_SimpleMode)]
     [JobInfo(Job.PCT)]
     [AdvancedCombo]
     PCT_ST_AdvancedMode = 20005,
@@ -4414,7 +4414,7 @@ public enum Preset
 
     [AutoAction(true, false)]
     [ReplaceSkill(PCT.FireIIinRed)]
-    [ConflictingCombos(CombinedAetherhues, PCT_AoE_SimpleMode)]
+    [ConflictingCombos(PCT_AoE_SimpleMode)]
     [JobInfo(Job.PCT)]
     [AdvancedCombo]
     PCT_AoE_AdvancedMode = 20040,
@@ -4519,8 +4519,7 @@ public enum Preset
 
     #region Standalone Features
 
-    [ReplaceSkill(PCT.FireInRed, PCT.FireIIinRed)]
-    [ConflictingCombos(PCT_ST_SimpleMode, PCT_AoE_SimpleMode)]
+    [ReplaceSkill(PCT.BlizzardinCyan, PCT.BlizzardIIinCyan)]
     [JobInfo(Job.PCT)]
     CombinedAetherhues = 20002,
 

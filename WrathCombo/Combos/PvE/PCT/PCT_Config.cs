@@ -157,11 +157,11 @@ internal partial class PCT
                 #region Standalone
                 case Preset.CombinedAetherhues:
                     DrawRadioButton(CombinedAetherhueChoices, "Both Single Target & AoE",
-                        $"Replaces both {FireInRed.ActionName()} & {FireIIinRed.ActionName()}", 0);
+                        $"Replaces both {BlizzardinCyan.ActionName()} & {BlizzardIIinCyan.ActionName()}", 0);
                     DrawRadioButton(CombinedAetherhueChoices, "Single Target Only",
-                        $"Replace only {FireInRed.ActionName()}", 1);
+                        $"Replace only {BlizzardinCyan.ActionName()}", 1);
                     DrawRadioButton(CombinedAetherhueChoices, "AoE Only",
-                        $"Replace only {FireIIinRed.ActionName()}", 2);
+                        $"Replace only {BlizzardIIinCyan.ActionName()}", 2);
                     break;
 
                 case Preset.CombinedMotifs:
