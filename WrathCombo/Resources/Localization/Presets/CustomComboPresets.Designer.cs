@@ -10117,18 +10117,18 @@ namespace WrathCombo.Resources.Localization.Presets {
         /// <summary>
         ///   Looks up a localized string similar to Locks out Aurora if Aurora&apos;s effect is on the target by replacing it with Savage Blade..
         /// </summary>
-        internal static string GNB_AuroraProtection_Desc {
+        internal static string GNB_AuroraFeatures_Desc {
             get {
-                return ResourceManager.GetString("GNB_AuroraProtection_Desc", resourceCulture);
+                return ResourceManager.GetString("GNB_AuroraFeatures_Desc", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Aurora Protection Feature.
         /// </summary>
-        internal static string GNB_AuroraProtection_Name {
+        internal static string GNB_AuroraFeatures_Name {
             get {
-                return ResourceManager.GetString("GNB_AuroraProtection_Name", resourceCulture);
+                return ResourceManager.GetString("GNB_AuroraFeatures_Name", resourceCulture);
             }
         }
         

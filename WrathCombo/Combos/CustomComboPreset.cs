@@ -3447,10 +3447,6 @@ public enum Preset
     [JobInfo(Job.GNB)]
     GNB_BS_Continuation = 7401,
 
-    [ParentCombo(GNB_BS_Continuation)]
-    [JobInfo(Job.GNB)]
-    GNB_BS_Hypervelocity = 7406,
-
     [ParentCombo(GNB_BS_Features)]
     [JobInfo(Job.GNB)]
     GNB_BS_Bloodfest = 7402,
@@ -3491,10 +3487,6 @@ public enum Preset
     [JobInfo(Job.GNB)]
     GNB_FC_DoubleDown = 7603,
 
-    [ParentCombo(GNB_FC_DoubleDown)]
-    [JobInfo(Job.GNB)]
-    GNB_FC_DoubleDown_NM = 7606,
-
     [ParentCombo(GNB_FC_Features)]
     [JobInfo(Job.GNB)]
     GNB_FC_Reign = 7604,
@@ -3504,14 +3496,14 @@ public enum Preset
     #region Aurora Protection
     [ReplaceSkill(GNB.Aurora)]
     [JobInfo(Job.GNB)]
-    GNB_AuroraProtection = 7023,
+    GNB_AuroraFeatures = 7023,
 
-    [ParentCombo(GNB_AuroraProtection)]
+    [ParentCombo(GNB_AuroraFeatures)]
     [JobInfo(Job.GNB)]
     [Retargeted(GNB.Aurora)]
     GNB_RetargetAurora_MO = 7087,
 
-    [ParentCombo(GNB_AuroraProtection)]
+    [ParentCombo(GNB_AuroraFeatures)]
     [JobInfo(Job.GNB)]
     [Retargeted(GNB.Aurora)]
     GNB_RetargetAurora_TT = 7088,

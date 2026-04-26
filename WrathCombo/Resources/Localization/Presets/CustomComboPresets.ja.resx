@@ -4249,10 +4249,10 @@ Lv.70以下で可能な限り羽を織ります。</value>
   <data name="GNB_FC_Reign_Desc" xml:space="preserve">
     <value>必要に応じてレイン・オブ・ビースト／ノーブルブラッド／ライオンハートをフェイテッドサークルに追加します。</value>
   </data>
-  <data name="GNB_AuroraProtection_Name" xml:space="preserve">
+  <data name="GNB_AuroraFeatures_Name" xml:space="preserve">
     <value>オーロラ保護機能</value>
   </data>
-  <data name="GNB_AuroraProtection_Desc" xml:space="preserve">
+  <data name="GNB_AuroraFeatures_Desc" xml:space="preserve">
     <value>オーロラの効果がターゲットにある場合、サベッジブレードに置き換えることでオーロラをロックアウトします。</value>
   </data>
   <data name="GNB_RetargetAurora_MO_Name" xml:space="preserve">
