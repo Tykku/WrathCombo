@@ -1055,13 +1055,13 @@ internal partial class BRD : PhysicalRanged
             if (actionID is not WanderersMinuet)
                 return actionID;
 
-            if (ActionReady(WanderersMinuet) || gauge.Song == Song.Wanderer && SongTimerInSeconds > 11)
+            if (ActionReady(WanderersMinuet) || gauge.Song == Song.WanderersMinuet && SongTimerInSeconds > 11)
                 return WanderersMinuet;
 
-            if (ActionReady(MagesBallad) || gauge.Song == Song.Mage && SongTimerInSeconds > 2)
+            if (ActionReady(MagesBallad) || gauge.Song == Song.MagesBallad && SongTimerInSeconds > 2)
                 return MagesBallad;
 
-            if (ActionReady(ArmysPaeon) || gauge.Song == Song.Army && SongTimerInSeconds > 2)
+            if (ActionReady(ArmysPaeon) || gauge.Song == Song.ArmysPaeon && SongTimerInSeconds > 2)
                 return ArmysPaeon;
 
             return actionID;
