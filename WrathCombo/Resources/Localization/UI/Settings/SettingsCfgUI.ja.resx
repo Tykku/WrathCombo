@@ -1,17 +1,17 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
+  <!--
+    Microsoft ResX Schema
+
     Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
     associated with the data types.
-    
+
     Example:
-    
+
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,36 +26,36 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-                
-    There are any number of "resheader" rows that contain simple 
+
+    There are any number of "resheader" rows that contain simple
     name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
     mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
     extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
     read any of the formats listed below.
-    
+
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
+    value   : The object must be serialized into a byte array
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
@@ -339,7 +339,7 @@
   </data>
   <data name="OpenToPvE_helpMark" xml:space="preserve">
     <value>/wrath で開いたとき、最後に開いていたタブではなく PvE 機能タブを表示します。
-常に /wrath pve を使うのと同じ動作です。</value>
+常に/wrath pve を使うのと同じ動作です。</value>
   </data>
   <data name="OpenToPvE_Name" xml:space="preserve">
     <value>Wrath を PvE 機能タブで開く</value>
@@ -424,11 +424,11 @@
   </data>
   <data name="RaiseStack_helpMark" xml:space="preserve">
     <value>これは Wrath が蘇生対象を選ぶ優先順です。
-いずれかの蘇生機能でリターゲットが有効な場合に使用されます。
+いずれかの蘇生機能でリターゲットが有効な場合に使われます。
 
-蘇生機能は PvE &gt; General または蘇生を持つ各キャスター配下にあります。
+蘇生機能は PvE &gt; General または蘇生を持つ各キャスターの項目にあります。
 
-5 項目未満で、すべての判定が空振りした場合は、死亡しているハードターゲット、または &lt;いずれかのパーティメンバー&gt; にフォールバックします。
+項目が 5 つ未満で、すべての判定が空振りした場合は、戦闘不能のハードターゲット、または &lt;いずれかの戦闘不能パーティメンバー&gt; にフォールバックします。
 
 有効対象になるのは、味方かつ戦闘不能で、30y 以内の対象だけです。</value>
   </data>
@@ -442,9 +442,9 @@
     <value>オフ</value>
   </data>
   <data name="RetargetHealingActionsToStack_helpMark" xml:space="preserve">
-    <value>単体回復アクションを、下に表示される回復優先順へリターゲットします。
-Redirect や Reaction と同じような挙動です。
-これにより、HP% 判定に使った対象と、実際に回復を飛ばす対象が一致します。</value>
+    <value>下に表示される回復優先順に従って、単体回復アクションをリターゲットします。
+Redirect や Reaction に近い挙動です。
+これにより、HP% 判定に使った対象と、実際の回復先が一致します。</value>
   </data>
   <data name="RetargetHealingActionsToStack_Name" xml:space="preserve">
     <value>単体回復をリターゲット</value>
@@ -592,9 +592,9 @@ Redirect や Reaction と同じような挙動です。
     <value>オフ</value>
   </data>
   <data name="UseCustomHealStack_helpMark" xml:space="preserve">
-    <value>既定の回復優先順ではなく、自分で作成した優先順を使いたい場合に有効にします。
+    <value>既定の回復優先順ではなく、自分で作成した対象優先順を使いたい場合に有効にします。
 
-上の「単体回復をリターゲット」を使わない場合は、Redirect / Reaction 側の設定に合わせる目的で使うのがおすすめです。</value>
+上の「単体回復をリターゲット」を使わない場合は、Redirect / Reaction 側の設定と揃える目的で使うのを推奨します。</value>
   </data>
   <data name="UseCustomHealStack_Name" xml:space="preserve">
     <value>独自の回復優先順を使う</value>
@@ -608,10 +608,10 @@ Redirect や Reaction と同じような挙動です。
   <data name="UseFieldMouseoverOverridesInDefaultHealStack_helpMark" xml:space="preserve">
     <value>フィールド上でマウスオーバーしている対象を、既定の回復優先順の最上位に追加します。
 
-キーボード＋マウス操作で、上の「単体回復をリターゲット」または Redirect / Reaction のマウスオーバー設定を使う場合に有効です。</value>
+キーボード＋マウス操作で、上の「単体回復をリターゲット」または Redirect / Reaction のマウスオーバー設定を使うなら、有効化を推奨します。</value>
   </data>
   <data name="UseFieldMouseoverOverridesInDefaultHealStack_Name" xml:space="preserve">
-    <value>既定の回復優先順にフィールドマウスオーバーを追加</value>
+    <value>既定の回復優先順にマウスオーバー対象を追加</value>
   </data>
   <data name="UseFieldMouseoverOverridesInDefaultHealStack_recommendedValue" xml:space="preserve">
     <value>任意</value>
@@ -642,7 +642,7 @@ Redirect や Reaction と同じような挙動です。
   </data>
   <data name="UseLowestHPOverrideInDefaultHealStack_warningMark" xml:space="preserve">
     <value>ほかの Default+ 項目と違い、これは多くのリターゲット系プラグインにない機能です。
-上の「単体回復をリターゲット」と一緒に使うことを推奨します。</value>
+上の「単体回復をリターゲット」とセットで使うことを推奨します。</value>
   </data>
   <data name="UseUIMouseoverOverridesInDefaultHealStack_defaultValue" xml:space="preserve">
     <value>オフ</value>
@@ -650,12 +650,84 @@ Redirect や Reaction と同じような挙動です。
   <data name="UseUIMouseoverOverridesInDefaultHealStack_helpMark" xml:space="preserve">
     <value>パーティ UI 上でマウスオーバーしている対象を、既定の回復優先順の最上位に追加します。
 
-キーボード＋マウス操作で、上の「単体回復をリターゲット」または Redirect / Reaction の UIマウスオーバー設定を使う場合に有効です。</value>
+キーボード＋マウス操作で、上の「単体回復をリターゲット」または Redirect / Reaction の UIマウスオーバー設定を使うなら、有効化を推奨します。</value>
   </data>
   <data name="UseUIMouseoverOverridesInDefaultHealStack_Name" xml:space="preserve">
-    <value>既定の回復優先順に UIマウスオーバーを追加</value>
+    <value>既定の回復優先順にUIマウスオーバーを追加</value>
   </data>
   <data name="UseUIMouseoverOverridesInDefaultHealStack_recommendedValue" xml:space="preserve">
     <value>任意</value>
+  </data>
+  <data name="MainUIOptions_Category" xml:space="preserve">
+    <value>メインUIオプション</value>
+  </data>
+  <data name="RotationBehaviourOptions_Category" xml:space="preserve">
+    <value>ローテーション挙動オプション</value>
+  </data>
+  <data name="TargetingOptions_Category" xml:space="preserve">
+    <value>ターゲットオプション</value>
+  </data>
+  <data name="TroubleshootingOptions_Category" xml:space="preserve">
+    <value>トラブルシューティングオプション</value>
+  </data>
+  <data name="AprilFools2026_Name" xml:space="preserve">
+    <value>エイプリルフール 2026 機能</value>
+  </data>
+  <data name="AprilFools2026_helpMark" xml:space="preserve">
+    <value>プラグイン内のモンク成分をさらに増やしたい人向け。</value>
+  </data>
+  <data name="AprilFools2026_recommendedValue" xml:space="preserve">
+    <value>オフ（名前が Beep で始まるなら別）</value>
+  </data>
+  <data name="AprilFools2026_defaultValue" xml:space="preserve">
+    <value>オン（そういう日なので）</value>
+  </data>
+  <data name="TankbusterTTS_Name" xml:space="preserve">
+    <value>タンク強攻撃でTTSを再生</value>
+  </data>
+  <data name="TankbusterTTS_helpMark" xml:space="preserve">
+    <value>タンク強攻撃を検知したとき、対象者を含めてTTS音声を再生します。</value>
+  </data>
+  <data name="TankbusterTTS_recommendedValue" xml:space="preserve">
+    <value>任意</value>
+  </data>
+  <data name="TankbusterTTS_defaultValue" xml:space="preserve">
+    <value>オフ</value>
+  </data>
+  <data name="AoEDamageTTS_Name" xml:space="preserve">
+    <value>全体攻撃でTTSを再生</value>
+  </data>
+  <data name="AoEDamageTTS_helpMark" xml:space="preserve">
+    <value>頭割りまたは全体攻撃の詠唱を検知したとき、対象者がいる場合は対象者も含めてTTS音声を再生します。</value>
+  </data>
+  <data name="AoEDamageTTS_recommendedValue" xml:space="preserve">
+    <value>任意</value>
+  </data>
+  <data name="AoEDamageTTS_defaultValue" xml:space="preserve">
+    <value>オフ</value>
+  </data>
+  <data name="TankbusterToast_Name" xml:space="preserve">
+    <value>タンク強攻撃でトースト通知を表示</value>
+  </data>
+  <data name="TankbusterToast_helpMark" xml:space="preserve">
+    <value>タンク強攻撃を検知したとき、対象者を含めて画面上にメッセージを表示します。</value>
+  </data>
+  <data name="TankbusterToast_recommendedValue" xml:space="preserve">
+    <value>任意</value>
+  </data>
+  <data name="TankbusterToast_defaultValue" xml:space="preserve">
+    <value>オフ</value>
+  </data>
+  <data name="AoEDamageToast_Name" xml:space="preserve">
+    <value>全体攻撃でトースト通知を表示</value>
+  </data>
+  <data name="AoEDamageToast_helpMark" xml:space="preserve">
+    <value>頭割りまたは全体攻撃の詠唱を検知したとき、対象者がいる場合は対象者も含めて画面上にメッセージを表示します。</value>
+  </data>
+  <data name="AoEDamageToast_recommendedValue" xml:space="preserve">
+    <value>任意</value>
+  </data>
+  <data name="AoEDamageToast_defaultValue" xml:space="preserve">
+    <value>オフ</value>
   </data>
 </root>

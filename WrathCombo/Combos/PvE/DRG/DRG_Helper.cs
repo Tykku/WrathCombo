@@ -498,6 +498,7 @@ internal partial class DRG
             RaidenThrustReady = 1863,
             PowerSurge = 2720,
             LifeSurge = 116,
+            LifeOfTheDragon = 3177, // Do not use, for translation only
             DraconianFire = 1863,
             NastrondReady = 3844,
             StarcrossReady = 3846,

@@ -302,7 +302,7 @@ public sealed partial class WrathCombo : IDalamudPlugin
         }
     }
 
-    private void ClientState_TerritoryChanged(ushort obj)
+    private void ClientState_TerritoryChanged(uint obj)
     {
         UpdateCaches(false, true, false);
 
@@ -381,6 +381,12 @@ public sealed partial class WrathCombo : IDalamudPlugin
             }
             else
                 OpenerDtr.Text = "";
+
+            if (Service.Configuration.TankbusterTTS || Service.Configuration.TankbusterToast)
+                CustomComboFunctions.PlayTankbusterAlert();
+
+            if (Service.Configuration.AoEDamageTTS || Service.Configuration.AoEDamageToast)
+                CustomComboFunctions.PlayGroupwideAlert();
         }
         catch (Exception ex)
         {

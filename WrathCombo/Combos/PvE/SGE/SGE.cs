@@ -1,8 +1,6 @@
 using Dalamud.Game.ClientState.Objects.Types;
-using ECommons.DalamudServices;
 using ECommons.GameFunctions;
 using System.Linq;
-using WrathCombo.AutoRotation;
 using WrathCombo.Core;
 using WrathCombo.CustomComboNS;
 using WrathCombo.Extensions;
@@ -59,10 +57,10 @@ internal partial class SGE : Healer
                 if (ActionReady(Soteria) && HasStatusEffect(Buffs.Kardia))
                     return Soteria;
             }
-           
-            var dotAction = OriginalHook(Dosis);
-            DosisList.TryGetValue(dotAction, out var debuff);
-            var target = SimpleTarget.DottableEnemy(dotAction, debuff.Debuff, 0, 3, 2);
+
+            uint dotAction = OriginalHook(Dosis);
+            DosisList.TryGetValue(dotAction, out (ushort Debuff, uint Eukrasian) debuff);
+            IGameObject? target = SimpleTarget.DottableEnemy(dotAction, debuff.Debuff, 0, 3, 2);
 
             if (target is not null && CanApplyStatus(target, debuff.Debuff) && !JustUsedOn(dotAction, target) && LevelChecked(Eukrasia))
                 return HasStatusEffect(Buffs.Eukrasia)
@@ -258,31 +256,29 @@ internal partial class SGE : Healer
                     ActionReady(Soteria) && HasStatusEffect(Buffs.Kardia))
                     return Soteria;
             }
-            
+
             if (IsEnabled(Preset.SGE_ST_DPS_EDosis) && PartyInCombat())
             {
-                var dotAction = OriginalHook(Dosis);;
-                DosisList.TryGetValue(dotAction, out var debuff);
-                var target = SimpleTarget.DottableEnemy(dotAction, debuff.Debuff, ComputeHpThreshold, SGE_ST_DPS_EukrasianDosisUptime_Threshold, 2);
-                
+                uint dotAction = OriginalHook(Dosis);
+                ;
+                DosisList.TryGetValue(dotAction, out (ushort Debuff, uint Eukrasian) debuff);
+                IGameObject? target = SimpleTarget.DottableEnemy(dotAction, debuff.Debuff, ComputeHpThreshold, SGE_ST_DPS_EukrasianDosisUptime_Threshold, 2);
+
                 //Single Target Dotting, needed because dottableenemy will not maintain single dot on main target of more than one target exists. 
                 if (NeedsDoT())
                     return HasStatusEffect(Buffs.Eukrasia)
                         ? dotAction
                         : Eukrasia;
-                
+
                 //2 target Dotting System to maintain dots on 2 enemies. Works with the same sliders and one target
                 if (target is not null && CanApplyStatus(target, debuff.Debuff) && !JustUsedOn(dotAction, target) && SGE_ST_DPS_EDosis_TwoTarget && LevelChecked(Eukrasia))
                     return HasStatusEffect(Buffs.Eukrasia)
                         ? dotAction.Retarget(dosisActions, target)
                         : Eukrasia;
-                       
             }
 
             if (HasBattleTarget() && !HasStatusEffect(Buffs.Eukrasia))
             {
-                
-
                 // Phlegma
                 if (IsEnabled(Preset.SGE_ST_DPS_Phlegma) &&
                     InCombat() && InActionRange(OriginalHook(Phlegma)) &&

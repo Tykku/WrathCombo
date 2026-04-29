@@ -690,4 +690,52 @@ It is recommended to enable this if you are a keyboard+mouse user and enable Ret
   <data name="AprilFools2026_defaultValue" xml:space="preserve">
     <value>On, cause it's that type of day y'know</value>
   </data>
+  <data name="TankbusterTTS_Name" xml:space="preserve">
+    <value>Play TTS on Tankbuster</value>
+  </data>
+  <data name="TankbusterTTS_helpMark" xml:space="preserve">
+    <value>Will play a text-to-speech sound clip whenever a tankbuster is detected, including who it is targeting.</value>
+  </data>
+  <data name="TankbusterTTS_recommendedValue" xml:space="preserve">
+    <value>Preference</value>
+  </data>
+  <data name="TankbusterTTS_defaultValue" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="AoEDamageTTS_Name" xml:space="preserve">
+    <value>Play TTS on Group Damage</value>
+  </data>
+  <data name="AoEDamageTTS_helpMark" xml:space="preserve">
+    <value>Will play a text-to-speech sound clip whenever a stack/group damage cast is detected, including who it is targeting if applicable.</value>
+  </data>
+  <data name="AoEDamageTTS_recommendedValue" xml:space="preserve">
+    <value>Preference</value>
+  </data>
+  <data name="AoEDamageTTS_defaultValue" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="TankbusterToast_Name" xml:space="preserve">
+    <value>Show Toast on Tankbuster</value>
+  </data>
+  <data name="TankbusterToast_helpMark" xml:space="preserve">
+    <value>Show a message on-screen whenever a tankbuster is detected, including who it is targeting.</value>
+  </data>
+  <data name="TankbusterToast_recommendedValue" xml:space="preserve">
+    <value>Preference</value>
+  </data>
+  <data name="TankbusterToast_defaultValue" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="AoEDamageToast_Name" xml:space="preserve">
+    <value>Show Toast on Group Damage</value>
+  </data>
+  <data name="AoEDamageToast_helpMark" xml:space="preserve">
+    <value>Show a message on-screen whenever a stack/group damage cast is detected, including who it is targeting if applicable.</value>
+  </data>
+  <data name="AoEDamageToast_recommendedValue" xml:space="preserve">
+    <value>Preference</value>
+  </data>
+  <data name="AoEDamageToast_defaultValue" xml:space="preserve">
+    <value>Off</value>
+  </data>
 </root>

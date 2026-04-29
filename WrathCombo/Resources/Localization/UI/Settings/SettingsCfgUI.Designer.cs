@@ -151,6 +151,78 @@ namespace WrathCombo.Resources.Localization.UI.Settings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Off.
+        /// </summary>
+        internal static string AoEDamageToast_defaultValue {
+            get {
+                return ResourceManager.GetString("AoEDamageToast_defaultValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show a message on-screen whenever a stack/group damage cast is detected, including who it is targeting if applicable..
+        /// </summary>
+        internal static string AoEDamageToast_helpMark {
+            get {
+                return ResourceManager.GetString("AoEDamageToast_helpMark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show Toast on Group Damage.
+        /// </summary>
+        internal static string AoEDamageToast_Name {
+            get {
+                return ResourceManager.GetString("AoEDamageToast_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preference.
+        /// </summary>
+        internal static string AoEDamageToast_recommendedValue {
+            get {
+                return ResourceManager.GetString("AoEDamageToast_recommendedValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Off.
+        /// </summary>
+        internal static string AoEDamageTTS_defaultValue {
+            get {
+                return ResourceManager.GetString("AoEDamageTTS_defaultValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Will play a text-to-speech sound clip whenever a stack/group damage cast is detected, including who it is targeting if applicable..
+        /// </summary>
+        internal static string AoEDamageTTS_helpMark {
+            get {
+                return ResourceManager.GetString("AoEDamageTTS_helpMark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Play TTS on Group Damage.
+        /// </summary>
+        internal static string AoEDamageTTS_Name {
+            get {
+                return ResourceManager.GetString("AoEDamageTTS_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preference.
+        /// </summary>
+        internal static string AoEDamageTTS_recommendedValue {
+            get {
+                return ResourceManager.GetString("AoEDamageTTS_recommendedValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to On, cause it&apos;s that type of day y&apos;know.
         /// </summary>
         internal static string AprilFools2026_defaultValue {
@@ -1288,6 +1360,78 @@ namespace WrathCombo.Resources.Localization.UI.Settings {
         internal static string SuppressSetCommands_recommendedValue {
             get {
                 return ResourceManager.GetString("SuppressSetCommands_recommendedValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Off.
+        /// </summary>
+        internal static string TankbusterToast_defaultValue {
+            get {
+                return ResourceManager.GetString("TankbusterToast_defaultValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show a message on-screen whenever a tankbuster is detected, including who it is targeting..
+        /// </summary>
+        internal static string TankbusterToast_helpMark {
+            get {
+                return ResourceManager.GetString("TankbusterToast_helpMark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show Toast on Tankbuster.
+        /// </summary>
+        internal static string TankbusterToast_Name {
+            get {
+                return ResourceManager.GetString("TankbusterToast_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preference.
+        /// </summary>
+        internal static string TankbusterToast_recommendedValue {
+            get {
+                return ResourceManager.GetString("TankbusterToast_recommendedValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Off.
+        /// </summary>
+        internal static string TankbusterTTS_defaultValue {
+            get {
+                return ResourceManager.GetString("TankbusterTTS_defaultValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Will play a text-to-speech sound clip whenever a tankbuster is detected, including who it is targeting..
+        /// </summary>
+        internal static string TankbusterTTS_helpMark {
+            get {
+                return ResourceManager.GetString("TankbusterTTS_helpMark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Play TTS on Tankbuster.
+        /// </summary>
+        internal static string TankbusterTTS_Name {
+            get {
+                return ResourceManager.GetString("TankbusterTTS_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preference.
+        /// </summary>
+        internal static string TankbusterTTS_recommendedValue {
+            get {
+                return ResourceManager.GetString("TankbusterTTS_recommendedValue", resourceCulture);
             }
         }
         

@@ -83,7 +83,7 @@ public static class ActionWatching
         SendActionHook ??= Svc.Hook.HookFromSignature<SendActionDelegate>("48 89 5C 24 ?? 48 89 6C 24 ?? 48 89 74 24 ?? 57 48 81 EC ?? ?? ?? ?? 48 8B 05 ?? ?? ?? ?? 48 33 C4 48 89 84 24 ?? ?? ?? ?? 48 8B E9 41 0F B7 D9", SendActionDetour);
         UseActionHook ??= Svc.Hook.HookFromAddress<UseActionDelegate>(ActionManager.Addresses.UseAction.Value, UseActionDetour);
         OnCastInterrupted += CancelPendingLastActionUpdate;
-        CanQueueAction ??= Svc.Hook.HookFromSignature<CanQueueActionDelegate>("E8 ?? ?? ?? ?? 3C 01 0F 85 ?? ?? ?? ?? 88 45 68", CanQueueActionDetour);
+        CanQueueAction ??= Svc.Hook.HookFromAddress<CanQueueActionDelegate>(ActionManager.Addresses.IsActionOffCooldown.Value, CanQueueActionDetour);
     }
 
     public static void Enable()
@@ -470,19 +470,19 @@ public static class ActionWatching
                     Service.ActionReplacer.EnableActionReplacingIfRequired();
 
                 var targetObject = targetId.GetObject();
-                if (targetObject is null)
+                if (targetObject is null && targetId != 0xE000_0000)
                 {
                     Service.ActionReplacer.EnableActionReplacingIfRequired();
                     return UseActionHook.Original(actionManager, actionType, actionId, targetId, extraParam, mode, comboRouteId, outOptAreaTargeted);
                 }
 
-                //if (changed && !areaTargeted) //Check if the action can be used on the target, and if not revert to original
-                if (!ActionManager.CanUseActionOnTarget(replacedWith,
-                        targetObject.Struct()))
-                    targetId = originalTargetId;
+                if (changed && !areaTargeted) //Check if the action can be used on the target, and if not revert to original
+                    if (!ActionManager.CanUseActionOnTarget(replacedWith,
+                            targetObject.Struct()))
+                        targetId = originalTargetId;
 
                 // Support Retargeted ground actions
-                if ((changed && areaTargeted) || AutoRotationController.WouldLikeToGroundTarget)
+                if ((areaTargeted && changed) || AutoRotationController.WouldLikeToGroundTarget)
                 {
                     var location = Player.Position;
                     replacedWith = Service.ActionReplacer.LastActionInvokeFor.TryGetValue(actionId, out var replacedGT) ? replacedGT : replacedWith;
