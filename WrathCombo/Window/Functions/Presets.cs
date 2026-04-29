@@ -400,7 +400,7 @@ internal class Presets : ConfigWindow
             ? ImGuiColors.ParsedGreen
             : ImGuiColors.DalamudYellow;
 
-        using var col = new ImRaii.Color();
+        using var col = new ImRaii.ColorDisposable();
         col.Push(ImGuiCol.TextDisabled, color);
 
         using (ImRaii.PushFont(UiBuilder.IconFont))
