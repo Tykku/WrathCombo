@@ -83,7 +83,7 @@ public static class ActionWatching
         SendActionHook ??= Svc.Hook.HookFromSignature<SendActionDelegate>("48 89 5C 24 ?? 48 89 6C 24 ?? 48 89 74 24 ?? 57 48 81 EC ?? ?? ?? ?? 48 8B 05 ?? ?? ?? ?? 48 33 C4 48 89 84 24 ?? ?? ?? ?? 48 8B E9 41 0F B7 D9", SendActionDetour);
         UseActionHook ??= Svc.Hook.HookFromAddress<UseActionDelegate>(ActionManager.Addresses.UseAction.Value, UseActionDetour);
         OnCastInterrupted += CancelPendingLastActionUpdate;
-        CanQueueAction ??= Svc.Hook.HookFromSignature<CanQueueActionDelegate>("E8 ?? ?? ?? ?? 3C 01 0F 85 ?? ?? ?? ?? 88 45 68", CanQueueActionDetour);
+        CanQueueAction ??= Svc.Hook.HookFromAddress<CanQueueActionDelegate>(ActionManager.Addresses.IsActionOffCooldown.Value, CanQueueActionDetour);
     }
 
     public static void Enable()

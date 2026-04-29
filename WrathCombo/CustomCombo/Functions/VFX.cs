@@ -1,6 +1,7 @@
 ﻿using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Game.Gui.Toast;
+using ECommons;
 using ECommons.DalamudServices;
 using ECommons.GameFunctions;
 using ECommons.GameHelpers;
@@ -18,7 +19,18 @@ namespace WrathCombo.CustomComboNS.Functions;
 
 internal abstract partial class CustomComboFunctions
 {
-    public static SpeechSynthesizer TTS = new();
+    public static SpeechSynthesizer? TTS;
+    static CustomComboFunctions()
+    {
+        try
+        {
+            TTS = new();
+        }
+        catch(Exception e)
+        {
+            e.LogInfo();
+        }
+    }
     private const StringComparison Lower = StringComparison.OrdinalIgnoreCase;
 
     private static readonly StringComparer Lowerer =
@@ -251,7 +263,7 @@ internal abstract partial class CustomComboFunctions
         {
             var targets = TTSTankbusters.Where(x => !x.TTSHandled).Select(x => x.VFX.TargetID == Player.Object.GameObjectId ? "You" : x.VFX.TargetID.GetObject()?.Name.ToString()).ToList();
             if (Service.Configuration.TankbusterTTS)
-                TTS.SpeakAsync(string.Format(MiscStrings.TankbusterTTS, JoinNaturally(targets)));
+                TTS?.SpeakAsync(string.Format(MiscStrings.TankbusterTTS, JoinNaturally(targets)));
             if (Service.Configuration.TankbusterToast)
                 Svc.Toasts.ShowQuest(string.Format(MiscStrings.TankbusterTTS, JoinNaturally(targets)), opts);
 
@@ -278,7 +290,7 @@ internal abstract partial class CustomComboFunctions
             var multiHit = TTSGroupwides.Any(x => CheckPath(MHSharedDmgPaths, x.VFX.Path));
             var targets = TTSGroupwides.Where(x => !x.TTSHandled).Select(x => x.VFX.TargetID == Player.Object.GameObjectId ? "You" : x.VFX.TargetID.GetObject()?.Name.ToString()).ToList();
             if (Service.Configuration.AoEDamageTTS)
-                TTS.SpeakAsync(string.Format(MiscStrings.StackTTS, (multiHit ? MiscStrings.MultiHit : ""), JoinNaturally(targets)));
+                TTS?.SpeakAsync(string.Format(MiscStrings.StackTTS, (multiHit ? MiscStrings.MultiHit : ""), JoinNaturally(targets)));
             if (Service.Configuration.AoEDamageToast)
                 Svc.Toasts.ShowQuest(string.Format(MiscStrings.StackTTS, (multiHit ? MiscStrings.MultiHit : ""), JoinNaturally(targets)), opts);
 
@@ -292,7 +304,7 @@ internal abstract partial class CustomComboFunctions
             if (!CurrentRaidwideHandled)
             {
                 if (Service.Configuration.AoEDamageTTS)
-                    TTS.SpeakAsync(MiscStrings.RaidwideTTS);
+                    TTS?.SpeakAsync(MiscStrings.RaidwideTTS);
                 if (Service.Configuration.AoEDamageToast)
                     Svc.Toasts.ShowQuest(MiscStrings.RaidwideTTS, opts);
 
