@@ -981,10 +981,10 @@ internal class BLM_Toshi_Fire4 : CustomCombo
         {
             Fire4 when IcePhase && LevelChecked(Fire3) && HasStatusEffect(Buffs.Firestarter) => Transpose,
             //Toshi Occult Changes
-            Fire4 when IsEnabledAndUsable(Preset.Phantom_Geomancer_BattleBell, BattleBell) &&
+            /*Fire4 when IsEnabledAndUsable(Preset.Phantom_Geomancer_BattleBell, BattleBell) &&
                        GetStatusEffectRemainingTime(Buffs.BattleBell) <= 5  && CanWeave() => BattleBell,
             Fire4 when IsEnabledAndUsable(Preset.Phantom_Geomancer_RingingRespite, RingingRespite) &&
-                       GetStatusEffectRemainingTime(Buffs.RingingRespite) <= 5 && CanWeave() => RingingRespite,
+                       GetStatusEffectRemainingTime(Buffs.RingingRespite) <= 5 && CanWeave() => RingingRespite,*/
             //Toshi Low-Level Changes
             Fire4 when !LevelChecked(Fire4)     && FirePhase && MP.Cur >= 1600 && !HasStatusEffect(Buffs.Firestarter) => Fire,
             Fire4 when !LevelChecked(Blizzard4) && FirePhase && MP.Cur < 1600 && LevelChecked(Blizzard3) => Blizzard3,
