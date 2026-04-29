@@ -156,9 +156,9 @@ internal partial class SMN
 
     internal static SMNGauge Gauge => GetJobGauge<SMNGauge>();
 
-    internal static bool IsIfritAttuned => Gauge.AttunementType is SummonAttunement.Ifrit;
-    internal static bool IsTitanAttuned => Gauge.AttunementType is SummonAttunement.Titan;
-    internal static bool IsGarudaAttuned => Gauge.AttunementType is SummonAttunement.Garuda;
+    internal static bool IsIfritAttuned => (byte)Gauge.AttunementType is 1;
+    internal static bool IsTitanAttuned => (byte)Gauge.AttunementType is 2;
+    internal static bool IsGarudaAttuned => (byte)Gauge.AttunementType is 3;
     internal static bool CanSummonEgi => Gauge.IsTitanReady || Gauge.IsGarudaReady || Gauge.IsIfritReady;
     internal static bool GemshineReady => Gauge.AttunementCount > 0;
     internal static bool IsAttunedAny => IsIfritAttuned || IsTitanAttuned || IsGarudaAttuned;

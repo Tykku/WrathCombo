@@ -40,7 +40,7 @@ using Action = Lumina.Excel.Sheets.Action;
 using BattleNPCSubKind = Dalamud.Game.ClientState.Objects.Enums.BattleNpcSubKind;
 using ObjectKind = Dalamud.Game.ClientState.Objects.Enums.ObjectKind;
 using Status = Dalamud.Game.ClientState.Statuses.IStatus;
-
+using BattleNpcSubKindCS = FFXIVClientStructs.FFXIV.Client.Game.Object.BattleNpcSubKind;
 #endregion
 
 namespace WrathCombo.Window.Tabs;
@@ -1313,7 +1313,7 @@ internal class Debug : ConfigWindow, IDisposable
                 .Where(x => x.ObjectKind == ObjectKind.BattleNpc &&
                             x.IsTargetable &&
                             !x.IsDead &&
-                            x.BattleNpcKind is BattleNPCSubKind.Enemy or BattleNPCSubKind.BattleNpcPart);
+                            x.Struct()->BattleNpcSubKind is BattleNpcSubKindCS.Combatant or BattleNpcSubKindCS.BNpcPart);
 
                 foreach (var enemy in enemies)
                 {

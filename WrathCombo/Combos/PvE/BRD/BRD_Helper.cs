@@ -37,9 +37,9 @@ internal partial class BRD
     internal static BRDGauge? gauge = GetJobGauge<BRDGauge>();
     internal static int SongTimerInSeconds => gauge.SongTimer / 1000;
     internal static bool SongNone => gauge.Song == Song.None;
-    internal static bool SongWanderer => gauge.Song == Song.Wanderer;
-    internal static bool SongMage => gauge.Song == Song.Mage;
-    internal static bool SongArmy => gauge.Song == Song.Army;
+    internal static bool SongWanderer => gauge.Song == Song.WanderersMinuet;
+    internal static bool SongMage => gauge.Song == Song.MagesBallad;
+    internal static bool SongArmy => gauge.Song == Song.ArmysPaeon;
     //Dot Management
     internal static IStatus? Purple => GetStatusEffect(Debuffs.CausticBite, CurrentTarget) ?? GetStatusEffect(Debuffs.VenomousBite, CurrentTarget);
     internal static IStatus? Blue => GetStatusEffect(Debuffs.Stormbite, CurrentTarget) ?? GetStatusEffect(Debuffs.Windbite, CurrentTarget);
