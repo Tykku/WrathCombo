@@ -620,7 +620,7 @@ internal partial class BLM : Caster
 
             if (IcePhase)
             {
-                if (HasMaxUmbralHeartStacks ||
+                if (HasMaxUmbralHeartStacks &&
                     MP.Cur >= 5000 && LevelChecked(Flare) ||
                     MP.Full && !LevelChecked(Flare))
                 {
