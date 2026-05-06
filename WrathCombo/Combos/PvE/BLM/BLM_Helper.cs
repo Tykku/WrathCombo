@@ -399,7 +399,9 @@ internal partial class BLM
         Paradox = 25797,
         HighThunder = 36986,
         HighThunder2 = 36987,
-        FlareStar = 36989;
+        FlareStar = 36989,
+        BattleBell = 41611,
+        RingingRespite = 41619;
 
     // Debuff Pairs of Actions and Debuff
     public static class Buffs
@@ -415,8 +417,8 @@ internal partial class BLM
             UmbralIce = 176, // Do not use, for translation only
             UmbralIce2 = 177, // Do not use, for translation only
             UmbralIce3 = 178, // Do not use, for translation only
-            BattleBell = 4251,
-            RingingRespite = 4257,
+            BattleBell = 4251, // Toshi Rotation
+            RingingRespite = 4257, // Toshi rotation
             Thunderhead = 3870;
     }
 

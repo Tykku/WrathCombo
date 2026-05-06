@@ -1633,11 +1633,18 @@ public enum Preset
     [ReplaceSkill(BLM.Xenoglossy)]
     [JobInfo(Job.BLM)]
     BLM_Toshi_Xeno = 2076,
+    
+    [ParentCombo(BLM_Toshi_Fire4)]
+    [ReplaceSkill(BLM.Fire4)]
+    [JobInfo(Job.BLM)]
+    BLM_Toshi_Thunder = 2077,
+    
+    
     #endregion
 
     // Last value ST = 2117
     //Last Value AoE = 2213
-    //Last Value misc = 2071
+    //Last Value misc = 2077
 
     #endregion
 

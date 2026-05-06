@@ -12,7 +12,7 @@ namespace WrathCombo.Services.IPC_Subscriber;
 
 public abstract class ReusableIPC : IDisposable
 {
-    private object? _plugin;
+    private IDalamudPlugin _plugin;
     public EzIPCDisposalToken[] DisposalTokens;
     public string PluginName;
     protected bool ReflectionNotIPC;
