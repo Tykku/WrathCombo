@@ -326,17 +326,8 @@ internal partial class WHM
             Glare3,
             Glare3,
             PresenceOfMind, //5
-            Glare4,
-            AfflatusMisery,
-            Assize,
-            Glare4,
-            Glare4, //10
             Glare3,
-            Glare3,
-            Glare3,
-            Glare3,
-            Glare3, //15
-            Dia
+            Assize
         ];
 
         internal override UserData ContentCheckConfig => WHM_Balance_Content;
