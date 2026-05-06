@@ -157,8 +157,8 @@ internal unsafe class AutoRotationController
                || !EzThrottler.Throttle("Autorot", cfg.Throttler)
                || (cfg.DPSSettings.UnTargetAndDisableForPenalty && PlayerHasActionPenalty())
                || (ActionManager.Instance()->QueuedActionId > 0)
-               || Paused;
-               || HasStatusEffect(29054);
+               || Paused
+               || HasStatusEffect(29054)
                || JustUsed(29054, 4f);
     }
 
