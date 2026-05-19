@@ -140,6 +140,7 @@ internal partial class BLM
                     break;
 
 
+                case Preset.BLM_Toshi_Thunder:
                 case Preset.BLM_ST_Thunder:
 
                     DrawSliderInt(0, 100, BLM_ST_ThunderBossOption,

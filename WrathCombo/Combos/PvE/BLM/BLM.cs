@@ -979,7 +979,7 @@ internal class BLM_Toshi_Fire4 : CustomCombo
 
         return actionID switch
         {
-            Fire4 when IsEnabled(Preset.BLM_Toshi_Thunder) && TargetIsBoss() && CanUseThunder() => Thunder,
+            Fire4 when IsEnabled(Preset.BLM_Toshi_Thunder) && !IcePhase && CanUseThunder() => OriginalHook(Thunder),
             Fire4 when IcePhase && LevelChecked(Fire3) && HasStatusEffect(Buffs.Firestarter) => Transpose,
             //Toshi Occult Changes
             Fire4 when IsEnabledAndUsable(Preset.Phantom_Geomancer_BattleBell, BattleBell) &&
