@@ -530,6 +530,10 @@ public enum Preset
     #endregion
 
     #region PHANTOM ACTIONS
+    [OccultCrescent]
+    [JobInfo(Job.ADV)]
+    Phantom_RestrictToBuff = 109999,
+
     [OccultCrescent(OccultCrescent.JobIDs.Freelancer)]
     [JobInfo(Job.ADV)]
     Phantom_Freelancer = 110000,
@@ -3983,6 +3987,7 @@ public enum Preset
     #endregion
 
     #region Basic Combo
+    
     [ReplaceSkill(MNK.SnapPunch, MNK.PouncingCoeurl)]
     [BasicCombo]
     [JobInfo(Job.MNK)]
@@ -4594,6 +4599,50 @@ public enum Preset
     [ParentCombo(PLD_ST_AdvancedMode)]
     [JobInfo(Job.PLD)]
     PLD_ST_AdvancedMode_BalanceOpener = 11046,
+    
+    [ParentCombo(PLD_ST_AdvancedMode)]
+    [JobInfo(Job.PLD)]
+    PLD_ST_AdvancedMode_FoF = 11003,
+    
+    [ParentCombo(PLD_ST_AdvancedMode)]
+    [JobInfo(Job.PLD)]
+    PLD_ST_AdvancedMode_GoringBlade = 11008,
+    
+    [ParentCombo(PLD_ST_AdvancedMode)]
+    [JobInfo(Job.PLD)]
+    PLD_ST_AdvancedMode_Atonement = 11012,
+    
+    [ParentCombo(PLD_ST_AdvancedMode)]
+    [JobInfo(Job.PLD)]
+    PLD_ST_AdvancedMode_HolySpirit = 11009,
+    
+    [ParentCombo(PLD_ST_AdvancedMode)]
+    [JobInfo(Job.PLD)]
+    PLD_ST_AdvancedMode_Requiescat = 11010,
+    
+    [ParentCombo(PLD_ST_AdvancedMode)]
+    [JobInfo(Job.PLD)]
+    PLD_ST_AdvancedMode_Confiteor = 11013,
+
+    [ParentCombo(PLD_ST_AdvancedMode)]
+    [JobInfo(Job.PLD)]
+    PLD_ST_AdvancedMode_BladeOfHonor = 11033,
+    
+    [ParentCombo(PLD_ST_AdvancedMode)]
+    [JobInfo(Job.PLD)]
+    PLD_ST_AdvancedMode_CircleOfScorn = 11005,
+
+    [ParentCombo(PLD_ST_AdvancedMode)]
+    [JobInfo(Job.PLD)]
+    PLD_ST_AdvancedMode_SpiritsWithin = 11006,
+    
+    [ParentCombo(PLD_ST_AdvancedMode)]
+    [JobInfo(Job.PLD)]
+    PLD_ST_AdvancedMode_ShieldLob = 11004,
+    
+    [ParentCombo(PLD_ST_AdvancedMode)]
+    [JobInfo(Job.PLD)]
+    PLD_ST_AdvancedMode_Intervene = 11011,
 
     [ParentCombo(PLD_ST_AdvancedMode)]
     [JobInfo(Job.PLD)]
@@ -4609,54 +4658,6 @@ public enum Preset
 
     [ParentCombo(PLD_ST_AdvancedMode)]
     [JobInfo(Job.PLD)]
-    PLD_ST_AdvancedMode_FoF = 11003,
-
-    [ParentCombo(PLD_ST_AdvancedMode)]
-    [JobInfo(Job.PLD)]
-    PLD_ST_AdvancedMode_ShieldLob = 11004,
-
-    [ParentCombo(PLD_ST_AdvancedMode)]
-    [JobInfo(Job.PLD)]
-    PLD_ST_AdvancedMode_CircleOfScorn = 11005,
-
-    [ParentCombo(PLD_ST_AdvancedMode)]
-    [JobInfo(Job.PLD)]
-    PLD_ST_AdvancedMode_SpiritsWithin = 11006,
-
-    [ParentCombo(PLD_ST_AdvancedMode)]
-    [JobInfo(Job.PLD)]
-    PLD_ST_AdvancedMode_GoringBlade = 11008,
-
-    [ParentCombo(PLD_ST_AdvancedMode)]
-    [JobInfo(Job.PLD)]
-    PLD_ST_AdvancedMode_HolySpirit = 11009,
-
-    [ParentCombo(PLD_ST_AdvancedMode)]
-    [JobInfo(Job.PLD)]
-    PLD_ST_AdvancedMode_Requiescat = 11010,
-
-    [ParentCombo(PLD_ST_AdvancedMode)]
-    [JobInfo(Job.PLD)]
-    PLD_ST_AdvancedMode_Intervene = 11011,
-
-    [ParentCombo(PLD_ST_AdvancedMode)]
-    [JobInfo(Job.PLD)]
-    PLD_ST_AdvancedMode_Atonement = 11012,
-
-    [ParentCombo(PLD_ST_AdvancedMode)]
-    [JobInfo(Job.PLD)]
-    PLD_ST_AdvancedMode_Confiteor = 11013,
-
-    [ParentCombo(PLD_ST_AdvancedMode)]
-    [JobInfo(Job.PLD)]
-    PLD_ST_AdvancedMode_Blades = 11014,
-
-    [ParentCombo(PLD_ST_AdvancedMode)]
-    [JobInfo(Job.PLD)]
-    PLD_ST_AdvancedMode_BladeOfHonor = 11033,
-
-    [ParentCombo(PLD_ST_AdvancedMode)]
-    [JobInfo(Job.PLD)]
     PLD_ST_AdvancedMode_MP_Reserve = 11035,
 
     #endregion
@@ -4669,6 +4670,46 @@ public enum Preset
     [JobInfo(Job.PLD)]
     [AdvancedCombo]
     PLD_AoE_AdvancedMode = 11015,
+    
+    [ParentCombo(PLD_AoE_AdvancedMode)]
+    [JobInfo(Job.PLD)]
+    PLD_AoE_AdvancedMode_FoF = 11016,
+    
+    [ParentCombo(PLD_AoE_AdvancedMode)]
+    [JobInfo(Job.PLD)]
+    PLD_AoE_AdvancedMode_GoringBlade = 11106,
+    
+    [ParentCombo(PLD_AoE_AdvancedMode)]
+    [JobInfo(Job.PLD)]
+    PLD_AoE_AdvancedMode_HolyCircle = 11020,
+    
+    [ParentCombo(PLD_AoE_AdvancedMode)]
+    [JobInfo(Job.PLD)]
+    PLD_AoE_AdvancedMode_Requiescat = 11019,
+    
+    [ParentCombo(PLD_AoE_AdvancedMode)]
+    [JobInfo(Job.PLD)]
+    PLD_AoE_AdvancedMode_Confiteor = 11021,
+
+    [ParentCombo(PLD_AoE_AdvancedMode)]
+    [JobInfo(Job.PLD)]
+    PLD_AoE_AdvancedMode_BladeOfHonor = 11034,
+    
+    [ParentCombo(PLD_AoE_AdvancedMode)]
+    [JobInfo(Job.PLD)]
+    PLD_AoE_AdvancedMode_SpiritsWithin = 11017,
+
+    [ParentCombo(PLD_AoE_AdvancedMode)]
+    [JobInfo(Job.PLD)]
+    PLD_AoE_AdvancedMode_CircleOfScorn = 11018,
+    
+    [ParentCombo(PLD_AoE_AdvancedMode)]
+    [JobInfo(Job.PLD)]
+    PLD_AoE_AdvancedMode_ShieldLob = 11107,
+    
+    [ParentCombo(PLD_AoE_AdvancedMode)]
+    [JobInfo(Job.PLD)]
+    PLD_AoE_AdvancedMode_Intervene = 11037,
 
     [ParentCombo(PLD_AoE_AdvancedMode)]
     [JobInfo(Job.PLD)]
@@ -4681,42 +4722,6 @@ public enum Preset
     [ParentCombo(PLD_AoE_AdvancedMode)]
     [JobInfo(Job.PLD)]
     PLD_AoE_ShieldBash = 11065,
-
-    [ParentCombo(PLD_AoE_AdvancedMode)]
-    [JobInfo(Job.PLD)]
-    PLD_AoE_AdvancedMode_FoF = 11016,
-
-    [ParentCombo(PLD_AoE_AdvancedMode)]
-    [JobInfo(Job.PLD)]
-    PLD_AoE_AdvancedMode_SpiritsWithin = 11017,
-
-    [ParentCombo(PLD_AoE_AdvancedMode)]
-    [JobInfo(Job.PLD)]
-    PLD_AoE_AdvancedMode_CircleOfScorn = 11018,
-
-    [ParentCombo(PLD_AoE_AdvancedMode)]
-    [JobInfo(Job.PLD)]
-    PLD_AoE_AdvancedMode_Requiescat = 11019,
-
-    [ParentCombo(PLD_AoE_AdvancedMode)]
-    [JobInfo(Job.PLD)]
-    PLD_AoE_AdvancedMode_Intervene = 11037,
-
-    [ParentCombo(PLD_AoE_AdvancedMode)]
-    [JobInfo(Job.PLD)]
-    PLD_AoE_AdvancedMode_HolyCircle = 11020,
-
-    [ParentCombo(PLD_AoE_AdvancedMode)]
-    [JobInfo(Job.PLD)]
-    PLD_AoE_AdvancedMode_Confiteor = 11021,
-
-    [ParentCombo(PLD_AoE_AdvancedMode)]
-    [JobInfo(Job.PLD)]
-    PLD_AoE_AdvancedMode_Blades = 11022,
-
-    [ParentCombo(PLD_AoE_AdvancedMode)]
-    [JobInfo(Job.PLD)]
-    PLD_AoE_AdvancedMode_BladeOfHonor = 11034,
 
     [ParentCombo(PLD_AoE_AdvancedMode)]
     [JobInfo(Job.PLD)]
@@ -4944,7 +4949,7 @@ public enum Preset
 
     #endregion
 
-    //// Last value = 11105
+    //// Last value = 11107
 
     #endregion
 
@@ -5156,6 +5161,15 @@ public enum Preset
     [ParentCombo(RPR_ST_BasicCombo)]
     [JobInfo(Job.RPR)]
     RPR_ST_BasicCombo_SoD = 12023,
+    
+    [ReplaceSkill(RPR.NightmareScythe)]
+    [JobInfo(Job.RPR)]
+    [BasicCombo]
+    RPR_AoE_BasicCombo = 12313,
+
+    [ParentCombo(RPR_AoE_BasicCombo)]
+    [JobInfo(Job.RPR)]
+    RPR_AoE_BasicCombo_WoD = 12314,
 
     #endregion
 
@@ -5185,7 +5199,7 @@ public enum Preset
     [JobInfo(Job.RPR)]
     RPR_TrueNorthGluttony = 12310,
 
-    // Last value = 12204
+    // Last value = 12314
 
     #endregion
 
@@ -6644,6 +6658,10 @@ public enum Preset
     [ParentCombo(SCH_Aetherflow)]
     [JobInfo(Job.SCH)]
     SCH_Aetherflow_Recite = 16030,
+    
+    [ReplaceSkill(SCH.Dissipation)]
+    [JobInfo(Job.SCH)]
+    SCH_Dissipation = 16090,
 
     [ReplaceSkill(SCH.Lustrate)]
     [JobInfo(Job.SCH)]
@@ -6772,8 +6790,7 @@ public enum Preset
     SCH_Raidwide_Expedient = 16064,
     #endregion
 
-    // Last value = 16089
-
+    // Last value = 16090
     #endregion
 
     #region SUMMONER
@@ -8181,6 +8198,11 @@ public enum Preset
     [ParentCombo(ASTPvP_Burst)]
     [JobInfo(Job.AST)]
     ASTPvP_Burst_Macrocosmos = 111007,
+    
+    [PvPCustomCombo]
+    [ParentCombo(ASTPvP_Burst)]
+    [JobInfo(Job.AST)]
+    ASTPvP_Burst_Oracle = 111012,
 
     [PvPCustomCombo]
     [ParentCombo(ASTPvP_Burst)]
@@ -8204,7 +8226,7 @@ public enum Preset
     [PossiblyRetargeted]
     ASTPvP_Heal = 111004,
 
-    // Last value = 111010
+    // Last value = 111012
 
     #endregion
 

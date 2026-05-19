@@ -384,7 +384,7 @@ public static class ActionWatching
 
             if (!recastGroupDetail->IsActive) return additionalRecastRemaining;
 
-            var charges = actionType == 1 ? GetMaxCharges(actionID) : 1;
+            var charges = actionType == 1 ? ActionManager.GetMaxCharges(actionID, Player.MaxLevel) : 1;
             var recastRemaining = recastGroupDetail->Total / charges - recastGroupDetail->Elapsed;
             return recastRemaining > additionalRecastRemaining ? recastRemaining : additionalRecastRemaining;
         }

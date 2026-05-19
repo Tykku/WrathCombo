@@ -2078,6 +2078,24 @@ namespace WrathCombo.Resources.Localization.Presets {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adds Oracle (LimitBreak Followup) to Burst Mode..
+        /// </summary>
+        internal static string ASTPvP_Burst_Oracle_Desc {
+            get {
+                return ResourceManager.GetString("ASTPvP_Burst_Oracle_Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Oracle Option.
+        /// </summary>
+        internal static string ASTPvP_Burst_Oracle_Name {
+            get {
+                return ResourceManager.GetString("ASTPvP_Burst_Oracle_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Adds Playing Cards to Burst Mode..
         /// </summary>
         internal static string ASTPvP_Burst_PlayCard_Desc {
@@ -17619,6 +17637,26 @@ namespace WrathCombo.Resources.Localization.Presets {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Will restrict damaging Phantom Abilities to when you or your party have damage buffs (including minor ones on yourself, like Paladin&apos;s Fight or Flight).
+        ///
+        ///NOT RECOMMENDED!.
+        /// </summary>
+        internal static string Phantom_RestrictToBuff_Desc {
+            get {
+                return ResourceManager.GetString("Phantom_RestrictToBuff_Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Restrict Damaging Phantom Abilities to Buff Windows.
+        /// </summary>
+        internal static string Phantom_RestrictToBuff_Name {
+            get {
+                return ResourceManager.GetString("Phantom_RestrictToBuff_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enable this to add Samurai-specific actions into the rotation..
         /// </summary>
         internal static string Phantom_Samurai_Desc {
@@ -17944,25 +17982,6 @@ namespace WrathCombo.Resources.Localization.Presets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adds Blade of Faith/Truth/Valor to Advanced Mode.
-        ///- At lower levels, uses Holy Circle instead..
-        /// </summary>
-        internal static string PLD_AoE_AdvancedMode_Blades_Desc {
-            get {
-                return ResourceManager.GetString("PLD_AoE_AdvancedMode_Blades_Desc", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Blade Chain Option.
-        /// </summary>
-        internal static string PLD_AoE_AdvancedMode_Blades_Name {
-            get {
-                return ResourceManager.GetString("PLD_AoE_AdvancedMode_Blades_Name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Adds Circle of Scorn to Advanced Mode.
         ///- Uses only when in range of the target.
         ///- Prefers to use during Fight or Flight..
@@ -17983,7 +18002,7 @@ namespace WrathCombo.Resources.Localization.Presets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adds Confiteor to Advanced Mode.
+        ///   Looks up a localized string similar to Adds Confiteor and it&apos;s Combo to Advanced Mode.
         ///- At lower levels, uses Holy Circle instead..
         /// </summary>
         internal static string PLD_AoE_AdvancedMode_Confiteor_Desc {
@@ -17993,7 +18012,7 @@ namespace WrathCombo.Resources.Localization.Presets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Confiteor Option.
+        ///   Looks up a localized string similar to Confiteor Combo Option.
         /// </summary>
         internal static string PLD_AoE_AdvancedMode_Confiteor_Name {
             get {
@@ -18028,6 +18047,25 @@ namespace WrathCombo.Resources.Localization.Presets {
         internal static string PLD_AoE_AdvancedMode_FoF_Name {
             get {
                 return ResourceManager.GetString("PLD_AoE_AdvancedMode_FoF_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adds Goring Blade to Advanced Mode.
+        ///- Uses when less than 4 targets..
+        /// </summary>
+        internal static string PLD_AoE_AdvancedMode_GoringBlade_Desc {
+            get {
+                return ResourceManager.GetString("PLD_AoE_AdvancedMode_GoringBlade_Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Goring Blade Option.
+        /// </summary>
+        internal static string PLD_AoE_AdvancedMode_GoringBlade_Name {
+            get {
+                return ResourceManager.GetString("PLD_AoE_AdvancedMode_GoringBlade_Name", resourceCulture);
             }
         }
         
@@ -18116,6 +18154,25 @@ namespace WrathCombo.Resources.Localization.Presets {
         internal static string PLD_AoE_AdvancedMode_Requiescat_Name {
             get {
                 return ResourceManager.GetString("PLD_AoE_AdvancedMode_Requiescat_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adds Shield Lob to Advanced Mode.
+        ///- Will only Use when out of melee range..
+        /// </summary>
+        internal static string PLD_AoE_AdvancedMode_ShieldLob_Desc {
+            get {
+                return ResourceManager.GetString("PLD_AoE_AdvancedMode_ShieldLob_Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shield Lob Option.
+        /// </summary>
+        internal static string PLD_AoE_AdvancedMode_ShieldLob_Name {
+            get {
+                return ResourceManager.GetString("PLD_AoE_AdvancedMode_ShieldLob_Name", resourceCulture);
             }
         }
         
@@ -19126,25 +19183,6 @@ namespace WrathCombo.Resources.Localization.Presets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adds Blade of Faith/Truth/Valor to Advanced Mode.
-        ///- At lower levels, uses Holy Spirit instead..
-        /// </summary>
-        internal static string PLD_ST_AdvancedMode_Blades_Desc {
-            get {
-                return ResourceManager.GetString("PLD_ST_AdvancedMode_Blades_Desc", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Blade Chain Option.
-        /// </summary>
-        internal static string PLD_ST_AdvancedMode_Blades_Name {
-            get {
-                return ResourceManager.GetString("PLD_ST_AdvancedMode_Blades_Name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Adds Circle of Scorn to Advanced Mode.
         ///- Uses only when in range of the target.
         ///- Prefers to use during Fight or Flight..
@@ -19165,7 +19203,7 @@ namespace WrathCombo.Resources.Localization.Presets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adds Confiteor to Advanced Mode.
+        ///   Looks up a localized string similar to Adds Confiteor and its Combo to Advanced Mode.
         ///- At lower levels, uses Holy Spirit instead..
         /// </summary>
         internal static string PLD_ST_AdvancedMode_Confiteor_Desc {
@@ -19175,7 +19213,7 @@ namespace WrathCombo.Resources.Localization.Presets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Confiteor Option.
+        ///   Looks up a localized string similar to Confiteor Combo Option.
         /// </summary>
         internal static string PLD_ST_AdvancedMode_Confiteor_Name {
             get {
@@ -21353,6 +21391,42 @@ namespace WrathCombo.Resources.Localization.Presets {
         internal static string RPR_AoE_ArcaneCircle_Name {
             get {
                 return ResourceManager.GetString("RPR_AoE_ArcaneCircle_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Replace Nightmare Scythe with its combo chain..
+        /// </summary>
+        internal static string RPR_AoE_BasicCombo_Desc {
+            get {
+                return ResourceManager.GetString("RPR_AoE_BasicCombo_Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Basic AoE Combo.
+        /// </summary>
+        internal static string RPR_AoE_BasicCombo_Name {
+            get {
+                return ResourceManager.GetString("RPR_AoE_BasicCombo_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adds Whorl of Death to the rotation..
+        /// </summary>
+        internal static string RPR_AoE_BasicCombo_WoD_Desc {
+            get {
+                return ResourceManager.GetString("RPR_AoE_BasicCombo_WoD_Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Whorl of Death Option.
+        /// </summary>
+        internal static string RPR_AoE_BasicCombo_WoD_Name {
+            get {
+                return ResourceManager.GetString("RPR_AoE_BasicCombo_WoD_Name", resourceCulture);
             }
         }
         
@@ -24486,6 +24560,24 @@ namespace WrathCombo.Resources.Localization.Presets {
         internal static string SCH_DeploymentTactics_Recitation_Name {
             get {
                 return ResourceManager.GetString("SCH_DeploymentTactics_Recitation_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Replaces Dissipation with Aetherflow when Aetherflow is available..
+        /// </summary>
+        internal static string SCH_Dissipation_Desc {
+            get {
+                return ResourceManager.GetString("SCH_Dissipation_Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dissipation Option.
+        /// </summary>
+        internal static string SCH_Dissipation_Name {
+            get {
+                return ResourceManager.GetString("SCH_Dissipation_Name", resourceCulture);
             }
         }
         
