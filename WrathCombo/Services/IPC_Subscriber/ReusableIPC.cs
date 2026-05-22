@@ -40,7 +40,7 @@ public abstract class ReusableIPC : IDisposable
 
     protected bool PluginIsLoaded =>
         DalamudReflector.TryGetDalamudPlugin(
-            PluginName, out _plugin, ignoreCache: true);
+            PluginName, out _plugin, suppressErrors: true, ignoreCache: true);
 
     protected object? Plugin
     {
@@ -58,7 +58,7 @@ public abstract class ReusableIPC : IDisposable
 
     public Version InstalledVersion =>
         DalamudReflector.TryGetDalamudPlugin(PluginName, out var plugin,
-            ignoreCache: true)
+            suppressErrors: true, ignoreCache: true)
             ? plugin.GetType().Assembly.GetName().Version ?? new Version(0, 0, 0, 1)
             : new Version(0, 0, 0, 1); // no version found
 
