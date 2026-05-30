@@ -19619,6 +19619,24 @@ namespace WrathCombo.Resources.Localization.Presets {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adds Rampage to rotation when in melee range.
+        /// </summary>
+        internal static string PLDPvP_Rampage_Desc {
+            get {
+                return ResourceManager.GetString("PLDPvP_Rampage_Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rampage Option.
+        /// </summary>
+        internal static string PLDPvP_Rampage_Name {
+            get {
+                return ResourceManager.GetString("PLDPvP_Rampage_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Adds Defensive Role Action Rampart to Burst Mode below selected health.
         /// </summary>
         internal static string PLDPvP_Rampart_Desc {

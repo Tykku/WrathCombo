@@ -8804,8 +8804,13 @@ public enum Preset
     [ParentCombo(PLDPvP_Burst)]
     [JobInfo(Job.PLD)]
     PLDPvP_Rampart = 121009,
+    
+    [PvPCustomCombo]
+    [ParentCombo(PLDPvP_ShieldSmite)]
+    [JobInfo(Job.PLD)]
+    PLDPvP_Rampage = 121010,
 
-    // Last value = 121009
+    // Last value = 121010
 
     #endregion
 

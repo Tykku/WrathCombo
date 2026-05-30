@@ -15,6 +15,7 @@ internal static class PLDPvP
         RiotBlade = 29059,
         RoyalAuthority = 29060,
         ShieldSmite = 41430,
+        PvPRampage = 43243,
         HolySpirit = 29062,
         Imperator = 41431,
         Intervene = 29065,
@@ -86,11 +87,14 @@ internal static class PLDPvP
             // Check conditions for Holy Sheltron
             if (IsEnabled(Preset.PLDPvP_Sheltron) && IsOffCooldown(HolySheltron) && InCombat() && InMeleeRange())
                 return HolySheltron;
-
+            
+            if (IsEnabled(Preset.PLDPvP_Rampage) && PvPTank.CanRampage() && InCombat() && InMeleeRange() && CanWeave())
+                return PvPTank.Rampage;
+            
             // Check conditions for ShieldSmite
             if (IsEnabled(Preset.PLDPvP_ShieldSmite) && IsOffCooldown(ShieldSmite) && InCombat() && InMeleeRange())
                 return ShieldSmite;
-
+            
             // Prioritize Imperator
             if (IsEnabled(Preset.PLDPvP_Imperator) && IsOffCooldown(Imperator) && InMeleeRange() && CanWeave())
                 return Imperator;

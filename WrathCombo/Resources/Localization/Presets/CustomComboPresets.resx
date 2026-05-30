@@ -11437,4 +11437,10 @@ NOT RECOMMENDED!</value>
   <data name="BLM_Toshi_Thunder_Name" xml:space="preserve">
     <value>Toshi's Thunder Tweak</value>
   </data>
+  <data name="PLDPvP_Rampage_Desc" xml:space="preserve">
+    <value>Adds Rampage to rotation when in melee range</value>
+  </data>
+  <data name="PLDPvP_Rampage_Name" xml:space="preserve">
+    <value>Rampage Option</value>
+  </data>
 </root>
