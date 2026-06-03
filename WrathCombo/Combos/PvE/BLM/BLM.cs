@@ -1033,6 +1033,9 @@ internal class BLM_Toshi_Fire4 : CustomCombo
         {
             if (actionID is not Xenoglossy)
                 return actionID;
+            
+            if (ContentSpecificActions.TryGet(out uint contentAction))
+                return contentAction;
 
             if (ActionReady(Amplifier) && !HasMaxPolyglotStacks && CanWeave())
                 return Amplifier;
