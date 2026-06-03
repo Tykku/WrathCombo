@@ -205,23 +205,22 @@ internal partial class OccultCrescent
                 actionID = Mineuchi; // stun
                 return true;
             }
+            
+            if (IsEnabledAndUsable(Preset.Phantom_Samurai_Iainuki, Iainuki) &&
+                !IsMovingNow && InActionRange(Iainuki))
+            {
+                actionID = Iainuki; // cone
+                return true;
+            }
 
             // Skip if no damage buff, and user wants things under buffs
             if (IsEnabled(Preset.Phantom_RestrictToBuff) &&
                 !Bursting.PlayerIsDamageBuffed)
                 return false;
 
-            if (IsEnabledAndUsable(Preset.Phantom_Samurai_Zeninage, Zeninage) &&
-                ActionWatching.NumberOfGcdsUsed > 4)
+            if (IsEnabledAndUsable(Preset.Phantom_Samurai_Zeninage, Zeninage))
             {
                 actionID = Zeninage; // burst
-                return true;
-            }
-
-            if (IsEnabledAndUsable(Preset.Phantom_Samurai_Iainuki, Iainuki) &&
-                !IsMovingNow && InActionRange(Iainuki))
-            {
-                actionID = Iainuki; // cone
                 return true;
             }
         }
