@@ -748,7 +748,7 @@ internal partial class OccultCrescent
             }
         }
 
-        if (IsEnabledAndUsable(Preset.Phantom_Gladiator_Defend, Defend) && InCombat())
+        if (IsEnabledAndUsable(Preset.Phantom_Gladiator_Defend, Defend) && InCombat() && PlayerHasAggro)
         {
             actionID = Defend;
             return true;
