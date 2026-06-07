@@ -3644,6 +3644,14 @@ public enum Preset
     [JobInfo(Job.MCH)]
     MCH_ST_Adv_Tools = 8119,
 
+    [ParentCombo(MCH_ST_AdvancedMode)]
+    [JobInfo(Job.MCH)]
+    MCH_ST_Adv_Tools_AllowClainsawPostWildfire = 8121,
+
+    [ParentCombo(MCH_ST_AdvancedMode)]
+    [JobInfo(Job.MCH)]
+    MCH_ST_Adv_Tools_AllowExcavatorPostWildfire = 8122,
+
     #endregion
 
     #region Queen
@@ -3655,6 +3663,10 @@ public enum Preset
     [ParentCombo(MCH_ST_AdvancedMode)]
     [JobInfo(Job.MCH)]
     MCH_ST_Adv_QueenOverdrive = 8115,
+
+    [ParentCombo(MCH_ST_AdvancedMode)]
+    [JobInfo(Job.MCH)]
+    MCH_ST_Adv_QueenInHypercharge = 8120,
 
     #endregion
 
@@ -3814,7 +3826,7 @@ public enum Preset
     [JobInfo(Job.MCH)]
     MCH_GaussRoundRicochet = 8003,
 
-    // Last value ST = 8119
+    // Last value ST = 8122
     // Last value AoE = 8315
     // Last value Misc = 8058
 
@@ -7580,6 +7592,7 @@ public enum Preset
 
     #region Basic Combo
     [ReplaceSkill(WAR.StormsPath)]
+    [ConflictingCombos(WAR_EyePath)]
     [JobInfo(Job.WAR)]
     WAR_ST_StormsPathCombo = 18069,
 
@@ -7602,6 +7615,7 @@ public enum Preset
     WAR_InfuriateFellCleave_IRFirst = 18027,
 
     [ReplaceSkill(WAR.StormsPath)]
+    [ConflictingCombos(WAR_ST_StormsPathCombo)]
     [JobInfo(Job.WAR)]
     WAR_EyePath = 18057,
 
