@@ -156,10 +156,10 @@ internal partial class DRK
     /// <returns>A valid <see cref="WrathOpener">Opener</see>.</returns>
     internal static WrathOpener Opener()
     {
-        if (Opener1.LevelChecked)
-            return Opener1;
+        if (DRK_SelectedOpener == 1 && OpenerEarlyBuff.LevelChecked)
+            return OpenerEarlyBuff;
 
-        return WrathOpener.Dummy;
+        return Opener1.LevelChecked ? Opener1 : WrathOpener.Dummy;
     }
     
     #region Mitigation
@@ -238,6 +238,7 @@ internal partial class DRK
     }
 
     internal static DRKOpenerMaxLevel1 Opener1 = new();
+    internal static DRKOpenerEarlyBuff OpenerEarlyBuff = new();
 
     internal class DRKOpenerMaxLevel1 : WrathOpener
     {
@@ -323,6 +324,97 @@ internal partial class DRK
             IsOffCooldown(SaltedEarth) &&
             GetRemainingCharges(Shadowbringer) >= 2 &&
             (!InCombat() || CombatEngageDuration().TotalSeconds < 3);
+    }
+
+    internal class DRKOpenerEarlyBuff : WrathOpener
+    {
+        public override int MinOpenerLevel => 100;
+
+        public override int MaxOpenerLevel => 109;
+
+        public override List<uint> OpenerActions { get; set; } =
+        [
+            LivingShadow,
+            Unmend,
+            EdgeOfShadow, // Not handled like a procc, since it sets up Darkside
+            HardSlash,
+            Delirium,
+            SaltedEarth,
+            Disesteem,
+            //EdgeOfShadow, // Handled like a procc
+            CarveAndSpit,
+            ScarletDelirium,
+            Shadowbringer, // 10
+            Comeuppance,
+            Shadowbringer,
+            Torcleaver,
+            SaltAndDarkness,
+            SyphonStrike, // 15
+            //EdgeOfShadow, // Handled like a procc
+            Souleater,
+            //EdgeOfShadow, // Handled like a procc
+            Bloodspiller,
+            //EdgeOfShadow, // Handled like a procc
+            HardSlash,
+        ];
+
+        public override List<(int[] Steps, Func<int> HoldDelay)> PrepullDelays
+        {
+            get;
+            set;
+        } =
+        [
+            ([2], () => 2),
+        ];
+
+        public override List<(int[] Steps, uint NewAction, Func<bool> Condition)> SubstitutionSteps
+        {
+            get;
+            set;
+        } =
+        [
+            ([2], Shadowstride, () =>
+                DRK_ST_OpenerAction == (int)PullAction.Shadowstride),
+            ([2], HardSlash, () =>
+                DRK_ST_OpenerAction == (int)PullAction.HardSlash),
+        ];
+
+        public override List<(int[] Steps, Func<bool> Condition)> SkipSteps
+        {
+            get;
+            set;
+        } =
+        [
+            // Skip the duplicate HardSlash, if pulling with HardSlash
+            ([3], () =>
+                DRK_ST_OpenerAction == (int)PullAction.HardSlash),
+            // Skip Salted Earth if on cooldown
+            ([6], () =>
+                IsOnCooldown(SaltedEarth)),
+            // Skip Salt and Darkness when not ready
+            ([14], () =>
+                !ActionReady(SaltAndDarkness)),
+            // Skip Blood spenders when no Blood
+            ([17], () =>
+                Gauge.Blood < 50),
+        ];
+
+        public override Preset Preset => Preset.DRK_ST_BalanceOpener;
+
+        internal override UserData? ContentCheckConfig =>
+            DRK_ST_OpenerDifficulty;
+
+        public override bool HasCooldowns()
+        {
+            if (!CountdownActive || CountdownRemaining > 3f)
+                return false;
+
+            return LocalPlayer.CurrentMp > 7000 && IsOffCooldown(LivingShadow) &&
+                   IsOffCooldown(Delirium) && IsOffCooldown(CarveAndSpit) &&
+                   IsOffCooldown(SaltedEarth) &&
+                   GetRemainingCharges(Shadowbringer) >= 2 &&
+                   (!InCombat() || CombatEngageDuration().TotalSeconds < 3);
+        }
     }
 
     #endregion

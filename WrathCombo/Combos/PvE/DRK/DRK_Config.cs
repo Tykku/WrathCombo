@@ -189,6 +189,16 @@ internal partial class DRK
                 #region Adv Single Target
 
                 case Preset.DRK_ST_BalanceOpener:
+                    UserConfig.DrawRadioButton(DRK_SelectedOpener,
+                        "Standard opener",
+                        "Uses the Standard opener.",
+                        outputValue: 0,
+                        descriptionAsTooltip: true);
+                    UserConfig.DrawRadioButton(DRK_SelectedOpener,
+                        "Early Buff Window Opener",
+                        "Front-loads burst to align with an early (1st GCD) party buff window.",
+                        outputValue: 1,
+                        descriptionAsTooltip: true);
                     ImGui.Indent();
                     UserConfig.DrawBossOnlyChoice(DRK_ST_OpenerDifficulty);
                     ImGui.Unindent();
@@ -622,6 +632,13 @@ internal partial class DRK
         /// <seealso cref="Preset.DRK_ST_BalanceOpener" />
         public static readonly UserInt DRK_ST_OpenerAction =
             new("DRK_ST_OpenerAction", (int)PullAction.Unmend);
+
+        /// <summary>
+        ///     Which opener to use (Standard or Early Buff Window).
+        /// </summary>
+        /// <seealso cref="Preset.DRK_ST_BalanceOpener" />
+        public static readonly UserInt DRK_SelectedOpener =
+            new("DRK_SelectedOpener", 0);
 
         /// <summary>
         ///     Cooldown Boss Restriction for Single Target.
