@@ -386,7 +386,7 @@ internal partial class DRK
         } =
         [
             // Skip the duplicate HardSlash, if pulling with HardSlash
-            ([3], () =>
+            ([4], () =>
                 DRK_ST_OpenerAction == (int)PullAction.HardSlash),
             // Skip Salted Earth if on cooldown
             ([6], () =>
