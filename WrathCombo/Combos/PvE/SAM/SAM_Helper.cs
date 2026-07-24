@@ -443,7 +443,7 @@ internal partial class SAM
     private static bool CanIkishoten() =>
         ActionReady(Ikishoten) &&
         !HasStatusEffect(Buffs.ZanshinReady) && Kenki <= 50 &&
-        (NumberOfGcdsUsed is 2 ||
+        (NumberOfGcdsUsed >= 2 ||
          JustUsed(Senei, 15f) ||
          !LevelChecked(Senei));
 
@@ -452,7 +452,8 @@ internal partial class SAM
         InActionRange(Senei) &&
         (LevelChecked(TendoKaeshiSetsugekka) &&
          (SenCount >= 2 && HasStatusEffect(Buffs.Tendo) ||
-          JustUsed(TendoSetsugekka, 15f)) ||
+          JustUsed(TendoSetsugekka, 15f) ||
+          JustUsed(TendoKaeshiSetsugekka, 15f)) ||
          !LevelChecked(TendoKaeshiSetsugekka));
 
     private static bool CanTsubame() =>
@@ -509,8 +510,7 @@ internal partial class SAM
             ActionReady(Zanshin) && HasStatusEffect(Buffs.ZanshinReady))
             return Zanshin;
 
-        if (useSenei &&
-            ActionReady(Senei) && InActionRange(Senei))
+        if (useSenei && CanSenei())
             return Senei;
 
         if (useShinten &&
