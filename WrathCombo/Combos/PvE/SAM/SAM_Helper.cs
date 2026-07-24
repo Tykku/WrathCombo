@@ -23,24 +23,16 @@ internal partial class SAM
     {
         if (LevelChecked(Iaijutsu) && InActionRange(OriginalHook(Iaijutsu)))
         {
-            //Higanbana
             if (useHiganbana &&
                 SenCount is 1 &&
                 CanHiganbana(higanbanaHpThreshold, higanbanaDotRefresh))
                 return true;
 
-            //Tenka Goken
             if (useTenkaGoken &&
                 SenCount is 2 &&
                 !LevelChecked(MidareSetsugekka))
                 return true;
 
-            if (useMidare &&
-                OriginalHook(Iaijutsu) is MidareSetsugekka or TendoSetsugekka &&
-                LevelChecked(MidareSetsugekka) && !HasStatusEffect(Buffs.TsubameReady))
-                return true;
-
-            //Midare Setsugekka
             if (useMidare &&
                 SenCount is 3 &&
                 LevelChecked(MidareSetsugekka) && !HasStatusEffect(Buffs.TsubameReady))
@@ -50,7 +42,40 @@ internal partial class SAM
     }
 
     #endregion
+
     #region Basic Combo
+
+    private static uint WithTrueNorth(uint action, bool onPositional, bool useTrueNorth, int trueNorthCharges) =>
+        !onPositional &&
+        useTrueNorth &&
+        Role.CanTrueNorth() &&
+        GetRemainingCharges(Role.TrueNorth) > trueNorthCharges
+            ? Role.TrueNorth
+            : action;
+
+    private static bool TryAoEComboFinisher(out uint action, bool useOka = true)
+    {
+        action = 0;
+
+        if (useOka && LevelChecked(Oka) &&
+            (!HasKa || !HasStatusEffect(Buffs.Fuka) ||
+             SenCount is 2 or 3 && ShouldRefreshFuka))
+        {
+            action = Oka;
+            return true;
+        }
+
+        if (LevelChecked(Mangetsu) &&
+            HasStatusEffect(Buffs.Fuka) &&
+            (!HasGetsu || !HasStatusEffect(Buffs.Fugetsu) || !useOka || !LevelChecked(Oka) ||
+             SenCount is 2 or 3 && ShouldRefreshFugetsu))
+        {
+            action = Mangetsu;
+            return true;
+        }
+
+        return false;
+    }
 
     private static uint ContinueBasicCombo(
         bool onAoE = false,
@@ -66,19 +91,9 @@ internal partial class SAM
             if (ComboTimer is 0)
                 return OriginalHook(Fuga);
 
-            if (ComboAction is Fuko or Fuga)
-            {
-                if (useOka && LevelChecked(Oka) &&
-                    (!HasKa || !HasStatusEffect(Buffs.Fuka) ||
-                     SenCount is 2 or 3 && ShouldRefreshFuka))
-                    return Oka;
-
-                if (LevelChecked(Mangetsu) &&
-                    HasStatusEffect(Buffs.Fuka) &&
-                    (!HasGetsu || !HasStatusEffect(Buffs.Fugetsu) || !useOka || !LevelChecked(Oka) ||
-                     SenCount is 2 or 3 && ShouldRefreshFugetsu))
-                    return Mangetsu;
-            }
+            if (ComboAction is Fuko or Fuga &&
+                TryAoEComboFinisher(out uint finisher, useOka))
+                return finisher;
 
             return OriginalHook(Fuga);
         }
@@ -112,25 +127,15 @@ internal partial class SAM
             }
 
             if (ComboAction is Jinpu && LevelChecked(Gekko))
-                return !OnTargetsRear() &&
-                       Role.CanTrueNorth() &&
-                       GetRemainingCharges(Role.TrueNorth) > trueNorthCharges &&
-                       useTrueNorth
-                    ? Role.TrueNorth
-                    : Gekko;
+                return WithTrueNorth(Gekko, OnTargetsRear(), useTrueNorth, trueNorthCharges);
 
             if (ComboAction is Shifu && LevelChecked(Kasha))
-                return !OnTargetsFlank() &&
-                       Role.CanTrueNorth() &&
-                       GetRemainingCharges(Role.TrueNorth) > trueNorthCharges &&
-                       useTrueNorth
-                    ? Role.TrueNorth
-                    : Kasha;
+                return WithTrueNorth(Kasha, OnTargetsFlank(), useTrueNorth, trueNorthCharges);
         }
 
         return OriginalHook(Hakaze);
     }
-    
+
     #endregion
 
     #region Higanbana
@@ -145,8 +150,9 @@ internal partial class SAM
                GetTargetHPPercent() > hpThreshold &&
                dotRemaining <= dotRefresh &&
                HasStatusEffect(Buffs.Fuka) && HasStatusEffect(Buffs.Fugetsu) &&
-               (HasEnhancedSenei && (JustUsed(Senei, 35f) || JustUsed(Ikishoten, 35f) || !HasStatusEffect(Debuffs.Higanbana, CurrentTarget)) ||
-                !HasEnhancedSenei);
+               (!HasEnhancedSenei ||
+                JustUsed(Senei, 35f) || JustUsed(Ikishoten, 35f) ||
+                !HasStatusEffect(Debuffs.Higanbana, CurrentTarget));
     }
 
     private static int HiganbanaHPThreshold()
@@ -207,9 +213,7 @@ internal partial class SAM
         if (!HasEnhancedSenei || HasStatusEffect(Buffs.ZanshinReady))
             return false;
 
-        float gcd = GCD;
-
-        return GetCooldownRemainingTime(Senei) < gcd * 2 && Kenki >= 90 ||
+        return GetCooldownRemainingTime(Senei) < GCDTotal * 2 && Kenki >= 90 ||
                JustUsed(Senei, 20f) && !JustUsed(Ikishoten) ||
                Kenki >= 95 && JustUsed(MeikyoShisui) ||
                Kenki >= 90 && JustUsed(MeikyoShisui) && ComboAction is Yukikaze ||
@@ -235,9 +239,6 @@ internal partial class SAM
                ShouldUseSenei(kenkiOvercapAmount) ||
                ShouldSpendKenkiPreEnhanced(kenkiOvercapAmount);
     }
-
-    private static float GCD =>
-        GetCooldown(OriginalHook(Hakaze)).CooldownTotal;
 
     #endregion
 
@@ -298,7 +299,7 @@ internal partial class SAM
     #region AoE Weaves
 
     private static bool CanAoEHagakure() =>
-        OriginalHook(Iaijutsu) is MidareSetsugekka && LevelChecked(Hagakure);
+        OriginalHook(Iaijutsu) is MidareSetsugekka or TendoSetsugekka && LevelChecked(Hagakure);
 
     private static bool CanAoEMeikyo() =>
         ActionReady(MeikyoShisui) && !HasStatusEffect(Buffs.MeikyoShisui) &&
@@ -367,7 +368,7 @@ internal partial class SAM
                     SenCount is 3 && GetCooldownRemainingTime(Senei) <= 5)
                     return true;
             }
-            else if (GetCooldownRemainingTime(Senei) <= GCD ||
+            else if (GetCooldownRemainingTime(Senei) <= GCDTotal ||
                      GetCooldownRemainingTime(Senei) is > 50 and < 65)
                 return true;
         }
@@ -388,16 +389,8 @@ internal partial class SAM
     {
         if (onAoE)
         {
-            if (useOka && LevelChecked(Oka) &&
-                (!HasKa || !HasStatusEffect(Buffs.Fuka) ||
-                 SenCount is 2 or 3 && ShouldRefreshFuka))
-                return Oka;
-
-            if (LevelChecked(Mangetsu) &&
-                HasStatusEffect(Buffs.Fuka) &&
-                (!HasGetsu || !HasStatusEffect(Buffs.Fugetsu) || !useOka || !LevelChecked(Oka) ||
-                 SenCount is 2 or 3 && ShouldRefreshFugetsu))
-                return Mangetsu;
+            if (TryAoEComboFinisher(out uint finisher, useOka))
+                return finisher;
 
             return OriginalHook(Fuga);
         }
@@ -414,24 +407,14 @@ internal partial class SAM
              !HasStatusEffect(Buffs.Fugetsu) ||
              (OnTargetsRear() || OnTargetsFront()) && !HasGetsu ||
              OnTargetsFlank() && HasKa))
-            return !OnTargetsRear() &&
-                   Role.CanTrueNorth() &&
-                   GetRemainingCharges(Role.TrueNorth) > trueNorthCharges &&
-                   useTrueNorth
-                ? Role.TrueNorth
-                : Gekko;
+            return WithTrueNorth(Gekko, OnTargetsRear(), useTrueNorth, trueNorthCharges);
 
         if (useKasha &&
             LevelChecked(Kasha) &&
             (!HasStatusEffect(Buffs.Fuka) ||
              (OnTargetsFlank() || OnTargetsFront()) && !HasKa ||
              OnTargetsRear() && HasGetsu))
-            return !OnTargetsFlank() &&
-                   Role.CanTrueNorth() &&
-                   GetRemainingCharges(Role.TrueNorth) > trueNorthCharges &&
-                   useTrueNorth
-                ? Role.TrueNorth
-                : Kasha;
+            return WithTrueNorth(Kasha, OnTargetsFlank(), useTrueNorth, trueNorthCharges);
 
         return OriginalHook(Hakaze);
     }
@@ -439,6 +422,23 @@ internal partial class SAM
     #endregion
 
     #region Burst Management
+
+    private static bool CanPrepullMeikyo(bool requireNotJustUsed = false) =>
+        ActionReady(MeikyoShisui) &&
+        !HasStatusEffect(Buffs.MeikyoShisui) &&
+        !InCombat() && HasBattleTarget() &&
+        (!requireNotJustUsed || !JustUsed(MeikyoShisui));
+
+    private static bool TryFeatureKenkiOvercap(out uint action, bool enabled, int amount, uint spender)
+    {
+        action = 0;
+
+        if (!enabled || !CanWeave() || Kenki < amount || !LevelChecked(spender))
+            return false;
+
+        action = OriginalHook(spender);
+        return true;
+    }
 
     private static bool CanIkishoten() =>
         ActionReady(Ikishoten) &&
@@ -515,7 +515,7 @@ internal partial class SAM
 
         if (useShinten &&
             ActionReady(Shinten) && InActionRange(Shinten) &&
-            GetCooldownRemainingTime(Senei) >= GCD * 5 &&
+            GetCooldownRemainingTime(Senei) >= GCDTotal * 5 &&
             !JustUsed(Ikishoten))
             return Shinten;
 

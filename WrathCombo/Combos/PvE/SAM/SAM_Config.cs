@@ -1,5 +1,3 @@
-using Dalamud.Interface.Colors;
-using Dalamud.Interface.Utility.Raii;
 using ECommons.ImGuiMethods;
 using System.Numerics;
 using WrathCombo.CustomComboNS.Functions;
@@ -87,7 +85,6 @@ internal partial class SAM
                     DrawSliderInt(0, 100, SAM_ST_MeikyoExecuteThreshold,
                         FormatAndCache(SAM_Config.HPPercentMeikyo, MeikyoShisui.ActionName()));
                     break;
-
 
                 case Preset.SAM_ST_GekkoCombo:
                     DrawAdditionalBoolChoice(SAM_Gekko_KenkiOvercap,

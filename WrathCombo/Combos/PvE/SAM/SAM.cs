@@ -11,12 +11,11 @@ internal partial class SAM : Melee
 
         protected override uint Invoke(uint actionID)
         {
-            if (!CustomActionHelper.OneButtonRotationChecker(actionID, CustomActionType.SingleTargetDPS, Hakaze, Gyofu)) return actionID;
+            if (!CustomActionHelper.OneButtonRotationChecker(actionID, CustomActionType.SingleTargetDPS, Hakaze, Gyofu))
+                return actionID;
 
             //Meikyo to start before combat
-            if (ActionReady(MeikyoShisui) &&
-                !HasStatusEffect(Buffs.MeikyoShisui) &&
-                !InCombat() && HasBattleTarget())
+            if (CanPrepullMeikyo())
                 return MeikyoShisui;
 
             if (ContentSpecificActions.TryGet(out uint contentAction))
@@ -101,12 +100,11 @@ internal partial class SAM : Melee
 
         protected override uint Invoke(uint actionID)
         {
-            if (!CustomActionHelper.OneButtonRotationChecker(actionID, CustomActionType.AoEDPS, Fuga, Fuko)) return actionID;
+            if (!CustomActionHelper.OneButtonRotationChecker(actionID, CustomActionType.AoEDPS, Fuga, Fuko))
+                return actionID;
 
             //Meikyo to start before combat
-            if (ActionReady(MeikyoShisui) &&
-                !HasStatusEffect(Buffs.MeikyoShisui) &&
-                !InCombat() && HasBattleTarget())
+            if (CanPrepullMeikyo())
                 return MeikyoShisui;
 
             if (ContentSpecificActions.TryGet(out uint contentAction))
@@ -159,7 +157,8 @@ internal partial class SAM : Melee
 
         protected override uint Invoke(uint actionID)
         {
-            if (!CustomActionHelper.OneButtonRotationChecker(actionID, CustomActionType.SingleTargetDPS, Hakaze, Gyofu)) return actionID;
+            if (!CustomActionHelper.OneButtonRotationChecker(actionID, CustomActionType.SingleTargetDPS, Hakaze, Gyofu))
+                return actionID;
 
             // Opener for SAM
             if (IsEnabled(Preset.SAM_ST_Opener) &&
@@ -170,10 +169,7 @@ internal partial class SAM : Melee
             //Meikyo to start before combat
             if (IsEnabled(Preset.SAM_ST_CDs) &&
                 IsEnabled(Preset.SAM_ST_CDs_MeikyoShisui) &&
-                ActionReady(MeikyoShisui) &&
-                !HasStatusEffect(Buffs.MeikyoShisui) &&
-                !InCombat() && HasBattleTarget() &&
-                !JustUsed(MeikyoShisui))
+                CanPrepullMeikyo(requireNotJustUsed: true))
                 return MeikyoShisui;
 
             if (ContentSpecificActions.TryGet(out uint contentAction))
@@ -308,15 +304,13 @@ internal partial class SAM : Melee
 
         protected override uint Invoke(uint actionID)
         {
-            if (!CustomActionHelper.OneButtonRotationChecker(actionID, CustomActionType.AoEDPS, Fuga, Fuko)) return actionID;
+            if (!CustomActionHelper.OneButtonRotationChecker(actionID, CustomActionType.AoEDPS, Fuga, Fuko))
+                return actionID;
 
             //Meikyo to start before combat
             if (IsEnabled(Preset.SAM_AoE_CDs) &&
                 IsEnabled(Preset.SAM_AoE_MeikyoShisui) &&
-                ActionReady(MeikyoShisui) &&
-                !HasStatusEffect(Buffs.MeikyoShisui) &&
-                !InCombat() && HasBattleTarget() &&
-                !JustUsed(MeikyoShisui))
+                CanPrepullMeikyo(requireNotJustUsed: true))
                 return MeikyoShisui;
 
             if (ContentSpecificActions.TryGet(out uint contentAction))
@@ -392,9 +386,8 @@ internal partial class SAM : Melee
             if (actionID is not Yukikaze)
                 return actionID;
 
-            if (SAM_Yukaze_KenkiOvercap && CanWeave() &&
-                Kenki >= SAM_Yukaze_KenkiOvercapAmount && LevelChecked(Shinten))
-                return OriginalHook(Shinten);
+            if (TryFeatureKenkiOvercap(out uint kenkiAction, SAM_Yukaze_KenkiOvercap, SAM_Yukaze_KenkiOvercapAmount, Shinten))
+                return kenkiAction;
 
             if (HasStatusEffect(Buffs.MeikyoShisui))
             {
@@ -469,9 +462,8 @@ internal partial class SAM : Melee
             if (actionID is not Kasha)
                 return actionID;
 
-            if (SAM_Kasha_KenkiOvercap && CanWeave() &&
-                Kenki >= SAM_Kasha_KenkiOvercapAmount && LevelChecked(Shinten))
-                return OriginalHook(Shinten);
+            if (TryFeatureKenkiOvercap(out uint kenkiAction, SAM_Kasha_KenkiOvercap, SAM_Kasha_KenkiOvercapAmount, Shinten))
+                return kenkiAction;
 
             if (HasStatusEffect(Buffs.MeikyoShisui) && LevelChecked(Kasha))
                 return OriginalHook(Kasha);
@@ -498,9 +490,8 @@ internal partial class SAM : Melee
             if (actionID is not Gekko)
                 return actionID;
 
-            if (SAM_Gekko_KenkiOvercap && CanWeave() &&
-                Kenki >= SAM_Gekko_KenkiOvercapAmount && LevelChecked(Shinten))
-                return OriginalHook(Shinten);
+            if (TryFeatureKenkiOvercap(out uint kenkiAction, SAM_Gekko_KenkiOvercap, SAM_Gekko_KenkiOvercapAmount, Shinten))
+                return kenkiAction;
 
             if (HasStatusEffect(Buffs.MeikyoShisui) && LevelChecked(Gekko))
                 return OriginalHook(Gekko);
@@ -527,10 +518,8 @@ internal partial class SAM : Melee
             if (actionID is not Oka)
                 return actionID;
 
-            if (SAM_Oka_KenkiOvercap &&
-                Kenki >= SAM_Oka_KenkiOvercapAmount &&
-                LevelChecked(Kyuten) && CanWeave())
-                return Kyuten;
+            if (TryFeatureKenkiOvercap(out uint kenkiAction, SAM_Oka_KenkiOvercap, SAM_Oka_KenkiOvercapAmount, Kyuten))
+                return kenkiAction;
 
             if (HasStatusEffect(Buffs.MeikyoShisui) ||
                 ComboTimer > 0 && LevelChecked(Oka) &&
@@ -550,28 +539,14 @@ internal partial class SAM : Melee
             if (actionID is not Mangetsu)
                 return actionID;
 
-            if (SAM_Mangetsu_KenkiOvercap && Kenki >= SAM_Mangetsu_KenkiOvercapAmount &&
-                LevelChecked(Kyuten) && CanWeave())
-                return Kyuten;
+            if (TryFeatureKenkiOvercap(out uint kenkiAction, SAM_Mangetsu_KenkiOvercap, SAM_Mangetsu_KenkiOvercapAmount, Kyuten))
+                return kenkiAction;
 
             if (ComboTimer > 0 && ComboAction is Fuko or Fuga ||
                 HasStatusEffect(Buffs.MeikyoShisui))
             {
-                if (SAM_Mangetsu_Oka &&
-                    LevelChecked(Oka) &&
-                    (!HasKa ||
-                     !HasStatusEffect(Buffs.Fuka) ||
-                     SenCount is 2 or 3 && ShouldRefreshFuka))
-                    return Oka;
-
-                if (LevelChecked(Mangetsu) &&
-                    HasStatusEffect(Buffs.Fuka) &&
-                    (!HasGetsu ||
-                     !SAM_Mangetsu_Oka ||
-                     !HasStatusEffect(Buffs.Fugetsu) ||
-                     !LevelChecked(Oka) ||
-                     SenCount is 2 or 3 && ShouldRefreshFugetsu))
-                    return Mangetsu;
+                if (TryAoEComboFinisher(out uint finisher, SAM_Mangetsu_Oka))
+                    return finisher;
             }
 
             return OriginalHook(Fuko);
@@ -753,13 +728,7 @@ internal partial class SAM : Melee
                 return actionID;
 
             if (Kenki >= 10)
-            {
-                if (InMeleeRange())
-                    return Yaten;
-
-                if (!InMeleeRange())
-                    return Gyoten;
-            }
+                return InMeleeRange() ? Yaten : Gyoten;
 
             return actionID;
         }
