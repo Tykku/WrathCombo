@@ -1,7 +1,8 @@
-﻿using Dalamud.Game.ClientState.JobGauge.Enums;
+using Dalamud.Game.ClientState.JobGauge.Enums;
 using Dalamud.Game.ClientState.JobGauge.Types;
 using System;
 using System.Collections.Generic;
+using WrathCombo.Combos.PvE.ALL;
 using WrathCombo.CustomComboNS;
 using WrathCombo.CustomComboNS.Functions;
 using static WrathCombo.Combos.PvE.MNK.Config;
@@ -105,7 +106,7 @@ internal partial class MNK
             ? Demolish
             : OriginalHook(SnapPunch);
 
-    private static uint DoBasicCombo(uint actionId, bool useTrueNorth = true, bool onAoE = false, int trueNorthCharges = 0)
+    private static uint DoBasicCombo(bool useTrueNorth = true, bool onAoE = false, int trueNorthCharges = 0)
     {
         if (onAoE)
         {
@@ -170,15 +171,15 @@ internal partial class MNK
             : JustUsed(OriginalHook(Bootshine), window) ||
               JustUsed(DragonKick, window);
 
-    private static bool IsRoFCDInPerfectBalanceWindow() =>
+    private static bool IsRoFInPerfectBalanceWindow() =>
         GetCooldownRemainingTime(RiddleOfFire) is >= 2 and <= 7;
 
-    private static bool IsBrotherhoodCDInPerfectBalanceWindow() =>
+    private static bool IsBrotherhoodInPerfectBalanceWindow() =>
         GetCooldownRemainingTime(Brotherhood) is >= 2 and <= 7;
 
     private static bool IsEvenWindowApproaching() =>
-        IsRoFCDInPerfectBalanceWindow() &&
-        IsBrotherhoodCDInPerfectBalanceWindow();
+        IsRoFInPerfectBalanceWindow() &&
+        IsBrotherhoodInPerfectBalanceWindow();
 
     private static bool IsDoubleLunarOpener(bool useOpenerBalance) =>
         useOpenerBalance && (MNK_SelectedOpener == 0 || MNK_SelectedOpener == 2);
@@ -188,24 +189,20 @@ internal partial class MNK
         if (!useOpenerBalance)
             return ShouldUsePreRoFPerfectBalanceDefault();
 
-        if (!IsRoFCDInPerfectBalanceWindow())
+        if (!IsRoFInPerfectBalanceWindow())
             return false;
 
-        // Even window first PB — RoF and BH both 2-7s on Opo GCD
         if (IsEvenWindowApproaching())
             return true;
 
-        // Double Lunar odd minutes use post-RoF PB instead of pre-RoF
         if (IsDoubleLunarOpener(useOpenerBalance) && GetCooldownRemainingTime(Brotherhood) > 7)
             return false;
 
-        // Solar odd — RoF 2-7s only
         return true;
     }
 
-    // Simple ST, Advanced ST without opener, and AoE — RoF 2-7s pre-burst PB.
     private static bool ShouldUsePreRoFPerfectBalanceDefault() =>
-        IsRoFCDInPerfectBalanceWindow();
+        IsRoFInPerfectBalanceWindow();
 
     private static bool ShouldUsePostRoFLunarOddPerfectBalance(bool useOpenerBalance) =>
         IsDoubleLunarOpener(useOpenerBalance) &&
@@ -219,7 +216,7 @@ internal partial class MNK
         JustUsed(CelestialRevolution, window);
 
     private static bool HasElapsedSinceBlitz(float minGcds) =>
-        HasUsedBlitzRecently(GCDTotal * 12) && !HasUsedBlitzRecently(GCDTotal * minGcds);
+        HasUsedBlitzRecently(GCD * 12) && !HasUsedBlitzRecently(GCD * minGcds);
 
     private static uint ForcedOpoGCD(bool onAoE)
     {
@@ -233,7 +230,7 @@ internal partial class MNK
 
     private static bool ForceSecondOpo(bool onAoE, bool useFiresReply = true)
     {
-        if (useFiresReply)
+        if (useFiresReply && LevelChecked(FiresReply))
             return false;
 
         if (!HasStatusEffect(Buffs.Brotherhood) || !HasStatusEffect(Buffs.RiddleOfFire))
@@ -245,19 +242,17 @@ internal partial class MNK
         if (!IsOriginal(MasterfulBlitz) || GetRemainingCharges(PerfectBalance) >= GetMaxCharges(PerfectBalance))
             return false;
 
-        if (!HasUsedBlitzRecently(GCDTotal * 12))
+        if (!HasUsedBlitzRecently(GCD * 12))
             return false;
 
         if (HasStatusEffect(Buffs.FiresRumination) ||
-            JustUsed(FiresReply, GCDTotal * 12))
+            JustUsed(FiresReply, GCD * 12))
             return false;
 
-        // First post-blitz Opo (Formless) done — insert a second Opo before 2nd PB
         if (!HasElapsedSinceBlitz(1f) || HasElapsedSinceBlitz(4f))
             return false;
 
-        // Second Opo just used — PB weave is next
-        if (JustUsedOpoGCD(GCDTotal, onAoE) && HasElapsedSinceBlitz(2f))
+        if (JustUsedOpoGCD(GCD, onAoE) && HasElapsedSinceBlitz(2f))
             return false;
 
         return true;
@@ -274,17 +269,12 @@ internal partial class MNK
         if (GetRemainingCharges(PerfectBalance) >= GetMaxCharges(PerfectBalance))
             return false;
 
-        if (!HasUsedBlitzRecently(GCDTotal * 12))
+        if (!HasUsedBlitzRecently(GCD * 12))
             return false;
 
-        // FR spent this burst (combo or manual) — weave 2nd PB after the post-FR Formless Opo.
-        if (JustUsed(FiresReply, GCDTotal * 6) && !HasStatusEffect(Buffs.FiresRumination))
-            return true;
+        if (useFiresReply && LevelChecked(FiresReply))
+            return JustUsed(FiresReply, GCD * 6) && !HasStatusEffect(Buffs.FiresRumination);
 
-        if (useFiresReply)
-            return false;
-
-        // FR intentionally skipped in combo — Blitz → Opo → Opo → PB
         return HasElapsedSinceBlitz(2.5f);
     }
 
@@ -293,19 +283,18 @@ internal partial class MNK
         if (!IsBurstHoldReleaseReady())
             return false;
 
-        if (!HasBattleTarget() || !JustUsedOpoGCD(GCDTotal, onAoE))
+        if (!HasBattleTarget() || !JustUsedOpoGCD(GCD, onAoE))
             return false;
 
         if (onAoE && perfectBalanceHpThreshold > 0 && GetTargetHPPercent() < perfectBalanceHpThreshold)
             return false;
 
-        if (JustUsed(PerfectBalance, 20 + GCDTotal * 5))
+        if (JustUsed(PerfectBalance, 20 + GCD * 5))
             return false;
 
         return true;
     }
 
-    // Both burst buffs are ready but PB must weave first (burst-hold release / drift recovery).
     private static bool IsBurstHoldReleaseReady()
     {
         if (!ActionReady(PerfectBalance) || HasStatusEffect(Buffs.PerfectBalance) ||
@@ -318,8 +307,7 @@ internal partial class MNK
         if (HasStatusEffect(Buffs.Brotherhood) || HasStatusEffect(Buffs.RiddleOfFire))
             return false;
 
-        // Pre-RoF PB timing already handles ordering when CDs are in the 2-7s window.
-        if (IsRoFCDInPerfectBalanceWindow())
+        if (IsRoFInPerfectBalanceWindow())
             return false;
 
         return true;
@@ -337,13 +325,13 @@ internal partial class MNK
 
         if (!ActionReady(PerfectBalance) || HasStatusEffect(Buffs.PerfectBalance) ||
             HasStatusEffect(Buffs.FormlessFist) || !IsOriginal(MasterfulBlitz) ||
-            !HasBattleTarget() || JustUsed(PerfectBalance) || !JustUsedOpoGCD(GCDTotal, onAoE))
+            !HasBattleTarget() || JustUsed(PerfectBalance) || !JustUsedOpoGCD(GCD, onAoE))
             return false;
 
         if (onAoE && perfectBalanceHpThreshold > 0 && GetTargetHPPercent() < perfectBalanceHpThreshold)
             return false;
 
-        if (!JustUsed(PerfectBalance, 20 + GCDTotal * 5))
+        if (!JustUsed(PerfectBalance, 20 + GCD * 5))
         {
             if (onAoE)
             {
@@ -365,12 +353,11 @@ internal partial class MNK
 
         if (!LevelChecked(RiddleOfFire) ||
             HasStatusEffect(Buffs.RiddleOfFire) && !LevelChecked(Brotherhood))
-            return JustUsedOpoGCD(GCDTotal * 3, onAoE);
+            return JustUsedOpoGCD(GCD * 3, onAoE);
 
         return onAoE && CanPerfectBalanceMaxChargeAoE();
     }
 
-    // Last-resort AoE PB — only at full charges when normal timing does not apply.
     private static bool CanPerfectBalanceMaxChargeAoE()
     {
         if (GetRemainingCharges(PerfectBalance) != GetMaxCharges(PerfectBalance))
@@ -379,7 +366,7 @@ internal partial class MNK
         if (IsBurstHoldReleaseReady())
             return false;
 
-        if (IsRoFCDInPerfectBalanceWindow())
+        if (IsRoFInPerfectBalanceWindow())
             return false;
 
         return true;
@@ -388,6 +375,9 @@ internal partial class MNK
     #endregion
 
     #region Misc
+
+    private static float GCD =>
+        GetCooldown(OriginalHook(Bootshine)).CooldownTotal;
 
     private static int BossHpThreshold(int hpBossOption, int hpOption, bool isBoss) =>
         hpBossOption == 1 || !isBoss ? hpOption : 0;
@@ -423,7 +413,7 @@ internal partial class MNK
 
     private static bool ShouldSpendMasterfulBlitz(bool onAoE)
     {
-        if (BlitzTimer <= GCDTotal * 3)
+        if (BlitzTimer <= GCD * 3)
             return true;
 
         if (IsBurstHoldReleaseReady())
@@ -432,7 +422,7 @@ internal partial class MNK
         if (onAoE)
             return true;
 
-        if (HasStatusEffect(Buffs.RiddleOfFire) || HasStatusEffect(Buffs.Brotherhood))
+        if (HasStatusEffect(Buffs.RiddleOfFire))
             return true;
 
         return !LevelChecked(RiddleOfFire);
@@ -486,6 +476,11 @@ internal partial class MNK
         if (CanBrotherhood() || CanRoF())
             return false;
 
+        if (!HasStatusEffect(Buffs.Brotherhood) &&
+            ActionReady(RiddleOfFire) && LevelChecked(Brotherhood) &&
+            GetCooldownRemainingTime(Brotherhood) <= GCD)
+            return false;
+
         uint meditation = onAoE ? InspiritedMeditation : SteeledMeditation;
 
         return Chakra >= 5 &&
@@ -499,30 +494,29 @@ internal partial class MNK
 
     #region Buffs
 
-    //RoF
     private static bool CanRoF() =>
         !IsBurstHoldReleaseReady() &&
         ActionReady(RiddleOfFire) &&
         !HasStatusEffect(Buffs.FiresRumination) &&
         !HasStatusEffect(Buffs.RiddleOfFire) &&
         (!LevelChecked(Brotherhood) ||
-         JustUsed(Brotherhood, GCDTotal * 5) ||
+         JustUsed(Brotherhood, GCD * 5) ||
          HasStatusEffect(Buffs.Brotherhood) ||
          GetCooldownRemainingTime(Brotherhood) is > 50 and < 65 ||
          !LevelChecked(Brotherhood));
 
     private static bool CanFiresReply(bool onAoE = false) =>
+        LevelChecked(FiresReply) &&
         HasStatusEffect(Buffs.FiresRumination) &&
         !HasStatusEffect(Buffs.FormlessFist) &&
         IsOriginal(MasterfulBlitz) &&
         InActionRange(FiresReply) &&
-        !JustUsed(RiddleOfFire, GCDTotal) &&
+        !JustUsed(RiddleOfFire, GCD) &&
         !HasStatusEffect(Buffs.PerfectBalance) &&
-        (JustUsedOpoGCD(GCDTotal * 1.5f, onAoE) ||
-         GetStatusEffectRemainingTime(Buffs.FiresRumination) < GCDTotal * 2 ||
+        (JustUsedOpoGCD(GCD * 1.5f, onAoE) ||
+         GetStatusEffectRemainingTime(Buffs.FiresRumination) < GCD * 2 ||
          !InMeleeRange());
 
-    //Brotherhood
     private static bool CanBrotherhood() =>
         !IsBurstHoldReleaseReady() &&
         ActionReady(Brotherhood) &&
@@ -530,7 +524,6 @@ internal partial class MNK
         !HasStatusEffect(Buffs.Brotherhood) &&
         (InBossEncounter() || TimeStoodStill.Seconds >= 2);
 
-    //RoW
     private static bool CanRoW() =>
         ActionReady(RiddleOfWind) &&
         !HasStatusEffect(Buffs.WindsRumination);
@@ -538,11 +531,12 @@ internal partial class MNK
     private static bool CanWindsReply() =>
         HasStatusEffect(Buffs.WindsRumination) &&
         InActionRange(WindsReply) &&
-        !HasStatusEffect(Buffs.FiresRumination) &&
-        (GetCooldownRemainingTime(RiddleOfFire) > 10 ||
-         HasStatusEffect(Buffs.RiddleOfFire) ||
-         GetStatusEffectRemainingTime(Buffs.WindsRumination) < GCDTotal * 2 ||
-         !InMeleeRange());
+        (GetStatusEffectRemainingTime(Buffs.WindsRumination) <= 3f ||
+         !HasStatusEffect(Buffs.FiresRumination) &&
+         (GetCooldownRemainingTime(RiddleOfFire) > 10 ||
+          HasStatusEffect(Buffs.RiddleOfFire) ||
+          GetStatusEffectRemainingTime(Buffs.WindsRumination) < GCD * 2 ||
+          !InMeleeRange()));
 
     #endregion
 
@@ -593,6 +587,7 @@ internal partial class MNK
             FormShift,
             DragonKick,
             PerfectBalance,
+            Items.UseItem(Items.GetStrongestPotionRow(Items.PotionType.Strength)),
             Bootshine,
             DragonKick,
             Bootshine,
@@ -608,14 +603,17 @@ internal partial class MNK
             DragonKick
         ];
 
+        public override Preset Preset => Preset.MNK_STUseOpener;
+
+        internal override UserData ContentCheckConfig => MNK_Balance_Content;
+        internal override bool IncludePot => MNK_Opener_Potion;
+
         public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
         [
             ([1], () => Chakra >= 5),
             ([2], () => JustUsed(FormShift, 30f))
         ];
 
-        internal override UserData ContentCheckConfig => MNK_Balance_Content;
-        public override Preset Preset => Preset.MNK_STUseOpener;
         public override bool HasCooldowns() =>
             GetRemainingCharges(PerfectBalance) is 2 &&
             IsOffCooldown(Brotherhood) &&
@@ -640,6 +638,7 @@ internal partial class MNK
             FormShift,
             DragonKick,
             PerfectBalance,
+            Items.UseItem(Items.GetStrongestPotionRow(Items.PotionType.Strength)),
             Bootshine,
             DragonKick,
             Bootshine,
@@ -655,14 +654,17 @@ internal partial class MNK
             DragonKick
         ];
 
+        public override Preset Preset => Preset.MNK_STUseOpener;
+
+        internal override UserData ContentCheckConfig => MNK_Balance_Content;
+        internal override bool IncludePot => MNK_Opener_Potion;
+
         public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
         [
             ([1], () => Chakra >= 5),
             ([2], () => JustUsed(FormShift, 30f))
         ];
 
-        internal override UserData ContentCheckConfig => MNK_Balance_Content;
-        public override Preset Preset => Preset.MNK_STUseOpener;
         public override bool HasCooldowns() =>
             GetRemainingCharges(PerfectBalance) is 2 &&
             IsOffCooldown(Brotherhood) &&
@@ -687,6 +689,7 @@ internal partial class MNK
             FormShift,
             DragonKick,
             PerfectBalance,
+            Items.UseItem(Items.GetStrongestPotionRow(Items.PotionType.Strength)),
             LeapingOpo,
             DragonKick,
             Brotherhood,
@@ -707,14 +710,18 @@ internal partial class MNK
             LeapingOpo
         ];
 
+        public override Preset Preset => Preset.MNK_STUseOpener;
+
+        internal override UserData ContentCheckConfig => MNK_Balance_Content;
+        internal override bool IncludePot => MNK_Opener_Potion;
+
         public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
         [
             ([1], () => Chakra >= 5),
-            ([2], () => JustUsed(FormShift, 30f))
+            ([2], () => JustUsed(FormShift, 30f)),
+            ([11], () => Chakra < 5)
         ];
 
-        internal override UserData ContentCheckConfig => MNK_Balance_Content;
-        public override Preset Preset => Preset.MNK_STUseOpener;
         public override bool HasCooldowns() =>
             GetRemainingCharges(PerfectBalance) is 2 &&
             IsOffCooldown(Brotherhood) &&
@@ -740,6 +747,7 @@ internal partial class MNK
             DragonKick,
             PerfectBalance,
             TwinSnakes,
+            Items.UseItem(Items.GetStrongestPotionRow(Items.PotionType.Strength)),
             Demolish,
             Brotherhood,
             RiddleOfFire,
@@ -759,14 +767,18 @@ internal partial class MNK
             LeapingOpo
         ];
 
+        public override Preset Preset => Preset.MNK_STUseOpener;
+
+        internal override UserData ContentCheckConfig => MNK_Balance_Content;
+        internal override bool IncludePot => MNK_Opener_Potion;
+
         public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
         [
             ([1], () => Chakra >= 5),
-            ([2], () => JustUsed(FormShift, 30f))
+            ([2], () => JustUsed(FormShift, 30f)),
+            ([11], () => Chakra < 5)
         ];
 
-        internal override UserData ContentCheckConfig => MNK_Balance_Content;
-        public override Preset Preset => Preset.MNK_STUseOpener;
         public override bool HasCooldowns() =>
             GetRemainingCharges(PerfectBalance) is 2 &&
             IsOffCooldown(Brotherhood) &&
@@ -791,6 +803,7 @@ internal partial class MNK
             FormShift,
             RiddleOfWind,
             DragonKick,
+            Items.UseItem(Items.GetStrongestPotionRow(Items.PotionType.Strength)),
             Brotherhood,
             RiddleOfFire,
             FiresReply,
@@ -810,14 +823,18 @@ internal partial class MNK
             DragonKick
         ];
 
+        public override Preset Preset => Preset.MNK_STUseOpener;
+
+        internal override UserData ContentCheckConfig => MNK_Balance_Content;
+        internal override bool IncludePot => MNK_Opener_Potion;
+
         public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
         [
             ([1], () => Chakra >= 5),
-            ([2], () => JustUsed(FormShift, 30f))
+            ([2], () => JustUsed(FormShift, 30f)),
+            ([10], () => Chakra < 5)
         ];
 
-        internal override UserData ContentCheckConfig => MNK_Balance_Content;
-        public override Preset Preset => Preset.MNK_STUseOpener;
         public override bool HasCooldowns() =>
             GetRemainingCharges(PerfectBalance) is 2 &&
             IsOffCooldown(Brotherhood) &&

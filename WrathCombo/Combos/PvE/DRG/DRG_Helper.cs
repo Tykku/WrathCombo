@@ -1,7 +1,8 @@
-﻿using Dalamud.Game.ClientState.JobGauge.Types;
+using Dalamud.Game.ClientState.JobGauge.Types;
 using Dalamud.Game.ClientState.Statuses;
 using System.Collections.Frozen;
 using System.Collections.Generic;
+using WrathCombo.Combos.PvE.ALL;
 using WrathCombo.CustomComboNS;
 using WrathCombo.CustomComboNS.Functions;
 using static WrathCombo.Combos.PvE.DRG.Config;
@@ -19,7 +20,6 @@ internal partial class DRG
     #region Basic Combo
 
     private static uint DoBasicCombo(
-        uint actionId,
         bool useTrueNorth = false,
         bool onAoE = false,
         bool includeDisembowel = false,
@@ -115,7 +115,7 @@ internal partial class DRG
 
                 return HasStatusEffect(Buffs.LanceCharge) ||
                        HasStatusEffect(Buffs.BattleLitany) ||
-                       LoTDActive;
+                       IsLoTDActive;
             }
 
             if (LevelChecked(SonicThrust) && JustUsed(DoomSpike))
@@ -123,12 +123,12 @@ internal partial class DRG
 
             return JustUsed(DoomSpike);
         }
-    
+
 
         if (!InActionRange(TrueThrust))
             return false;
 
-        if (LevelChecked(Drakesbane) && LoTDActive &&
+        if (LevelChecked(Drakesbane) && IsLoTDActive &&
             (HasStatusEffect(Buffs.LanceCharge) || HasStatusEffect(Buffs.BattleLitany)) &&
             (JustUsed(WheelingThrust) ||
              JustUsed(FangAndClaw) ||
@@ -145,7 +145,6 @@ internal partial class DRG
 
         return false;
     }
-    
 
     #endregion
 
@@ -190,7 +189,7 @@ internal partial class DRG
         ActionReady(WyrmwindThrust) &&
         FirstmindsFocus is 2 &&
         InActionRange(WyrmwindThrust) &&
-        (LoTDActive ||
+        (IsLoTDActive ||
          HasStatusEffect(Buffs.DraconianFire) ||
          HasStatusEffect(Buffs.RaidenThrustReady) ||
          NumberOfEnemiesInRange(WyrmwindThrust, CurrentTarget) >= 2);
@@ -201,7 +200,7 @@ internal partial class DRG
             OriginalHook(Jump) is not MirageDive || !InActionRange(MirageDive))
             return false;
 
-        if (onAoE || ignoreDoubleMirageHold || LoTDActive)
+        if (onAoE || ignoreDoubleMirageHold || IsLoTDActive)
             return true;
 
         bool diveExpiring = GetStatusEffectRemainingTime(Buffs.DiveReady) <= 1.2f &&
@@ -210,17 +209,17 @@ internal partial class DRG
         return diveExpiring || !DRG_ST_DoubleMirage;
     }
 
-    private static bool CanUseGeirskogul(bool onAoE = false, int hpThreshold = 0) =>
+    private static bool CanUseGeirskogul(int hpThreshold = 0) =>
         ActionReady(Geirskogul) &&
         InActionRange(Geirskogul) &&
         HasBattleTarget() &&
-        !LoTDTimerActive &&
+        !IsLoTDTimerActive &&
         GetTargetHPPercent() > hpThreshold;
 
     private static int GeirskogulHPThreshold() =>
-        InBossEncounter() ? TargetIsBoss() 
+        InBossEncounter() ? TargetIsBoss()
                 ? DRG_ST_GeirskogulBossHPOption
-                : DRG_ST_GeirskogulBossAddsHPOption 
+                : DRG_ST_GeirskogulBossAddsHPOption
             : DRG_ST_GeirskogulTrashHPOption;
 
     private static bool CanStarcross() =>
@@ -230,7 +229,7 @@ internal partial class DRG
         ActionReady(RiseOfTheDragon) && HasStatusEffect(Buffs.DragonsFlight) && InActionRange(RiseOfTheDragon);
 
     private static bool CanNastrond() =>
-        ActionReady(Nastrond) && HasStatusEffect(Buffs.NastrondReady) && LoTDActive && InActionRange(Nastrond);
+        ActionReady(Nastrond) && HasStatusEffect(Buffs.NastrondReady) && IsLoTDActive && InActionRange(Nastrond);
 
     private static bool CanHighJump(
         bool onAoE = false,
@@ -242,7 +241,7 @@ internal partial class DRG
             : !LevelChecked(HighJump) && IsOriginal(Jump) ||
               LevelChecked(HighJump) && IsOriginal(HighJump) &&
               (allowDoubleMirageHold || !DRG_ST_DoubleMirage ||
-               DRG_ST_DoubleMirage && (GetCooldownRemainingTime(Geirskogul) < 13 || LoTDTimerActive)));
+               DRG_ST_DoubleMirage && (GetCooldownRemainingTime(Geirskogul) < 13 || IsLoTDTimerActive)));
 
     private static bool CanDragonfireDive(
         UserBoolArray? holdOptions = null,
@@ -250,10 +249,10 @@ internal partial class DRG
         ActionReady(DragonfireDive) && !HasStatusEffect(Buffs.DragonsFlight) &&
         GetTargetHPPercent() > hpThreshold &&
         CanUseWithHoldOptions(holdOptions) &&
-        (LoTDTimerActive || !LevelChecked(Geirskogul));
+        (IsLoTDTimerActive || !LevelChecked(Geirskogul));
 
     private static bool CanStardiver(UserBoolArray? holdOptions = null) =>
-        ActionReady(Stardiver) && LoTDActive && !HasStatusEffect(Buffs.StarcrossReady) &&
+        ActionReady(Stardiver) && IsLoTDActive && !HasStatusEffect(Buffs.StarcrossReady) &&
         CanUseWithHoldOptions(holdOptions);
 
     private readonly struct OutsideOfMeleeOptions
@@ -327,7 +326,7 @@ internal partial class DRG
                 return RiseOfTheDragon;
 
             if (options.UseGeirskogul &&
-                CanUseGeirskogul(true, options.GeirskogulHpThreshold) && InCombat())
+                CanUseGeirskogul(options.GeirskogulHpThreshold) && InCombat())
                 return Geirskogul;
 
             if (options.UseNastrond &&
@@ -338,7 +337,7 @@ internal partial class DRG
                 ActionReady(PiercingTalon) && !CanDRGWeave())
                 return PiercingTalon;
 
-            return DoBasicCombo(actionId, onAoE: true, includeDisembowel: options.IncludeDisembowel);
+            return DoBasicCombo(onAoE: true, includeDisembowel: options.IncludeDisembowel);
         }
 
         if (options.UseMirage &&
@@ -369,7 +368,7 @@ internal partial class DRG
             ActionReady(PiercingTalon))
             return PiercingTalon;
 
-        return DoBasicCombo(actionId, options.UseTrueNorth, trueNorthCharges: options.TrueNorthCharges);
+        return DoBasicCombo(options.UseTrueNorth, trueNorthCharges: options.TrueNorthCharges);
     }
 
     #endregion
@@ -402,23 +401,29 @@ internal partial class DRG
             DRG_SelectedOpener == 1)
             return PiercingTalonOpener;
 
+        if (EarlyBuffOpener.LevelChecked &&
+            DRG_SelectedOpener == 2)
+            return EarlyBuffOpener;
+
         return WrathOpener.Dummy;
     }
 
     internal static DRGStandardOpener StandardOpener = new();
     internal static DRGPiercingTalonOpener PiercingTalonOpener = new();
+    internal static DRGEarlyBuffOpener EarlyBuffOpener = new();
 
     internal class DRGStandardOpener : WrathOpener
     {
         public override int MinOpenerLevel => 100;
 
-        public override int MaxOpenerLevel => 109;
+        public override int MaxOpenerLevel => 100;
 
         public override List<uint> OpenerActions { get; set; } =
         [
             TrueThrust,
             SpiralBlow,
             LanceCharge,
+            Items.UseItem(Items.GetStrongestPotionRow(Items.PotionType.Strength)),
             ChaoticSpring,
             BattleLitany,
             Geirskogul,
@@ -445,6 +450,7 @@ internal partial class DRG
         public override Preset Preset => Preset.DRG_ST_Opener;
 
         internal override UserData ContentCheckConfig => DRG_BalanceContent;
+        internal override bool IncludePot => DRG_Opener_Potion;
 
         public override bool HasCooldowns() =>
             GetRemainingCharges(LifeSurge) is 2 &&
@@ -457,12 +463,13 @@ internal partial class DRG
     {
         public override int MinOpenerLevel => 100;
 
-        public override int MaxOpenerLevel => 109;
+        public override int MaxOpenerLevel => 100;
 
         public override List<uint> OpenerActions { get; set; } =
         [
             PiercingTalon,
             TrueThrust,
+            Items.UseItem(Items.GetStrongestPotionRow(Items.PotionType.Strength)),
             SpiralBlow,
             LanceCharge,
             BattleLitany,
@@ -489,7 +496,9 @@ internal partial class DRG
         ];
 
         public override Preset Preset => Preset.DRG_ST_Opener;
+
         internal override UserData ContentCheckConfig => DRG_BalanceContent;
+        internal override bool IncludePot => DRG_Opener_Potion;
 
         public override bool HasCooldowns() =>
             GetRemainingCharges(LifeSurge) is 2 &&
@@ -498,19 +507,67 @@ internal partial class DRG
             IsOffCooldown(LanceCharge);
     }
 
+    internal class DRGEarlyBuffOpener : WrathOpener
+    {
+        public override int MinOpenerLevel => 100;
+
+        public override int MaxOpenerLevel => 100;
+
+        public override List<uint> OpenerActions { get; set; } =
+        [
+            LanceCharge,
+            BattleLitany,
+            TrueThrust,
+            Items.UseItem(Items.GetStrongestPotionRow(Items.PotionType.Strength)),
+            Geirskogul,
+            SpiralBlow,
+            HighJump,
+            Nastrond,
+            ChaoticSpring,
+            DragonfireDive,
+            MirageDive,
+            WheelingThrust,
+            LifeSurge,
+            RiseOfTheDragon,
+            Drakesbane,
+            Stardiver,
+            RaidenThrust,
+            Starcross,
+            LanceBarrage,
+            LifeSurge,
+            HeavensThrust,
+            FangAndClaw,
+            Drakesbane,
+            RaidenThrust,
+            WyrmwindThrust,
+        ];
+
+        public override Preset Preset => Preset.DRG_ST_Opener;
+
+        internal override UserData ContentCheckConfig => DRG_BalanceContent;
+        internal override bool IncludePot => DRG_Opener_Potion;
+
+        public override bool HasCooldowns() =>
+            GetRemainingCharges(LifeSurge) is 2 &&
+            IsOffCooldown(BattleLitany) &&
+            IsOffCooldown(DragonfireDive) &&
+            IsOffCooldown(LanceCharge) &&
+            CountdownRemaining is >= 1.5f and <= 3f;
+    }
+
     #endregion
 
     #region Gauge
 
     private static DRGGauge Gauge => GetJobGauge<DRGGauge>();
 
-    private static bool LoTDActive => Gauge.IsLOTDActive;
+    private static bool IsLoTDActive => Gauge.IsLOTDActive;
 
     private static short LoTDTimer => Gauge.LOTDTimer;
 
     private static byte FirstmindsFocus => Gauge.FirstmindsFocusCount;
 
-    private static bool LoTDTimerActive => LoTDTimer > 0;
+    private static bool IsLoTDTimerActive => LoTDTimer > 0;
 
     private static readonly FrozenDictionary<uint, ushort> ChaoticList = new Dictionary<uint, ushort>
     {

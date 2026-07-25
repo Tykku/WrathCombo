@@ -1,7 +1,8 @@
-﻿using Dalamud.Game.ClientState.JobGauge.Enums;
+using Dalamud.Game.ClientState.JobGauge.Enums;
 using Dalamud.Game.ClientState.JobGauge.Types;
 using System;
 using System.Collections.Generic;
+using WrathCombo.Combos.PvE.ALL;
 using WrathCombo.CustomComboNS;
 using WrathCombo.CustomComboNS.Functions;
 using static FFXIVClientStructs.FFXIV.Client.Game.ActionManager;
@@ -13,14 +14,14 @@ internal partial class VPR
 {
     #region Basic Combo
 
-    private static bool TrueNorthReady(bool useTrueNorth, int trueNorthCharges = 0, bool dynamicHoldCharge = false) =>
+    private static bool IsTrueNorthReady(bool useTrueNorth, int trueNorthCharges = 0, bool dynamicHoldCharge = false) =>
         useTrueNorth &&
         (dynamicHoldCharge && GetRemainingCharges(Role.TrueNorth) is 2 ||
          !dynamicHoldCharge) &&
         GetRemainingCharges(Role.TrueNorth) > trueNorthCharges &&
         Role.CanTrueNorth();
 
-    private static uint DoBasicCombo(uint actionId, bool useTrueNorth = false, bool onAoE = false, int trueNorthCharges = 0,
+    private static uint DoBasicCombo(bool useTrueNorth = false, bool onAoE = false, int trueNorthCharges = 0,
         bool dynamicHoldCharge = false)
     {
         if (onAoE)
@@ -70,11 +71,11 @@ internal partial class VPR
             if (ComboAction is ReavingFangs or SteelFangs)
             {
                 if (LevelChecked(SwiftskinsSting) &&
-                    (HasHindVenom || NoSwiftscaled || NoBasicComboVenom))
+                    (HasHindVenom || IsMissingSwiftscaled || IsMissingBasicComboVenom))
                     return OriginalHook(ReavingFangs);
 
                 if (LevelChecked(HuntersSting) &&
-                    (HasFlankVenom || NoHuntersInstinct))
+                    (HasFlankVenom || IsMissingHuntersInstinct))
                     return OriginalHook(SteelFangs);
             }
 
@@ -82,7 +83,7 @@ internal partial class VPR
             {
                 if ((HasStatusEffect(Buffs.FlanksbaneVenom) || HasStatusEffect(Buffs.HindsbaneVenom)) &&
                     LevelChecked(HindstingStrike))
-                    return TrueNorthReady(useTrueNorth, trueNorthCharges, dynamicHoldCharge) &&
+                    return IsTrueNorthReady(useTrueNorth, trueNorthCharges, dynamicHoldCharge) &&
                            (!OnTargetsRear() && HasStatusEffect(Buffs.HindsbaneVenom) ||
                             !OnTargetsFlank() && HasStatusEffect(Buffs.FlanksbaneVenom))
                         ? Role.TrueNorth
@@ -90,7 +91,7 @@ internal partial class VPR
 
                 if ((HasStatusEffect(Buffs.FlankstungVenom) || HasStatusEffect(Buffs.HindstungVenom)) &&
                     LevelChecked(FlanksbaneFang))
-                    return TrueNorthReady(useTrueNorth, trueNorthCharges, dynamicHoldCharge) &&
+                    return IsTrueNorthReady(useTrueNorth, trueNorthCharges, dynamicHoldCharge) &&
                            (!OnTargetsRear() && HasStatusEffect(Buffs.HindstungVenom) ||
                             !OnTargetsFlank() && HasStatusEffect(Buffs.FlankstungVenom))
                         ? Role.TrueNorth
@@ -119,7 +120,7 @@ internal partial class VPR
     private static float IreCD =>
         GetCooldownRemainingTime(SerpentsIre);
 
-    private static bool MaxCoils =>
+    private static bool IsCoilsCapped =>
         TraitLevelChecked(Traits.EnhancedVipersRattle) && RattlingCoilStacks > 2 ||
         !TraitLevelChecked(Traits.EnhancedVipersRattle) && RattlingCoilStacks > 1;
 
@@ -134,25 +135,25 @@ internal partial class VPR
         HasStatusEffect(Buffs.FlankstungVenom) ||
         HasStatusEffect(Buffs.FlanksbaneVenom);
 
-    private static bool NoSwiftscaled =>
+    private static bool IsMissingSwiftscaled =>
         !HasStatusEffect(Buffs.Swiftscaled);
 
-    private static bool NoHuntersInstinct =>
+    private static bool IsMissingHuntersInstinct =>
         !HasStatusEffect(Buffs.HuntersInstinct);
 
-    private static bool NoBasicComboVenom =>
+    private static bool IsMissingBasicComboVenom =>
         !HasStatusEffect(Buffs.FlanksbaneVenom) &&
         !HasStatusEffect(Buffs.FlankstungVenom) &&
         !HasStatusEffect(Buffs.HindsbaneVenom) &&
         !HasStatusEffect(Buffs.HindstungVenom);
 
-    private static bool NoSTComboWeaves =>
+    private static bool IsSTComboWeaveBlocked =>
         !HasStatusEffect(Buffs.HuntersVenom) &&
         !HasStatusEffect(Buffs.SwiftskinsVenom) &&
         !HasStatusEffect(Buffs.PoisedForTwinblood) &&
         !HasStatusEffect(Buffs.PoisedForTwinfang);
 
-    private static bool NoAoEComboWeaves =>
+    private static bool IsAoEComboWeaveBlocked =>
         !HasStatusEffect(Buffs.FellhuntersVenom) &&
         !HasStatusEffect(Buffs.FellskinsVenom) &&
         !HasStatusEffect(Buffs.PoisedForTwinblood) &&
@@ -176,13 +177,13 @@ internal partial class VPR
         InBossEncounter();
 
     private static bool ShouldHoldTwinbladeForIre =>
-        UsesBurstAlignment && LevelChecked(SerpentsIre) && IreCD > 0 && IreCD <= IreDualWieldWindow;
+        UsesBurstAlignment && LevelChecked(SerpentsIre) && IreCD is > 0 and <= IreDualWieldWindow;
 
     private static bool InTwinbladeCombo =>
         UsedVicewinder || UsedHuntersCoil || UsedSwiftskinsCoil ||
         UsedVicepit || UsedHuntersDen || UsedSwiftskinsDen;
 
-    private static bool ShouldDeferNewTwinblade =>
+    private static bool ShouldHoldNewTwinblade =>
         ShouldHoldTwinbladeForIre && !InTwinbladeCombo && !IsEmpowermentExpiring(4);
 
     private static bool ShouldSaveOfferingForBurst =>
@@ -203,17 +204,17 @@ internal partial class VPR
         {
             if (!ActionReady(Reawaken) || GetTargetHPPercent() <= hpThresholdUsageAoE ||
                 !HasStatusEffect(Buffs.Swiftscaled) || !HasStatusEffect(Buffs.HuntersInstinct) ||
-                HasStatusEffect(Buffs.Reawakened) || !NoAoEComboWeaves)
+                HasStatusEffect(Buffs.Reawakened) || !IsAoEComboWeaveBlocked)
                 return false;
 
-            if (UsesBurstAlignment && JustUsed(Ouroboros, GCDTotal * 12) && SerpentOffering >= 50)
+            if (UsesBurstAlignment && JustUsed(Ouroboros, GCD * 12) && SerpentOffering >= 50)
                 return true;
 
             return HasStatusEffect(Buffs.ReadyToReawaken) || SerpentOffering >= 50;
         }
 
         if (!(ActionReady(Reawaken) && !HasStatusEffect(Buffs.Reawakened) &&
-              InActionRange(Reawaken) && NoSTComboWeaves && HasBattleTarget() &&
+              InActionRange(Reawaken) && IsSTComboWeaveBlocked && HasBattleTarget() &&
               !IsEmpowermentExpiring(6) && !IsComboExpiring(6) &&
               GetTargetHPPercent() > hpThresholdUsage))
             return false;
@@ -222,12 +223,10 @@ internal partial class VPR
             GetTargetHPPercent() < hpThresholdDontSave)
             return true;
 
-        // Standard double burst: one GCD after Ire, then first Reawaken
-        if (!JustUsed(SerpentsIre, GCDTotal) && HasStatusEffect(Buffs.ReadyToReawaken))
+        if (!JustUsed(SerpentsIre, GCD) && HasStatusEffect(Buffs.ReadyToReawaken))
             return true;
 
-        // Second Reawaken back-to-back after Ouroboros when gauge is ready
-        if (UsesBurstAlignment && JustUsed(Ouroboros, GCDTotal * 12) && SerpentOffering >= 50)
+        if (UsesBurstAlignment && JustUsed(Ouroboros, GCD * 12) && SerpentOffering >= 50)
             return true;
 
         if (SerpentOffering >= 100)
@@ -239,7 +238,6 @@ internal partial class VPR
         if (!LevelChecked(Ouroboros) && JustUsed(FourthGeneration))
             return true;
 
-        // ~1min offering Reawaken; defer when pooling for an imminent Ire burst
         if (IreCD is >= 50 and <= 62 &&
             SerpentOffering >= 50 &&
             (!UsesBurstAlignment || !ShouldSaveOfferingForBurst))
@@ -276,9 +274,11 @@ internal partial class VPR
 
     #region Combos
 
+    private static float GCD => GetCooldown(OriginalHook(ReavingFangs)).CooldownTotal;
+
     private static bool IsHoningExpiring(float times)
     {
-        float gcd = GCDTotal * times;
+        float gcd = GCD * times;
 
         return HasStatusEffect(Buffs.HonedSteel) && GetStatusEffectRemainingTime(Buffs.HonedSteel) < gcd ||
                HasStatusEffect(Buffs.HonedReavers) && GetStatusEffectRemainingTime(Buffs.HonedReavers) < gcd;
@@ -286,7 +286,7 @@ internal partial class VPR
 
     private static bool IsVenomExpiring(float times)
     {
-        float gcd = GCDTotal * times;
+        float gcd = GCD * times;
 
         return HasStatusEffect(Buffs.FlankstungVenom) && GetStatusEffectRemainingTime(Buffs.FlankstungVenom) < gcd ||
                HasStatusEffect(Buffs.FlanksbaneVenom) && GetStatusEffectRemainingTime(Buffs.FlanksbaneVenom) < gcd ||
@@ -296,20 +296,20 @@ internal partial class VPR
 
     private static bool IsEmpowermentExpiring(float times)
     {
-        float gcd = GCDTotal * times;
+        float gcd = GCD * times;
 
         return GetStatusEffectRemainingTime(Buffs.Swiftscaled) < gcd || GetStatusEffectRemainingTime(Buffs.HuntersInstinct) < gcd;
     }
 
     private static unsafe bool IsComboExpiring(float times)
     {
-        float gcd = GCDTotal * times;
+        float gcd = GCD * times;
 
         return Instance()->Combo.Timer != 0 && Instance()->Combo.Timer < gcd;
     }
 
-    private static bool WithinGcd(uint actionId) =>
-        LevelChecked(actionId) && (HasCharges(actionId) || GetCooldownRemainingTime(actionId) <= GCDTotal);
+    private static bool WithinGCD(uint actionId) =>
+        LevelChecked(actionId) && (HasCharges(actionId) || GetCooldownRemainingTime(actionId) <= GCD);
 
     #endregion
 
@@ -319,9 +319,9 @@ internal partial class VPR
         LevelChecked(SerpentsTail) &&
         ((allowDeathRattle &&
           (onAoE
-              ? LastLashWeave && InActionRange(LastLash)
-              : DeathRattleWeave && InActionRange(DeathRattle))) ||
-         allowLegacy && LegacyWeaves && InActionRange(FirstLegacy));
+              ? IsLastLashWeave && InActionRange(LastLash)
+              : IsDeathRattleWeave && InActionRange(DeathRattle))) ||
+         allowLegacy && IsLegacyWeaveReady && InActionRange(FirstLegacy));
 
     private static bool UsePoisedTwinWeaves(out uint action, bool enabled = true)
     {
@@ -330,13 +330,13 @@ internal partial class VPR
         if (!enabled)
             return false;
 
-        if (HasStatusEffect(Buffs.PoisedForTwinfang))
+        if (HasStatusEffect(Buffs.PoisedForTwinfang) && InActionRange(OriginalHook(Twinfang)))
         {
             action = OriginalHook(Twinfang);
             return true;
         }
 
-        if (HasStatusEffect(Buffs.PoisedForTwinblood))
+        if (HasStatusEffect(Buffs.PoisedForTwinblood) && InActionRange(OriginalHook(Twinblood)))
         {
             action = OriginalHook(Twinblood);
             return true;
@@ -372,16 +372,15 @@ internal partial class VPR
             return false;
         }
 
-        if (requireMelee && !InMeleeRange())
-            return false;
-
-        if (HasStatusEffect(Buffs.HuntersVenom))
+        if (HasStatusEffect(Buffs.HuntersVenom) &&
+            (!requireMelee || ignoreRange || InActionRange(OriginalHook(Twinfang))))
         {
             action = OriginalHook(Twinfang);
             return true;
         }
 
-        if (HasStatusEffect(Buffs.SwiftskinsVenom))
+        if (HasStatusEffect(Buffs.SwiftskinsVenom) &&
+            (!requireMelee || ignoreRange || InActionRange(OriginalHook(Twinblood))))
         {
             action = OriginalHook(Twinblood);
             return true;
@@ -391,8 +390,7 @@ internal partial class VPR
     }
 
     private static bool CanSerpentsIre(int hpThreshold = 0) =>
-        InCombat() && !MaxCoils && ActionReady(SerpentsIre) &&
-        HasBothBuffs &&
+        InCombat() && !IsCoilsCapped && ActionReady(SerpentsIre) &&
         GetTargetHPPercent() > hpThreshold;
 
     private static bool ShouldSpendCoilStacks(int holdCharges, int hpThreshold) =>
@@ -400,22 +398,24 @@ internal partial class VPR
         GetTargetHPPercent() < hpThreshold && HasRattlingCoilStacks;
 
     private static bool CanUseUncoiledFuryInRotation(bool onAoE) =>
-        !ShouldDeferNewTwinblade &&
+        !ShouldHoldNewTwinblade &&
         HasBothBuffs &&
         !HasStatusEffect(Buffs.Reawakened) && !HasStatusEffect(Buffs.ReadyToReawaken) &&
         !JustUsed(Ouroboros) &&
         (onAoE
-            ? !UsedVicepit && !UsedHuntersDen && !UsedSwiftskinsDen && NoAoEComboWeaves &&
-              !JustUsed(JaggedMaw, GCDTotal) && !JustUsed(BloodiedMaw, GCDTotal) && !JustUsed(SerpentsIre, GCDTotal)
-            : !UsedVicewinder && !UsedHuntersCoil && !UsedSwiftskinsCoil && NoSTComboWeaves &&
+            ? !UsedVicepit && !UsedHuntersDen && !UsedSwiftskinsDen && IsAoEComboWeaveBlocked &&
+              !JustUsed(JaggedMaw, GCD) && !JustUsed(BloodiedMaw, GCD) && !JustUsed(SerpentsIre, GCD)
+            : !UsedVicewinder && !UsedHuntersCoil && !UsedSwiftskinsCoil && IsSTComboWeaveBlocked &&
               !IsComboExpiring(2) && !IsVenomExpiring(2) && !IsHoningExpiring(2) && !IsEmpowermentExpiring(3));
 
-    private static bool UncoiledFuryOvercapProtection(bool onAoE) =>
-        onAoE
-            ? MaxCoils && !HasStatusEffect(Buffs.Reawakened) &&
-              (HasCharges(Vicepit) && NoAoEComboWeaves || IreCD <= GCDTotal * 2)
-            : MaxCoils && !HasStatusEffect(Buffs.Reawakened) &&
-              (HasCharges(Vicewinder) && NoSTComboWeaves || IreCD <= GCDTotal * 3);
+    private static bool OvercapUncoiledFuryProtection(bool onAoE) =>
+        IsCoilsCapped &&
+        ActionReady(UncoiledFury) &&
+        InActionRange(UncoiledFury) &&
+        !HasStatusEffect(Buffs.Reawakened) &&
+        (onAoE ? IsAoEComboWeaveBlocked : IsSTComboWeaveBlocked) &&
+        (LevelChecked(SerpentsIre) && IreCD <= GCD * (onAoE ? 2 : 3) ||
+         HasCharges(onAoE ? Vicepit : Vicewinder));
 
     private static bool CanUseUncoiledFury(
         bool onAoE = false,
@@ -427,7 +427,6 @@ internal partial class VPR
         if (!ActionReady(UncoiledFury) || !InActionRange(UncoiledFury))
             return false;
 
-        // ST range uptime
         if (!onAoE && HasRattlingCoilStacks && !InMeleeRange() && HasBattleTarget())
             return true;
 
@@ -461,10 +460,10 @@ internal partial class VPR
     }
 
     private static bool CanVicepit(bool ignoreRange = false) =>
-        WithinGcd(Vicepit) && !HasStatusEffect(Buffs.Reawakened) && !JustUsed(Vicepit) &&
-        !ShouldDeferNewTwinblade &&
+        WithinGCD(Vicepit) && !HasStatusEffect(Buffs.Reawakened) && !JustUsed(Vicepit) &&
+        !ShouldHoldNewTwinblade &&
         (ignoreRange || InActionRange(Vicepit)) &&
-        (!HasBothBuffs || IreCD >= GCDTotal * 4 || !LevelChecked(SerpentsIre));
+        (!HasBothBuffs || IreCD >= GCD * 4 || !LevelChecked(SerpentsIre));
 
     private static uint UseVicewinder(
         bool useSimpleTrueNorth = true,
@@ -491,45 +490,49 @@ internal partial class VPR
         bool dynamicHoldCharge = false) =>
         useReawakenCombo && HasStatusEffect(Buffs.Reawakened)
             ? ReawakenCombo(actionId)
-            : DoBasicCombo(actionId, useTrueNorth, onAoE, trueNorthCharges, dynamicHoldCharge);
+            : DoBasicCombo(useTrueNorth, onAoE, trueNorthCharges, dynamicHoldCharge);
 
     #endregion
 
     #region Vicewinder & Uncoiled Fury Combo
 
     private static bool CanUseVicewinder =>
-        WithinGcd(Vicewinder) && InActionRange(Vicewinder) && InCombat() &&
-        !ShouldDeferNewTwinblade &&
+        WithinGCD(Vicewinder) && InActionRange(Vicewinder) && InCombat() &&
+        !ShouldHoldNewTwinblade &&
         !IsComboExpiring(6) && !IsVenomExpiring(4) && !IsHoningExpiring(4) &&
         !UsedVicewinder && !UsedHuntersCoil && !UsedSwiftskinsCoil &&
-        !JustUsed(SerpentsIre, GCDTotal * 4) && !JustUsed(Vicewinder) &&
+        !JustUsed(SerpentsIre, GCD * 4) && !JustUsed(Vicewinder) &&
         !JustUsed(Ouroboros) && !HasStatusEffect(Buffs.Reawakened) &&
         (!HasBothBuffs ||
          IsEmpowermentExpiring(4) ||
-         IreCD >= GCDTotal * 3 && InBossEncounter() || !InBossEncounter() || !LevelChecked(SerpentsIre));
+         IreCD >= GCD * 3 && InBossEncounter() || !InBossEncounter() || !LevelChecked(SerpentsIre));
 
-    private static bool CanVicewinderCombo(ref uint actionId, bool vicewinderBuffPrio = false)
+    private static bool CanVicewinderCombo(
+        ref uint actionId,
+        bool vicewinderBuffPrio = false,
+        bool preferRangedWhenOor = false)
     {
+        if (preferRangedWhenOor && !InMeleeRange())
+            return false;
+
         if ((UsedVicewinder || UsedSwiftskinsCoil || UsedHuntersCoil) &&
-            LevelChecked(Vicewinder) && InActionRange(Vicewinder) &&
+            LevelChecked(Vicewinder) &&
             !HasStatusEffect(Buffs.Reawakened))
         {
-            // Swiftskin's Coil (Rear)
             if (UsedVicewinder &&
                 (!HasStatusEffect(Buffs.Swiftscaled) ||
                  HasBothBuffs && (!OnTargetsFlank() || !TargetNeedsPositionals()) ||
-                 vicewinderBuffPrio && GetStatusEffectRemainingTime(Buffs.Swiftscaled) < GCDTotal * 6) ||
+                 vicewinderBuffPrio && GetStatusEffectRemainingTime(Buffs.Swiftscaled) < GCD * 6) ||
                 UsedHuntersCoil)
             {
                 actionId = SwiftskinsCoil;
                 return true;
             }
 
-            // Hunter's Coil (Flank)
             if (UsedVicewinder &&
                 (!HasStatusEffect(Buffs.HuntersInstinct) ||
                  HasBothBuffs && (!OnTargetsRear() || !TargetNeedsPositionals()) ||
-                 vicewinderBuffPrio && GetStatusEffectRemainingTime(Buffs.HuntersInstinct) < GCDTotal * 6) ||
+                 vicewinderBuffPrio && GetStatusEffectRemainingTime(Buffs.HuntersInstinct) < GCD * 6) ||
                 UsedSwiftskinsCoil)
             {
                 actionId = HuntersCoil;
@@ -570,6 +573,7 @@ internal partial class VPR
             SerpentsIre,
             SwiftskinsSting,
             Vicewinder,
+            Items.UseItem(Items.GetStrongestPotionRow(Items.PotionType.Dex)),
             HuntersCoil,
             TwinfangBite,
             TwinbloodBite,
@@ -586,42 +590,47 @@ internal partial class VPR
             FourthGeneration,
             FourthLegacy,
             Ouroboros,
-            UncoiledFury, //21
-            UncoiledTwinfang, //22
-            UncoiledTwinblood, //23
-            UncoiledFury, //24
-            UncoiledTwinfang, //25
-            UncoiledTwinblood, //26
-            HindstingStrike, //27
-            DeathRattle, //28
-            Vicewinder, //29
-            HuntersCoil, //30
-            TwinfangBite, //31
-            TwinbloodBite, //32
-            SwiftskinsCoil, //33
-            TwinbloodBite, //34
-            TwinfangBite //35
+            UncoiledFury, //22
+            UncoiledTwinfang, //23
+            UncoiledTwinblood, //24
+            UncoiledFury, //25
+            UncoiledTwinfang, //26
+            UncoiledTwinblood, //27
+            HindstingStrike, //28
+            DeathRattle, //29
+            Vicewinder, //30
+            HuntersCoil, //31
+            TwinfangBite, //32
+            TwinbloodBite, //33
+            SwiftskinsCoil, //34
+            TwinbloodBite, //35
+            TwinfangBite //36
         ];
+
+        public override Preset Preset => Preset.VPR_ST_Opener;
+
+        internal override UserData ContentCheckConfig => VPR_Balance_Content;
+        internal override bool IncludePot => VPR_Opener_Potion;
 
         public override List<(int[], uint, Func<bool>)> SubstitutionSteps { get; set; } =
         [
-            ([30], SwiftskinsCoil, OnTargetsRear),
-            ([31], TwinbloodBite, () => HasStatusEffect(Buffs.SwiftskinsVenom)),
-            ([32], TwinfangBite, () => HasStatusEffect(Buffs.HuntersVenom)),
-            ([33], HuntersCoil, () => UsedSwiftskinsCoil),
-            ([34], TwinfangBite, () => HasStatusEffect(Buffs.HuntersVenom)),
-            ([35], TwinbloodBite, () => HasStatusEffect(Buffs.SwiftskinsVenom))
+            ([31], SwiftskinsCoil, OnTargetsRear),
+            ([32], TwinbloodBite, () => HasStatusEffect(Buffs.SwiftskinsVenom)),
+            ([33], TwinfangBite, () => HasStatusEffect(Buffs.HuntersVenom)),
+            ([34], HuntersCoil, () => UsedSwiftskinsCoil),
+            ([35], TwinfangBite, () => HasStatusEffect(Buffs.HuntersVenom)),
+            ([36], TwinbloodBite, () => HasStatusEffect(Buffs.SwiftskinsVenom))
         ];
 
         public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
         [
-            ([21, 22, 23, 24, 25, 26], () => VPR_Opener_ExcludeUF || !HasCharges(RattlingCoil)),
-            ([27], () => ComboAction is not SwiftskinsSting),
-            ([28], () => !DeathRattleWeave && !JustUsed(HindstingStrike))
+            ([22, 23, 24, 25, 26, 27], () => VPR_Opener_ExcludeUF || !HasCharges(RattlingCoil)),
+            ([28], () => ComboAction is not SwiftskinsSting),
+            ([29], () => !IsDeathRattleWeave && !JustUsed(HindstingStrike))
         ];
 
-        internal override UserData ContentCheckConfig => VPR_Balance_Content;
-        public override Preset Preset => Preset.VPR_ST_Opener;
+        public override List<int> DelayedWeaveSteps { get; set; } = [5];
+
         public override bool HasCooldowns() =>
             IsOriginal(ReavingFangs) &&
             GetRemainingCharges(Vicewinder) is 2 &&
@@ -639,6 +648,7 @@ internal partial class VPR
             Vicewinder,
             SerpentsIre,
             HuntersCoil,
+            Items.UseItem(Items.GetStrongestPotionRow(Items.PotionType.Dex)),
             TwinfangBite,
             TwinbloodBite,
             SwiftskinsCoil,
@@ -654,41 +664,46 @@ internal partial class VPR
             FourthGeneration,
             FourthLegacy,
             Ouroboros,
-            UncoiledFury, //19
-            UncoiledTwinfang, //20
-            UncoiledTwinblood, //21
+            UncoiledFury, //20
+            UncoiledTwinfang, //21
+            UncoiledTwinblood, //22
             Vicewinder,
-            HuntersCoil, //23
-            TwinfangBite, //24
-            TwinbloodBite, //25
-            SwiftskinsCoil, //26
-            TwinbloodBite, //27
-            TwinfangBite, //28
-            UncoiledFury, //29
-            UncoiledTwinfang, //30
-            UncoiledTwinblood, //31
-            UncoiledFury, //32
-            UncoiledTwinfang, //33
-            UncoiledTwinblood //34
+            HuntersCoil, //24
+            TwinfangBite, //25
+            TwinbloodBite, //26
+            SwiftskinsCoil, //27
+            TwinbloodBite, //28
+            TwinfangBite, //29
+            UncoiledFury, //30
+            UncoiledTwinfang, //31
+            UncoiledTwinblood, //32
+            UncoiledFury, //33
+            UncoiledTwinfang, //34
+            UncoiledTwinblood //35
         ];
+
+        public override Preset Preset => Preset.VPR_ST_Opener;
+
+        internal override UserData ContentCheckConfig => VPR_Balance_Content;
+        internal override bool IncludePot => VPR_Opener_Potion;
 
         public override List<(int[], uint, Func<bool>)> SubstitutionSteps { get; set; } =
         [
-            ([23], SwiftskinsCoil, OnTargetsRear),
-            ([24], TwinbloodBite, () => HasStatusEffect(Buffs.SwiftskinsVenom)),
-            ([25], TwinfangBite, () => HasStatusEffect(Buffs.HuntersVenom)),
-            ([26], HuntersCoil, () => UsedSwiftskinsCoil),
-            ([27], TwinfangBite, () => HasStatusEffect(Buffs.HuntersVenom)),
-            ([28], TwinbloodBite, () => HasStatusEffect(Buffs.SwiftskinsVenom))
+            ([24], SwiftskinsCoil, OnTargetsRear),
+            ([25], TwinbloodBite, () => HasStatusEffect(Buffs.SwiftskinsVenom)),
+            ([26], TwinfangBite, () => HasStatusEffect(Buffs.HuntersVenom)),
+            ([27], HuntersCoil, () => UsedSwiftskinsCoil),
+            ([28], TwinfangBite, () => HasStatusEffect(Buffs.HuntersVenom)),
+            ([29], TwinbloodBite, () => HasStatusEffect(Buffs.SwiftskinsVenom))
         ];
 
         public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
         [
-            ([19, 20, 21, 29, 30, 31, 32, 33, 34], () => VPR_Opener_ExcludeUF || !HasCharges(RattlingCoil))
+            ([20, 21, 22, 30, 31, 32, 33, 34, 35], () => VPR_Opener_ExcludeUF || !HasCharges(RattlingCoil))
         ];
 
-        internal override UserData ContentCheckConfig => VPR_Balance_Content;
-        public override Preset Preset => Preset.VPR_ST_Opener;
+        public override List<int> DelayedWeaveSteps { get; set; } = [4];
+
         public override bool HasCooldowns() =>
             IsOriginal(ReavingFangs) &&
             GetRemainingCharges(Vicewinder) is 2 &&
@@ -721,16 +736,16 @@ internal partial class VPR
 
     private static SerpentCombo SerpentCombo => Gauge.SerpentCombo;
 
-    private static bool LegacyWeaves =>
+    private static bool IsLegacyWeaveReady =>
         HasStatusEffect(Buffs.Reawakened) &&
         (SerpentCombo.HasFlag(SerpentCombo.FirstLegacy) ||
          SerpentCombo.HasFlag(SerpentCombo.SecondLegacy) ||
          SerpentCombo.HasFlag(SerpentCombo.ThirdLegacy) ||
          SerpentCombo.HasFlag(SerpentCombo.FourthLegacy));
 
-    private static bool DeathRattleWeave => Gauge.SerpentCombo is SerpentCombo.DeathRattle;
+    private static bool IsDeathRattleWeave => Gauge.SerpentCombo is SerpentCombo.DeathRattle;
 
-    private static bool LastLashWeave => Gauge.SerpentCombo is SerpentCombo.LastLash;
+    private static bool IsLastLashWeave => Gauge.SerpentCombo is SerpentCombo.LastLash;
 
     #endregion
 

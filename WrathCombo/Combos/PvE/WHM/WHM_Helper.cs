@@ -1,4 +1,4 @@
-﻿#region
+#region
 
 using System;
 using Dalamud.Game.ClientState.JobGauge.Types;
@@ -6,6 +6,7 @@ using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Game.ClientState.Statuses;
 using System.Collections.Generic;
 using ECommons.GameFunctions;
+using WrathCombo.Combos.PvE.ALL;
 using WrathCombo.CustomComboNS;
 using WrathCombo.CustomComboNS.Functions;
 using WrathCombo.Data;
@@ -331,8 +332,9 @@ internal partial class WHM
         ];
 
         internal override UserData ContentCheckConfig => WHM_Balance_Content;
+        internal override bool IncludePot => WHM_Opener_Potion;
         public override Preset Preset => Preset.WHM_ST_MainCombo_Opener;
-        public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } = [([7], () => !BloodLilyReady)];
+        public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } = [([8], () => !BloodLilyReady)];
 
         public override bool HasCooldowns()
         {

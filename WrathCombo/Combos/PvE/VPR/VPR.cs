@@ -13,7 +13,8 @@ internal partial class VPR : Melee
 
         protected override uint Invoke(uint actionID)
         {
-            if (!CustomActionHelper.OneButtonRotationChecker(actionID, CustomActionType.SingleTargetDPS, SteelFangs)) return actionID;
+            if (!CustomActionHelper.OneButtonRotationChecker(actionID, CustomActionType.SingleTargetDPS, SteelFangs))
+                return actionID;
 
             if (ContentSpecificActions.TryGet(out uint contentAction))
                 return contentAction;
@@ -43,13 +44,13 @@ internal partial class VPR : Melee
                     return Role.LegSweep;
             }
 
-            if (CanVicewinderCombo(ref actionID))
+            if (CanVicewinderCombo(ref actionID, preferRangedWhenOor: true))
                 return actionID;
 
             if (CanReawaken())
                 return Reawaken;
 
-            if (UncoiledFuryOvercapProtection(false))
+            if (OvercapUncoiledFuryProtection(false))
                 return UncoiledFury;
 
             if (CanUseVicewinder)
@@ -73,7 +74,8 @@ internal partial class VPR : Melee
 
         protected override uint Invoke(uint actionID)
         {
-            if (!CustomActionHelper.OneButtonRotationChecker(actionID, CustomActionType.AoEDPS, SteelMaw)) return actionID;
+            if (!CustomActionHelper.OneButtonRotationChecker(actionID, CustomActionType.AoEDPS, SteelMaw))
+                return actionID;
 
             if (ContentSpecificActions.TryGet(out uint contentAction))
                 return contentAction;
@@ -106,7 +108,7 @@ internal partial class VPR : Melee
             if (CanReawaken(true) && InActionRange(Reawaken))
                 return Reawaken;
 
-            if (UncoiledFuryOvercapProtection(true))
+            if (OvercapUncoiledFuryProtection(true))
                 return UncoiledFury;
 
             if (CanVicepit())
@@ -124,10 +126,8 @@ internal partial class VPR : Melee
 
         protected override uint Invoke(uint actionID)
         {
-            if (!CustomActionHelper.OneButtonRotationChecker(actionID, CustomActionType.SingleTargetDPS, SteelFangs)) return actionID;
-
-            if (IsEnabled(Preset.VPR_ST_Opener) &&
-                Opener().FullOpener(ref actionID))
+            if (!CustomActionHelper.OneButtonRotationChecker(actionID, CustomActionType.SingleTargetDPS, SteelFangs) ||
+                IsEnabled(Preset.VPR_ST_Opener) && Opener().FullOpener(ref actionID))
                 return actionID;
 
             if (ContentSpecificActions.TryGet(out uint contentAction))
@@ -167,7 +167,9 @@ internal partial class VPR : Melee
             }
 
             if (IsEnabled(Preset.VPR_ST_VicewinderCombo) &&
-                CanVicewinderCombo(ref actionID, VPR_VicewinderBuffPrio))
+                CanVicewinderCombo(ref actionID, VPR_VicewinderBuffPrio,
+                    IsEnabled(Preset.VPR_ST_UncoiledFury) ||
+                    IsEnabled(Preset.VPR_ST_RangedUptime)))
                 return actionID;
 
             if (IsEnabled(Preset.VPR_ST_Reawaken) &&
@@ -175,7 +177,7 @@ internal partial class VPR : Melee
                 return Reawaken;
 
             if (IsEnabled(Preset.VPR_ST_UncoiledFury) &&
-                UncoiledFuryOvercapProtection(false))
+                OvercapUncoiledFuryProtection(false))
                 return UncoiledFury;
 
             if (IsEnabled(Preset.VPR_ST_Vicewinder) &&
@@ -210,7 +212,8 @@ internal partial class VPR : Melee
 
         protected override uint Invoke(uint actionID)
         {
-            if (!CustomActionHelper.OneButtonRotationChecker(actionID, CustomActionType.AoEDPS, SteelMaw)) return actionID;
+            if (!CustomActionHelper.OneButtonRotationChecker(actionID, CustomActionType.AoEDPS, SteelMaw))
+                return actionID;
 
             if (ContentSpecificActions.TryGet(out uint contentAction))
                 return contentAction;
@@ -254,7 +257,7 @@ internal partial class VPR : Melee
                 return Reawaken;
 
             if (IsEnabled(Preset.VPR_AoE_UncoiledFury) &&
-                UncoiledFuryOvercapProtection(true))
+                OvercapUncoiledFuryProtection(true))
                 return UncoiledFury;
 
             if (IsEnabled(Preset.VPR_AoE_Vicepit) &&
@@ -278,11 +281,11 @@ internal partial class VPR : Melee
             if (actionID is not ReavingFangs)
                 return actionID;
 
-            if (DeathRattleWeave &&
+            if (IsDeathRattleWeave &&
                 LevelChecked(SerpentsTail) && InActionRange(DeathRattle))
                 return OriginalHook(SerpentsTail);
 
-            return DoBasicCombo(actionID);
+            return DoBasicCombo();
         }
     }
 
@@ -378,7 +381,7 @@ internal partial class VPR : Melee
                 {
                     return IsEnabled(Preset.VPR_ReawakenLegacyWeaves) &&
                            TraitLevelChecked(Traits.SerpentsLegacy) &&
-                           HasStatusEffect(Buffs.Reawakened) && LegacyWeaves
+                           HasStatusEffect(Buffs.Reawakened) && IsLegacyWeaveReady
                         ? OriginalHook(SerpentsTail)
                         : ReawakenCombo(actionID);
                 }
@@ -445,8 +448,8 @@ internal partial class VPR : Melee
 
             return actionID switch
             {
-                SteelFangs or ReavingFangs when DeathRattleWeave => OriginalHook(SerpentsTail),
-                SteelMaw or ReavingMaw when LastLashWeave => OriginalHook(SerpentsTail),
+                SteelFangs or ReavingFangs when IsDeathRattleWeave => OriginalHook(SerpentsTail),
+                SteelMaw or ReavingMaw when IsLastLashWeave => OriginalHook(SerpentsTail),
                 var _ => actionID
             };
         }

@@ -15,10 +15,6 @@ internal partial class MCH : PhysicalRanged
             if (!CustomActionHelper.OneButtonRotationChecker(actionID, CustomActionType.SingleTargetDPS, SplitShot, HeatedSplitShot))
                 return actionID;
 
-            //Reassemble to start before combat/after downtime
-            if (CanReassemble(false) && !IsOverheated && !HasWeaved())
-                return Reassemble;
-
             if (!IsOverheated &&
                 ContentSpecificActions.TryGet(out uint contentAction))
                 return contentAction;
@@ -29,7 +25,7 @@ internal partial class MCH : PhysicalRanged
                 if (OvercapGaussRicochetProtection(out uint gaussRico))
                     return gaussRico;
 
-                if (RobotActive && ActionReady(OriginalHook(RookOverdrive)) &&
+                if (IsRobotActive && ActionReady(OriginalHook(RookOverdrive)) &&
                     GetTargetHPPercent() <= 1)
                     return OriginalHook(RookOverdrive);
 
@@ -76,6 +72,10 @@ internal partial class MCH : PhysicalRanged
             if (CanUseFullMetalField)
                 return FullMetalField;
 
+            // Prefer Reassemble→tool over weaving without a tool ready
+            if (CanReassemble(false) && !IsOverheated)
+                return Reassemble;
+
             //Tools
             if (CanUseTools(ref actionID, false) && !IsOverheated)
                 return actionID;
@@ -84,7 +84,7 @@ internal partial class MCH : PhysicalRanged
             if (IsOverheated && ActionReady(OriginalHook(Heatblast)))
                 return OverheatGCD(onAoE: false);
 
-            return DoBasicCombo(actionID, true);
+            return DoBasicCombo(allowReassembleOnClean: true);
         }
     }
 
@@ -97,7 +97,7 @@ internal partial class MCH : PhysicalRanged
             if (!CustomActionHelper.OneButtonRotationChecker(actionID, CustomActionType.AoEDPS, SpreadShot, Scattergun))
                 return actionID;
 
-            if (HasStatusEffect(Buffs.Flamethrower) || JustUsed(Flamethrower, GCDTotal))
+            if (HasStatusEffect(Buffs.Flamethrower) || JustUsed(Flamethrower, GCD))
                 return All.SavageBlade;
 
             if (ContentSpecificActions.TryGet(out uint contentAction))
@@ -148,6 +148,10 @@ internal partial class MCH : PhysicalRanged
                     !IsMoving() && TimeStoodStill > TimeSpan.FromSeconds(3))
                     return Flamethrower;
 
+                // Prefer Reassemble→tool over weaving without a tool ready
+                if (CanReassemble(true))
+                    return Reassemble;
+
                 if (CanUseTools(ref actionID, true))
                     return actionID;
             }
@@ -155,7 +159,7 @@ internal partial class MCH : PhysicalRanged
             if (ActionReady(OriginalHook(Heatblast)) && IsOverheated)
                 return OverheatGCD(onAoE: true);
 
-            return OriginalHook(SpreadShot);
+            return DoBasicCombo(onAoE: true);
         }
     }
 
@@ -174,12 +178,6 @@ internal partial class MCH : PhysicalRanged
                 Opener().FullOpener(ref actionID))
                 return actionID;
 
-            //Reassemble to start before combat/after downtime
-            if (IsEnabled(Preset.MCH_ST_Adv_Reassemble) &&
-                CanReassemble(false, MCH_ST_Adv_ReassembleChoice, MCH_ST_ReassemblePool, ReassembleHPThreshold) &&
-                !IsOverheated && !HasWeaved())
-                return Reassemble;
-
             if (!IsOverheated &&
                 ContentSpecificActions.TryGet(out uint contentAction))
                 return contentAction;
@@ -193,7 +191,7 @@ internal partial class MCH : PhysicalRanged
                     return gaussRico;
 
                 if (IsEnabled(Preset.MCH_ST_Adv_QueenOverdrive) &&
-                    RobotActive && ActionReady(OriginalHook(RookOverdrive)) &&
+                    IsRobotActive && ActionReady(OriginalHook(RookOverdrive)) &&
                     GetTargetHPPercent() <= MCH_ST_QueenOverDriveHPThreshold)
                     return OriginalHook(RookOverdrive);
 
@@ -279,6 +277,12 @@ internal partial class MCH : PhysicalRanged
                 CanUseFullMetalField)
                 return FullMetalField;
 
+            // Prefer Reassemble→tool over weaving without a tool ready
+            if (IsEnabled(Preset.MCH_ST_Adv_Reassemble) &&
+                CanReassemble(false, MCH_ST_Adv_ReassembleChoice, MCH_ST_ReassemblePool, ReassembleHPThreshold) &&
+                !IsOverheated)
+                return Reassemble;
+
             //Tools
             if (IsEnabled(Preset.MCH_ST_Adv_Tools) &&
                 GetTargetHPPercent() > ToolsHPThreshold)
@@ -287,7 +291,12 @@ internal partial class MCH : PhysicalRanged
                                              IsWildfireAboutToBeUsed(WildfireHPThreshold, MCH_ST_WildfireBossOnlyOption);
                 bool holdExcavatorForWildfire = IsEnabled(Preset.MCH_ST_Adv_Tools_AllowExcavatorPostWildfire) && wildfireAboutToBeUsed;
 
-                if (CanUseTools(ref actionID, false, holdExcavatorForWildfire: holdExcavatorForWildfire) &&
+                if (CanUseTools(ref actionID, false,
+                        holdExcavatorForWildfire: holdExcavatorForWildfire,
+                        reassembleEnabled: IsEnabled(Preset.MCH_ST_Adv_Reassemble),
+                        reassembleChoice: MCH_ST_Adv_ReassembleChoice,
+                        chargePool: MCH_ST_ReassemblePool,
+                        hpThreshold: ReassembleHPThreshold) &&
                     !IsOverheated)
                     return actionID;
             }
@@ -297,8 +306,11 @@ internal partial class MCH : PhysicalRanged
                 ActionReady(OriginalHook(Heatblast)) && IsOverheated)
                 return OverheatGCD(onAoE: false);
 
-            return DoBasicCombo(actionID, IsEnabled(Preset.MCH_ST_Adv_Reassemble),
-                MCH_ST_Adv_ReassembleChoice, MCH_ST_ReassemblePool, ReassembleHPThreshold);
+            return DoBasicCombo(
+                allowReassembleOnClean: IsEnabled(Preset.MCH_ST_Adv_Reassemble),
+                reassembleChoice: MCH_ST_Adv_ReassembleChoice,
+                chargePool: MCH_ST_ReassemblePool,
+                hpThreshold: ReassembleHPThreshold);
         }
     }
 
@@ -311,7 +323,7 @@ internal partial class MCH : PhysicalRanged
             if (!CustomActionHelper.OneButtonRotationChecker(actionID, CustomActionType.AoEDPS, SpreadShot, Scattergun))
                 return actionID;
 
-            if (HasStatusEffect(Buffs.Flamethrower) || JustUsed(Flamethrower, GCDTotal))
+            if (HasStatusEffect(Buffs.Flamethrower) || JustUsed(Flamethrower, GCD))
                 return All.SavageBlade;
 
             if (ContentSpecificActions.TryGet(out uint contentAction))
@@ -325,7 +337,7 @@ internal partial class MCH : PhysicalRanged
                     return gaussRico;
 
                 if (IsEnabled(Preset.MCH_AoE_Adv_QueenOverdrive) &&
-                    RobotActive && ActionReady(OriginalHook(RookOverdrive)) &&
+                    IsRobotActive && ActionReady(OriginalHook(RookOverdrive)) &&
                     GetTargetHPPercent() <= MCH_AoE_QueenOverDriveHPThreshold)
                     return OriginalHook(RookOverdrive);
 
@@ -382,16 +394,24 @@ internal partial class MCH : PhysicalRanged
                     GetTargetHPPercent() > MCH_AoE_FlamethrowerHPOption)
                     return Flamethrower;
 
+                // Prefer Reassemble→tool over weaving without a tool ready
+                if (IsEnabled(Preset.MCH_AoE_Adv_Reassemble) &&
+                    CanReassemble(true, chargePool: MCH_AoE_ReassemblePool, hpThreshold: MCH_AoE_ReassembleHPThreshold))
+                    return Reassemble;
+
                 if (IsEnabled(Preset.MCH_AoE_Adv_Tools) &&
                     GetTargetHPPercent() > MCH_AoE_ToolsHPThreshold &&
-                    CanUseTools(ref actionID, true, MCH_AoE_AirAnchor))
+                    CanUseTools(ref actionID, true, MCH_AoE_AirAnchor,
+                        reassembleEnabled: IsEnabled(Preset.MCH_AoE_Adv_Reassemble),
+                        chargePool: MCH_AoE_ReassemblePool,
+                        hpThreshold: MCH_AoE_ReassembleHPThreshold))
                     return actionID;
             }
 
             if (ActionReady(OriginalHook(Heatblast)) && IsOverheated)
                 return OverheatGCD(true, IsEnabled(Preset.MCH_AoE_Adv_GaussRicochet));
 
-            return OriginalHook(SpreadShot);
+            return DoBasicCombo(onAoE: true);
         }
     }
 
@@ -404,7 +424,7 @@ internal partial class MCH : PhysicalRanged
             if (actionID is not (CleanShot or HeatedCleanShot))
                 return actionID;
 
-            return DoBasicCombo(OriginalHook(SplitShot));
+            return DoBasicCombo();
         }
     }
 
@@ -514,7 +534,7 @@ internal partial class MCH : PhysicalRanged
             if (actionID is not (AutomatonQueen or RookAutoturret))
                 return actionID;
 
-            return RobotActive
+            return IsRobotActive
                 ? OriginalHook(QueenOverdrive)
                 : actionID;
         }
