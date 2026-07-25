@@ -113,12 +113,14 @@ internal partial class SAM
                     ((OnTargetsFlank() || OnTargetsFront()) && !HasKa && LevelChecked(Kasha) ||
                      OnTargetsRear() && HasGetsu && LevelChecked(Kasha) ||
                      !HasStatusEffect(Buffs.Fuka) ||
-                     SenCount is 3 && ShouldRefreshFuka))
+                     SenCount is 3 && ShouldRefreshFuka ||
+                     !LevelChecked(Gekko)))
                     return Shifu;
 
                 if (useGekko &&
                     LevelChecked(Jinpu) &&
-                    (!LevelChecked(Kasha) && LevelChecked(Gekko) ||
+                    (!LevelChecked(Gekko) ||
+                     !LevelChecked(Kasha) && LevelChecked(Gekko) ||
                      (OnTargetsRear() || OnTargetsFront()) && !HasGetsu && LevelChecked(Gekko) ||
                      OnTargetsFlank() && HasKa && LevelChecked(Gekko) ||
                      !HasStatusEffect(Buffs.Fugetsu) ||
