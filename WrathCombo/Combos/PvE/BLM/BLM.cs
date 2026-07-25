@@ -634,20 +634,20 @@ internal class BLM_Toshi_Fire4 : CustomCombo
 
         return actionID switch
         {
-            Fire4 when IsEnabled(Preset.BLM_Toshi_Thunder) && !IcePhase && CanThunder(ThunderHPThreshold(), BLM_ST_ThunderRefresh) => OriginalHook(Thunder),
-            Fire4 when IcePhase && LevelChecked(Fire3) && HasStatusEffect(Buffs.Firestarter) => Transpose,
+            Fire4 when IsEnabled(Preset.BLM_Toshi_Thunder) && !IsInIcePhase && CanThunder(ThunderHPThreshold(), BLM_ST_ThunderRefresh) => OriginalHook(Thunder),
+            Fire4 when IsInIcePhase && LevelChecked(Fire3) && HasStatusEffect(Buffs.Firestarter) => Transpose,
             //Toshi Occult Changes
             Fire4 when IsEnabledAndUsable(Preset.Phantom_Geomancer_BattleBell, BattleBell) &&
                        GetStatusEffectRemainingTime(Buffs.BattleBell) <= 5  && CanWeave() => BattleBell,
             Fire4 when IsEnabledAndUsable(Preset.Phantom_Geomancer_RingingRespite, RingingRespite) &&
                        GetStatusEffectRemainingTime(Buffs.RingingRespite) <= 5 && CanWeave() => RingingRespite,
             //Toshi Low-Level Changes
-            Fire4 when !LevelChecked(Fire4)     && FirePhase && MP.Cur >= 1600 && !HasStatusEffect(Buffs.Firestarter) => Fire,
-            Fire4 when !LevelChecked(Blizzard4) && FirePhase && MP.Cur < 1600 && LevelChecked(Blizzard3) => Blizzard3,
-            Fire4 when !LevelChecked(Blizzard4) && IcePhase  && MP.Cur < 10000 && !WasLastAction(Blizzard)=> Blizzard,
-            Fire4 when !LevelChecked(Blizzard3) && ((FirePhase && MP.Cur <1600) || (IcePhase  && MP.Cur == 10000)) => Transpose,
+            Fire4 when !LevelChecked(Fire4)     && IsInFirePhase && MP.Cur >= 1600 && !HasStatusEffect(Buffs.Firestarter) => Fire,
+            Fire4 when !LevelChecked(Blizzard4) && IsInFirePhase && MP.Cur < 1600 && LevelChecked(Blizzard3) => Blizzard3,
+            Fire4 when !LevelChecked(Blizzard4) && IsInIcePhase  && MP.Cur < 10000 && !WasLastAction(Blizzard)=> Blizzard,
+            Fire4 when !LevelChecked(Blizzard3) && ((IsInFirePhase && MP.Cur <1600) || (IsInIcePhase  && MP.Cur == 10000)) => Transpose,
             //Resume Normal Op
-            Fire4 when LevelChecked(Fire3) && ((!IcePhase && !FirePhase) || (IcePhase && !HasStatusEffect(Buffs.Firestarter)) ||
+            Fire4 when LevelChecked(Fire3) && ((!IsInIcePhase && !IsInFirePhase) || (IsInIcePhase && !HasStatusEffect(Buffs.Firestarter)) ||
                                                AstralFireStacks is 1 || AstralFireStacks is 2) => Fire3,
             /*Fire4 when CanUseThunder() => Thunder,*/
             Fire4 when !LevelChecked(Fire4) && HasStatusEffect(Buffs.Firestarter) && LevelChecked(Fire3) => Fire3,
@@ -664,7 +664,7 @@ internal class BLM_Toshi_Fire4 : CustomCombo
         protected override uint Invoke(uint actionID) =>
             actionID switch
             {
-                Blizzard4 when FirePhase && LevelChecked(Despair) && MP.Cur >= 800 => Despair,
+                Blizzard4 when IsInFirePhase && LevelChecked(Despair) && MP.Cur >= 800 => Despair,
                 Blizzard4 when !LevelChecked(Blizzard4) => Blizzard,
                 var _ => actionID
             };
@@ -675,7 +675,7 @@ internal class BLM_Toshi_Fire4 : CustomCombo
         protected override uint Invoke(uint actionID) =>
             actionID switch
             {
-                Blizzard3 when FirePhase && !LevelChecked(Blizzard3) && MP.Cur <1600 => Transpose,
+                Blizzard3 when IsInFirePhase && !LevelChecked(Blizzard3) && MP.Cur <1600 => Transpose,
                 Blizzard3 when !LevelChecked(Blizzard3) => Blizzard,
                 var _ => actionID
             };
@@ -692,7 +692,7 @@ internal class BLM_Toshi_Fire4 : CustomCombo
             if (ContentSpecificActions.TryGet(out uint contentAction))
                 return contentAction;
 
-            if (ActionReady(Amplifier) && !HasMaxPolyglotStacks && CanWeave())
+            if (ActionReady(Amplifier) && !IsPolyglotCapped && CanWeave())
                 return Amplifier;
 
             return LevelChecked(Xenoglossy) ? Xenoglossy : Foul;
