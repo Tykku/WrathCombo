@@ -32,8 +32,9 @@ internal partial class SAM : Melee
                 if (CanIkishoten())
                     return Ikishoten;
 
-                if (GetTargetHPPercent() < 1)
-                    return UseKenkiSpender(actionID, true, true, true);
+                if (GetTargetHPPercent() < 1 &&
+                    TryKenkiSpender(out uint spend, true, true, true))
+                    return spend;
 
                 //Senei Feature
                 if (CanSenei())
@@ -193,11 +194,12 @@ internal partial class SAM : Melee
 
                 if (IsEnabled(Preset.SAM_ST_Damage))
                 {
-                    if (GetTargetHPPercent() < SAM_ST_ExecuteThreshold)
-                        return UseKenkiSpender(actionID,
+                    if (GetTargetHPPercent() < SAM_ST_ExecuteThreshold &&
+                        TryKenkiSpender(out uint spend,
                             IsEnabled(Preset.SAM_ST_CDs_Zanshin),
                             IsEnabled(Preset.SAM_ST_CDs_Senei),
-                            IsEnabled(Preset.SAM_ST_Shinten));
+                            IsEnabled(Preset.SAM_ST_Shinten)))
+                        return spend;
 
                     //Senei feature
                     if (IsEnabled(Preset.SAM_ST_CDs_Senei))

@@ -506,22 +506,36 @@ internal partial class SAM
         return false;
     }
 
-    private static uint UseKenkiSpender(uint actionId, bool useZanshin = false, bool useSenei = false, bool useShinten = false)
+    private static bool TryKenkiSpender(
+        out uint action,
+        bool useZanshin = false,
+        bool useSenei = false,
+        bool useShinten = false)
     {
+        action = 0;
+
         if (useZanshin &&
             ActionReady(Zanshin) && HasStatusEffect(Buffs.ZanshinReady))
-            return Zanshin;
+        {
+            action = Zanshin;
+            return true;
+        }
 
-        if (useSenei && CanSenei())
-            return Senei;
+        if (useSenei &&
+            ActionReady(Senei) && InActionRange(Senei))
+        {
+            action = Senei;
+            return true;
+        }
 
         if (useShinten &&
-            ActionReady(Shinten) && InActionRange(Shinten) &&
-            GetCooldownRemainingTime(Senei) >= GCDTotal * 5 &&
-            !JustUsed(Ikishoten))
-            return Shinten;
+            ActionReady(Shinten) && InActionRange(Shinten))
+        {
+            action = Shinten;
+            return true;
+        }
 
-        return actionId;
+        return false;
     }
 
     #endregion
