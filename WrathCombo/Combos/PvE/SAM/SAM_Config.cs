@@ -22,6 +22,10 @@ internal partial class SAM
                     DrawBossOnlyChoice(SAM_Balance_Content);
                     DrawOpenerPotionChoice(SAM_Opener_Potion);
 
+                    ImGui.TextWrapped(SAM_Config.SecondsDelayFromFirstStep);
+                    if (ImGui.IsItemHovered())
+                        ImGui.SetTooltip(FormatAndCache(SAM_Config.DelaySavageBlade, All.SavageBlade.ActionName()));
+
                     ImGuiEx.Spacing(new Vector2(0, 10));
                     ImGuiEx.TextUnderlined($"{Gyoten.ActionName()} Settings");
                     ImGui.Spacing();

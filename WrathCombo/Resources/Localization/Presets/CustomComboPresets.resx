@@ -8296,7 +8296,13 @@ POST 94: Will use during burst window.</value>
     <value>Meditate Option</value>
   </data>
   <data name="SAM_ST_Opener_Desc" xml:space="preserve">
-    <value>Adds the Balance opener at level 70/80/90/100.</value>
+    <value>Adds the Balance opener at level 70/80/90/100.
+Prepull:
+- Meikyo at -13
+- True North at -5 (skipped if target has no positionals)
+- Gekko on pull
+Without a countdown, prepull steps have no delay.
+(Will change to Savage Blade while waiting on countdown)</value>
   </data>
   <data name="SAM_ST_Opener_Name" xml:space="preserve">
     <value>Balance Opener (Level 70/80/90/100)</value>

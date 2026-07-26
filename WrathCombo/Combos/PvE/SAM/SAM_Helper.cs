@@ -542,14 +542,6 @@ internal partial class SAM
 
     #region Openers
 
-    private static List<(int[] Steps, Func<int> HoldDelay)> OpenerPrepullDelays { get; } =
-    [
-        ([2], () => (int)(CountdownRemaining - 5))
-    ];
-
-    private static bool OpenerCountdownReady() =>
-        CountdownRemaining is 13f;
-
     internal static WrathOpener Opener()
     {
         if (Lvl70.LevelChecked)
@@ -572,10 +564,33 @@ internal partial class SAM
     internal static SAMLvl90Opener Lvl90 = new();
     internal static SAMLvl100Opener Lvl100 = new();
 
-    internal class SAMLvl70Opener : WrathOpener
+    internal abstract class SAMOpenerBase : WrathOpener
+    {
+        public override Preset Preset => Preset.SAM_ST_Opener;
+
+        internal override UserData ContentCheckConfig => SAM_Balance_Content;
+        internal override bool IncludePot => SAM_Opener_Potion;
+
+        public override List<(int[] Steps, Func<int> HoldDelay)> PrepullDelays { get; set; } =
+        [
+            ([1], () => (int)(CountdownRemaining - 13)),
+            ([2], () => (int)(CountdownRemaining - 5)),
+        ];
+
+        public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
+        [
+            ([2], () => !TargetNeedsPositionals())
+        ];
+
+        protected static bool SharedOpenerCooldowns() =>
+            GetRemainingCharges(Role.TrueNorth) >= 1 &&
+            IsOffCooldown(Ikishoten) &&
+            SenCount is 0;
+    }
+
+    internal class SAMLvl70Opener : SAMOpenerBase
     {
         public override int MinOpenerLevel => 70;
-
         public override int MaxOpenerLevel => 70;
 
         public override List<uint> OpenerActions { get; set; } =
@@ -597,32 +612,15 @@ internal partial class SAM
             Higanbana
         ];
 
-        public override Preset Preset => Preset.SAM_ST_Opener;
-
-        internal override UserData ContentCheckConfig => SAM_Balance_Content;
-        internal override bool IncludePot => SAM_Opener_Potion;
-
-        public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
-        [
-            ([2], () => !TargetNeedsPositionals())
-        ];
-
-        public override List<(int[] Steps, Func<int> HoldDelay)> PrepullDelays { get; set; } =
-            OpenerPrepullDelays;
-
         public override bool HasCooldowns() =>
             IsOffCooldown(MeikyoShisui) &&
-            GetRemainingCharges(Role.TrueNorth) >= 1 &&
             IsOffCooldown(Guren) &&
-            IsOffCooldown(Ikishoten) &&
-            SenCount is 0 &&
-            OpenerCountdownReady();
+            SharedOpenerCooldowns();
     }
 
-    internal class SAMLvl80Opener : WrathOpener
+    internal class SAMLvl80Opener : SAMOpenerBase
     {
         public override int MinOpenerLevel => 80;
-
         public override int MaxOpenerLevel => 80;
 
         public override List<uint> OpenerActions { get; set; } =
@@ -649,32 +647,15 @@ internal partial class SAM
             KaeshiSetsugekka
         ];
 
-        public override Preset Preset => Preset.SAM_ST_Opener;
-
-        internal override UserData ContentCheckConfig => SAM_Balance_Content;
-        internal override bool IncludePot => SAM_Opener_Potion;
-
-        public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
-        [
-            ([2], () => !TargetNeedsPositionals())
-        ];
-
-        public override List<(int[] Steps, Func<int> HoldDelay)> PrepullDelays { get; set; } =
-            OpenerPrepullDelays;
-
         public override bool HasCooldowns() =>
             GetRemainingCharges(MeikyoShisui) is 2 &&
-            GetRemainingCharges(Role.TrueNorth) >= 1 &&
             IsOffCooldown(Senei) &&
-            IsOffCooldown(Ikishoten) &&
-            SenCount is 0 &&
-            OpenerCountdownReady();
+            SharedOpenerCooldowns();
     }
 
-    internal class SAMLvl90Opener : WrathOpener
+    internal class SAMLvl90Opener : SAMOpenerBase
     {
         public override int MinOpenerLevel => 90;
-
         public override int MaxOpenerLevel => 90;
 
         public override List<uint> OpenerActions { get; set; } =
@@ -703,33 +684,16 @@ internal partial class SAM
             KaeshiSetsugekka
         ];
 
-        public override Preset Preset => Preset.SAM_ST_Opener;
-
-        internal override UserData ContentCheckConfig => SAM_Balance_Content;
-        internal override bool IncludePot => SAM_Opener_Potion;
-
-        public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
-        [
-            ([2], () => !TargetNeedsPositionals())
-        ];
-
-        public override List<(int[] Steps, Func<int> HoldDelay)> PrepullDelays { get; set; } =
-            OpenerPrepullDelays;
-
         public override bool HasCooldowns() =>
             GetRemainingCharges(MeikyoShisui) is 2 &&
-            GetRemainingCharges(Role.TrueNorth) >= 1 &&
             IsOffCooldown(Senei) &&
-            IsOffCooldown(Ikishoten) &&
-            SenCount is 0 &&
-            OpenerCountdownReady();
+            SharedOpenerCooldowns();
     }
 
-    internal class SAMLvl100Opener : WrathOpener
+    internal class SAMLvl100Opener : SAMOpenerBase
     {
         public override int MinOpenerLevel => 100;
-
-        public override int MaxOpenerLevel => 109;
+        public override int MaxOpenerLevel => 100;
 
         public override List<uint> OpenerActions { get; set; } =
         [
@@ -762,11 +726,6 @@ internal partial class SAM
             TendoKaeshiSetsugekka //27
         ];
 
-        public override Preset Preset => Preset.SAM_ST_Opener;
-
-        internal override UserData ContentCheckConfig => SAM_Balance_Content;
-        internal override bool IncludePot => SAM_Opener_Potion;
-
         public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
         [
             ([2], () => !TargetNeedsPositionals()),
@@ -778,16 +737,10 @@ internal partial class SAM
             ([14], () => SenCount is not 1 && !(SenCount is 2 && JustUsed(Gekko)))
         ];
 
-        public override List<(int[] Steps, Func<int> HoldDelay)> PrepullDelays { get; set; } =
-            OpenerPrepullDelays;
-
         public override bool HasCooldowns() =>
             GetRemainingCharges(MeikyoShisui) is 2 &&
-            GetRemainingCharges(Role.TrueNorth) >= 1 &&
             IsOffCooldown(Senei) &&
-            IsOffCooldown(Ikishoten) &&
-            SenCount is 0 &&
-            OpenerCountdownReady();
+            SharedOpenerCooldowns();
     }
 
     #endregion
