@@ -726,6 +726,26 @@ internal partial class MCH
             HeatedSlugShot,
             HeatedCleanShot
         ];
+
+        public override Preset Preset => Preset.MCH_ST_Adv_Opener;
+
+        internal override UserData ContentCheckConfig => MCH_Balance_Content;
+        internal override bool IncludePot => MCH_Opener_Potion;
+
+        public override List<(int[] Steps, Func<float> HoldDelay)> PrepullDelays { get; set; } =
+        [
+            ([2], () => 3)
+        ];
+
+        public override bool HasCooldowns() =>
+            GetRemainingCharges(Reassemble) is 2 &&
+            GetRemainingCharges(OriginalHook(GaussRound)) is 3 &&
+            GetRemainingCharges(OriginalHook(Ricochet)) is 3 &&
+            IsOffCooldown(Chainsaw) &&
+            IsOffCooldown(Wildfire) &&
+            IsOffCooldown(BarrelStabilizer) &&
+            IsOffCooldown(Excavator) &&
+            IsOffCooldown(FullMetalField);
     }
 
     internal class MCHLvl100EarlyWFOpener : MCHLvl100OpenerBase
