@@ -121,7 +121,7 @@
     <value>Adds {0} to the rotation if {1} is not unlocked.</value>
   </data>
   <data name="DelaySavageBlade" xml:space="preserve">
-    <value>Waits by replacing your button with {0}. Without a countdown, Meikyo starts when cooldowns are ready and True North has no delay.</value>
+    <value>During a countdown only: holds as {0} until each prepull timing. Without a countdown, prepull steps have no delay.</value>
   </data>
   <data name="HPPercentKenki" xml:space="preserve">
     <value>HP percent threshold to not save Kenki</value>
