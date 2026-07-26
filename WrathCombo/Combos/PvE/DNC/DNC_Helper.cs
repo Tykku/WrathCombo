@@ -641,8 +641,8 @@ internal partial class DNC
             set;
         } =
         [
-            ([4], () => 7),
-            ([6], () => (!DNC_ST_OpenerOption_Peloton ? 13 : 6)),
+            ([4, 5], () => (int)(CountdownRemaining - 1)),
+            ([6], () => (int)CountdownRemaining),
         ];
 
         public override List<(int[], uint, Func<bool>)> SubstitutionSteps
@@ -745,8 +745,8 @@ internal partial class DNC
             set;
         } =
         [
-            ([4], () => 2),
-            ([6], () => (!DNC_ST_OpenerOption_Peloton ? 5 : 3)),
+            ([4, 5], () => (int)(CountdownRemaining - 1)),
+            ([6], () => (int)CountdownRemaining),
         ];
 
         public override List<(int[], uint, Func<bool>)> SubstitutionSteps
@@ -852,8 +852,8 @@ internal partial class DNC
             set;
         } =
         [
-            ([5], () => 1),
-            ([7], () => (!DNC_ST_OpenerOption_Peloton ? 8 : 7)),
+            ([5, 6], () => (int)(CountdownRemaining - 1)),
+            ([7], () => (int)CountdownRemaining),
         ];
 
         public override List<(int[], uint, Func<bool>)> SubstitutionSteps
@@ -928,8 +928,8 @@ internal partial class DNC
             Emboite,
             Emboite,
             Emboite, //5
-            TechnicalFinish4,
             Items.UseItem(Items.GetStrongestPotionRow(Items.PotionType.Dex)),
+            TechnicalFinish4,
             Devilment,
             LastDance,
             Flourish,
@@ -948,7 +948,10 @@ internal partial class DNC
         {
             get;
             set;
-        } = [];
+        } =
+        [
+            ([6], () => (int)(CountdownRemaining - 1)),
+        ];
 
         public override List<(int[], uint, Func<bool>)> SubstitutionSteps
         {
@@ -1035,7 +1038,8 @@ internal partial class DNC
             set;
         } =
         [
-            ([8], () => (!DNC_ST_OpenerOption_Peloton ? 3 : 2)),
+            ([6, 7], () => (int)(CountdownRemaining - 1)),
+            ([8], () => (int)CountdownRemaining),
         ];
 
         public override List<(int[], uint, Func<bool>)> SubstitutionSteps
