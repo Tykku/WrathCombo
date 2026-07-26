@@ -2732,7 +2732,10 @@ These features are ideal if you want to customize the rotation.</value>
     <value>Nastrond Option</value>
   </data>
   <data name="DRG_ST_Opener_Desc" xml:space="preserve">
-    <value>Adds the Balance opener at level 100.</value>
+    <value>Adds the Balance opener at level 100.
+Early Buff prepull: Lance Charge and Battle Litany at -2.
+Without a countdown, prepull steps have no delay.
+(Will change to Savage Blade while waiting on countdown)</value>
   </data>
   <data name="DRG_ST_Opener_Name" xml:space="preserve">
     <value>Balance Opener (Level 100)</value>
@@ -4422,7 +4425,12 @@ Double Check / Checkmate option</value>
     <value>Head Graze Option</value>
   </data>
   <data name="MCH_ST_Adv_Opener_Desc" xml:space="preserve">
-    <value>Adds the Balance opener at lvl 90/100.</value>
+    <value>Adds the Balance opener at lvl 90/100.
+Prepull:
+- Reassemble at -5
+- Potion at -2
+Without a countdown, prepull steps have no delay.
+(Will change to Savage Blade while waiting on countdown)</value>
   </data>
   <data name="MCH_ST_Adv_Opener_Name" xml:space="preserve">
     <value>Balance Opener (Level 90/100)</value>
@@ -4739,7 +4747,13 @@ will use it only under RoF when unlocked.</value>
     <value>Steeled / Forbidden Meditation Option</value>
   </data>
   <data name="MNK_STUseOpener_Desc" xml:space="preserve">
-    <value>Adds the selected Balance opener at lvl 90/100.</value>
+    <value>Adds the selected Balance opener at lvl 90/100.
+Prepull:
+- Meditation at -8
+- Form Shift at -5
+Early Buff also uses Riddle of Wind at -2.
+Without a countdown, prepull steps have no delay.
+(Will change to Savage Blade while waiting on countdown)</value>
   </data>
   <data name="MNK_STUseOpener_Name" xml:space="preserve">
     <value>Opener Option</value>
@@ -7766,7 +7780,10 @@ These features are ideal if you want to customize the rotation.</value>
     <value>Lemure's Slice Option</value>
   </data>
   <data name="RPR_ST_Opener_Desc" xml:space="preserve">
-    <value>Adds the Balance opener at level 90/100.</value>
+    <value>Adds the Balance opener at level 90/100.
+Standard opener prepull: Harpe at -1 (skipped in melee).
+Without a countdown, prepull steps have no delay.
+(Will change to Savage Blade while waiting on countdown)</value>
   </data>
   <data name="RPR_ST_Opener_Name" xml:space="preserve">
     <value>Balance Opener (Level 90/100)</value>
