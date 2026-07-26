@@ -130,7 +130,7 @@ public abstract class WrathOpener
 
     public virtual List<(int[] Steps, uint NewAction, Func<bool> Condition)> SubstitutionSteps { get; set; } = new();
 
-    public virtual List<(int[] Steps, Func<int> HoldDelay)> PrepullDelays { get; set; } = new();
+    public virtual List<(int[] Steps, Func<float> HoldDelay)> PrepullDelays { get; set; } = new();
 
     public virtual List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } = new();
 
@@ -138,7 +138,7 @@ public abstract class WrathOpener
 
     private int DelayedStep = 0;
     private DateTime DelayedAt;
-    private int DelayedSecs = 0;
+    private float DelayedSecs = 0;
 
     public uint CurrentOpenerAction
     {

@@ -661,10 +661,10 @@ internal partial class MCH
         internal override UserData ContentCheckConfig => MCH_Balance_Content;
         internal override bool IncludePot => MCH_Opener_Potion;
 
-        public override List<(int[] Steps, Func<int> HoldDelay)> PrepullDelays { get; set; } =
+        public override List<(int[] Steps, Func<float> HoldDelay)> PrepullDelays { get; set; } =
         [
-            ([1], () => (int)(CountdownRemaining - 5)),
-            ([2], () => (int)(CountdownRemaining - 2))
+            ([1], () => CountdownRemaining - 5),
+            ([2], () => CountdownRemaining - 2)
         ];
 
         protected static bool SharedOpenerCooldowns() =>

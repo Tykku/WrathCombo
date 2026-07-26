@@ -703,9 +703,9 @@ internal partial class RPR
             ([1], () => InMeleeRange())
         ];
 
-        public override List<(int[] Steps, Func<int> HoldDelay)> PrepullDelays { get; set; } =
+        public override List<(int[] Steps, Func<float> HoldDelay)> PrepullDelays { get; set; } =
         [
-            ([1], () => (int)(CountdownRemaining - 1))
+            ([1], () => CountdownRemaining - 1)
         ];
 
         public override List<int> DelayedWeaveSteps { get; set; } = [3];
@@ -799,9 +799,9 @@ internal partial class RPR
             ([1], () => InMeleeRange())
         ];
 
-        public override List<(int[] Steps, Func<int> HoldDelay)> PrepullDelays { get; set; } =
+        public override List<(int[] Steps, Func<float> HoldDelay)> PrepullDelays { get; set; } =
         [
-            ([1], () => (int)(CountdownRemaining - 1))
+            ([1], () => CountdownRemaining - 1)
         ];
     }
 

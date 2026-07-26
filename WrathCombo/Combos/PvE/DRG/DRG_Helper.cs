@@ -528,9 +528,9 @@ internal partial class DRG
             WyrmwindThrust
         ];
 
-        public override List<(int[] Steps, Func<int> HoldDelay)> PrepullDelays { get; set; } =
+        public override List<(int[] Steps, Func<float> HoldDelay)> PrepullDelays { get; set; } =
         [
-            ([1, 2], () => (int)(CountdownRemaining - 2))
+            ([1, 2], () => CountdownRemaining - 2)
         ];
     }
 
