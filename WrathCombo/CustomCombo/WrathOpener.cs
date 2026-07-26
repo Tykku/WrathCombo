@@ -137,6 +137,7 @@ public abstract class WrathOpener
 
     private int DelayedStep = 0;
     private DateTime DelayedAt;
+    private int DelayedSecs = 0;
 
     public uint CurrentOpenerAction
     {
@@ -208,7 +209,7 @@ public abstract class WrathOpener
                     prevStepSkipping = p.Condition();
 
                 bool delay = PrepullDelays.FindFirst(x => x.Steps.Any(y => y == DelayedStep && y == OpenerStep), out var hold);
-                if ((!delay && !prevStepSkipping && ActionWatching.TimeSinceLastAction.TotalSeconds >= Service.Configuration.OpenerTimeout) || (delay && (DateTime.Now - DelayedAt).TotalSeconds > hold.HoldDelay() + Service.Configuration.OpenerTimeout))
+                if ((!delay && !prevStepSkipping && ActionWatching.TimeSinceLastAction.TotalSeconds >= Service.Configuration.OpenerTimeout) || (delay && (DateTime.Now - DelayedAt).TotalSeconds > DelayedSecs + Service.Configuration.OpenerTimeout))
                 {
                     CurrentState = OpenerState.FailedOpener;
                     return false;
@@ -264,9 +265,10 @@ public abstract class WrathOpener
                     {
                         DelayedAt = DateTime.Now;
                         DelayedStep = OpenerStep;
+                        DelayedSecs = HoldDelay();
                     }
 
-                    if ((DateTime.Now - DelayedAt).TotalSeconds < HoldDelay() && !PartyInCombat())
+                    if ((DateTime.Now - DelayedAt).TotalSeconds < DelayedSecs && !PartyInCombat())
                     {
                         ActionWatching.TimeLastActionUsed = DateTime.Now; //Hacky workaround for TN jobs
                         actionID = All.SavageBlade;
