@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using WrathCombo.Combos.PvE;
+using WrathCombo.Combos.PvE.ALL;
 using WrathCombo.Combos.PvE.Enums;
 using WrathCombo.CustomComboNS.Functions;
 using WrathCombo.Data;
@@ -218,7 +219,7 @@ public abstract class WrathOpener
 
             if (OpenerStep <= OpenerActions.Count)
             {
-                if (CurrentOpenerAction == All.Items || (!IncludePot & CurrentOpenerAction >= All.Items))
+                if (CurrentOpenerAction >= All.Items && (CurrentOpenerAction == All.Items || (!IncludePot & CurrentOpenerAction >= All.Items) || !Items.ItemReady(CurrentOpenerAction - All.Items)))
                 {
                     OpenerStep++;
                     CurrentOpenerAction = OpenerActions[OpenerStep - 1];
