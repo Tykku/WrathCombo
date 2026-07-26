@@ -693,9 +693,6 @@ internal partial class DNC
             if (InCombat())
                 return false;
 
-            if (!CountdownActive)
-                return false;
-
             // go at 15s, with some leeway
             if (CountdownRemaining is < 13.5f or > 16f)
                 return false;
@@ -794,9 +791,6 @@ internal partial class DNC
                 return false;
 
             if (InCombat())
-                return false;
-
-            if (!CountdownActive)
                 return false;
 
             // go at 7s, with some leeway
@@ -903,9 +897,6 @@ internal partial class DNC
             if (InCombat())
                 return false;
 
-            if (!CountdownActive)
-                return false;
-
             // go at 30s, with some leeway
             if (CountdownRemaining < 28.5f)
                 return false;
@@ -989,9 +980,6 @@ internal partial class DNC
                 return false;
 
             if (InCombat())
-                return false;
-
-            if (!CountdownActive)
                 return false;
 
             // go at 7s, with some leeway
@@ -1087,9 +1075,6 @@ internal partial class DNC
                 return false;
 
             if (InCombat())
-                return false;
-
-            if (!CountdownActive)
                 return false;
 
             // go at 7s, with some leeway

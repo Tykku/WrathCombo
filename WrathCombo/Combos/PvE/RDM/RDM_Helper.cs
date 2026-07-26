@@ -486,9 +486,6 @@ internal partial class RDM
             if (InCombat())
                 return false;
 
-            if (!CountdownActive)
-                return false;
-            
             if (CountdownRemaining > 25)
                 return false;
             
