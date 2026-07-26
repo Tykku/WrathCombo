@@ -22,12 +22,6 @@ internal partial class SAM
                     DrawBossOnlyChoice(SAM_Balance_Content);
                     DrawOpenerPotionChoice(SAM_Opener_Potion);
 
-                    DrawSliderInt(0, 13, SAM_Opener_PrePullDelay,
-                        FormatAndCache(SAM_Config.SecondsDelayFromFirstStep, MeikyoShisui.ActionName()), 75f.Scale());
-
-                    if (ImGui.IsItemHovered())
-                        ImGui.SetTooltip(FormatAndCache(SAM_Config.DelaySavageBlade, All.SavageBlade.ActionName()));
-
                     ImGuiEx.Spacing(new Vector2(0, 10));
                     ImGuiEx.TextUnderlined($"{Gyoten.ActionName()} Settings");
                     ImGui.Spacing();
@@ -212,7 +206,6 @@ internal partial class SAM
 
             //ST
             SAM_Balance_Content = new("SAM_Balance_Content", 1),
-            SAM_Opener_PrePullDelay = new("SAM_Opener_PrePullDelay", 13),
             SAM_Opener_IncludeGyoten = new("SAM_Opener_IncludeGyoten"),
             SAM_ST_HiganbanaBossHPOption = new("SAM_ST_HiganbanaBossHPOption"),
             SAM_ST_HiganbanaBossAddsHPOption = new("SAM_ST_HiganbanaBossAddsHPOption", 25),

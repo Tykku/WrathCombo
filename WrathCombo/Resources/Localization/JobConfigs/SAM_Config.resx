@@ -121,7 +121,7 @@
     <value>Adds {0} to the rotation if {1} is not unlocked.</value>
   </data>
   <data name="DelaySavageBlade" xml:space="preserve">
-    <value>Delay is enforced by replacing your button with {0}.</value>
+    <value>With a countdown, True North waits until this many seconds remain. Without one, waits this many seconds after Meikyo. Enforced by replacing your button with {0}.</value>
   </data>
   <data name="HPPercentKenki" xml:space="preserve">
     <value>HP percent threshold to not save Kenki</value>
@@ -154,7 +154,7 @@
     <value>Will prioritise generating all 3 Sens before checking buffs.</value>
   </data>
   <data name="SecondsDelayFromFirstStep" xml:space="preserve">
-    <value>Seconds to delay from first {0} to next step (hover for details)</value>
+    <value>Seconds before pull to use True North (hover for details)</value>
   </data>
   <data name="SkipBoth" xml:space="preserve">
     <value>Skip Both</value>
