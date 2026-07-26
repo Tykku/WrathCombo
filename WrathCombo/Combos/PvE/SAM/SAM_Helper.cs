@@ -571,10 +571,10 @@ internal partial class SAM
         internal override UserData ContentCheckConfig => SAM_Balance_Content;
         internal override bool IncludePot => SAM_Opener_Potion;
 
-        public override List<(int[] Steps, Func<int> HoldDelay)> PrepullDelays { get; set; } =
+        public override List<(int[] Steps, Func<float> HoldDelay)> PrepullDelays { get; set; } =
         [
-            ([1], () => (int)(CountdownRemaining - 13)),
-            ([2], () => (int)(CountdownRemaining - 5))
+            ([1], () => CountdownRemaining - 13),
+            ([2], () => CountdownRemaining - 5)
         ];
 
         public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =

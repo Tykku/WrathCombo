@@ -635,15 +635,15 @@ internal partial class DNC
             ReverseCascade,
         ];
 
-        public override List<(int[] Steps, Func<int> HoldDelay)> PrepullDelays
+        public override List<(int[] Steps, Func<float> HoldDelay)> PrepullDelays
         {
             get;
             set;
         } =
         [
-            ([4], () => (int)(CountdownRemaining - 5)),
-            ([5], () => (int)(CountdownRemaining - 1)),
-            ([6], () => (int)CountdownRemaining),
+            ([4], () => Math.Min(GetStatusEffectRemainingTime(Buffs.StandardStep) - 0.5f, CountdownRemaining) - 5),
+            ([5], () => Math.Min(GetStatusEffectRemainingTime(Buffs.StandardStep) - 0.5f, CountdownRemaining) - 1),
+            ([6], () => Math.Min(GetStatusEffectRemainingTime(Buffs.StandardStep) - 0.5f, CountdownRemaining)),
         ];
 
         public override List<(int[], uint, Func<bool>)> SubstitutionSteps
@@ -737,15 +737,15 @@ internal partial class DNC
             ReverseCascade,
         ];
 
-        public override List<(int[] Steps, Func<int> HoldDelay)> PrepullDelays
+        public override List<(int[] Steps, Func<float> HoldDelay)> PrepullDelays
         {
             get;
             set;
         } =
         [
-            ([4], () => (int)(CountdownRemaining - 3)),
-            ([5], () => (int)(CountdownRemaining - 1)),
-            ([6], () => (int)CountdownRemaining),
+            ([4], () => Math.Min(GetStatusEffectRemainingTime(Buffs.StandardStep) - 0.5f, CountdownRemaining) - 3),
+            ([5], () => Math.Min(GetStatusEffectRemainingTime(Buffs.StandardStep) - 0.5f, CountdownRemaining) - 1),
+            ([6], () => Math.Min(GetStatusEffectRemainingTime(Buffs.StandardStep) - 0.5f, CountdownRemaining)),
         ];
 
         public override List<(int[], uint, Func<bool>)> SubstitutionSteps
@@ -842,16 +842,16 @@ internal partial class DNC
             ReverseCascade,
         ];
 
-        public override List<(int[] Steps, Func<int> HoldDelay)> PrepullDelays
+        public override List<(int[] Steps, Func<float> HoldDelay)> PrepullDelays
         {
             get;
             set;
         } =
         [
-            ([4], () => (int)(CountdownRemaining - 15)),
-            ([5], () => (int)(CountdownRemaining - 13)),
-            ([11], () => (int)(CountdownRemaining - 1)),
-            ([12], () => (int)(CountdownRemaining))
+            ([4], () => Math.Min(GetStatusEffectRemainingTime(Buffs.StandardStep) - 0.5f, CountdownRemaining) - 15),
+            ([5], () => Math.Min(GetStatusEffectRemainingTime(Buffs.StandardStep) - 0.5f, CountdownRemaining) - 13),
+            ([11], () => Math.Min(GetStatusEffectRemainingTime(Buffs.TechnicalStep) - 0.5f, CountdownRemaining) - 1),
+            ([12], () => Math.Min(GetStatusEffectRemainingTime(Buffs.TechnicalStep) - 0.5f, CountdownRemaining)),
         ];
 
         public override List<(int[], uint, Func<bool>)> SubstitutionSteps
@@ -939,13 +939,13 @@ internal partial class DNC
             ReverseCascade,
         ];
 
-        public override List<(int[] Steps, Func<int> HoldDelay)> PrepullDelays
+        public override List<(int[] Steps, Func<float> HoldDelay)> PrepullDelays
         {
             get;
             set;
         } =
         [
-            ([6], () => (int)(CountdownRemaining - 1)),
+            ([6], () => Math.Min(GetStatusEffectRemainingTime(Buffs.TechnicalStep) - 0.5f, CountdownRemaining - 1)),
         ];
 
         public override List<(int[], uint, Func<bool>)> SubstitutionSteps
@@ -1024,15 +1024,15 @@ internal partial class DNC
             ReverseCascade,
         ];
 
-        public override List<(int[] Steps, Func<int> HoldDelay)> PrepullDelays
+        public override List<(int[] Steps, Func<float> HoldDelay)> PrepullDelays
         {
             get;
             set;
         } =
         [
-            ([6], () => (int)(CountdownRemaining - 2)),
-            ([7], () => (int)(CountdownRemaining - 1)),
-            ([8], () => (int)(CountdownRemaining)),
+            ([6], () => Math.Min(GetStatusEffectRemainingTime(Buffs.TechnicalStep) - 0.5f, CountdownRemaining - 2)),
+            ([7], () => Math.Min(GetStatusEffectRemainingTime(Buffs.TechnicalStep) - 0.5f, CountdownRemaining - 1)),
+            ([8], () => Math.Min(GetStatusEffectRemainingTime(Buffs.TechnicalStep) - 0.5f, CountdownRemaining)),
         ];
 
         public override List<(int[], uint, Func<bool>)> SubstitutionSteps
