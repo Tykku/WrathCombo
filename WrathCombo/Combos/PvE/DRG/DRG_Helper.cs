@@ -423,9 +423,9 @@ internal partial class DRG
         internal override UserData ContentCheckConfig => DRG_BalanceContent;
         internal override bool IncludePot => DRG_Opener_Potion;
 
-        public override bool HasCooldowns() => HasSharedOpenerCooldowns();
+        public override bool HasCooldowns() => SharedOpenerCooldowns();
 
-        protected static bool HasSharedOpenerCooldowns() =>
+        protected static bool SharedOpenerCooldowns() =>
             GetRemainingCharges(LifeSurge) is 2 &&
             IsOffCooldown(BattleLitany) &&
             IsOffCooldown(DragonfireDive) &&
@@ -525,12 +525,12 @@ internal partial class DRG
             FangAndClaw,
             Drakesbane,
             RaidenThrust,
-            WyrmwindThrust,
+            WyrmwindThrust
         ];
 
         public override List<(int[] Steps, Func<int> HoldDelay)> PrepullDelays { get; set; } =
         [
-            ([1, 2], () => (int)(CountdownRemaining - 2)),
+            ([1, 2], () => (int)(CountdownRemaining - 2))
         ];
     }
 

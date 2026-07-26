@@ -664,7 +664,7 @@ internal partial class MCH
         public override List<(int[] Steps, Func<int> HoldDelay)> PrepullDelays { get; set; } =
         [
             ([1], () => (int)(CountdownRemaining - 5)),
-            ([2], () => (int)(CountdownRemaining - 2)),
+            ([2], () => (int)(CountdownRemaining - 2))
         ];
 
         protected static bool SharedOpenerCooldowns() =>

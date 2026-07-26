@@ -587,11 +587,11 @@ internal partial class MNK
             ([1], () => Chakra >= 5),
             ([2], () => JustUsed(FormShift, 30f))
         ];
-        
+
         public override List<(int[] Steps, Func<int> HoldDelay)> PrepullDelays { get; set; } =
         [
             ([1], () => (int)(CountdownRemaining - 8)),
-            ([2], () => (int)(CountdownRemaining - 5)),
+            ([2], () => (int)(CountdownRemaining - 5))
         ];
 
         public override bool HasCooldowns() =>
@@ -783,7 +783,7 @@ internal partial class MNK
         [
             ([1], () => (int)(CountdownRemaining - 8)),
             ([2], () => (int)(CountdownRemaining - 5)),
-            ([3], () => (int)(CountdownRemaining - 1)),
+            ([3], () => (int)(CountdownRemaining - 2))
         ];
     }
 
