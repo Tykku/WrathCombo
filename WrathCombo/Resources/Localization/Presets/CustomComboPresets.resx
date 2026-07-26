@@ -2737,7 +2737,7 @@ Early Buff prepull:
 - Lance Charge at -2
 - Battle Litany at -2
 Without a countdown, prepull steps have no delay.
-(Will change to Savage Blade while waiting on countdown)</value>
+(During a countdown only: holds as Savage Blade until each prepull timing)</value>
   </data>
   <data name="DRG_ST_Opener_Name" xml:space="preserve">
     <value>Balance Opener (Level 100)</value>
@@ -4432,7 +4432,7 @@ Prepull:
 - Reassemble at -5
 - Potion at -2
 Without a countdown, prepull steps have no delay.
-(Will change to Savage Blade while waiting on countdown)</value>
+(During a countdown only: holds as Savage Blade until each prepull timing)</value>
   </data>
   <data name="MCH_ST_Adv_Opener_Name" xml:space="preserve">
     <value>Balance Opener (Level 90/100)</value>
@@ -4756,7 +4756,7 @@ Prepull:
 Early Buff prepull:
 - Riddle of Wind at -2
 Without a countdown, prepull steps have no delay.
-(Will change to Savage Blade while waiting on countdown)</value>
+(During a countdown only: holds as Savage Blade until each prepull timing)</value>
   </data>
   <data name="MNK_STUseOpener_Name" xml:space="preserve">
     <value>Opener Option</value>
@@ -7787,7 +7787,7 @@ These features are ideal if you want to customize the rotation.</value>
 Standard opener prepull:
 - Harpe at -1 (skipped in melee)
 Without a countdown, prepull steps have no delay.
-(Will change to Savage Blade while waiting on countdown)</value>
+(During a countdown only: holds as Savage Blade until each prepull timing)</value>
   </data>
   <data name="RPR_ST_Opener_Name" xml:space="preserve">
     <value>Balance Opener (Level 90/100)</value>
@@ -9321,7 +9321,7 @@ Prepull:
 - Potion at -2
 - Toxikon or Pneuma at -1 (selected opener)
 Without a countdown, prepull steps have no delay.
-(Will change to Savage Blade while waiting on countdown)</value>
+(During a countdown only: holds as Savage Blade until each prepull timing)</value>
   </data>
   <data name="SGE_ST_DPS_Opener_Name" xml:space="preserve">
     <value>Balance Opener (Level 92)</value>
