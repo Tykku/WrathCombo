@@ -226,12 +226,14 @@ public abstract class WrathOpener
                     CurrentOpenerAction = OpenerActions[OpenerStep - 1];
                 }
 
+                bool skipped = false;
                 foreach (var (Step, Condition) in SkipSteps.Where(x => x.Steps.Any(y => y == OpenerStep)))
                 {
                     while (Step.Any(x => x == OpenerStep) && Condition())
                     {
                         Svc.Log.Debug($"Skipping from Opener Step {OpenerStep} to {OpenerStep + 1}");
                         OpenerStep++;
+                        skipped = true;
                     }
 
                     if (OpenerStep > OpenerActions.Count)
@@ -239,6 +241,12 @@ public abstract class WrathOpener
                         CurrentState = OpenerState.OpenerFinished;
                         return false;
                     }
+                }
+
+                if (skipped)
+                {
+                    actionID = All.SavageBlade;
+                    return true;
                 }
 
                 actionID = CurrentOpenerAction = AllowUpgradeSteps.Any(x => x == OpenerStep) ? OriginalHook(OpenerActions[OpenerStep - 1]) : OpenerActions[OpenerStep - 1];
