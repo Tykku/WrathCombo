@@ -574,7 +574,7 @@ internal partial class SAM
         public override List<(int[] Steps, Func<int> HoldDelay)> PrepullDelays { get; set; } =
         [
             ([1], () => (int)(CountdownRemaining - 13)),
-            ([2], () => (int)(CountdownRemaining - 5)),
+            ([2], () => (int)(CountdownRemaining - 5))
         ];
 
         public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =

@@ -8302,7 +8302,7 @@ Prepull:
 - True North at -5 (skipped if target has no positionals)
 - Gekko on pull
 Without a countdown, prepull steps have no delay.
-(Will change to Savage Blade while waiting on countdown)</value>
+(During a countdown only: holds as Savage Blade until each prepull timing)</value>
   </data>
   <data name="SAM_ST_Opener_Name" xml:space="preserve">
     <value>Balance Opener (Level 70/80/90/100)</value>
