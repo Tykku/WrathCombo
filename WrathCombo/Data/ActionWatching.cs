@@ -221,7 +221,7 @@ public static class ActionWatching
             var partyMembers = GetPartyMembers().ToDictionary(x => x.GameObjectId);
 #if DEBUG
             var debugObjectTable = Svc.Objects;
-            var debugActionName = actionId.ActionName();
+            var debugActionName = actionType == ActionType.Action ? actionId.ActionName() : actionType == ActionType.Item ? actionId.ItemName() : "Unknown";
 #endif
 
             // Process Effects
@@ -257,6 +257,7 @@ public static class ActionWatching
                         $"Value: {effValue} | " +
                         $"Params: [{eff.Param0}, {eff.Param1}, {eff.Param2}, {eff.Param3}, {eff.Param4}] | " +
                         $"Damage HealValue: {eff.DamageHealValue} | " +
+                        $"Caster: {((ulong)casterEntityId).GetObject()?.Name} | " +
                         $"Action: {debugActionName} (ID: {actionId}) → " +
                         $"Target: {debugTargetName} ({targetId}) | " +
                         $"[AtSource: {eff.AtSource}, FromTarget: {eff.FromTarget}] | " +
@@ -336,7 +337,7 @@ public static class ActionWatching
                 }
             }
 
-            if ((actionType == ActionType.Action && casterEntityId == Player.Object.EntityId && ActionSheet.TryGetValue(actionId, out var actionSheet) && actionSheet.TargetArea) || actionType == ActionType.Item)
+            if (casterEntityId == Player.Object.EntityId && (actionType == ActionType.Action && ActionSheet.TryGetValue(actionId, out var actionSheet) && actionSheet.TargetArea) || actionType == ActionType.Item)
             {
                 UpdateLastUsedAction(actionId, actionType, 0, 0);
             }
@@ -533,7 +534,7 @@ public static class ActionWatching
             ActionType.Item => lastAct.ActionID.ItemName(),
             _ => "Unknown"
         };
-        DuoLog.Information($"You just used: {name}x {LastActionUseCount}");
+        DuoLog.Information($"You just used: [{name}] x {LastActionUseCount}");
     }
 
 
