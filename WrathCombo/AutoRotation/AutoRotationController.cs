@@ -991,7 +991,7 @@ internal unsafe class AutoRotationController
             {
                 var targetId = canUseTarget || areaTargeted ? target.GameObjectId : canUseSelf ? player.GameObjectId : 0xE000_0000;
                 var changed = CheckForChangedTarget(gameAct, ref targetId, out var replacedWith);
-                WouldLikeToGroundTarget = ActionSheet.TryGetValue(outAct, out var s) && s.TargetArea;
+                WouldLikeToGroundTarget = areaTargeted;
                 var ret = ActionManager.Instance()->UseAction(ActionType.Action, Service.Configuration.ActionChanging ? gameAct : outAct, targetId);
                 WouldLikeToGroundTarget = false;
 
