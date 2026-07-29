@@ -345,20 +345,21 @@ internal partial class DRK
             HardSlash, // 5
             Delirium,
             SaltedEarth,
+            HardSlash,
             Disesteem,
             //EdgeOfShadow, // Handled like a procc
-            CarveAndSpit,
-            ScarletDelirium, // 10
+            CarveAndSpit, // 10
+            ScarletDelirium,
             Shadowbringer,
             Comeuppance,
             Shadowbringer,
-            Torcleaver,
-            SaltAndDarkness, // 15
+            Torcleaver, // 15
+            SaltAndDarkness,
             SyphonStrike,
             //EdgeOfShadow, // Handled like a procc
             Souleater,
             //EdgeOfShadow, // Handled like a procc
-            Bloodspiller,
+            Bloodspiller, // 20
             //EdgeOfShadow, // Handled like a procc
             HardSlash,
         ];
@@ -369,7 +370,8 @@ internal partial class DRK
             set;
         } =
         [
-            ([2], () => 2f),
+            ([1], () => CountdownRemaining - 3),
+            ([2], () => CountdownRemaining - 1),
         ];
 
         public override List<(int[] Steps, uint NewAction, Func<bool> Condition)> SubstitutionSteps
@@ -396,11 +398,14 @@ internal partial class DRK
             // Skip Salted Earth if on cooldown
             ([7], () =>
                 IsOnCooldown(SaltedEarth)),
+            // Skip the aligning HardSlash, if pulling with Unmend
+            ([8], () =>
+                DRK_ST_OpenerAction == (int)PullAction.Unmend),
             // Skip Salt and Darkness when not ready
-            ([15], () =>
+            ([16], () =>
                 !ActionReady(SaltAndDarkness)),
             // Skip Blood spenders when no Blood
-            ([18], () =>
+            ([19], () =>
                 Gauge.Blood < 50),
         ];
 
@@ -411,17 +416,13 @@ internal partial class DRK
 
         internal override bool IncludePot => DRK_Opener_Potion;
 
-        public override bool HasCooldowns()
-        {
-            if (!CountdownActive || CountdownRemaining > 3f)
-                return false;
-
-            return LocalPlayer.CurrentMp > 7000 && IsOffCooldown(LivingShadow) &&
-                   IsOffCooldown(Delirium) && IsOffCooldown(CarveAndSpit) &&
-                   IsOffCooldown(SaltedEarth) &&
-                   GetRemainingCharges(Shadowbringer) >= 2 &&
-                   (!InCombat() || CombatEngageDuration().TotalSeconds < 3);
-        }
+        public override bool HasCooldowns() =>
+            CountdownActive &&
+            LocalPlayer.CurrentMp > 7000 && IsOffCooldown(LivingShadow) &&
+            IsOffCooldown(Delirium) && IsOffCooldown(CarveAndSpit) &&
+            IsOffCooldown(SaltedEarth) &&
+            GetRemainingCharges(Shadowbringer) >= 2 &&
+            (!InCombat() || CombatEngageDuration().TotalSeconds < 3);
     }
 
     #endregion
