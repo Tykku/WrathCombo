@@ -1,5 +1,11 @@
-﻿using ECommons.ExcelServices;
+﻿using Dalamud.Game.ClientState.Objects.Types;
+using ECommons;
+using ECommons.DalamudServices;
+using ECommons.ExcelServices;
+using ECommons.GameFunctions;
 using ECommons.GameHelpers;
+using System.Linq;
+using WrathCombo.Extensions;
 using static WrathCombo.CustomComboNS.Functions.CustomComboFunctions;
 
 namespace WrathCombo.Data.BattleData
@@ -20,7 +26,27 @@ namespace WrathCombo.Data.BattleData
                         return Invincible.False;
                     };
                     break;
+                case 846: // Crown of the Immaculate (normal)
 
+                    _invincibleCheck = (target, targetID, _) =>
+                    {
+                        // During the phase where Venery is not targettable and going to eat the shames, check for a tether vfx
+                        if (targetID is 11246 && // Shames
+                           Svc.Objects.GetBattleCharas().FirstOrDefault(x => x.BaseId is 11247 && !x.IsTargetable) is not null) // Venery
+                        {
+                            return Result(target.GetTethers().Count is 0); // Ignore if it doesn't have the tether vfx
+                        }
+
+                        return Invincible.False;
+                    };
+
+                    _pauseActions = () =>
+                    {
+                        if (CheckForGazeCasts(10491, 16025)) return true; // Chonky Innocence casting Enthrall
+                        return false;
+                    };
+
+                    break;
                 case 887: // The Epic of Alexander (Ultimate)
                           // Jagd Doll = NameId 3759
                           // Technically not invincible, but killing one wipes the raid;

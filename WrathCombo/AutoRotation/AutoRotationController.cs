@@ -29,6 +29,7 @@ using static WrathCombo.CustomComboNS.Functions.CustomComboFunctions;
 using static WrathCombo.CustomComboNS.Functions.Jobs;
 using static WrathCombo.Data.ActionWatching;
 using ActionType = FFXIVClientStructs.FFXIV.Client.Game.ActionType;
+using Content = ECommons.GameHelpers.Content;
 
 #endregion
 
@@ -55,6 +56,8 @@ internal unsafe class AutoRotationController
     public static bool AutorotRaidwiding;
     public static int AutorotRaidwides = 0;
     public static bool TankbusterHandled = false;
+
+    private static Dictionary<Preset, bool> _autoActions => Presets.GetJobAutorots;
 
     public AutoRotationController()
     {
@@ -162,7 +165,6 @@ internal unsafe class AutoRotationController
             return;
 
         uint _ = 0;
-        var autoActions = Presets.GetJobAutorots;
 
         // Pre-emptive HoT/Shield for healers
         if (cfg.HealerSettings.PreEmptiveHoT && Player.Job is Job.CNJ or Job.WHM or Job.AST)
@@ -174,7 +176,7 @@ internal unsafe class AutoRotationController
         // Bypass buffs logic
         if (cfg.BypassBuffs && NotInCombat)
         {
-            if (ProcessAutoActions(autoActions, ref _, false, true))
+            if (ProcessAutoActions(ref _, false, true))
                 return;
         }
 
@@ -222,10 +224,10 @@ internal unsafe class AutoRotationController
 
         bool aoeheal = isHealer
                        && HealerTargeting.CanAoEHeal()
-                       && autoActions.Any(x => x.Key.Attributes().AutoAction?.IsHeal == true && x.Key.Attributes().AutoAction?.IsAoE == true);
+                       && _autoActions.Any(x => x.Key.Attributes().AutoAction?.IsHeal == true && x.Key.Attributes().AutoAction?.IsAoE == true);
 
         bool needsHeal = ((healTarget != null
-                           && autoActions.Any(x => x.Key.Attributes().AutoAction?.IsHeal == true && x.Key.Attributes().AutoAction?.IsAoE != true))
+                           && _autoActions.Any(x => x.Key.Attributes().AutoAction?.IsHeal == true && x.Key.Attributes().AutoAction?.IsAoE != true))
                           || aoeheal)
                          && isHealer;
 
@@ -235,7 +237,7 @@ internal unsafe class AutoRotationController
             TimeToHeal = null;
 
         // Check if any healing action is ready
-        bool actCheck = autoActions.Any(x =>
+        bool actCheck = _autoActions.Any(x =>
         {
             var attr = x.Key.Attributes();
             return attr.AutoAction?.IsHeal == true && ActionReady(AutoRotationHelper.InvokeCombo(x.Key, attr, ref _));
@@ -276,7 +278,7 @@ internal unsafe class AutoRotationController
             LockedST = false;
         }
 
-        ProcessAutoActions(autoActions, ref _, canHeal, false);
+        ProcessAutoActions(ref _, canHeal, false);
     }
 
     public static IEnumerable<uint> TankbusterActions =
@@ -310,7 +312,7 @@ internal unsafe class AutoRotationController
                 var act = spell;
                 if (act == AST.Bole) act = AST.Play2;
                 if (act == AST.Spire) act = AST.Play3;
-                WouldLikeToGroundTarget = ActionSheet[act].TargetArea;
+                WouldLikeToGroundTarget = ActionSheet.TryGetValue(act, out var s) && s.TargetArea;
                 ActionManager.Instance()->UseAction(ActionType.Action, act is SGE.Eukrasia ? act.Retarget(SimpleTarget.Self) : act.Retarget(safeGameObjectId.GetObject()), safeGameObjectId!.Value);
                 WouldLikeToGroundTarget = false;
                 if (act != SGE.Eukrasia)
@@ -377,7 +379,7 @@ internal unsafe class AutoRotationController
 
             if (AbleToCast(spell))
             {
-                WouldLikeToGroundTarget = ActionSheet[spell].TargetArea;
+                WouldLikeToGroundTarget = ActionSheet.TryGetValue(spell, out var s) && s.TargetArea;
                 ActionManager.Instance()->UseAction(ActionType.Action, spell);
                 WouldLikeToGroundTarget = false;
                 return;
@@ -385,10 +387,10 @@ internal unsafe class AutoRotationController
         }
     }
 
-    private static bool ProcessAutoActions(Dictionary<Preset, bool> autoActions, ref uint _, bool canHeal, bool stOnly)
+    private static bool ProcessAutoActions(ref uint _, bool canHeal, bool stOnly)
     {
         // Pre-filter and cache attributes to avoid repeated lookups
-        var filteredActions = autoActions
+        var filteredActions = _autoActions
             .Select(x => new { Preset = x.Key, Attributes = x.Key.Attributes() })
             .Where(x => x.Attributes is { AutoAction: not null, ReplaceSkill: not null })
             .Where(x => x.Attributes.AutoAction.IsHeal == canHeal)
@@ -804,8 +806,14 @@ internal unsafe class AutoRotationController
             if (ActionManager.Instance()->QueuedActionId != 0)
                 return true;
 
-            var target = !cfg.DPSSettings.AoEIgnoreManual && cfg.DPSRotationMode == DPSRotationMode.Manual ?
-    Svc.Targets.Target : DPSTargeting.BaseSelection.MaxBy(x => NumberOfEnemiesInRange(OriginalHook(gameAct), x, true));
+            var autoTarget = DPSTargeting.BaseSelection.MaxBy(x => NumberOfEnemiesInRange(OriginalHook(gameAct), x, true));
+            var manualTarget = Svc.Targets.Target;
+
+            IGameObject? target = null;
+            // Determine target according to rotation mode and AoE settings
+
+            var useAutoTarget = cfg.DPSRotationMode != DPSRotationMode.Manual || (cfg.DPSRotationMode == DPSRotationMode.Manual && cfg.DPSSettings.AoEIgnoreManual && (!cfg.DPSSettings.AoEOnlyWhenTargeting || manualTarget is not null));
+            target = useAutoTarget ? autoTarget : manualTarget;
 
             if ((target is not { } t || (!t.IsHostile() && !t.IsFriendly())) && cfg.PauseWhenNoTarget) return true;
 
@@ -831,7 +839,7 @@ internal unsafe class AutoRotationController
 
                     var targetId = player.GameObjectId;
                     var changed = CheckForChangedTarget(gameAct, ref targetId, out var replacedWith);
-                    WouldLikeToGroundTarget = ActionSheet[outAct].TargetArea;
+                    WouldLikeToGroundTarget = ActionSheet.TryGetValue(outAct, out var s) && s.TargetArea;
                     var ret = ActionManager.Instance()->UseAction(ActionType.Action, Service.Configuration.ActionChanging ? gameAct : outAct, targetId);
                     WouldLikeToGroundTarget = false;
 
@@ -865,8 +873,8 @@ internal unsafe class AutoRotationController
                 if (!canQueue)
                     return false;
 
-                var sheet = ActionSheet[outAct];
-                var targetsHostile = sheet.CanTargetHostile;
+                var s = ActionSheet.TryGetValue(outAct, out var sheet);
+                var targetsHostile = s && sheet.CanTargetHostile;
 
                 bool switched = SwitchOnDChole(attributes, outAct, ref target);
                 var castTime = ActionManager.GetAdjustedCastTime(ActionType.Action, outAct);
@@ -878,8 +886,8 @@ internal unsafe class AutoRotationController
                 if (cfg.DPSSettings.DPSAlwaysHardTarget && OverrideTarget is not null)
                     Svc.Targets.Target = OverrideTarget;
 
-                var canUseSelf = sheet.CanTargetSelf;
-                var areaTargeted = ActionSheet[outAct].TargetArea;
+                var canUseSelf = s && sheet.CanTargetSelf;
+                var areaTargeted = s && sheet.TargetArea;
                 var acRangeCheck = ActionManager.GetActionInRangeOrLoS(outAct, player.GameObject(), OverrideTarget is null ? player.GameObject() : OverrideTarget.Struct());
                 var inRange = acRangeCheck is 0 or 565 || canUseSelf || areaTargeted;
 
@@ -931,6 +939,13 @@ internal unsafe class AutoRotationController
 
             OverrideTarget = target ?? OverrideTarget;
             var outAct = OriginalHook(InvokeCombo(preset, attributes, ref gameAct, target));
+            if (outAct >= All.Items)
+            {
+                Svc.Log.Debug($"Using item {outAct.ActionName()}");
+                ActionManager.Instance()->UseAction(ActionType.Action, outAct, extraParam: 0xFFFF);
+                return true;
+            }
+
             if (!ActionReady(outAct))
             {
                 return false;
@@ -952,7 +967,7 @@ internal unsafe class AutoRotationController
             if (target is null && !canUseSelf)
                 return false;
 
-            var areaTargeted = ActionSheet[outAct].TargetArea;
+            var areaTargeted = ActionSheet.TryGetValue(outAct, out var s) && s.TargetArea;
             var canUseTarget = target is not null && ActionManager.CanUseActionOnTarget(outAct, target.Struct());
 
             var acRangeCheck = ActionManager.GetActionInRangeOrLoS(outAct, player.GameObject(), target is null ? player.GameObject() : target.Struct());
@@ -976,7 +991,7 @@ internal unsafe class AutoRotationController
             {
                 var targetId = canUseTarget || areaTargeted ? target.GameObjectId : canUseSelf ? player.GameObjectId : 0xE000_0000;
                 var changed = CheckForChangedTarget(gameAct, ref targetId, out var replacedWith);
-                WouldLikeToGroundTarget = ActionSheet[outAct].TargetArea;
+                WouldLikeToGroundTarget = areaTargeted;
                 var ret = ActionManager.Instance()->UseAction(ActionType.Action, Service.Configuration.ActionChanging ? gameAct : outAct, targetId);
                 WouldLikeToGroundTarget = false;
 

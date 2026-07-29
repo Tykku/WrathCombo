@@ -1,7 +1,5 @@
-using ECommons.DalamudServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using System.Linq;
-using System.Reflection.Metadata.Ecma335;
 using WrathCombo.CustomComboNS;
 using WrathCombo.Extensions;
 using WrathCombo.Native;
@@ -27,10 +25,10 @@ internal partial class NIN : Melee
             if (BlockDueToLag)
                 return All.SavageBlade;
 
-            if (InMudra && MudraState.ContinueCurrentMudra(ref actionID))
+            if (STTenChiJin(ref actionID))
                 return actionID;
 
-            if (STTenChiJin(ref actionID))
+            if (InMudra && MudraState.ContinueCurrentMudra(ref actionID))
                 return actionID;
 
             #region Special Content
@@ -99,7 +97,7 @@ internal partial class NIN : Melee
             if (CanThrowingDaggers)
                 return OriginalHook(ThrowingDaggers);
 
-            if (CanRaiju)
+            if (CanRaiju && InMeleeRange())
                 return FleetingRaiju;
 
             if (CanPhantomKamaitachi)
@@ -146,10 +144,10 @@ internal partial class NIN : Melee
             if (BlockDueToLag)
                 return All.SavageBlade;
 
-            if (InMudra && MudraState.ContinueCurrentMudra(ref actionID))
+            if (AoETenChiJin(ref actionID, false))
                 return actionID;
 
-            if (AoETenChiJin(ref actionID, false))
+            if (InMudra && MudraState.ContinueCurrentMudra(ref actionID))
                 return actionID;
 
             #region Special Content
@@ -264,11 +262,11 @@ internal partial class NIN : Melee
             if (BlockDueToLag)
                 return All.SavageBlade;
 
-            if (IsEnabled(Preset.NIN_ST_AdvancedMode_Ninjitsus) && InMudra && MudraState.ContinueCurrentMudra(ref actionID))
-                return actionID;
-
             if (NIN_ST_AdvancedMode_TenChiJin_Auto &&
                 STTenChiJin(ref actionID))
+                return actionID;
+
+            if (IsEnabled(Preset.NIN_ST_AdvancedMode_Ninjitsus) && InMudra && MudraState.ContinueCurrentMudra(ref actionID))
                 return actionID;
 
             #region Special Content
@@ -359,13 +357,15 @@ internal partial class NIN : Melee
             #endregion
 
             #region GCDS
-            if (IsEnabled(Preset.NIN_ST_AdvancedMode_ThrowingDaggers) && CanThrowingDaggers && !MudraPhase)
-                return OriginalHook(ThrowingDaggers);
 
             if (IsEnabled(Preset.NIN_ST_AdvancedMode_Raiju) && CanRaiju)
-                return NIN_ST_AdvancedMode_ForkedRaiju && !InMeleeRange()
-                    ? ForkedRaiju
-                    : FleetingRaiju;
+            {
+                if (InMeleeRange()) return FleetingRaiju;
+                else if (NIN_ST_AdvancedMode_ForkedRaiju) return ForkedRaiju;
+            }
+
+            if (IsEnabled(Preset.NIN_ST_AdvancedMode_ThrowingDaggers) && CanThrowingDaggers && !MudraPhase)
+                return OriginalHook(ThrowingDaggers);
 
             if (IsEnabled(Preset.NIN_ST_AdvancedMode_PhantomKamaitachi) && CanPhantomKamaitachi)
                 return PhantomKamaitachi;
@@ -412,10 +412,10 @@ internal partial class NIN : Melee
             if (BlockDueToLag)
                 return All.SavageBlade;
 
-            if (IsEnabled(Preset.NIN_AoE_AdvancedMode_Ninjitsus) && InMudra && MudraState.ContinueCurrentMudra(ref actionID))
+            if (NIN_AoE_AdvancedMode_TenChiJin_Auto && AoETenChiJin(ref actionID, true))
                 return actionID;
 
-            if (NIN_AoE_AdvancedMode_TenChiJin_Auto && AoETenChiJin(ref actionID, true))
+            if (IsEnabled(Preset.NIN_AoE_AdvancedMode_Ninjitsus) && InMudra && MudraState.ContinueCurrentMudra(ref actionID))
                 return actionID;
 
             #region Special Content
@@ -684,6 +684,9 @@ internal partial class NIN : Melee
             if (actionID is not (Ten or Chi or Jin) || !HasStatusEffect(Buffs.Mudra))
                 return actionID;
 
+            if (HasStatusEffect(Buffs.TenChiJin))
+                return actionID;
+
             int mudrapath = NIN_SimpleMudra_Choice;
 
             if (mudrapath == 1)
@@ -808,6 +811,9 @@ internal partial class NIN : Melee
         protected override uint Invoke(uint actionID)
         {
             if (!MudraSigns.Any(x => x == actionID))
+                return actionID;
+            
+            if (HasStatusEffect(Buffs.TenChiJin))
                 return actionID;
 
             if (JutsuFromFlags == Rabbit)
