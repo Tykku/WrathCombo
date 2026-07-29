@@ -340,20 +340,21 @@ internal partial class DRK
         [
             LivingShadow,
             Unmend,
+            Items.UseItem(Items.GetStrongestPotionRow(Items.PotionType.Strength)),
             EdgeOfShadow, // Not handled like a procc, since it sets up Darkside
-            HardSlash,
+            HardSlash, // 5
             Delirium,
             SaltedEarth,
             Disesteem,
             //EdgeOfShadow, // Handled like a procc
             CarveAndSpit,
-            ScarletDelirium,
-            Shadowbringer, // 10
+            ScarletDelirium, // 10
+            Shadowbringer,
             Comeuppance,
             Shadowbringer,
             Torcleaver,
-            SaltAndDarkness,
-            SyphonStrike, // 15
+            SaltAndDarkness, // 15
+            SyphonStrike,
             //EdgeOfShadow, // Handled like a procc
             Souleater,
             //EdgeOfShadow, // Handled like a procc
@@ -362,13 +363,13 @@ internal partial class DRK
             HardSlash,
         ];
 
-        public override List<(int[] Steps, Func<int> HoldDelay)> PrepullDelays
+        public override List<(int[] Steps, Func<float> HoldDelay)> PrepullDelays
         {
             get;
             set;
         } =
         [
-            ([2], () => 2),
+            ([2], () => 2f),
         ];
 
         public override List<(int[] Steps, uint NewAction, Func<bool> Condition)> SubstitutionSteps
@@ -390,16 +391,16 @@ internal partial class DRK
         } =
         [
             // Skip the duplicate HardSlash, if pulling with HardSlash
-            ([4], () =>
+            ([5], () =>
                 DRK_ST_OpenerAction == (int)PullAction.HardSlash),
             // Skip Salted Earth if on cooldown
-            ([6], () =>
+            ([7], () =>
                 IsOnCooldown(SaltedEarth)),
             // Skip Salt and Darkness when not ready
-            ([14], () =>
+            ([15], () =>
                 !ActionReady(SaltAndDarkness)),
             // Skip Blood spenders when no Blood
-            ([17], () =>
+            ([18], () =>
                 Gauge.Blood < 50),
         ];
 
@@ -407,6 +408,8 @@ internal partial class DRK
 
         internal override UserData? ContentCheckConfig =>
             DRK_ST_OpenerDifficulty;
+
+        internal override bool IncludePot => DRK_Opener_Potion;
 
         public override bool HasCooldowns()
         {
