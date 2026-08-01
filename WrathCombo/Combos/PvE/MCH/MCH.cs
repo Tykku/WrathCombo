@@ -1,5 +1,6 @@
 using System;
 using WrathCombo.CustomComboNS;
+using WrathCombo.Data;
 using WrathCombo.Native;
 using static WrathCombo.Combos.PvE.MCH.Config;
 namespace WrathCombo.Combos.PvE;
@@ -177,6 +178,14 @@ internal partial class MCH : PhysicalRanged
                 (MCH_HaveTarget == 1 || HasBattleTarget()) &&
                 Opener().FullOpener(ref actionID))
                 return actionID;
+
+            // Hold rotation until countdown (farm / back-to-back pulls)
+            if (!InCombat() &&
+                IsEnabled(Preset.MCH_ST_Adv_Opener) &&
+                IsEnabled(Preset.MCH_ST_Opener_BlockEarly) &&
+                ContentCheck.IsInConfiguredContent(
+                    MCH_Balance_Content, ContentCheck.ListSet.BossOnly))
+                return All.SavageBlade;
 
             if (!IsOverheated &&
                 ContentSpecificActions.TryGet(out uint contentAction))

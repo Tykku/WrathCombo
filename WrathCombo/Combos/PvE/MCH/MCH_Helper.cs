@@ -665,7 +665,7 @@ internal partial class MCH
         ];
 
         protected static bool SharedOpenerCooldowns() =>
-            CountdownActive &&
+            (!IsEnabled(Preset.MCH_ST_Opener_BlockEarly) || CountdownActive) &&
             GetRemainingCharges(Reassemble) is 2 &&
             GetRemainingCharges(OriginalHook(GaussRound)) is 3 &&
             GetRemainingCharges(OriginalHook(Ricochet)) is 3 &&

@@ -4431,11 +4431,19 @@ Double Check / Checkmate option</value>
 Prepull:
 - Reassemble at -5
 - Potion at -2
-Without a countdown, prepull steps have no delay.
-(During a countdown only: holds as Savage Blade until each prepull timing)</value>
+Without a countdown (and Wait for Countdown off), prepull steps have no delay.
+With a countdown: holds as Savage Blade until each prepull timing.</value>
   </data>
   <data name="MCH_ST_Adv_Opener_Name" xml:space="preserve">
     <value>Balance Opener (Level 90/100)</value>
+  </data>
+  <data name="MCH_ST_Opener_BlockEarly_Desc" xml:space="preserve">
+    <value>When not in combat will change to Savage Blade to wait for a countdown to appear.
+Mostly here to allow for targeting the boss before the countdown your opener is waiting for.
+ONLY designed to be something you turn on while doing back-to-back pulls of content, NOT suitable to leave on all the time.</value>
+  </data>
+  <data name="MCH_ST_Opener_BlockEarly_Name" xml:space="preserve">
+    <value>Wait for Countdown Options</value>
   </data>
   <data name="MCH_ST_Adv_QueenInHypercharge_Desc" xml:space="preserve">
     <value>Allow Automaton Queen to be used while in Hypercharge</value>
