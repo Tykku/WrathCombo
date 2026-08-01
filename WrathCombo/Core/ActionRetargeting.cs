@@ -322,6 +322,8 @@ public class ActionRetargeting : IDisposable
         // Occult Crescent phantom raises
         OccultCrescent.Revive,
         OccultCrescent.OccultRaise,
+
+        // Occult Crescent party-targetable mit
         OccultCrescent.Pledge,
     ];
 
