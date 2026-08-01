@@ -250,7 +250,7 @@ internal unsafe class AutoRotationController
         // Healer cleanse/rez logic
         if (isHealer ||
             (Player.Job is Job.SMN or Job.RDM && cfg.HealerSettings.AutoRezDPSJobs) ||
-            OccultCrescent.IsEnabledAndUsable(Preset.Phantom_Chemist_Revive, OccultCrescent.Revive) ||
+            OccultCrescent.CanPhantomRaise() ||
             Variant.CanRaise())
         {
             if (ActionManager.Instance()->QueuedActionId == RoleActions.Healer.Esuna)
@@ -556,6 +556,10 @@ internal unsafe class AutoRotationController
         {
             resSpell = OccultCrescent.Revive;
         }
+        else if (OccultCrescent.IsEnabledAndUsable(Preset.Phantom_WhiteMage_OccultRaise, OccultCrescent.OccultRaise))
+        {
+            resSpell = OccultCrescent.OccultRaise;
+        }
         else if (Variant.CanRaise())
         {
             resSpell = Variant.Raise;
@@ -594,7 +598,7 @@ internal unsafe class AutoRotationController
 
             if (deadPeople.Where(RezQuery).FindFirst(x => x is not null, out var member))
             {
-                if (resSpell == OccultCrescent.Revive)
+                if (resSpell == OccultCrescent.Revive || resSpell == OccultCrescent.OccultRaise)
                 {
                     ActionManager.Instance()->UseAction(ActionType.Action, resSpell, member.BattleChara.GameObjectId);
                     return;
