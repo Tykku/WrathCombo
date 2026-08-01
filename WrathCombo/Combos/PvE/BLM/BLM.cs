@@ -202,7 +202,7 @@ internal partial class BLM : Caster
                 return actionID;
 
             if (IsEnabled(Preset.BLM_ST_Movement) &&
-                TryStMovementGcd(ref actionID, useConfiguredPriority: true))
+                TryStMovementGcd(ref actionID, true))
                 return actionID;
 
             if (IsInFirePhase &&
@@ -218,7 +218,7 @@ internal partial class BLM : Caster
                 return actionID;
 
             if (IsInIcePhase &&
-                TryIcePhaseGcd(ref actionID, useTranspose: IsEnabled(Preset.BLM_ST_Transpose)))
+                TryIcePhaseGcd(ref actionID, IsEnabled(Preset.BLM_ST_Transpose)))
                 return actionID;
 
             if (TryOutOfPhaseGcd(ref actionID))

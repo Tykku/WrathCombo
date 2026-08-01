@@ -103,8 +103,7 @@ internal partial class DNC : PhysicalRanged
             // Dance Partner
             if (IsEnabled(Preset.DNC_ST_Adv_Partner) && !InCombat() &&
                 ActionReady(ClosedPosition) &&
-                !HasStatusEffect(Buffs.ClosedPosition) &&
-                (IsInParty() || HasCompanionPresent()))
+                CurrentPartnerNonOptimal)
                 if (InAutoMode(true, false) ||
                     IsEnabled(Preset.DNC_ST_Adv_PartnerAuto))
                     return ClosedPosition.Retarget(actionID, DancePartnerResolver);
@@ -486,8 +485,7 @@ internal partial class DNC : PhysicalRanged
             {
                 // Dance Partner
                 if (ActionReady(ClosedPosition) &&
-                    !HasStatusEffect(Buffs.ClosedPosition) &&
-                    (GetPartyMembers().Count > 1 || HasCompanionPresent()))
+                    CurrentPartnerNonOptimal)
                     return ClosedPosition.Retarget(actionID, DancePartnerResolver);
 
                 if (HasBattleTarget())
@@ -779,8 +777,7 @@ internal partial class DNC : PhysicalRanged
             if (!InCombat() &&
                 IsEnabled(Preset.DNC_AoE_Adv_Partner) &&
                 ActionReady(ClosedPosition) &&
-                !HasStatusEffect(Buffs.ClosedPosition) &&
-                (GetPartyMembers().Count > 1 || HasCompanionPresent()))
+                CurrentPartnerNonOptimal)
                 if (InAutoMode(false, false) ||
                     IsEnabled(Preset.DNC_DesirablePartner))
                     return ClosedPosition.Retarget(actionID, DancePartnerResolver);
@@ -1057,8 +1054,7 @@ internal partial class DNC : PhysicalRanged
             // Dance Partner
             if (!InCombat() &&
                 ActionReady(ClosedPosition) &&
-                !HasStatusEffect(Buffs.ClosedPosition) &&
-                (GetPartyMembers().Count > 1 || HasCompanionPresent()))
+                CurrentPartnerNonOptimal)
                 if (InAutoMode(false, true) ||
                     IsEnabled(Preset.DNC_DesirablePartner))
                     return ClosedPosition.Retarget(actionID, DancePartnerResolver);

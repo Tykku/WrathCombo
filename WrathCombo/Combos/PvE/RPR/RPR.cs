@@ -468,7 +468,8 @@ internal partial class RPR : Melee
                         return OriginalHook(Gluttony);
 
                     if (IsEnabled(Preset.RPR_GluttonyBloodSwathe_BloodSwatheCombo) &&
-                        TryBloodStalkGrimSwatheSoulReaverGCD(ref actionID))
+                        TryBloodStalkGrimSwatheSoulReaverGCD(ref actionID,
+                            IsEnabled(Preset.RPR_GluttonyBloodSwathe_Enshroud)))
                         return actionID;
 
                     break;
@@ -511,7 +512,8 @@ internal partial class RPR : Melee
                         return OriginalHook(Gluttony);
 
                     if (IsEnabled(Preset.RPR_GluttonyBloodSwathe_BloodSwatheCombo) &&
-                        TryBloodStalkGrimSwatheSoulReaverGCD(ref actionID))
+                        TryBloodStalkGrimSwatheSoulReaverGCD(ref actionID,
+                            IsEnabled(Preset.RPR_GluttonyBloodSwathe_Enshroud)))
                         return actionID;
 
                     break;
@@ -531,13 +533,14 @@ internal partial class RPR : Melee
             if (actionID is not (BloodStalk or GrimSwathe))
                 return actionID;
 
-            if (IsEnabled(Preset.RPR_BloodStalkEnshroudCombo_Enshroud) &&
+            bool enshroudEnabled = IsEnabled(Preset.RPR_BloodStalkEnshroudCombo_Enshroud);
+
+            if (enshroudEnabled &&
                 TryBloodStalkGrimSwatheEnshroudGCD(ref actionID))
                 return actionID;
 
-            if (IsEnabled(Preset.RPR_BloodStalkEnshroudCombo_BloodSwatheCombo) &&
-                TryBloodStalkGrimSwatheSoulReaverGCD(ref actionID))
-                return actionID;
+            if (IsEnabled(Preset.RPR_BloodStalkEnshroudCombo_BloodSwatheCombo))
+                TryBloodStalkGrimSwatheSoulReaverGCD(ref actionID, enshroudEnabled);
 
             return actionID;
         }
