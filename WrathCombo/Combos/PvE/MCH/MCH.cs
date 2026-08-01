@@ -22,8 +22,8 @@ internal partial class MCH : PhysicalRanged
             // All weaves
             if (CanWeave())
             {
-                if (OvercapGaussRicochetProtection(out uint gaussRico))
-                    return gaussRico;
+                if (OvercapGaussRicochetProtection(ref actionID))
+                    return actionID;
 
                 if (IsRobotActive && ActionReady(OriginalHook(RookOverdrive)) &&
                     GetTargetHPPercent() <= 1)
@@ -35,8 +35,8 @@ internal partial class MCH : PhysicalRanged
                 if (CanHypercharge(false))
                     return Hypercharge;
 
-                if (GaussRicochetWeaves(out gaussRico, false, true))
-                    return gaussRico;
+                if (GaussRicochetWeaves(ref actionID, false, true))
+                    return actionID;
 
                 if (!IsOverheated)
                 {
@@ -49,8 +49,8 @@ internal partial class MCH : PhysicalRanged
                     if (CanQueen())
                         return OriginalHook(RookAutoturret);
 
-                    if (GaussRicochetWeaves(out gaussRico, false, false))
-                        return gaussRico;
+                    if (GaussRicochetWeaves(ref actionID, false, false))
+                        return actionID;
 
                     if (ActionReady(Dismantle) &&
                         !HasStatusEffect(Debuffs.Dismantled, CurrentTarget, true) &&
@@ -106,14 +106,14 @@ internal partial class MCH : PhysicalRanged
             // All weaves
             if (CanWeave())
             {
-                if (OvercapGaussRicochetProtection(out uint gaussRico))
-                    return gaussRico;
+                if (OvercapGaussRicochetProtection(ref actionID))
+                    return actionID;
 
                 if (CanHypercharge(true))
                     return Hypercharge;
 
-                if (GaussRicochetWeaves(out gaussRico, true, true))
-                    return gaussRico;
+                if (GaussRicochetWeaves(ref actionID, true, true))
+                    return actionID;
 
                 if (!IsOverheated)
                 {
@@ -126,8 +126,8 @@ internal partial class MCH : PhysicalRanged
                     if (CanQueen(true, batteryOnly: true))
                         return OriginalHook(RookAutoturret);
 
-                    if (GaussRicochetWeaves(out gaussRico, true, false))
-                        return gaussRico;
+                    if (GaussRicochetWeaves(ref actionID, true, false))
+                        return actionID;
 
                     if (Role.CanSecondWind(40))
                         return Role.SecondWind;
@@ -187,8 +187,8 @@ internal partial class MCH : PhysicalRanged
             {
                 if (IsEnabled(Preset.MCH_ST_Adv_GaussRicochet) &&
                     MCH_ST_GaussOnlyOrBoth == 0 &&
-                    OvercapGaussRicochetProtection(out uint gaussRico))
-                    return gaussRico;
+                    OvercapGaussRicochetProtection(ref actionID))
+                    return actionID;
 
                 if (IsEnabled(Preset.MCH_ST_Adv_QueenOverdrive) &&
                     IsRobotActive && ActionReady(OriginalHook(RookOverdrive)) &&
@@ -214,10 +214,10 @@ internal partial class MCH : PhysicalRanged
                 }
 
                 if (IsEnabled(Preset.MCH_ST_Adv_GaussRicochet) &&
-                    GaussRicochetWeaves(out gaussRico, false, true,
+                    GaussRicochetWeaves(ref actionID, false, true,
                         gaussOnlyOrBoth: MCH_ST_GaussOnlyOrBoth,
                         chargePool: MCH_ST_GaussRicoManualUse))
-                    return gaussRico;
+                    return actionID;
 
                 if (!IsOverheated)
                 {
@@ -235,10 +235,10 @@ internal partial class MCH : PhysicalRanged
                         return OriginalHook(RookAutoturret);
 
                     if (IsEnabled(Preset.MCH_ST_Adv_GaussRicochet) &&
-                        GaussRicochetWeaves(out gaussRico, false, false,
+                        GaussRicochetWeaves(ref actionID, false, false,
                             gaussOnlyOrBoth: MCH_ST_GaussOnlyOrBoth,
                             chargePool: MCH_ST_GaussRicoManualUse))
-                        return gaussRico;
+                        return actionID;
 
                     if (IsEnabled(Preset.MCH_ST_Dismantle) &&
                         ActionReady(Dismantle) && GroupDamageIncoming() &&
@@ -333,8 +333,8 @@ internal partial class MCH : PhysicalRanged
             if (CanWeave())
             {
                 if (IsEnabled(Preset.MCH_AoE_Adv_GaussRicochet) &&
-                    OvercapGaussRicochetProtection(out uint gaussRico))
-                    return gaussRico;
+                    OvercapGaussRicochetProtection(ref actionID))
+                    return actionID;
 
                 if (IsEnabled(Preset.MCH_AoE_Adv_QueenOverdrive) &&
                     IsRobotActive && ActionReady(OriginalHook(RookOverdrive)) &&
@@ -346,8 +346,8 @@ internal partial class MCH : PhysicalRanged
                     return Hypercharge;
 
                 if (IsEnabled(Preset.MCH_AoE_Adv_GaussRicochet) &&
-                    GaussRicochetWeaves(out gaussRico, true, true))
-                    return gaussRico;
+                    GaussRicochetWeaves(ref actionID, true, true))
+                    return actionID;
 
                 if (!IsOverheated)
                 {
@@ -365,8 +365,8 @@ internal partial class MCH : PhysicalRanged
                         return OriginalHook(RookAutoturret);
 
                     if (IsEnabled(Preset.MCH_AoE_Adv_GaussRicochet) &&
-                        GaussRicochetWeaves(out gaussRico, true, false))
-                        return gaussRico;
+                        GaussRicochetWeaves(ref actionID, true, false))
+                        return actionID;
 
                     if (IsEnabled(Preset.MCH_AoE_Adv_SecondWind) &&
                         Role.CanSecondWind(MCH_AoE_SecondWindHPThreshold))
@@ -485,8 +485,8 @@ internal partial class MCH : PhysicalRanged
 
             if (IsEnabled(Preset.MCH_Heatblast_GaussRound) &&
                 CanWeave() &&
-                GaussRicochetWeaves(out uint gaussRico, false, true))
-                return gaussRico;
+                GaussRicochetWeaves(ref actionID, false, true))
+                return actionID;
 
             if (IsOverheated && ActionReady(OriginalHook(Heatblast)))
                 return OverheatGCD(onAoE: false);
@@ -515,8 +515,8 @@ internal partial class MCH : PhysicalRanged
 
             if (IsEnabled(Preset.MCH_AutoCrossbow_GaussRound) &&
                 CanWeave() &&
-                GaussRicochetWeaves(out uint gaussRico, true, true))
-                return gaussRico;
+                GaussRicochetWeaves(ref actionID, true, true))
+                return actionID;
 
             if (IsOverheated && ActionReady(AutoCrossbow))
                 return OverheatGCD(true, alwaysAutoCrossbow: true);
