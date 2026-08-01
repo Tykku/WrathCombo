@@ -33,6 +33,9 @@ internal partial class OccultCrescent
                 case Preset.Phantom_Knight_Pray:
                     DrawSliderInt(1, 100, Phantom_Knight_Pray_Health,
                         Generics.StopFriendlyHpPercent100, 200);
+                    DrawAdditionalBoolChoice(Phantom_Knight_Pray_KeepUp,
+                        "Keep Pray up",
+                        "Also use Pray whenever the buff is missing, not only below the HP threshold.");
                     break;
                 case Preset.Phantom_Knight_OccultHeal:
                     DrawSliderInt(1, 100, Phantom_Knight_OccultHeal_Health,
@@ -41,6 +44,9 @@ internal partial class OccultCrescent
                 case Preset.Phantom_Knight_Pledge:
                     DrawSliderInt(1, 100, Phantom_Knight_Pledge_Health,
                         Generics.StopFriendlyHpPercent100, 200);
+                    DrawAdditionalBoolChoice(Phantom_Knight_Pledge_SelfOnly,
+                        "Self only",
+                        "When disabled, prefers the lowest-HP party member under the threshold.");
                     break;
                 case Preset.Phantom_Bard_MightyMarch:
                     DrawSliderInt(1, 100, Phantom_Bard_MightyMarch_Health,
@@ -61,7 +67,12 @@ internal partial class OccultCrescent
 
                 case Preset.Phantom_Oracle_Blessing:
                     DrawSliderInt(1, 100, Phantom_Oracle_Blessing_Health,
-                        Generics.StopFriendlyHpPercent100, 200);
+                        "Self or average party HP % at or below which to use Blessing", 200);
+                    break;
+
+                case Preset.Phantom_Oracle_PhantomJudgment:
+                    DrawSliderInt(1, 100, Phantom_Oracle_Judgment_PartyHP,
+                        "Self or average party HP % at or below which to prioritize Judgment as a heal", 200);
                     break;
 
                 case Preset.Phantom_Oracle_Starfall:
@@ -83,6 +94,19 @@ internal partial class OccultCrescent
                         DrawSliderInt(1, 100, Phantom_Oracle_Invulnerability_Health,
                             Generics.StopFriendlyHpPercent100, 200);
                     }
+                    break;
+
+                case Preset.Phantom_Geomancer_Suspend:
+                    DrawAdditionalBoolChoice(Phantom_Geomancer_Suspend_InCombat,
+                        "In combat", "Use Suspend while in combat.");
+                    DrawAdditionalBoolChoice(Phantom_Geomancer_Suspend_OutOfCombat,
+                        "Out of combat", "Use Suspend while out of combat.");
+                    break;
+
+                case Preset.Phantom_BlackMage_OccultToad:
+                    DrawAdditionalBoolChoice(Phantom_BlackMage_OccultToad_RequireAoE,
+                        "Only as AoE mit",
+                        "Only use Occult Toad with 2+ targets in range, or when raidwide damage is incoming.");
                     break;
 
                 case Preset.Phantom_Ranger_OccultUnicorn:
@@ -184,8 +208,25 @@ internal partial class OccultCrescent
                         Generics.StopFriendlyHpPercent100, 200);
                     break;
                 case Preset.Phantom_Necromancer_DrainTouch:
-                    DrawSliderInt(1, 100, Phantom_Necromancer_DrainTouch_Health,
-                        Generics.StopFriendlyHpPercent100, 200);
+                    ImGui.Indent();
+                    ImGui.Text("Drain Touch usage:");
+                    DrawHorizontalRadioButton(Phantom_Necromancer_DrainTouch_Mode,
+                        "DPS", "Use for damage (respects Restrict to Buff).", 0);
+                    DrawHorizontalRadioButton(Phantom_Necromancer_DrainTouch_Mode,
+                        "Heal", "Only when your HP is at or below the heal threshold.", 1);
+                    DrawHorizontalRadioButton(Phantom_Necromancer_DrainTouch_Mode,
+                        "Emergency", "Only when your HP is at or below the emergency threshold.", 2);
+                    ImGui.Unindent();
+                    if (Phantom_Necromancer_DrainTouch_Mode == 1)
+                    {
+                        DrawSliderInt(1, 100, Phantom_Necromancer_DrainTouch_Health,
+                            Generics.StopFriendlyHpPercent100, 200);
+                    }
+                    else if (Phantom_Necromancer_DrainTouch_Mode == 2)
+                    {
+                        DrawSliderInt(1, 100, Phantom_Necromancer_DrainTouch_EmergencyHealth,
+                            Generics.StopFriendlyHpPercent100, 200);
+                    }
                     break;
 
                 case Preset.Phantom_Necromancer:
@@ -243,6 +284,7 @@ internal partial class OccultCrescent
             Phantom_Chemist_OccultEther_MP = new("Phantom_Chemist_OccultEther_MP", 2000),
             Phantom_Chemist_OccultElixir_HP = new("Phantom_Chemist_OccultElixir_HP", 25),
             Phantom_Oracle_Blessing_Health = new("Phantom_Oracle_Blessing_Health", 50),
+            Phantom_Oracle_Judgment_PartyHP = new("Phantom_Oracle_Judgment_PartyHP", 70),
             Phantom_Oracle_Starfall_Health = new("Phantom_Oracle_Starfall_Health", 100),
             Phantom_Oracle_PhantomRejuvenation_Health = new("Phantom_Oracle_PhantomRejuvenation_Health", 50),
             Phantom_Oracle_Invulnerability_Health = new("Phantom_Oracle_Invulnerability_Health", 30),
@@ -254,6 +296,8 @@ internal partial class OccultCrescent
             Phantom_BlueMage_OccultWhiteWind_Health = new("Phantom_BlueMage_OccultWhiteWind_Health", 50),
             Phantom_RedMage_OccultCureII_Health = new("Phantom_RedMage_OccultCureII_Health", 50),
             Phantom_Necromancer_DrainTouch_Health = new("Phantom_Necromancer_DrainTouch_Health", 50),
+            Phantom_Necromancer_DrainTouch_EmergencyHealth = new("Phantom_Necromancer_DrainTouch_EmergencyHealth", 25),
+            Phantom_Necromancer_DrainTouch_Mode = new("Phantom_Necromancer_DrainTouch_Mode", 0),
             Phantom_Necromancer_SpellDuringDrainTouch = new("Phantom_Necromancer_SpellDuringDrainTouch", 0),
             Phantom_Cannoneer_DarkShockPrefer = new("Phantom_Cannoneer_DarkShockPrefer", 0),
             Phantom_Cannoneer_DarkShockImmunePrefer = new("Phantom_Cannoneer_DarkShockImmunePrefer", 0);
@@ -265,7 +309,12 @@ internal partial class OccultCrescent
             Phantom_TimeMage_Comet_RequireSpeed = new("Phantom_TimeMage_Comet_RequireSpeed", true),
             Phantom_TimeMage_Comet_UseSpeed = new("Phantom_TimeMage_Comet_UseSpeed", true),
             Phantom_Oracle_SaveInvulnForStarfall = new("Phantom_Oracle_SaveInvulnForStarfall", true),
-            Phantom_Gladiator_DefendOnlyAtMaxFervor = new("Phantom_Gladiator_DefendOnlyAtMaxFervor", false);
+            Phantom_Gladiator_DefendOnlyAtMaxFervor = new("Phantom_Gladiator_DefendOnlyAtMaxFervor", false),
+            Phantom_Knight_Pray_KeepUp = new("Phantom_Knight_Pray_KeepUp", true),
+            Phantom_Knight_Pledge_SelfOnly = new("Phantom_Knight_Pledge_SelfOnly", false),
+            Phantom_Geomancer_Suspend_InCombat = new("Phantom_Geomancer_Suspend_InCombat", false),
+            Phantom_Geomancer_Suspend_OutOfCombat = new("Phantom_Geomancer_Suspend_OutOfCombat", false),
+            Phantom_BlackMage_OccultToad_RequireAoE = new("Phantom_BlackMage_OccultToad_RequireAoE", true);
 
         #endregion
     }

@@ -71,7 +71,8 @@ internal partial class OccultCrescent
             return false;
 
         if (IsEnabledAndUsable(Preset.Phantom_Knight_Pray, Pray) &&
-            PlayerHP <= Phantom_Knight_Pray_Health && !HasStatusEffect(Buffs.Pray) && !CanWeaveNow)
+            !HasStatusEffect(Buffs.Pray) && !CanWeaveNow &&
+            (Phantom_Knight_Pray_KeepUp || PlayerHP <= Phantom_Knight_Pray_Health))
         {
             actionID = Pray; // regen
             return true;
@@ -95,11 +96,8 @@ internal partial class OccultCrescent
         }
 
         if (IsEnabledAndUsable(Preset.Phantom_Knight_Pledge, Pledge) &&
-            PlayerHP <= Phantom_Knight_Pledge_Health)
-        {
-            actionID = Pledge; // inv
+            TryUsePledge(ref actionID))
             return true;
-        }
 
         return false;
     }
@@ -261,9 +259,13 @@ internal partial class OccultCrescent
         }
 
         if (IsEnabledAndUsable(Preset.Phantom_Berserker_DeadlyBlow, DeadlyBlow) &&
-            GetStatusEffectRemainingTime(Buffs.PentupRage) <= 3f && (HasStatusEffect(Buffs.PentupRage) || CurrentJobLevel < 3) && InActionRange(DeadlyBlow) && !CanWeaveNow)
+            InActionRange(DeadlyBlow) && !CanWeaveNow &&
+            (CurrentJobLevel < 3 ||
+             !IsEnabled(Preset.Phantom_Berserker_Rage) ||
+             GetStatusEffectRemainingTime(Buffs.PentupRage) <= 3f && HasStatusEffect(Buffs.PentupRage) ||
+             !HasStatusEffect(Buffs.PentupRage) && !ActionReady(Rage)))
         {
-            actionID = DeadlyBlow; // better when buff timer is low
+            actionID = DeadlyBlow; // better when buff timer is low / Rage on CD
             return true;
         }
 
@@ -431,17 +433,17 @@ internal partial class OccultCrescent
 
         if (!CanWeaveNow) return false;
 
-        if (IsEnabledAndUsable(Preset.Phantom_Bard_MightyMarch, MightyMarch) &&
-            !HasStatusEffect(Buffs.MightyMarch) && PlayerHP <= Phantom_Bard_MightyMarch_Health)
-        {
-            actionID = MightyMarch; // aoe heal
-            return true;
-        }
-
         if (IsEnabledAndUsable(Preset.Phantom_Bard_RomeosBallad, RomeosBallad) &&
             CanInterruptEnemy())
         {
             actionID = RomeosBallad; // interrupt
+            return true;
+        }
+
+        if (IsEnabledAndUsable(Preset.Phantom_Bard_MightyMarch, MightyMarch) &&
+            !HasStatusEffect(Buffs.MightyMarch) && PlayerHP <= Phantom_Bard_MightyMarch_Health)
+        {
+            actionID = MightyMarch; // aoe heal
             return true;
         }
 
@@ -489,17 +491,25 @@ internal partial class OccultCrescent
         UpdateOracleDeck();
         bool lastCard = OracleRemainingCards.Count <= 1;
         bool starfallStillInDeck = OracleRemainingCards.Contains(Buffs.PredictionOfStarfall);
-        bool holdForStarfall = !lastCard && starfallStillInDeck &&
-                               Phantom_Oracle_SaveInvulnForStarfall &&
-                               IsEnabled(Preset.Phantom_Oracle_Invulnerability) &&
-                               HasActionEquipped(Invulnerability) && ActionReady(Invulnerability) &&
+        bool canStillInvulnForStarfall =
+            Phantom_Oracle_SaveInvulnForStarfall &&
+            IsEnabled(Preset.Phantom_Oracle_Invulnerability) &&
+            HasActionEquipped(Invulnerability) && ActionReady(Invulnerability) &&
+            !HasStatusEffect(Buffs.Invulnerability);
+        bool holdForStarfall = !lastCard && starfallStillInDeck && canStillInvulnForStarfall &&
                                GetStatusEffectRemainingTime(OracleCurrentCard) > 3f;
+        bool tanking = PlayerHasTankStance();
+        bool raidwideIncoming = GroupDamageIncoming();
+        float partyAvgHp = GetPartyAvgHPPercent();
+        bool needsBlessingHeal = PlayerHP <= Phantom_Oracle_Blessing_Health ||
+                                 partyAvgHp <= Phantom_Oracle_Blessing_Health;
+        bool needsJudgmentHeal = PlayerHP <= Phantom_Oracle_Judgment_PartyHP ||
+                                 partyAvgHp <= Phantom_Oracle_Judgment_PartyHP;
 
         if (HasStatusEffect(Buffs.PredictionOfStarfall))
         {
             if (IsEnabledAndUsable(Preset.Phantom_Oracle_Invulnerability, Invulnerability) &&
-                Phantom_Oracle_SaveInvulnForStarfall && InCombat() &&
-                !HasStatusEffect(Buffs.Invulnerability))
+                canStillInvulnForStarfall && InCombat())
             {
                 actionID = Invulnerability;
                 return true;
@@ -507,15 +517,14 @@ internal partial class OccultCrescent
 
             bool canStarfallSafely =
                 HasStatusEffect(Buffs.Invulnerability) ||
-                !Phantom_Oracle_SaveInvulnForStarfall ||
-                !IsEnabled(Preset.Phantom_Oracle_Invulnerability) ||
-                !HasActionEquipped(Invulnerability) ||
-                !ActionReady(Invulnerability);
+                (PlayerHP >= Phantom_Oracle_Starfall_Health &&
+                 !canStillInvulnForStarfall &&
+                 !raidwideIncoming);
 
             if (IsEnabledAndUsable(Preset.Phantom_Oracle_Starfall, Starfall) &&
-                PlayerHP >= Phantom_Oracle_Starfall_Health &&
                 canStarfallSafely &&
-                (!IsEnabled(Preset.Phantom_RestrictToBuff) || Bursting.PlayerIsDamageBuffed || lastCard))
+                (!IsEnabled(Preset.Phantom_RestrictToBuff) || Bursting.PlayerIsDamageBuffed ||
+                 HasStatusEffect(Buffs.Invulnerability) || lastCard))
             {
                 MarkOracleCardPlayed(Buffs.PredictionOfStarfall);
                 actionID = Starfall; // damage + 90% total HP damage to self
@@ -527,20 +536,39 @@ internal partial class OccultCrescent
                 return false;
         }
 
-        if (IsEnabledAndUsable(Preset.Phantom_Oracle_Blessing, Blessing) &&
-            HasStatusEffect(Buffs.PredictionOfBlessing) &&
-            (PlayerHP <= Phantom_Oracle_Blessing_Health || lastCard) &&
-            (!holdForStarfall || lastCard))
+        // While tanking with Starfall still saved, prefer Cleansing (potency without self-harm)
+        if (tanking && holdForStarfall &&
+            IsEnabledAndUsable(Preset.Phantom_Oracle_Cleansing, Cleansing) &&
+            HasStatusEffect(Buffs.PredictionOfCleansing))
         {
-            MarkOracleCardPlayed(Buffs.PredictionOfBlessing);
-            actionID = Blessing; // heal
+            MarkOracleCardPlayed(Buffs.PredictionOfCleansing);
+            actionID = Cleansing;
             return true;
         }
 
+        // Dispel / interrupt before heal cards
         if (IsEnabledAndUsable(Preset.Phantom_Oracle_Recuperation, Recuperation) &&
             HasCleansableDoom())
         {
             actionID = Recuperation;
+            return true;
+        }
+
+        if (IsEnabledAndUsable(Preset.Phantom_Oracle_Cleansing, Cleansing) &&
+            HasStatusEffect(Buffs.PredictionOfCleansing) && CanInterruptEnemy())
+        {
+            MarkOracleCardPlayed(Buffs.PredictionOfCleansing);
+            actionID = Cleansing;
+            return true;
+        }
+
+        if (IsEnabledAndUsable(Preset.Phantom_Oracle_Blessing, Blessing) &&
+            HasStatusEffect(Buffs.PredictionOfBlessing) &&
+            (needsBlessingHeal || lastCard) &&
+            (!holdForStarfall || lastCard || tanking))
+        {
+            MarkOracleCardPlayed(Buffs.PredictionOfBlessing);
+            actionID = Blessing; // heal
             return true;
         }
 
@@ -554,6 +582,17 @@ internal partial class OccultCrescent
         if (IsEnabledAndUsable(Preset.Phantom_Oracle_PhantomDoom, PhantomDoom) && HasBattleTarget())
         {
             actionID = PhantomDoom;
+            return true;
+        }
+
+        // Judgment as heal when party/self is low — skip RestrictToBuff
+        if (IsEnabledAndUsable(Preset.Phantom_Oracle_PhantomJudgment, PhantomJudgment) &&
+            HasStatusEffect(Buffs.PredictionOfJudgment) &&
+            needsJudgmentHeal &&
+            (!holdForStarfall || lastCard || tanking))
+        {
+            MarkOracleCardPlayed(Buffs.PredictionOfJudgment);
+            actionID = PhantomJudgment;
             return true;
         }
 
@@ -607,7 +646,7 @@ internal partial class OccultCrescent
 
         if (IsEnabledAndUsable(Preset.Phantom_Cannoneer_SilverCannon, SilverCannon) &&
             ((!HasStatusEffect(Debuffs.SilverSickness, CurrentTarget, true) ||
-              GetStatusEffectRemainingTime(Debuffs.SilverSickness, CurrentTarget, true) < 30f) ||
+              GetStatusEffectRemainingTime(Debuffs.SilverSickness, CurrentTarget, true) < 15f) ||
              IsNotEnabled(Preset.Phantom_Cannoneer_HolyCannon)))
         {
             actionID = SilverCannon; // debuff
@@ -736,7 +775,9 @@ internal partial class OccultCrescent
         }
 
         if (IsEnabledAndUsable(Preset.Phantom_Geomancer_Suspend, Suspend) &&
-            !HasStatusEffect(Buffs.Suspend))
+            !HasStatusEffect(Buffs.Suspend) &&
+            (InCombatNow && Phantom_Geomancer_Suspend_InCombat ||
+             !InCombatNow && Phantom_Geomancer_Suspend_OutOfCombat))
         {
             actionID = Suspend; // float
             return true;
@@ -1009,7 +1050,10 @@ internal partial class OccultCrescent
         if (CanWeaveNow)
             return false;
 
-        if (IsEnabledAndUsable(Preset.Phantom_BlackMage_OccultToad, OccultToad) && InCombat())
+        if (IsEnabledAndUsable(Preset.Phantom_BlackMage_OccultToad, OccultToad) && InCombat() &&
+            (!Phantom_BlackMage_OccultToad_RequireAoE ||
+             GroupDamageIncoming() ||
+             NumberOfEnemiesInRange(OccultToad) >= 2))
         {
             actionID = OccultToad;
             return true;
@@ -1285,8 +1329,7 @@ internal partial class OccultCrescent
         {
             if (!IsEnabledAndUsable(Preset.Phantom_Necromancer_DrainTouch, DrainTouch) || !HasBattleTarget())
                 return false;
-            if (PlayerHP <= Phantom_Necromancer_DrainTouch_Health ||
-                !IsEnabled(Preset.Phantom_RestrictToBuff) || Bursting.PlayerIsDamageBuffed)
+            if (ShouldUseDrainTouch())
             {
                 actionID = DrainTouch;
                 return true;
@@ -1343,6 +1386,47 @@ internal partial class OccultCrescent
             return true;
         return !HasStatusEffect(Buffs.DrainTouch);
     }
+
+    private static bool ShouldUseDrainTouch()
+    {
+        if (Phantom_Necromancer_DrainTouch_Mode == 1)
+            return PlayerHP <= Phantom_Necromancer_DrainTouch_Health;
+        if (Phantom_Necromancer_DrainTouch_Mode == 2)
+            return PlayerHP <= Phantom_Necromancer_DrainTouch_EmergencyHealth;
+
+        // DPS mode
+        return !IsEnabled(Preset.Phantom_RestrictToBuff) || Bursting.PlayerIsDamageBuffed;
+    }
+
+    private static bool TryUsePledge(ref uint actionID)
+    {
+        if (Phantom_Knight_Pledge_SelfOnly)
+        {
+            if (PlayerHP > Phantom_Knight_Pledge_Health)
+                return false;
+            actionID = Pledge;
+            return true;
+        }
+
+        var ally = SimpleTarget.LowestHPPAlly;
+        if (ally is not null &&
+            ally.GameObjectId != LocalPlayer.GameObjectId &&
+            GetPartyMembers().Any(m => m.BattleChara?.GameObjectId == ally.GameObjectId) &&
+            GetTargetHPPercent(ally) <= Phantom_Knight_Pledge_Health)
+        {
+            actionID = Pledge.Retarget(actionID, ally);
+            return true;
+        }
+
+        if (PlayerHP <= Phantom_Knight_Pledge_Health)
+        {
+            actionID = Pledge;
+            return true;
+        }
+
+        return false;
+    }
+
     private static bool ShouldHoldOccultQuick() =>
         HasStatusEffect(RDM.Buffs.Manafication) ||
         HasStatusEffect(RDM.Buffs.Embolden) ||

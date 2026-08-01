@@ -5805,7 +5805,7 @@ This is the ideal option for newcomers to the job.</value>
     <value>Occult Thunder III</value>
   </data>
   <data name="Phantom_BlackMage_OccultToad_Desc" xml:space="preserve">
-    <value>Adds Occult Toad into the rotation.</value>
+    <value>Adds Occult Toad into the rotation (optionally only as AoE / raidwide mit).</value>
   </data>
   <data name="Phantom_BlackMage_OccultToad_Name" xml:space="preserve">
     <value>Occult Toad</value>
@@ -6048,7 +6048,7 @@ Requires Occult Potions in inventory.</value>
     <value>Sunbath</value>
   </data>
   <data name="Phantom_Geomancer_Suspend_Desc" xml:space="preserve">
-    <value>Adds Suspend into the rotation.</value>
+    <value>Adds Suspend into the rotation (configure in/out of combat).</value>
   </data>
   <data name="Phantom_Geomancer_Suspend_Name" xml:space="preserve">
     <value>Suspend</value>
@@ -6108,13 +6108,13 @@ Requires Occult Potions in inventory.</value>
     <value>Phantom Guard</value>
   </data>
   <data name="Phantom_Knight_Pledge_Desc" xml:space="preserve">
-    <value>Adds Pledge into the rotation.</value>
+    <value>Adds Pledge into the rotation (self or lowest-HP party member).</value>
   </data>
   <data name="Phantom_Knight_Pledge_Name" xml:space="preserve">
     <value>Pledge</value>
   </data>
   <data name="Phantom_Knight_Pray_Desc" xml:space="preserve">
-    <value>Adds Pray into the rotation.</value>
+    <value>Adds Pray into the rotation (keep-up and/or HP threshold).</value>
   </data>
   <data name="Phantom_Knight_Pray_Name" xml:space="preserve">
     <value>Pray</value>
@@ -6201,7 +6201,7 @@ Requires Occult Potions in inventory.</value>
     <value>Doomsday</value>
   </data>
   <data name="Phantom_Necromancer_DrainTouch_Desc" xml:space="preserve">
-    <value>Adds Drain Touch into the rotation (heal priority below HP threshold, otherwise filler).</value>
+    <value>Adds Drain Touch into the rotation (DPS, Heal, or Emergency mode).</value>
   </data>
   <data name="Phantom_Necromancer_DrainTouch_Name" xml:space="preserve">
     <value>Drain Touch</value>
@@ -6282,7 +6282,7 @@ Requires Occult Potions in inventory.</value>
     <value>Phantom Doom</value>
   </data>
   <data name="Phantom_Oracle_PhantomJudgment_Desc" xml:space="preserve">
-    <value>Adds Phantom Judgment into the rotation.</value>
+    <value>Adds Phantom Judgment into the rotation (prioritizes as a heal when party/self HP is low).</value>
   </data>
   <data name="Phantom_Oracle_PhantomJudgment_Name" xml:space="preserve">
     <value>Phantom Judgment</value>

@@ -570,6 +570,7 @@ public enum Preset
     [OccultCrescent]
     [ParentCombo(Phantom_Knight)]
     [JobInfo(Job.ADV)]
+    [PossiblyRetargeted(41591)] // OccultCrescent.Pledge
     Phantom_Knight_Pledge = 110007,
 
     [OccultCrescent(OccultCrescent.JobIDs.Monk)]

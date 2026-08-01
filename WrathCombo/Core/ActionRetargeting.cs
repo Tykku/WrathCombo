@@ -322,6 +322,7 @@ public class ActionRetargeting : IDisposable
         // Occult Crescent phantom raises
         OccultCrescent.Revive,
         OccultCrescent.OccultRaise,
+        OccultCrescent.Pledge,
     ];
 
     /// <summary>
