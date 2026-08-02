@@ -564,7 +564,7 @@ internal partial class DNC
     /// <param name="action">The action ID to check.</param>
     /// <param name="updatedAction">
     ///     The matching dance step the action was assigned to.<br />
-    ///     Will be Savage Blade if used and was not a custom dance step.<br />
+    ///     Will be Cease if used and was not a custom dance step.<br />
     ///     Do not use this value if the return is <c>false</c>.
     /// </param>
     /// <returns>If the action was assigned as a custom dance step.</returns>
