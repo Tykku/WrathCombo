@@ -437,6 +437,9 @@
         <None Update="Resources\AoEHeals.png">
           <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
+        <None Update="Resources\NewSavageBlade.png">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
         <None Update="Resources\SingleTargetDPS.png">
           <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
