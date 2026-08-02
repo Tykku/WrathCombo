@@ -444,7 +444,7 @@ internal partial class DNC
                     DrawRadioButton(
                         DNC_Partner_ActionToShow, "Closed Position",
                         "When your current partner is optimal Closed Position will be shown.\n" +
-                        "This will block you from using Closed Position or Ending\n(unless you hard target a friendly other than your partner)"
+                        "This will block you from using Closed Position or Ending\n(unless you hard target a friendly other than your partner)",
                         outputValue: (int)PartnerShowAction.ClosedPosition,
                         descriptionAsTooltip: true);
                     DrawRadioButton(
