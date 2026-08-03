@@ -13,7 +13,7 @@ public static class ContentSpecificActions
     /// </summary>
     /// <param name="contentAction">
     ///     The action to perform, if any.<br/>
-    ///     Defaults to <see cref="All.SavageBlade"/> when the
+    ///     Defaults to <see cref="All.Cease"/> when the
     ///     <see langword="return"/> would be <see langword="false"/>.
     /// </param>
     /// <param name="healing">
