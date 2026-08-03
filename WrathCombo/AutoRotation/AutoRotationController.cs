@@ -112,7 +112,6 @@ internal unsafe class AutoRotationController
         GetTargetDistance(x.BattleChara) <= QueryRange &&
         !HasStatusEffect(2648, x.BattleChara, true) && // Transcendent Effect
         !HasStatusEffect(148, x.BattleChara, true) && // Raise Effect
-        !HasStatusEffect(4263, x.BattleChara, true) && // Raise Denied (OC)
         TimeSpentDead(x.BattleChara.GameObjectId).TotalSeconds > 2;
 
     public static bool LockedST
@@ -576,9 +575,9 @@ internal unsafe class AutoRotationController
         if (resSpell == 0)
             return;
 
-        IEnumerable<WrathPartyMember> deadPeople = DeadPeople;
+        IEnumerable<WrathPartyMember> deadPeople = DeadPeople.Where(x => x.BattleChara.CanUseOn(resSpell));
 
-        if (cfg.HealerSettings.AutoRezDPSJobsHealersOnly && Player.Job is Job.RDM or Job.SMN)
+        if (cfg.HealerSettings.AutoRezDPSJobsHealersOnly && (resSpell is RDM.Verraise || Player.Job is Job.SMN))
         {
             deadPeople = deadPeople.Where(x => x.GetRole() is CombatRole.Healer || x.RealJob?.GetJob() is Job.SMN or Job.RDM);
         }

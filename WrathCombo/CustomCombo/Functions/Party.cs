@@ -120,7 +120,7 @@ internal abstract partial class CustomComboFunctions
             var existingIds = new HashSet<ulong>(field.Select(x => x.GameObjectId));
 
             foreach (var pc in Svc.Objects.GetBattleCharas()
-                         .Where(x => x.CanUseOn(WHM.Raise) && x.IsDead))
+                         .Where(x => x.IsDead))
             {
                 if (pc.SafeStatusList?.Any(x => x.StatusId == All.Buffs.Raised) == true)
                     continue;
