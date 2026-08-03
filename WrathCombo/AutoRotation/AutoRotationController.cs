@@ -577,7 +577,7 @@ internal unsafe class AutoRotationController
 
         IEnumerable<WrathPartyMember> deadPeople = DeadPeople.Where(x => x.BattleChara.CanUseOn(resSpell));
 
-        if (cfg.HealerSettings.AutoRezDPSJobsHealersOnly && (resSpell is RDM.Verraise || Player.Job is Job.SMN))
+        if (cfg.HealerSettings.AutoRezDPSJobsHealersOnly && (resSpell is RDM.Verraise || (Player.Job is Job.SMN && resSpell is SCH.Resurrection)))
         {
             deadPeople = deadPeople.Where(x => x.GetRole() is CombatRole.Healer || x.RealJob?.GetJob() is Job.SMN or Job.RDM);
         }
