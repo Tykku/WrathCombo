@@ -54,13 +54,16 @@ namespace WrathCombo.Window.Tabs
             ImGui.Separator();
             ImGuiEx.TextUnderlined("Utility Buttons");
 
-            ImGui.Columns(2, border: false);
+            ImGui.Columns(3, border: false);
             foreach (var act in P.CustomActions.Manager.Actions)
             {
                 if (act.Id is > All.Cease and < All.Items)
                 {
                     DrawUtilityAction(act);
                     ImGui.NextColumn();
+
+                    if (ImGui.GetColumnIndex() == 2)
+                        ImGui.Separator();
                 }
             }
             ImGui.Columns(1);
@@ -168,6 +171,7 @@ namespace WrathCombo.Window.Tabs
         {
             if (P.CustomActions.Manager.IconTextures[act.IconId].TryGetWrap(out var texture, out _))
             {
+                ImGuiEx.TextWrapped($"{act.Name}");
                 var btnSize = ImGui.GetFrameHeight() * 2.5f.Scale();
                 ImGui.ImageButton(texture.Handle, new(btnSize));
 
