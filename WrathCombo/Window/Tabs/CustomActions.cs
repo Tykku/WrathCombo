@@ -62,7 +62,7 @@ namespace WrathCombo.Window.Tabs
                     DrawUtilityAction(act);
                     ImGui.NextColumn();
 
-                    if (ImGui.GetColumnIndex() == 2)
+                    if (ImGui.GetColumnIndex() == 0)
                         ImGui.Separator();
                 }
             }
