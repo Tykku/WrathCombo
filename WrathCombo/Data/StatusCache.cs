@@ -160,7 +160,9 @@ internal class StatusCache
                     .Select(row => row.Key)
             )
             {
+            1132, // Baelsar's Wall - Extreme Caution
             4130 // Authority's Hold
+
             }.ToFrozenSet();
 
         internal static readonly FrozenSet<uint> Pyretics =
