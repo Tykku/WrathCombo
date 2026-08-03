@@ -177,7 +177,7 @@ internal partial class DNC : PhysicalRanged
 
             #endregion
 
-            if (ContentSpecificActions.TryGet(out var contentAction))
+            if (ContentSpecificActions.TryGet(ref actionID, out uint contentAction))
                 return contentAction;
 
             #region Weaves
@@ -525,7 +525,7 @@ internal partial class DNC : PhysicalRanged
 
             #endregion
 
-            if (ContentSpecificActions.TryGet(out var contentAction))
+            if (ContentSpecificActions.TryGet(ref actionID, out uint contentAction))
                 return contentAction;
 
             #region Weaves
@@ -807,7 +807,7 @@ internal partial class DNC : PhysicalRanged
 
             #endregion
 
-            if (ContentSpecificActions.TryGet(out var contentAction))
+            if (ContentSpecificActions.TryGet(ref actionID, out uint contentAction))
                 return contentAction;
 
             #region Weaves
@@ -1083,7 +1083,7 @@ internal partial class DNC : PhysicalRanged
 
             #endregion
 
-            if (ContentSpecificActions.TryGet(out var contentAction))
+            if (ContentSpecificActions.TryGet(ref actionID, out uint contentAction))
                 return contentAction;
 
             #region Weaves

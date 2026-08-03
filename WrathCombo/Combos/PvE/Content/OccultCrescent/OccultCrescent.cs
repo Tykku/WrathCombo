@@ -1435,11 +1435,12 @@ internal partial class OccultCrescent
 
     private static bool TryRetargetPhantomRaise(ref uint actionID, uint raiseAction)
     {
-        var raiseTarget = SimpleTarget.Stack.AllyToRaise;
+        var raiseTarget = SimpleTarget.Stack.AllyToRaiseOccult;
         if (raiseTarget is null)
             return false;
 
-        actionID = raiseAction.Retarget(actionID, raiseTarget);
+        var originalId = actionID;
+        actionID = raiseAction.Retarget(originalId, raiseTarget);
         return true;
     }
 

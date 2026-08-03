@@ -16,7 +16,7 @@ internal partial class MCH : PhysicalRanged
                 return actionID;
 
             if (!IsOverheated &&
-                ContentSpecificActions.TryGet(out uint contentAction))
+                ContentSpecificActions.TryGet(ref actionID, out uint contentAction))
                 return contentAction;
 
             // All weaves
@@ -100,7 +100,7 @@ internal partial class MCH : PhysicalRanged
             if (HasStatusEffect(Buffs.Flamethrower) || JustUsed(Flamethrower, GCD))
                 return All.SavageBlade;
 
-            if (ContentSpecificActions.TryGet(out uint contentAction))
+            if (ContentSpecificActions.TryGet(ref actionID, out uint contentAction))
                 return contentAction;
 
             // All weaves
@@ -179,7 +179,7 @@ internal partial class MCH : PhysicalRanged
                 return actionID;
 
             if (!IsOverheated &&
-                ContentSpecificActions.TryGet(out uint contentAction))
+                ContentSpecificActions.TryGet(ref actionID, out uint contentAction))
                 return contentAction;
 
             // All weaves
@@ -326,7 +326,7 @@ internal partial class MCH : PhysicalRanged
             if (HasStatusEffect(Buffs.Flamethrower) || JustUsed(Flamethrower, GCD))
                 return All.SavageBlade;
 
-            if (ContentSpecificActions.TryGet(out uint contentAction))
+            if (ContentSpecificActions.TryGet(ref actionID, out uint contentAction))
                 return contentAction;
 
             // All weaves
