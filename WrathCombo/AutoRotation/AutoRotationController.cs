@@ -57,6 +57,8 @@ internal unsafe class AutoRotationController
     public static int AutorotRaidwides = 0;
     public static bool TankbusterHandled = false;
 
+    private const ushort TranscendantBuff = 418; // Post-raise invincibility
+
     private static Dictionary<Preset, bool> _autoActions => Presets.GetJobAutorots;
 
     public AutoRotationController()
@@ -407,7 +409,7 @@ internal unsafe class AutoRotationController
                 continue;
 
             // Skip if rez invuln is up
-            if (!action.IsHeal && HasStatusEffect(418))
+            if (!action.IsHeal && HasStatusEffect(TranscendantBuff))
                 continue;
 
             uint gameAct = attributes.ReplaceSkill!.ActionIDs.First();
@@ -549,7 +551,7 @@ internal unsafe class AutoRotationController
     // Note: Similar to Kardia, because this has its own set of rules but regarding timings I'm not sure if I want to wire this up to retargeting
     private static void RezParty()
     {
-        if (HasStatusEffect(418)) return;
+        if (HasStatusEffect(TranscendantBuff)) return;
         uint resSpell = 0;
 
         if (OccultCrescent.IsEnabledAndUsable(Preset.Phantom_Chemist_Revive, OccultCrescent.Revive))
@@ -662,7 +664,7 @@ internal unsafe class AutoRotationController
 
     private static void CleanseParty()
     {
-        if (HasStatusEffect(418) || LocalPlayer is not { } || !EzThrottler.Throttle("CleanseThrottle", 50)) return;
+        if (HasStatusEffect(TranscendantBuff) || LocalPlayer is not { } || !EzThrottler.Throttle("CleanseThrottle", 50)) return;
 
         if (SimpleTarget.Stack.AllyToEsuna is IBattleChara memberBC)
         {
@@ -679,7 +681,7 @@ internal unsafe class AutoRotationController
     // it is known if it acts funny with the standalone retarget then that's what causes it.
     private static void UpdateKardiaTarget()
     {
-        if (HasStatusEffect(418)) return;
+        if (HasStatusEffect(TranscendantBuff)) return;
         if (!LevelChecked(SGE.Kardia)) return;
         if (CombatEngageDuration().TotalSeconds < 3) return;
 
@@ -1071,17 +1073,25 @@ internal unsafe class AutoRotationController
         {
             get
             {
-                var priorityMatches = Svc.Objects.GetBattleCharas().Where(x => Query(x) && IsPriority(x)).ToList();
-                return priorityMatches.Count != 0 ? priorityMatches : Svc.Objects.GetBattleCharas().Where(x => Query(x));
+                var validTargets = Svc.Objects.GetBattleCharas()
+                    .Where(Query)
+                    .ToList();
+
+                if (!cfg.DPSSettings.FATEPriority && !cfg.DPSSettings.QuestPriority)
+                    return validTargets;
+
+                bool playerInFate = cfg.DPSSettings.FATEPriority && InFATE();
+
+                var priorityMatches = validTargets
+                    .Where(x =>
+                        (playerInFate && x.Struct()->FateId != 0) ||
+                        (cfg.DPSSettings.QuestPriority && IsQuestMob(x)))
+                    .ToList();
+
+                return priorityMatches.Count > 0
+                    ? priorityMatches
+                    : validTargets;
             }
-        }
-
-        private static bool IsPriority(IBattleChara x)
-        {
-            bool isFate = cfg.DPSSettings.FATEPriority && x.Struct()->FateId != 0 && InFATE();
-            bool isQuest = cfg.DPSSettings.QuestPriority && IsQuestMob(x);
-
-            return isFate || isQuest;
         }
 
         public static bool IsCombatPriority(IBattleChara x)
@@ -1093,7 +1103,9 @@ internal unsafe class AutoRotationController
 
         public static IGameObject? GetTankTarget()
         {
-            var tank = GetPartyMembers().FirstOrDefault(x => x.BattleChara?.GetRole() == CombatRole.Tank || HasStatusEffect(3615, x.BattleChara, true));
+            var tank = GetPartyMembers().FirstOrDefault(x => x.BattleChara?.GetRole() == CombatRole.Tank ||
+                HasStatusEffect(1719, x.BattleChara, true) || // BLU Mighty Guard
+                HasStatusEffect(3615, x.BattleChara, true));  // Duty Support Gosetsu Tank Stance
             if (tank == null)
                 return null;
 
