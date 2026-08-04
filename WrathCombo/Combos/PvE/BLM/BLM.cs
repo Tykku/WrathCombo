@@ -322,7 +322,7 @@ internal partial class BLM : Caster
                 return actionID;
 
             return HasStatusEffect(Buffs.Triplecast) && LevelChecked(Triplecast)
-                ? All.SavageBlade
+                ? All.Cease
                 : actionID;
         }
     }
