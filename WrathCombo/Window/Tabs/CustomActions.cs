@@ -38,10 +38,10 @@ namespace WrathCombo.Window.Tabs
 
                 foreach (var act in P.CustomActions.Manager.Actions)
                 {
-                    if (act.Id >= All.Items)
+                    if (act.Id > All.AoeHeals)
                         continue;
 
-                    DrawAction(act);
+                    DrawSettingAction(act);
                 }
             }
 
@@ -50,6 +50,23 @@ namespace WrathCombo.Window.Tabs
                 Service.Configuration.Save();
 
             ImGuiComponents.HelpMarker("This will hide all combo outputs on custom actions, leaving only these icons showing. This is not advised if you wish to see the real actions being output by the combos on your hotbar, and should only be used if you feel it's something you want.");
+
+            ImGui.Separator();
+            ImGuiEx.TextUnderlined("Utility Buttons");
+
+            ImGui.Columns(3, border: false);
+            foreach (var act in P.CustomActions.Manager.Actions)
+            {
+                if (act.Id is > All.Cease and < All.Items)
+                {
+                    DrawUtilityAction(act);
+                    ImGui.NextColumn();
+
+                    if (ImGui.GetColumnIndex() == 0)
+                        ImGui.Separator();
+                }
+            }
+            ImGui.Columns(1);
 
             if (ImGui.GetIO().MouseDownDuration[0] > 0.5f)
                 DragDropMode = true;
@@ -88,7 +105,7 @@ namespace WrathCombo.Window.Tabs
             }
         }
 
-        private static unsafe void DrawAction(CustomAction act)
+        private static unsafe void DrawSettingAction(CustomAction act)
         {
             if (P.CustomActions.Manager.IconTextures[act.IconId].TryGetWrap(out var texture, out _))
             {
@@ -146,6 +163,42 @@ namespace WrathCombo.Window.Tabs
 
 
                 ImGui.TableNextColumn();
+                ImGuiEx.TextWrapped($"{act.Description}");
+            }
+        }
+
+        private static unsafe void DrawUtilityAction(CustomAction act)
+        {
+            if (P.CustomActions.Manager.IconTextures[act.IconId].TryGetWrap(out var texture, out _))
+            {
+                ImGuiEx.TextWrapped($"{act.Name}");
+                var btnSize = ImGui.GetFrameHeight() * 2.5f.Scale();
+                ImGui.ImageButton(texture.Handle, new(btnSize));
+
+                if (ImGui.IsItemHovered())
+                {
+                    if (ImGui.IsMouseClicked(ImGuiMouseButton.Left))
+                    {
+                        Svc.GameConfig.TryGet(HotbarSetting, out HiddenSlots);
+                        Svc.Log.Debug($"User has slots {(HiddenSlots == 0 ? "hidden" : "shown")}");
+                    }
+                    if (ImGui.IsMouseDown(ImGuiMouseButton.Left))
+                    {
+                        SelectedAction = act;
+                        Svc.GameConfig.Set(HotbarSetting, 1);
+                    }
+
+                    ImGui.BeginTooltip();
+                    ImGui.Image(texture.Handle, new(50));
+                    ImGui.SameLine();
+                    var pos = ImGui.GetCursorPos();
+                    ImGuiEx.Text($"{act.Name}");
+                    ImGui.SetCursorPosX(pos.X);
+                    ImGui.SetCursorPosY(pos.Y + 20f.Scale());
+                    ImGuiEx.Text($"{act.Description}");
+                    ImGui.EndTooltip();
+                }
+
                 ImGuiEx.TextWrapped($"{act.Description}");
             }
         }
