@@ -57,8 +57,6 @@ internal unsafe class AutoRotationController
     public static int AutorotRaidwides = 0;
     public static bool TankbusterHandled = false;
 
-    private const ushort TranscendantBuff = 418; // Post-raise invincibility
-
     private static Dictionary<Preset, bool> _autoActions => Presets.GetJobAutorots;
 
     public AutoRotationController()
@@ -112,8 +110,8 @@ internal unsafe class AutoRotationController
         x.BattleChara.IsTargetable &&
         (cfg.HealerSettings.AutoRezOutOfParty || GetPartyMembers().Any(y => y.GameObjectId == x.BattleChara.GameObjectId)) &&
         GetTargetDistance(x.BattleChara) <= QueryRange &&
-        !HasStatusEffect(2648, x.BattleChara, true) && // Transcendent Effect
-        !HasStatusEffect(148, x.BattleChara, true) && // Raise Effect
+        !TargetHasRaiseStatus(x.BattleChara) &&
+        !TargetHasRaiseInvincibility(x.BattleChara) &&
         TimeSpentDead(x.BattleChara.GameObjectId).TotalSeconds > 2;
 
     public static bool LockedST
@@ -151,6 +149,7 @@ internal unsafe class AutoRotationController
                || Player.Mounted
                || !EzThrottler.Throttle("Autorot", cfg.Throttler)
                || (ActionManager.Instance()->QueuedActionId > 0)
+               || TargetHasRaiseInvincibility(Player.Object)
                || Paused;
     }
 
@@ -407,10 +406,6 @@ internal unsafe class AutoRotationController
             if ((action.IsAoE && LockedST) || (!action.IsAoE && LockedAoE))
                 continue;
 
-            // Skip if rez invuln is up
-            if (!action.IsHeal && HasStatusEffect(TranscendantBuff))
-                continue;
-
             uint gameAct = attributes.ReplaceSkill!.ActionIDs.First();
             var status = ActionManager.Instance()->GetActionStatus(ActionType.Action, gameAct, checkCastingActive: false, checkRecastActive: false);
 
@@ -550,7 +545,6 @@ internal unsafe class AutoRotationController
     // Note: Similar to Kardia, because this has its own set of rules but regarding timings I'm not sure if I want to wire this up to retargeting
     private static void RezParty()
     {
-        if (HasStatusEffect(TranscendantBuff)) return;
         uint resSpell = 0;
 
         if (OccultCrescent.IsEnabledAndUsable(Preset.Phantom_Chemist_Revive, OccultCrescent.Revive))
@@ -663,11 +657,11 @@ internal unsafe class AutoRotationController
 
     private static void CleanseParty()
     {
-        if (HasStatusEffect(TranscendantBuff) || LocalPlayer is not { } || !EzThrottler.Throttle("CleanseThrottle", 50)) return;
+        if (Player.Object is not { } || !EzThrottler.Throttle("CleanseThrottle", 50)) return;
 
         if (SimpleTarget.Stack.AllyToEsuna is IBattleChara memberBC)
         {
-            var res = ActionManager.GetActionInRangeOrLoS(Healer.Role.Esuna, LocalPlayer.GameObject(), memberBC.GameObject());
+            var res = ActionManager.GetActionInRangeOrLoS(Healer.Role.Esuna, Player.GameObject, memberBC.GameObject());
             if (res is 0 or 565)
             {
                 Svc.Log.Debug($"Cleansing {memberBC.Name}");
@@ -680,14 +674,13 @@ internal unsafe class AutoRotationController
     // it is known if it acts funny with the standalone retarget then that's what causes it.
     private static void UpdateKardiaTarget()
     {
-        if (HasStatusEffect(TranscendantBuff)) return;
         if (!LevelChecked(SGE.Kardia)) return;
         if (CombatEngageDuration().TotalSeconds < 3) return;
 
         foreach (var member in GetPartyMembers().Where(x => !x.BattleChara.IsDead).OrderByDescending(x => x.BattleChara?.GetRole() is CombatRole.Tank))
         {
             if (cfg.HealerSettings.KardiaTanksOnly && member.BattleChara?.GetRole() is not CombatRole.Tank &&
-                !HasStatusEffect(3615, member.BattleChara, true)) continue;
+                !HasStatusEffect(3615, member.BattleChara, true)) continue; // Duty Support Gosetsu Tank Stance
 
             var enemiesTargeting = Svc.Objects.GetBattleCharas().Count(x => x.IsTargetable && x.IsHostile() && x.TargetObjectId == member.BattleChara.GameObjectId);
             if (enemiesTargeting > 0 && !HasStatusEffect(SGE.Buffs.Kardion, member.BattleChara))
@@ -1202,7 +1195,7 @@ internal unsafe class AutoRotationController
                             x.BattleChara.IsTargetable &&
                             GetTargetDistance(x.BattleChara) <= QueryRange &&
                             !TargetHasImmortality(x.BattleChara) &&
-                            !x.BattleChara.StatusList.Any(x => StatusCache.DoNotHealStatuses.Contains(x.StatusId)) &&
+                            !StatusCache.HasStatusInCacheList(StatusCache.DoNotHealStatuses,x.BattleChara) &&
                             GetTargetHPPercent(x.BattleChara, cfg.HealerSettings.IncludeShields) <=
                             (TargetHasExcog(x.BattleChara) ? cfg.HealerSettings.SingleTargetExcogHPP :
                                 TargetHasRegen(x.BattleChara) ? cfg.HealerSettings.SingleTargetRegenHPP :

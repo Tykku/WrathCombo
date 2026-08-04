@@ -288,7 +288,7 @@ internal partial class DNC : PhysicalRanged
                 if (ActionReady(ShieldSamba) &&
                     IsEnabled(Preset.DNC_ST_Adv_ShieldSamba) && GroupDamageIncoming() && 
                     NumberOfAlliesInRange(ShieldSamba) >= GetPartyMembers().Count * .75 &&
-                    !HasAnyStatusEffects ([BRD.Buffs.Troubadour, Buffs.ShieldSamba, MCH.Buffs.Tactician], anyOwner: true))
+                    !HasStatusEffects([BRD.Buffs.Troubadour, Buffs.ShieldSamba, MCH.Buffs.Tactician], anyOwner: true))
                     return ShieldSamba;
 
                 // ST Panic Heals
@@ -619,7 +619,7 @@ internal partial class DNC : PhysicalRanged
                 }
                 if (ActionReady(ShieldSamba) && GroupDamageIncoming() && 
                     NumberOfAlliesInRange(ShieldSamba) >= GetPartyMembers().Count * .75 &&
-                    !HasAnyStatusEffects ([BRD.Buffs.Troubadour, Buffs.ShieldSamba, MCH.Buffs.Tactician], anyOwner: true))
+                    !HasStatusEffects([BRD.Buffs.Troubadour, Buffs.ShieldSamba, MCH.Buffs.Tactician], anyOwner: true))
                     return ShieldSamba;
 
                 // ST Panic Heals
