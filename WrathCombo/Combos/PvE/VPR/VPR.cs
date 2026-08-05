@@ -16,7 +16,7 @@ internal partial class VPR : Melee
             if (!CustomActionHelper.OneButtonRotationChecker(actionID, CustomActionType.SingleTargetDPS, SteelFangs))
                 return actionID;
 
-            if (ContentSpecificActions.TryGet(out uint contentAction))
+            if (ContentSpecificActions.TryGet(ref actionID, out uint contentAction))
                 return contentAction;
 
             if (CanWeave())
@@ -77,7 +77,7 @@ internal partial class VPR : Melee
             if (!CustomActionHelper.OneButtonRotationChecker(actionID, CustomActionType.AoEDPS, SteelMaw))
                 return actionID;
 
-            if (ContentSpecificActions.TryGet(out uint contentAction))
+            if (ContentSpecificActions.TryGet(ref actionID, out uint contentAction))
                 return contentAction;
 
             if (CanWeave())
@@ -130,7 +130,7 @@ internal partial class VPR : Melee
                 IsEnabled(Preset.VPR_ST_Opener) && Opener().FullOpener(ref actionID))
                 return actionID;
 
-            if (ContentSpecificActions.TryGet(out uint contentAction))
+            if (ContentSpecificActions.TryGet(ref actionID, out uint contentAction))
                 return contentAction;
 
             if (CanWeave())
@@ -215,7 +215,7 @@ internal partial class VPR : Melee
             if (!CustomActionHelper.OneButtonRotationChecker(actionID, CustomActionType.AoEDPS, SteelMaw))
                 return actionID;
 
-            if (ContentSpecificActions.TryGet(out uint contentAction))
+            if (ContentSpecificActions.TryGet(ref actionID, out uint contentAction))
                 return contentAction;
 
             if (CanWeave())

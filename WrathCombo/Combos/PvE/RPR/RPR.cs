@@ -21,7 +21,7 @@ internal partial class RPR : Melee
 
             if (!HasStatusEffect(Buffs.Executioner) &&
                 !HasStatusEffect(Buffs.SoulReaver) &&
-                ContentSpecificActions.TryGet(out uint contentAction))
+                ContentSpecificActions.TryGet(ref actionID, out uint contentAction))
                 return contentAction;
 
             //All Weaves
@@ -103,7 +103,7 @@ internal partial class RPR : Melee
                 !HasStatusEffect(Buffs.Soulsow) && !PartyInCombat())
                 return Soulsow;
 
-            if (ContentSpecificActions.TryGet(out uint contentAction))
+            if (ContentSpecificActions.TryGet(ref actionID, out uint contentAction))
                 return contentAction;
 
             if (CanWeave())
@@ -179,7 +179,7 @@ internal partial class RPR : Melee
 
             if (!HasStatusEffect(Buffs.Executioner) &&
                 !HasStatusEffect(Buffs.SoulReaver) &&
-                ContentSpecificActions.TryGet(out uint contentAction))
+                ContentSpecificActions.TryGet(ref actionID, out uint contentAction))
                 return contentAction;
 
             //All Weaves
@@ -299,7 +299,7 @@ internal partial class RPR : Melee
                 !HasStatusEffect(Buffs.Soulsow) && !PartyInCombat())
                 return Soulsow;
 
-            if (ContentSpecificActions.TryGet(out uint contentAction))
+            if (ContentSpecificActions.TryGet(ref actionID, out uint contentAction))
                 return contentAction;
 
             if (CanWeave())

@@ -15,7 +15,7 @@ internal partial class BLM : Caster
             if (!CustomActionHelper.OneButtonRotationChecker(actionID, CustomActionType.SingleTargetDPS, Blizzard))
                 return actionID;
 
-            if (ContentSpecificActions.TryGet(out uint contentAction))
+            if (ContentSpecificActions.TryGet(ref actionID, out uint contentAction))
                 return contentAction;
 
             if (CanWeave())
@@ -76,7 +76,7 @@ internal partial class BLM : Caster
             if (!CustomActionHelper.OneButtonRotationChecker(actionID, CustomActionType.AoEDPS, Blizzard2, HighBlizzard2))
                 return actionID;
 
-            if (ContentSpecificActions.TryGet(out uint contentAction))
+            if (ContentSpecificActions.TryGet(ref actionID, out uint contentAction))
                 return contentAction;
 
             if (CanWeave())
@@ -136,7 +136,7 @@ internal partial class BLM : Caster
                 Opener().FullOpener(ref actionID))
                 return actionID;
 
-            if (ContentSpecificActions.TryGet(out uint contentAction))
+            if (ContentSpecificActions.TryGet(ref actionID, out uint contentAction))
                 return contentAction;
 
             if (CanStManaward(
@@ -237,7 +237,7 @@ internal partial class BLM : Caster
             if (!CustomActionHelper.OneButtonRotationChecker(actionID, CustomActionType.AoEDPS, Blizzard2, HighBlizzard2))
                 return actionID;
 
-            if (ContentSpecificActions.TryGet(out uint contentAction))
+            if (ContentSpecificActions.TryGet(ref actionID, out uint contentAction))
                 return contentAction;
 
             if (CanWeave())

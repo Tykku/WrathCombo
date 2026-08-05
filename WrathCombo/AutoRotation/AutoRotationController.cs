@@ -275,7 +275,7 @@ internal unsafe class AutoRotationController
         // Healer cleanse/rez logic
         if (isHealer ||
             (Player.Job is Job.SMN or Job.RDM && cfg.HealerSettings.AutoRezDPSJobs) ||
-            OccultCrescent.IsEnabledAndUsable(Preset.Phantom_Chemist_Revive, OccultCrescent.Revive) ||
+            OccultCrescent.CanPhantomRaise() ||
             Variant.CanRaise())
         {
             if (ActionManager.Instance()->QueuedActionId == RoleActions.Healer.Esuna)
@@ -581,6 +581,10 @@ internal unsafe class AutoRotationController
         {
             resSpell = OccultCrescent.Revive;
         }
+        else if (OccultCrescent.IsEnabledAndUsable(Preset.Phantom_WhiteMage_OccultRaise, OccultCrescent.OccultRaise))
+        {
+            resSpell = OccultCrescent.OccultRaise;
+        }
         else if (Variant.CanRaise())
         {
             resSpell = Variant.Raise;
@@ -619,7 +623,7 @@ internal unsafe class AutoRotationController
 
             if (deadPeople.Where(RezQuery).FindFirst(x => x is not null, out var member))
             {
-                if (resSpell == OccultCrescent.Revive)
+                if (resSpell == OccultCrescent.Revive || resSpell == OccultCrescent.OccultRaise)
                 {
                     ActionManager.Instance()->UseAction(ActionType.Action, resSpell, member.BattleChara.GameObjectId);
                     return;
@@ -887,12 +891,15 @@ internal unsafe class AutoRotationController
 
                 }
 
+                ulong targetId = target.GameObjectId;
+                var changed = CheckForChangedTarget(gameAct, ref targetId, out var replacedWith) && targetId != target.GameObjectId;
+                if (changed) target = targetId.GetObject();
+
                 OverrideTarget = target ?? OverrideTarget;
                 uint outAct = OriginalHook(InvokeCombo(preset, attributes, ref gameAct, OverrideTarget));
                 if (outAct is All.Cease) return true;
                 if (!ActionReady(outAct))
                     return false;
-
 
                 var canQueue = outAct.ActionAttackType() is { } type && ((type is ActionAttackType.Ability && AnimationLock <= cfg.QueueWindow) || (type is not ActionAttackType.Ability && RemainingGCD <= cfg.QueueWindow));
                 if (!canQueue)
@@ -927,9 +934,6 @@ internal unsafe class AutoRotationController
 
                 if (inRange)
                 {
-                    //Chance target of target.GameObjectID can be null
-                    var targetId = (targetsHostile && OverrideTarget != null) || switched ? OverrideTarget.GameObjectId : canUseSelf ? player.GameObjectId : 0xE000_0000;
-                    var changed = CheckForChangedTarget(gameAct, ref targetId, out var replacedWith);
                     WouldLikeToGroundTarget = areaTargeted;
                     var ret = ActionManager.Instance()->UseAction(ActionType.Action, Service.Configuration.ActionChanging ? gameAct : outAct, targetId);
                     WouldLikeToGroundTarget = false;
@@ -961,6 +965,10 @@ internal unsafe class AutoRotationController
             var target = GetSingleTarget(mode);
 
             if ((target is not { } t || (!t.IsHostile() && !t.IsFriendly())) && cfg.PauseWhenNoTarget) return true;
+
+            ulong targetId = target.GameObjectId;
+            var changed = CheckForChangedTarget(gameAct, ref targetId, out var replacedWith) && targetId != target.GameObjectId;
+            if (changed) target = targetId.GetObject();
 
             OverrideTarget = target ?? OverrideTarget;
             var outAct = OriginalHook(InvokeCombo(preset, attributes, ref gameAct, target));
@@ -1001,12 +1009,6 @@ internal unsafe class AutoRotationController
             var canUse = (canUseSelf || canUseTarget || areaTargeted) && outAct.ActionAttackType() is { } type && ((type is ActionAttackType.Ability && AnimationLock <= cfg.QueueWindow) || (type is not ActionAttackType.Ability && RemainingGCD <= cfg.QueueWindow));
             var isHeal = attributes.AutoAction!.IsHeal;
 
-            if (target is not null)
-            {
-                if ((!isHeal && cfg.DPSSettings.DPSAlwaysHardTarget && mode is not DPSRotationMode.Manual) || (isHeal && cfg.HealerSettings.HealerAlwaysHardTarget && mode is not HealerRotationMode.Manual))
-                    Svc.Targets.Target = target;
-            }
-
             var castTime = ActionManager.GetAdjustedCastTime(ActionType.Action, outAct);
             bool orbwalking = cfg.OrbwalkerIntegration && OrbwalkerIPC.CanOrbwalk;
             if (TimeMoving.TotalMilliseconds > 0 && castTime > 0 && !orbwalking)
@@ -1014,9 +1016,15 @@ internal unsafe class AutoRotationController
 
             if (canUse && (inRange || areaTargeted))
             {
-                var targetId = canUseTarget || areaTargeted ? target.GameObjectId : canUseSelf ? player.GameObjectId : 0xE000_0000;
-                var changed = CheckForChangedTarget(gameAct, ref targetId, out var replacedWith);
+                if (target is not null)
+                {
+                    if ((!isHeal && cfg.DPSSettings.DPSAlwaysHardTarget && mode is not DPSRotationMode.Manual) || (isHeal && cfg.HealerSettings.HealerAlwaysHardTarget && mode is not HealerRotationMode.Manual))
+                        Svc.Targets.Target = target;
+                }
+
                 WouldLikeToGroundTarget = areaTargeted;
+                if (changed)
+                    Svc.Log.Debug($"Updated target to {target.Name} for {replacedWith.ActionName()}");
                 var ret = ActionManager.Instance()->UseAction(ActionType.Action, Service.Configuration.ActionChanging ? gameAct : outAct, targetId);
                 WouldLikeToGroundTarget = false;
 
