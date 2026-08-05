@@ -185,7 +185,7 @@ internal partial class MCH : PhysicalRanged
                 IsEnabled(Preset.MCH_ST_Opener_BlockEarly) &&
                 ContentCheck.IsInConfiguredContent(
                     MCH_Balance_Content, ContentCheck.ListSet.BossOnly))
-                return All.SavageBlade;
+                return All.Cease;
 
             if (!IsOverheated &&
                 ContentSpecificActions.TryGet(ref actionID, out uint contentAction))
