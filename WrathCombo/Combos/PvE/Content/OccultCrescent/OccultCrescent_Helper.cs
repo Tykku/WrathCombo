@@ -4,6 +4,7 @@ using FFXIVClientStructs.FFXIV.Client.Game.InstanceContent;
 using System;
 using System.Reflection;
 using static WrathCombo.Combos.PvE.JobIDExtensions;
+using static WrathCombo.Combos.PvE.OccultCrescent.Config;
 using static WrathCombo.CustomComboNS.Functions.CustomComboFunctions;
 
 #endregion
@@ -183,6 +184,24 @@ internal partial class OccultCrescent
 
 
     internal static bool IsEnabledAndUsable(Preset preset, uint action) => IsEnabled(preset) && HasActionEquipped(action) && ActionReady(action);
+
+    private const int HoldOnlyWhenStationary = 0;
+    private const int HoldOnlyInMeleeRange = 1;
+
+    private static bool CanUseOccultJumpHoldOptions()
+    {
+        if (Phantom_Dragoon_OccultJumpMovingOrInRanged.Count == 0)
+            return true;
+
+        if (Phantom_Dragoon_OccultJumpMovingOrInRanged[HoldOnlyWhenStationary] && IsMoving())
+            return false;
+
+        if (Phantom_Dragoon_OccultJumpMovingOrInRanged.Count > HoldOnlyInMeleeRange &&
+            Phantom_Dragoon_OccultJumpMovingOrInRanged[HoldOnlyInMeleeRange] && !InMeleeRange())
+            return false;
+
+        return true;
+    }
 
     /// <summary>
     ///     Job identifiers and which Icon is their own. <br />

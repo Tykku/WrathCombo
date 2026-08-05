@@ -1078,11 +1078,6 @@ public enum Preset
     [OccultCrescent]
     [ParentCombo(Phantom_Dragoon)]
     [JobInfo(Job.ADV)]
-    Phantom_Dragoon_StepForth = 110111,
-
-    [OccultCrescent]
-    [ParentCombo(Phantom_Dragoon)]
-    [JobInfo(Job.ADV)]
     Phantom_Dragoon_Lance = 110112,
 
     [OccultCrescent(OccultCrescent.JobIDs.Summoner)]

@@ -1123,12 +1123,6 @@ internal partial class OccultCrescent
                 actionID = Lance;
                 return true;
             }
-            if (IsEnabledAndUsable(Preset.Phantom_Dragoon_StepForth, StepForth) &&
-                HasBattleTarget() && !InMeleeRange())
-            {
-                actionID = StepForth;
-                return true;
-            }
 
             return false;
         }
@@ -1136,7 +1130,8 @@ internal partial class OccultCrescent
         if (IsEnabled(Preset.Phantom_RestrictToBuff) && !Bursting.PlayerIsDamageBuffed)
             return false;
 
-        if (IsEnabledAndUsable(Preset.Phantom_Dragoon_OccultJump, OccultJump) && HasBattleTarget())
+        if (IsEnabledAndUsable(Preset.Phantom_Dragoon_OccultJump, OccultJump) &&
+            HasBattleTarget() && CanUseOccultJumpHoldOptions())
         {
             actionID = OccultJump;
             return true;

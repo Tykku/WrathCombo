@@ -119,6 +119,16 @@ internal partial class OccultCrescent
                         Generics.PlayerHPGreaterOrEqual, 200);
                     break;
 
+                case Preset.Phantom_Dragoon_OccultJump:
+                    DrawHorizontalMultiChoice(Phantom_Dragoon_OccultJumpMovingOrInRanged,
+                        Generics.NoMovement,
+                        Generics.OnlyUse0WhenNotMoving, 2, 0);
+
+                    DrawHorizontalMultiChoice(Phantom_Dragoon_OccultJumpMovingOrInRanged,
+                        Generics.InMeleeRange,
+                        Generics.OnlyUse0WhenInMeleeRange, 2, 1);
+                    break;
+
                 case Preset.Phantom_Thief_Steal:
                     DrawSliderInt(1, 50, Phantom_Thief_Steal_Health,
                         Generics.PlayerHPGreaterOrEqual, 200);
@@ -315,6 +325,9 @@ internal partial class OccultCrescent
             Phantom_Geomancer_Suspend_InCombat = new("Phantom_Geomancer_Suspend_InCombat", false),
             Phantom_Geomancer_Suspend_OutOfCombat = new("Phantom_Geomancer_Suspend_OutOfCombat", false),
             Phantom_BlackMage_OccultToad_RequireAoE = new("Phantom_BlackMage_OccultToad_RequireAoE", true);
+
+        public static UserBoolArray
+            Phantom_Dragoon_OccultJumpMovingOrInRanged = new("Phantom_Dragoon_OccultJumpMovingOrInRanged", [true, true]);
 
         #endregion
     }

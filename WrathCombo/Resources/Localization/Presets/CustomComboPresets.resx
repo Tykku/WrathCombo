@@ -5975,12 +5975,6 @@ Requires Occult Potions in inventory.</value>
   <data name="Phantom_Dragoon_OccultJump_Name" xml:space="preserve">
     <value>Occult Jump</value>
   </data>
-  <data name="Phantom_Dragoon_StepForth_Desc" xml:space="preserve">
-    <value>Adds Step Forth into the rotation.</value>
-  </data>
-  <data name="Phantom_Dragoon_StepForth_Name" xml:space="preserve">
-    <value>Step Forth</value>
-  </data>
   <data name="Phantom_Freelancer_Desc" xml:space="preserve">
     <value>Enable this to add Freelancer-specific actions into the rotation.</value>
   </data>

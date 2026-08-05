@@ -17241,24 +17241,6 @@ namespace WrathCombo.Resources.Localization.Presets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adds Step Forth into the rotation..
-        /// </summary>
-        internal static string Phantom_Dragoon_StepForth_Desc {
-            get {
-                return ResourceManager.GetString("Phantom_Dragoon_StepForth_Desc", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Step Forth.
-        /// </summary>
-        internal static string Phantom_Dragoon_StepForth_Name {
-            get {
-                return ResourceManager.GetString("Phantom_Dragoon_StepForth_Name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Enable this to add Freelancer-specific actions into the rotation..
         /// </summary>
         internal static string Phantom_Freelancer_Desc {
