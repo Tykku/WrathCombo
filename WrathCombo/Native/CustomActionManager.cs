@@ -54,7 +54,7 @@ public sealed unsafe class CustomAction : IDisposable
         CustomActionManager.CustomActionRow* row = (CustomActionManager.CustomActionRow*)ActionRowPtr;
         row->NameOffset = (uint)rowSize;
         row->Icon = (ushort)IconId;
-        row->ActionCategory = 4;
+        row->ActionCategory = 13;
         row->PrimaryCostType = 0;
         row->PrimaryCostValue = 0;
         row->Cast100ms = 0;
@@ -213,17 +213,6 @@ public sealed unsafe class CustomActionManager : IDisposable
                 continue;
 
             Register(action);
-        }
-    }
-
-    public void ReRegisterItem(uint itemId, ushort iconId)
-    {
-        var act = _actions[All.Items];
-        if (_texProv.TryGetFromGameIcon(new GameIconLookup() { IconId = iconId, ItemHq = false }, out var tex))
-        {
-            var clone = new CustomAction(act.Id, act.Name, act.Description, iconId, act.OnClick, act.CustomIconPath, itemId, tex);
-            act.Dispose();
-            Register(clone);
         }
     }
 
