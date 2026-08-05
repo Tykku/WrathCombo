@@ -3585,6 +3585,10 @@ public enum Preset
     [JobInfo(Job.MCH)]
     MCH_ST_Adv_Opener = 8101,
 
+    [ParentCombo(MCH_ST_Adv_Opener)]
+    [JobInfo(Job.MCH)]
+    MCH_ST_Opener_BlockEarly = 8123,
+
     #region BS
 
     [ParentCombo(MCH_ST_AdvancedMode)]
@@ -3809,7 +3813,7 @@ public enum Preset
     [JobInfo(Job.MCH)]
     MCH_GaussRoundRicochet = 8003,
 
-    // Last value ST = 8122
+    // Last value ST = 8123
     // Last value AoE = 8315
     // Last value Misc = 8058
 
