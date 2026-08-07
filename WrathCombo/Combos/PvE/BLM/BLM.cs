@@ -622,7 +622,7 @@ internal class BLM_Toshi_Fire4 : CustomCombo
         if (actionID is not Fire4)
             return actionID;
         
-        if (ContentSpecificActions.TryGet(out uint contentAction))
+        if (ContentSpecificActions.TryGet(ref actionID, out uint contentAction))
             return contentAction;
 
         return actionID switch
@@ -682,7 +682,7 @@ internal class BLM_Toshi_Fire4 : CustomCombo
             if (actionID is not Xenoglossy)
                 return actionID;
             
-            if (ContentSpecificActions.TryGet(out uint contentAction))
+            if (ContentSpecificActions.TryGet(ref actionID, out uint contentAction))
                 return contentAction;
 
             if (ActionReady(Amplifier) && !IsPolyglotCapped && CanWeave())
