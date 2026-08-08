@@ -1265,7 +1265,11 @@ internal partial class OccultCrescent
     {
         if (!IsEnabled(Preset.Phantom_RedMage))
             return false;
-        if (IsEnabledAndUsable(Preset.Phantom_RedMage_OccultLibra, OccultLibra) && InCombat() && CanWeave())
+        if (IsEnabledAndUsable(Preset.Phantom_RedMage_OccultLibra, OccultLibra) && InCombat() && CanWeave() &&
+            HasBattleTarget() &&
+            (GetStatusEffectRemainingTime(Debuffs.FireWeakness, CurrentTarget, true) < Phantom_RedMage_OccultLibra_RemainingTime ||
+             GetStatusEffectRemainingTime(Debuffs.IceWeakness, CurrentTarget, true) < Phantom_RedMage_OccultLibra_RemainingTime ||
+             GetStatusEffectRemainingTime(Debuffs.LightningWeakness, CurrentTarget, true) < Phantom_RedMage_OccultLibra_RemainingTime))
         {
             if (!IsEnabled(Preset.Phantom_RestrictToBuff) || Bursting.PlayerIsDamageBuffed)
             {
