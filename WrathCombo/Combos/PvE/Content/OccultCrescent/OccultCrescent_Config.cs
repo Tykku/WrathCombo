@@ -217,9 +217,10 @@ internal partial class OccultCrescent
                     DrawSliderInt(1, 100, Phantom_RedMage_OccultCureII_Health,
                         Generics.StopFriendlyHpPercent100, 200);
                     break;
-                case Preset.Phantom_RedMage_OccultLibra:
-                    DrawSliderInt(0, 30, Phantom_RedMage_OccultLibra_RemainingTime,
-                        "Only use Occult Libra when the target's elemental weakness has this much time or less remaining (seconds)", 200);
+                case Preset.Phantom_RedMage_OccultCureII_Retarget:
+                    DrawAdditionalBoolChoice(Phantom_RedMage_Retarget_OutOfParty, 
+                        "Retarget to Out of Party Players", 
+                        "Also retargets if anyone outside your party falls below this HP%");
                     break;
                 case Preset.Phantom_Necromancer_DrainTouch:
                     ImGui.Indent();
@@ -309,7 +310,6 @@ internal partial class OccultCrescent
             Phantom_WhiteMage_OccultCureIII_Health = new("Phantom_WhiteMage_OccultCureIII_Health", 40),
             Phantom_BlueMage_OccultWhiteWind_Health = new("Phantom_BlueMage_OccultWhiteWind_Health", 50),
             Phantom_RedMage_OccultCureII_Health = new("Phantom_RedMage_OccultCureII_Health", 50),
-            Phantom_RedMage_OccultLibra_RemainingTime = new("Phantom_RedMage_OccultLibra_RemainingTime", 15),
             Phantom_Necromancer_DrainTouch_Health = new("Phantom_Necromancer_DrainTouch_Health", 50),
             Phantom_Necromancer_DrainTouch_EmergencyHealth = new("Phantom_Necromancer_DrainTouch_EmergencyHealth", 25),
             Phantom_Necromancer_DrainTouch_Mode = new("Phantom_Necromancer_DrainTouch_Mode", 0),
@@ -329,6 +329,7 @@ internal partial class OccultCrescent
             Phantom_Knight_Pledge_SelfOnly = new("Phantom_Knight_Pledge_SelfOnly", false),
             Phantom_Geomancer_Suspend_InCombat = new("Phantom_Geomancer_Suspend_InCombat", false),
             Phantom_Geomancer_Suspend_OutOfCombat = new("Phantom_Geomancer_Suspend_OutOfCombat", false),
+            Phantom_RedMage_Retarget_OutOfParty = new("Phantom_RedMage_Retarget_OutOfParty", false),
             Phantom_BlackMage_OccultToad_RequireAoE = new("Phantom_BlackMage_OccultToad_RequireAoE", true);
 
         public static UserBoolArray
