@@ -1067,45 +1067,45 @@ internal partial class OccultCrescent
         if (IsEnabled(Preset.Phantom_RestrictToBuff) && !Bursting.PlayerIsDamageBuffed)
             return false;
 
-        if (IsEnabledAndUsable(Preset.Phantom_BlackMage_OccultFlare, OccultFlare) && HasBattleTarget())
+        if (IsEnabledAndUsable(Preset.Phantom_BlackMage_OccultFlare, OccultFlare) && HasBattleTarget() && ToshiMove)
         {
             actionID = OccultFlare;
             return true;
         }
 
-        if (IsEnabledAndUsable(Preset.Phantom_BlackMage_OccultFireIII, OccultFireIII) && HasBattleTarget() &&
+        if (IsEnabledAndUsable(Preset.Phantom_BlackMage_OccultFireIII, OccultFireIII) && HasBattleTarget() && ToshiMove &&
             HasSpecificWeakness(CurrentTarget, Debuffs.FireWeakness))
         {
             actionID = OccultFireIII;
             return true;
         }
 
-        if (IsEnabledAndUsable(Preset.Phantom_BlackMage_OccultBlizzardIII, OccultBlizzardIII) && HasBattleTarget() &&
+        if (IsEnabledAndUsable(Preset.Phantom_BlackMage_OccultBlizzardIII, OccultBlizzardIII) && HasBattleTarget() && ToshiMove &&
             HasSpecificWeakness(CurrentTarget, Debuffs.IceWeakness))
         {
             actionID = OccultBlizzardIII;
             return true;
         }
 
-        if (IsEnabledAndUsable(Preset.Phantom_BlackMage_OccultThunderIII, OccultThunderIII) && HasBattleTarget() &&
+        if (IsEnabledAndUsable(Preset.Phantom_BlackMage_OccultThunderIII, OccultThunderIII) && HasBattleTarget() && ToshiMove &&
             HasSpecificWeakness(CurrentTarget, Debuffs.LightningWeakness))
         {
             actionID = OccultThunderIII;
             return true;
         }
-        if (IsEnabledAndUsable(Preset.Phantom_BlackMage_OccultThunderIII, OccultThunderIII) && HasBattleTarget())
+        if (IsEnabledAndUsable(Preset.Phantom_BlackMage_OccultThunderIII, OccultThunderIII) && HasBattleTarget() && ToshiMove)
         {
             actionID = OccultThunderIII;
             return true;
         }
 
-        if (IsEnabledAndUsable(Preset.Phantom_BlackMage_OccultBlizzardIII, OccultBlizzardIII) && HasBattleTarget())
+        if (IsEnabledAndUsable(Preset.Phantom_BlackMage_OccultBlizzardIII, OccultBlizzardIII) && HasBattleTarget() && ToshiMove)
         {
             actionID = OccultBlizzardIII;
             return true;
         }
 
-        if (IsEnabledAndUsable(Preset.Phantom_BlackMage_OccultFireIII, OccultFireIII) && HasBattleTarget())
+        if (IsEnabledAndUsable(Preset.Phantom_BlackMage_OccultFireIII, OccultFireIII) && HasBattleTarget() && ToshiMove)
         {
             actionID = OccultFireIII;
             return true;
@@ -1727,6 +1727,7 @@ internal partial class OccultCrescent
     private static bool InCombatNow => InCombat();
     private static bool CanWeaveNow => CanWeave();
     private static bool HasTargetNow => HasBattleTarget();
+    private static bool ToshiMove => !IsMoving() || HasStatusEffect(BLM.Buffs.Triplecast) || HasStatusEffect(RoleActions.Magic.Buffs.Swiftcast);
     private static float TargetHP => GetTargetHPPercent();
     private static float PlayerHP => PlayerHealthPercentageHp();
     private static uint PlayerMP => LocalPlayer.CurrentMp;
