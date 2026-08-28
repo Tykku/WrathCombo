@@ -436,7 +436,7 @@ internal unsafe class AutoRotationController
             uint gameAct = attributes.ReplaceSkill!.ActionIDs.First();
             var status = ActionManager.Instance()->GetActionStatus(ActionType.Action, gameAct, checkCastingActive: false, checkRecastActive: false);
 
-            if (!LevelChecked(gameAct) || status == 581)
+            if (!ActionLearned(gameAct) || status == 581)
                 continue;
 
             if (action.IsHeal)
@@ -705,7 +705,7 @@ internal unsafe class AutoRotationController
     // it is known if it acts funny with the standalone retarget then that's what causes it.
     private static void UpdateKardiaTarget()
     {
-        if (!LevelChecked(SGE.Kardia)) return;
+        if (!ActionLearned(SGE.Kardia)) return;
         if (CombatEngageDuration().TotalSeconds < 3) return;
 
         foreach (var member in GetPartyMembers().Where(x => !x.BattleChara.IsDead).OrderByDescending(x => x.BattleChara?.GetRole() is CombatRole.Tank))
@@ -887,8 +887,8 @@ internal unsafe class AutoRotationController
 
                 }
 
-                ulong targetId = target.GameObjectId;
-                var changed = CheckForChangedTarget(gameAct, ref targetId, out var replacedWith) && targetId != target.GameObjectId;
+                ulong targetId = target?.GameObjectId ?? 0;
+                var changed = CheckForChangedTarget(gameAct, ref targetId, out var replacedWith) && targetId != target?.GameObjectId;
                 if (changed) target = targetId.GetObject();
 
                 OverrideTarget = target ?? OverrideTarget;
@@ -963,7 +963,7 @@ internal unsafe class AutoRotationController
             if ((target is not { } t || (!t.IsHostile() && !t.IsFriendly())) && cfg.PauseWhenNoTarget) return true;
 
             ulong targetId = target?.GameObjectId ?? 0;
-            var changed = CheckForChangedTarget(gameAct, ref targetId, out var replacedWith) && targetId != target.GameObjectId;
+            var changed = CheckForChangedTarget(gameAct, ref targetId, out var replacedWith) && targetId != target?.GameObjectId;
             if (changed) target = targetId.GetObject();
 
             OverrideTarget = target ?? OverrideTarget;
