@@ -9847,6 +9847,24 @@ namespace WrathCombo.Resources.Localization.Presets {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adds Orthos Potion to one button rotations.
+        /// </summary>
+        internal static string EO_OrthosPotion_Desc {
+            get {
+                return ResourceManager.GetString("EO_OrthosPotion_Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Eureka Orthos - Orthos Potion.
+        /// </summary>
+        internal static string EO_OrthosPotion_Name {
+            get {
+                return ResourceManager.GetString("EO_OrthosPotion_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Replaces Cast with Gig when diving..
         /// </summary>
         internal static string FSH_CastGig_Desc {
@@ -20839,6 +20857,24 @@ namespace WrathCombo.Resources.Localization.Presets {
         internal static string PoTD_SustainingPotion_Name {
             get {
                 return ResourceManager.GetString("PoTD_SustainingPotion_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adds Pilgrim&apos;s Potion to one button rotations.
+        /// </summary>
+        internal static string PT_PilgrimsPotion_Desc {
+            get {
+                return ResourceManager.GetString("PT_PilgrimsPotion_Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pilgrim&apos;s Traverse - Pilgrim&apos;s Potion.
+        /// </summary>
+        internal static string PT_PilgrimsPotion_Name {
+            get {
+                return ResourceManager.GetString("PT_PilgrimsPotion_Name", resourceCulture);
             }
         }
         
