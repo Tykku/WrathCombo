@@ -283,7 +283,7 @@ internal partial class DRK
 
         public override List<(int[] Steps, Func<float> HoldDelay)> PrepullDelays { get; set; } =
 [
-            ([2], () => Math.Max(0, CountdownRemaining - (Pull is Unmend ? 1 : Pull is Shadowstride ? 0.7f : 0))),
+            ([2], () => !DRK_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining - (Pull is Unmend ? 1 : Pull is Shadowstride ? 0.7f : 0))),
         ];
 
         public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
@@ -339,8 +339,8 @@ internal partial class DRK
 
         public override List<(int[] Steps, Func<float> HoldDelay)> PrepullDelays { get; set; } =
         [
-            ([2], () => Math.Max(0, CountdownRemaining - 3)),
-            ([3], () => Math.Max(0, CountdownRemaining - (Pull is Unmend ? 1 : Pull is Shadowstride ? 0.7f : 0))),
+            ([2], () => !DRK_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining - 3)),
+            ([3], () => !DRK_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining - (Pull is Unmend ? 1 : Pull is Shadowstride ? 0.7f : 0))),
         ];
 
         public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
