@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using WrathCombo.Core;
+using WrathCombo.CustomComboNS.Functions;
 using WrathCombo.Extensions;
 using WrathCombo.Resources.Localization.UI.Features;
 using WrathCombo.Resources.Localization.UI.Misc;
@@ -45,57 +46,133 @@ internal class PvEFeatures : FeaturesWindow
 
                 ColCount = Math.Max(1, (int)(AvailableWidth / 200f.Scale()));
 
-                using (var tab = ImRaii.Table("PvETable", ColCount))
+                // Separate jobs into regular and special (All + Limited + DoL + DoH)
+                var regularJobs = groupedPresets.Where(kvp =>
+                    kvp.Value[0].JobInfo.Role != Jobs.JobRole.Limited &&
+                    kvp.Value[0].JobInfo.Role != Jobs.JobRole.All &&
+                    kvp.Value[0].JobInfo.Role != Jobs.JobRole.DoL &&
+                    kvp.Value[0].JobInfo.Role != Jobs.JobRole.DoH).ToList();
+                var specialJobs = groupedPresets.Where(kvp =>
+                    kvp.Value[0].JobInfo.Role == Jobs.JobRole.Limited ||
+                    kvp.Value[0].JobInfo.Role == Jobs.JobRole.All ||
+                    kvp.Value[0].JobInfo.Role == Jobs.JobRole.DoL ||
+                    kvp.Value[0].JobInfo.Role == Jobs.JobRole.DoH).ToList();
+
+                ImGuiExtensions.TextUnderlinedAndCentered("Regular Jobs");
+                // Draw regular jobs table
+                if (regularJobs.Count > 0)
                 {
-                    ImGui.TableNextColumn();
-
-                    if (!tab)
-                        return;
-
-                    foreach (var (job, presetData) in groupedPresets)
+                    using (var tab = ImRaii.Table("PvETableRegular", ColCount))
                     {
-                        var info = presetData[0].JobInfo;
-                        string jobName = info.JobName;
-                        string abbreviation = info.JobShorthand;
-                        string header = string.IsNullOrEmpty(abbreviation) ? jobName : $"{jobName} - {abbreviation}";
-                        var id = info.Job;
-
-                        IDalamudTextureWrap? icon = Icons.GetJobIcon(id);
-                        ImGuiEx.Spacing(new Vector2(0, 2f.Scale()));
-                        using (var disabled = ImRaii.Disabled(DisabledJobsPVE.Any(x => x == id)))
-                        {
-                            if (ImGui.Selectable($"###{header}{info.Job}", OpenJob == job, ImGuiSelectableFlags.None, new Vector2(0, IconMaxSize)))
-                            {
-                                OpenJob = job;
-                            }
-                            ImGui.SameLine(IndentWidth);
-                            if (icon != null)
-                            {
-                                var scale = Math.Min(IconMaxSize / icon.Size.X, IconMaxSize / icon.Size.Y);
-                                var imgSize = new Vector2(icon.Size.X * scale, icon.Size.Y * scale);
-                                var padSize = (IconMaxSize - imgSize.X) / 2f;
-                                if (padSize > 0)
-                                    ImGui.SetCursorPosX(ImGui.GetCursorPosX() + padSize);
-                                ImGui.Image(icon.Handle, imgSize);
-                            }
-                            else
-                            {
-                                ImGui.Dummy(new Vector2(IconMaxSize, IconMaxSize));
-                            }
-                            ImGui.SameLine(LargerIndentWidth);
-                            ImGuiEx.Spacing(new Vector2(0, VerticalCenteringPadding));
-                            ImGui.TextWrapped($"{header} {(disabled.Count > 0 ? FeaturesUI.Warning_DisabledDueToUpdate : "")}");
-
-                            if (!string.IsNullOrEmpty(abbreviation) &&
-                                P.UIHelper.JobControlled(id) is not null)
-                            {
-                                ImGui.SameLine();
-                                P.UIHelper
-                                    .ShowIPCControlledIndicatorIfNeeded(id, false, ColCount > 1);
-                            }
-                        }
-
                         ImGui.TableNextColumn();
+
+                        if (!tab)
+                            return;
+
+                        foreach (var (job, presetData) in regularJobs)
+                        {
+                            var info = presetData[0].JobInfo;
+                            string jobName = info.JobName;
+                            string abbreviation = info.JobShorthand;
+                            string header = string.IsNullOrEmpty(abbreviation) ? jobName : $"{jobName} - {abbreviation}";
+                            var id = info.Job;
+
+                            IDalamudTextureWrap? icon = Icons.GetJobIcon(id);
+                            ImGuiEx.Spacing(new Vector2(0, 2f.Scale()));
+                            using (var disabled = ImRaii.Disabled(DisabledJobsPVE.Any(x => x == id)))
+                            {
+                                if (ImGui.Selectable($"###{header}{info.Job}", OpenJob == job, ImGuiSelectableFlags.None, new Vector2(0, IconMaxSize)))
+                                {
+                                    OpenJob = job;
+                                }
+                                ImGui.SameLine(IndentWidth);
+                                if (icon != null)
+                                {
+                                    var scale = Math.Min(IconMaxSize / icon.Size.X, IconMaxSize / icon.Size.Y);
+                                    var imgSize = new Vector2(icon.Size.X * scale, icon.Size.Y * scale);
+                                    var padSize = (IconMaxSize - imgSize.X) / 2f;
+                                    if (padSize > 0)
+                                        ImGui.SetCursorPosX(ImGui.GetCursorPosX() + padSize);
+                                    ImGui.Image(icon.Handle, imgSize);
+                                }
+                                else
+                                {
+                                    ImGui.Dummy(new Vector2(IconMaxSize, IconMaxSize));
+                                }
+                                ImGui.SameLine(LargerIndentWidth);
+                                ImGuiEx.Spacing(new Vector2(0, VerticalCenteringPadding));
+                                ImGui.TextWrapped($"{header} {(disabled.Count > 0 ? FeaturesUI.Warning_DisabledDueToUpdate : "")}");
+
+                                if (!string.IsNullOrEmpty(abbreviation) &&
+                                    P.UIHelper.JobControlled(id) is not null)
+                                {
+                                    ImGui.SameLine();
+                                    P.UIHelper
+                                        .ShowIPCControlledIndicatorIfNeeded(id, false, ColCount > 1);
+                                }
+                            }
+
+                            ImGui.TableNextColumn();
+                        }
+                    }
+                }
+
+                ImGuiExtensions.TextUnderlinedAndCentered("Limited Jobs and Misc");
+                // Draw special jobs table (All + Limited)
+                if (specialJobs.Count > 0)
+                {
+                    using (var tab = ImRaii.Table("PvETableSpecial", ColCount))
+                    {
+                        ImGui.TableNextColumn();
+
+                        if (!tab)
+                            return;
+
+                        foreach (var (job, presetData) in specialJobs)
+                        {
+                            var info = presetData[0].JobInfo;
+                            string jobName = info.JobName;
+                            string abbreviation = info.JobShorthand;
+                            string header = string.IsNullOrEmpty(abbreviation) ? jobName : $"{jobName} - {abbreviation}";
+                            var id = info.Job;
+
+                            IDalamudTextureWrap? icon = Icons.GetJobIcon(id);
+                            ImGuiEx.Spacing(new Vector2(0, 2f.Scale()));
+                            using (var disabled = ImRaii.Disabled(DisabledJobsPVE.Any(x => x == id)))
+                            {
+                                if (ImGui.Selectable($"###{header}{info.Job}", OpenJob == job, ImGuiSelectableFlags.None, new Vector2(0, IconMaxSize)))
+                                {
+                                    OpenJob = job;
+                                }
+                                ImGui.SameLine(IndentWidth);
+                                if (icon != null)
+                                {
+                                    var scale = Math.Min(IconMaxSize / icon.Size.X, IconMaxSize / icon.Size.Y);
+                                    var imgSize = new Vector2(icon.Size.X * scale, icon.Size.Y * scale);
+                                    var padSize = (IconMaxSize - imgSize.X) / 2f;
+                                    if (padSize > 0)
+                                        ImGui.SetCursorPosX(ImGui.GetCursorPosX() + padSize);
+                                    ImGui.Image(icon.Handle, imgSize);
+                                }
+                                else
+                                {
+                                    ImGui.Dummy(new Vector2(IconMaxSize, IconMaxSize));
+                                }
+                                ImGui.SameLine(LargerIndentWidth);
+                                ImGuiEx.Spacing(new Vector2(0, VerticalCenteringPadding));
+                                ImGui.TextWrapped($"{header} {(disabled.Count > 0 ? FeaturesUI.Warning_DisabledDueToUpdate : "")}");
+
+                                if (!string.IsNullOrEmpty(abbreviation) &&
+                                    P.UIHelper.JobControlled(id) is not null)
+                                {
+                                    ImGui.SameLine();
+                                    P.UIHelper
+                                        .ShowIPCControlledIndicatorIfNeeded(id, false, ColCount > 1);
+                                }
+                            }
+
+                            ImGui.TableNextColumn();
+                        }
                     }
                 }
             }
@@ -182,7 +259,7 @@ internal class PvEFeatures : FeaturesWindow
                         string mainTabName = openJob.Value switch
                         {
                             Job.ADV => MiscUI.Job_Roles,
-                            _       => MiscUI.Normal,
+                            _ => MiscUI.Normal,
                         };
                         if (ImGui.BeginTabItem(mainTabName))
                         {
@@ -391,10 +468,10 @@ internal class PvEFeatures : FeaturesWindow
 
     private static bool MatchesBlueTab(PresetStorage.PresetData presetData, FeatureTab tab) => tab switch
     {
-        FeatureTab.BlueDPS    => presetData.IsBlueDPS,
-        FeatureTab.BlueTank   => presetData.IsBlueTank,
+        FeatureTab.BlueDPS => presetData.IsBlueDPS,
+        FeatureTab.BlueTank => presetData.IsBlueTank,
         FeatureTab.BlueHealer => presetData.IsBlueHealer,
-        _                     => false,
+        _ => false,
     };
 
     // This draws all the normal PvE Combos for a job
