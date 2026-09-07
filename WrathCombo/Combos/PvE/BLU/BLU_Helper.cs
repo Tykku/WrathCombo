@@ -581,6 +581,11 @@ internal partial class BLU
 
     internal class BLUMoonFluteDoTOpener : BLUOpenerBase
     {
+        internal static uint BreathOfMagicOrMortalFlame =>
+            !IsSpellActive(BreathOfMagic) || HasStatusEffect(Debuffs.BreathOfMagic, Target, true)
+                ? MortalFlame
+                : BreathOfMagic;
+
         public override List<Func<uint>> OpenerActions { get; set; } =
         [
             () => All.Cease, // 1
@@ -594,7 +599,7 @@ internal partial class BLU
             () => Bristle, // 9
             () => FeatherRain.Retarget(SonicBoom, CurrentTarget), // 10
             () => SeaShanty, // 11
-            () => BreathOfMagic, // 12
+            () => BreathOfMagicOrMortalFlame, // 12
             () => ShockStrike, // 13
             () => Bristle, // 14
             () => Role.Swiftcast, // 15
@@ -605,11 +610,6 @@ internal partial class BLU
             () => MatraMagic, // 20
             () => BeingMortal, // 21
             () => PhantomFlurry // 22
-        ];
-
-        public override List<(int[] Steps, uint NewAction, Func<bool> Condition)> SubstitutionSteps { get; set; } =
-        [
-            ([12], MortalFlame, () => !IsSpellActive(BreathOfMagic) || HasStatusEffect(Debuffs.BreathOfMagic, Target, true))
         ];
 
         public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =

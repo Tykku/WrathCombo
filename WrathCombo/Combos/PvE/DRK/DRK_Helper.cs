@@ -246,6 +246,24 @@ internal partial class DRK
         public override int MinOpenerLevel => 100;
         public override int MaxOpenerLevel => 109;
 
+        public override Preset Preset => Preset.DRK_ST_BalanceOpener;
+
+        internal override UserData? ContentCheckConfig => DRK_ST_OpenerDifficulty;
+
+        internal override bool IncludePot => DRK_Opener_Potion;
+
+        public override bool HasCooldowns() =>
+            LocalPlayer.CurrentMp > 7000 && IsOffCooldown(LivingShadow) &&
+            IsOffCooldown(Delirium) && IsOffCooldown(CarveAndSpit) &&
+            IsOffCooldown(SaltedEarth) &&
+            GetRemainingCharges(Shadowbringer) >= 2 &&
+            (!InCombat() || CombatEngageDuration().TotalSeconds < 3);
+
+        public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
+        [
+            ([1], () => CountdownActive || InCombat() || !DRK_Opener_PrepullBlock),
+        ];
+
         public static uint Pull => DRK_ST_OpenerAction.Value switch
         {
             1 => Shadowstride,
@@ -296,19 +314,6 @@ internal partial class DRK
             ([20], () => Gauge.Blood < 50), // Skip Blood spenders when no Blood
             ([21], () => !ActionReady(SaltAndDarkness)), // Skip Salt and Darkness
         ];
-
-        public override Preset Preset => Preset.DRK_ST_BalanceOpener;
-
-        internal override UserData? ContentCheckConfig => DRK_ST_OpenerDifficulty;
-
-        internal override bool IncludePot => DRK_Opener_Potion;
-
-        public override bool HasCooldowns() =>
-            LocalPlayer.CurrentMp > 7000 && IsOffCooldown(LivingShadow) &&
-            IsOffCooldown(Delirium) && IsOffCooldown(CarveAndSpit) &&
-            IsOffCooldown(SaltedEarth) &&
-            GetRemainingCharges(Shadowbringer) >= 2 &&
-            (!InCombat() || CombatEngageDuration().TotalSeconds < 3);
     }
 
     internal class DRKOpenerEarlyBuff : DRKOpenerBase
@@ -352,19 +357,6 @@ internal partial class DRK
             ([16], () => !ActionReady(SaltAndDarkness)), // Skip Salt and Darkness when not ready
             ([19], () => Gauge.Blood < 50), // Skip Blood spenders when no Blood
         ];
-
-        public override Preset Preset => Preset.DRK_ST_BalanceOpener;
-
-        internal override UserData? ContentCheckConfig => DRK_ST_OpenerDifficulty;
-
-        internal override bool IncludePot => DRK_Opener_Potion;
-
-        public override bool HasCooldowns() =>
-            LocalPlayer.CurrentMp > 7000 && IsOffCooldown(LivingShadow) &&
-            IsOffCooldown(Delirium) && IsOffCooldown(CarveAndSpit) &&
-            IsOffCooldown(SaltedEarth) &&
-            GetRemainingCharges(Shadowbringer) >= 2 &&
-            (!InCombat() || CombatEngageDuration().TotalSeconds < 3);
     }
 
     #endregion

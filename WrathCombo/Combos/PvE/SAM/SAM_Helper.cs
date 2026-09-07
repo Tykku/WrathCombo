@@ -562,9 +562,9 @@ internal partial class SAM
 
         public override List<(int[] Steps, Func<float> HoldDelay)> PrepullDelays { get; set; } =
         [
-            ([2], () => !SAM_ST_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining - 13)),
-            ([3], () => !SAM_ST_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining - 5)),
-            ([4], () => !SAM_ST_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining - 0.5f))
+            ([2], () => !SAM_ST_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining - 14)),
+            ([3], () => !SAM_ST_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining - (TargetNeedsPositionals() ? 5 : 0))),
+            ([4], () => !SAM_ST_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining))
         ];
 
         public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =

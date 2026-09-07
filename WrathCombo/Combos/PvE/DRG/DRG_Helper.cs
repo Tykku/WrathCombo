@@ -446,45 +446,13 @@ internal partial class DRG
     {
         public override List<Func<uint>> OpenerActions { get; set; } =
         [
-            () => TrueThrust, // 1
-            () => SpiralBlow, // 2
-            () => LanceCharge, // 3
-            () => Items.UseItem(Items.GetStrongestPotionRow(Items.PotionType.Strength)), // 4
-            () => ChaoticSpring, // 5
-            () => BattleLitany, // 6
-            () => Geirskogul, // 7
-            () => WheelingThrust, // 8
-            () => HighJump, // 9
-            () => LifeSurge, // 10
-            () => Drakesbane, // 11
-            () => DragonfireDive, // 12
-            () => Nastrond, // 13
-            () => RaidenThrust, // 14
-            () => Stardiver, // 15
-            () => LanceBarrage, // 16
-            () => Starcross, // 17
-            () => LifeSurge, // 18
-            () => HeavensThrust, // 19
-            () => RiseOfTheDragon, // 20
-            () => MirageDive, // 21
-            () => FangAndClaw, // 22
-            () => Drakesbane, // 23
-            () => RaidenThrust, // 24
-            () => WyrmwindThrust // 25
-        ];
-    }
-
-    internal class DRGPiercingTalonOpener : DRGOpenerBase
-    {
-        public override List<Func<uint>> OpenerActions { get; set; } =
-        [
-            () => PiercingTalon, // 1
+            () => All.Cease, // 1
             () => TrueThrust, // 2
-            () => Items.UseItem(Items.GetStrongestPotionRow(Items.PotionType.Strength)), // 3
-            () => SpiralBlow, // 4
-            () => LanceCharge, // 5
-            () => BattleLitany, // 6
-            () => ChaoticSpring, // 7
+            () => SpiralBlow, // 3
+            () => LanceCharge, // 4
+            () => Items.UseItem(Items.GetStrongestPotionRow(Items.PotionType.Strength)), // 5
+            () => ChaoticSpring, // 6
+            () => BattleLitany, // 7
             () => Geirskogul, // 8
             () => WheelingThrust, // 9
             () => HighJump, // 10
@@ -505,42 +473,107 @@ internal partial class DRG
             () => RaidenThrust, // 25
             () => WyrmwindThrust // 26
         ];
+
+        public override List<(int[] Steps, Func<float> HoldDelay)> PrepullDelays { get; set; } =
+        [
+            ([2], () => !DRG_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining))
+        ];
+
+        public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
+        [
+            ([1], () => CountdownActive || InCombat() || !DRG_Opener_PrepullBlock)
+        ];
+    }
+
+    internal class DRGPiercingTalonOpener : DRGOpenerBase
+    {
+        public override List<Func<uint>> OpenerActions { get; set; } =
+        [
+            () => All.Cease, // 1
+            () => PiercingTalon, // 2
+            () => TrueThrust, // 3
+            () => Items.UseItem(Items.GetStrongestPotionRow(Items.PotionType.Strength)), // 4
+            () => SpiralBlow, // 5
+            () => LanceCharge, // 6
+            () => BattleLitany, // 7
+            () => ChaoticSpring, // 8
+            () => Geirskogul, // 9
+            () => WheelingThrust, // 10
+            () => HighJump, // 11
+            () => LifeSurge, // 12
+            () => Drakesbane, // 13
+            () => DragonfireDive, // 14
+            () => Nastrond, // 15
+            () => RaidenThrust, // 16
+            () => Stardiver, // 17
+            () => LanceBarrage, // 18
+            () => Starcross, // 19
+            () => LifeSurge, // 20
+            () => HeavensThrust, // 21
+            () => RiseOfTheDragon, // 22
+            () => MirageDive, // 23
+            () => FangAndClaw, // 24
+            () => Drakesbane, // 25
+            () => RaidenThrust, // 26
+            () => WyrmwindThrust // 27
+        ];
+
+        public override List<(int[] Steps, Func<float> HoldDelay)> PrepullDelays { get; set; } =
+        [
+            ([2], () => !DRG_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining - 0.85f))
+        ];
+
+        public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
+        [
+            ([1], () => CountdownActive || InCombat() || !DRG_Opener_PrepullBlock)
+        ];
     }
 
     internal class DRGFRUOpener : DRGOpenerBase
     {
         public override List<Func<uint>> OpenerActions { get; set; } =
         [
-            () => TrueThrust, // 1
-            () => HighJump, // 2
-            () => SpiralBlow, // 3
-            () => Items.UseItem(Items.GetStrongestPotionRow(Items.PotionType.Strength)), // 4
-            () => ChaoticSpring, // 5
-            () => BattleLitany, // 6
-            () => WheelingThrust, // 7
-            () => Drakesbane, // 8
-            () => LanceCharge, // 9
-            () => Geirskogul, // 10
-            () => RaidenThrust, // 11
-            () => DragonfireDive, // 12
-            () => MirageDive, // 13
-            () => LanceBarrage, // 14
-            () => LifeSurge, // 15
-            () => Nastrond, // 16
-            () => HeavensThrust, // 17
-            () => Stardiver, // 18
-            () => FangAndClaw, // 19
-            () => Starcross, // 20
-            () => LifeSurge, // 21
-            () => Drakesbane, // 22
-            () => RiseOfTheDragon, // 23
-            () => RaidenThrust, // 24
-            () => WyrmwindThrust, // 25
-            () => LanceCharge, //26
-            () => HeavensThrust, //27
-            () => HighJump, //28
-            () => MirageDive, //29
-            () => FangAndClaw //30
+            () => All.Cease, // 1
+            () => TrueThrust, // 2
+            () => HighJump, // 3
+            () => SpiralBlow, // 4
+            () => Items.UseItem(Items.GetStrongestPotionRow(Items.PotionType.Strength)), // 5
+            () => ChaoticSpring, // 6
+            () => BattleLitany, // 7
+            () => WheelingThrust, // 8
+            () => Drakesbane, // 9
+            () => LanceCharge, // 10
+            () => Geirskogul, // 11
+            () => RaidenThrust, // 12
+            () => DragonfireDive, // 13
+            () => MirageDive, // 14
+            () => LanceBarrage, // 15
+            () => LifeSurge, // 16
+            () => Nastrond, // 17
+            () => HeavensThrust, // 18
+            () => Stardiver, // 19
+            () => FangAndClaw, // 20
+            () => Starcross, // 21
+            () => LifeSurge, // 22
+            () => Drakesbane, // 23
+            () => RiseOfTheDragon, // 24
+            () => RaidenThrust, // 25
+            () => WyrmwindThrust, // 26
+            () => LanceCharge, //27
+            () => HeavensThrust, //28
+            () => HighJump, //29
+            () => MirageDive, //30
+            () => FangAndClaw //31
+        ];
+
+        public override List<(int[] Steps, Func<float> HoldDelay)> PrepullDelays { get; set; } =
+        [
+            ([2], () => !DRG_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining))
+        ];
+
+        public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
+        [
+            ([1], () => CountdownActive || InCombat() || !DRG_Opener_PrepullBlock)
         ];
     }
 
