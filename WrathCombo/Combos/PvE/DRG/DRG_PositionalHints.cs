@@ -14,18 +14,37 @@ internal partial class DRG
         if (TryReportOpenerPositionalHint(Opener(), TryReportDRGActionPositional))
             return;
 
-        if (ComboAction == OriginalHook(Disembowel) && ActionLearned(ChaosThrust))
-            ReportUpcomingPositional(PositionalDirection.Rear, OriginalHook(ChaosThrust), 1);
-        else if (ComboAction == OriginalHook(ChaosThrust) && ActionLearned(WheelingThrust))
-            ReportUpcomingPositional(PositionalDirection.Rear, WheelingThrust, 1);
-        else if (ComboAction == OriginalHook(FullThrust) && ActionLearned(FangAndClaw))
-            ReportUpcomingPositional(PositionalDirection.Flank, FangAndClaw, 1);
-        else if (ComboAction == OriginalHook(VorpalThrust) && ActionLearned(FullThrust) && ActionLearned(FangAndClaw))
-            ReportUpcomingPositional(PositionalDirection.Flank, FangAndClaw, 2);
-        else if (ComboAction is TrueThrust or RaidenThrust && ActionLearned(VorpalThrust))
-            ReportDRGPathAfterTrueThrust();
-        else
-            ReportDRGFreshComboPath();
+        switch (ComboAction)
+        {
+            case var action when action == OriginalHook(Disembowel) && ActionLearned(ChaosThrust):
+                ReportUpcomingPositional(PositionalDirection.Rear, OriginalHook(ChaosThrust), 1);
+                break;
+
+            case var action when action == OriginalHook(ChaosThrust) && ActionLearned(WheelingThrust):
+                ReportUpcomingPositional(PositionalDirection.Rear, WheelingThrust, 1);
+                break;
+
+            case var action when action == OriginalHook(FullThrust) && ActionLearned(FangAndClaw):
+                ReportUpcomingPositional(PositionalDirection.Flank, FangAndClaw, 1);
+                break;
+
+            case var action when action == OriginalHook(VorpalThrust) &&
+                                 ActionLearned(FullThrust) && ActionLearned(FangAndClaw):
+                ReportUpcomingPositional(PositionalDirection.Flank, FangAndClaw, 2);
+                break;
+
+            case TrueThrust or RaidenThrust when ActionLearned(VorpalThrust):
+                ReportDRGPathAfterTrueThrust();
+                break;
+
+            case FangAndClaw or WheelingThrust:
+                ClearUpcomingPositional();
+                break;
+
+            default:
+                ReportDRGFreshComboPath();
+                break;
+        }
     }
 
     private static bool IsDisembowelPath() =>
@@ -40,6 +59,8 @@ internal partial class DRG
             ReportUpcomingPositional(PositionalDirection.Rear, OriginalHook(ChaosThrust), 2);
         else if (ActionLearned(FangAndClaw))
             ReportUpcomingPositional(PositionalDirection.Flank, FangAndClaw, 3);
+        else
+            ClearUpcomingPositional();
     }
 
     // Fang is 4 GCDs from a fresh True Thrust (beyond the API max of 3).
@@ -47,28 +68,28 @@ internal partial class DRG
     {
         if (IsDisembowelPath() && ActionLearned(ChaosThrust))
             ReportUpcomingPositional(PositionalDirection.Rear, OriginalHook(ChaosThrust), 3);
+        else
+            ClearUpcomingPositional();
     }
 
     private static bool TryReportDRGActionPositional(uint action, int gcdsUntil)
     {
-        if (action == OriginalHook(ChaosThrust))
+        switch (action)
         {
-            ReportUpcomingPositional(PositionalDirection.Rear, action, gcdsUntil);
-            return true;
-        }
+            case var _ when action == OriginalHook(ChaosThrust):
+                ReportUpcomingPositional(PositionalDirection.Rear, action, gcdsUntil);
+                return true;
 
-        if (action == WheelingThrust)
-        {
-            ReportUpcomingPositional(PositionalDirection.Rear, WheelingThrust, gcdsUntil);
-            return true;
-        }
+            case WheelingThrust:
+                ReportUpcomingPositional(PositionalDirection.Rear, WheelingThrust, gcdsUntil);
+                return true;
 
-        if (action == FangAndClaw)
-        {
-            ReportUpcomingPositional(PositionalDirection.Flank, FangAndClaw, gcdsUntil);
-            return true;
-        }
+            case FangAndClaw:
+                ReportUpcomingPositional(PositionalDirection.Flank, FangAndClaw, gcdsUntil);
+                return true;
 
-        return false;
+            default:
+                return false;
+        }
     }
 }

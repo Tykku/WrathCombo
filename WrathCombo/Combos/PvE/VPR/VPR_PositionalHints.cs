@@ -20,24 +20,52 @@ internal partial class VPR
         if (TryReportOpenerPositionalHint(Opener(), TryReportVPRActionPositional))
             return;
 
-        if (TryReportVicewinderCoilPositionalHints(vicewinderBuffPrio))
-            return;
-
-        if (ComboAction is HuntersSting or SwiftskinsSting)
+        switch (ComboAction)
         {
-            if (LocalPlayer.HasStatus(Buffs.HindsbaneVenom) && ActionLearned(HindsbaneFang))
-                ReportUpcomingPositional(PositionalDirection.Rear, HindsbaneFang, 1);
-            else if (LocalPlayer.HasStatus(Buffs.FlanksbaneVenom) && ActionLearned(FlanksbaneFang))
-                ReportUpcomingPositional(PositionalDirection.Flank, FlanksbaneFang, 1);
-            else if (LocalPlayer.HasStatus(Buffs.HindstungVenom) && ActionLearned(HindstingStrike))
-                ReportUpcomingPositional(PositionalDirection.Rear, HindstingStrike, 1);
-            else if (LocalPlayer.HasStatus(Buffs.FlankstungVenom) && ActionLearned(FlankstingStrike))
-                ReportUpcomingPositional(PositionalDirection.Flank, FlankstingStrike, 1);
+            case HuntersSting or SwiftskinsSting:
+                if (!TryReportVPRStingFinisher(1))
+                    ClearUpcomingPositional();
+                return;
+
+            case ReavingFangs or SteelFangs:
+                if (!TryReportVicewinderCoilPositionalHints(vicewinderBuffPrio))
+                    ReportVPRFinisherPath(2);
+                return;
+
+            default:
+                if (!TryReportVicewinderCoilPositionalHints(vicewinderBuffPrio))
+                    ReportVPRFinisherPath(3);
+                return;
         }
-        else if (ComboAction is ReavingFangs or SteelFangs)
-            ReportVPRFinisherPath(2);
-        else
-            ReportVPRFinisherPath(3);
+    }
+
+    private static bool TryReportVPRStingFinisher(int gcdsUntil)
+    {
+        if (LocalPlayer.HasStatus(Buffs.HindsbaneVenom) && ActionLearned(HindsbaneFang))
+        {
+            ReportUpcomingPositional(PositionalDirection.Rear, HindsbaneFang, gcdsUntil);
+            return true;
+        }
+
+        if (LocalPlayer.HasStatus(Buffs.FlanksbaneVenom) && ActionLearned(FlanksbaneFang))
+        {
+            ReportUpcomingPositional(PositionalDirection.Flank, FlanksbaneFang, gcdsUntil);
+            return true;
+        }
+
+        if (LocalPlayer.HasStatus(Buffs.HindstungVenom) && ActionLearned(HindstingStrike))
+        {
+            ReportUpcomingPositional(PositionalDirection.Rear, HindstingStrike, gcdsUntil);
+            return true;
+        }
+
+        if (LocalPlayer.HasStatus(Buffs.FlankstungVenom) && ActionLearned(FlankstingStrike))
+        {
+            ReportUpcomingPositional(PositionalDirection.Flank, FlankstingStrike, gcdsUntil);
+            return true;
+        }
+
+        return false;
     }
 
     private static void ReportVPRFinisherPath(int gcdsUntil)
@@ -51,7 +79,12 @@ internal partial class VPR
 
         if (ActionLearned(HuntersSting) &&
             (HasFlankVenom || IsMissingHuntersInstinct))
+        {
             ReportUpcomingPositional(PositionalDirection.Flank, UpcomingFlankFinisher(), gcdsUntil);
+            return;
+        }
+
+        ClearUpcomingPositional();
     }
 
     private static bool TryReportVicewinderCoilPositionalHints(bool vicewinderBuffPrio)
@@ -59,10 +92,8 @@ internal partial class VPR
         if (!ActionLearned(Vicewinder) || LocalPlayer.HasStatus(Buffs.Reawakened))
             return false;
 
-        // Simple always uses Vicewinder; Advanced only when those presets are on.
         bool vicewinderInRotation = !IsEnabled(Preset.VPR_ST_AdvancedMode) ||
-                                    IsEnabled(Preset.VPR_ST_Vicewinder) ||
-                                    IsEnabled(Preset.VPR_ST_VicewinderCombo);
+                                    IsEnabled(Preset.VPR_ST_Vicewinder);
 
         if (TryGetNextVicewinderCoil(vicewinderBuffPrio, out uint coil))
         {
@@ -87,7 +118,7 @@ internal partial class VPR
             case SwiftskinsCoil:
                 ReportUpcomingPositional(PositionalDirection.Rear, SwiftskinsCoil, gcdsUntil);
                 break;
-            
+
             case HuntersCoil:
                 ReportUpcomingPositional(PositionalDirection.Flank, HuntersCoil, gcdsUntil);
                 break;
@@ -101,17 +132,21 @@ internal partial class VPR
             case HuntersCoil:
                 ReportUpcomingPositional(PositionalDirection.Flank, HuntersCoil, gcdsUntil);
                 return true;
+
             case SwiftskinsCoil:
                 ReportUpcomingPositional(PositionalDirection.Rear, SwiftskinsCoil, gcdsUntil);
                 return true;
+
             case HindstingStrike:
             case HindsbaneFang:
                 ReportUpcomingPositional(PositionalDirection.Rear, action, gcdsUntil);
                 return true;
+
             case FlankstingStrike:
             case FlanksbaneFang:
                 ReportUpcomingPositional(PositionalDirection.Flank, action, gcdsUntil);
                 return true;
+
             default:
                 return false;
         }

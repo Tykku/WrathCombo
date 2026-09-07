@@ -11,38 +11,58 @@ internal partial class SAM
         if (!CanReportPositionalHints())
             return;
 
+        if (TryReportOpenerPositionalHint(Opener(), TryReportSAMActionPositional))
+            return;
+
         if (LocalPlayer.HasStatus(Buffs.MeikyoShisui))
         {
-            if (useGekko && ActionLearned(Gekko) && !HasGetsu || !LocalPlayer.HasStatus(Buffs.Fugetsu))
-                ReportUpcomingPositional(PositionalDirection.Rear, Gekko, 1);
-            else if (useKasha && ActionLearned(Kasha) && !HasKa || !LocalPlayer.HasStatus(Buffs.Fuka))
-                ReportUpcomingPositional(PositionalDirection.Flank, Kasha, 1);
-            else
-                ClearUpcomingPositional();
+            ReportSAMMeikyoHints(useGekko, useKasha);
             return;
         }
 
-        if (ComboAction is Jinpu && ActionLearned(Gekko))
-            ReportUpcomingPositional(PositionalDirection.Rear, Gekko, 1);
-        else if (ComboAction is Shifu && ActionLearned(Kasha))
-            ReportUpcomingPositional(PositionalDirection.Flank, Kasha, 1);
-        else if (ComboAction is Hakaze or Gyofu)
-            ReportSAMFinisherPath(useGekko, useKasha, 2);
-        else
-            ReportSAMFinisherPath(useGekko, useKasha, 3);
+        switch (ComboAction)
+        {
+            case Jinpu when useGekko && ActionLearned(Gekko):
+                ReportUpcomingPositional(PositionalDirection.Rear, Gekko, 1);
+                break;
+
+            case Shifu when useKasha && ActionLearned(Kasha):
+                ReportUpcomingPositional(PositionalDirection.Flank, Kasha, 1);
+                break;
+
+            case Hakaze or Gyofu:
+                ReportSAMFinisherPath(useGekko, useKasha, 2);
+                break;
+
+            default:
+                ReportSAMFinisherPath(useGekko, useKasha, 3);
+                break;
+        }
     }
 
-    /// <summary> Same Gekko/Kasha choice as the Hakaze branch of the ST combo. </summary>
+    private static void ReportSAMMeikyoHints(bool useGekko, bool useKasha)
+    {
+        if (useGekko && ActionLearned(Gekko) && (!HasGetsu || !LocalPlayer.HasStatus(Buffs.Fugetsu)))
+            ReportUpcomingPositional(PositionalDirection.Rear, Gekko, 1);
+        else if (useKasha && ActionLearned(Kasha) && (!HasKa || !LocalPlayer.HasStatus(Buffs.Fuka)))
+            ReportUpcomingPositional(PositionalDirection.Flank, Kasha, 1);
+        else
+            ClearUpcomingPositional();
+    }
+
+    // Same order as DoBasicCombo Hakaze branch: Yukikaze → Kasha → Gekko.
     private static void ReportSAMFinisherPath(bool useGekko, bool useKasha, int gcdsUntil)
     {
-        if (useGekko &&
-            ActionLearned(Jinpu) &&
-            (!ActionLearned(Kasha) && ActionLearned(Gekko) ||
-             (OnTargetsRear() || OnTargetsFront()) && !HasGetsu && ActionLearned(Gekko) ||
-             OnTargetsFlank() && HasKa && ActionLearned(Gekko) ||
-             !LocalPlayer.HasStatus(Buffs.Fugetsu)))
+        float fugetsuRemaining = LocalPlayer.Status(Buffs.Fugetsu).RemainingTimeOrZero();
+        float fukaRemaining = LocalPlayer.Status(Buffs.Fuka).RemainingTimeOrZero();
+        bool refreshFugetsu = fugetsuRemaining <= fukaRemaining;
+        bool refreshFuka = fukaRemaining <= fugetsuRemaining;
+
+        if (ActionLearned(Yukikaze) && !HasSetsu &&
+            (!useGekko || !ActionLearned(Gekko) || fugetsuRemaining > 7) &&
+            (!useKasha || !ActionLearned(Kasha) || fukaRemaining > 7))
         {
-            ReportUpcomingPositional(PositionalDirection.Rear, Gekko, gcdsUntil);
+            ClearUpcomingPositional();
             return;
         }
 
@@ -50,7 +70,43 @@ internal partial class SAM
             ActionLearned(Shifu) &&
             ((OnTargetsFlank() || OnTargetsFront()) && !HasKa && ActionLearned(Kasha) ||
              OnTargetsRear() && HasGetsu && ActionLearned(Kasha) ||
-             !LocalPlayer.HasStatus(Buffs.Fuka)))
+             !LocalPlayer.HasStatus(Buffs.Fuka) ||
+             SenCount is 3 && refreshFuka ||
+             !ActionLearned(Gekko)))
+        {
             ReportUpcomingPositional(PositionalDirection.Flank, Kasha, gcdsUntil);
+            return;
+        }
+
+        if (useGekko &&
+            ActionLearned(Jinpu) &&
+            (!ActionLearned(Kasha) && ActionLearned(Gekko) ||
+             (OnTargetsRear() || OnTargetsFront()) && !HasGetsu && ActionLearned(Gekko) ||
+             OnTargetsFlank() && HasKa && ActionLearned(Gekko) ||
+             !LocalPlayer.HasStatus(Buffs.Fugetsu) ||
+             SenCount is 3 && refreshFugetsu))
+        {
+            ReportUpcomingPositional(PositionalDirection.Rear, Gekko, gcdsUntil);
+            return;
+        }
+
+        ClearUpcomingPositional();
+    }
+
+    private static bool TryReportSAMActionPositional(uint action, int gcdsUntil)
+    {
+        switch (action)
+        {
+            case Gekko:
+                ReportUpcomingPositional(PositionalDirection.Rear, Gekko, gcdsUntil);
+                return true;
+
+            case Kasha:
+                ReportUpcomingPositional(PositionalDirection.Flank, Kasha, gcdsUntil);
+                return true;
+
+            default:
+                return false;
+        }
     }
 }

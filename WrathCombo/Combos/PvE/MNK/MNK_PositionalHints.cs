@@ -1,3 +1,4 @@
+using Dalamud.Game.ClientState.JobGauge.Enums;
 using WrathCombo.API.Enum;
 using WrathCombo.Extensions;
 using static WrathCombo.CustomComboNS.Functions.CustomComboFunctions;
@@ -11,10 +12,7 @@ internal partial class MNK
         if (!CanReportPositionalHints())
             return;
 
-        // Perfect Balance / Formless replace the normal form loop.
-        if (!ActionLearned(TrueStrike) ||
-            LocalPlayer.HasStatus(Buffs.PerfectBalance) ||
-            LocalPlayer.HasStatus(Buffs.FormlessFist))
+        if (!ActionLearned(TrueStrike) || LocalPlayer.HasStatus(Buffs.FormlessFist))
         {
             ClearUpcomingPositional();
             return;
@@ -23,47 +21,58 @@ internal partial class MNK
         if (TryReportOpenerPositionalHint(Opener(), TryReportMNKActionPositional))
             return;
 
-        // Form/stack status can lag one tick after a Coeurl GCD.
+        if (LocalPlayer.HasStatus(Buffs.PerfectBalance))
+        {
+            if (!SolarNadi && LunarNadi && Gauge.BeastChakra[0] is BeastChakra.None)
+                ReportCoeurlPositional(1);
+            else
+                ClearUpcomingPositional();
+            return;
+        }
+
         bool justUsedCoeurlPositional =
             JustUsed(Demolish, GCD) || JustUsed(OriginalHook(SnapPunch), GCD);
 
-        if (LocalPlayer.HasStatus(Buffs.CoeurlForm) && !justUsedCoeurlPositional)
+        int gcdsUntil = (LocalPlayer.HasStatus(Buffs.CoeurlForm) && !justUsedCoeurlPositional) switch
         {
-            if (CoeurlStacks is 0 && ActionLearned(Demolish))
-                ReportUpcomingPositional(PositionalDirection.Rear, Demolish, 1);
-            else if (ActionLearned(SnapPunch))
-                ReportUpcomingPositional(PositionalDirection.Flank, OriginalHook(SnapPunch), 1);
-        }
-        else if (LocalPlayer.HasStatus(Buffs.RaptorForm) && ActionLearned(TrueStrike))
-        {
-            if (CoeurlStacks is 0 && ActionLearned(Demolish))
-                ReportUpcomingPositional(PositionalDirection.Rear, Demolish, 2);
-            else if (ActionLearned(SnapPunch))
-                ReportUpcomingPositional(PositionalDirection.Flank, OriginalHook(SnapPunch), 2);
-        }
-        else if (LocalPlayer.HasStatus(Buffs.OpoOpoForm) || justUsedCoeurlPositional)
-        {
-            if (CoeurlStacks is 0 && ActionLearned(Demolish))
-                ReportUpcomingPositional(PositionalDirection.Rear, Demolish, 3);
-            else if (ActionLearned(SnapPunch))
-                ReportUpcomingPositional(PositionalDirection.Flank, OriginalHook(SnapPunch), 3);
-        }
+            true => 1,
+            _ when LocalPlayer.HasStatus(Buffs.RaptorForm) && ActionLearned(TrueStrike) => 2,
+            _ when LocalPlayer.HasStatus(Buffs.OpoOpoForm) || justUsedCoeurlPositional => 3,
+            _ => 0,
+        };
+
+        if (gcdsUntil is 0)
+            ClearUpcomingPositional();
+        else
+            ReportCoeurlPositional(gcdsUntil);
+    }
+
+    private static void ReportCoeurlPositional(int gcdsUntil)
+    {
+        if (CoeurlStacks is 0 && ActionLearned(Demolish))
+            ReportUpcomingPositional(PositionalDirection.Rear, Demolish, gcdsUntil);
+        else if (ActionLearned(SnapPunch))
+            ReportUpcomingPositional(PositionalDirection.Flank, OriginalHook(SnapPunch), gcdsUntil);
+        else
+            ClearUpcomingPositional();
     }
 
     private static bool TryReportMNKActionPositional(uint action, int gcdsUntil)
     {
-        if (action == Demolish)
-        {
-            ReportUpcomingPositional(PositionalDirection.Rear, Demolish, gcdsUntil);
-            return true;
-        }
+        uint snapPunch = OriginalHook(SnapPunch);
 
-        if (action == OriginalHook(SnapPunch))
+        switch (action)
         {
-            ReportUpcomingPositional(PositionalDirection.Flank, OriginalHook(SnapPunch), gcdsUntil);
-            return true;
-        }
+            case Demolish:
+                ReportUpcomingPositional(PositionalDirection.Rear, Demolish, gcdsUntil);
+                return true;
 
-        return false;
+            case var _ when action == snapPunch:
+                ReportUpcomingPositional(PositionalDirection.Flank, snapPunch, gcdsUntil);
+                return true;
+
+            default:
+                return false;
+        }
     }
 }
