@@ -2312,6 +2312,13 @@ public enum Preset
 
     #endregion
 
+    #region BEASTMASTER
+
+    [JobInfo(Job.BST)]
+    PlaceHolder = 2500,
+
+    #endregion
+
     #region BARD
 
     #region Simple Mode
