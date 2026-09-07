@@ -1,5 +1,4 @@
 using WrathCombo.API.Enum;
-using WrathCombo.CustomComboNS.Functions;
 using WrathCombo.Extensions;
 using static WrathCombo.CustomComboNS.Functions.CustomComboFunctions;
 
@@ -28,13 +27,13 @@ internal partial class SAM
         else if (ComboAction is Shifu && ActionLearned(Kasha))
             ReportUpcomingPositional(PositionalDirection.Flank, Kasha, 1);
         else if (ComboAction is Hakaze or Gyofu)
-            TryReportSAMFinisherPath(useGekko, useKasha, 2);
+            ReportSAMFinisherPath(useGekko, useKasha, 2);
         else
-            TryReportSAMFinisherPath(useGekko, useKasha, 3);
+            ReportSAMFinisherPath(useGekko, useKasha, 3);
     }
 
     /// <summary> Same Gekko/Kasha choice as the Hakaze branch of the ST combo. </summary>
-    private static bool TryReportSAMFinisherPath(bool useGekko, bool useKasha, int gcdsUntil)
+    private static void ReportSAMFinisherPath(bool useGekko, bool useKasha, int gcdsUntil)
     {
         if (useGekko &&
             ActionLearned(Jinpu) &&
@@ -44,7 +43,7 @@ internal partial class SAM
              !LocalPlayer.HasStatus(Buffs.Fugetsu)))
         {
             ReportUpcomingPositional(PositionalDirection.Rear, Gekko, gcdsUntil);
-            return true;
+            return;
         }
 
         if (useKasha &&
@@ -52,11 +51,6 @@ internal partial class SAM
             ((OnTargetsFlank() || OnTargetsFront()) && !HasKa && ActionLearned(Kasha) ||
              OnTargetsRear() && HasGetsu && ActionLearned(Kasha) ||
              !LocalPlayer.HasStatus(Buffs.Fuka)))
-        {
             ReportUpcomingPositional(PositionalDirection.Flank, Kasha, gcdsUntil);
-            return true;
-        }
-
-        return false;
     }
 }

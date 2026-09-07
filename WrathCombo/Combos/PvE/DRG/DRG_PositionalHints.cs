@@ -1,5 +1,4 @@
 using WrathCombo.API.Enum;
-using WrathCombo.CustomComboNS.Functions;
 using WrathCombo.Extensions;
 using static WrathCombo.CustomComboNS.Functions.CustomComboFunctions;
 
@@ -24,9 +23,9 @@ internal partial class DRG
         else if (ComboAction == OriginalHook(VorpalThrust) && ActionLearned(FullThrust) && ActionLearned(FangAndClaw))
             ReportUpcomingPositional(PositionalDirection.Flank, FangAndClaw, 2);
         else if (ComboAction is TrueThrust or RaidenThrust && ActionLearned(VorpalThrust))
-            TryReportDRGPathAfterTrueThrust();
+            ReportDRGPathAfterTrueThrust();
         else
-            TryReportDRGFreshComboPath();
+            ReportDRGFreshComboPath();
     }
 
     private static bool IsDisembowelPath() =>
@@ -35,7 +34,7 @@ internal partial class DRG
          CurrentTarget.CanApplyStatus(ChaoticList[OriginalHook(ChaosThrust)]) ||
          LocalPlayer.Status(Buffs.PowerSurge).RemainingTimeOrZero() < 15);
 
-    private static void TryReportDRGPathAfterTrueThrust()
+    private static void ReportDRGPathAfterTrueThrust()
     {
         if (IsDisembowelPath() && ActionLearned(ChaosThrust))
             ReportUpcomingPositional(PositionalDirection.Rear, OriginalHook(ChaosThrust), 2);
@@ -44,7 +43,7 @@ internal partial class DRG
     }
 
     // Fang is 4 GCDs from a fresh True Thrust (beyond the API max of 3).
-    private static void TryReportDRGFreshComboPath()
+    private static void ReportDRGFreshComboPath()
     {
         if (IsDisembowelPath() && ActionLearned(ChaosThrust))
             ReportUpcomingPositional(PositionalDirection.Rear, OriginalHook(ChaosThrust), 3);

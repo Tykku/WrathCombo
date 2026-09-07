@@ -190,7 +190,7 @@ internal partial class VPR
 
     private static bool ShouldSaveOfferingForBurst =>
         UsesBurstAlignment &&
-        (LocalPlayer.HasStatus(Buffs.ReadyToReawaken) || IreCD > 0 && IreCD <= IreOfferingSaveWindow);
+        (LocalPlayer.HasStatus(Buffs.ReadyToReawaken) || IreCD is > 0 and <= IreOfferingSaveWindow);
 
     #endregion
 

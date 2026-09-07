@@ -110,7 +110,6 @@ internal partial class MNK
 
     private static uint DoBasicCombo(bool useTrueNorth = true, bool onAoE = false, int trueNorthCharges = 0)
     {
-        int tnCharges = IsNotEnabled(Preset.MNK_ST_SimpleMode) ? MNK_ManualTN : 0;
         if (onAoE)
         {
             if (LocalPlayer.HasStatus(Buffs.OpoOpoForm))

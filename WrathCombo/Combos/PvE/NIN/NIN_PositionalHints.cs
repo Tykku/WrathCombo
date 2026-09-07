@@ -1,5 +1,4 @@
 using WrathCombo.API.Enum;
-using WrathCombo.CustomComboNS.Functions;
 using static WrathCombo.CustomComboNS.Functions.CustomComboFunctions;
 
 namespace WrathCombo.Combos.PvE;

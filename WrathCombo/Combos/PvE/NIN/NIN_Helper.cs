@@ -1,5 +1,4 @@
 using Dalamud.Game.ClientState.JobGauge.Types;
-using ECommons;
 using ECommons.DalamudServices;
 using System;
 using System.Collections.Frozen;
@@ -33,6 +32,7 @@ internal partial class NIN
 
     #region Mudra Logic
 
+    [Flags]
     public enum MudraFlags
     {
         None = 0,
@@ -60,8 +60,6 @@ internal partial class NIN
     {
         get
         {
-            var raw = (int)Flags;
-
             return ThirdMudra switch
             {
                 not MudraFlags.None => ThirdMudra switch

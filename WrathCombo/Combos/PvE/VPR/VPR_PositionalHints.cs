@@ -1,5 +1,4 @@
 using WrathCombo.API.Enum;
-using WrathCombo.CustomComboNS.Functions;
 using WrathCombo.Extensions;
 using static WrathCombo.CustomComboNS.Functions.CustomComboFunctions;
 
@@ -36,28 +35,23 @@ internal partial class VPR
                 ReportUpcomingPositional(PositionalDirection.Flank, FlankstingStrike, 1);
         }
         else if (ComboAction is ReavingFangs or SteelFangs)
-            TryReportVPRFinisherPath(2);
+            ReportVPRFinisherPath(2);
         else
-            TryReportVPRFinisherPath(3);
+            ReportVPRFinisherPath(3);
     }
 
-    private static bool TryReportVPRFinisherPath(int gcdsUntil)
+    private static void ReportVPRFinisherPath(int gcdsUntil)
     {
         if (ActionLearned(SwiftskinsSting) &&
             (HasHindVenom || IsMissingSwiftscaled || IsMissingBasicComboVenom))
         {
             ReportUpcomingPositional(PositionalDirection.Rear, UpcomingHindFinisher(), gcdsUntil);
-            return true;
+            return;
         }
 
         if (ActionLearned(HuntersSting) &&
             (HasFlankVenom || IsMissingHuntersInstinct))
-        {
             ReportUpcomingPositional(PositionalDirection.Flank, UpcomingFlankFinisher(), gcdsUntil);
-            return true;
-        }
-
-        return false;
     }
 
     private static bool TryReportVicewinderCoilPositionalHints(bool vicewinderBuffPrio)
@@ -88,10 +82,16 @@ internal partial class VPR
 
     private static void ReportVicewinderCoil(uint coil, int gcdsUntil)
     {
-        if (coil == SwiftskinsCoil)
-            ReportUpcomingPositional(PositionalDirection.Rear, SwiftskinsCoil, gcdsUntil);
-        else if (coil == HuntersCoil)
-            ReportUpcomingPositional(PositionalDirection.Flank, HuntersCoil, gcdsUntil);
+        switch (coil)
+        {
+            case SwiftskinsCoil:
+                ReportUpcomingPositional(PositionalDirection.Rear, SwiftskinsCoil, gcdsUntil);
+                break;
+            
+            case HuntersCoil:
+                ReportUpcomingPositional(PositionalDirection.Flank, HuntersCoil, gcdsUntil);
+                break;
+        }
     }
 
     private static bool TryReportVPRActionPositional(uint action, int gcdsUntil)
