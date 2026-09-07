@@ -60,14 +60,6 @@ internal class PvEFeatures : FeaturesWindow
                         string header = string.IsNullOrEmpty(abbreviation) ? jobName : $"{jobName} - {abbreviation}";
                         var id = info.Job;
 
-                        if (Service.Configuration.AprilFools2026 && IsAprilFools)
-                        {
-                            var mnkInfo = groupedPresets[Job.MNK][0].JobInfo;
-                            jobName = mnkInfo.JobName;
-                            abbreviation = mnkInfo.JobShorthand;
-                            header = $"{jobName} - {abbreviation}";
-                            id = mnkInfo.Job;
-                        }
                         IDalamudTextureWrap? icon = Icons.GetJobIcon(id);
                         ImGuiEx.Spacing(new Vector2(0, 2f.Scale()));
                         using (var disabled = ImRaii.Disabled(DisabledJobsPVE.Any(x => x == id)))

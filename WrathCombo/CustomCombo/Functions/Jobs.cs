@@ -17,6 +17,7 @@ namespace WrathCombo.CustomComboNS.Functions
             MagicalDPS,
             DoH,
             DoL,
+            Limited,
         }
 
         public static JobRole GetRoleFromJob(uint job) =>
@@ -48,8 +49,7 @@ namespace WrathCombo.CustomComboNS.Functions
                     Job.ACN or
                     Job.SMN or
                     Job.RDM or
-                    Job.PCT or
-                    Job.BLU =>
+                    Job.PCT =>
                     JobRole.MagicalDPS,
                 Job.LNC or
                     Job.DRG or
@@ -59,8 +59,7 @@ namespace WrathCombo.CustomComboNS.Functions
                     Job.NIN or
                     Job.SAM or
                     Job.VPR or
-                    Job.RPR or
-                    Job.BST =>
+                    Job.RPR =>
                     JobRole.MeleeDPS,
                 Job.BTN or
                     Job.MIN or
@@ -75,6 +74,9 @@ namespace WrathCombo.CustomComboNS.Functions
                     Job.ALC or
                     Job.WVR =>
                     JobRole.DoH,
+                Job.BLU or
+                    Job.BST => 
+                JobRole.Limited,
                 _ => JobRole.All,
             };
     }
