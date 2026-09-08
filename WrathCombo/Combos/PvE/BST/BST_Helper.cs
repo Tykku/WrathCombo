@@ -51,14 +51,14 @@ internal partial class BST
         Calamity = 44933,
         TemperedRelease2 = 47092, //Not actually a 2, but same name as TemperedRelease1
         Trick = 47093,
-        Borrow1 = 47238, //No idea what these borrows link up to at the moment, they're all just called Borrow in the sheets
-        Borrow2 = 47239,
-        Borrow3 = 47240,
-        Borrow4 = 47241,
-        Borrow5 = 47242,
-        Borrow6 = 47243,
-        Borrow7 = 47244,
-        Borrow8 = 47245;
+        BorrowBeast = 47238,
+        BorrowVile = 47239,
+        BorrowCloud = 47240,
+        BorrowSeed = 47241,
+        BorrowWave = 47242,
+        BorrowScale = 47243,
+        BorrowSoul = 47244,
+        BorrowAsh = 47245;
 
 
 }
