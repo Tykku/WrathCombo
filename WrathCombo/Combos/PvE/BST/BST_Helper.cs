@@ -1,4 +1,8 @@
-﻿namespace WrathCombo.Combos.PvE;
+﻿using System.Collections.Generic;
+using System.Linq;
+using static WrathCombo.CustomComboNS.Functions.CustomComboFunctions;
+
+namespace WrathCombo.Combos.PvE;
 
 internal partial class BST
 {
@@ -157,6 +161,91 @@ internal partial class BST
 
     }
 
+    private static List<uint> RampantTricks =
+    [
+         Tricks.Cusith_Rake,
+         Tricks.Squirrel_SomersaultSlash,
+         Tricks.Lamb_FleeceButt,
+         Tricks.Opoopo_StoneThrow,
+         Tricks.Diremite_DeadlyThrust,
+         Tricks.Mandragora_Budbutt,
+         Tricks.Puk_Fireball,
+         Tricks.Sabotender_NaturalNeedles,
+         Tricks.Buffalo_Heave,
+         Tricks.Spriggan_Romp,
+         Tricks.Goobbue_Beatdown,
+         Tricks.Drake_BurningCyclone,
+         Tricks.Antling_MandibleBite,
+         Tricks.Chimera_theLionsBreath,
+         Tricks.Morbol_VineProbe,
+    ];
 
+    private static List<uint> EldritchTricks =
+    [
+         Tricks.Dodo_FowlStench,
+         Tricks.Coblyn_BestialThunder,
+         Tricks.Geshunpest_DarkThunder,
+         Tricks.Slime_Digest,
+         Tricks.Golem_BoulderClap,
+         Tricks.Adamantoise_BestialThunderII,
+         Tricks.Worm_SandBreath,
+         Tricks.Gigantoad_BestialBlizzardII,
+         Tricks.Coeurl_Blaster,
+         Tricks.Treant_AcornBomb,
+         Tricks.Rottinggoobbue_DirtySneeze,
+         Tricks.Rafflesia_BloodyCaress,
+         Tricks.Behemoth_Thunderbolt,
+    ];
+
+    private static List<uint> DurantTricks =
+    [
+         Tricks.Pugil_Screwdriver,
+         Tricks.Megalocrab_DrenchingBlow,
+         Tricks.Crab_BubbleShower,
+         Tricks.Mantis_StandingChine,
+         Tricks.Dullahan_IronJustice,
+         Tricks.Ziz_IceBreath,
+         Tricks.Apkallu_FlyingSardine,
+         Tricks.Uragnite_FrostBreath,
+         Tricks.Raptor_FrostBreath,
+         Tricks.Salamander_BrackishRain,
+         Tricks.Cobra_DrippingFang,
+         Tricks.Hydra_MainTrap,
+         Tricks.Icegolem_IceGuillotine,
+         Tricks.Karlabos_Impale,
+
+    ];
+
+    private static List<uint> VolantTricks =
+    [
+         Tricks.Wespe_SharpSting,
+         Tricks.Vulture_WingCutter,
+         Tricks.Bat_BloodDrain,
+         Tricks.Flyingtrap_SourSough,
+         Tricks.Colibri_Loop,
+         Tricks.Ghost_FellGale,
+         Tricks.Damselfly_CursedSphere,
+         Tricks.Zu_FlyingFrenzy,
+    ];
+
+    public static bool TrickIsDurant()
+    {
+        return DurantTricks.Any(x => x == OriginalHook(Trick));
+    }
+
+    public static bool TrickIsEldritch()
+    {
+        return EldritchTricks.Any(x => x == OriginalHook(Trick));
+    }
+
+    public static bool TrickIsVolant()
+    {
+        return VolantTricks.Any(x => x == OriginalHook(Trick));
+    }
+
+    public static bool TrickIsRampant()
+    {
+        return RampantTricks.Any(x => x == OriginalHook(Trick));
+    }
 
 }
