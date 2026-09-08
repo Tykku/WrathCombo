@@ -1,5 +1,6 @@
 ﻿#region Directives
 
+using Dalamud.Game.ClientState.JobGauge.Types;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
@@ -360,6 +361,11 @@ internal class Debug : ConfigWindow, IDisposable
                     break;
                 case Job.PCT:
                     Util.ShowStruct(&JobGaugeManager.Instance()->Pictomancer);
+                    break;
+                case Job.BST:
+                    var address = Svc.SigScanner.GetStaticAddressFromSig("48 8D 0D ?? ?? ?? ?? E8 ?? ?? ?? ?? B8 ?? ?? ?? ?? 66 3B F0") + 0x08;
+                    var gauge = (TmpBSTGauge*)address;
+                    Util.ShowStruct(gauge);
                     break;
             }
 

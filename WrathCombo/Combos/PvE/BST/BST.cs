@@ -18,10 +18,10 @@ internal partial class BST : Melee
             if (actionID is not SmashAxe)
                 return actionID;
 
-            if (ComboAction is SmashAxe)
+            if (ComboAction is SmashAxe && ActionReady(AxebladeBite))
                 return AxebladeBite;
 
-            if (ComboAction is AxebladeBite)
+            if (ComboAction is AxebladeBite && ActionReady(Shieldsplitter))
                 return Shieldsplitter;
 
             return SmashAxe;
