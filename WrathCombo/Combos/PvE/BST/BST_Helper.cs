@@ -1,18 +1,4 @@
-﻿using Dalamud.Game.ClientState.JobGauge.Types;
-using ECommons;
-using ECommons.DalamudServices;
-using System;
-using System.Collections.Frozen;
-using System.Collections.Generic;
-using System.Linq;
-using WrathCombo.Combos.PvE.ALL;
-using WrathCombo.CustomComboNS;
-using WrathCombo.CustomComboNS.Functions;
-using WrathCombo.Data;
-using WrathCombo.Extensions;
-using static WrathCombo.Combos.PvE.BST.Config;
-using static WrathCombo.CustomComboNS.Functions.CustomComboFunctions;
-namespace WrathCombo.Combos.PvE;
+﻿namespace WrathCombo.Combos.PvE;
 
 internal partial class BST
 {
@@ -59,6 +45,118 @@ internal partial class BST
         BorrowScale = 47243,
         BorrowSoul = 47244,
         BorrowAsh = 47245;
+
+    public static class Tricks
+    {
+        public const uint
+            Cusith_Rake = 44935,
+            Squirrel_SomersaultSlash = 44937,
+            Lamb_FleeceButt = 44939,
+            Pugil_Screwdriver = 44941,
+            Opoopo_StoneThrow = 44943,
+            Dodo_FowlStench = 44945,
+            Coblyn_BestialThunder = 44947,
+            Diremite_DeadlyThrust = 44949,
+            Megalocrab_DrenchingBlow = 44951,
+            Wespe_SharpSting = 44953,
+            Vulture_WingCutter = 44955,
+            Mandragora_Budbutt = 44957,
+            Geshunpest_DarkThunder = 44959,
+            Puk_Fireball = 44961,
+            Crab_BubbleShower = 44963,
+            Mantis_StandingChine = 44965,
+            Slime_Digest = 44967,
+            Dullahan_IronJustice = 44969,
+            Bat_BloodDrain = 44971,
+            Flyingtrap_SourSough = 44973,
+            Ziz_IceBreath = 44975,
+            Sabotender_NaturalNeedles = 44977,
+            Golem_BoulderClap = 44979,
+            Apkallu_FlyingSardine = 44981,
+            Adamantoise_BestialThunderII = 44983,
+            Buffalo_Heave = 44985,
+            Uragnite_FrostBreath = 44987,
+            Worm_SandBreath = 44989,
+            Spriggan_Romp = 44991,
+            Goobbue_Beatdown = 44993,
+            Gigantoad_BestialBlizzardII = 44995,
+            Colibri_Loop = 44997,
+            Coeurl_Blaster = 44999,
+            Raptor_FrostBreath = 45001,
+            Drake_BurningCyclone = 45003,
+            Treant_AcornBomb = 45005,
+            Antling_MandibleBite = 45007,
+            Chimera_theLionsBreath = 45009,
+            Morbol_VineProbe = 45011,
+            Ghost_FellGale = 45013,
+            Salamander_BrackishRain = 45015,
+            Cobra_DrippingFang = 45017,
+            Hydra_MainTrap = 45019,
+            Damselfly_CursedSphere = 45021,
+            Rottinggoobbue_DirtySneeze = 45023,
+            Zu_FlyingFrenzy = 45025,
+            Icegolem_IceGuillotine = 45027,
+            Karlabos_Impale = 45029,
+            Rafflesia_BloodyCaress = 45031,
+            Behemoth_Thunderbolt = 45033;
+    }
+
+    public static class TemperedRelease
+    {
+        public const uint
+            Cusith_RelentlessRake = 44936,
+            Squirrel_Scamper = 44938,
+            Lamb_Lullaby = 44940,
+            Pugil_WaterWall = 44942,
+            Opoopo_PinsandNails = 44944,
+            Dodo_Strut = 44946,
+            Coblyn_Vulcanize = 44948,
+            Diremite_Silkscreen = 44950,
+            Megalocrab_BubbleShower = 44952,
+            Wespe_FinalSting = 44954,
+            Vulture_BloodcurdlingCaw = 44956,
+            Mandragora_HeirloomScream = 44958,
+            Geshunpest_Odium = 44960,
+            Puk_TailChase = 44962,
+            Crab_HundredFists = 44964,
+            Mantis_EerieSoundwave = 44966,
+            Slime_Syrup = 44968,
+            Dullahan_KingsWill = 44970,
+            Bat_Ultrasonics = 44972,
+            Flyingtrap_NecroticNectar = 44974,
+            Ziz_Petribreath = 44976,
+            Sabotender_HypodermicHustle = 44978,
+            Golem_Rockslide = 44980,
+            Apkallu_Regurgitate = 44982,
+            Adamantoise_HardenShell = 44984,
+            Buffalo_WarCry = 44986,
+            Uragnite_GasShell = 44988,
+            Worm_BottomlessDesert = 44990,
+            Spriggan_FreneticFlurry = 44992,
+            Goobbue_MoldySneeze = 44994,
+            Gigantoad_StickyTongue = 44996,
+            Colibri_PeckingFlurry = 44998,
+            Coeurl_ChargedWhisker = 45000,
+            Raptor_FoulBreath = 45002,
+            Drake_SmolderingScales = 45004,
+            Treant_ArborealStorm = 45006,
+            Antling_FormicPheromones = 45008,
+            Chimera_theRamsVoice = 45010,
+            Morbol_BadBreath = 45012,
+            Ghost_Curse = 45014,
+            Salamander_PeculiarLight = 45016,
+            Cobra_StoneGaze = 45018,
+            Hydra_WhiteBreath = 45020,
+            Damselfly_Venom = 45022,
+            Rottinggoobbue_Inhale = 45024,
+            Zu_BreathWing = 45026,
+            Icegolem_FrozenHeart = 45028,
+            Karlabos_TailScrew = 45030,
+            Rafflesia_BlightedBouquet = 45032,
+            Behemoth_Meteor = 45034;
+
+    }
+
 
 
 }

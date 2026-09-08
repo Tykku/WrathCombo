@@ -2315,7 +2315,7 @@ public enum Preset
     #region BEASTMASTER
 
     [JobInfo(Job.BST)]
-    PlaceHolder = 2500,
+    BST_Basic_Combo = 2500,
 
     #endregion
 
