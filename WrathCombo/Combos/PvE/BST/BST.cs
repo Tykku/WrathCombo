@@ -27,4 +27,25 @@ internal partial class BST : Melee
             return SmashAxe;
         }
     }
+
+    internal class BST_Instinctual_Combo : CustomCombo
+    {
+        protected internal override Preset Preset => Preset.BST_Instinctual_Combo;
+        protected override uint Invoke(uint actionID)
+        {
+            if (actionID is not Trick)
+                return actionID;
+
+            bool playerTpMet = JobGauge.PlayerTP >= BST_Instinctual_TpGauge;
+            bool beastTpMet = JobGauge.BeastTP >= BST_Instinctual_TpGauge;
+
+            if ((!playerTpMet || !beastTpMet) && !InInstinctualCombo)
+                return All.Cease;
+
+            if (ActionReady(TrickFollowUp))
+                return TrickFollowUp;
+
+            return actionID;
+        }
+    }
 }

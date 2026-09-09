@@ -167,6 +167,9 @@ internal abstract partial class CustomComboFunctions
     /// <param name="actionId"> The action ID. </param>
     public static unsafe bool ActionReady(uint actionId, bool recastCheck = false, bool castCheck = false)
     {
+        if (actionId == 0)
+            return false;
+
         if (actionId >= All.SingleTargetDPS)
             return true;
 

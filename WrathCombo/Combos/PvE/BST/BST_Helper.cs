@@ -1,8 +1,11 @@
 ﻿using ECommons.DalamudServices;
+using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Lumina.Excel.Sheets;
 using System.Collections.Generic;
 using System.Linq;
+using WrathCombo.Data;
+using WrathCombo.Extensions;
 using static WrathCombo.CustomComboNS.Functions.CustomComboFunctions;
 using Buddy = FFXIVClientStructs.FFXIV.Client.Game.UI.Buddy;
 
@@ -23,7 +26,7 @@ internal partial class BST
         MistralAxe = 44887,
         SpinningAxe = 44888,
         GaleAxe = 44889,
-        TemperedRelease = 44890, 
+        TemperedRelease = 44890,
         PartingBlow = 44891,
         SecondBattlehorn = 44892,
         ShieldCharge = 44893,
@@ -164,6 +167,16 @@ internal partial class BST
 
     }
 
+    public static class Buffs
+    {
+        public const uint
+
+            VolantHeart = 4595,
+            RampantHeart = 4596,
+            DurantHeart = 4597,
+            EldritchHeart = 4598;
+    }
+
     private static List<uint> RampantTricks =
     [
          TrickActions.Cusith_Rake,
@@ -231,6 +244,10 @@ internal partial class BST
          TrickActions.Zu_FlyingFrenzy,
     ];
 
+    public unsafe static TmpBSTGauge* _jobGauge => (TmpBSTGauge*)((nint)JobGaugeManager.StaticAddressPointers.pInstance + 0x08);
+
+    public unsafe static TmpBSTGauge JobGauge => *_jobGauge;
+
     public unsafe static Buddy.BuddyMember? CurrentPet => *UIState.Instance()->Buddy.PetInfo.Pet;
     public static unsafe bool CurrentPetIsBMPet => CurrentPet?.DataId > 0 && Svc.Data.GetExcelSheet<XBMPet>().Any(x => x.Unknown4 == CurrentPet?.DataId);
 
@@ -238,24 +255,46 @@ internal partial class BST
 
     public static uint? CurrentPetTrickAction => CurrentPetSheet?.Abilities[0].RowId ?? 0;
 
-    public static bool TrickIsDurant()
+    public static bool TrickIsDurant => DurantTricks.Any(x => x == CurrentPetTrickAction);
+
+    public static bool TrickIsEldritch => EldritchTricks.Any(x => x == CurrentPetTrickAction);
+
+    public static bool TrickIsVolant => VolantTricks.Any(x => x == CurrentPetTrickAction);
+
+    public static bool TrickIsRampant => RampantTricks.Any(x => x == CurrentPetTrickAction);
+
+    public static uint TrickFollowUp
     {
-        return DurantTricks.Any(x => x == CurrentPetTrickAction);
+        get
+        {
+            if (TrickIsRampant)
+                return AvalancheAxe;
+            if (TrickIsDurant)
+                return MistralAxe;
+            if (TrickIsEldritch)
+                return SpinningAxe;
+            if (TrickIsVolant)
+                return GaleAxe;
+
+            return 0;
+        }
     }
 
-    public static bool TrickIsEldritch()
+    public static bool InInstinctualCombo
     {
-        return EldritchTricks.Any(x => x == CurrentPetTrickAction);
-    }
+        get
+        {
+            if (LocalPlayer is not { } p)
+                return false;
 
-    public static bool TrickIsVolant()
-    {
-        return VolantTricks.Any(x => x == CurrentPetTrickAction);
-    }
+            if (JustUsed(Trick) || JustUsed(TrickFollowUp))
+                return true;
 
-    public static bool TrickIsRampant()
-    {
-        return RampantTricks.Any(x => x == CurrentPetTrickAction);
+            if (p.HasStatus(Buffs.RampantHeart) || p.HasStatus(Buffs.DurantHeart) || p.HasStatus(Buffs.EldritchHeart) || p.HasStatus(Buffs.VolantHeart))
+                return true;
+
+            return false;
+        }
     }
 
 }

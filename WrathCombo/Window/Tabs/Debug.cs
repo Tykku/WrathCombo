@@ -361,31 +361,16 @@ internal class Debug : ConfigWindow, IDisposable
                     Util.ShowStruct(&JobGaugeManager.Instance()->Pictomancer);
                     break;
                 case Job.BST:
-                    CustomStyleText($"Rampant Trick?:", $"{BST.TrickIsRampant()}");
-                    CustomStyleText($"Eldritch Trick?:", $"{BST.TrickIsEldritch()}");
-                    CustomStyleText($"Volant Trick?:", $"{BST.TrickIsVolant()}");
-                    CustomStyleText($"Durant Trick?:", $"{BST.TrickIsDurant()}");
+                    CustomStyleText($"Rampant Trick?:", $"{BST.TrickIsRampant}");
+                    CustomStyleText($"Eldritch Trick?:", $"{BST.TrickIsEldritch}");
+                    CustomStyleText($"Volant Trick?:", $"{BST.TrickIsVolant}");
+                    CustomStyleText($"Durant Trick?:", $"{BST.TrickIsDurant}");
 
                     CustomStyleText($"Current Pet is BMPet?:", $"{BST.CurrentPetIsBMPet}");
                     CustomStyleText($"Current Pet", $"{BST.CurrentPetSheet?.Name ?? "??"} (ID: {BST.CurrentPetSheet?.RowId ?? 0})");
                     CustomStyleText($"Current Pet Trick Action", $"{BST.CurrentPetTrickAction?.ActionName() ?? "??"} (ID: {BST.CurrentPetTrickAction ?? 0})");
 
-                    if (ImGui.CollapsingHeader("Tricks"))
-                    {
-                        foreach (var field in typeof(BST.TrickActions).GetFields())
-                        {
-                            if (field.GetValue(null) is uint fieldValue)
-                            {
-                                var actionName = GetActionName(fieldValue);
-                                var isReady = ActionManager.Instance()->GetActionStatus(ActionType.Action, fieldValue);
-                                CustomStyleText($"{actionName} ({fieldValue})", $"{isReady}");
-                            }
-
-                        }
-                    }
-                    var address = Svc.SigScanner.GetStaticAddressFromSig("48 8D 0D ?? ?? ?? ?? E8 ?? ?? ?? ?? B8 ?? ?? ?? ?? 66 3B F0") + 0x08;
-                    var gauge = (TmpBSTGauge*)address;
-                    Util.ShowStruct(gauge);
+                    Util.ShowStruct(BST._jobGauge);
                     break;
             }
 

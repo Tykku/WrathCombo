@@ -2318,6 +2318,10 @@ public enum Preset
     [JobInfo(Job.BST)]
     BST_Basic_Combo = 2500,
 
+    [ReplaceSkill(BST.Trick)]
+    [JobInfo(Job.BST)]
+    BST_Instinctual_Combo = 2501,
+
     #endregion
 
     #region BARD
