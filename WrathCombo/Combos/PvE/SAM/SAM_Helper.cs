@@ -678,7 +678,7 @@ internal partial class SAM
             () => KaeshiSetsugekka // 23
         ];
 
-        public override List<int> AllowUpgradeSteps { get; set; } = [19];
+        public override List<int> AllowUpgradeSteps { get; set; } = [20];
 
         public override bool HasCooldowns() =>
             base.HasCooldowns() &&
