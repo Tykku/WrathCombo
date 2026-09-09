@@ -1,6 +1,5 @@
 ﻿#region Directives
 
-using Dalamud.Game.ClientState.JobGauge.Types;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
@@ -32,7 +31,6 @@ using WrathCombo.Combos.PvE;
 using WrathCombo.Combos.PvE.ALL;
 using WrathCombo.Core;
 using WrathCombo.CustomComboNS;
-using WrathCombo.CustomComboNS.Functions;
 using WrathCombo.Data;
 using WrathCombo.Data.BattleData;
 using WrathCombo.Extensions;
@@ -363,6 +361,28 @@ internal class Debug : ConfigWindow, IDisposable
                     Util.ShowStruct(&JobGaugeManager.Instance()->Pictomancer);
                     break;
                 case Job.BST:
+                    CustomStyleText($"Rampant Trick?:", $"{BST.TrickIsRampant()}");
+                    CustomStyleText($"Eldritch Trick?:", $"{BST.TrickIsEldritch()}");
+                    CustomStyleText($"Volant Trick?:", $"{BST.TrickIsVolant()}");
+                    CustomStyleText($"Durant Trick?:", $"{BST.TrickIsDurant()}");
+
+                    CustomStyleText($"Current Pet is BMPet?:", $"{BST.CurrentPetIsBMPet}");
+                    CustomStyleText($"Current Pet", $"{BST.CurrentPetSheet?.Name ?? "??"} (ID: {BST.CurrentPetSheet?.RowId ?? 0})");
+                    CustomStyleText($"Current Pet Trick Action", $"{BST.CurrentPetTrickAction?.ActionName() ?? "??"} (ID: {BST.CurrentPetTrickAction ?? 0})");
+
+                    if (ImGui.CollapsingHeader("Tricks"))
+                    {
+                        foreach (var field in typeof(BST.TrickActions).GetFields())
+                        {
+                            if (field.GetValue(null) is uint fieldValue)
+                            {
+                                var actionName = GetActionName(fieldValue);
+                                var isReady = ActionManager.Instance()->GetActionStatus(ActionType.Action, fieldValue);
+                                CustomStyleText($"{actionName} ({fieldValue})", $"{isReady}");
+                            }
+
+                        }
+                    }
                     var address = Svc.SigScanner.GetStaticAddressFromSig("48 8D 0D ?? ?? ?? ?? E8 ?? ?? ?? ?? B8 ?? ?? ?? ?? 66 3B F0") + 0x08;
                     var gauge = (TmpBSTGauge*)address;
                     Util.ShowStruct(gauge);
@@ -770,7 +790,7 @@ internal class Debug : ConfigWindow, IDisposable
                 CustomStyleText("Tooltip:", $"{Svc.Data.GetExcelSheet<ActionTransient>().GetRow(_debugSpell.Value.RowId).Description}");
                 CustomStyleText("Base Recast:", $"{_debugSpell.Value.Recast100ms / 10f}s");
                 CustomStyleText("Base Recast Total:", $"{GetCooldown(_debugSpell.Value.RowId).BaseCooldownTotal}");
-                CustomStyleText("Original Hook:", OriginalHook(_debugSpell.Value.RowId).ActionName());
+                CustomStyleText("Original Hook:", $"{OriginalHook(_debugSpell.Value.RowId).ActionName()} ({OriginalHook(_debugSpell.Value.RowId)})");
                 CustomStyleText("Cooldown Total:", $"{GetCooldown(_debugSpell.Value.RowId).CooldownTotal:N2}");
                 CustomStyleText("CS CD:", $"{GetCooldown(_debugSpell.Value.RowId).CurrentRecast:N2}");
                 CustomStyleText("Remaining Cooldown:", $"{GetCooldown(_debugSpell.Value.RowId).CooldownRemaining:N2}");

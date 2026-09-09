@@ -1,6 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using ECommons.DalamudServices;
+using FFXIVClientStructs.FFXIV.Client.Game.UI;
+using Lumina.Excel.Sheets;
+using System.Collections.Generic;
 using System.Linq;
 using static WrathCombo.CustomComboNS.Functions.CustomComboFunctions;
+using Buddy = FFXIVClientStructs.FFXIV.Client.Game.UI.Buddy;
 
 namespace WrathCombo.Combos.PvE;
 
@@ -19,7 +23,7 @@ internal partial class BST
         MistralAxe = 44887,
         SpinningAxe = 44888,
         GaleAxe = 44889,
-        TemperedRelease1 = 44890, //Not actually a 1, but same name as TemperedRelease2
+        TemperedRelease = 44890, 
         PartingBlow = 44891,
         SecondBattlehorn = 44892,
         ShieldCharge = 44893,
@@ -39,7 +43,6 @@ internal partial class BST
         HawkishTalons = 44931,
         RisenFall = 44932,
         Calamity = 44933,
-        TemperedRelease2 = 47092, //Not actually a 2, but same name as TemperedRelease1
         Trick = 47093,
         BorrowBeast = 47238,
         BorrowVile = 47239,
@@ -50,7 +53,7 @@ internal partial class BST
         BorrowSoul = 47244,
         BorrowAsh = 47245;
 
-    public static class Tricks
+    public static class TrickActions
     {
         public const uint
             Cusith_Rake = 44935,
@@ -105,7 +108,7 @@ internal partial class BST
             Behemoth_Thunderbolt = 45033;
     }
 
-    public static class TemperedRelease
+    public static class TemperedReleaseActions
     {
         public const uint
             Cusith_RelentlessRake = 44936,
@@ -163,89 +166,96 @@ internal partial class BST
 
     private static List<uint> RampantTricks =
     [
-         Tricks.Cusith_Rake,
-         Tricks.Squirrel_SomersaultSlash,
-         Tricks.Lamb_FleeceButt,
-         Tricks.Opoopo_StoneThrow,
-         Tricks.Diremite_DeadlyThrust,
-         Tricks.Mandragora_Budbutt,
-         Tricks.Puk_Fireball,
-         Tricks.Sabotender_NaturalNeedles,
-         Tricks.Buffalo_Heave,
-         Tricks.Spriggan_Romp,
-         Tricks.Goobbue_Beatdown,
-         Tricks.Drake_BurningCyclone,
-         Tricks.Antling_MandibleBite,
-         Tricks.Chimera_theLionsBreath,
-         Tricks.Morbol_VineProbe,
+         TrickActions.Cusith_Rake,
+         TrickActions.Squirrel_SomersaultSlash,
+         TrickActions.Lamb_FleeceButt,
+         TrickActions.Opoopo_StoneThrow,
+         TrickActions.Diremite_DeadlyThrust,
+         TrickActions.Mandragora_Budbutt,
+         TrickActions.Puk_Fireball,
+         TrickActions.Sabotender_NaturalNeedles,
+         TrickActions.Buffalo_Heave,
+         TrickActions.Spriggan_Romp,
+         TrickActions.Goobbue_Beatdown,
+         TrickActions.Drake_BurningCyclone,
+         TrickActions.Antling_MandibleBite,
+         TrickActions.Chimera_theLionsBreath,
+         TrickActions.Morbol_VineProbe,
     ];
 
     private static List<uint> EldritchTricks =
     [
-         Tricks.Dodo_FowlStench,
-         Tricks.Coblyn_BestialThunder,
-         Tricks.Geshunpest_DarkThunder,
-         Tricks.Slime_Digest,
-         Tricks.Golem_BoulderClap,
-         Tricks.Adamantoise_BestialThunderII,
-         Tricks.Worm_SandBreath,
-         Tricks.Gigantoad_BestialBlizzardII,
-         Tricks.Coeurl_Blaster,
-         Tricks.Treant_AcornBomb,
-         Tricks.Rottinggoobbue_DirtySneeze,
-         Tricks.Rafflesia_BloodyCaress,
-         Tricks.Behemoth_Thunderbolt,
+         TrickActions.Dodo_FowlStench,
+         TrickActions.Coblyn_BestialThunder,
+         TrickActions.Geshunpest_DarkThunder,
+         TrickActions.Slime_Digest,
+         TrickActions.Golem_BoulderClap,
+         TrickActions.Adamantoise_BestialThunderII,
+         TrickActions.Worm_SandBreath,
+         TrickActions.Gigantoad_BestialBlizzardII,
+         TrickActions.Coeurl_Blaster,
+         TrickActions.Treant_AcornBomb,
+         TrickActions.Rottinggoobbue_DirtySneeze,
+         TrickActions.Rafflesia_BloodyCaress,
+         TrickActions.Behemoth_Thunderbolt,
     ];
 
     private static List<uint> DurantTricks =
     [
-         Tricks.Pugil_Screwdriver,
-         Tricks.Megalocrab_DrenchingBlow,
-         Tricks.Crab_BubbleShower,
-         Tricks.Mantis_StandingChine,
-         Tricks.Dullahan_IronJustice,
-         Tricks.Ziz_IceBreath,
-         Tricks.Apkallu_FlyingSardine,
-         Tricks.Uragnite_FrostBreath,
-         Tricks.Raptor_FrostBreath,
-         Tricks.Salamander_BrackishRain,
-         Tricks.Cobra_DrippingFang,
-         Tricks.Hydra_MainTrap,
-         Tricks.Icegolem_IceGuillotine,
-         Tricks.Karlabos_Impale,
+         TrickActions.Pugil_Screwdriver,
+         TrickActions.Megalocrab_DrenchingBlow,
+         TrickActions.Crab_BubbleShower,
+         TrickActions.Mantis_StandingChine,
+         TrickActions.Dullahan_IronJustice,
+         TrickActions.Ziz_IceBreath,
+         TrickActions.Apkallu_FlyingSardine,
+         TrickActions.Uragnite_FrostBreath,
+         TrickActions.Raptor_FrostBreath,
+         TrickActions.Salamander_BrackishRain,
+         TrickActions.Cobra_DrippingFang,
+         TrickActions.Hydra_MainTrap,
+         TrickActions.Icegolem_IceGuillotine,
+         TrickActions.Karlabos_Impale,
 
     ];
 
     private static List<uint> VolantTricks =
     [
-         Tricks.Wespe_SharpSting,
-         Tricks.Vulture_WingCutter,
-         Tricks.Bat_BloodDrain,
-         Tricks.Flyingtrap_SourSough,
-         Tricks.Colibri_Loop,
-         Tricks.Ghost_FellGale,
-         Tricks.Damselfly_CursedSphere,
-         Tricks.Zu_FlyingFrenzy,
+         TrickActions.Wespe_SharpSting,
+         TrickActions.Vulture_WingCutter,
+         TrickActions.Bat_BloodDrain,
+         TrickActions.Flyingtrap_SourSough,
+         TrickActions.Colibri_Loop,
+         TrickActions.Ghost_FellGale,
+         TrickActions.Damselfly_CursedSphere,
+         TrickActions.Zu_FlyingFrenzy,
     ];
+
+    public unsafe static Buddy.BuddyMember? CurrentPet => *UIState.Instance()->Buddy.PetInfo.Pet;
+    public static unsafe bool CurrentPetIsBMPet => CurrentPet?.DataId > 0 && Svc.Data.GetExcelSheet<XBMPet>().Any(x => x.Unknown4 == CurrentPet?.DataId);
+
+    public static Pet? CurrentPetSheet => CurrentPetIsBMPet ? Svc.Data.GetExcelSheet<Pet>().GetRow(CurrentPet?.DataId ?? 0) : null;
+
+    public static uint? CurrentPetTrickAction => CurrentPetSheet?.Abilities[0].RowId ?? 0;
 
     public static bool TrickIsDurant()
     {
-        return DurantTricks.Any(x => x == OriginalHook(Trick));
+        return DurantTricks.Any(x => x == CurrentPetTrickAction);
     }
 
     public static bool TrickIsEldritch()
     {
-        return EldritchTricks.Any(x => x == OriginalHook(Trick));
+        return EldritchTricks.Any(x => x == CurrentPetTrickAction);
     }
 
     public static bool TrickIsVolant()
     {
-        return VolantTricks.Any(x => x == OriginalHook(Trick));
+        return VolantTricks.Any(x => x == CurrentPetTrickAction);
     }
 
     public static bool TrickIsRampant()
     {
-        return RampantTricks.Any(x => x == OriginalHook(Trick));
+        return RampantTricks.Any(x => x == CurrentPetTrickAction);
     }
 
 }

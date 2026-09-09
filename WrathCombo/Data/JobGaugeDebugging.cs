@@ -130,9 +130,13 @@ public struct TmpBSTGauge
 {
     [FieldOffset(0x08)] public byte PlayerTP;
     [FieldOffset(0x09)] public byte BeastTP;
+    [FieldOffset(0x0A)] public byte LastBeastTPSpent;
+    [FieldOffset(0x0B)] public byte BattleHorn;
+
     [FieldOffset(0x0C)] public InstinctualAffinity AffinityStatus; 
     [FieldOffset(0x0D)] public InstinctualAffinity ActiveAffinity;
     [FieldOffset(0x0E)] public byte Chain;
+
 }
 
 [StructLayout(LayoutKind.Explicit, Size = 0x10)]
@@ -270,3 +274,12 @@ public enum InstinctualAffinity : byte
     Moonstalker = 6,
     WaveringHeart = 7,
 }
+
+//public enum TrickAffinity : byte
+//{
+//    None = 0,
+//    Rampant = 1,
+//    Eldritch = 2,
+//    Volant = 3,
+//    Durant = 4,
+//}
