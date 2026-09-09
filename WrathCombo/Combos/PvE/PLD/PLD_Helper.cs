@@ -844,14 +844,13 @@ internal partial class PLD
             ([2], () => !PLD_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining - (InMeleeRange() ? 0 : 1.75f)))
         ];
 
-        public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
-        [
-            ([1], () => CountdownActive || InCombat() || !PLD_Opener_PrepullBlock),
-            ([2], () => InMeleeRange()),
-            ([13, 15], () => !HasCharges(Intervene) || PLD_ST_AdvancedMode_BalanceOpener_Intervene != 0)
-        ];
-
         public override List<int> AllowUpgradeSteps { get; set; } = [9, 12, 14, 16, 17];
+
+        public PLDLvl100StandardOpener()
+        {
+            SkipSteps.Add(([2], () => InMeleeRange()));
+            SkipSteps.Add(([13, 15], () => !HasCharges(Intervene) || PLD_ST_AdvancedMode_BalanceOpener_Intervene != 0));
+        }
     }
 
     internal class PLDLvl100EarlyBuffOpener : PLDOpenerBase
@@ -887,15 +886,14 @@ internal partial class PLD
             ([2], () => !PLD_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining - (HolySpiritOrFastBlade == HolySpirit ? 1.75f : 0)))
         ];
 
-        public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
-        [
-            ([1], () => CountdownActive || InCombat() || !PLD_Opener_PrepullBlock),
-            ([3], () => ComboAction == FastBlade),
-            ([11, 13], () => !HasCharges(Intervene) || PLD_ST_AdvancedMode_BalanceOpener_Intervene != 0),
-            ([20, 21, 22], () => !InMeleeRange())
-        ];
-
         public override List<int> AllowUpgradeSteps { get; set; } = [14, 15, 16, 17, 18];
+
+        public PLDLvl100EarlyBuffOpener()
+        {
+            SkipSteps.Add(([3], () => ComboAction == FastBlade));
+            SkipSteps.Add(([11, 13], () => !HasCharges(Intervene) || PLD_ST_AdvancedMode_BalanceOpener_Intervene != 0));
+            SkipSteps.Add(([20, 21, 22], () => !InMeleeRange()));
+        }
     }
 
     #endregion

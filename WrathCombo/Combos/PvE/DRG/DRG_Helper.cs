@@ -433,13 +433,16 @@ internal partial class DRG
 
         internal override bool IncludePot => DRG_Opener_Potion;
 
-        public override bool HasCooldowns() => SharedOpenerCooldowns();
-
-        protected static bool SharedOpenerCooldowns() =>
+        public override bool HasCooldowns() =>
             GetRemainingCharges(LifeSurge) is 2 &&
             IsOffCooldown(BattleLitany) &&
             IsOffCooldown(DragonfireDive) &&
             IsOffCooldown(LanceCharge);
+
+        public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
+        [
+            ([1], () => CountdownActive || InCombat() || !DRG_Opener_PrepullBlock)
+        ];
     }
 
     internal class DRGStandardOpener : DRGOpenerBase
@@ -477,11 +480,6 @@ internal partial class DRG
         public override List<(int[] Steps, Func<float> HoldDelay)> PrepullDelays { get; set; } =
         [
             ([2], () => !DRG_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining))
-        ];
-
-        public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
-        [
-            ([1], () => CountdownActive || InCombat() || !DRG_Opener_PrepullBlock)
         ];
     }
 
@@ -521,11 +519,6 @@ internal partial class DRG
         public override List<(int[] Steps, Func<float> HoldDelay)> PrepullDelays { get; set; } =
         [
             ([2], () => !DRG_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining - 0.85f))
-        ];
-
-        public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
-        [
-            ([1], () => CountdownActive || InCombat() || !DRG_Opener_PrepullBlock)
         ];
     }
 
@@ -570,11 +563,6 @@ internal partial class DRG
         [
             ([2], () => !DRG_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining))
         ];
-
-        public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
-        [
-            ([1], () => CountdownActive || InCombat() || !DRG_Opener_PrepullBlock)
-        ];
     }
 
     internal class DRGEDMUOpener : DRGOpenerBase
@@ -612,11 +600,6 @@ internal partial class DRG
         public override List<(int[] Steps, Func<float> HoldDelay)> PrepullDelays { get; set; } =
         [
             ([2, 3], () => !DRG_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining - 2))
-        ];
-
-        public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
-        [
-            ([1], () => CountdownActive || InCombat() || !DRG_Opener_PrepullBlock)
         ];
     }
 

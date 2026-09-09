@@ -350,12 +350,11 @@ internal partial class RDM
             () => ContreSixte // 38
         ];
 
-        public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
-        [
-            ([1], () => CountdownActive || InCombat() || !RDM_Opener_PrepullBlock),
-            ([15, 17, 21, 22], () => !InMeleeRange()),
-            ([7], () => !HasStatusEffect(Buffs.Swiftcast) && !JustUsed(Role.Swiftcast))
-        ];
+        public Standard()
+        {
+            SkipSteps.Add(([15, 17, 21, 22], () => !InMeleeRange()));
+            SkipSteps.Add(([7], () => !HasStatusEffect(Buffs.Swiftcast) && !JustUsed(Role.Swiftcast)));
+        }
     }
 
     internal class GapClosing : RDMOpenerBase
@@ -402,12 +401,11 @@ internal partial class RDM
             () => ContreSixte // 38
         ];
 
-        public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
-        [
-            ([1], () => CountdownActive || InCombat() || !RDM_Opener_PrepullBlock),
-            ([17, 22], () => !InMeleeRange()),
-            ([36], () => !HasStatusEffect(Buffs.Swiftcast) && !JustUsed(Role.Swiftcast))
-        ];
+        public GapClosing()
+        {
+            SkipSteps.Add(([17, 22], () => !InMeleeRange()));
+            SkipSteps.Add(([36], () => !HasStatusEffect(Buffs.Swiftcast) && !JustUsed(Role.Swiftcast)));
+        }
     }
 
     internal class FirstGCD : RDMOpenerBase
@@ -452,34 +450,13 @@ internal partial class RDM
             ([3], () => !RDM_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining - 5))
         ];
 
-        public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
-        [
-            ([1], () => CountdownActive || InCombat() || !RDM_Opener_PrepullBlock),
-            ([12, 16], () => !InMeleeRange())
-        ];
+        public FirstGCD() =>
+            SkipSteps.Add(([12, 16], () => !InMeleeRange()));
 
-        public override bool HasCooldowns()
-        {
-            if (!ActionsReady([Role.Swiftcast, Fleche, Embolden, ContreSixte]))
-                return false;
-
-            if (!IsOffCooldown(Manafication))
-                return false;
-
-            if (GetRemainingCharges(Corpsacorps) < 2 || GetRemainingCharges(Engagement) < 2)
-                return false;
-
-            if (GetRemainingCharges(Acceleration) < 2)
-                return false;
-
-            if (InCombat())
-                return false;
-
-            if (CountdownRemaining > 25)
-                return false;
-
-            return true;
-        }
+        public override bool HasCooldowns() =>
+            base.HasCooldowns() &&
+            !InCombat() &&
+            CountdownRemaining <= 25;
     }
     #endregion
 }

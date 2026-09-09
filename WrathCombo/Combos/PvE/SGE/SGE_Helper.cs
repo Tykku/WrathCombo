@@ -661,7 +661,7 @@ internal partial class SGE
             ([4], () => !SGE_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining - 1.5f))
         ];
 
-        protected static bool SharedOpenerCooldowns() =>
+        public override bool HasCooldowns() =>
             GetRemainingCharges(Phlegma3) is 2 &&
             IsOffCooldown(Psyche);
     }
@@ -693,7 +693,7 @@ internal partial class SGE
         ];
 
         public override bool HasCooldowns() =>
-            SharedOpenerCooldowns() &&
+            base.HasCooldowns() &&
             HasAddersting;
     }
 
@@ -724,7 +724,7 @@ internal partial class SGE
         ];
 
         public override bool HasCooldowns() =>
-            SharedOpenerCooldowns() &&
+            base.HasCooldowns() &&
             IsOffCooldown(Pneuma);
     }
 

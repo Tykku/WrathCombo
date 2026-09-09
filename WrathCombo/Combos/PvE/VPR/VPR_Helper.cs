@@ -600,6 +600,11 @@ internal partial class VPR
         [
             ([2], () => !VPR_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining))
         ];
+
+        public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
+        [
+            ([1], () => CountdownActive || InCombat() || !VPR_Opener_PrepullBlock)
+        ];
     }
 
     internal class VPRStandardOpener : VPROpenerBase
@@ -645,17 +650,16 @@ internal partial class VPR
             () => TwinfangBiteOrTwinbloodBite // 37
         ];
 
-        public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
-        [
-            ([1], () => CountdownActive || InCombat() || !VPR_Opener_PrepullBlock),
-            ([23, 24, 25, 26, 27, 28], () => VPR_Opener_ExcludeUF || !HasCharges(RattlingCoil)),
-            ([29], () => ComboAction is not SwiftskinsSting),
-            ([30], () => !IsDeathRattleWeave && !JustUsed(HindstingStrike)),
-            ([8, 9, 11, 12, 33, 34, 36, 37], OpenerTwinBiteMissed),
-            ([13], OpenerReawakenAlreadyUsed)
-        ];
-
         public override List<int> DelayedWeaveSteps { get; set; } = [6];
+
+        public VPRStandardOpener()
+        {
+            SkipSteps.Add(([23, 24, 25, 26, 27, 28], () => VPR_Opener_ExcludeUF || !HasCharges(RattlingCoil)));
+            SkipSteps.Add(([29], () => ComboAction is not SwiftskinsSting));
+            SkipSteps.Add(([30], () => !IsDeathRattleWeave && !JustUsed(HindstingStrike)));
+            SkipSteps.Add(([8, 9, 11, 12, 33, 34, 36, 37], OpenerTwinBiteMissed));
+            SkipSteps.Add(([13], OpenerReawakenAlreadyUsed));
+        }
     }
 
     internal class VPRDMUOpener : VPROpenerBase
@@ -700,15 +704,14 @@ internal partial class VPR
             () => UncoiledTwinblood // 36
         ];
 
-        public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
-        [
-            ([1], () => CountdownActive || InCombat() || !VPR_Opener_PrepullBlock),
-            ([21, 22, 23, 31, 32, 33, 34, 35, 36], () => VPR_Opener_ExcludeUF || !HasCharges(RattlingCoil)),
-            ([6, 7, 9, 10, 26, 27, 29, 30], OpenerTwinBiteMissed),
-            ([11], OpenerReawakenAlreadyUsed)
-        ];
-
         public override List<int> DelayedWeaveSteps { get; set; } = [5];
+
+        public VPRDMUOpener()
+        {
+            SkipSteps.Add(([21, 22, 23, 31, 32, 33, 34, 35, 36], () => VPR_Opener_ExcludeUF || !HasCharges(RattlingCoil)));
+            SkipSteps.Add(([6, 7, 9, 10, 26, 27, 29, 30], OpenerTwinBiteMissed));
+            SkipSteps.Add(([11], OpenerReawakenAlreadyUsed));
+        }
     }
 
     #endregion

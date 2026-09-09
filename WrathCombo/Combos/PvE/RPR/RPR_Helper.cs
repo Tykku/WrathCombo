@@ -705,6 +705,11 @@ internal partial class RPR
             IsOffCooldown(Gluttony) &&
             Void is 0 && Soul is 0;
 
+        public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
+        [
+            ([1], () => CountdownActive || InCombat() || !RPR_Opener_PrepullBlock)
+        ];
+
         internal static uint ExecutionersGibbetOrGallows =>
             OnTargetsRear() ? ExecutionersGallows : ExecutionersGibbet;
 
@@ -758,18 +763,15 @@ internal partial class RPR
             () => Slice // 25
         ];
 
-        public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
-        [
-            ([1], () => CountdownActive || InCombat() || !RPR_Opener_PrepullBlock),
-            ([2], () => InMeleeRange())
-        ];
-
         public override List<(int[] Steps, Func<float> HoldDelay)> PrepullDelays { get; set; } =
         [
             ([2], () => !RPR_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining - (InMeleeRange() ? 0 : 1.7f)))
         ];
 
         public override List<int> DelayedWeaveSteps { get; set; } = [4];
+
+        public RPRStandardOpenerLvl100() =>
+            SkipSteps.Add(([2], () => InMeleeRange()));
     }
 
     internal class RPRDMUOpenerLvl100 : RPROpenerBase
@@ -803,11 +805,6 @@ internal partial class RPR
             () => GibbetOrGallows, // 22
             () => ShadowOfDeath, // 23
             () => Slice // 24
-        ];
-
-        public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
-        [
-            ([1], () => CountdownActive || InCombat() || !RPR_Opener_PrepullBlock)
         ];
 
         public override List<(int[] Steps, Func<float> HoldDelay)> PrepullDelays { get; set; } =
@@ -851,16 +848,13 @@ internal partial class RPR
 
         public override List<int> DelayedWeaveSteps { get; set; } = [4];
 
-        public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
-        [
-            ([1], () => CountdownActive || InCombat() || !RPR_Opener_PrepullBlock),
-            ([2], () => InMeleeRange())
-        ];
-
         public override List<(int[] Steps, Func<float> HoldDelay)> PrepullDelays { get; set; } =
         [
             ([2], () => !RPR_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining - (InMeleeRange() ? 0 : 1.7f)))
         ];
+
+        public RPRStandardOpenerLvl90() =>
+            SkipSteps.Add(([2], () => InMeleeRange()));
     }
 
     #endregion

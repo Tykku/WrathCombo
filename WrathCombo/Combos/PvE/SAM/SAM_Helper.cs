@@ -573,7 +573,7 @@ internal partial class SAM
             ([3], () => !TargetNeedsPositionals())
         ];
 
-        protected static bool SharedOpenerCooldowns() =>
+        public override bool HasCooldowns() =>
             GetRemainingCharges(Role.TrueNorth) >= 1 &&
             IsOffCooldown(Ikishoten) &&
             SenCount is 0;
@@ -605,9 +605,9 @@ internal partial class SAM
         ];
 
         public override bool HasCooldowns() =>
+            base.HasCooldowns() &&
             IsOffCooldown(MeikyoShisui) &&
-            IsOffCooldown(Guren) &&
-            SharedOpenerCooldowns();
+            IsOffCooldown(Guren);
     }
 
     internal class SAMLvl80Opener : SAMOpenerBase
@@ -641,9 +641,9 @@ internal partial class SAM
         ];
 
         public override bool HasCooldowns() =>
+            base.HasCooldowns() &&
             GetRemainingCharges(MeikyoShisui) is 2 &&
-            IsOffCooldown(Senei) &&
-            SharedOpenerCooldowns();
+            IsOffCooldown(Senei);
     }
 
     internal class SAMLvl90Opener : SAMOpenerBase
@@ -681,9 +681,9 @@ internal partial class SAM
         public override List<int> AllowUpgradeSteps { get; set; } = [19];
 
         public override bool HasCooldowns() =>
+            base.HasCooldowns() &&
             GetRemainingCharges(MeikyoShisui) is 2 &&
-            IsOffCooldown(Senei) &&
-            SharedOpenerCooldowns();
+            IsOffCooldown(Senei);
     }
 
     internal class SAMLvl100Opener : SAMOpenerBase
@@ -723,22 +723,20 @@ internal partial class SAM
             () => TendoKaeshiSetsugekka // 28
         ];
 
-        public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
-        [
-            ([1], () => CountdownActive || InCombat() || !SAM_ST_Opener_PrepullBlock),
-            ([3], () => !TargetNeedsPositionals()),
-            ([20, 25], () => !ActionReady(Shinten)),
-            ([22], () => !ActionReady(Gyoten) || (int)SAM_ST_Opener_IncludeGyoten is 1 or 2),
-            ([27], () => !ActionReady(Gyoten) || (int)SAM_ST_Opener_IncludeGyoten is 1 or 3),
-            ([9, 26], () => SenCount is not 3 && !(SenCount is 2 && JustUsed(Yukikaze))),
-            ([11, 28], () => !HasStatusEffect(Buffs.TsubameReady) && !JustUsed(TendoSetsugekka)),
-            ([15], () => SenCount is not 1 && !(SenCount is 2 && JustUsed(Gekko)))
-        ];
+        public SAMLvl100Opener()
+        {
+            SkipSteps.Add(([20, 25], () => !ActionReady(Shinten)));
+            SkipSteps.Add(([22], () => !ActionReady(Gyoten) || (int)SAM_ST_Opener_IncludeGyoten is 1 or 2));
+            SkipSteps.Add(([27], () => !ActionReady(Gyoten) || (int)SAM_ST_Opener_IncludeGyoten is 1 or 3));
+            SkipSteps.Add(([9, 26], () => SenCount is not 3 && !(SenCount is 2 && JustUsed(Yukikaze))));
+            SkipSteps.Add(([11, 28], () => !HasStatusEffect(Buffs.TsubameReady) && !JustUsed(TendoSetsugekka)));
+            SkipSteps.Add(([15], () => SenCount is not 1 && !(SenCount is 2 && JustUsed(Gekko))));
+        }
 
         public override bool HasCooldowns() =>
+            base.HasCooldowns() &&
             GetRemainingCharges(MeikyoShisui) is 2 &&
-            IsOffCooldown(Senei) &&
-            SharedOpenerCooldowns();
+            IsOffCooldown(Senei);
     }
 
     internal class SAMFRUOpener : SAMOpenerBase
@@ -778,19 +776,17 @@ internal partial class SAM
             () => Yukikaze // 28
         ];
 
-        public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
-        [
-            ([1], () => CountdownActive || InCombat() || !SAM_ST_Opener_PrepullBlock),
-            ([3], () => !TargetNeedsPositionals()),
-            ([19, 21], () => !ActionReady(Shinten)),
-            ([9, 22], () => SenCount is not 3 && !(SenCount is 2 && JustUsed(Yukikaze))),
-            ([11, 25], () => !HasStatusEffect(Buffs.TsubameReady) && !JustUsed(TendoSetsugekka))
-        ];
+        public SAMFRUOpener()
+        {
+            SkipSteps.Add(([19, 21], () => !ActionReady(Shinten)));
+            SkipSteps.Add(([9, 22], () => SenCount is not 3 && !(SenCount is 2 && JustUsed(Yukikaze))));
+            SkipSteps.Add(([11, 25], () => !HasStatusEffect(Buffs.TsubameReady) && !JustUsed(TendoSetsugekka)));
+        }
 
         public override bool HasCooldowns() =>
+            base.HasCooldowns() &&
             GetRemainingCharges(MeikyoShisui) is 2 &&
-            IsOffCooldown(Senei) &&
-            SharedOpenerCooldowns();
+            IsOffCooldown(Senei);
     }
 
     #endregion

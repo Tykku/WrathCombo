@@ -304,16 +304,15 @@ internal partial class DRK
             ([2], () => !DRK_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining - (Pull is Unmend ? 1 : Pull is Shadowstride ? 0.7f : 0))),
         ];
 
-        public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
-        [
-            ([1], () => CountdownActive || InCombat() || !DRK_Opener_PrepullBlock),
-            ([4], () => DRK_ST_OpenerAction == (int)PullAction.HardSlash), // Skip the duplicate HardSlash, if pulling with HardSlash
-            ([6], () => DRK_ST_OpenerAction != (int)PullAction.Unmend), // Skip the early LivingShadow, if non-standard
-            ([8, 11], () => Bursting.PartyIsBursting || DRK_ST_OpenerAction == (int)PullAction.Unmend), // Skip the late LivingShadow and aligning HardSlash, if Standard
-            ([13], () => IsOnCooldown(SaltedEarth)), // Skip Salted Earth
-            ([20], () => Gauge.Blood < 50), // Skip Blood spenders when no Blood
-            ([21], () => !ActionReady(SaltAndDarkness)), // Skip Salt and Darkness
-        ];
+        public DRKOpenerMaxLevel1()
+        {
+            SkipSteps.Add(([4], () => DRK_ST_OpenerAction == (int)PullAction.HardSlash)); // Skip the duplicate HardSlash, if pulling with HardSlash
+            SkipSteps.Add(([6], () => DRK_ST_OpenerAction != (int)PullAction.Unmend)); // Skip the early LivingShadow, if non-standard
+            SkipSteps.Add(([8, 11], () => Bursting.PartyIsBursting || DRK_ST_OpenerAction == (int)PullAction.Unmend)); // Skip the late LivingShadow and aligning HardSlash, if Standard
+            SkipSteps.Add(([13], () => IsOnCooldown(SaltedEarth))); // Skip Salted Earth
+            SkipSteps.Add(([20], () => Gauge.Blood < 50)); // Skip Blood spenders when no Blood
+            SkipSteps.Add(([21], () => !ActionReady(SaltAndDarkness))); // Skip Salt and Darkness
+        }
     }
 
     internal class DRKOpenerEarlyBuff : DRKOpenerBase
@@ -348,15 +347,14 @@ internal partial class DRK
             ([3], () => !DRK_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining - (Pull is Unmend ? 1 : Pull is Shadowstride ? 0.7f : 0))),
         ];
 
-        public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
-        [
-            ([1], () => CountdownActive || InCombat() || !DRK_Opener_PrepullBlock),
-            ([6], () => DRK_ST_OpenerAction == (int)PullAction.HardSlash), // Skip the duplicate HardSlash, if pulling with HardSlash
-            ([8], () => IsOnCooldown(SaltedEarth)), // Skip Salted Earth if on cooldown
-            ([9], () => DRK_ST_OpenerAction == (int)PullAction.Unmend), // Skip the aligning HardSlash, if pulling with Unmend
-            ([16], () => !ActionReady(SaltAndDarkness)), // Skip Salt and Darkness when not ready
-            ([19], () => Gauge.Blood < 50), // Skip Blood spenders when no Blood
-        ];
+        public DRKOpenerEarlyBuff()
+        {
+            SkipSteps.Add(([6], () => DRK_ST_OpenerAction == (int)PullAction.HardSlash)); // Skip the duplicate HardSlash, if pulling with HardSlash
+            SkipSteps.Add(([8], () => IsOnCooldown(SaltedEarth))); // Skip Salted Earth if on cooldown
+            SkipSteps.Add(([9], () => DRK_ST_OpenerAction == (int)PullAction.Unmend)); // Skip the aligning HardSlash, if pulling with Unmend
+            SkipSteps.Add(([16], () => !ActionReady(SaltAndDarkness))); // Skip Salt and Darkness when not ready
+            SkipSteps.Add(([19], () => Gauge.Blood < 50)); // Skip Blood spenders when no Blood
+        }
     }
 
     #endregion
