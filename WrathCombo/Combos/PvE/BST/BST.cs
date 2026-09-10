@@ -86,12 +86,15 @@ internal partial class BST : Melee
         }
 
         List<uint> FinisherActions = [];
+        DateTime? TimeFinisherStarted;
 
         private void CheckForFinisher(IFramework framework)
         {
             if (!FinisherLearnt)
             {
+                TimeFinisherStarted = null;
                 FinisherReady = false;
+                FinisherActions.Clear();
                 return;
             }
 
@@ -106,11 +109,18 @@ internal partial class BST : Melee
             }
             else
             {
-                if (FinisherActions.Count == 0)
-                    FinisherReady = false;
-
-                if (ActionWatching.LastAction == FinisherActions[0])
+                if (FinisherActions.Count == 0 || (TimeFinisherStarted.HasValue && (DateTime.Now - TimeFinisherStarted.Value).TotalSeconds > 10))
                 {
+                    TimeFinisherStarted = null;
+                    FinisherReady = false;
+                    FinisherActions.Clear();
+                }
+
+                if (FinisherActions.Count > 0 && ActionWatching.LastAction == FinisherActions[0])
+                {
+                    if (FinisherActions.Count == 5)
+                        TimeFinisherStarted = DateTime.Now;
+
                     Svc.Log.Debug($"Removing {FinisherActions[0].ActionName()} from FinisherActions");
                     FinisherActions.RemoveAt(0);
                 }
@@ -126,7 +136,7 @@ internal partial class BST : Melee
             bool playerTpMet = JobGauge.PlayerTP >= BST_Intentional_TpGauge;
             bool beastTpMet = JobGauge.BeastTP >= BST_Intentional_TpGauge;
 
-            if (FinisherReady)
+            if (FinisherReady && FinisherActions.Count > 0)
             {
                 if (FinisherActions.Count == 4 && !InInstinctualCombo)
                     return All.Cease;
