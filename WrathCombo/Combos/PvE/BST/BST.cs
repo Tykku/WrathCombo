@@ -1,6 +1,11 @@
-﻿using FFXIVClientStructs.FFXIV.Client.Game;
+﻿using Dalamud.Plugin.Services;
+using ECommons.DalamudServices;
+using FFXIVClientStructs.FFXIV.Client.Game;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using WrathCombo.CustomComboNS;
+using WrathCombo.Data;
 using WrathCombo.Extensions;
 using WrathCombo.Native;
 using static WrathCombo.Combos.PvE.BST.Config;
@@ -74,6 +79,44 @@ internal partial class BST : Melee
 
     internal class BST_Intentional_Combo : CustomCombo
     {
+        bool FinisherReady = false;
+        public BST_Intentional_Combo()
+        {
+            Svc.Framework.Update += CheckForFinisher;
+        }
+
+        List<uint> FinisherActions = [];
+
+        private void CheckForFinisher(IFramework framework)
+        {
+            if (!FinisherLearnt)
+            {
+                FinisherReady = false;
+                return;
+            }
+
+           
+            if (!FinisherReady)
+            {
+                if (JobGauge.MasterInstinct == 3 && JobGauge.PetInstinct >= 1 && ActionReady(Rally) && ActionReady(RallyingCheer) && JobGauge.PlayerTP >= 100 && JobGauge.BeastTP >= 100)
+                {
+                    FinisherReady = true;
+                    FinisherActions.AddRange([Trick, CounterClockwiseInstinctualAction, Rally, RallyingCheer, Trick]);
+                }
+            }
+            else
+            {
+                if (FinisherActions.Count == 0)
+                    FinisherReady = false;
+
+                if (ActionWatching.LastAction == FinisherActions[0])
+                {
+                    Svc.Log.Debug($"Removing {FinisherActions[0].ActionName()} from FinisherActions");
+                    FinisherActions.RemoveAt(0);
+                }
+            }
+        }
+
         protected internal override Preset Preset => Preset.BST_Intentional_Combo;
         protected override uint Invoke(uint actionID)
         {
@@ -83,23 +126,17 @@ internal partial class BST : Melee
             bool playerTpMet = JobGauge.PlayerTP >= BST_Intentional_TpGauge;
             bool beastTpMet = JobGauge.BeastTP >= BST_Intentional_TpGauge;
 
-            if (FinisherLearnt && FinisherReady)
+            if (FinisherReady)
             {
-                if (ActionReady(Trick))
-                    return Trick;
+                if (FinisherActions.Count == 4 && !InInstinctualCombo)
+                    return All.Cease;
 
-                if (ActionReady(CounterClockwiseInstinctualAction))
-                    return CounterClockwiseInstinctualAction;
-
-                if (ActionReady(Rally))
-                    return Rally;
-
-                if (ActionReady(RallyingCheer))
-                    return RallyingCheer;
+                return FinisherActions[0];
             }
 
             if ((!playerTpMet || !beastTpMet) && !InInstinctualCombo)
                 return All.Cease;
+
 
             if (JobGauge.ActiveAffinity is Data.InstinctualAffinity.Moonstalker)
             {

@@ -372,8 +372,8 @@ internal partial class BST
 
     public static bool RallyLearnt => ActionLearned(Rally);
     public static bool RallyingCheerLearnt => ActionLearned(RallyingCheer);
-    public static bool FinisherLearnt => true;// TraitLevelChecked(Traits.InstinctualMastery);
-    public static bool FinisherReady => JobGauge.MasterInstinct == 3 && JobGauge.PetInstinct >= 1;
+    public static bool FinisherLearnt => TraitLevelChecked(Traits.InstinctualMastery);
+    public static bool FinisherReady => JobGauge.MasterInstinct == 3 && JobGauge.PetInstinct >= 1 && ActionReady(Rally) && ActionReady(RallyingCheer) && JobGauge.PlayerTP >= 100 && JobGauge.BeastTP >= 100;
 
     public enum RallyingType
     {
