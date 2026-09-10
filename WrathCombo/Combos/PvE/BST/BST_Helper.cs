@@ -407,21 +407,7 @@ internal partial class BST
 
     public static unsafe bool PetUnlocked(uint petId) => XBMManager.Instance()->IsPetUnlocked(petId);
 
-    public static bool TargetIsBstPet(IBattleChara? tar)
-    {
-        if (tar is null)
-            return false;
-
-        var model = Svc.Data.GetExcelSheet<BNpcBase>().GetRow(tar.BaseId).ModelChara;
-        var variant = model.Value.Variant;
-        var modelId = model.Value.Model;
-        var baseval = model.Value.Base;
-
-        if (ModelToPetId(modelId, baseval) is 0)
-            return false;
-
-        return true;
-    }
+    public static bool TargetIsBstPet(IBattleChara? tar) => tar is not null && GetPetIdFromModel(tar) is not 0;
 
     public static uint PetIdToModel(uint petId)
     {
@@ -445,7 +431,10 @@ internal partial class BST
     {
         if (tar is null)
             return 0;
-        var model = Svc.Data.GetExcelSheet<BNpcBase>().GetRow(tar.BaseId).ModelChara;
+        var baseNpc = Svc.Data.GetExcelSheet<BNpcBase>().GetRow(tar.BaseId);
+        if (baseNpc.Unknown10 != 5)
+            return 0;
+        var model = baseNpc.ModelChara;
         var modelId = model.Value.Model;
         var baseval = model.Value.Base;
         var petId = ModelToPetId(modelId, baseval);
