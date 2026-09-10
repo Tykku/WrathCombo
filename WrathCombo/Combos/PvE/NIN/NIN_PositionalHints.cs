@@ -6,6 +6,12 @@ namespace WrathCombo.Combos.PvE;
 
 internal partial class NIN
 {
+    internal static void TickPositionalHints()
+    {
+        if (IsEnabled(Preset.NIN_ST_SimpleMode) || IsEnabled(Preset.NIN_ST_AdvancedMode))
+            ReportNINPositionalHints();
+    }
+
     private static void ReportNINPositionalHints()
     {
         if (!CanReportPositionalHints())

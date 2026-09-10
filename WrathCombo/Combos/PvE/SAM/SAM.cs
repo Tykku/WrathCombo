@@ -132,8 +132,8 @@ internal partial class SAM : Melee
                 return actionID;
 
             ReportSAMPositionalHints(
-                IsEnabled(Preset.SAM_ST_GekkoCombo),
-                IsEnabled(Preset.SAM_ST_KashaCombo));
+                IsEnabled(Preset.SAM_ST_Adv_Gekko),
+                IsEnabled(Preset.SAM_ST_Adv_Kasha));
 
             if (IsEnabled(Preset.SAM_ST_Adv_Opener) &&
                 Opener().FullOpener(ref actionID) &&

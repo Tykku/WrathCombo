@@ -7,6 +7,12 @@ namespace WrathCombo.Combos.PvE;
 
 internal partial class RPR
 {
+    internal static void TickPositionalHints()
+    {
+        if (IsEnabled(Preset.RPR_ST_SimpleMode) || IsEnabled(Preset.RPR_ST_AdvancedMode))
+            ReportRPRPositionalHints();
+    }
+
     private static void ReportRPRPositionalHints()
     {
         if (!CanReportPositionalHints())

@@ -7,6 +7,12 @@ namespace WrathCombo.Combos.PvE;
 
 internal partial class MNK
 {
+    internal static void TickPositionalHints()
+    {
+        if (IsEnabled(Preset.MNK_ST_SimpleMode) || IsEnabled(Preset.MNK_ST_AdvancedMode))
+            ReportMNKPositionalHints();
+    }
+
     private static void ReportMNKPositionalHints()
     {
         if (!CanReportPositionalHints())

@@ -6,6 +6,14 @@ namespace WrathCombo.Combos.PvE;
 
 internal partial class VPR
 {
+    internal static void TickPositionalHints()
+    {
+        if (IsEnabled(Preset.VPR_ST_SimpleMode))
+            ReportVPRPositionalHints(vicewinderBuffPrio: false);
+        else if (IsEnabled(Preset.VPR_ST_AdvancedMode))
+            ReportVPRPositionalHints(Config.VPR_VicewinderBuffPrio);
+    }
+
     private static void ReportVPRPositionalHints(bool vicewinderBuffPrio)
     {
         if (!CanReportPositionalHints())

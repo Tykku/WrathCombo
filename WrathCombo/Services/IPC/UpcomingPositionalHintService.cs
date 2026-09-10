@@ -30,6 +30,8 @@ internal static class UpcomingPositionalHintService
 
     internal static void Tick()
     {
+        CustomComboFunctions.TickPositionalHintReporters();
+
         if (_current.Direction is PositionalDirection.None)
             return;
 
@@ -42,7 +44,7 @@ internal static class UpcomingPositionalHintService
             return;
         }
 
-        RefreshLiveFields(notifyOnChange: OnUpcomingPositionalHintProvider.SubscriptionCount > 0);
+        RefreshLiveFields(notifyOnChange: true);
     }
 
     internal static uint[]? GetWireSnapshot()
@@ -89,21 +91,8 @@ internal static class UpcomingPositionalHintService
             IsSatisfied = currentAngle == requiredAngle,
         };
 
-        if (_current.IsActive &&
-            !IsExpired(_current) &&
-            !IsBetterHint(snapshot, _current))
-        {
-            if (IsSameHint(snapshot, _current) ||
-                snapshot.TargetObjectId != _current.TargetObjectId)
-            {
-                ApplySnapshot(snapshot, notify: snapshot.CurrentAngle != _current.CurrentAngle ||
-                                               snapshot.IsSatisfied != _current.IsSatisfied ||
-                                               snapshot.TargetObjectId != _current.TargetObjectId);
-            }
-
-            return;
-        }
-
+        // Latest combo report is the current step. A 2–3 GCD hint for the *next*
+        // positional must replace a leftover 1 GCD hint from the one we just used.
         var notify = !IsSameHint(snapshot, _current) ||
                      snapshot.CurrentAngle != _current.CurrentAngle ||
                      snapshot.IsSatisfied != _current.IsSatisfied ||
@@ -111,18 +100,6 @@ internal static class UpcomingPositionalHintService
                      IsExpired(_current);
 
         ApplySnapshot(snapshot, notify);
-    }
-
-    /// <summary> Sooner wins; same action/direction always refreshes. </summary>
-    private static bool IsBetterHint(PositionalHintSnapshot candidate, PositionalHintSnapshot existing)
-    {
-        if (candidate.ActionId == existing.ActionId && candidate.Direction == existing.Direction)
-            return true;
-
-        if (candidate.GcdsUntil != existing.GcdsUntil)
-            return candidate.GcdsUntil < existing.GcdsUntil;
-
-        return true;
     }
 
     private static bool IsSameHint(PositionalHintSnapshot a, PositionalHintSnapshot b) =>
@@ -226,7 +203,6 @@ internal static class UpcomingPositionalHintService
 
     private static void NotifySubscribers()
     {
-        if (OnUpcomingPositionalHintProvider.SubscriptionCount > 0)
-            OnUpcomingPositionalHintProvider.SendMessage();
+        OnUpcomingPositionalHintProvider.SendMessage();
     }
 }

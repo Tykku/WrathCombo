@@ -6,6 +6,12 @@ namespace WrathCombo.Combos.PvE;
 
 internal partial class DRG
 {
+    internal static void TickPositionalHints()
+    {
+        if (IsEnabled(Preset.DRG_ST_SimpleMode) || IsEnabled(Preset.DRG_ST_AdvancedMode))
+            ReportDRGPositionalHints();
+    }
+
     private static void ReportDRGPositionalHints()
     {
         if (!CanReportPositionalHints())

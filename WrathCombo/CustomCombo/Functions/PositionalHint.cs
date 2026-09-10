@@ -1,5 +1,9 @@
 using System;
+using ECommons.ExcelServices;
+using ECommons.GameHelpers;
+using ECommons.Throttlers;
 using WrathCombo.API.Enum;
+using WrathCombo.Combos.PvE;
 using WrathCombo.Combos.PvE.Enums;
 using WrathCombo.CustomComboNS;
 using WrathCombo.Services.IPC;
@@ -24,6 +28,34 @@ internal abstract partial class CustomComboFunctions
     /// </summary>
     internal static bool CanReportPositionalHints() =>
         HasBattleTarget() && TargetNeedsPositionals();
+
+    internal static void TickPositionalHintReporters()
+    {
+        if (!EzThrottler.Throttle("PositionalHintJobReport", 50))
+            return;
+
+        switch (Player.Job)
+        {
+            case Job.SAM:
+                SAM.TickPositionalHints();
+                break;
+            case Job.DRG:
+                DRG.TickPositionalHints();
+                break;
+            case Job.MNK:
+                MNK.TickPositionalHints();
+                break;
+            case Job.NIN:
+                NIN.TickPositionalHints();
+                break;
+            case Job.RPR:
+                RPR.TickPositionalHints();
+                break;
+            case Job.VPR:
+                VPR.TickPositionalHints();
+                break;
+        }
+    }
 
     /// <summary> Report the opener step when it is a known positional action. </summary>
     internal static bool TryReportOpenerPositionalHint(

@@ -6,6 +6,16 @@ namespace WrathCombo.Combos.PvE;
 
 internal partial class SAM
 {
+    internal static void TickPositionalHints()
+    {
+        if (IsEnabled(Preset.SAM_ST_SimpleMode))
+            ReportSAMPositionalHints(true, true);
+        else if (IsEnabled(Preset.SAM_ST_AdvancedMode))
+            ReportSAMPositionalHints(
+                IsEnabled(Preset.SAM_ST_Adv_Gekko),
+                IsEnabled(Preset.SAM_ST_Adv_Kasha));
+    }
+
     private static void ReportSAMPositionalHints(bool useGekko, bool useKasha)
     {
         if (!CanReportPositionalHints())
