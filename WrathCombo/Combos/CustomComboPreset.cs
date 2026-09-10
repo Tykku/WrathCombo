@@ -2314,6 +2314,7 @@ public enum Preset
 
     #region BEASTMASTER
 
+    [AutoAction(false, false)]
     [ReplaceSkill(BST.SmashAxe)]
     [JobInfo(Job.BST)]
     BST_Basic_Combo = 2500,

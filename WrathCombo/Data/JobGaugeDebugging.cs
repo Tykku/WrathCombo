@@ -136,7 +136,14 @@ public struct TmpBSTGauge
     [FieldOffset(0x0C)] public InstinctualAffinity AffinityStatus; 
     [FieldOffset(0x0D)] public InstinctualAffinity ActiveAffinity;
     [FieldOffset(0x0E)] public byte Chain;
+    [FieldOffset(0x0F)] private byte Kinship;
+    [FieldOffset(0x10)] private byte Instinct;
 
+    public BeastmasterKinType KinshipKinType => (BeastmasterKinType)(Kinship >> 4);
+    public byte KinshipBattlehorn => (byte)(Kinship & 0x0F);
+
+    public int PetInstinct => Instinct & 0x3;
+    public int MasterInstinct => (Instinct & 0xC) >> 2;
 }
 
 [StructLayout(LayoutKind.Explicit, Size = 0x10)]
@@ -275,11 +282,15 @@ public enum InstinctualAffinity : byte
     WaveringHeart = 7,
 }
 
-//public enum TrickAffinity : byte
-//{
-//    None = 0,
-//    Rampant = 1,
-//    Eldritch = 2,
-//    Volant = 3,
-//    Durant = 4,
-//}
+public enum BeastmasterKinType : byte
+{
+    None = 0,
+    Beastkin = 1,
+    Vilekin = 2,
+    Cloudkin = 3,
+    Seedkin = 4,
+    Wavekin = 5,
+    Scalekin = 6,
+    Soulkin = 7,
+    Ashkin = 8,
+}

@@ -15,7 +15,7 @@ internal partial class BST : Melee
 
         protected override uint Invoke(uint actionID)
         {
-            if (actionID is not SmashAxe)
+            if (!CustomActionHelper.OneButtonRotationChecker(actionID, CustomActionType.SingleTargetDPS, SmashAxe))
                 return actionID;
 
             if (ComboAction is SmashAxe && ActionReady(AxebladeBite))
