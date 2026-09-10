@@ -2319,9 +2319,13 @@ public enum Preset
     [JobInfo(Job.BST)]
     BST_Basic_Combo = 2500,
 
-    [ReplaceSkill(BST.Trick)]
+    [ReplaceSkill(BST.AvalancheAxe, BST.MistralAxe, BST.SpinningAxe, BST.GaleAxe)]
     [JobInfo(Job.BST)]
     BST_Instinctual_Combo = 2501,
+
+    [ReplaceSkill(BST.Trick)]
+    [JobInfo(Job.BST)]
+    BST_Intentional_Combo = 2502,
 
     #endregion
 

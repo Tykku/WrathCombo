@@ -6333,7 +6333,7 @@ namespace WrathCombo.Resources.Localization.Presets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Replaces Trick with your beast&apos;s follow up attack when ready. Locks out the action until both are ready to complete an Instinctual Combo..
+        ///   Looks up a localized string similar to Replaces Avalanche Axe, Mistral Axe, Spinning Axe and Gale Axe with Trick when it&apos;s ready. Locks out the actions if Trick is the wrong affinity or until ready to complete an Instinctual Combo. Order depends on stacks of Mastered Instinct and Natural Instinct, prioritising whichever is lower..
         /// </summary>
         internal static string BST_Instinctual_Combo_Desc {
             get {
@@ -6347,6 +6347,24 @@ namespace WrathCombo.Resources.Localization.Presets {
         internal static string BST_Instinctual_Combo_Name {
             get {
                 return ResourceManager.GetString("BST_Instinctual_Combo_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Replaces Trick with the correct Instinctual skill to complete an Intentional Combo. Order depends on stacks of Mastered Instinct and Natural Instinct, prioritising whichever is lower..
+        /// </summary>
+        internal static string BST_Intentional_Combo_Desc {
+            get {
+                return ResourceManager.GetString("BST_Intentional_Combo_Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Intentional Combo.
+        /// </summary>
+        internal static string BST_Intentional_Combo_Name {
+            get {
+                return ResourceManager.GetString("BST_Intentional_Combo_Name", resourceCulture);
             }
         }
         

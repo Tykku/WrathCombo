@@ -361,10 +361,8 @@ internal class Debug : ConfigWindow, IDisposable
                     Util.ShowStruct(&JobGaugeManager.Instance()->Pictomancer);
                     break;
                 case Job.BST:
-                    CustomStyleText($"Rampant Trick?:", $"{BST.TrickIsRampant}");
-                    CustomStyleText($"Eldritch Trick?:", $"{BST.TrickIsEldritch}");
-                    CustomStyleText($"Volant Trick?:", $"{BST.TrickIsVolant}");
-                    CustomStyleText($"Durant Trick?:", $"{BST.TrickIsDurant}");
+                    CustomStyleText($"Trick Type?:", $"{BST.TrickType}");
+                    CustomStyleText($"Lowest Rally Type?:", $"{BST.LowestRallyType}");
 
                     CustomStyleText($"Current Pet is BMPet?:", $"{BST.CurrentPetIsBMPet}");
                     CustomStyleText($"Current Pet", $"{BST.CurrentPetSheet?.Name ?? "??"} (ID: {BST.CurrentPetSheet?.RowId ?? 0})");

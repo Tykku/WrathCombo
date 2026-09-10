@@ -254,16 +254,23 @@ internal partial class BST
     public static Pet? CurrentPetSheet => CurrentPetIsBMPet ? Svc.Data.GetExcelSheet<Pet>().GetRow(CurrentPet?.DataId ?? 0) : null;
 
     public static uint? CurrentPetTrickAction => CurrentPetSheet?.Abilities[0].RowId ?? 0;
+    private static bool TrickIsDurant => DurantTricks.Any(x => x == CurrentPetTrickAction);
+    private static bool TrickIsEldritch => EldritchTricks.Any(x => x == CurrentPetTrickAction);
+    private static bool TrickIsVolant => VolantTricks.Any(x => x == CurrentPetTrickAction);
+    private static bool TrickIsRampant => RampantTricks.Any(x => x == CurrentPetTrickAction);
 
-    public static bool TrickIsDurant => DurantTricks.Any(x => x == CurrentPetTrickAction);
+    public enum TrickTypes
+    {
+        Durant,
+        Eldritch,
+        Volant,
+        Rampant,
+        None
+    }
 
-    public static bool TrickIsEldritch => EldritchTricks.Any(x => x == CurrentPetTrickAction);
+    public static TrickTypes TrickType => TrickIsDurant ? TrickTypes.Durant : TrickIsEldritch ? TrickTypes.Eldritch : TrickIsVolant ? TrickTypes.Volant : TrickIsRampant ? TrickTypes.Rampant : TrickTypes.None;
 
-    public static bool TrickIsVolant => VolantTricks.Any(x => x == CurrentPetTrickAction);
-
-    public static bool TrickIsRampant => RampantTricks.Any(x => x == CurrentPetTrickAction);
-
-    public static uint TrickFollowUp
+    public static uint TrickFollowUpInstinctual
     {
         get
         {
@@ -280,6 +287,45 @@ internal partial class BST
         }
     }
 
+    /// <summary>
+    /// Used if Trick is the first action used
+    /// </summary>
+    public static uint ClockwiseInstinctualAction
+    {
+        get
+        {
+            if (TrickIsRampant)
+                return MistralAxe;
+            if (TrickIsDurant)
+                return SpinningAxe;
+            if (TrickIsEldritch)
+                return GaleAxe;
+            if (TrickIsVolant)
+                return AvalancheAxe;
+
+            return 0;
+        }
+    }
+
+    /// <summary>
+    /// Used if Trick is the second action used
+    /// </summary>
+    public static uint CounterClockwiseInstinctualAction
+    {
+        get
+        {
+            if (TrickIsRampant)
+                return GaleAxe;
+            if (TrickIsDurant)
+                return AvalancheAxe;
+            if (TrickIsEldritch)
+                return MistralAxe;
+            if (TrickIsVolant)
+                return SpinningAxe;
+            return 0;
+        }
+    }
+
     public static bool InInstinctualCombo
     {
         get
@@ -287,13 +333,46 @@ internal partial class BST
             if (LocalPlayer is not { } p)
                 return false;
 
-            if (JustUsed(Trick) || JustUsed(TrickFollowUp))
-                return true;
+            if (JobGauge.BeastTP < 100 && JobGauge.PlayerTP < 100)
+                return false;
 
             if (p.HasStatus(Buffs.RampantHeart) || p.HasStatus(Buffs.DurantHeart) || p.HasStatus(Buffs.EldritchHeart) || p.HasStatus(Buffs.VolantHeart))
                 return true;
 
             return false;
+        }
+    }
+
+    public static bool RallyLearnt => ActionLearned(Rally);
+    public static bool RallyingCheerLearnt => ActionLearned(RallyingCheer);
+
+    public enum RallyingType
+    {
+        None,
+        Rally,
+        RallyingCheer
+    }
+
+    public static RallyingType LowestRallyType
+    {
+        get
+        {
+            if (RallyLearnt && !RallyingCheerLearnt && JobGauge.MasterInstinct < 3)
+                return RallyingType.Rally;
+
+            if (RallyLearnt && RallyingCheerLearnt)
+            {
+                if (JobGauge.MasterInstinct == 3 && JobGauge.PetInstinct == 3) //Both are maxed
+                    return RallyingType.None;
+
+                if (JobGauge.MasterInstinct <= JobGauge.PetInstinct) //Prioritize Rally in a tie, subject to Balance intervention
+                    return RallyingType.Rally;
+
+                if (JobGauge.PetInstinct < JobGauge.MasterInstinct)
+                    return RallyingType.RallyingCheer;
+            }
+
+            return RallyingType.None;
         }
     }
 
