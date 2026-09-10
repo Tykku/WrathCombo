@@ -83,6 +83,21 @@ internal partial class BST : Melee
             bool playerTpMet = JobGauge.PlayerTP >= BST_Intentional_TpGauge;
             bool beastTpMet = JobGauge.BeastTP >= BST_Intentional_TpGauge;
 
+            if (FinisherLearnt && FinisherReady)
+            {
+                if (ActionReady(Trick))
+                    return Trick;
+
+                if (ActionReady(CounterClockwiseInstinctualAction))
+                    return CounterClockwiseInstinctualAction;
+
+                if (ActionReady(Rally))
+                    return Rally;
+
+                if (ActionReady(RallyingCheer))
+                    return RallyingCheer;
+            }
+
             if ((!playerTpMet || !beastTpMet) && !InInstinctualCombo)
                 return All.Cease;
 
@@ -116,6 +131,28 @@ internal partial class BST : Melee
             }
 
             return actionID;
+        }
+    }
+
+    internal class BST_Capture_Helper : CustomCombo
+    {
+        protected internal override Preset Preset => Preset.BST_Capture_Helper;
+        protected override uint Invoke(uint actionID)
+        {
+            if (actionID is not Capture)
+                return actionID;
+
+            var petIds = GetPetIdFromModel(CurrentTarget);
+            if (petIds.Length > 0)
+            {
+                foreach (var petId in petIds)
+                {
+                    if (!PetUnlocked(petId) && CurrentTarget?.HasStatus(Debuffs.InterestCaptured) == false)
+                        return Capture;
+                }
+            }
+
+            return All.Cease;
         }
     }
 }

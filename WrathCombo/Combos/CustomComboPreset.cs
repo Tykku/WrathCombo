@@ -2327,6 +2327,10 @@ public enum Preset
     [JobInfo(Job.BST)]
     BST_Intentional_Combo = 2502,
 
+    [ReplaceSkill(BST.Capture)]
+    [JobInfo(Job.BST)]
+    BST_Capture_Helper = 2503,
+
     #endregion
 
     #region BARD

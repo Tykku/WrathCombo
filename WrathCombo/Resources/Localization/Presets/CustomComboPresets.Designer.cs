@@ -6333,6 +6333,24 @@ namespace WrathCombo.Resources.Localization.Presets {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Locks out Capture if your current target is either not an eligible pet for capture, or you already have it unlocked..
+        /// </summary>
+        internal static string BST_Capture_Helper_Desc {
+            get {
+                return ResourceManager.GetString("BST_Capture_Helper_Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Capture Helper.
+        /// </summary>
+        internal static string BST_Capture_Helper_Name {
+            get {
+                return ResourceManager.GetString("BST_Capture_Helper_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Replaces Avalanche Axe, Mistral Axe, Spinning Axe and Gale Axe with Trick when it&apos;s ready. Locks out the actions if Trick is the wrong affinity or until ready to complete an Instinctual Combo. Order depends on stacks of Mastered Instinct and Natural Instinct, prioritising whichever is lower..
         /// </summary>
         internal static string BST_Instinctual_Combo_Desc {

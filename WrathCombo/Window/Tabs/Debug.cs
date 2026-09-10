@@ -363,6 +363,7 @@ internal class Debug : ConfigWindow, IDisposable
                 case Job.BST:
                     CustomStyleText($"Trick Type?:", $"{BST.TrickType}");
                     CustomStyleText($"Lowest Rally Type?:", $"{BST.LowestRallyType}");
+                    CustomStyleText($"Target is BST Pet?:", $"{BST.TargetIsBstPet(target)} ({string.Join(", ", BST.GetPetIdFromModel(target))})");
 
                     CustomStyleText($"Current Pet is BMPet?:", $"{BST.CurrentPetIsBMPet}");
                     CustomStyleText($"Current Pet", $"{BST.CurrentPetSheet?.Name ?? "??"} (ID: {BST.CurrentPetSheet?.RowId ?? 0})");

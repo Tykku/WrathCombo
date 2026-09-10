@@ -1,4 +1,5 @@
-﻿using ECommons.DalamudServices;
+﻿using Dalamud.Game.ClientState.Objects.Types;
+using ECommons.DalamudServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Lumina.Excel.Sheets;
@@ -177,6 +178,85 @@ internal partial class BST
             EldritchHeart = 4598;
     }
 
+    public static class Debuffs
+    {
+        public const uint
+            InterestCaptured = 4626;
+    }
+
+    public static class Traits
+    {
+        public const uint
+            WildHeart = 690,
+            WildHeartII = 691,
+            BattlehornMastery = 692,
+            WildHeartIV = 693,
+            WildHeartIII = 694,
+            TemperedReleaseMastery = 749,
+            EnhancedBorrow = 750,
+            EnhancedShieldCharge = 751,
+            Beastmastery = 752,
+            BattlehornMasteryII = 754,
+            BattlehornMasteryIII = 755,
+            EnhancedRally = 756,
+            EnhancedRallyingCheer = 757,
+            InstinctualMastery = 758;
+
+    }
+
+    public static Dictionary<uint, uint[]> ModelToPetID = new()
+    {
+        { 8, [1] },
+        { 2, [2] },
+        { 86, [3] },
+        { 134, [4] },
+        { 4, [5] },
+        { 44, [6] },
+        { 45, [7] },
+        { 1, [8] },
+        { 38, [9] },
+        { 137, [10] },
+        { 7, [11] },
+        { 88, [12] },
+        { 476, [13] },
+        { 32, [14] },
+        { 133, [15] },
+        { 148, [16] },
+        { 87, [17] },
+        { 29, [18] },
+        { 25, [19] },
+        { 9, [20] },
+        { 40, [21] },
+        { 36, [22] },
+        { 21, [23] },
+        { 50, [24] },
+        { 23, [25] },
+        { 35, [26] },
+        { 142, [27] },
+        { 68, [28] },
+        { 28, [29] },
+        { 54, [30, 45] },
+        { 30, [31] },
+        { 138, [32] },
+        { 17, [33] },
+        { 24, [34] },
+        { 46, [35] },
+        { 27, [36] },
+        { 51, [37] },
+        { 53, [38] },
+        { 37, [39] },
+        { 80, [40] },
+        { 39, [41] },
+        { 65, [42] },
+        { 70, [43] },
+        { 198, [44] },
+        { 60, [46] },
+        { 1009, [47] },
+        { 215, [48] },
+        { 5, [49] },
+        { 42, [50] }
+    };
+
     private static List<uint> RampantTricks =
     [
          TrickActions.Cusith_Rake,
@@ -345,6 +425,8 @@ internal partial class BST
 
     public static bool RallyLearnt => ActionLearned(Rally);
     public static bool RallyingCheerLearnt => ActionLearned(RallyingCheer);
+    public static bool FinisherLearnt => true;// TraitLevelChecked(Traits.InstinctualMastery);
+    public static bool FinisherReady => JobGauge.MasterInstinct == 3 && JobGauge.PetInstinct >= 1;
 
     public enum RallyingType
     {
@@ -365,7 +447,7 @@ internal partial class BST
                 if (JobGauge.MasterInstinct == 3 && JobGauge.PetInstinct == 3) //Both are maxed
                     return RallyingType.None;
 
-                if (JobGauge.MasterInstinct <= JobGauge.PetInstinct) //Prioritize Rally in a tie, subject to Balance intervention
+                if (JobGauge.MasterInstinct < (FinisherLearnt ? 3 : JobGauge.PetInstinct)) //Prioritize Rally in a tie, subject to Balance intervention
                     return RallyingType.Rally;
 
                 if (JobGauge.PetInstinct < JobGauge.MasterInstinct)
@@ -374,6 +456,33 @@ internal partial class BST
 
             return RallyingType.None;
         }
+    }
+
+    public static unsafe bool PetUnlocked(uint petId) => XBMManager.Instance()->IsPetUnlocked(petId);
+
+    public static bool TargetIsBstPet(IBattleChara? tar)
+    {
+        if (tar is null)
+            return false;
+
+        var model = Svc.Data.GetExcelSheet<BNpcBase>().GetRow(tar.BaseId).ModelChara;
+        var modelId = model.Value.Model;
+
+        if (ModelToPetID.ContainsKey(modelId))
+            return true;
+
+        return false;
+    }
+
+    public static uint[] GetPetIdFromModel(IBattleChara? tar)
+    {
+        if (tar is null)
+            return System.Array.Empty<uint>();
+        var model = Svc.Data.GetExcelSheet<BNpcBase>().GetRow(tar.BaseId).ModelChara;
+        var modelId = model.Value.Model;
+        if (ModelToPetID.ContainsKey(modelId))
+            return ModelToPetID[modelId];
+        return System.Array.Empty<uint>();
     }
 
 }
