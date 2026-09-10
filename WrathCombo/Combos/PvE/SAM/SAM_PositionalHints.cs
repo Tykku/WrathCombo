@@ -46,6 +46,16 @@ internal partial class SAM
             ReportUpcomingPositional(PositionalDirection.Rear, Gekko, 1);
         else if (useKasha && ActionLearned(Kasha) && (!HasKa || !LocalPlayer.HasStatus(Buffs.Fuka)))
             ReportUpcomingPositional(PositionalDirection.Flank, Kasha, 1);
+        else if (SenCount is 3)
+        {
+            // Burst Meikyo: Iaijutsu this GCD, then Gekko/Kasha. Publish that positional now.
+            if (useGekko && ActionLearned(Gekko))
+                ReportUpcomingPositional(PositionalDirection.Rear, Gekko, 2);
+            else if (useKasha && ActionLearned(Kasha))
+                ReportUpcomingPositional(PositionalDirection.Flank, Kasha, 2);
+            else
+                ClearUpcomingPositional();
+        }
         else
             ClearUpcomingPositional();
     }
