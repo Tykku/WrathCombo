@@ -142,14 +142,11 @@ internal partial class BST : Melee
             if (actionID is not Capture)
                 return actionID;
 
-            var petIds = GetPetIdFromModel(CurrentTarget);
-            if (petIds.Length > 0)
+            var petId = GetPetIdFromModel(CurrentTarget);
+            if (petId != 0)
             {
-                foreach (var petId in petIds)
-                {
-                    if (!PetUnlocked(petId) && CurrentTarget?.HasStatus(Debuffs.InterestCaptured) == false)
-                        return Capture;
-                }
+                if (!PetUnlocked(petId) && CurrentTarget?.HasStatus(Debuffs.InterestCaptured) == false)
+                    return Capture;
             }
 
             return All.Cease;

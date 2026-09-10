@@ -204,59 +204,6 @@ internal partial class BST
 
     }
 
-    public static Dictionary<uint, uint[]> ModelToPetID = new()
-    {
-        { 8, [1] },
-        { 2, [2] },
-        { 86, [3] },
-        { 134, [4] },
-        { 4, [5] },
-        { 44, [6] },
-        { 45, [7] },
-        { 1, [8] },
-        { 38, [9] },
-        { 137, [10] },
-        { 7, [11] },
-        { 88, [12] },
-        { 476, [13] },
-        { 32, [14] },
-        { 133, [15] },
-        { 148, [16] },
-        { 87, [17] },
-        { 29, [18] },
-        { 25, [19] },
-        { 9, [20] },
-        { 40, [21] },
-        { 36, [22] },
-        { 21, [23] },
-        { 50, [24] },
-        { 23, [25] },
-        { 35, [26] },
-        { 142, [27] },
-        { 68, [28] },
-        { 28, [29] },
-        { 54, [30, 45] },
-        { 30, [31] },
-        { 138, [32] },
-        { 17, [33] },
-        { 24, [34] },
-        { 46, [35] },
-        { 27, [36] },
-        { 51, [37] },
-        { 53, [38] },
-        { 37, [39] },
-        { 80, [40] },
-        { 39, [41] },
-        { 65, [42] },
-        { 70, [43] },
-        { 198, [44] },
-        { 60, [46] },
-        { 1009, [47] },
-        { 215, [48] },
-        { 5, [49] },
-        { 42, [50] }
-    };
-
     private static List<uint> RampantTricks =
     [
          TrickActions.Cusith_Rake,
@@ -466,23 +413,44 @@ internal partial class BST
             return false;
 
         var model = Svc.Data.GetExcelSheet<BNpcBase>().GetRow(tar.BaseId).ModelChara;
+        var variant = model.Value.Variant;
         var modelId = model.Value.Model;
+        var baseval = model.Value.Base;
 
-        if (ModelToPetID.ContainsKey(modelId))
-            return true;
+        if (ModelToPetId(modelId, baseval) is 0)
+            return false;
 
-        return false;
+        return true;
     }
 
-    public static uint[] GetPetIdFromModel(IBattleChara? tar)
+    public static uint PetIdToModel(uint petId)
+    {
+        var xbmPet = Svc.Data.GetExcelSheet<XBMPet>().GetRow(petId);
+        var pet = Svc.Data.GetExcelSheet<Pet>().GetRow((uint)xbmPet.Unknown4);
+        var modelRow = Svc.Data.GetExcelSheet<PetMirage>().GetRow((uint)pet.Unknown8).ModelChara.Value.Model;
+
+        return modelRow;
+    }
+
+    public static uint ModelToPetId(uint modelId, byte baseval)
+    {
+        var mirageRow = Svc.Data.GetExcelSheet<PetMirage>().FirstOrDefault(x => x.ModelChara.Value.Model == modelId && x.ModelChara.Value.Base == baseval).RowId;
+        var petRow = Svc.Data.GetExcelSheet<Pet>().FirstOrDefault(x => x.Unknown8 == mirageRow).RowId;
+        var xbmPet = Svc.Data.GetExcelSheet<XBMPet>().FirstOrDefault(x => x.Unknown4 == petRow).RowId;
+
+        return xbmPet;
+    }
+
+    public static uint GetPetIdFromModel(IBattleChara? tar)
     {
         if (tar is null)
-            return System.Array.Empty<uint>();
+            return 0;
         var model = Svc.Data.GetExcelSheet<BNpcBase>().GetRow(tar.BaseId).ModelChara;
         var modelId = model.Value.Model;
-        if (ModelToPetID.ContainsKey(modelId))
-            return ModelToPetID[modelId];
-        return System.Array.Empty<uint>();
+        var baseval = model.Value.Base;
+        var petId = ModelToPetId(modelId, baseval);
+
+        return petId;
     }
 
 }
