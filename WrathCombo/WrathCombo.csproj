@@ -21,6 +21,7 @@
         <Configurations>Debug;Release</Configurations>
         <EnableWindowsTargeting>true</EnableWindowsTargeting>
         <!--<NoWarn>CS1591</NoWarn>-->
+		<NoWarn>PendingExcelSchema</NoWarn>
         <LangVersion>preview</LangVersion>
 
         <Platforms>x64</Platforms>

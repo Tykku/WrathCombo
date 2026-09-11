@@ -2,7 +2,7 @@
 using ECommons.DalamudServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
-using Lumina.Excel.Sheets;
+using Lumina.Excel.Sheets.Experimental;
 using System.Collections.Generic;
 using System.Linq;
 using WrathCombo.Data;
@@ -276,7 +276,7 @@ internal partial class BST
     public unsafe static TmpBSTGauge JobGauge => *_jobGauge;
 
     public unsafe static Buddy.BuddyMember? CurrentPet => *UIState.Instance()->Buddy.PetInfo.Pet;
-    public static unsafe bool CurrentPetIsBMPet => CurrentPet?.DataId > 0 && Svc.Data.GetExcelSheet<XBMPet>().Any(x => x.Unknown4 == CurrentPet?.DataId);
+    public static unsafe bool CurrentPetIsBMPet => CurrentPet?.DataId > 0 && Svc.Data.GetExcelSheet<XBMPet>().Any(x => x.Pet.RowId == CurrentPet?.DataId);
 
     public static Pet? CurrentPetSheet => CurrentPetIsBMPet ? Svc.Data.GetExcelSheet<Pet>().GetRow(CurrentPet?.DataId ?? 0) : null;
 
@@ -412,8 +412,7 @@ internal partial class BST
     public static uint PetIdToModel(uint petId)
     {
         var xbmPet = Svc.Data.GetExcelSheet<XBMPet>().GetRow(petId);
-        var pet = Svc.Data.GetExcelSheet<Pet>().GetRow((uint)xbmPet.Unknown4);
-        var modelRow = Svc.Data.GetExcelSheet<PetMirage>().GetRow((uint)pet.Unknown8).ModelChara.Value.Model;
+        var modelRow = xbmPet.Pet.Value.AllowedPetMirage[0].Value.ModelChara.Value.Model;
 
         return modelRow;
     }
@@ -421,10 +420,9 @@ internal partial class BST
     public static uint ModelToPetId(uint modelId, byte baseval)
     {
         var mirageRow = Svc.Data.GetExcelSheet<PetMirage>().FirstOrDefault(x => x.ModelChara.Value.Model == modelId && x.ModelChara.Value.Base == baseval).RowId;
-        var petRow = Svc.Data.GetExcelSheet<Pet>().FirstOrDefault(x => x.Unknown8 == mirageRow).RowId;
-        var xbmPet = Svc.Data.GetExcelSheet<XBMPet>().FirstOrDefault(x => x.Unknown4 == petRow).RowId;
+        var petRow = Svc.Data.GetExcelSheet<Pet>().FirstOrDefault(x => x.AllowedPetMirage[0].RowId == mirageRow);
 
-        return xbmPet;
+        return petRow.Unknown18;
     }
 
     public static uint GetPetIdFromModel(IBattleChara? tar)
