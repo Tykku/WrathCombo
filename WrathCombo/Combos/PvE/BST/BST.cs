@@ -109,6 +109,9 @@ internal partial class BST : Melee
             if (TraitLevelChecked(Traits.WildHeartII) && !ActionReady(TemperedRelease) && ActionReady(PartingBlow) && !OnLastHorn && CanWeave())
                 return PartingBlow;
 
+            if (CanWeave() && InMeleeRange() && ActionReady(ShieldCharge) && GetRemainingCharges(ShieldCharge) > 1) //Save one for manual use
+                return ShieldCharge;
+
             if (BasicCombo(ref actionID))
                 return actionID;
 
