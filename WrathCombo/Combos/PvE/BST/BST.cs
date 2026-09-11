@@ -19,7 +19,7 @@ internal partial class BST : Melee
             if (!CustomActionHelper.OneButtonRotationChecker(actionID, CustomActionType.SingleTargetDPS, SmashAxe))
                 return actionID;
 
-            if (!CurrentPetIsBMPet)
+            if (!CurrentPetIsBMPet && InCombat())
             {
                 if (ActionReady(FirstBattlehorn))
                     return FirstBattlehorn;
@@ -109,10 +109,10 @@ internal partial class BST : Melee
                     return AvalancheAxe;
             }
 
-            if (ActionReady(TemperedRelease) && CanWeave())
+            if (ActionReady(TemperedRelease) && CanWeave() && CurrentPetReleaseAction != TemperedReleaseActions.Wespe_FinalSting)
                 return TemperedRelease;
 
-            if (TraitLevelChecked(Traits.WildHeartII) && !ActionReady(TemperedRelease) && ActionReady(PartingBlow) && !OnLastHorn && CanWeave())
+            if (BST_SimpleMode_CycleBeasts && TraitLevelChecked(Traits.WildHeartII) && !ActionReady(TemperedRelease) && ActionReady(PartingBlow) && !OnLastHorn && CanWeave())
                 return PartingBlow;
 
             if (CanWeave() && InMeleeRange() && ActionReady(ShieldCharge) && GetRemainingCharges(ShieldCharge) > 1) //Save one for manual use

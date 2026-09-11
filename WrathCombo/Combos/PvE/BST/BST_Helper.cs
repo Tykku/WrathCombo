@@ -1,5 +1,6 @@
 ﻿using Dalamud.Game.ClientState.Objects.Types;
 using ECommons.DalamudServices;
+using ECommons.GameHelpers;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Lumina.Excel.Sheets.Experimental;
@@ -281,6 +282,7 @@ internal partial class BST
     public static Pet? CurrentPetSheet => CurrentPetIsBMPet ? Svc.Data.GetExcelSheet<Pet>().GetRow(CurrentPet?.DataId ?? 0) : null;
 
     public static uint? CurrentPetTrickAction => CurrentPetSheet?.Abilities[0].RowId ?? 0;
+    public static uint? CurrentPetReleaseAction => CurrentPetSheet?.Abilities[1].RowId ?? 0;
     private static bool TrickIsDurant => DurantTricks.Any(x => x == CurrentPetTrickAction);
     private static bool TrickIsEldritch => EldritchTricks.Any(x => x == CurrentPetTrickAction);
     private static bool TrickIsVolant => VolantTricks.Any(x => x == CurrentPetTrickAction);
@@ -374,7 +376,7 @@ internal partial class BST
     public static bool AbleToIntentional => ActionLearned(ClockwiseInstinctualAction) || ActionLearned(CounterClockwiseInstinctualAction);
     public static bool RallyLearnt => ActionLearned(Rally);
     public static bool RallyingCheerLearnt => ActionLearned(RallyingCheer);
-    public static bool FinisherLearnt => TraitLevelChecked(Traits.InstinctualMastery);
+    public static bool FinisherLearnt => Player.Available && TraitLevelChecked(Traits.InstinctualMastery);
     public static bool FinisherReady => JobGauge.MasterInstinct == 3 && JobGauge.PetInstinct >= 1 && ActionReady(Rally) && ActionReady(RallyingCheer) && JobGauge.PlayerTP >= 100 && JobGauge.BeastTP >= 100;
     public static bool OnLastHorn
     {
