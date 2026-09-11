@@ -6234,7 +6234,7 @@ public enum Preset
 
     [ParentCombo(SGE_ST_Advanced_DPS)]
     [JobInfo(Job.SGE)]
-    [PossiblyRetargeted(SGE.Druochole)]
+    [Retargeted(SGE.Druochole)]
     SGE_ST_Adv_DPS_AddersgallProtect = 14054,
 
     [ParentCombo(SGE_ST_Advanced_DPS)]

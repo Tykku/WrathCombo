@@ -61,10 +61,10 @@ internal partial class SAM
             return actionID;
         }
 
-        if (useGekko && ActionLearned(Gekko) && !HasGetsu || !HasStatusEffect(Buffs.Fugetsu))
+        if (useGekko && ActionLearned(Gekko) && (!HasGetsu || !HasStatusEffect(Buffs.Fugetsu)))
             return WithTrueNorth(Gekko, OnTargetsRear(), useTrueNorth, trueNorthCharges);
 
-        if (useKasha && ActionLearned(Kasha) && !HasKa || !HasStatusEffect(Buffs.Fuka))
+        if (useKasha && ActionLearned(Kasha) && (!HasKa || !HasStatusEffect(Buffs.Fuka)))
             return WithTrueNorth(Kasha, OnTargetsFlank(), useTrueNorth, trueNorthCharges);
 
         if (useYukikaze &&
@@ -96,7 +96,8 @@ internal partial class SAM
 
         if (SenCount is 3 ||
             GetStatusEffectRemainingTime(Buffs.TsubameReady) < 3 ||
-            !InBossEncounter())
+            !InBossEncounter() ||
+            RecoveringRotation())
             return true;
 
         return ActionLearned(Senei) && GetCooldownRemainingTime(Senei) < 7f;
@@ -113,10 +114,25 @@ internal partial class SAM
     {
         if (onlyWhenStationary && IsMoving() ||
             !ActionReady(OriginalHook(Iaijutsu)) ||
-            !InActionRange(OriginalHook(Iaijutsu)) ||
-            !HasStatusEffect(Buffs.Fuka) ||
-            !HasStatusEffect(Buffs.Fugetsu))
+            !InActionRange(OriginalHook(Iaijutsu)))
             return false;
+
+        bool haveBuffs =
+            HasStatusEffect(Buffs.Fuka) && HasStatusEffect(Buffs.Fugetsu);
+
+        // After downtime, Meikyo → Gekko/Kasha reapplies buffs then Tendo.
+        // If Meikyo is unavailable, spend 3 Sen anyway so Hakaze doesn't overwrite them.
+        if (!haveBuffs)
+        {
+            if (onAoE)
+                return false;
+
+            return useMidare &&
+                   SenCount is 3 &&
+                   !HasStatusEffect(Buffs.TsubameReady) &&
+                   (HasStatusEffect(Buffs.Tendo) ||
+                    !ActionReady(MeikyoShisui) && !HasStatusEffect(Buffs.MeikyoShisui));
+        }
 
         if (onAoE)
         {
@@ -165,7 +181,7 @@ internal partial class SAM
         if (ActionLearned(Senei) && GetCooldownRemainingTime(Senei) < 7f)
             return false;
 
-        if (HasEnhancedSenei)
+        if (HasEnhancedSenei())
             return JustUsed(Senei, 35f) || JustUsed(Ikishoten, 35f);
 
         return true;
@@ -177,6 +193,36 @@ internal partial class SAM
             return TargetIsBoss() ? SAM_ST_HiganbanaHPOption : SAM_ST_HiganbanaAddsHPOption;
 
         return SAM_ST_HiganbanaTrashHPOption;
+    }
+
+    private static bool InOpenerWindow() =>
+        CombatEngageDuration().TotalSeconds < 8;
+
+    // Combo dropped or self-buffs gone after the opener — typical disengage / phase.
+    private static bool RecoveringRotation() =>
+        InCombat() &&
+        HasBattleTarget() &&
+        !InOpenerWindow() &&
+        (!HasStatusEffect(Buffs.Fugetsu) ||
+         !HasStatusEffect(Buffs.Fuka) ||
+         ComboTimer is 0);
+
+    // Combo path to 3 Sen would finish after Senei is already up — skip combos with Meikyo.
+    private static bool NeedMeikyoAcceleration()
+    {
+        if (SenCount is 3 || HasStatusEffect(Buffs.MeikyoShisui))
+            return false;
+
+        float seneiCd = ActionLearned(Senei) ? GetCooldownRemainingTime(Senei) : 0f;
+        float comboTime = SenCount switch
+        {
+            0 => GCD * 8,
+            1 => GCD * 5,
+            2 => GCD * 3,
+            _ => 0
+        };
+
+        return comboTime > seneiCd + GCD;
     }
 
     private static bool UsePrepullMeikyo(bool requireNotJustUsed = false) =>
@@ -200,29 +246,30 @@ internal partial class SAM
             JustUsed(Yukikaze, 2f) || JustUsed(Gekko, 2f) || JustUsed(Kasha, 2f);
         bool afterKaeshi =
             JustUsed(KaeshiSetsugekka, 2f) || JustUsed(TendoKaeshiSetsugekka, 2f);
+        bool comboDropped = ComboTimer is 0;
+        bool canMeikyoNow = afterFinisher || afterKaeshi || RecoveringRotation() || comboDropped;
 
-        if (TargetIsBoss() && GetTargetHPPercent() < meikyoExecuteThreshold && afterFinisher)
+        if (TargetIsBoss() && GetTargetHPPercent() < meikyoExecuteThreshold && canMeikyoNow)
             return true;
 
         if (!ActionLearned(Senei))
-            return afterFinisher;
+            return canMeikyoNow;
 
         float seneiCd = GetCooldownRemainingTime(Senei);
         bool seneiSoon = seneiCd < 7f;
-        bool oddMinutePreEnhanced = !HasEnhancedSenei && seneiCd is > 50 and < 65;
+        bool oddMinutePreEnhanced = !HasEnhancedSenei() && seneiCd is > 50 and < 65;
         uint meikyoCharges = GetRemainingCharges(MeikyoShisui);
 
         float higanbanaRemaining = GetStatusEffectRemainingTime(Debuffs.Higanbana, CurrentTarget);
         bool higanbanaUrgent =
-            afterFinisher &&
-            SenCount < 3 &&
-            SenCount is not 1 &&
+            canMeikyoNow &&
+            SenCount is 0 &&
             (!HasStatusEffect(Debuffs.Higanbana, CurrentTarget) || higanbanaRemaining <= 15);
 
         if (higanbanaUrgent)
             return true;
 
-        if (HasEnhancedSenei &&
+        if (HasEnhancedSenei() &&
             meikyoCharges >= 2 &&
             JustUsed(KaeshiNamikiri, 10f) &&
             afterFinisher &&
@@ -236,10 +283,13 @@ internal partial class SAM
             !seneiSoon)
             return true;
 
+        if (NeedMeikyoAcceleration() && canMeikyoNow)
+            return true;
+
         if (!seneiSoon && !oddMinutePreEnhanced)
             return false;
 
-        return afterKaeshi || afterFinisher;
+        return canMeikyoNow;
     }
 
     private static bool UseIkishoten() =>
@@ -265,11 +315,11 @@ internal partial class SAM
         InActionRange(Shoha) &&
         (!holdForBurst || !ActionLearned(Senei) || GetCooldownRemainingTime(Senei) >= 7f);
 
-    private static bool ShouldRefreshFugetsu =>
+    private static bool ShouldRefreshFugetsu() =>
         GetStatusEffectRemainingTime(Buffs.Fugetsu) <=
         GetStatusEffectRemainingTime(Buffs.Fuka);
 
-    private static bool ShouldRefreshFuka =>
+    private static bool ShouldRefreshFuka() =>
         GetStatusEffectRemainingTime(Buffs.Fuka) <=
         GetStatusEffectRemainingTime(Buffs.Fugetsu);
 
@@ -303,7 +353,7 @@ internal partial class SAM
             !InActionRange(OriginalHook(OgiNamikiri)) ||
             !HasStatusEffect(Buffs.OgiNamikiriReady) ||
             respectMovement && IsMoving() ||
-            ActionWatching.NumberOfGcdsUsed < 5)
+            InOpenerWindow() && ActionWatching.NumberOfGcdsUsed < 5)
             return false;
 
         if (onAoE)
@@ -356,14 +406,29 @@ internal partial class SAM
         return Kenki >= kenkiOvercapAmount;
     }
 
-    private static bool UseSenei() =>
-        ActionReady(Senei) &&
-        InActionRange(Senei) &&
-        ActionWatching.NumberOfGcdsUsed >= 4 &&
-        (!ActionLearned(TendoSetsugekka) ||
-         HasStatusEffect(Buffs.Tendo) && SenCount >= 2 ||
-         JustUsed(TendoSetsugekka, GCD * 3) ||
-         JustUsed(TendoKaeshiSetsugekka, GCD * 3));
+    private static bool UseSenei()
+    {
+        if (!ActionReady(Senei) || !InActionRange(Senei))
+            return false;
+
+        if (InOpenerWindow() && ActionWatching.NumberOfGcdsUsed < 4)
+            return false;
+
+        if (!ActionLearned(TendoSetsugekka))
+            return true;
+
+        if (JustUsed(TendoSetsugekka, GCD * 3) ||
+            JustUsed(TendoKaeshiSetsugekka, GCD * 3))
+            return true;
+
+        if (HasStatusEffect(Buffs.Tendo) && SenCount >= 2)
+            return true;
+
+        // Don't sit on a 60s CD after downtime if Tendo isn't coming.
+        return RecoveringRotation() &&
+               !ActionReady(MeikyoShisui) &&
+               !HasStatusEffect(Buffs.MeikyoShisui);
+    }
 
     private static bool UseGuren() =>
         ActionReady(Guren) && InActionRange(Guren);
@@ -793,7 +858,7 @@ internal partial class SAM
 
     private static SAMGauge Gauge => GetJobGauge<SAMGauge>();
 
-    private static bool HasEnhancedSenei =>
+    private static bool HasEnhancedSenei() =>
         TraitLevelChecked(Traits.EnhancedHissatsu);
 
     private static bool HasGetsu => Gauge.HasGetsu;
