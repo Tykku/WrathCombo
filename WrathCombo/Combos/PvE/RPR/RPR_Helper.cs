@@ -246,7 +246,7 @@ internal partial class RPR
         int arcaneCircleBossOption = 0) =>
         HasStatusEffect(Buffs.Enshrouded) && HasStatusEffect(Buffs.Oblatio) &&
         (onAoE
-            ? Lemure is 2 && Void is 1
+            ? Lemure is 2 && VoidShroud is 1
             : Lemure <= 4) &&
         (!useArcaneCircleBoss || onAoE ||
          GetCooldownRemainingTime(ArcaneCircle) > GCD * 3 && !JustUsed(ArcaneCircle, 2) &&
@@ -256,7 +256,7 @@ internal partial class RPR
          !arcaneCircleEnabled);
 
     private static bool UseLemure(bool onAoE = false) =>
-        HasStatusEffect(Buffs.Enshrouded) && Void >= 2 &&
+        HasStatusEffect(Buffs.Enshrouded) && VoidShroud >= 2 &&
         ActionLearned(onAoE ? LemuresScythe : LemuresSlice) &&
         (!onAoE || InActionRange(OriginalHook(GrimSwathe)));
 
@@ -404,7 +404,6 @@ internal partial class RPR
         bool neitherEnhanced = !HasStatusEffect(Buffs.EnhancedGibbet) && !HasStatusEffect(Buffs.EnhancedGallows);
 
         if (HasStatusEffect(Buffs.EnhancedGibbet) ||
-            useSimpleTrueNorth && neitherEnhanced ||
             !useSimpleTrueNorth && positionalChoice is 1 && neitherEnhanced)
         {
             if (useSimpleTrueNorth && Role.CanTrueNorth() && !OnTargetsFlank() || useDynamicTrueNorth &&
@@ -447,7 +446,7 @@ internal partial class RPR
 
         if (onAoE)
         {
-            if (communio && ActionLearned(Communio) && Lemure is 1 && Void is 0)
+            if (communio && ActionLearned(Communio) && Lemure is 1 && VoidShroud is 0)
             {
                 actionID = Communio;
                 return true;
@@ -485,81 +484,81 @@ internal partial class RPR
         return false;
     }
 
+    private static bool TryBloodStalkGrimSwatheEnshroudWeaves(ref uint actionID)
+    {
+        if (!HasStatusEffect(Buffs.Enshrouded))
+            return false;
+
+        if (Lemure is 2 && HasStatusEffect(Buffs.Oblatio))
+        {
+            actionID = OriginalHook(Gluttony);
+            return true;
+        }
+
+        uint lemures = actionID is GrimSwathe ? LemuresScythe : LemuresSlice;
+        if (VoidShroud >= 2 && ActionLearned(lemures))
+        {
+            actionID = OriginalHook(actionID);
+            return true;
+        }
+
+        return false;
+    }
+
     private static bool UseBloodStalkGrimSwatheEnshroudGCD(ref uint actionID)
     {
-        switch (actionID)
+        bool onAoE = actionID is GrimSwathe;
+
+        if (HasStatusEffect(Buffs.PerfectioParata))
         {
-            case GrimSwathe when HasStatusEffect(Buffs.PerfectioParata):
-                actionID = OriginalHook(Communio);
+            actionID = OriginalHook(Communio);
+            return true;
+        }
+
+        if (!HasStatusEffect(Buffs.Enshrouded))
+            return false;
+
+        if (Lemure is 1 && VoidShroud is 0 && ActionLearned(Communio))
+        {
+            actionID = Communio;
+            return true;
+        }
+
+        if (Lemure is 2 && VoidShroud is 1 && HasStatusEffect(Buffs.Oblatio))
+        {
+            actionID = OriginalHook(Gluttony);
+            return true;
+        }
+
+        uint lemures = onAoE ? LemuresScythe : LemuresSlice;
+        if (VoidShroud >= 2 && ActionLearned(lemures))
+        {
+            actionID = OriginalHook(actionID);
+            return true;
+        }
+
+        if (onAoE)
+        {
+            if (Lemure > 1 && ActionLearned(Guillotine))
+            {
+                actionID = OriginalHook(Guillotine);
                 return true;
-            case GrimSwathe when !HasStatusEffect(Buffs.Enshrouded):
-                return false;
-            case GrimSwathe:
-                {
-                    switch (Lemure)
-                    {
-                        case 1 when Void == 0 && ActionLearned(Communio):
-                            actionID = Communio;
-                            return true;
+            }
 
-                        case 2 when Void is 1 && HasStatusEffect(Buffs.Oblatio):
-                            actionID = OriginalHook(Gluttony);
-                            return true;
-                    }
+            return false;
+        }
 
-                    if (Void >= 2 && ActionLearned(LemuresScythe))
-                    {
-                        actionID = OriginalHook(GrimSwathe);
-                        return true;
-                    }
+        if (HasStatusEffect(Buffs.EnhancedVoidReaping))
+        {
+            actionID = OriginalHook(Gibbet);
+            return true;
+        }
 
-                    if (Lemure > 1)
-                    {
-                        actionID = OriginalHook(Guillotine);
-                        return true;
-                    }
-                    break;
-                }
-            case BloodStalk when HasStatusEffect(Buffs.PerfectioParata):
-                actionID = OriginalHook(Communio);
-                return true;
-
-            case BloodStalk when !HasStatusEffect(Buffs.Enshrouded):
-                break;
-
-            case BloodStalk:
-                {
-                    switch (Lemure)
-                    {
-                        case 1 when Void == 0 && ActionLearned(Communio):
-                            actionID = Communio;
-                            return true;
-
-                        case 2 when Void is 1 && HasStatusEffect(Buffs.Oblatio):
-                            actionID = OriginalHook(Gluttony);
-                            return true;
-                    }
-
-                    if (Void >= 2 && ActionLearned(LemuresSlice))
-                    {
-                        actionID = OriginalHook(BloodStalk);
-                        return true;
-                    }
-
-                    if (HasStatusEffect(Buffs.EnhancedVoidReaping))
-                    {
-                        actionID = OriginalHook(Gibbet);
-                        return true;
-                    }
-
-                    if (HasStatusEffect(Buffs.EnhancedCrossReaping) ||
-                        !HasStatusEffect(Buffs.EnhancedCrossReaping) && !HasStatusEffect(Buffs.EnhancedVoidReaping))
-                    {
-                        actionID = OriginalHook(Gallows);
-                        return true;
-                    }
-                    break;
-                }
+        if (HasStatusEffect(Buffs.EnhancedCrossReaping) ||
+            !HasStatusEffect(Buffs.EnhancedCrossReaping) && !HasStatusEffect(Buffs.EnhancedVoidReaping))
+        {
+            actionID = OriginalHook(Gallows);
+            return true;
         }
 
         return false;
@@ -570,29 +569,32 @@ internal partial class RPR
         if (IsShroudOvercapping(enshroudEnabled, actionID is GrimSwathe))
             return false;
 
-        if (actionID is GrimSwathe &&
-            (HasStatusEffect(Buffs.SoulReaver) || HasStatusEffect(Buffs.Executioner)) &&
-            ActionLearned(Guillotine))
+        if (!HasStatusEffect(Buffs.SoulReaver) && !HasStatusEffect(Buffs.Executioner))
+            return false;
+
+        if (actionID is GrimSwathe)
         {
+            if (!ActionLearned(Guillotine))
+                return false;
+
             actionID = OriginalHook(Guillotine);
             return true;
         }
 
-        if (actionID is BloodStalk &&
-            (HasStatusEffect(Buffs.SoulReaver) || HasStatusEffect(Buffs.Executioner)))
-        {
-            if (HasStatusEffect(Buffs.EnhancedGibbet))
-            {
-                actionID = OriginalHook(Gibbet);
-                return true;
-            }
+        if (actionID is not BloodStalk)
+            return false;
 
-            if (HasStatusEffect(Buffs.EnhancedGallows) ||
-                !HasStatusEffect(Buffs.EnhancedGibbet) && !HasStatusEffect(Buffs.EnhancedGallows))
-            {
-                actionID = OriginalHook(Gallows);
-                return true;
-            }
+        if (HasStatusEffect(Buffs.EnhancedGibbet))
+        {
+            actionID = OriginalHook(Gibbet);
+            return true;
+        }
+
+        if (HasStatusEffect(Buffs.EnhancedGallows) ||
+            !HasStatusEffect(Buffs.EnhancedGibbet))
+        {
+            actionID = OriginalHook(Gallows);
+            return true;
         }
 
         return false;
@@ -702,7 +704,7 @@ internal partial class RPR
             GetRemainingCharges(SoulSlice) is 2 &&
             IsOffCooldown(ArcaneCircle) &&
             IsOffCooldown(Gluttony) &&
-            Void is 0 && Soul is 0;
+            VoidShroud is 0 && Soul is 0;
     }
 
     internal class RPRStandardOpenerLvl100 : RPROpenerBase
@@ -867,7 +869,7 @@ internal partial class RPR
 
     private static byte Lemure => Gauge.LemureShroud;
 
-    private static byte Void => Gauge.VoidShroud;
+    private static byte VoidShroud => Gauge.VoidShroud;
 
     #endregion
 
