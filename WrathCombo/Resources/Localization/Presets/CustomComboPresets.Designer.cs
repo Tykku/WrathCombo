@@ -6333,6 +6333,24 @@ namespace WrathCombo.Resources.Localization.Presets {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Locks out using battlehorns whilst in combat and you already have a beast out. This feature may help doing dungeon runs where you&apos;ll be swapping your beasts a lot between pulls and don&apos;t want them to go on cooldown..
+        /// </summary>
+        internal static string BST_Battlehorn_Lockout_Desc {
+            get {
+                return ResourceManager.GetString("BST_Battlehorn_Lockout_Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Battlehorn Lockout Feature.
+        /// </summary>
+        internal static string BST_Battlehorn_Lockout_Name {
+            get {
+                return ResourceManager.GetString("BST_Battlehorn_Lockout_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Locks out Capture if your current target is either not an eligible pet for capture, or you already have it unlocked. Disclaimer: May not be perfect. Detection methods are hypothetical at best..
         /// </summary>
         internal static string BST_Capture_Helper_Desc {
@@ -6351,7 +6369,7 @@ namespace WrathCombo.Resources.Localization.Presets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Replaces Avalanche Axe, Mistral Axe, Spinning Axe and Gale Axe with Trick when it&apos;s ready. Locks out the actions if Trick is the wrong affinity or until ready to complete an Instinctual Combo. Order depends on stacks of Mastered Instinct and Natural Instinct, prioritising whichever is lower..
+        ///   Looks up a localized string similar to Replaces Avalanche Axe, Mistral Axe, Spinning Axe and Gale Axe with Trick when it&apos;s ready. Locks out the actions if Trick is the wrong affinity or until ready to complete an Instinctual Combo. Order of actions prioritises getting to 2 mastered instinct stacks and 1 natural instinct stack..
         /// </summary>
         internal static string BST_Instinctual_Combo_Desc {
             get {
@@ -6369,7 +6387,7 @@ namespace WrathCombo.Resources.Localization.Presets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Replaces Trick with the correct Instinctual skill to complete an Intentional Combo. Order depends on stacks of Mastered Instinct and Natural Instinct, prioritising whichever is lower..
+        ///   Looks up a localized string similar to Replaces Trick with the correct Instinctual skill to complete an Intentional Combo. Order of actions prioritises getting to 2 mastered instinct stacks and 1 natural instinct stack..
         /// </summary>
         internal static string BST_Intentional_Combo_Desc {
             get {

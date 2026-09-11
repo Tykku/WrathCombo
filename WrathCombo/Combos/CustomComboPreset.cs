@@ -2335,6 +2335,9 @@ public enum Preset
     [JobInfo(Job.BST)]
     BST_Capture_Helper = 2504,
 
+    [ReplaceSkill(BST.FirstBattlehorn, BST.SecondBattlehorn, BST.ThirdBattlehorn)]
+    [JobInfo(Job.BST)]
+    BST_Battlehorn_Lockout = 2505,
     #endregion
 
     #region BARD

@@ -1,9 +1,11 @@
 ﻿using Dalamud.Game.ClientState.Objects.Types;
+using Dalamud.Plugin.Services;
 using ECommons.DalamudServices;
 using ECommons.GameHelpers;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Lumina.Excel.Sheets.Experimental;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using WrathCombo.Data;
@@ -15,6 +17,44 @@ namespace WrathCombo.Combos.PvE;
 
 internal partial class BST
 {
+    public static bool FinisherReady = false;
+    static BST()
+    {
+        Svc.Framework.Update += CheckForFinisher;
+    }
+
+    static List<uint> FinisherActions = new List<uint>();
+    static DateTime? TimeFinisherStarted;
+
+    private static void CheckForFinisher(IFramework framework)
+    {
+        if (!FinisherReady)
+        {
+            if (JobGauge.MasterInstinct >= 2 && JobGauge.PetInstinct >= 1 && ActionReady(Rally) && ActionReady(RallyingCheer) && JobGauge.PlayerTP >= 100 && JobGauge.BeastTP >= 100)
+            {
+                FinisherReady = true;
+                FinisherActions.AddRange([Trick, CounterClockwiseInstinctualAction, Rally, RallyingCheer, Trick]);
+            }
+        }
+        else
+        {
+            if (FinisherActions.Count == 0 || (TimeFinisherStarted.HasValue && (DateTime.Now - TimeFinisherStarted.Value).TotalSeconds > 10))
+            {
+                TimeFinisherStarted = null;
+                FinisherReady = false;
+                FinisherActions.Clear();
+            }
+
+            if (FinisherActions.Count > 0 && ActionWatching.LastAction == FinisherActions[0])
+            {
+                if (FinisherActions.Count == 5)
+                    TimeFinisherStarted = DateTime.Now;
+
+                Svc.Log.Debug($"Removing {FinisherActions[0].ActionName()} from FinisherActions");
+                FinisherActions.RemoveAt(0);
+            }
+        }
+    }
 
     public const uint
         SmashAxe = 44879,
@@ -377,7 +417,6 @@ internal partial class BST
     public static bool RallyLearnt => ActionLearned(Rally);
     public static bool RallyingCheerLearnt => ActionLearned(RallyingCheer);
     public static bool FinisherLearnt => Player.Available && TraitLevelChecked(Traits.InstinctualMastery);
-    public static bool FinisherReady => JobGauge.MasterInstinct == 3 && JobGauge.PetInstinct >= 1 && ActionReady(Rally) && ActionReady(RallyingCheer) && JobGauge.PlayerTP >= 100 && JobGauge.BeastTP >= 100;
     public static bool OnLastHorn
     {
         get
@@ -397,7 +436,7 @@ internal partial class BST
         RallyingCheer
     }
 
-    public static RallyingType LowestRallyType
+    public static RallyingType RallyStackFocus
     {
         get
         {
@@ -409,11 +448,10 @@ internal partial class BST
                 if (JobGauge.MasterInstinct == 3 && JobGauge.PetInstinct == 3) //Both are maxed
                     return RallyingType.None;
 
-                if (JobGauge.MasterInstinct < (FinisherLearnt ? 3 : JobGauge.PetInstinct)) //Prioritize Rally in a tie, subject to Balance intervention
+                if (JobGauge.MasterInstinct < 2 || JobGauge.PetInstinct == 3)
                     return RallyingType.Rally;
 
-                if (JobGauge.PetInstinct < JobGauge.MasterInstinct)
-                    return RallyingType.RallyingCheer;
+                return RallyingType.RallyingCheer;
             }
 
             return RallyingType.None;

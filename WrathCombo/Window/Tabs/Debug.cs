@@ -362,8 +362,9 @@ internal class Debug : ConfigWindow, IDisposable
                     break;
                 case Job.BST:
                     CustomStyleText($"Trick Type?:", $"{BST.TrickType}");
-                    CustomStyleText($"Lowest Rally Type?:", $"{BST.LowestRallyType}");
+                    CustomStyleText($"Lowest Rally Type?:", $"{BST.RallyStackFocus}");
                     CustomStyleText($"Target is BST Pet?:", $"{BST.TargetIsBstPet(target)} ({BST.GetPetIdFromModel(target)})");
+                    CustomStyleText($"Finisher Ready:", $"{BST.FinisherReady}");
 
                     CustomStyleText($"Current Pet is BMPet?:", $"{BST.CurrentPetIsBMPet}");
                     CustomStyleText($"Current Pet", $"{BST.CurrentPetSheet?.Name ?? "??"} (ID: {BST.CurrentPetSheet?.RowId ?? 0})");

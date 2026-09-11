@@ -1,9 +1,4 @@
-﻿using Dalamud.Plugin.Services;
-using ECommons.DalamudServices;
-using System;
-using System.Collections.Generic;
-using WrathCombo.CustomComboNS;
-using WrathCombo.Data;
+﻿using WrathCombo.CustomComboNS;
 using WrathCombo.Extensions;
 using WrathCombo.Native;
 
@@ -37,14 +32,19 @@ internal partial class BST : Melee
                     return Capture;
             }
 
-            if (!FinisherLearnt)
-            {
-                if (TPRestoredByStacks(JobGauge.MasterInstinct) < 250 && ActionReady(Rally))
-                    return Rally;
 
-                if (TPRestoredByStacks(JobGauge.PetInstinct) < 250 && ActionReady(RallyingCheer))
-                    return RallyingCheer;
+            if (FinisherReady && FinisherActions.Count > 0)
+            {
+                if (FinisherActions[0] == CounterClockwiseInstinctualAction && !InInstinctualCombo)
+                    return All.Cease;
+
+                if (FinisherActions[0] == Rally && JobGauge.MasterInstinct != 3)
+                    return All.Cease;
+
+                return FinisherActions[0];
             }
+
+
 
             //Intentional > Instinctual
             if (AbleToIntentional)
@@ -64,7 +64,7 @@ internal partial class BST : Melee
                 if (CanStartInstinctualCombo || InInstinctualCombo)
                 {
                     bool cantOmniDirection = !ActionLearned(ClockwiseInstinctualAction) || !ActionLearned(CounterClockwiseInstinctualAction);
-                    if (LowestRallyType is RallyingType.None or RallyingType.Rally || (cantOmniDirection && !ActionLearned(CounterClockwiseInstinctualAction))) //Prioritize our stacks
+                    if (RallyStackFocus is RallyingType.None or RallyingType.Rally || (cantOmniDirection && !ActionLearned(CounterClockwiseInstinctualAction))) //Prioritize our stacks
                     {
                         if (ActionReady(Trick))
                             return Trick;
@@ -85,7 +85,7 @@ internal partial class BST : Melee
             else if (ActionLearned(InstinctualComboAxe))
             {
                 //Fallback to instinctual
-                if (LowestRallyType is RallyingType.None or RallyingType.Rally) //Prioritize our stacks
+                if (RallyStackFocus is RallyingType.None or RallyingType.Rally) //Prioritize our stacks
                 {
                     if (ActionReady(Trick))
                         return Trick;
@@ -154,7 +154,7 @@ internal partial class BST : Melee
             if ((!playerTpMet || !beastTpMet) && !InInstinctualCombo)
                 return All.Cease;
 
-            if (LowestRallyType is RallyingType.None or RallyingType.Rally) //Prioritize our stacks
+            if (RallyStackFocus is RallyingType.None or RallyingType.Rally) //Prioritize our stacks
             {
                 if (ActionReady(Trick))
                     return Trick;
@@ -177,54 +177,6 @@ internal partial class BST : Melee
 
     internal class BST_Intentional_Combo : CustomCombo
     {
-        bool FinisherReady = false;
-        public BST_Intentional_Combo()
-        {
-            Svc.Framework.Update += CheckForFinisher;
-        }
-
-        List<uint> FinisherActions = [];
-        DateTime? TimeFinisherStarted;
-
-        private void CheckForFinisher(IFramework framework)
-        {
-            if (!FinisherLearnt)
-            {
-                TimeFinisherStarted = null;
-                FinisherReady = false;
-                FinisherActions.Clear();
-                return;
-            }
-
-
-            if (!FinisherReady)
-            {
-                if (JobGauge.MasterInstinct == 3 && JobGauge.PetInstinct >= 1 && ActionReady(Rally) && ActionReady(RallyingCheer) && JobGauge.PlayerTP >= 100 && JobGauge.BeastTP >= 100)
-                {
-                    FinisherReady = true;
-                    FinisherActions.AddRange([Trick, CounterClockwiseInstinctualAction, Rally, RallyingCheer, Trick]);
-                }
-            }
-            else
-            {
-                if (FinisherActions.Count == 0 || (TimeFinisherStarted.HasValue && (DateTime.Now - TimeFinisherStarted.Value).TotalSeconds > 10))
-                {
-                    TimeFinisherStarted = null;
-                    FinisherReady = false;
-                    FinisherActions.Clear();
-                }
-
-                if (FinisherActions.Count > 0 && ActionWatching.LastAction == FinisherActions[0])
-                {
-                    if (FinisherActions.Count == 5)
-                        TimeFinisherStarted = DateTime.Now;
-
-                    Svc.Log.Debug($"Removing {FinisherActions[0].ActionName()} from FinisherActions");
-                    FinisherActions.RemoveAt(0);
-                }
-            }
-        }
-
         protected internal override Preset Preset => Preset.BST_Intentional_Combo;
         protected override uint Invoke(uint actionID)
         {
@@ -236,7 +188,7 @@ internal partial class BST : Melee
 
             if (FinisherReady && FinisherActions.Count > 0)
             {
-                if (FinisherActions.Count == 4 && !InInstinctualCombo)
+                if (FinisherActions[0] == CounterClockwiseInstinctualAction && !InInstinctualCombo)
                     return All.Cease;
 
                 return FinisherActions[0];
@@ -258,7 +210,7 @@ internal partial class BST : Melee
                     return Calamity;
             }
 
-            if (LowestRallyType is RallyingType.None or RallyingType.Rally) //Prioritize our stacks
+            if (RallyStackFocus is RallyingType.None or RallyingType.Rally) //Prioritize our stacks
             {
                 if (ActionReady(Trick))
                     return Trick;
@@ -295,6 +247,21 @@ internal partial class BST : Melee
             }
 
             return All.Cease;
+        }
+    }
+
+    internal class BST_Battlehorn_Lockout : CustomCombo
+    {
+        protected internal override Preset Preset => Preset.BST_Battlehorn_Lockout;
+        protected override uint Invoke(uint actionID)
+        {
+            if (actionID is not (FirstBattlehorn or SecondBattlehorn or ThirdBattlehorn))
+                return actionID;
+
+            if (InCombat() && JobGauge.BattleHorn != 0)
+                return All.Cease;
+
+            return actionID;
         }
     }
 }
