@@ -31,6 +31,12 @@ internal partial class BST : Melee
                     return ThirdBattlehorn;
             }
 
+            if (TargetIsBstPet(CurrentTarget) && !PetUnlocked(GetPetIdFromModel(CurrentTarget)) && !CurrentTarget!.HasStatus(Debuffs.InterestCaptured))
+            {
+                if (ActionReady(Capture))
+                    return Capture;
+            }
+
             if (!FinisherLearnt)
             {
                 if (TPRestoredByStacks(JobGauge.MasterInstinct) < 250 && ActionReady(Rally))
