@@ -1,35 +1,124 @@
 ﻿using Dalamud.Plugin.Services;
 using ECommons.DalamudServices;
-using FFXIVClientStructs.FFXIV.Client.Game;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using WrathCombo.CustomComboNS;
 using WrathCombo.Data;
 using WrathCombo.Extensions;
 using WrathCombo.Native;
-using static WrathCombo.Combos.PvE.BST.Config;
 
 namespace WrathCombo.Combos.PvE;
 
 internal partial class BST : Melee
 {
+    internal class BST_SimpleMode : CustomCombo
+    {
+        protected internal override Preset Preset => Preset.BST_SimpleMode;
+        protected override uint Invoke(uint actionID)
+        {
+            if (!CustomActionHelper.OneButtonRotationChecker(actionID, CustomActionType.SingleTargetDPS, SmashAxe))
+                return actionID;
+
+            if (!CurrentPetIsBMPet)
+            {
+                if (ActionReady(FirstBattlehorn))
+                    return FirstBattlehorn;
+
+                if (ActionReady(SecondBattlehorn))
+                    return SecondBattlehorn;
+
+                if (ActionReady(ThirdBattlehorn))
+                    return ThirdBattlehorn;
+            }
+
+            //Intentional > Instinctual
+            if (AbleToIntentional)
+            {
+                if (JobGauge.ActiveAffinity is Data.InstinctualAffinity.Moonstalker)
+                {
+                    if (ActionReady(RisenFall))
+                        return RisenFall;
+                }
+
+                if (JobGauge.ActiveAffinity is Data.InstinctualAffinity.Sunstrider)
+                {
+                    if (ActionReady(Calamity))
+                        return Calamity;
+                }
+
+                if (CanStartInstinctualCombo || InInstinctualCombo)
+                {
+                    bool cantOmniDirection = !ActionLearned(ClockwiseInstinctualAction) || !ActionLearned(CounterClockwiseInstinctualAction);
+                    if (LowestRallyType is RallyingType.None or RallyingType.Rally || (cantOmniDirection && !ActionLearned(CounterClockwiseInstinctualAction))) //Prioritize our stacks
+                    {
+                        if (ActionReady(Trick))
+                            return Trick;
+
+                        if (ActionReady(ClockwiseInstinctualAction))
+                            return ClockwiseInstinctualAction;
+                    }
+                    else
+                    {
+                        if (ActionReady(CounterClockwiseInstinctualAction))
+                            return CounterClockwiseInstinctualAction;
+
+                        if (ActionReady(Trick))
+                            return Trick;
+                    }
+                }
+            }
+            else if (ActionLearned(InstinctualComboAxe))
+            {
+                //Fallback to instinctual
+                if (LowestRallyType is RallyingType.None or RallyingType.Rally) //Prioritize our stacks
+                {
+                    if (ActionReady(Trick))
+                        return Trick;
+
+                    if (ActionReady(InstinctualComboAxe))
+                        return InstinctualComboAxe;
+                }
+                else
+                {
+                    if (ActionReady(InstinctualComboAxe))
+                        return InstinctualComboAxe;
+
+                    if (ActionReady(Trick))
+                        return Trick;
+                }
+
+            }
+            else if (InstinctualComboAxe == 0) //If somehow you're at level 4-7 with a pet that isn't Rampant
+            {
+                if (ActionReady(AvalancheAxe))
+                    return AvalancheAxe;
+            }
+
+            if (ActionReady(TemperedRelease) && CanWeave())
+                return TemperedRelease;
+
+            if (TraitLevelChecked(Traits.WildHeartII) && !ActionReady(TemperedRelease) && ActionReady(PartingBlow) && !OnLastHorn && CanWeave())
+                return PartingBlow;
+
+            if (BasicCombo(ref actionID))
+                return actionID;
+
+
+            return OriginalHook(SmashAxe);
+        }
+    }
+
     internal class BST_Basic_Combo : CustomCombo
     {
         protected internal override Preset Preset => Preset.BST_Basic_Combo;
 
         protected override uint Invoke(uint actionID)
         {
-            if (!CustomActionHelper.OneButtonRotationChecker(actionID, CustomActionType.SingleTargetDPS, SmashAxe))
+            if (actionID is not AxebladeBite)
                 return actionID;
 
-            if (ComboAction is SmashAxe && ActionReady(AxebladeBite))
-                return AxebladeBite;
-
-            if (ComboAction is AxebladeBite && ActionReady(Shieldsplitter))
-                return Shieldsplitter;
-
-            return SmashAxe;
+            BasicCombo(ref actionID);
+            return actionID;
         }
     }
 
@@ -44,15 +133,6 @@ internal partial class BST : Melee
             bool playerTpMet = JobGauge.PlayerTP >= BST_Instinctual_TpGauge;
             bool beastTpMet = JobGauge.BeastTP >= BST_Instinctual_TpGauge;
 
-            uint instinctualAction = TrickType switch
-            {
-                TrickTypes.Durant => MistralAxe,
-                TrickTypes.Rampant => AvalancheAxe,
-                TrickTypes.Eldritch => SpinningAxe,
-                TrickTypes.Volant => GaleAxe,
-                _ => 0
-            };
-
             if ((!playerTpMet || !beastTpMet) && !InInstinctualCombo)
                 return All.Cease;
 
@@ -61,13 +141,13 @@ internal partial class BST : Melee
                 if (ActionReady(Trick))
                     return Trick;
 
-                if (ActionReady(instinctualAction))
-                    return instinctualAction;
+                if (ActionReady(InstinctualComboAxe))
+                    return InstinctualComboAxe;
             }
             else
             {
-                if (ActionReady(instinctualAction))
-                    return instinctualAction;
+                if (ActionReady(InstinctualComboAxe))
+                    return InstinctualComboAxe;
 
                 if (ActionReady(Trick))
                     return Trick;
@@ -98,7 +178,7 @@ internal partial class BST : Melee
                 return;
             }
 
-           
+
             if (!FinisherReady)
             {
                 if (JobGauge.MasterInstinct == 3 && JobGauge.PetInstinct >= 1 && ActionReady(Rally) && ActionReady(RallyingCheer) && JobGauge.PlayerTP >= 100 && JobGauge.BeastTP >= 100)

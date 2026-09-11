@@ -297,7 +297,7 @@ internal partial class BST
 
     public static TrickTypes TrickType => TrickIsDurant ? TrickTypes.Durant : TrickIsEldritch ? TrickTypes.Eldritch : TrickIsVolant ? TrickTypes.Volant : TrickIsRampant ? TrickTypes.Rampant : TrickTypes.None;
 
-    public static uint TrickFollowUpInstinctual
+    public static uint InstinctualComboAxe
     {
         get
         {
@@ -370,10 +370,23 @@ internal partial class BST
         }
     }
 
+    public static bool CanStartInstinctualCombo => JobGauge.PlayerTP >= 100 && JobGauge.BeastTP >= 100;
+    public static bool AbleToIntentional => ActionLearned(ClockwiseInstinctualAction) || ActionLearned(CounterClockwiseInstinctualAction);
     public static bool RallyLearnt => ActionLearned(Rally);
     public static bool RallyingCheerLearnt => ActionLearned(RallyingCheer);
     public static bool FinisherLearnt => TraitLevelChecked(Traits.InstinctualMastery);
     public static bool FinisherReady => JobGauge.MasterInstinct == 3 && JobGauge.PetInstinct >= 1 && ActionReady(Rally) && ActionReady(RallyingCheer) && JobGauge.PlayerTP >= 100 && JobGauge.BeastTP >= 100;
+    public static bool OnLastHorn
+    {
+        get
+        {
+            if (!ActionReady(FirstBattlehorn) && !ActionReady(SecondBattlehorn) && !ActionReady(ThirdBattlehorn))
+                return true;
+            return false;
+        }
+    }
+
+    public int TPRestoredByStacks(int stacks) => 40 + (stacks * 70);
 
     public enum RallyingType
     {
@@ -438,6 +451,24 @@ internal partial class BST
         var petId = ModelToPetId(modelId, baseval);
 
         return petId;
+    }
+
+    public static bool BasicCombo(ref uint actionId)
+    {
+        if (ComboAction is SmashAxe && ActionReady(AxebladeBite))
+        {
+            actionId = AxebladeBite;
+            return true;
+        }
+
+        if (ComboAction is AxebladeBite && ActionReady(Shieldsplitter))
+        {
+            actionId = Shieldsplitter;
+            return true;
+        }
+
+        actionId = SmashAxe;
+        return true;
     }
 
 }

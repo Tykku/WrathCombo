@@ -6315,7 +6315,7 @@ namespace WrathCombo.Resources.Localization.Presets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Replaces Smash Axe with its combo chain..
+        ///   Looks up a localized string similar to Replaces Axeblade Bite with the basic combo chain..
         /// </summary>
         internal static string BST_Basic_Combo_Desc {
             get {
@@ -6383,6 +6383,24 @@ namespace WrathCombo.Resources.Localization.Presets {
         internal static string BST_Intentional_Combo_Name {
             get {
                 return ResourceManager.GetString("BST_Intentional_Combo_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Replaces Smash Axe with  a full one-button rotation. This is the ideal option for newcomers to the job..
+        /// </summary>
+        internal static string BST_SimpleMode_Desc {
+            get {
+                return ResourceManager.GetString("BST_SimpleMode_Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Simple Mode.
+        /// </summary>
+        internal static string BST_SimpleMode_Name {
+            get {
+                return ResourceManager.GetString("BST_SimpleMode_Name", resourceCulture);
             }
         }
         
