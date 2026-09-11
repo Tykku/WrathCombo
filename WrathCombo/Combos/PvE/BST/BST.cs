@@ -31,6 +31,15 @@ internal partial class BST : Melee
                     return ThirdBattlehorn;
             }
 
+            if (!FinisherLearnt)
+            {
+                if (TPRestoredByStacks(JobGauge.MasterInstinct) < 250 && ActionReady(Rally))
+                    return Rally;
+
+                if (TPRestoredByStacks(JobGauge.PetInstinct) < 250 && ActionReady(RallyingCheer))
+                    return RallyingCheer;
+            }
+
             //Intentional > Instinctual
             if (AbleToIntentional)
             {

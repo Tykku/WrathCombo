@@ -386,7 +386,7 @@ internal partial class BST
         }
     }
 
-    public int TPRestoredByStacks(int stacks) => 40 + (stacks * 70);
+    public static int TPRestoredByStacks(int stacks) => 40 + (stacks * 70);
 
     public enum RallyingType
     {
