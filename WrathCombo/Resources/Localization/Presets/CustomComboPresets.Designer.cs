@@ -6387,7 +6387,7 @@ namespace WrathCombo.Resources.Localization.Presets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Replaces Avalanche Axe, Mistral Axe, Spinning Axe and Gale Axe with Trick when it&apos;s ready. Locks out the actions if Trick is the wrong affinity or until ready to complete an Instinctual Combo. Order of actions prioritises getting to 2 mastered instinct stacks and 1 natural instinct stack..
+        ///   Looks up a localized string similar to Replaces Avalanche Axe, Mistral Axe, Spinning Axe and Gale Axe with Trick when it&apos;s ready. Locks out the actions if Trick is the wrong affinity or until ready to complete an Instinctual Combo. Order of actions prioritises getting to 2 Mastered Instinct stacks and 1 Natural Instinct stack..
         /// </summary>
         internal static string BST_Instinctual_Combo_Desc {
             get {
@@ -6405,7 +6405,7 @@ namespace WrathCombo.Resources.Localization.Presets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Replaces Trick with the correct Instinctual skill to complete an Intentional Combo. Order of actions prioritises getting to 2 mastered instinct stacks and 1 natural instinct stack..
+        ///   Looks up a localized string similar to Replaces Trick with the correct Instinctual skill to complete an Intentional Combo. Order of actions prioritises getting to 2 Mastered Instinct stacks and 1 Natural Instinct stack..
         /// </summary>
         internal static string BST_Intentional_Combo_Desc {
             get {

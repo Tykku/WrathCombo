@@ -88,7 +88,7 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adds Rally/Rallying cheer to allow performing Infinitive Combos.
+        ///   Looks up a localized string similar to Adds Rally/Rallying cheer to allow performing Infinitive Combos. Infinitive combo will start when you have 100 TP for you and your beast, you have at least 2 Mastered Instinct stacks and at least 1 Natural Instinct stack, with both Rally and Rallying Cheer off cooldown. It will perform this setup before level 50 also, with it adding in the Infinitive combo finisher when you&apos;re level 50..
         /// </summary>
         internal static string InfinitiveDesc {
             get {
