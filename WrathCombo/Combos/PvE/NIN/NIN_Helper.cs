@@ -836,10 +836,19 @@ internal partial class NIN
             return true;
         }
         public override List<(int[] Steps, Func<bool> Condition)> SkipSteps
-        {
-            get;
-            set;
-        } = [([1, 2, 3], () => OriginalHook(Ninjutsu) == Suiton)];
+        { get; set; } =
+        [
+            ([1], () => CountdownActive || InCombat() || !NIN_Opener_PrepullBlock),
+            ([2, 3, 4], () => OriginalHook(Ninjutsu) == Suiton)
+        ];
+
+        public override List<(int[] Steps, Func<float> HoldDelay)> PrepullDelays { get; set; } =
+        [
+            ([2], () => !NIN_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining - (OriginalHook(Ninjutsu) == Suiton ? 0.9f : 6.5f))),
+            ([3], () => !NIN_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining - 6f)),
+            ([4], () => !NIN_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining - 5.5f)),
+            ([5], () => !NIN_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining - 0.9f))
+        ];
 
         public override Preset Preset => Preset.NIN_ST_AdvancedMode_BalanceOpener;
     }
@@ -849,45 +858,46 @@ internal partial class NIN
         //4th GCD Kunai
         public override List<Func<uint>> OpenerActions { get; set; } =
         [
-            () => Ten, // 1
-            () => ChiCombo, // 2
-            () => JinCombo, // 3
-            () => Suiton, // 4
-            () => Kassatsu, // 5
-            () => SpinningEdge, // 6
-            () => Items.UseItem(Items.GetStrongestPotionRow(Items.PotionType.Dex)), // 7
-            () => GustSlash, // 8
-            () => Dokumori, // 9
-            () => Bunshin, // 10
-            () => PhantomKamaitachi, // 11
-            () => ArmorCrush, // 12
-            () => KunaisBane, // 13
-            () => ChiCombo, // 14
-            () => JinCombo, // 15
-            () => HyoshoRanryu, // 16
-            () => DreamWithinADream, // 17
-            () => Ten, // 18
-            () => ChiCombo, // 19
-            () => Raiton, // 20
-            () => TenChiJin, // 21
-            () => TCJFumaShurikenTen, // 22
-            () => TCJRaiton, // 23
-            () => TCJSuiton, // 24
-            () => Meisui, // 25
-            () => FleetingRaiju, // 26
-            () => ZeshoMeppo, // 27
-            () => TenriJendo, // 28
-            () => FleetingRaiju, // 29
-            () => Bhavacakra, // 30
-            () => Ten, // 31
-            () => ChiCombo, // 32
-            () => Raiton, // 33
-            () => FleetingRaiju // 34
+            () => All.Cease, // 1
+            () => Ten, // 2
+            () => ChiCombo, // 3
+            () => JinCombo, // 4
+            () => Suiton, // 5
+            () => Kassatsu, // 6
+            () => SpinningEdge, // 7
+            () => Items.UseItem(Items.GetStrongestPotionRow(Items.PotionType.Dex)), // 8
+            () => GustSlash, // 9
+            () => Dokumori, // 10
+            () => Bunshin, // 11
+            () => PhantomKamaitachi, // 12
+            () => ArmorCrush, // 13
+            () => KunaisBane, // 14
+            () => ChiCombo, // 15
+            () => JinCombo, // 16
+            () => HyoshoRanryu, // 17
+            () => DreamWithinADream, // 18
+            () => Ten, // 19
+            () => ChiCombo, // 20
+            () => Raiton, // 21
+            () => TenChiJin, // 22
+            () => TCJFumaShurikenTen, // 23
+            () => TCJRaiton, // 24
+            () => TCJSuiton, // 25
+            () => Meisui, // 26
+            () => FleetingRaiju, // 27
+            () => ZeshoMeppo, // 28
+            () => TenriJendo, // 29
+            () => FleetingRaiju, // 30
+            () => Bhavacakra, // 31
+            () => Ten, // 32
+            () => ChiCombo, // 33
+            () => Raiton, // 34
+            () => FleetingRaiju, // 35
         ];
 
         public override List<int> DelayedWeaveSteps { get; set; } =
         [
-            13
+            14
         ];
     }
 
@@ -896,15 +906,64 @@ internal partial class NIN
         //3rd GCD Dokumori
         public override List<Func<uint>> OpenerActions { get; set; } =
         [
-            () => Ten, // 1
-            () => ChiCombo, // 2
-            () => JinCombo, // 3
-            () => Suiton, // 4
-            () => Kassatsu, // 5
-            () => SpinningEdge, // 6
-            () => Items.UseItem(Items.GetStrongestPotionRow(Items.PotionType.Dex)), // 7
-            () => GustSlash, // 8
-            () => ArmorCrush, // 9
+            () => All.Cease, // 1
+            () => Ten, // 2
+            () => ChiCombo, // 3
+            () => JinCombo, // 4
+            () => Suiton, // 5
+            () => Kassatsu, // 6
+            () => SpinningEdge, // 7
+            () => Items.UseItem(Items.GetStrongestPotionRow(Items.PotionType.Dex)), // 8
+            () => GustSlash, // 9
+            () => ArmorCrush, // 10
+            () => Dokumori, // 11
+            () => Bunshin, // 12
+            () => PhantomKamaitachi, // 13
+            () => KunaisBane, // 14
+            () => ChiCombo, // 15
+            () => JinCombo, // 16
+            () => HyoshoRanryu, // 17
+            () => DreamWithinADream, // 18
+            () => Ten, // 19
+            () => ChiCombo, // 20
+            () => Raiton, // 21
+            () => TenChiJin, // 22
+            () => TCJFumaShurikenTen, // 23
+            () => TCJRaiton, // 24
+            () => TCJSuiton, // 25
+            () => Meisui, // 26
+            () => FleetingRaiju, // 27
+            () => ZeshoMeppo, // 28
+            () => TenriJendo, // 29
+            () => FleetingRaiju, // 30
+            () => Ten, // 31
+            () => ChiCombo, // 32
+            () => Raiton, // 33
+            () => FleetingRaiju, // 34
+            () => Bhavacakra, // 35
+            () => SpinningEdge // 36
+        ];
+
+        public override List<int> DelayedWeaveSteps { get; set; } =
+        [
+            14
+        ];
+    }
+
+    internal class NINOpenerMaxLevel3rdGCDKunai : NINOpenerBase
+    {
+        //3rd GCD Kunai
+        public override List<Func<uint>> OpenerActions { get; set; } =
+        [
+            () => All.Cease, // 1
+            () => Ten, // 2
+            () => ChiCombo, // 3
+            () => JinCombo, // 4
+            () => Suiton, // 5
+            () => Kassatsu, // 6
+            () => SpinningEdge, // 7
+            () => Items.UseItem(Items.GetStrongestPotionRow(Items.PotionType.Dex)), // 8
+            () => GustSlash, // 9
             () => Dokumori, // 10
             () => Bunshin, // 11
             () => PhantomKamaitachi, // 12
@@ -925,36 +984,36 @@ internal partial class NIN
             () => ZeshoMeppo, // 27
             () => TenriJendo, // 28
             () => FleetingRaiju, // 29
-            () => Ten, // 30
-            () => ChiCombo, // 31
-            () => Raiton, // 32
-            () => FleetingRaiju, // 33
-            () => Bhavacakra, // 34
-            () => SpinningEdge // 35
+            () => ArmorCrush, // 30
+            () => Bhavacakra, // 31
+            () => Ten, // 32
+            () => ChiCombo, // 33
+            () => Raiton, // 34
+            () => FleetingRaiju, // 35
         ];
 
         public override List<int> DelayedWeaveSteps { get; set; } =
         [
             13
         ];
+
     }
 
-    internal class NINOpenerMaxLevel3rdGCDKunai : NINOpenerBase
+    internal class NINOpenerMaxLevelBuffRush : NINOpenerBase
     {
-        //3rd GCD Kunai
         public override List<Func<uint>> OpenerActions { get; set; } =
         [
-            () => Ten, // 1
-            () => ChiCombo, // 2
-            () => JinCombo, // 3
-            () => Suiton, // 4
-            () => Kassatsu, // 5
-            () => SpinningEdge, // 6
-            () => Items.UseItem(Items.GetStrongestPotionRow(Items.PotionType.Dex)), // 7
-            () => GustSlash, // 8
+            () => All.Cease, // 1
+            () => Ten, // 2
+            () => ChiCombo, // 3
+            () => JinCombo, // 4
+            () => Suiton, // 5
+            () => Kassatsu, // 6
+            () => SpinningEdge, // 7
+            () => Items.UseItem(Items.GetStrongestPotionRow(Items.PotionType.Dex)), // 8
             () => Dokumori, // 9
-            () => Bunshin, // 10
-            () => PhantomKamaitachi, // 11
+            () => GustSlash, // 10
+            () => Bunshin, // 11
             () => KunaisBane, // 12
             () => ChiCombo, // 13
             () => JinCombo, // 14
@@ -972,64 +1031,18 @@ internal partial class NIN
             () => ZeshoMeppo, // 26
             () => TenriJendo, // 27
             () => FleetingRaiju, // 28
-            () => ArmorCrush, // 29
-            () => Bhavacakra, // 30
-            () => Ten, // 31
-            () => ChiCombo, // 32
-            () => Raiton, // 33
-            () => FleetingRaiju // 34
+            () => Ten, // 29
+            () => ChiCombo, // 30
+            () => Raiton, // 31
+            () => FleetingRaiju, // 32
+            () => PhantomKamaitachi, // 33
+            () => ArmorCrush, // 34
+            () => Bhavacakra, // 35
         ];
 
         public override List<int> DelayedWeaveSteps { get; set; } =
         [
-            12
-        ];
-
-    }
-
-    internal class NINOpenerMaxLevelBuffRush : NINOpenerBase
-    {
-        public override List<Func<uint>> OpenerActions { get; set; } =
-        [
-            () => Ten, // 1
-            () => ChiCombo, // 2
-            () => JinCombo, // 3
-            () => Suiton, // 4
-            () => Kassatsu, // 5
-            () => SpinningEdge, // 6
-            () => Items.UseItem(Items.GetStrongestPotionRow(Items.PotionType.Dex)), // 7
-            () => Dokumori, // 8
-            () => GustSlash, // 9
-            () => Bunshin, // 10
-            () => KunaisBane, // 11
-            () => ChiCombo, // 12
-            () => JinCombo, // 13
-            () => HyoshoRanryu, // 14
-            () => DreamWithinADream, // 15
-            () => Ten, // 16
-            () => ChiCombo, // 17
-            () => Raiton, // 18
-            () => TenChiJin, // 19
-            () => TCJFumaShurikenTen, // 20
-            () => TCJRaiton, // 21
-            () => TCJSuiton, // 22
-            () => Meisui, // 23
-            () => FleetingRaiju, // 24
-            () => ZeshoMeppo, // 25
-            () => TenriJendo, // 26
-            () => FleetingRaiju, // 27
-            () => Ten, // 28
-            () => ChiCombo, // 29
-            () => Raiton, // 30
-            () => FleetingRaiju, // 31
-            () => PhantomKamaitachi, // 32
-            () => ArmorCrush, // 33
-            () => Bhavacakra // 34
-        ];
-
-        public override List<int> DelayedWeaveSteps { get; set; } =
-        [
-            8
+            9
         ];
     }
 

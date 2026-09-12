@@ -37,6 +37,7 @@ internal partial class NIN
 
         internal static UserBool
             NIN_Opener_Potion = new("NIN_Opener_Potion"),
+            NIN_Opener_PrepullBlock = new("NIN_Opener_PrepullBlock", true),
             NIN_ST_AdvancedMode_Bhavacakra_Pooling = new("Ninki_BhavaPooling"),
             NIN_ST_AdvancedMode_TrueNorth = new("NIN_ST_AdvancedMode_TrueNorth"),
             NIN_ST_AdvancedMode_ShadeShiftRaidwide = new("NIN_ST_AdvancedMode_ShadeShiftRaidwide"),
@@ -79,6 +80,7 @@ internal partial class NIN
                 case Preset.NIN_ST_AdvancedMode_BalanceOpener:
                     DrawBossOnlyChoice(NIN_Balance_Content);
                     DrawOpenerPotionChoice(NIN_Opener_Potion);
+                    DrawOpenerPrepullBlockChoice(NIN_Opener_PrepullBlock);
                     ImGuiEx.TextUnderlined("Select Opener");
                     ImGui.Spacing();
                     DrawRadioButton(NIN_Adv_Opener_Selection, $"Standard Opener - 4th GCD {KunaisBane.ActionName()}", "", 0, descriptionAsTooltip: true);
