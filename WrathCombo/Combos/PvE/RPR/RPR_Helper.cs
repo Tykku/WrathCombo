@@ -706,7 +706,7 @@ internal partial class RPR
             GetRemainingCharges(SoulSlice) is 2 &&
             IsOffCooldown(ArcaneCircle) &&
             IsOffCooldown(Gluttony) &&
-            Void is 0 && Soul is 0;
+            VoidShroud is 0 && Soul is 0;
 
         public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
         [
