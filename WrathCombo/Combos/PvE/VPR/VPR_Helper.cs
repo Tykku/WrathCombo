@@ -578,6 +578,10 @@ internal partial class VPR
 
     internal static WrathOpener Opener()
     {
+        if (FRUOpener.LevelChecked &&
+            ClientState.TerritoryType == ContentCheck.UltimateTerritoryIDs.FRU)
+            return FRUOpener;
+
         if (DMUOpener.LevelChecked &&
             ClientState.TerritoryType == ContentCheck.UltimateTerritoryIDs.DMU)
             return DMUOpener;
@@ -590,6 +594,7 @@ internal partial class VPR
 
     internal static VPRStandardOpener StandardOpener = new();
     internal static VPRDMUOpener DMUOpener = new();
+    internal static VPRFRUOpener FRUOpener = new();
 
     internal abstract class VPROpenerBase : WrathOpener
     {
@@ -742,6 +747,53 @@ internal partial class VPR
         {
             SkipSteps.Add(([21, 22, 23, 31, 32, 33, 34, 35, 36], () => VPR_Opener_ExcludeUF || !HasCharges(RattlingCoil)));
             SkipSteps.Add(([6, 7, 9, 10, 26, 27, 29, 30], OpenerTwinBiteMissed));
+            SkipSteps.Add(([11], OpenerReawakenAlreadyUsed));
+        }
+    }
+
+    internal class VPRFRUOpener : VPROpenerBase
+    {
+        public override List<Func<uint>> OpenerActions { get; set; } =
+        [
+            () => All.Cease, // 1
+            () => Vicewinder, // 2
+            () => SerpentsIre, // 3
+            () => Items.UseItem(Items.GetStrongestPotionRow(Items.PotionType.Dex)), // 4
+            () => SwiftskinsCoil, // 5
+            () => TwinbloodBite, // 6
+            () => TwinfangBite, // 7
+            () => HuntersCoil, // 8
+            () => TwinfangBite, // 9
+            () => TwinbloodBite, // 10
+            () => Reawaken, // 11
+            () => FirstGeneration, // 12
+            () => FirstLegacy, // 13
+            () => SecondGeneration, // 14
+            () => SecondLegacy, // 15
+            () => ThirdGeneration, // 16
+            () => ThirdLegacy, // 17
+            () => FourthGeneration, // 18
+            () => FourthLegacy, // 19
+            () => Ouroboros, // 20
+            () => UncoiledFury, // 21
+            () => UncoiledTwinfang, // 22
+            () => UncoiledTwinblood, // 23
+            () => UncoiledFury, // 24
+            () => UncoiledTwinfang, // 25
+            () => UncoiledTwinblood, // 26
+            () => Vicewinder, // 27
+            () => HuntersCoil, // 28
+            () => TwinfangBite, // 29
+            () => TwinbloodBite, // 30
+            () => SwiftskinsCoil, // 31
+            () => TwinbloodBite, // 32
+            () => TwinfangBite, // 33
+        ];
+        
+        public VPRFRUOpener()
+        {
+            SkipSteps.Add(([21, 22, 23, 24, 25, 26], () => VPR_Opener_ExcludeUF || !HasCharges(RattlingCoil)));
+            SkipSteps.Add(([6, 7, 9, 10, 29, 30, 32, 33], OpenerTwinBiteMissed));
             SkipSteps.Add(([11], OpenerReawakenAlreadyUsed));
         }
     }
