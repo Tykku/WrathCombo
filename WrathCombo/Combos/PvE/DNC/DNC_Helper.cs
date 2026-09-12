@@ -637,25 +637,16 @@ internal partial class DNC
         internal override bool IncludePot => DNC_Opener_Potion;
         internal static uint ReverseCascadeSteps => Gauge.Esprit >= 80 ? SaberDance : ActionReady(StarfallDance) ? StarfallDance : Gauge.Esprit >= 50 ? SaberDance : ActionReady(LastDance) ? LastDance : ActionReady(Fountainfall) ? Fountainfall : ReverseCascade;
 
-        /// <summary>
-        /// Template method for HasCooldowns validation. Performs common checks then delegates to ValidateCountdown() for opener-specific validation.
-        /// </summary>
-        public override bool HasCooldowns()
-        {
-            if (!ActionReady(StandardStep))
-                return false;
+        public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
+        [
+            ([1], () => CountdownActive || InCombat() || !DNC_Opener_PrepullBlock)
+        ];
 
-            if (!ActionReady(TechnicalStep))
-                return false;
-
-            if (!IsOffCooldown(Devilment))
-                return false;
-
-            if (InCombat())
-                return false;
-
-            return true;
-        }
+        public override bool HasCooldowns() =>
+            ActionReady(StandardStep) &&
+            ActionReady(TechnicalStep) &&
+            IsOffCooldown(Devilment) &&
+            !InCombat();
     }
 
     internal static FifteenSecondOpener Opener15S = new();
@@ -699,11 +690,8 @@ internal partial class DNC
             ([7], () => !DNC_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining)),
         ];
 
-        public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
-        [
-            ([1], () => CountdownActive || InCombat() || !DNC_Opener_PrepullBlock),
-            ([4], () => !DNC_ST_OpenerOption_Peloton),
-        ];
+        public FifteenSecondOpener() =>
+            SkipSteps.Add(([4], () => !DNC_ST_OpenerOption_Peloton));
     }
 
     internal static SevenSecondOpener Opener07S = new();
@@ -747,11 +735,8 @@ internal partial class DNC
             ([7], () => !DNC_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining))
         ];
 
-        public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
-        [
-            ([1], () => CountdownActive || InCombat() || !DNC_Opener_PrepullBlock),
-            ([5], () => !DNC_ST_OpenerOption_Peloton),
-        ];
+        public SevenSecondOpener() =>
+            SkipSteps.Add(([5], () => !DNC_ST_OpenerOption_Peloton));
     }
 
     #endregion
@@ -801,11 +786,8 @@ internal partial class DNC
             ([13], () => !DNC_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining)),
         ];
 
-        public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
-        [
-            ([1], () => CountdownActive || InCombat() || !DNC_Opener_PrepullBlock),
-            ([5], () => !DNC_ST_OpenerOption_Peloton),
-        ];
+        public ThirtySecondTechOpener() =>
+            SkipSteps.Add(([5], () => !DNC_ST_OpenerOption_Peloton));
     }
 
     internal static SevenPlusSecondTechOpener Opener07PlusSTech = new();
@@ -844,25 +826,13 @@ internal partial class DNC
             ([9], () => !DNC_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining))
         ];
 
-        public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
-        [
-            ([1], () => CountdownActive || InCombat() || !DNC_Opener_PrepullBlock),
-            ([7], () => !DNC_ST_OpenerOption_Peloton),
-        ];
+        public SevenPlusSecondTechOpener() =>
+            SkipSteps.Add(([7], () => !DNC_ST_OpenerOption_Peloton));
 
-        public override bool HasCooldowns()
-        {
-            if (!ActionReady(TechnicalStep))
-                return false;
-
-            if (!IsOffCooldown(Devilment))
-                return false;
-
-            if (InCombat())
-                return false;
-
-            return true;
-        }
+        public override bool HasCooldowns() =>
+            ActionReady(TechnicalStep) &&
+            IsOffCooldown(Devilment) &&
+            !InCombat();
     }
 
     internal static SevenSecondTechOpener Opener07STech = new();
@@ -902,11 +872,8 @@ internal partial class DNC
             ([9], () => !DNC_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining))
         ];
 
-        public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
-        [
-            ([1], () => CountdownActive || InCombat() || !DNC_Opener_PrepullBlock),
-            ([7], () => !DNC_ST_OpenerOption_Peloton),
-        ];
+        public SevenSecondTechOpener() =>
+            SkipSteps.Add(([7], () => !DNC_ST_OpenerOption_Peloton));
     }
 
     #endregion

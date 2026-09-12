@@ -656,9 +656,9 @@ internal partial class SGE
 
         public override List<(int[] Steps, Func<float> HoldDelay)> PrepullDelays { get; set; } =
         [
-            ([2], () => !SGE_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining - 5)),
-            ([3], () => !SGE_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining - 2)),
-            ([4], () => !SGE_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining - 1))
+            ([2], () => !SGE_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining - (HasStatusEffect(Buffs.Eukrasia) ? 2.1f : 5))),
+            ([3], () => !SGE_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining - 2.1f)),
+            ([4], () => !SGE_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining - 1.5f))
         ];
 
         public override bool HasCooldowns() =>
