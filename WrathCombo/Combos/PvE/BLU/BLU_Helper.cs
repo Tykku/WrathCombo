@@ -27,11 +27,11 @@ internal partial class BLU
         if (!ActionReady(spell) || JustUsed(spell))
             return false;
 
-        if (Target is null || !CanApplyStatus(Target, debuff))
+        if (Target is null || !Target.CanApplyStatus(debuff))
             return false;
 
-        return !HasStatusEffect(debuff, Target) ||
-               GetStatusEffectRemainingTime(debuff, Target) <= BLU_DoTTime;
+        return !Target.HasStatus(debuff) ||
+               Target.Status(debuff).RemainingTimeOrZero() <= BLU_DoTTime;
     }
 
     private static bool UseDoT(ref uint actionID, bool tank)
@@ -45,7 +45,7 @@ internal partial class BLU
 
         if (soT && WantDoT(SongOfTorment, Debuffs.SongOfTorment))
         {
-            if (ActionReady(Bristle) && !HasStatusEffect(Buffs.Bristle) && !JustUsed(Bristle))
+            if (ActionReady(Bristle) && !LocalPlayer.HasStatus(Buffs.Bristle) && !JustUsed(Bristle))
             {
                 actionID = Bristle;
                 return true;
@@ -76,13 +76,13 @@ internal partial class BLU
 
     private static bool UsePrimalCDs(ref uint actionID, uint retargetFrom, Preset option)
     {
-        if (HasStatusEffect(Buffs.PhantomFlurry))
+        if (LocalPlayer.HasStatus(Buffs.PhantomFlurry))
         {
             actionID = OriginalHook(PhantomFlurry);
             return true;
         }
 
-        if (GetStatusEffect(Buffs.WingedReprobation)?.Param > 1 &&
+        if (LocalPlayer.Status(Buffs.WingedReprobation)?.Param > 1 &&
             ActionReady(WingedReprobation))
         {
             actionID = OriginalHook(WingedReprobation);
@@ -134,7 +134,7 @@ internal partial class BLU
             return true;
         }
 
-        if (ActionReady(MatraMagic) && HasStatusEffect(Buffs.DPSMimicry))
+        if (ActionReady(MatraMagic) && LocalPlayer.HasStatus(Buffs.DPSMimicry))
         {
             actionID = MatraMagic;
             return true;
@@ -250,11 +250,11 @@ internal partial class BLU
             !HasCondition(ConditionFlag.BoundByDuty) ||
             GetPartyMembers().Count != 0 ||
             !ActionReady(BasicInstinct) ||
-            HasStatusEffect(Buffs.BasicInstinct))
+            LocalPlayer.HasStatus(Buffs.BasicInstinct))
             return false;
 
         if (ActionReady(MightyGuard) &&
-            !HasStatusEffect(Buffs.MightyGuard) &&
+            !LocalPlayer.HasStatus(Buffs.MightyGuard) &&
             !JustUsed(MightyGuard))
         {
             actionID = MightyGuard;
@@ -272,7 +272,7 @@ internal partial class BLU
 
         if (IsEnabled(gate) &&
             ActionReady(ChelonianGate) &&
-            !HasStatusEffect(Buffs.ChelonianGate) &&
+            !LocalPlayer.HasStatus(Buffs.ChelonianGate) &&
             !JustUsed(ChelonianGate))
         {
             actionID = ChelonianGate;
@@ -299,7 +299,7 @@ internal partial class BLU
         if (LocalPlayer!.Status(Buffs.PhantomFlurry).RemainingTimeOrZero() > 0)
             return All.Cease;
 
-        if (HasStatusEffect(Buffs.WaningNocturne))
+        if (LocalPlayer.HasStatus(Buffs.WaningNocturne))
             return actionID;
 
         if (UseSoloInstinct(ref actionID, instinct))
@@ -356,23 +356,23 @@ internal partial class BLU
         var lucid = onAoE ? Preset.BLU_AoE_Tank_Lucid : Preset.BLU_ST_Tank_Lucid;
         var badBreath = onAoE ? Preset.BLU_AoE_Tank_BadBreath : Preset.BLU_ST_Tank_BadBreath;
 
-        if (HasStatusEffect(Buffs.WaningNocturne))
+        if (LocalPlayer.HasStatus(Buffs.WaningNocturne))
             return actionID;
 
         if (IsEnabled(mighty) &&
             ActionReady(MightyGuard) &&
-            !HasStatusEffect(Buffs.MightyGuard) &&
+            !LocalPlayer.HasStatus(Buffs.MightyGuard) &&
             !JustUsed(MightyGuard))
             return MightyGuard;
 
         if (UseSoloInstinct(ref actionID, instinct))
             return actionID;
 
-        if (HasStatusEffect(Buffs.AuspiciousTrance) ||
+        if (LocalPlayer.HasStatus(Buffs.AuspiciousTrance) ||
             OriginalHook(ChelonianGate) == DivineCataract)
             return DivineCataract;
 
-        if (HasStatusEffect(Buffs.ChelonianGate))
+        if (LocalPlayer.HasStatus(Buffs.ChelonianGate))
             return All.Cease;
 
         if (UseTankMit(ref actionID, gate, dragon))
@@ -403,14 +403,14 @@ internal partial class BLU
             IsEnabled(Preset.BLU_ST_Tank_Offguard) &&
             ActionReady(Offguard) &&
             Target is not null &&
-            !HasStatusEffect(Debuffs.Offguard, Target, true))
+            !Target.HasStatus(Debuffs.Offguard, true))
             return Offguard;
 
         if (IsEnabled(badBreath) &&
             ActionReady(BadBreath) &&
             HasTankMimicry &&
             Target is not null &&
-            !HasStatusEffect(Debuffs.Malodorous, Target, true))
+            !Target.HasStatus(Debuffs.Malodorous, true))
             return BadBreath;
 
         if (!onAoE && UseDoT(ref actionID, true))
@@ -461,7 +461,7 @@ internal partial class BLU
         var healTarget = SimpleTarget.Stack.AllyToHeal;
         if (IsEnabled(Preset.BLU_ST_Heal_Exuviation) &&
             ActionReady(Exuviation) &&
-            HasCleansableDebuff(healTarget))
+            healTarget.HasCleansableDebuff)
             return Exuviation.RetargetIfEnabled(actionID);
 
         if (IsEnabled(snack) && ActionReady(AngelsSnack))
@@ -473,13 +473,13 @@ internal partial class BLU
     }
 
     internal static bool HasTankMimicry =>
-        HasStatusEffect(Buffs.TankMimicry);
+        LocalPlayer.HasStatus(Buffs.TankMimicry);
 
     internal static bool HasHealerMimicry =>
-        HasStatusEffect(Buffs.HealerMimicry);
+        LocalPlayer.HasStatus(Buffs.HealerMimicry);
 
     internal static bool HasDPSMimicry =>
-        HasStatusEffect(Buffs.DPSMimicry);
+        LocalPlayer.HasStatus(Buffs.DPSMimicry);
 
     #region Openers
 

@@ -145,10 +145,10 @@ internal partial class DNC
 
         // Return the Finish if the dance is about to expire
         if (desiredFinish is StandardFinish2 &&
-            GetStatusEffectRemainingTime(Buffs.StandardStep) < GCD * 1.5)
+            LocalPlayer.Status(Buffs.StandardStep).RemainingTimeOrZero() < GCD * 1.5)
             return desiredFinish;
         if (desiredFinish is TechnicalFinish4 &&
-            GetStatusEffectRemainingTime(Buffs.TechnicalStep) < GCD * 1.5)
+            LocalPlayer.Status(Buffs.TechnicalStep).RemainingTimeOrZero() < GCD * 1.5)
             return desiredFinish;
 
         // If there is no enemy in range, hold the finish
@@ -224,7 +224,7 @@ internal partial class DNC
         DesiredDancePartner is not null &&
         (
             // Have no partner and one is theoretically available
-            (!HasStatusEffect(Buffs.ClosedPosition) &&
+            (!LocalPlayer.HasStatus(Buffs.ClosedPosition) &&
              (IsInParty() || HasCompanionPresent())) ||
             // Have a partner, but it's not the optimal one
             (CurrentDancePartner is not null &&
@@ -250,7 +250,7 @@ internal partial class DNC
         if (IsDancePartnerReady(desired))
             return desired;
 
-        if (HasStatusEffect(Buffs.ClosedPosition))
+        if (LocalPlayer.HasStatus(Buffs.ClosedPosition))
             return null;
 
         var fallback = SimpleTarget.AnySelfishDPS ??
@@ -334,13 +334,13 @@ internal partial class DNC
         // These are here so I don't have to add a ton of methods to DNC
 
         bool DamageDownFree(IGameObject? target) =>
-            !TargetHasDamageDown(target);
+            !target.HasDamageDown;
 
         bool SicknessFree(IGameObject? target) =>
-            !TargetHasRezWeakness(target);
+            !target.HasRezWeakness();
 
         bool BrinkFree(IGameObject? target) =>
-            !TargetHasRezWeakness(target, false);
+            !target.HasRezWeakness(false);
 
         #endregion
 
@@ -431,10 +431,10 @@ internal partial class DNC
     #region DP-checking shortcut methods
 
     private static bool HasAnyPartner(WrathPartyMember target) =>
-        HasStatusEffect(Buffs.Partner, target.BattleChara, true);
+        target.BattleChara.HasStatus(Buffs.Partner, true);
 
     private static bool HasMyPartner(WrathPartyMember target) =>
-        HasStatusEffect(Buffs.Partner, target.BattleChara);
+        target.BattleChara.HasStatus(Buffs.Partner);
 
     #endregion
 
