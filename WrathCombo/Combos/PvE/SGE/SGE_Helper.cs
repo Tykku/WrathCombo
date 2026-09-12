@@ -650,17 +650,18 @@ internal partial class SGE
 
         public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
         [
-            ([1], () => HasStatusEffect(Buffs.Eukrasia))
+            ([1], () => CountdownActive || InCombat() || !SGE_Opener_PrepullBlock),
+            ([2], () => HasStatusEffect(Buffs.Eukrasia))
         ];
 
         public override List<(int[] Steps, Func<float> HoldDelay)> PrepullDelays { get; set; } =
         [
-            ([1], () => CountdownRemaining - 5),
-            ([2], () => CountdownRemaining - 2),
-            ([3], () => CountdownRemaining - 1)
+            ([2], () => !SGE_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining - (HasStatusEffect(Buffs.Eukrasia) ? 2.1f : 5))),
+            ([3], () => !SGE_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining - 2.1f)),
+            ([4], () => !SGE_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining - 1.5f))
         ];
 
-        protected static bool SharedOpenerCooldowns() =>
+        public override bool HasCooldowns() =>
             GetRemainingCharges(Phlegma3) is 2 &&
             IsOffCooldown(Psyche);
     }
@@ -669,29 +670,30 @@ internal partial class SGE
     {
         public override List<Func<uint>> OpenerActions { get; set; } =
         [
-            () => Eukrasia,
-            () => Items.UseItem(Items.GetStrongestPotionRow(Items.PotionType.Mind)),
-            () => Toxikon2,
-            () => EukrasianDosis3,
-            () => Dosis3,
-            () => Dosis3,
-            () => Dosis3,
-            () => Phlegma3,
-            () => Psyche,
-            () => Phlegma3,
-            () => Dosis3,
-            () => Dosis3,
-            () => Dosis3,
-            () => Dosis3,
-            () => Eukrasia,
-            () => EukrasianDosis3,
-            () => Dosis3,
-            () => Dosis3,
-            () => Dosis3
+            () => All.Cease, // 1
+            () => Eukrasia, // 2
+            () => Items.UseItem(Items.GetStrongestPotionRow(Items.PotionType.Mind)), // 3
+            () => Toxikon2, // 4
+            () => EukrasianDosis3, // 5
+            () => Dosis3, // 6
+            () => Dosis3, // 7
+            () => Dosis3, // 8
+            () => Phlegma3, // 9
+            () => Psyche, // 10
+            () => Phlegma3, // 11
+            () => Dosis3, // 12
+            () => Dosis3, // 13
+            () => Dosis3, // 14
+            () => Dosis3, // 15
+            () => Eukrasia, // 16
+            () => EukrasianDosis3, // 17
+            () => Dosis3, // 18
+            () => Dosis3, // 19
+            () => Dosis3 // 20
         ];
 
         public override bool HasCooldowns() =>
-            SharedOpenerCooldowns() &&
+            base.HasCooldowns() &&
             HasAddersting;
     }
 
@@ -699,29 +701,30 @@ internal partial class SGE
     {
         public override List<Func<uint>> OpenerActions { get; set; } =
         [
-            () => Eukrasia,
-            () => Items.UseItem(Items.GetStrongestPotionRow(Items.PotionType.Mind)),
-            () => Pneuma,
-            () => EukrasianDosis3,
-            () => Dosis3,
-            () => Dosis3,
-            () => Dosis3,
-            () => Phlegma3,
-            () => Psyche,
-            () => Phlegma3,
-            () => Dosis3,
-            () => Dosis3,
-            () => Dosis3,
-            () => Dosis3,
-            () => Eukrasia,
-            () => EukrasianDosis3,
-            () => Dosis3,
-            () => Dosis3,
-            () => Dosis3
+            () => All.Cease, // 1
+            () => Eukrasia, // 2
+            () => Items.UseItem(Items.GetStrongestPotionRow(Items.PotionType.Mind)), // 3
+            () => Pneuma, // 4
+            () => EukrasianDosis3, // 5
+            () => Dosis3, // 6
+            () => Dosis3, // 7
+            () => Dosis3, // 8
+            () => Phlegma3, // 9
+            () => Psyche, // 10
+            () => Phlegma3, // 11
+            () => Dosis3, // 12
+            () => Dosis3, // 13
+            () => Dosis3, // 14
+            () => Dosis3, // 15
+            () => Eukrasia, // 16
+            () => EukrasianDosis3, // 17
+            () => Dosis3, // 18
+            () => Dosis3, // 19
+            () => Dosis3 // 20
         ];
 
         public override bool HasCooldowns() =>
-            SharedOpenerCooldowns() &&
+            base.HasCooldowns() &&
             IsOffCooldown(Pneuma);
     }
 
