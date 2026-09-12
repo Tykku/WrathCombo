@@ -136,9 +136,9 @@ public abstract class WrathOpener
 
     public virtual List<int> AllowUpgradeSteps { get; set; } = new();
 
-    private int DelayedStep = 0;
-    private DateTime DelayedAt;
-    private float DelayedSecs = 0;
+    public int DelayedStep = 0;
+    public DateTime DelayedAt;
+    public float DelayedSecs = 0;
 
     public uint CurrentOpenerAction
     {
@@ -212,7 +212,7 @@ public abstract class WrathOpener
                     DelayedSecs = HoldDelay();
                 }
 
-                if ((DateTime.Now - DelayedAt).TotalSeconds < DelayedSecs && !PartyInCombat())
+                if (DelayedStep == OpenerStep && (DateTime.Now - DelayedAt).TotalSeconds < DelayedSecs && !PartyInCombat())
                 {
                     ActionWatching.TimeLastActionUsed = DateTime.Now; //Hacky workaround for TN jobs
                     actionID = All.Cease;
@@ -254,7 +254,7 @@ public abstract class WrathOpener
                     {
                         Svc.Log.Debug($"Skipping from Opener Step {OpenerStep} to {OpenerStep + 1}");
                         OpenerStep++;
-                        skipped = true;
+                        return false;
                     }
 
                     if (OpenerStep > OpenerActions.Count)
@@ -313,6 +313,8 @@ public abstract class WrathOpener
     {
         Svc.Log.Debug($"Opener Reset");
         DelayedStep = 0;
+        DelayedAt = DateTime.MinValue;
+        DelayedSecs = 0;
         OpenerStep = stayReady ? 1 : 0;
         CurrentOpenerAction = stayReady ? OpenerActions[0].Invoke() : 0;
         CurrentState = stayReady ? CurrentState : OpenerState.OpenerNotReady;

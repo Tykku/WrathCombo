@@ -740,41 +740,46 @@ internal partial class RPR
         public override List<Func<uint>> OpenerActions { get; set; } =
         [
             () => All.Cease, // 1
-            () => Harpe, // 2
-            () => ShadowOfDeath, // 3
-            () => Items.UseItem(Items.GetStrongestPotionRow(Items.PotionType.Strength)), // 4
-            () => SoulSlice, // 5
-            () => ArcaneCircle, // 6
-            () => Gluttony, // 7
-            () => ExecutionersGibbetOrGallows, // 8
-            () => ExecutionersGallowsOrGibbet, // 9
-            () => SoulSlice, // 10
-            () => PlentifulHarvest, // 11
-            () => Enshroud, // 12
-            () => VoidReaping, // 13
-            () => Sacrificium, // 14
-            () => CrossReaping, // 15
-            () => LemuresSlice, // 16
-            () => VoidReaping, // 17
-            () => CrossReaping, // 18
-            () => LemuresSlice, // 19
-            () => Communio, // 20
-            () => Perfectio, // 21
-            () => UnveiledGibbetOrGallows, // 22
-            () => GibbetOrGallows, // 23
-            () => ShadowOfDeath, // 24
-            () => Slice // 25
+            () => Soulsow, // 2
+            () => Harpe, // 3
+            () => ShadowOfDeath, // 4
+            () => Items.UseItem(Items.GetStrongestPotionRow(Items.PotionType.Strength)), // 5
+            () => SoulSlice, // 6
+            () => ArcaneCircle, // 7
+            () => Gluttony, // 8
+            () => ExecutionersGibbetOrGallows, // 9
+            () => ExecutionersGallowsOrGibbet, // 10
+            () => SoulSlice, // 11
+            () => PlentifulHarvest, // 12
+            () => Enshroud, // 13
+            () => VoidReaping, // 14
+            () => Sacrificium, // 15
+            () => CrossReaping, // 16
+            () => LemuresSlice, // 17
+            () => VoidReaping, // 18
+            () => CrossReaping, // 19
+            () => LemuresSlice, // 20
+            () => Communio, // 21
+            () => Perfectio, // 22
+            () => UnveiledGibbetOrGallows, // 23
+            () => GibbetOrGallows, // 24
+            () => ShadowOfDeath, // 25
+            () => Slice // 26
         ];
 
         public override List<(int[] Steps, Func<float> HoldDelay)> PrepullDelays { get; set; } =
         [
-            ([2], () => !RPR_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining - (InMeleeRange() ? 0 : 1.7f)))
+            ([2], () => !RPR_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining - 5f)),
+            ([3], () => !RPR_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining - (InMeleeRange() ? 0 : 1.7f)))
         ];
 
         public override List<int> DelayedWeaveSteps { get; set; } = [4];
 
-        public RPRStandardOpenerLvl100() =>
-            SkipSteps.Add(([2], () => InMeleeRange()));
+        public RPRStandardOpenerLvl100()
+        {
+            SkipSteps.Add(([2], () => LocalPlayer.HasStatus(Buffs.Soulsow)));
+            SkipSteps.Add(([3], () => InMeleeRange()));
+        }
     }
 
     internal class RPRDMUOpenerLvl100 : RPROpenerBase
@@ -826,38 +831,43 @@ internal partial class RPR
         public override List<Func<uint>> OpenerActions { get; set; } =
         [
             () => All.Cease, // 1
-            () => Harpe, // 2
-            () => ShadowOfDeath, // 3
-            () => Items.UseItem(Items.GetStrongestPotionRow(Items.PotionType.Strength)), // 4
-            () => ArcaneCircle, // 5
-            () => SoulSlice, // 6
+            () => Soulsow, // 2
+            () => Harpe, // 3
+            () => ShadowOfDeath, // 4
+            () => Items.UseItem(Items.GetStrongestPotionRow(Items.PotionType.Strength)), // 5
+            () => ArcaneCircle, // 6
             () => SoulSlice, // 7
-            () => PlentifulHarvest, // 8
-            () => Enshroud, // 9
-            () => VoidReaping, // 10
-            () => CrossReaping, // 11
-            () => LemuresSlice, // 12
-            () => VoidReaping, // 13
-            () => CrossReaping, // 14
-            () => LemuresSlice, // 15
-            () => Communio, // 16
-            () => HarvestMoon, // 17
-            () => Gluttony, // 18
-            () => GibbetOrGallowsRear, // 19
-            () => GallowsOrGibbet, // 20
-            () => UnveiledGibbetOrGallows, // 21
-            () => GibbetOrGallows // 22
+            () => SoulSlice, // 8
+            () => PlentifulHarvest, // 9
+            () => Enshroud, // 10
+            () => VoidReaping, // 11
+            () => CrossReaping, // 12
+            () => LemuresSlice, // 13
+            () => VoidReaping, // 14
+            () => CrossReaping, // 15
+            () => LemuresSlice, // 16
+            () => Communio, // 17
+            () => HarvestMoon, // 18
+            () => Gluttony, // 19
+            () => GibbetOrGallowsRear, // 20
+            () => GallowsOrGibbet, // 21
+            () => UnveiledGibbetOrGallows, // 22
+            () => GibbetOrGallows // 23
         ];
 
         public override List<int> DelayedWeaveSteps { get; set; } = [4];
 
         public override List<(int[] Steps, Func<float> HoldDelay)> PrepullDelays { get; set; } =
         [
-            ([2], () => !RPR_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining - (InMeleeRange() ? 0 : 1.7f)))
+            ([2], () => !RPR_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining - 5f)),
+            ([3], () => !RPR_Opener_PrepullBlock ? 0 : Math.Max(0, CountdownRemaining - (InMeleeRange() ? 0 : 1.7f)))
         ];
 
-        public RPRStandardOpenerLvl90() =>
-            SkipSteps.Add(([2], () => InMeleeRange()));
+        public RPRStandardOpenerLvl90()
+        {
+            SkipSteps.Add(([2], () => LocalPlayer.HasStatus(Buffs.Soulsow)));
+            SkipSteps.Add(([3], () => InMeleeRange()));
+        }
     }
 
     #endregion

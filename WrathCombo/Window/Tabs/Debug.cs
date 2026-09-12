@@ -585,6 +585,8 @@ internal class Debug : ConfigWindow, IDisposable
                     CustomStyleText("Opener State:", WrathOpener.CurrentOpener.CurrentState);
                     CustomStyleText("Current Opener Action:", WrathOpener.CurrentOpener.CurrentOpenerAction.ActionName());
                     CustomStyleText("Current Opener Step:", WrathOpener.CurrentOpener.OpenerStep);
+                    CustomStyleText("Delayed Step:", WrathOpener.CurrentOpener.DelayedStep);
+                    CustomStyleText("Delayed Seconds:", WrathOpener.CurrentOpener.DelayedSecs);
 
                     if (WrathOpener.CurrentOpener.OpenerActions.Count > 0 &&
                         WrathOpener.CurrentOpener.OpenerStep <
@@ -596,10 +598,14 @@ internal class Debug : ConfigWindow, IDisposable
                     }
 
                     int stepIndex = 0;
-                    foreach (var action in WrathOpener.CurrentOpener.OpenerActions)
+                    if (ImGui.CollapsingHeader("Opener Actions"))
                     {
-                        stepIndex++;
-                        CustomStyleText($"Opener Action {stepIndex}:", action.Invoke().ActionName());
+                        ImGuiEx.Spacing(new Vector2(0f, SpacingSmall));
+                        foreach (var action in WrathOpener.CurrentOpener.OpenerActions)
+                        {
+                            stepIndex++;
+                            CustomStyleText($"Opener Action {stepIndex}:", action.Invoke().ActionName());
+                        }
                     }
                 }
 
