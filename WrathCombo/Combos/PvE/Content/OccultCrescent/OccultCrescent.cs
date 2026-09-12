@@ -1271,14 +1271,16 @@ internal partial class OccultCrescent
     {
         if (!IsEnabled(Preset.Phantom_RedMage))
             return false;
-        if (IsEnabledAndUsable(Preset.Phantom_RedMage_OccultLibra, OccultLibra))
+        if (IsEnabledAndUsable(Preset.Phantom_RedMage_OccultLibra, OccultLibra) &&
+            CanWeave() &&
+            HasBattleTarget() &&
+            !JustUsed(OccultLibra) &&
+            !HasLibraWeakness(CurrentTarget) &&
+            CanApplyLibraWeakness(CurrentTarget) &&
+            (!IsEnabled(Preset.Phantom_RestrictToBuff) || Bursting.PlayerIsDamageBuffed))
         {
-            var canDebuff = EnemiesInRange(OccultLibra).Any(x => x.IsInCombat() && x.IsTargetable && !HasLibraWeakness(x) && CanApplyLibraWeakness(x));
-            if (canDebuff && (!IsEnabled(Preset.Phantom_RestrictToBuff) || Bursting.PlayerIsDamageBuffed))
-            {
-                actionID = OccultLibra;
-                return true;
-            }
+            actionID = OccultLibra;
+            return true;
         }
 
         if (!IsMoving())
@@ -1332,18 +1334,12 @@ internal partial class OccultCrescent
         return false;
     }
 
-    private static bool HasLibraWeakness(IGameObject? tar)
-    {
-        var statuses = tar?.SafeStatusList;
-        if (statuses == null) return false;
-
-        foreach (var s in statuses)
-        {
-            if (s.StatusId is Debuffs.FireWeakness or Debuffs.IceWeakness or Debuffs.WindWeakness or Debuffs.LightningWeakness)
-                return true;
-        }
-        return false;
-    }
+    private static bool HasLibraWeakness(IGameObject? tar) =>
+        tar is not null &&
+        (HasStatusEffect(Debuffs.FireWeakness, tar, true) ||
+         HasStatusEffect(Debuffs.IceWeakness, tar, true) ||
+         HasStatusEffect(Debuffs.LightningWeakness, tar, true) ||
+         HasStatusEffect(Debuffs.WindWeakness, tar, true));
 
     private static bool CanApplyLibraWeakness(IGameObject? tar)
     {

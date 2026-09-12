@@ -247,21 +247,20 @@ internal partial class VPR
         return false;
     }
 
-    private const DreadCombo ReawakenFirstGeneration = (DreadCombo)7;
-    private const DreadCombo ReawakenSecondGeneration = (DreadCombo)8;
-    private const DreadCombo ReawakenThirdGeneration = (DreadCombo)9;
-    private const DreadCombo ReawakenFourthGeneration = (DreadCombo)10;
+    private static uint ReawakenCombo(uint actionId)
+    {
+        bool ouroboros = ActionLearned(Ouroboros);
 
-    private static uint ReawakenCombo(uint actionId) =>
-        DreadCombo switch
+        return AnguineTribute switch
         {
-            ReawakenFirstGeneration => FirstGeneration,
-            ReawakenSecondGeneration => SecondGeneration,
-            ReawakenThirdGeneration => ThirdGeneration,
-            ReawakenFourthGeneration => FourthGeneration,
-            0 => Ouroboros,
-            _ => actionId
+            5 => FirstGeneration,
+            4 => ouroboros ? SecondGeneration : FirstGeneration,
+            3 => ouroboros ? ThirdGeneration : SecondGeneration,
+            2 => ouroboros ? FourthGeneration : ThirdGeneration,
+            1 => ouroboros ? Ouroboros : FourthGeneration,
+            _ => ouroboros ? Ouroboros : actionId
         };
+    }
 
     private static int ReawakenHPThreshold()
     {
@@ -718,6 +717,8 @@ internal partial class VPR
     private static byte RattlingCoilStacks => Gauge.RattlingCoilStacks;
 
     private static byte SerpentOffering => Gauge.SerpentOffering;
+
+    private static byte AnguineTribute => Gauge.AnguineTribute;
 
     private static DreadCombo DreadCombo => Gauge.DreadCombo;
 
