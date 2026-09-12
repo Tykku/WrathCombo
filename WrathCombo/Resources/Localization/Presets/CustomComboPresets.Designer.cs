@@ -6351,6 +6351,24 @@ namespace WrathCombo.Resources.Localization.Presets {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Replaces Borrow with your beast&apos;s borrowed ability. May make it trickier to swap borrows in a pinch, use cautiously..
+        /// </summary>
+        internal static string BST_Borrow_Feature_Desc {
+            get {
+                return ResourceManager.GetString("BST_Borrow_Feature_Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Borrow Feature.
+        /// </summary>
+        internal static string BST_Borrow_Feature_Name {
+            get {
+                return ResourceManager.GetString("BST_Borrow_Feature_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Locks out Capture if your current target is either not an eligible pet for capture, or you already have it unlocked. Disclaimer: May not be perfect. Detection methods are hypothetical at best..
         /// </summary>
         internal static string BST_Capture_Helper_Desc {

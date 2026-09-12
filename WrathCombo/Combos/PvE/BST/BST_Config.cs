@@ -18,7 +18,7 @@ internal partial class BST
             switch (preset)
             {
                 case Preset.BST_SimpleMode:
-                    DrawAdditionalBoolChoice(BST_SimpleMode_CycleBeasts, "Cycle Beasts", "Will cycle beasts in combat. You may wish to do this manually.");
+                    DrawAdditionalBoolChoice(BST_SimpleMode_CycleBeasts, "Cycle Beasts", "Will cycle beasts in combat using Parting Blow. You may wish to do this manually instead to prevent beasts going on cooldown.");
                     break;
                 case Preset.BST_Instinctual_Combo:
                     DrawSliderInt(100, 250, BST_Instinctual_TpGauge, "Minimum TP for both player and beast", sliderIncrement: 10);

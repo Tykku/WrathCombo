@@ -264,4 +264,19 @@ internal partial class BST : Melee
             return actionID;
         }
     }
+
+    internal class BST_Borrow_Feature : CustomCombo
+    {
+        protected internal override Preset Preset => Preset.BST_Borrow_Feature;
+        protected override uint Invoke(uint actionID)
+        {
+            if (actionID is not Borrow)
+                return actionID;
+
+            if (!IsOriginal(BeastMode))
+                return OriginalHook(BeastMode);
+
+            return actionID;
+        }
+    }
 }

@@ -2338,6 +2338,10 @@ public enum Preset
     [ReplaceSkill(BST.FirstBattlehorn, BST.SecondBattlehorn, BST.ThirdBattlehorn)]
     [JobInfo(Job.BST)]
     BST_Battlehorn_Lockout = 2505,
+
+    [ReplaceSkill(BST.Borrow)]
+    [JobInfo(Job.BST)]
+    BST_Borrow_Feature = 2506,
     #endregion
 
     #region BARD
