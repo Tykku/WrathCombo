@@ -112,4 +112,10 @@
   <data name="OnlyCurrentHornDesc" xml:space="preserve">
     <value>If you switch away from the horn that borrowed the ability, return the action back to Borrow.</value>
   </data>
+  <data name="Infinitive" xml:space="preserve">
+    <value>Perform Infinitive Combo?</value>
+  </data>
+  <data name="InfinitiveDesc" xml:space="preserve">
+    <value>Adds Rally/Rallying cheer to allow performing Infinitive Combos</value>
+  </data>
 </root>

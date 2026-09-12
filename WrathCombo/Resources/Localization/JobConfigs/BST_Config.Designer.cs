@@ -79,6 +79,24 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Perform Infinitive Combo?.
+        /// </summary>
+        internal static string Infinitive {
+            get {
+                return ResourceManager.GetString("Infinitive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adds Rally/Rallying cheer to allow performing Infinitive Combos.
+        /// </summary>
+        internal static string InfinitiveDesc {
+            get {
+                return ResourceManager.GetString("InfinitiveDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Minimum TP for both player and beast.
         /// </summary>
         internal static string MinTPPlayerBeast {

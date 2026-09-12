@@ -186,29 +186,31 @@ internal partial class BST : Melee
             bool playerTpMet = JobGauge.PlayerTP >= BST_Intentional_TpGauge;
             bool beastTpMet = JobGauge.BeastTP >= BST_Intentional_TpGauge;
 
-            if (FinisherReady && FinisherActions.Count > 0)
+            if (BST_Intentional_Infinitive)
             {
-                if (FinisherActions[0] == CounterClockwiseInstinctualAction && !InInstinctualCombo)
-                    return All.Cease;
+                if (FinisherReady && FinisherActions.Count > 0)
+                {
+                    if (FinisherActions[0] == CounterClockwiseInstinctualAction && !InInstinctualCombo)
+                        return All.Cease;
 
-                return FinisherActions[0];
+                    return FinisherActions[0];
+                }
+
+                if (JobGauge.ActiveAffinity is Data.InstinctualAffinity.Moonstalker)
+                {
+                    if (ActionReady(RisenFall))
+                        return RisenFall;
+                }
+
+                if (JobGauge.ActiveAffinity is Data.InstinctualAffinity.Sunstrider)
+                {
+                    if (ActionReady(Calamity))
+                        return Calamity;
+                }
             }
 
             if ((!playerTpMet || !beastTpMet) && !InInstinctualCombo)
                 return All.Cease;
-
-
-            if (JobGauge.ActiveAffinity is Data.InstinctualAffinity.Moonstalker)
-            {
-                if (ActionReady(RisenFall))
-                    return RisenFall;
-            }
-
-            if (JobGauge.ActiveAffinity is Data.InstinctualAffinity.Sunstrider)
-            {
-                if (ActionReady(Calamity))
-                    return Calamity;
-            }
 
             if (RallyStackFocus is RallyingType.None or RallyingType.Rally) //Prioritize our stacks
             {
