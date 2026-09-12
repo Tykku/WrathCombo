@@ -130,8 +130,6 @@ public abstract class WrathOpener
     public virtual List<int> DelayedWeaveSteps { get; set; } = new List<int>();
     public virtual List<int> VeryDelayedWeaveSteps { get; set; } = new List<int>(); //for very late-weaving
 
-    public virtual List<(int[] Steps, uint NewAction, Func<bool> Condition)> SubstitutionSteps { get; set; } = new();
-
     public virtual List<(int[] Steps, Func<float> HoldDelay)> PrepullDelays { get; set; } = new();
 
     public virtual List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } = new();
@@ -281,16 +279,6 @@ public abstract class WrathOpener
                     return true;
                 }
 
-                foreach (var (Steps, NewAction, Condition) in SubstitutionSteps.Where(x => x.Steps.Any(y => y == OpenerStep)))
-                {
-                    if (Condition())
-                    {
-                        CurrentOpenerAction = actionID = NewAction;
-                        break;
-                    }
-                    else
-                        CurrentOpenerAction = OpenerActions[OpenerStep - 1].Invoke();
-                }
 
                 if (CurrentOpenerAction == RoleActions.Melee.TrueNorth && !TargetNeedsPositionals())
                 {
