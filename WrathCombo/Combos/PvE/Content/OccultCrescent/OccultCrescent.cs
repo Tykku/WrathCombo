@@ -75,7 +75,7 @@ internal partial class OccultCrescent
             return false;
 
         if (IsEnabledAndUsable(Preset.Phantom_Knight_Pray, Pray) &&
-            !HasStatusEffect(Buffs.Pray) && !CanWeave() &&
+            StatusNeedsRefresh(Buffs.Pray) && !CanWeave() &&
             (Phantom_Knight_Pray_KeepUp || PlayerHP <= Phantom_Knight_Pray_Health))
         {
             actionID = Pray; // regen
@@ -112,7 +112,7 @@ internal partial class OccultCrescent
             return false;
 
         if (IsEnabledAndUsable(Preset.Phantom_Monk_Counterstance, Counterstance) &&
-            InCombat() && !HasStatusEffect(Buffs.Counterstance) && !CanWeave())
+            InCombat() && StatusNeedsRefresh(Buffs.Counterstance) && !CanWeave())
         {
             actionID = Counterstance; // counterstance
             return true;
@@ -188,7 +188,7 @@ internal partial class OccultCrescent
                 return false;
 
             if (IsEnabledAndUsable(Preset.Phantom_Thief_PilferWeapon, PilferWeapon) &&
-                !HasStatusEffect(Debuffs.WeaponPlifered, CurrentTarget))
+                StatusNeedsRefresh(Debuffs.WeaponPlifered, CurrentTarget))
             {
                 actionID = PilferWeapon; // weaken target
                 return true;
@@ -314,7 +314,7 @@ internal partial class OccultCrescent
             return false;
 
         if (IsEnabledAndUsable(Preset.Phantom_TimeMage_OccultMageMasher, OccultMageMasher) &&
-            HasBattleTarget() && !HasStatusEffect(Debuffs.OccultMageMasher, CurrentTarget) && CanWeave())
+            HasBattleTarget() && StatusNeedsRefresh(Debuffs.OccultMageMasher, CurrentTarget) && CanWeave())
         {
             actionID = OccultMageMasher; // weaken target's magic attack
             return true;
@@ -465,7 +465,7 @@ internal partial class OccultCrescent
         }
 
         if (IsEnabledAndUsable(Preset.Phantom_Bard_OffensiveAria, OffensiveAria) &&
-            !HasStatusEffect(Buffs.OffensiveAria) && !HasStatusEffect(Buffs.HerosRime, anyOwner: true))
+            StatusNeedsRefresh(Buffs.OffensiveAria) && !HasStatusEffect(Buffs.HerosRime, anyOwner: true))
         {
             actionID = OffensiveAria; // off-song
             return true;
@@ -814,7 +814,7 @@ internal partial class OccultCrescent
 
         if (IsEnabledAndUsable(Preset.Phantom_MysticKnight_BlazingSpellblade, BlazingSpellblade) && !CanWeave() &&
             HasBattleTarget() && InActionRange(BlazingSpellblade) &&
-            (!HasStatusEffect(Buffs.BlazingSpellblade) || GetStatusEffectRemainingTime(Buffs.BlazingSpellblade) <= 15))
+            StatusNeedsRefresh(Buffs.BlazingSpellblade, remainingOverride: Math.Max(30, Phantom_StatusRefresh_Remaining)))
         {
             actionID = BlazingSpellblade;
             return true;
@@ -867,7 +867,7 @@ internal partial class OccultCrescent
             }
 
             if (IsEnabledAndUsable(Preset.Phantom_Dancer_QuickStep, Quickstep) &&
-                !HasStatusEffect(Buffs.Quickstep))
+                StatusNeedsRefresh(Buffs.Quickstep))
             {
                 actionID = Quickstep; //Evasion self buff
                 return true;
@@ -957,7 +957,7 @@ internal partial class OccultCrescent
             return false;
 
         if (IsEnabledAndUsable(Preset.Phantom_Ninja_Smoke, Smoke) && InCombat() &&
-            !HasStatusEffect(Buffs.Smoke))
+            StatusNeedsRefresh(Buffs.Smoke))
         {
             actionID = Smoke;
             return true;
@@ -1059,7 +1059,10 @@ internal partial class OccultCrescent
         if (IsEnabledAndUsable(Preset.Phantom_BlackMage_OccultToad, OccultToad) && InCombat() &&
             (!Phantom_BlackMage_OccultToad_RequireAoE ||
              GroupDamageIncoming() ||
-             NumberOfEnemiesInRange(OccultToad) >= 2))
+             NumberOfEnemiesInRange(OccultToad) >= 2) &&
+            EnemiesInRange(OccultToad).Any(x =>
+                !ImmuneToStatus(x, Debuffs.OccultToad) &&
+                !HasStatusEffect(Debuffs.OccultToad, x)))
         {
             actionID = OccultToad;
             return true;
@@ -1246,22 +1249,25 @@ internal partial class OccultCrescent
             return true;
         }
 
-        if (IsEnabledAndUsable(Preset.Phantom_BlueMage_OccultAeroIII, OccultAeroIII) && HasBattleTarget())
+        if (WantOccultAero && HasBattleTarget())
         {
-            actionID = OccultAeroIII;
-            return true;
-        }
+            if (ActionReady(OccultAeroIII))
+            {
+                actionID = OccultAeroIII;
+                return true;
+            }
 
-        if (IsEnabledAndUsable(Preset.Phantom_BlueMage_OccultAeroII, OccultAeroII) && HasBattleTarget())
-        {
-            actionID = OccultAeroII;
-            return true;
-        }
+            if (ActionReady(OccultAeroII))
+            {
+                actionID = OccultAeroII;
+                return true;
+            }
 
-        if (IsEnabledAndUsable(Preset.Phantom_BlueMage_OccultAero, OccultAero) && HasBattleTarget())
-        {
-            actionID = OccultAero;
-            return true;
+            if (ActionReady(OccultAero))
+            {
+                actionID = OccultAero;
+                return true;
+            }
         }
 
         return false;
@@ -1275,7 +1281,7 @@ internal partial class OccultCrescent
             CanWeave() &&
             HasBattleTarget() &&
             !JustUsed(OccultLibra) &&
-            !HasLibraWeakness(CurrentTarget) &&
+            LibraNeedsRefresh(CurrentTarget) &&
             CanApplyLibraWeakness(CurrentTarget) &&
             (!IsEnabled(Preset.Phantom_RestrictToBuff) || Bursting.PlayerIsDamageBuffed))
         {
@@ -1340,6 +1346,34 @@ internal partial class OccultCrescent
          HasStatusEffect(Debuffs.IceWeakness, tar, true) ||
          HasStatusEffect(Debuffs.LightningWeakness, tar, true) ||
          HasStatusEffect(Debuffs.WindWeakness, tar, true));
+
+    private static bool LibraNeedsRefresh(IGameObject? tar)
+    {
+        if (tar is null)
+            return false;
+
+        if (!HasLibraWeakness(tar))
+            return true;
+
+        if (!IsEnabled(Preset.Phantom_RedMage_OccultLibra_Refresh))
+            return false;
+
+        float remaining = 0;
+
+        if (HasStatusEffect(Debuffs.FireWeakness, tar, true))
+            remaining = Math.Max(remaining, GetStatusEffectRemainingTime(Debuffs.FireWeakness, tar, true));
+
+        if (HasStatusEffect(Debuffs.IceWeakness, tar, true))
+            remaining = Math.Max(remaining, GetStatusEffectRemainingTime(Debuffs.IceWeakness, tar, true));
+
+        if (HasStatusEffect(Debuffs.LightningWeakness, tar, true))
+            remaining = Math.Max(remaining, GetStatusEffectRemainingTime(Debuffs.LightningWeakness, tar, true));
+
+        if (HasStatusEffect(Debuffs.WindWeakness, tar, true))
+            remaining = Math.Max(remaining, GetStatusEffectRemainingTime(Debuffs.WindWeakness, tar, true));
+
+        return remaining <= Phantom_RedMage_OccultLibra_RefreshRemaining;
+    }
 
     private static bool CanApplyLibraWeakness(IGameObject? tar)
     {

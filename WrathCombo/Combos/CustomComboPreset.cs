@@ -1134,6 +1134,7 @@ public enum Preset
     Phantom_BlueMage_OccultMightyGuard = 110123,
 
     [OccultCrescent]
+    [Hidden]
     [ParentCombo(Phantom_BlueMage)]
     [JobInfo(Job.ADV)]
     Phantom_BlueMage_OccultAeroII = 110124,
@@ -1144,6 +1145,7 @@ public enum Preset
     Phantom_BlueMage_OccultWhiteWind = 110125,
 
     [OccultCrescent]
+    [Hidden]
     [ParentCombo(Phantom_BlueMage)]
     [JobInfo(Job.ADV)]
     Phantom_BlueMage_OccultAeroIII = 110126,
@@ -1172,6 +1174,11 @@ public enum Preset
     [ParentCombo(Phantom_RedMage)]
     [JobInfo(Job.ADV)]
     Phantom_RedMage_OccultLibra = 110130,
+
+    [OccultCrescent]
+    [ParentCombo(Phantom_RedMage_OccultLibra)]
+    [JobInfo(Job.ADV)]
+    Phantom_RedMage_OccultLibra_Refresh = 110140,
 
     [OccultCrescent]
     [ParentCombo(Phantom_RedMage)]
@@ -1212,7 +1219,7 @@ public enum Preset
     [JobInfo(Job.ADV)]
     Phantom_Necromancer_Doomsday = 110138,
 
-    //Last Value = 110139
+    //Last Value = 110140
     #endregion
 
     #region Deep Dungeon
