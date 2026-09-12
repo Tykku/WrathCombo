@@ -2312,6 +2312,38 @@ public enum Preset
 
     #endregion
 
+    #region BEASTMASTER
+
+    [AutoAction(false, false)]
+    [ReplaceSkill(BST.SmashAxe)]
+    [JobInfo(Job.BST)]
+    BST_SimpleMode = 2500,
+
+    [ReplaceSkill(BST.AxebladeBite)]
+    [JobInfo(Job.BST)]
+    BST_Basic_Combo = 2501,
+
+    [ReplaceSkill(BST.AvalancheAxe, BST.MistralAxe, BST.SpinningAxe, BST.GaleAxe)]
+    [JobInfo(Job.BST)]
+    BST_Instinctual_Combo = 2502,
+
+    [ReplaceSkill(BST.Trick)]
+    [JobInfo(Job.BST)]
+    BST_Intentional_Combo = 2503,
+
+    [ReplaceSkill(BST.Capture)]
+    [JobInfo(Job.BST)]
+    BST_Capture_Helper = 2504,
+
+    [ReplaceSkill(BST.FirstBattlehorn, BST.SecondBattlehorn, BST.ThirdBattlehorn)]
+    [JobInfo(Job.BST)]
+    BST_Battlehorn_Lockout = 2505,
+
+    [ReplaceSkill(BST.Borrow)]
+    [JobInfo(Job.BST)]
+    BST_Borrow_Feature = 2506,
+    #endregion
+
     #region BARD
 
     #region Simple Mode

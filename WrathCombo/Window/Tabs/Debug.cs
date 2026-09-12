@@ -31,7 +31,6 @@ using WrathCombo.Combos.PvE;
 using WrathCombo.Combos.PvE.ALL;
 using WrathCombo.Core;
 using WrathCombo.CustomComboNS;
-using WrathCombo.CustomComboNS.Functions;
 using WrathCombo.Data;
 using WrathCombo.Data.BattleData;
 using WrathCombo.Extensions;
@@ -360,6 +359,18 @@ internal class Debug : ConfigWindow, IDisposable
                     break;
                 case Job.PCT:
                     Util.ShowStruct(&JobGaugeManager.Instance()->Pictomancer);
+                    break;
+                case Job.BST:
+                    CustomStyleText($"Trick Type?:", $"{BST.TrickType}");
+                    CustomStyleText($"Lowest Rally Type?:", $"{BST.RallyStackFocus}");
+                    CustomStyleText($"Target is BST Pet?:", $"{BST.TargetIsBstPet(target)} ({BST.GetPetIdFromModel(target)})");
+                    CustomStyleText($"Finisher Ready:", $"{BST.FinisherReady}");
+
+                    CustomStyleText($"Current Pet is BMPet?:", $"{BST.CurrentPetIsBMPet}");
+                    CustomStyleText($"Current Pet", $"{BST.CurrentPetSheet?.Name ?? "??"} (ID: {BST.CurrentPetSheet?.RowId ?? 0})");
+                    CustomStyleText($"Current Pet Trick Action", $"{BST.CurrentPetTrickAction?.ActionName() ?? "??"} (ID: {BST.CurrentPetTrickAction ?? 0})");
+
+                    Util.ShowStruct(BST._jobGauge);
                     break;
             }
 
@@ -764,7 +775,7 @@ internal class Debug : ConfigWindow, IDisposable
                 CustomStyleText("Tooltip:", $"{Svc.Data.GetExcelSheet<ActionTransient>().GetRow(_debugSpell.Value.RowId).Description}");
                 CustomStyleText("Base Recast:", $"{_debugSpell.Value.Recast100ms / 10f}s");
                 CustomStyleText("Base Recast Total:", $"{GetCooldown(_debugSpell.Value.RowId).BaseCooldownTotal}");
-                CustomStyleText("Original Hook:", OriginalHook(_debugSpell.Value.RowId).ActionName());
+                CustomStyleText("Original Hook:", $"{OriginalHook(_debugSpell.Value.RowId).ActionName()} ({OriginalHook(_debugSpell.Value.RowId)})");
                 CustomStyleText("Cooldown Total:", $"{GetCooldown(_debugSpell.Value.RowId).CooldownTotal:N2}");
                 CustomStyleText("CS CD:", $"{GetCooldown(_debugSpell.Value.RowId).CurrentRecast:N2}");
                 CustomStyleText("Remaining Cooldown:", $"{GetCooldown(_debugSpell.Value.RowId).CooldownRemaining:N2}");
