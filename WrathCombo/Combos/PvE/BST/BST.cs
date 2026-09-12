@@ -273,7 +273,9 @@ internal partial class BST : Melee
             if (actionID is not Borrow)
                 return actionID;
 
-            if (!IsOriginal(BeastMode))
+            bool canSwitch = BST_Borrow_OnlyCurrentHorn && JobGauge.KinshipBattlehorn != JobGauge.BattleHorn;
+
+            if (!IsOriginal(BeastMode) && !canSwitch)
                 return OriginalHook(BeastMode);
 
             return actionID;

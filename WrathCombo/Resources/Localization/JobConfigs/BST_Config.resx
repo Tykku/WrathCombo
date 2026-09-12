@@ -106,4 +106,10 @@
   <data name="MinTPPlayerBeast" xml:space="preserve">
     <value>Minimum TP for both player and beast</value>
   </data>
+  <data name="OnlyCurrentHorn" xml:space="preserve">
+    <value>Only replace for horn that borrowed</value>
+  </data>
+  <data name="OnlyCurrentHornDesc" xml:space="preserve">
+    <value>If you switch away from the horn that borrowed the ability, return the action back to Borrow.</value>
+  </data>
 </root>

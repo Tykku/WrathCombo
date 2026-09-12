@@ -86,5 +86,23 @@ namespace WrathCombo.Resources.Localization.JobConfigs {
                 return ResourceManager.GetString("MinTPPlayerBeast", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Only replace for horn that borrowed.
+        /// </summary>
+        internal static string OnlyCurrentHorn {
+            get {
+                return ResourceManager.GetString("OnlyCurrentHorn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If you switch away from the horn that borrowed the ability, return the action back to Borrow..
+        /// </summary>
+        internal static string OnlyCurrentHornDesc {
+            get {
+                return ResourceManager.GetString("OnlyCurrentHornDesc", resourceCulture);
+            }
+        }
     }
 }
