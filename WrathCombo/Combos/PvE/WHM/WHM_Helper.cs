@@ -356,17 +356,17 @@ internal partial class WHM
             () => Glare3, // 5
             () => Glare3, // 6
             () => PresenceOfMind, // 7
-            () => Glare4, // 8
-            () => AfflatusMisery, // 9
+            () => Glare3, // 8
+            //() => AfflatusMisery, // 9
             () => Assize, // 10
-            () => Glare4, // 11
-            () => Glare4, // 12
-            () => Glare3, // 13
-            () => Glare3, // 14
-            () => Glare3, // 15
-            () => Glare3, // 16
-            () => Glare3, // 17
-            () => Dia // 18
+            //() => Glare4, // 11
+            //() => Glare4, // 12
+            //() => Glare3, // 13
+            //() => Glare3, // 14
+            //() => Glare3, // 15
+            //() => Glare3, // 16
+            //() => Glare3, // 17
+            //() => Dia // 18
         ];
     }
 
