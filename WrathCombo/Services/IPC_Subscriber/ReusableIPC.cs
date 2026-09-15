@@ -13,7 +13,7 @@ namespace WrathCombo.Services.IPC_Subscriber;
 
 public abstract class ReusableIPC : IDisposable
 {
-    private IDalamudPlugin _plugin;
+    private object? _plugin;
     public EzIPCDisposalToken[] DisposalTokens;
     public string PluginName;
     protected bool ReflectionNotIPC;
@@ -40,7 +40,7 @@ public abstract class ReusableIPC : IDisposable
 
     protected bool PluginIsLoaded =>
         DalamudReflector.TryGetDalamudPlugin(
-            PluginName, out _plugin, suppressErrors: true, ignoreCache: true);
+            PluginName, out _plugin, ignoreCache: true);
 
     protected object? Plugin
     {
@@ -58,7 +58,7 @@ public abstract class ReusableIPC : IDisposable
 
     public Version InstalledVersion =>
         DalamudReflector.TryGetDalamudPlugin(PluginName, out var plugin,
-            suppressErrors: true, ignoreCache: true)
+            ignoreCache: true)
             ? plugin.GetType().Assembly.GetName().Version ?? new Version(0, 0, 0, 1)
             : new Version(0, 0, 0, 1); // no version found
 
