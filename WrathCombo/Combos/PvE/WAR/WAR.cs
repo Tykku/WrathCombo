@@ -85,9 +85,6 @@ internal partial class WAR
 
             if (ContentSpecificActions.TryGet(ref actionID, out uint contentAction))
                 return contentAction;
-
-            if (!HasBattleTarget())
-                return HeavySwing;
             
             const Combo comboFlags = Combo.ST | Combo.Adv;
             
