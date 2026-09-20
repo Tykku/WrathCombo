@@ -21,9 +21,9 @@ internal partial class GNB : Tank
     private static byte Ammo => GetJobGauge<GNBGauge>().Ammo; //cartridge count
     private static byte GunStep => GetJobGauge<GNBGauge>().AmmoComboStep; //GF & Reign combo steps
     private static float NMcd => GetCooldownRemainingTime(NoMercy); //No Mercy cooldown
-    private static float Status(uint status) => LocalPlayer.Status(status).RemainingTimeOrZero();
+    private static float StatusTime(uint status) => LocalPlayer.Status(status).RemainingTimeOrZero();
     private static bool HasNM => NMcd is > 39.5f and <= 60; //under No Mercy buff, using its cooldown instead of buff timer (for snappier reaction) with a small 0.4s leeway
-    private static float BFstatus => Status(Buffs.Bloodfest); //Bloodfest buff timer
+    private static float BFstatus => StatusTime(Buffs.Bloodfest); //Bloodfest buff timer
     private static float GCDLength => ActionManager.GetAdjustedRecastTime(ActionType.Action, KeenEdge) / 1000f; //current GCD length in seconds
     private static bool Slow => GCDLength >= 2.5f; //base GCD ("slowGNB")
     private static bool Fast => GCDLength < 2.5f; //not base GCD ("fastGNB")
@@ -734,7 +734,7 @@ internal partial class GNB : Tank
             ReignOfBeasts, //action
             preset, //preset
             CanReign, //can use
-            Status(Buffs.ReadyToReign) is <= 2.5f and not 0 //send if about to drop
+            StatusTime(Buffs.ReadyToReign) is <= 2.5f and not 0 //send if about to drop
         );
     private static bool ShouldUseGnashingFangBurst(Preset preset)
         => ShouldUseInBurst( //in burst
@@ -760,7 +760,7 @@ internal partial class GNB : Tank
     private static bool ShouldUseSonicBreak(Preset preset)
         => IsEnabled(preset) && //option enabled
             CanSB && //can use
-            (Slow || (Fast && Status(Buffs.ReadyToBreak) <= (GCDLength + 10.000f))) //if fast SkS, use as last GCD in NM - determined by SB timer + 10s to prevent not sending at all if missed
+            (Slow || (Fast && StatusTime(Buffs.ReadyToBreak) <= (GCDLength + 10.000f))) //if fast SkS, use as last GCD in NM - determined by SB timer + 10s to prevent not sending at all if missed
             ;
     private static bool ShouldSpendCarts(Preset preset, int setup)
         => IsEnabled(preset) && //option enabled
