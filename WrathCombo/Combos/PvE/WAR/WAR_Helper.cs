@@ -55,7 +55,6 @@ internal partial class WAR : Tank
         public override List<(int[] Steps, Func<bool> Condition)> SkipSteps { get; set; } =
         [
             ([1], () => CountdownActive || InCombat() || !WAR_Opener_PrepullBlock),
-            ([2], () => InMeleeRange()),
             ([11, 13, 15], () => !HasCharges(Onslaught) || WAR_ST_BalanceOpener_GapcloserChoice == 0)
         ];
 

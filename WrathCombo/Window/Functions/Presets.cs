@@ -463,7 +463,7 @@ internal class Presets : ConfigWindow
         ImGui.PushStyleColor(ImGuiCol.ButtonHovered, colour);
         ImGui.PushStyleColor(ImGuiCol.ButtonActive, colour);
 
-        if (ImGuiEx.Button($"###{presetData.Preset}"))
+        if (ImGuiEx.Button($"###BurstCustom{presetData.Preset}"))
         {
             Service.Configuration.BurstPresets[presetData.Preset] = !val;
             Service.Configuration.Save();
