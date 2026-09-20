@@ -1,6 +1,5 @@
 using Dalamud.Game.ClientState.Objects.Types;
 using System;
-using ECommons;
 using WrathCombo.Core;
 using WrathCombo.CustomComboNS;
 using WrathCombo.Data;
@@ -86,6 +85,9 @@ internal partial class WAR
 
             if (ContentSpecificActions.TryGet(ref actionID, out uint contentAction))
                 return contentAction;
+
+            if (!HasBattleTarget())
+                return HeavySwing;
             
             const Combo comboFlags = Combo.ST | Combo.Adv;
             
