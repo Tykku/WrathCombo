@@ -98,7 +98,7 @@ public partial class WrathCombo
         { Job.VPR, [Preset.VPR_ST_SerpentsIre, Preset.VPR_ST_Reawaken, Preset.VPR_AoE_SerpentsIre, Preset.VPR_AoE_Reawaken, Preset.VPR_AoE_ReawakenCombo] },
         { Job.BRD, [Preset.BRD_Adv_Buffs, Preset.BRD_AoE_Adv_Buffs] },
         { Job.MCH, [Preset.MCH_ST_Adv_Stabilizer, Preset.MCH_ST_Adv_WildFire, Preset.MCH_ST_Adv_TurretQueen, Preset.MCH_ST_Adv_Reassemble, Preset.MCH_ST_Adv_Tools, Preset.MCH_AoE_Adv_Reassemble, Preset.MCH_AoE_Adv_Queen, Preset.MCH_AoE_Adv_Stabilizer, Preset.MCH_AoE_Adv_Tools] },
-        { Job.DNC, [Preset.DNC_ST_Adv_TS, Preset.DNC_ST_Adv_SS, Preset.DNC_ST_Adv_FanProccs, Preset.DNC_ST_Adv_Feathers, Preset.DNC_AoE_Adv_Devilment, Preset.DNC_AoE_Adv_Flourish, Preset.DNC_AoE_Adv_SS, Preset.DNC_AoE_Adv_FanProccs, Preset.DNC_AoE_Adv_Feathers, Preset.DNC_AoE_Adv_DawnDance] },
+        { Job.DNC, [Preset.DNC_ST_Adv_TS, Preset.DNC_ST_Adv_FanProccs, Preset.DNC_ST_Adv_Feathers, Preset.DNC_AoE_Adv_Devilment, Preset.DNC_AoE_Adv_Flourish, Preset.DNC_AoE_Adv_FanProccs, Preset.DNC_AoE_Adv_Feathers, Preset.DNC_AoE_Adv_DawnDance] },
         { Job.BLM, [
             Preset.BLM_ST_LeyLines, Preset.BLM_AoE_LeyLines,
             Preset.BLM_ST_Amplifier, Preset.BLM_AoE_Amplifier,
