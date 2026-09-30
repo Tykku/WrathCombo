@@ -48,9 +48,19 @@ public class Quests
         if (Job != Job.CNJ)
             return false;
 
+        var target = Target.IfFriendly() ?? HealTarget;
+        #region Level 15 CNJ Quest Fix
+
+        if (target is { BaseId: 1003001 })
+        {
+            actionID = WHM.Cure;
+            return true;
+        }
+
+        #endregion
+
         #region Level 30 CNJ Quest Fix
 
-        var target = Target.IfFriendly() ?? HealTarget;
 
         if (Player.Level > 29 &&
             target is { ObjectKind: ObjectKind.EventNpc, BaseId: 1008174 })
