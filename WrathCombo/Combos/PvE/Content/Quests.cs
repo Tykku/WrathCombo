@@ -8,6 +8,7 @@ using ECommons.DalamudServices;
 using ECommons.ExcelServices;
 using ECommons.GameHelpers;
 using Lumina.Excel.Sheets;
+using WrathCombo.Core;
 using WrathCombo.CustomComboNS;
 using WrathCombo.Extensions;
 using WrathCombo.Services;
@@ -53,7 +54,7 @@ public class Quests
 
         if (target is { BaseId: 1003001 })
         {
-            actionID = WHM.Cure;
+            actionID = WHM.Cure.Retarget(target);
             return true;
         }
 
