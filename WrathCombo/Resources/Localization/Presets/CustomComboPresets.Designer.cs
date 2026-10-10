@@ -27897,7 +27897,7 @@ namespace WrathCombo.Resources.Localization.Presets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adlo Option.
+        ///   Looks up a localized string similar to Adloquium Option.
         /// </summary>
         internal static string SCHPvP_Adlo_Name {
             get {
