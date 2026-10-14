@@ -461,9 +461,7 @@ internal partial class WHM : Healer
                  GroupDamageIncoming()))
                 return Temperance;
 
-            if (ActionReady(DivineCaress) &&
-                (GetPartyAvgHPPercent() <= 70 ||
-                 GroupDamageIncoming()))
+            if (ActionReady(DivineCaress))
                 return DivineCaress;
 
             if (ActionLearned(LiturgyOfTheBell) &&
