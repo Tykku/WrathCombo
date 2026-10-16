@@ -236,7 +236,7 @@ public sealed partial class WrathCombo : IDalamudPlugin
         DtrBarEntry.OnClick = (c) =>
         {
             if (c.ClickType == MouseClickType.Right)
-                HandleOpenCommand(tab: OpenWindow.Settings, forceOpen: true);
+                HandleOpenCommand(tab: ConfigWindow.OpenWindow, forceOpen: true);
             else
                 AutoRotationController.ToggleAutoRotation(!Service.Configuration.RotationConfig.Enabled);
         };
