@@ -13,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using WrathCombo.Combos;
 using WrathCombo.Combos.PvE;
 using WrathCombo.CustomComboNS;
 using WrathCombo.CustomComboNS.Functions;
@@ -230,7 +231,8 @@ internal sealed class ActionReplacer : IDisposable
             if (presetData is null)
                 return false;
 
-            if (presetData.IsPvP != CustomComboFunctions.InPvP()) // Are we in PvP?
+            if (x.Preset is not Preset.AlwaysOn && // AlwaysOn combos run in both PvE and PvP
+                presetData.IsPvP != CustomComboFunctions.InPvP()) // Are we in PvP?
                 return false;
 
             return presetData.JobInfo.Job switch
