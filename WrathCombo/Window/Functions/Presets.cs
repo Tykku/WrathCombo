@@ -451,7 +451,7 @@ internal class Presets : ConfigWindow
 
         if (!Service.Configuration.BurstPresets.ContainsKey(presetData.Preset))
         {
-            Service.Configuration.BurstPresets.Add(presetData.Preset, true);
+            Service.Configuration.BurstPresets.Add(presetData.Preset, false);
             Service.Configuration.Save();
         }
 
