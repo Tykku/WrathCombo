@@ -301,6 +301,20 @@ internal abstract partial class CustomComboFunctions
     /// <summary> Checks if a specific action was weaved within the GCD window. </summary>
     public static bool HasWeavedAction(uint actionId) => WeaveActions.Contains(actionId);
 
+    /// <summary> GCDs whose window only allows a single weave (short recast). </summary>
+    private static readonly HashSet<uint> SingleWeaveGCDs =
+    [
+        MCH.Heatblast,
+        MCH.BlazingShot,
+        MCH.AutoCrossbow
+    ];
+
+    /// <summary> Resolves the weave limit for the current GCD window. </summary>
+    private static int GetWeaveLimit(int? maxWeaves) =>
+        maxWeaves ?? (SingleWeaveGCDs.Contains(LastWeaponskill)
+            ? 1
+            : Service.Configuration.MaximumWeavesPerWindow);
+
     /// <summary> Checks if an action can be weaved within the GCD window. </summary>
     /// <param name="estimatedWeaveTime">
     ///     Amount of time required before the GCD is off cooldown.<br/>
@@ -313,7 +327,7 @@ internal abstract partial class CustomComboFunctions
     public static unsafe bool CanWeave(float estimatedWeaveTime = BaseAnimationLock, int? maxWeaves = null)
     {
         var player = LocalPlayer;
-        var weaveLimit = maxWeaves ?? Service.Configuration.MaximumWeavesPerWindow;
+        var weaveLimit = GetWeaveLimit(maxWeaves);
         var remainingCast = player.TotalCastTime - player.CurrentCastTime;
         var animationLock = ActionManager.Instance()->AnimationLock;
 
@@ -340,7 +354,7 @@ internal abstract partial class CustomComboFunctions
     {
         var halfGCD = GCDTotal * 0.5f;
         var remainingGCD = RemainingGCD;
-        var weaveLimit = maxWeaves ?? Service.Configuration.MaximumWeavesPerWindow;
+        var weaveLimit = GetWeaveLimit(maxWeaves);
         var animationLock = ActionManager.Instance()->AnimationLock;
 
         return WeaveActions.Count < weaveLimit &&                              // Multi-weave Check
