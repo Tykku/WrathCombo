@@ -278,7 +278,8 @@ internal partial class MCH
     private static bool UseReassembleCharges(int chargePool, int hpThreshold)
     {
         if (!ActionReady(Reassemble) || LocalPlayer.HasStatus(Buffs.Reassembled) ||
-            !HasBattleTarget() || GetTargetHPPercent() <= hpThreshold ||
+            !HasBattleTarget() || CurrentTarget is not { IsTargetable: true } ||
+            GetTargetHPPercent() <= hpThreshold ||
             !InReassembleRange() || JustUsed(Reassemble, 2f))
             return false;
 

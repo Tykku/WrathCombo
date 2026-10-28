@@ -40,7 +40,7 @@ internal partial class MCH : PhysicalRanged
 
                 if (!IsOverheated)
                 {
-                    if (UseReassemble(false, 0)&& HasBattleTarget()) 
+                    if (UseReassemble(false, 0))
                         return Reassemble;
 
                     if (UseBarrelStabilizer(requireBoss: true))
@@ -69,7 +69,7 @@ internal partial class MCH : PhysicalRanged
             if (UseFullMetalField())
                 return FullMetalField;
 
-            if (UseReassemble(false, 0) && !IsOverheated && HasBattleTarget())
+            if (UseReassemble(false, 0) && !IsOverheated)
                 return Reassemble;
 
             if (UseTools(ref actionID, false, reassembleChoice: 0) && !IsOverheated)
@@ -110,7 +110,7 @@ internal partial class MCH : PhysicalRanged
 
                 if (!IsOverheated)
                 {
-                    if (UseReassemble(true) && HasBattleTarget())
+                    if (UseReassemble(true))
                         return Reassemble;
 
                     if (UseBarrelStabilizer(onAoE: true))
@@ -140,7 +140,7 @@ internal partial class MCH : PhysicalRanged
                     !IsMoving() && TimeStoodStill > TimeSpan.FromSeconds(3))
                     return Flamethrower;
 
-                if (UseReassemble(true) && HasBattleTarget())
+                if (UseReassemble(true))
                     return Reassemble;
 
                 if (UseTools(ref actionID, true))
@@ -207,7 +207,7 @@ internal partial class MCH : PhysicalRanged
 
                 if (!IsOverheated)
                 {
-                    if (IsEnabled(Preset.MCH_ST_Adv_Reassemble) && HasBattleTarget() &&
+                    if (IsEnabled(Preset.MCH_ST_Adv_Reassemble) &&
                         UseReassemble(false, MCH_ST_Adv_ReassembleChoice, MCH_ST_ReassemblePool, ReassembleHPThreshold))
                         return Reassemble;
 
@@ -259,7 +259,7 @@ internal partial class MCH : PhysicalRanged
                 UseFullMetalField())
                 return FullMetalField;
 
-            if (IsEnabled(Preset.MCH_ST_Adv_Reassemble) && HasBattleTarget() &&
+            if (IsEnabled(Preset.MCH_ST_Adv_Reassemble) &&
                 UseReassemble(false, MCH_ST_Adv_ReassembleChoice, MCH_ST_ReassemblePool, ReassembleHPThreshold) &&
                 !IsOverheated)
                 return Reassemble;
@@ -329,7 +329,7 @@ internal partial class MCH : PhysicalRanged
 
                 if (!IsOverheated)
                 {
-                    if (IsEnabled(Preset.MCH_AoE_Adv_Reassemble) && HasBattleTarget() &&
+                    if (IsEnabled(Preset.MCH_AoE_Adv_Reassemble) &&
                         UseReassemble(true, chargePool: MCH_AoE_ReassemblePool, hpThreshold: MCH_AoE_ReassembleHPThreshold))
                         return Reassemble;
 
@@ -370,7 +370,7 @@ internal partial class MCH : PhysicalRanged
                     GetTargetHPPercent() > MCH_AoE_FlamethrowerHPOption)
                     return Flamethrower;
 
-                if (IsEnabled(Preset.MCH_AoE_Adv_Reassemble) && HasBattleTarget() &&
+                if (IsEnabled(Preset.MCH_AoE_Adv_Reassemble) &&
                     UseReassemble(true, chargePool: MCH_AoE_ReassemblePool, hpThreshold: MCH_AoE_ReassembleHPThreshold))
                     return Reassemble;
 
