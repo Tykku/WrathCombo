@@ -1,3 +1,4 @@
+using FFXIVClientStructs.FFXIV.Client.Game;
 using WrathCombo.CustomComboNS;
 using WrathCombo.Native;
 using static WrathCombo.Combos.PvE.RPR.Config;
@@ -438,6 +439,9 @@ internal partial class RPR : Melee
             bool ogcd = IsEnabled(Preset.RPR_GluttonyBloodSwathe_OGCD);
             bool sacrificiumOnly = IsEnabled(Preset.RPR_GluttonyBloodSwathe_Sacrificium);
 
+            if (LocalPlayer.HasStatus(Buffs.Executioner) || LocalPlayer.HasStatus(Buffs.SoulReaver))
+                return All.Cease;
+            
             if (gibbetGallows &&
                 IsEnabled(Preset.RPR_TrueNorthGluttony) &&
                 !onAoE &&
@@ -461,7 +465,8 @@ internal partial class RPR : Melee
                 LocalPlayer.HasStatus(Buffs.Enshrouded) && LocalPlayer.HasStatus(Buffs.Oblatio))
                 return OriginalHook(Gluttony);
 
-            if (ActionReady(Gluttony) &&
+            if (ActionLearned(Gluttony) &&
+                GetCooldownRemainingTime(Gluttony) <= GCD &&
                 !LocalPlayer.HasStatus(Buffs.Enshrouded) &&
                 !LocalPlayer.HasStatus(Buffs.SoulReaver) &&
                 !LocalPlayer.HasStatus(Buffs.Executioner))
