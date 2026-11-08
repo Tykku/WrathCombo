@@ -5930,7 +5930,11 @@ public enum Preset
     [JobInfo(Job.RPR)]
     RPR_LemureOnGGG = 12306,
 
-    // Last value = 12312
+    [ParentCombo(RPR_CommunioOnGGG)]
+    [JobInfo(Job.RPR)]
+    RPR_LemureSacrificiumOnGuillotine = 12316,
+
+    // Last value = 12316
 
     #endregion
 

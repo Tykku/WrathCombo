@@ -56,6 +56,14 @@ internal partial class RPR
 
                     DrawSliderInt(0, 100, RPR_SoDHPThreshold,
                         FormatAndCache(Generics.HPPercentageFor0NotBeApplied, ShadowOfDeath.ActionName()));
+
+                    DrawHorizontalRadioButton(RPR_SoDBossOnlyOption,
+                        Generics.AllEnemies,
+                        FormatAndCache(Generics.Use0RegardlessOfTarget, ShadowOfDeath.ActionName()), 0);
+
+                    DrawHorizontalRadioButton(RPR_SoDBossOnlyOption,
+                        Generics.OnlyBoss,
+                        FormatAndCache(Generics.OnlyUseWhenTargetIsBoss, ShadowOfDeath.ActionName()), 1);
                     break;
 
                 case Preset.RPR_ST_TrueNorthDynamic:
@@ -154,6 +162,7 @@ internal partial class RPR
             RPR_ST_ArcaneCircleHPBossOption = new("RPR_ST_ArcaneCircleHPBossOption"),
             RPR_SoDRefreshRange = new("RPR_SoDRefreshRange", 6),
             RPR_SoDHPThreshold = new("RPR_SoDHPThreshold"),
+            RPR_SoDBossOnlyOption = new("RPR_SoDBossOnlyOption"),
             RPR_ManualTN = new("RPR_ManualTN"),
             RPR_ST_SecondWindHPThreshold = new("RPR_ST_SecondWindHPThreshold", 40),
             RPR_ST_BloodbathHPThreshold = new("RPR_ST_BloodbathHPThreshold", 30),

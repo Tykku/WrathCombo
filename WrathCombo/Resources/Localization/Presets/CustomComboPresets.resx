@@ -8329,11 +8329,17 @@ Adds (Executioner's) Guillotine on Grim Swathe.</value>
   <data name="RPR_BloodStalkEnshroudCombo_Enshroud_Desc" xml:space="preserve">
     <value>Adds Enshroud combo (Void/Cross Reaping, Communio, Lemure's Slice, Sacrificium and Perfectio) on Blood Stalk and Grim Swathe.</value>
   </data>
+  <data name="RPR_LemureSacrificiumOnGuillotine_Desc" xml:space="preserve">
+    <value>Adds Lemure's Scythe and Sacrificium to Guillotine while Enshrouded.</value>
+  </data>
+  <data name="RPR_LemureSacrificiumOnGuillotine_Name" xml:space="preserve">
+    <value>Lemure's Scythe/Sacrificium on Guillotine Option</value>
+  </data>
   <data name="RPR_LemureOnGGG_Desc" xml:space="preserve">
-    <value>Adds Lemure's Slice to Gibbet/Gallows and Lemure's Scythe to Guillotine.</value>
+    <value>Adds Lemure's Slice to Gibbet/Gallows.</value>
   </data>
   <data name="RPR_LemureOnGGG_Name" xml:space="preserve">
-    <value>Lemure's Slice/Scythe Option</value>
+    <value>Lemure's Slice Option</value>
   </data>
   <data name="RPR_Regress_Desc" xml:space="preserve">
     <value>Changes both Hell's Ingress and Hell's Egress turn into Regress when Threshold is active.</value>

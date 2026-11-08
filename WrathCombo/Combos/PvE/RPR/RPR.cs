@@ -248,7 +248,7 @@ internal partial class RPR : Melee
 
             if (IsEnabled(Preset.RPR_ST_SoD) &&
                 UseShadowOfDeath(RPR_SoDRefreshRange, RPR_ST_ArcaneCircleHPBossOption == 1,
-                    IsEnabled(Preset.RPR_ST_ArcaneCircle)) &&
+                    IsEnabled(Preset.RPR_ST_ArcaneCircle), RPR_SoDBossOnlyOption == 1) &&
                 GetTargetHPPercent() > RPR_SoDHPThreshold)
                 return ShadowOfDeath;
 
@@ -625,12 +625,17 @@ internal partial class RPR : Melee
 
                 case Guillotine when LocalPlayer.HasStatus(Buffs.Enshrouded):
                     {
+                        if (IsEnabled(Preset.RPR_LemureSacrificiumOnGuillotine) && CanWeave())
+                        {
+                            if (LocalPlayer.HasStatus(Buffs.Oblatio) && ActionLearned(Sacrificium))
+                                return OriginalHook(Gluttony);
+
+                            if (VoidShroud >= 2 && ActionLearned(LemuresScythe))
+                                return OriginalHook(GrimSwathe);
+                        }
+
                         if (Gauge is { LemureShroud: 1, VoidShroud: 0 } && ActionLearned(Communio))
                             return Communio;
-
-                        if (IsEnabled(Preset.RPR_LemureOnGGG) &&
-                            VoidShroud >= 2 && ActionLearned(LemuresScythe) && CanWeave())
-                            return OriginalHook(GrimSwathe);
 
                         break;
                     }

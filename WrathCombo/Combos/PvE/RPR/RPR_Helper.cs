@@ -17,7 +17,7 @@ internal partial class RPR
 {
     #region SoD
 
-    private static bool UseShadowOfDeath(int dotRefresh = 8, bool trashOnly = true, bool arcaneCircleEnabled = true)
+    private static bool UseShadowOfDeath(int dotRefresh = 8, bool trashOnly = true, bool arcaneCircleEnabled = true, bool bossOnly = false)
     {
         if (ActionLearned(ShadowOfDeath) && !LocalPlayer.HasStatus(Buffs.SoulReaver) &&
             !LocalPlayer.HasStatus(Buffs.Executioner) && !LocalPlayer.HasStatus(Buffs.PerfectioParata) &&
@@ -27,8 +27,9 @@ internal partial class RPR
         {
             float ddRemaining = CurrentTarget.Status(Debuffs.DeathsDesign).RemainingTimeOrZero();
             bool deathsDesignMissing = !CurrentTarget.HasStatus(Debuffs.DeathsDesign);
+            bool validTarget = !bossOnly || TargetIsBoss(); // Double enshroud ignores this
 
-            if (trashOnly && !InBossEncounter() &&
+            if (validTarget && trashOnly && !InBossEncounter() &&
                 !LocalPlayer.HasStatus(Buffs.Enshrouded) &&
                 ddRemaining <= dotRefresh)
                 return true;
@@ -36,7 +37,7 @@ internal partial class RPR
             if (!trashOnly || InBossEncounter() || !arcaneCircleEnabled)
             {
                 //Pre-burst
-                if (ActionLearned(PlentifulHarvest) && !LocalPlayer.HasStatus(Buffs.Enshrouded) &&
+                if (validTarget && ActionLearned(PlentifulHarvest) && !LocalPlayer.HasStatus(Buffs.Enshrouded) &&
                     UsesBurstAlignment && AcCD <= 9f + GCD * 2 &&
                     ddRemaining < 30)
                     return true;
@@ -48,13 +49,13 @@ internal partial class RPR
                     return true;
 
                 //lvl 88+ general use
-                if (ActionLearned(PlentifulHarvest) && !LocalPlayer.HasStatus(Buffs.Enshrouded) &&
+                if (validTarget && ActionLearned(PlentifulHarvest) && !LocalPlayer.HasStatus(Buffs.Enshrouded) &&
                     ddRemaining <= dotRefresh &&
                     (deathsDesignMissing || AcCD > GCD * 8 || IsOffCooldown(ArcaneCircle)))
                     return true;
 
                 //below lvl 88 use
-                if (!ActionLearned(PlentifulHarvest) &&
+                if (validTarget && !ActionLearned(PlentifulHarvest) &&
                     ddRemaining <= dotRefresh)
                     return true;
             }

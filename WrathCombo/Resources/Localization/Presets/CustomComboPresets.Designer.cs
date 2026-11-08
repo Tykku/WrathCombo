@@ -24250,7 +24250,25 @@ namespace WrathCombo.Resources.Localization.Presets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adds Lemure&apos;s Slice to Gibbet/Gallows and Lemure&apos;s Scythe to Guillotine..
+        ///   Looks up a localized string similar to Adds Lemure&apos;s Scythe and Sacrificium to Guillotine while Enshrouded..
+        /// </summary>
+        internal static string RPR_LemureSacrificiumOnGuillotine_Desc {
+            get {
+                return ResourceManager.GetString("RPR_LemureSacrificiumOnGuillotine_Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lemure&apos;s Scythe/Sacrificium on Guillotine Option.
+        /// </summary>
+        internal static string RPR_LemureSacrificiumOnGuillotine_Name {
+            get {
+                return ResourceManager.GetString("RPR_LemureSacrificiumOnGuillotine_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adds Lemure&apos;s Slice to Gibbet/Gallows..
         /// </summary>
         internal static string RPR_LemureOnGGG_Desc {
             get {
@@ -24259,7 +24277,7 @@ namespace WrathCombo.Resources.Localization.Presets {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lemure&apos;s Slice/Scythe Option.
+        ///   Looks up a localized string similar to Lemure&apos;s Slice Option.
         /// </summary>
         internal static string RPR_LemureOnGGG_Name {
             get {
