@@ -17,7 +17,7 @@ internal partial class RPR
 {
     #region SoD
 
-    private static bool UseShadowOfDeath(int dotRefresh = 8, bool trashOnly = true, bool arcaneCircleEnabled = true, bool bossOnly = false)
+    private static bool UseShadowOfDeath(int dotRefresh = 8, bool trashOnly = true, bool arcaneCircleEnabled = true, bool bossOnly = false, bool holdForBurst = true)
     {
         if (ActionLearned(ShadowOfDeath) && !LocalPlayer.HasStatus(Buffs.SoulReaver) &&
             !LocalPlayer.HasStatus(Buffs.Executioner) && !LocalPlayer.HasStatus(Buffs.PerfectioParata) &&
@@ -36,12 +36,6 @@ internal partial class RPR
 
             if (!trashOnly || InBossEncounter() || !arcaneCircleEnabled)
             {
-                //Pre-burst
-                if (validTarget && ActionLearned(PlentifulHarvest) && !LocalPlayer.HasStatus(Buffs.Enshrouded) &&
-                    UsesBurstAlignment && AcCD <= 9f + GCD * 2 &&
-                    ddRemaining < 30)
-                    return true;
-
                 //Double enshroud
                 if (ActionLearned(PlentifulHarvest) && LocalPlayer.HasStatus(Buffs.Enshrouded) &&
                     AcCD <= GCD && Lemure is 4 &&
@@ -51,7 +45,7 @@ internal partial class RPR
                 //lvl 88+ general use
                 if (validTarget && ActionLearned(PlentifulHarvest) && !LocalPlayer.HasStatus(Buffs.Enshrouded) &&
                     ddRemaining <= dotRefresh &&
-                    (deathsDesignMissing || AcCD > GCD * 8 || IsOffCooldown(ArcaneCircle)))
+                    (!holdForBurst || deathsDesignMissing || AcCD > GCD * 8 || IsOffCooldown(ArcaneCircle)))
                     return true;
 
                 //below lvl 88 use

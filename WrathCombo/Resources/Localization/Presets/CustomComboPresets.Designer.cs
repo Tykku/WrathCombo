@@ -24742,6 +24742,24 @@ namespace WrathCombo.Resources.Localization.Presets {
                 return ResourceManager.GetString("RPR_ST_SoD_Name", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Holds Shadow of Death refreshes during the last 8 GCDs before Arcane Circle..
+        /// </summary>
+        internal static string RPR_ST_SoD_BurstHold_Desc {
+            get {
+                return ResourceManager.GetString("RPR_ST_SoD_BurstHold_Desc", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Toshi Burst Refresh.
+        /// </summary>
+        internal static string RPR_ST_SoD_BurstHold_Name {
+            get {
+                return ResourceManager.GetString("RPR_ST_SoD_BurstHold_Name", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to Adds Soul Slice to the rotation..

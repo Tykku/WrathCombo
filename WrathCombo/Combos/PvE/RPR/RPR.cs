@@ -248,7 +248,8 @@ internal partial class RPR : Melee
 
             if (IsEnabled(Preset.RPR_ST_SoD) &&
                 UseShadowOfDeath(RPR_SoDRefreshRange, RPR_ST_ArcaneCircleHPBossOption == 1,
-                    IsEnabled(Preset.RPR_ST_ArcaneCircle), RPR_SoDBossOnlyOption == 1) &&
+                    IsEnabled(Preset.RPR_ST_ArcaneCircle), RPR_SoDBossOnlyOption == 1,
+                    IsEnabled(Preset.RPR_ST_SoD_BurstHold)) &&
                 GetTargetHPPercent() > RPR_SoDHPThreshold)
                 return ShadowOfDeath;
 
