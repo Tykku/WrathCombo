@@ -24762,6 +24762,24 @@ namespace WrathCombo.Resources.Localization.Presets {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Uses Shadow of Death mid-Enshroud right before Arcane Circle, so Death&apos;s Design is refreshed going into the double Enshroud burst..
+        /// </summary>
+        internal static string RPR_ST_SoD_DoubleEnshroud_Desc {
+            get {
+                return ResourceManager.GetString("RPR_ST_SoD_DoubleEnshroud_Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Double Enshroud Refresh.
+        /// </summary>
+        internal static string RPR_ST_SoD_DoubleEnshroud_Name {
+            get {
+                return ResourceManager.GetString("RPR_ST_SoD_DoubleEnshroud_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Adds Soul Slice to the rotation..
         /// </summary>
         internal static string RPR_ST_SoulSlice_Desc {

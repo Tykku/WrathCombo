@@ -17,7 +17,7 @@ internal partial class RPR
 {
     #region SoD
 
-    private static bool UseShadowOfDeath(int dotRefresh = 8, bool trashOnly = true, bool arcaneCircleEnabled = true, bool bossOnly = false, bool holdForBurst = true)
+    private static bool UseShadowOfDeath(int dotRefresh = 8, bool trashOnly = true, bool arcaneCircleEnabled = true, bool bossOnly = false, bool holdForBurst = true, bool doubleEnshroud = true)
     {
         if (ActionLearned(ShadowOfDeath) && !LocalPlayer.HasStatus(Buffs.SoulReaver) &&
             !LocalPlayer.HasStatus(Buffs.Executioner) && !LocalPlayer.HasStatus(Buffs.PerfectioParata) &&
@@ -37,7 +37,7 @@ internal partial class RPR
             if (!trashOnly || InBossEncounter() || !arcaneCircleEnabled)
             {
                 //Double enshroud
-                if (ActionLearned(PlentifulHarvest) && LocalPlayer.HasStatus(Buffs.Enshrouded) &&
+                if (doubleEnshroud && ActionLearned(PlentifulHarvest) && LocalPlayer.HasStatus(Buffs.Enshrouded) &&
                     AcCD <= GCD && Lemure is 4 &&
                     (JustUsed(VoidReaping, 2f) || JustUsed(CrossReaping, 2f)))
                     return true;

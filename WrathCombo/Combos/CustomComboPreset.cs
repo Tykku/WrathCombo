@@ -5675,6 +5675,10 @@ public enum Preset
     [JobInfo(Job.RPR)]
     RPR_ST_SoD_BurstHold = 12317,
 
+    [ParentCombo(RPR_ST_SoD)]
+    [JobInfo(Job.RPR)]
+    RPR_ST_SoD_DoubleEnshroud = 12318,
+
     [ParentCombo(RPR_ST_AdvancedMode)]
     [JobInfo(Job.RPR)]
     RPR_ST_SoulSow = 12020,

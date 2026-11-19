@@ -8506,6 +8506,12 @@ Disable to refresh purely on the refresh timer.</value>
   <data name="RPR_ST_SoD_BurstHold_Name" xml:space="preserve">
     <value>Toshi Burst Refresh</value>
   </data>
+  <data name="RPR_ST_SoD_DoubleEnshroud_Name" xml:space="preserve">
+    <value>Double Enshroud Refresh</value>
+  </data>
+  <data name="RPR_ST_SoD_DoubleEnshroud_Desc" xml:space="preserve">
+    <value>Uses Shadow of Death mid-Enshroud right before Arcane Circle, so Death's Design is refreshed going into the double Enshroud burst.</value>
+  </data>
   <data name="RPR_ST_SoulSlice_Desc" xml:space="preserve">
     <value>Adds Soul Slice to the rotation.</value>
   </data>
