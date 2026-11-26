@@ -11101,6 +11101,12 @@ Will automatically swap depending on your position.</value>
   <data name="WARPvP_BurstMode_PrimalRend_Name" xml:space="preserve">
     <value>Primal Rend Option</value>
   </data>
+  <data name="WARPvP_BurstMode_PrimalRuination_Desc" xml:space="preserve">
+    <value>Adds Primal Ruination to Burst Mode when Primal Ruination Ready is active.</value>
+  </data>
+  <data name="WARPvP_BurstMode_PrimalRuination_Name" xml:space="preserve">
+    <value>Primal Ruination Option</value>
+  </data>
   <data name="WARPvP_BurstMode_PrimalScream_Desc" xml:space="preserve">
     <value>Adds Primal Scream to Burst Mode.</value>
   </data>

@@ -34101,6 +34101,24 @@ namespace WrathCombo.Resources.Localization.Presets {
                 return ResourceManager.GetString("WARPvP_BurstMode_PrimalRend_Name", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Adds Primal Ruination to Burst Mode when Primal Ruination Ready is active..
+        /// </summary>
+        internal static string WARPvP_BurstMode_PrimalRuination_Desc {
+            get {
+                return ResourceManager.GetString("WARPvP_BurstMode_PrimalRuination_Desc", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Primal Ruination Option.
+        /// </summary>
+        internal static string WARPvP_BurstMode_PrimalRuination_Name {
+            get {
+                return ResourceManager.GetString("WARPvP_BurstMode_PrimalRuination_Name", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to Adds Primal Scream to Burst Mode..

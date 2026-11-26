@@ -100,12 +100,13 @@ internal static class WARPvP
                             return OriginalHook(Blota);
                     }
 
-                    // PrimalRend if ready or BurstMode enabled
-                    if (IsEnabled(Preset.WARPvP_BurstMode_PrimalRend))
-                    {
-                        if ((IsOffCooldown(PrimalRend) || LocalPlayer.HasStatus(Buffs.PrimalRuinationReady)))
-                            return OriginalHook(PrimalRend);
-                    }
+                    // Primal Ruination when ready
+                    if (IsEnabled(Preset.WARPvP_BurstMode_PrimalRuination) && LocalPlayer.HasStatus(Buffs.PrimalRuinationReady))
+                        return OriginalHook(PrimalRend);
+
+                    // Primal Rend when off cooldown
+                    if (IsEnabled(Preset.WARPvP_BurstMode_PrimalRend) && IsOffCooldown(PrimalRend) && !LocalPlayer.HasStatus(Buffs.PrimalRuinationReady))
+                        return OriginalHook(PrimalRend);
 
                 }
 
@@ -127,12 +128,13 @@ internal static class WARPvP
                     if (IsEnabled(Preset.WARPvP_BurstMode_Orogeny) && !GetCooldown(Orogeny).IsCooldown && canWeave)
                         return OriginalHook(Orogeny);
 
-                    // PrimalRend if ready or BurstMode enabled
-                    if (IsEnabled(Preset.WARPvP_BurstMode_PrimalRend))
-                    {
-                        if (IsOffCooldown(PrimalRend) || LocalPlayer.HasStatus(Buffs.PrimalRuinationReady))
-                            return OriginalHook(PrimalRend);
-                    }
+                    // Primal Ruination when ready
+                    if (IsEnabled(Preset.WARPvP_BurstMode_PrimalRuination) && LocalPlayer.HasStatus(Buffs.PrimalRuinationReady))
+                        return OriginalHook(PrimalRend);
+
+                    // Primal Rend when off cooldown
+                    if (IsEnabled(Preset.WARPvP_BurstMode_PrimalRend) && IsOffCooldown(PrimalRend) && !LocalPlayer.HasStatus(Buffs.PrimalRuinationReady))
+                        return OriginalHook(PrimalRend);
 
                     // Blota with specific conditions and burst mode enabled in meleerange
                     if (IsOffCooldown(Blota) && !CurrentTarget.HasStatus(PvPCommon.Debuffs.Stun, true) && IsEnabled(Preset.WARPvP_BurstMode_Blota))

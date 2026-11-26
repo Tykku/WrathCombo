@@ -9977,6 +9977,11 @@ public enum Preset
     [PvPCustomCombo]
     [ParentCombo(WARPvP_BurstMode)]
     [JobInfo(Job.WAR)]
+    WARPvP_BurstMode_PrimalRuination = 128010,
+
+    [PvPCustomCombo]
+    [ParentCombo(WARPvP_BurstMode)]
+    [JobInfo(Job.WAR)]
     WARPvP_BurstMode_InnerChaos = 128005,
 
     [PvPCustomCombo]
@@ -9999,7 +10004,7 @@ public enum Preset
     [JobInfo(Job.WAR)]
     WARPvP_Rampart = 128009,
 
-    // Last value = 128009
+    // Last value = 128010
 
     #endregion
 
