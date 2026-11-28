@@ -9452,7 +9452,33 @@ public enum Preset
     [JobInfo(Job.NIN)]
     NINPvP_Smite = 120018,
 
-    // Last value = 120018
+    [PvPCustomCombo]
+    [ReplaceSkill(NINPvP.SeitonTenchu)]
+    [JobInfo(Job.NIN)]
+    NINPvP_SeitonTenchu_HPLock = 120019,
+
+    [ParentCombo(NINPvP_SeitonTenchu_HPLock)]
+    [Retargeted(NINPvP.SeitonTenchu)]
+    [PvPCustomCombo]
+    [JobInfo(Job.NIN)]
+    NINPvP_SeitonTenchu_HPLock_Retarget = 120020,
+
+    [ParentCombo(NINPvP_SeitonTenchu_HPLock_Retarget)]
+    [PvPCustomCombo]
+    [JobInfo(Job.NIN)]
+    NINPvP_SeitonTenchu_HPLock_Retarget_CameraCone = 120021,
+
+    [ParentCombo(NINPvP_SeitonTenchu_HPLock)]
+    [PvPCustomCombo]
+    [JobInfo(Job.NIN)]
+    NINPvP_SeitonTenchu_HPLock_NoQueue = 120022,
+
+    [PvPCustomCombo]
+    [ReplaceSkill(NINPvP.ThreeMudra, PvPCommon.Recuperate)]
+    [JobInfo(Job.NIN)]
+    NINPvP_MeisuiOnRecuperate = 120023,
+
+    // Last value = 120023
 
     #endregion
 

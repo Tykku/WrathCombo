@@ -9041,6 +9041,24 @@ namespace WrathCombo.Resources.Localization.Presets {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Locks the Seiton Tenchu (Limit Break) button while your target is above the selected HP%, so you can't waste it on a healthy target. This also applies to the Seiton Unsealed follow-up.
+        /// </summary>
+        internal static string NINPvP_SeitonTenchu_HPLock_Desc {
+            get {
+                return ResourceManager.GetString("NINPvP_SeitonTenchu_HPLock_Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Limit Break (Seiton Tenchu) HP Lock.
+        /// </summary>
+        internal static string NINPvP_SeitonTenchu_HPLock_Name {
+            get {
+                return ResourceManager.GetString("NINPvP_SeitonTenchu_HPLock_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Adds Role Action Smite to Burst Mode below selected health.
         /// </summary>
         internal static string DRGPvP_Smite_Desc {
@@ -16351,6 +16369,78 @@ namespace WrathCombo.Resources.Localization.Presets {
         internal static string NINPvP_AoE_ThreeMudraPool_Name {
             get {
                 return ResourceManager.GetString("NINPvP_AoE_ThreeMudraPool_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Instead of blocking, retargets Seiton Tenchu onto an enemy in range that is at or under the HP Lock threshold (your current target is preferred, then the lowest HP%). Enemies with an invulnerability (Hallowed Ground, Undead Redemption) or Hardened Scales are skipped, as are Dark Knights at 1 HP (just used Eventide). Guarded enemies are allowed, since Seiton Tenchu ignores Guard. If nobody qualifies, the button stays locked.
+        /// </summary>
+        internal static string NINPvP_SeitonTenchu_HPLock_Retarget_Desc {
+            get {
+                return ResourceManager.GetString("NINPvP_SeitonTenchu_HPLock_Retarget_Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Retarget to Low HP Enemy Option.
+        /// </summary>
+        internal static string NINPvP_SeitonTenchu_HPLock_Retarget_Name {
+            get {
+                return ResourceManager.GetString("NINPvP_SeitonTenchu_HPLock_Retarget_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Only retargets onto enemies inside a cone in the direction your camera is facing, measured from your character. This also applies to your current target.
+        /// </summary>
+        internal static string NINPvP_SeitonTenchu_HPLock_Retarget_CameraCone_Desc {
+            get {
+                return ResourceManager.GetString("NINPvP_SeitonTenchu_HPLock_Retarget_CameraCone_Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Camera Cone Only.
+        /// </summary>
+        internal static string NINPvP_SeitonTenchu_HPLock_Retarget_CameraCone_Name {
+            get {
+                return ResourceManager.GetString("NINPvP_SeitonTenchu_HPLock_Retarget_CameraCone_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stops Seiton Tenchu from being queued. Presses made during an animation lock or cast are dropped instead of firing later, and anything already queued is thrown away. Only presses made when it can go off immediately are used.
+        /// </summary>
+        internal static string NINPvP_SeitonTenchu_HPLock_NoQueue_Desc {
+            get {
+                return ResourceManager.GetString("NINPvP_SeitonTenchu_HPLock_NoQueue_Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Queue Option.
+        /// </summary>
+        internal static string NINPvP_SeitonTenchu_HPLock_NoQueue_Name {
+            get {
+                return ResourceManager.GetString("NINPvP_SeitonTenchu_HPLock_NoQueue_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Three Mudra no longer turns into Meisui; it shows Cease while Three Mudra is active so it can't be double cast. Instead, Recuperate turns into Meisui while you have Three Mudra active and Meisui isn't sealed.
+        /// </summary>
+        internal static string NINPvP_MeisuiOnRecuperate_Desc {
+            get {
+                return ResourceManager.GetString("NINPvP_MeisuiOnRecuperate_Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Meisui on Recuperate.
+        /// </summary>
+        internal static string NINPvP_MeisuiOnRecuperate_Name {
+            get {
+                return ResourceManager.GetString("NINPvP_MeisuiOnRecuperate_Name", resourceCulture);
             }
         }
         

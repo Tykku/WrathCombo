@@ -5234,6 +5234,36 @@ This is the ideal option for newcomers to the job.</value>
   <data name="NINPvP_AoE_ThreeMudra_Name" xml:space="preserve">
     <value>Three Mudra Option</value>
   </data>
+  <data name="NINPvP_SeitonTenchu_HPLock_Desc" xml:space="preserve">
+    <value>Locks the Seiton Tenchu (Limit Break) button while your target is above the selected HP%, so you can't waste it on a healthy target. This also applies to the Seiton Unsealed follow-up.</value>
+  </data>
+  <data name="NINPvP_SeitonTenchu_HPLock_Name" xml:space="preserve">
+    <value>Limit Break (Seiton Tenchu) HP Lock</value>
+  </data>
+  <data name="NINPvP_SeitonTenchu_HPLock_Retarget_Desc" xml:space="preserve">
+    <value>Instead of blocking, retargets Seiton Tenchu onto an enemy in range that is at or under the HP Lock threshold (your current target is preferred, then the lowest HP%). Enemies with an invulnerability (Hallowed Ground, Undead Redemption) or Hardened Scales are skipped, as are Dark Knights at 1 HP (just used Eventide). Guarded enemies are allowed, since Seiton Tenchu ignores Guard. If nobody qualifies, the button stays locked.</value>
+  </data>
+  <data name="NINPvP_SeitonTenchu_HPLock_Retarget_Name" xml:space="preserve">
+    <value>Retarget to Low HP Enemy Option</value>
+  </data>
+  <data name="NINPvP_SeitonTenchu_HPLock_Retarget_CameraCone_Desc" xml:space="preserve">
+    <value>Only retargets onto enemies inside a cone in the direction your camera is facing, measured from your character. This also applies to your current target.</value>
+  </data>
+  <data name="NINPvP_SeitonTenchu_HPLock_Retarget_CameraCone_Name" xml:space="preserve">
+    <value>Camera Cone Only</value>
+  </data>
+  <data name="NINPvP_SeitonTenchu_HPLock_NoQueue_Desc" xml:space="preserve">
+    <value>Stops Seiton Tenchu from being queued. Presses made during an animation lock or cast are dropped instead of firing later, and anything already queued is thrown away. Only presses made when it can go off immediately are used.</value>
+  </data>
+  <data name="NINPvP_SeitonTenchu_HPLock_NoQueue_Name" xml:space="preserve">
+    <value>No Queue Option</value>
+  </data>
+  <data name="NINPvP_MeisuiOnRecuperate_Desc" xml:space="preserve">
+    <value>Three Mudra no longer turns into Meisui; it shows Cease while Three Mudra is active so it can't be double cast. Instead, Recuperate turns into Meisui while you have Three Mudra active and Meisui isn't sealed.</value>
+  </data>
+  <data name="NINPvP_MeisuiOnRecuperate_Name" xml:space="preserve">
+    <value>Meisui on Recuperate</value>
+  </data>
   <data name="NINPvP_Smite_Desc" xml:space="preserve">
     <value>Adds Role Action Smite to Burst Mode below selected health</value>
   </data>

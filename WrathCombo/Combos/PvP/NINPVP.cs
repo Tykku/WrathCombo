@@ -1,6 +1,13 @@
-﻿using ECommons.GameHelpers;
+﻿using Dalamud.Game.ClientState.Objects.Types;
+using ECommons.DalamudServices;
+using ECommons.GameFunctions;
+using ECommons.GameHelpers;
 using System;
 using System.Linq;
+using System.Numerics;
+using FFXIVClientStructs.FFXIV.Client.Game.Control;
+using WrathCombo.Combos.PvE;
+using WrathCombo.Core;
 using WrathCombo.CustomComboNS;
 using WrathCombo.CustomComboNS.Functions;
 using WrathCombo.Extensions;
@@ -24,6 +31,7 @@ internal static class NINPvP
         Bunshin = 29511,
         Shukuchi = 29513,
         SeitonTenchu = 29515,
+        SeitonTenchuUnsealed = 29516, // Follow-up cast while under Seiton Unsealed
         ForkedRaiju = 29510,
         FleetingRaiju = 29707,
         HyoshoRanryu = 29506,
@@ -68,6 +76,8 @@ internal static class NINPvP
             NINPvP_AoE_FumaShuriken_RangedCharges = new("NINPvP_AoE_FumaShuriken_RangedCharges"),
             NINPVP_SeitonTenchu = new("NINPVP_SeitonTenchu"),
             NINPVP_SeitonTenchuAoE = new("NINPVP_SeitonTenchuAoE"),
+            NINPvP_SeitonTenchu_HPLockThreshold = new("NINPvP_SeitonTenchu_HPLockThreshold", 50),
+            NINPvP_SeitonTenchu_CameraConeAngle = new("NINPvP_SeitonTenchu_CameraConeAngle", 90),
             NINPvP_SmiteThreshold = new("NINPvP_SmiteThreshold");
 
         public static UserBoolArray
@@ -104,6 +114,12 @@ internal static class NINPvP
                     break;
                 case Preset.NINPvP_AoE_SeitonTenchu:
                     DrawSliderInt(1, 50, NINPVP_SeitonTenchuAoE, "Target's HP% to be at or under", 200);
+                    break;
+                case Preset.NINPvP_SeitonTenchu_HPLock:
+                    DrawSliderInt(1, 100, NINPvP_SeitonTenchu_HPLockThreshold, "Target's HP% to be at or under before the Limit Break is allowed", 200);
+                    break;
+                case Preset.NINPvP_SeitonTenchu_HPLock_Retarget_CameraCone:
+                    DrawSliderInt(30, 180, NINPvP_SeitonTenchu_CameraConeAngle, "Total cone width in degrees (90 = 45 either side of where the camera faces)", 200);
                     break;
                 case Preset.NINPvP_Smite:
                     DrawSliderInt(0, 100, NINPvP_SmiteThreshold,
@@ -361,6 +377,104 @@ internal static class NINPvP
                     }
                 }
             }
+            return actionID;
+        }
+    }
+
+    internal class NINPvP_SeitonTenchu_HPLock : CustomCombo
+    {
+        protected internal override Preset Preset => Preset.NINPvP_SeitonTenchu_HPLock;
+
+        protected override uint Invoke(uint actionID)
+        {
+            if (actionID is not SeitonTenchu)
+                return actionID;
+
+            // 29515 normally, 29516 while under Seiton Unsealed
+            uint lb = OriginalHook(SeitonTenchu);
+
+            // Retarget onto any enemy in range at or under the threshold
+            if (IsEnabled(Preset.NINPvP_SeitonTenchu_HPLock_Retarget))
+            {
+                if (SeitonRetargetTarget is { } lbTarget)
+                    return lb.Retarget(SeitonTenchu, lbTarget);
+
+                return All.Cease;
+            }
+
+            // Block the LB while the target is above the HP threshold or can't be hurt
+            if (HasTarget() && !SeitonTargetAllowed(CurrentTarget))
+                return All.Cease;
+
+            return lb;
+        }
+
+        /// <summary> Current target first if it qualifies, otherwise the lowest HP% enemy in range under the threshold. </summary>
+        private static IBattleChara? SeitonRetargetTarget =>
+            Svc.Objects.OfType<IBattleChara>()
+                .Where(x => x.IsHostile() &&
+                            x.IsTargetable &&
+                            !x.IsDead &&
+                            InActionRange(OriginalHook(SeitonTenchu), x) &&
+                            SeitonTargetAllowed(x) &&
+                            (!IsEnabled(Preset.NINPvP_SeitonTenchu_HPLock_Retarget_CameraCone) ||
+                             InCameraCone(x, NINPvP_SeitonTenchu_CameraConeAngle)))
+                .OrderByDescending(x => x.GameObjectId == CurrentTarget?.GameObjectId)
+                .ThenBy(x => GetTargetHPPercent(x))
+                .FirstOrDefault();
+
+        /// <summary>
+        /// False if the target has an immunity (Hallowed Ground, Undead Redemption) or Hardened Scales.
+        /// Also false for a DRK at 1 HP, since Eventide drops them to 1 HP and Undead Redemption can show up a moment later.
+        /// Guard is ignored on purpose: Seiton Tenchu ignores Guard.
+        /// </summary>
+        internal static bool SeitonCanHurt(IGameObject? target) =>
+            target is not null &&
+            !PvPCommon.TargetImmuneToDamage(false, target) &&
+            !target.HasStatus(VPRPvP.Buffs.HardenedScales, true) &&
+            !(target is IBattleChara { CurrentHp: <= 1 } chara && (ECommons.ExcelServices.Job)chara.ClassJob.RowId == ECommons.ExcelServices.Job.DRK);
+
+        /// <summary> At or under the HP Lock threshold and hurtable. Also used as the final check when the action is sent. </summary>
+        internal static bool SeitonTargetAllowed(IGameObject? target) =>
+            target is not null &&
+            GetTargetHPPercent(target) <= NINPvP_SeitonTenchu_HPLockThreshold &&
+            SeitonCanHurt(target);
+
+        /// <summary> True if the target is within a horizontal cone (total width in degrees) centred on the camera's facing, measured from the player. </summary>
+        private static unsafe bool InCameraCone(IGameObject target, float coneDegrees)
+        {
+            var manager = CameraManager.Instance();
+            if (manager == null || manager->Camera == null || LocalPlayer is not { } player)
+                return true;
+
+            var scene = manager->Camera->SceneCamera;
+            var forward = new Vector2(scene.LookAtVector.X - scene.Position.X, scene.LookAtVector.Z - scene.Position.Z);
+            var toTarget = new Vector2(target.Position.X - player.Position.X, target.Position.Z - player.Position.Z);
+
+            if (forward.LengthSquared() < 0.0001f || toTarget.LengthSquared() < 0.0001f)
+                return true;
+
+            float halfAngle = coneDegrees * 0.5f * MathF.PI / 180f;
+            return Vector2.Dot(Vector2.Normalize(forward), Vector2.Normalize(toTarget)) >= MathF.Cos(halfAngle);
+        }
+    }
+
+    internal class NINPvP_MeisuiOnRecuperate : CustomCombo
+    {
+        protected internal override Preset Preset => Preset.NINPvP_MeisuiOnRecuperate;
+
+        protected override uint Invoke(uint actionID)
+        {
+            // During Three Mudra the game would turn this into Meisui; show Cease instead so it can't be double cast
+            if (actionID is ThreeMudra)
+                return LocalPlayer.HasStatus(Buffs.ThreeMudra) ? All.Cease : ThreeMudra;
+
+            // Recuperate becomes Meisui during Three Mudra
+            if (actionID is PvPCommon.Recuperate &&
+                LocalPlayer.HasStatus(Buffs.ThreeMudra) &&
+                !LocalPlayer.HasStatus(Debuffs.SealedMeisui))
+                return Meisui;
+
             return actionID;
         }
     }

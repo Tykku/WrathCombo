@@ -595,6 +595,25 @@ public static class ActionWatching
                     }
                 }
 
+                bool isSeiton = actionId is Combos.PvP.NINPvP.SeitonTenchu or Combos.PvP.NINPvP.SeitonTenchuUnsealed ||
+                                replacedWith is Combos.PvP.NINPvP.SeitonTenchu or Combos.PvP.NINPvP.SeitonTenchuUnsealed;
+
+                if (isSeiton && IsEnabled(Preset.NINPvP_SeitonTenchu_HPLock_NoQueue))
+                {
+                    // Throw away a Seiton Tenchu that was queued earlier
+                    if (mode == ActionManager.UseActionMode.Queue)
+                        return false;
+
+                    // Don't let a new press enter the queue: only allow it when it can go off right now.
+                    // Limit breaks are off the GCD, so only animation lock and casting matter.
+                    if (actionManager->AnimationLock > 0 || Player.Object is { IsCasting: true })
+                    {
+                        if (actionManager->QueuedActionId is Combos.PvP.NINPvP.SeitonTenchu or Combos.PvP.NINPvP.SeitonTenchuUnsealed)
+                            actionManager->QueuedActionId = 0;
+                        return false;
+                    }
+                }
+
                 if (replacedWith >= All.SingleTargetDPS)
                 {
                     if (replacedWith != All.Cease)
@@ -629,7 +648,8 @@ public static class ActionWatching
                     actionManager->QueuedTargetId = 0;
 
                 // However, if we have a queued target ID assume that's what we want and not whatever current retargeting is. TODO: Setting?
-                if (actionManager->QueuedTargetId.Id != 0)
+                // Exception: a retargeted Seiton Tenchu keeps its retarget, the queued target may belong to another action.
+                if (actionManager->QueuedTargetId.Id != 0 && !(isSeiton && changed))
                     targetId = actionManager->QueuedTargetId.Id;
 
                 var areaTargeted = replacedWith >= 1_000_000 ? false : ActionSheet.TryGetValue(replacedWith, out var s) && s.TargetArea;
@@ -691,6 +711,19 @@ public static class ActionWatching
                 }
 
                 Svc.Log.Verbose($"[QueuedTargetUpdate] A:{actionManager->QueuedActionId.ActionName()} Q:{Svc.Objects.SearchById(actionManager->QueuedTargetId)?.Name} T:{Svc.Objects.SearchById(targetId)?.Name} M:{mode} W:{willQueue}");
+
+                // Final HP Lock check for Seiton Tenchu, after all retargeting/queue target logic.
+                // Catches fallbacks to the hard target, leftover queued targets and the Unsealed follow-up.
+                if (isSeiton && IsEnabled(Preset.NINPvP_SeitonTenchu_HPLock))
+                {
+                    var finalTarget = (changed ? targetId : originalTargetId).GetObject();
+                    if (finalTarget is not null && finalTarget.IsHostile() &&
+                        !Combos.PvP.NINPvP.NINPvP_SeitonTenchu_HPLock.SeitonTargetAllowed(finalTarget))
+                    {
+                        Service.ActionReplacer.EnableActionReplacingIfRequired();
+                        return false;
+                    }
+                }
 
                 Svc.Log.Verbose($"[FinalUse] Target changed is {changed}. Using {actionId.ActionName()} ({actionId}) -> {replacedWith.ActionName()} ({replacedWith}) on {(changed ? targetId.GetObject()?.Name : originalTargetId.GetObject()?.Name)} ({(changed ? targetId : originalTargetId):X})");
                 var hookResult = changed ? UseActionHook.Original(actionManager, actionType, actionId, targetId, extraParam, mode, comboRouteId, outOptAreaTargeted) :
