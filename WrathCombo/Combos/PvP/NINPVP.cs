@@ -240,7 +240,7 @@ internal static class NINPvP
                     }
                 }
                 // Fuma Shuriken
-                if (IsEnabled(Preset.NINPvP_ST_FumaShuriken) && !LocalPlayer.HasStatus(Buffs.FleetingRaijuReady) && HasCharges(FumaShuriken) &&
+                if (IsEnabled(Preset.NINPvP_ST_FumaShuriken) && !LocalPlayer.HasStatus(Buffs.ThreeMudra) && !LocalPlayer.HasStatus(Buffs.FleetingRaijuReady) && HasCharges(FumaShuriken) &&
                     (!InMeleeRange() && GetRemainingCharges(FumaShuriken) > 0 ||
                      InMeleeRange() && GetRemainingCharges(FumaShuriken) > NINPvP_ST_FumaShuriken_RangedCharges))
                     return OriginalHook(FumaShuriken);
